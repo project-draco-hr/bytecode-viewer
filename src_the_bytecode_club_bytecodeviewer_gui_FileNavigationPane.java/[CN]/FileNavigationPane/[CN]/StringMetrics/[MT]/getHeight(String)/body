@@ -1,0 +1,4 @@
+{
+  Rectangle2D bounds=getBounds(message);
+  return bounds.getHeight();
+}

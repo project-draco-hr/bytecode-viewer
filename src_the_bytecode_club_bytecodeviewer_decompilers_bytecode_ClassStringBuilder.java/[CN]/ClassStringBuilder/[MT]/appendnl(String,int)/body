@@ -1,0 +1,9 @@
+{
+  append(s);
+  for (int i=0; i < nlAmount; i++) {
+    builder.append(nl);
+  }
+  if (nlAmount > 0) {
+    isNewline=true;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  AbstractInsnNode in;
+  while ((in=getPrevious(Opcodes.LDC)) != null) {
+    final LdcInsnNode ln=(LdcInsnNode)in;
+    if (ln.cst.equals(cst))     return ln;
+  }
+  return null;
+}

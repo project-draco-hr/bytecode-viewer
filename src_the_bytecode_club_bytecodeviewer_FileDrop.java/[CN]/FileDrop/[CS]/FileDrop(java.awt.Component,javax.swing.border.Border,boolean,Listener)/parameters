@@ -1,0 +1,4 @@
+java.awt.Component c
+javax.swing.border.Border dragBorder
+boolean recursive
+Listener listener

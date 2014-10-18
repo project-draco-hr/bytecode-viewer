@@ -1,0 +1,13 @@
+{
+  String[] babe=fileName.split("\\.");
+  int count=0;
+  int math=babe.length;
+  String m="";
+  for (  String s2 : babe) {
+    m+=s2;
+    if (math - 2 == count)     m+=difference + ".";
+ else     if (math - 1 != count)     m+=".";
+    count++;
+  }
+  return m;
+}

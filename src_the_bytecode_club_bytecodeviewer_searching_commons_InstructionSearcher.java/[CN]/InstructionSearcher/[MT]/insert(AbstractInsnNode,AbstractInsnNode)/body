@@ -1,0 +1,3 @@
+{
+  this.list.insert(location,insn);
+}

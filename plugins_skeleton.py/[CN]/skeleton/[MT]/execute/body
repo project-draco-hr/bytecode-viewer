@@ -1,0 +1,4 @@
+def execute(classNodeList, poop):
+    gui = PluginConsole('Skeleton')
+    gui.setVisible(Boolean.TRUE)
+    gui.appendText('exceuted skeleton')

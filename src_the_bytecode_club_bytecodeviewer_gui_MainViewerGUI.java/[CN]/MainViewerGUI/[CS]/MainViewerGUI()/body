@@ -1,0 +1,247 @@
+{
+  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  rbr.setSelected(true);
+  rsy.setSelected(false);
+  din.setSelected(true);
+  dc4.setSelected(true);
+  das.setSelected(true);
+  hes.setSelected(true);
+  hdc.setSelected(true);
+  dgs.setSelected(false);
+  ner.setSelected(true);
+  den.setSelected(true);
+  rgn.setSelected(true);
+  bto.setSelected(true);
+  nns.setSelected(true);
+  uto.setSelected(true);
+  udv.setSelected(true);
+  rer.setSelected(true);
+  fdi.setSelected(true);
+  asc.setSelected(false);
+  srcSyntax.setSelected(true);
+  bycSyntax.setSelected(true);
+  debugHelpers.setSelected(true);
+  sourcePane.setSelected(true);
+  bytecodePane.setSelected(true);
+  setJMenuBar(menuBar);
+  JMenu mnNewMenu=new JMenu("File");
+  menuBar.add(mnNewMenu);
+  final JFrame This=this;
+  mntmNewWorkspace.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      BytecodeViewer.resetWorkSpace();
+    }
+  }
+);
+  JMenuItem mntmLoadJar=new JMenuItem("Add..");
+  mntmLoadJar.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      JFileChooser fc=new JFileChooser();
+      fc.setFileFilter(new JarZipClassFileFilter());
+      fc.setFileHidingEnabled(false);
+      fc.setAcceptAllFileFilterUsed(false);
+      int returnVal=fc.showOpenDialog(This);
+      if (returnVal == JFileChooser.APPROVE_OPTION)       try {
+        BytecodeViewer.viewer.setC(true);
+        BytecodeViewer.openFiles(new File[]{fc.getSelectedFile()});
+        BytecodeViewer.viewer.setC(false);
+      }
+ catch (      Exception e1) {
+        e1.printStackTrace();
+      }
+    }
+  }
+);
+  mnNewMenu.add(mntmLoadJar);
+  mnNewMenu.add(mntmNewWorkspace);
+  JMenuItem mntmSave=new JMenuItem("Save Files As..");
+  mntmSave.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      JFileChooser fc=new JFileChooser();
+      fc.setFileFilter(new ZipFileFilter());
+      fc.setFileHidingEnabled(false);
+      fc.setAcceptAllFileFilterUsed(false);
+      int returnVal=fc.showSaveDialog(MainViewerGUI.this);
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file=fc.getSelectedFile();
+        BytecodeViewer.viewer.setC(true);
+        JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),file.getAbsolutePath());
+        BytecodeViewer.viewer.setC(false);
+      }
+    }
+  }
+);
+  mnNewMenu.add(separator_3);
+  mntmNewMenuItem_3.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      JFileChooser fc=new JFileChooser();
+      fc.setFileFilter(new JarFileFilter());
+      fc.setFileHidingEnabled(false);
+      fc.setAcceptAllFileFilterUsed(false);
+      int returnVal=fc.showSaveDialog(MainViewerGUI.this);
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file=fc.getSelectedFile();
+        new ExportJar(file.getAbsolutePath()).setVisible(true);
+      }
+    }
+  }
+);
+  mnNewMenu.add(mntmNewMenuItem_3);
+  mnNewMenu.add(mntmSave);
+  mntmNewMenuItem.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      JFileChooser fc=new JFileChooser();
+      fc.setFileFilter(new ZipFileFilter());
+      fc.setFileHidingEnabled(false);
+      fc.setAcceptAllFileFilterUsed(false);
+      int returnVal=fc.showSaveDialog(MainViewerGUI.this);
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file=fc.getSelectedFile();
+        BytecodeViewer.viewer.setC(true);
+        FernFlowerDecompiler d=new FernFlowerDecompiler();
+        d.decompileToZip(file.getAbsolutePath());
+        BytecodeViewer.viewer.setC(false);
+      }
+    }
+  }
+);
+  mnNewMenu.add(mntmNewMenuItem);
+  JSeparator separator=new JSeparator();
+  mnNewMenu.add(separator);
+  mnNewMenu.add(mnRecentFiles);
+  JSeparator separator_1=new JSeparator();
+  mnNewMenu.add(separator_1);
+  mntmAbout.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      aboutWindow.setVisible(true);
+    }
+  }
+);
+  mnNewMenu.add(mntmAbout);
+  JMenuItem mntmExit=new JMenuItem("Exit");
+  mnNewMenu.add(mntmExit);
+  JMenu mnView=new JMenu("View");
+  menuBar.add(mnView);
+  mnView.add(sourcePane);
+  mnView.add(bytecodePane);
+  mnView.add(hexPane);
+  mnView.add(separator_2);
+  mnView.add(srcSyntax);
+  mnView.add(bycSyntax);
+  JMenu mnDecompilerSettings=new JMenu("Java Decompiler");
+  menuBar.add(mnDecompilerSettings);
+  mnDecompilerSettings.add(rbr);
+  mnDecompilerSettings.add(rsy);
+  mnDecompilerSettings.add(din);
+  mnDecompilerSettings.add(dc4);
+  mnDecompilerSettings.add(das);
+  mnDecompilerSettings.add(hes);
+  mnDecompilerSettings.add(hdc);
+  mnDecompilerSettings.add(dgs);
+  mnDecompilerSettings.add(ner);
+  mnDecompilerSettings.add(den);
+  mnDecompilerSettings.add(rgn);
+  mnDecompilerSettings.add(bto);
+  mnDecompilerSettings.add(nns);
+  mnDecompilerSettings.add(uto);
+  mnDecompilerSettings.add(udv);
+  mnDecompilerSettings.add(rer);
+  mnDecompilerSettings.add(fdi);
+  mnDecompilerSettings.add(asc);
+  JMenu mnBytecodeDecompilerSettings=new JMenu("Bytecode Decompiler");
+  menuBar.add(mnBytecodeDecompilerSettings);
+  mnBytecodeDecompilerSettings.add(debugHelpers);
+  mnBytecodeDecompilerSettings.add(debugInstructions);
+  mnBytecodeDecompilerSettings.add(chckbxmntmNewCheckItem);
+  menuBar.add(mnNewMenu_1);
+  mnNewMenu_1.add(mntmStartExternalPlugin);
+  mnNewMenu_1.add(separator_4);
+  mnNewMenu_1.add(mnRecentPlugins);
+  mnNewMenu_1.add(separator_5);
+  mnNewMenu_1.add(mntmNewMenuItem_1);
+  mnNewMenu_1.add(mntmShowMainMethods);
+  mnNewMenu_1.add(mntmShowAllStrings);
+  mntmReplaceStrings.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      if (!BytecodeViewer.loadedClasses.isEmpty())       new ReplaceStringsOptions().setVisible(true);
+ else       System.out.println("Plugin not ran, put some classes in first.");
+    }
+  }
+);
+  mnNewMenu_1.add(mntmReplaceStrings);
+  mnNewMenu_1.add(mntmNewMenuItem_2);
+  mnNewMenu_1.add(mntmStartZkmString);
+  menuBar.add(mntmNewMenuItem_4);
+  mntmStartExternalPlugin.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      JFileChooser fc=new JFileChooser();
+      fc.setFileFilter(new GroovyPythonRubyFileFilter());
+      fc.setFileHidingEnabled(false);
+      fc.setAcceptAllFileFilterUsed(false);
+      int returnVal=fc.showOpenDialog(This);
+      if (returnVal == JFileChooser.APPROVE_OPTION)       try {
+        BytecodeViewer.viewer.setC(true);
+        BytecodeViewer.startPlugin(fc.getSelectedFile());
+        BytecodeViewer.viewer.setC(false);
+      }
+ catch (      Exception e1) {
+        e1.printStackTrace();
+      }
+    }
+  }
+);
+  mntmStartZkmString.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      PluginManager.runPlugin(new ZKMStringDecrypter());
+    }
+  }
+);
+  mntmNewMenuItem_2.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      PluginManager.runPlugin(new AllatoriStringDecrypter());
+    }
+  }
+);
+  mntmNewMenuItem_1.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      if (!BytecodeViewer.loadedClasses.isEmpty())       new MaliciousCodeScannerOptions().setVisible(true);
+ else       System.out.println("Plugin not ran, put some classes in first.");
+    }
+  }
+);
+  mntmShowAllStrings.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      PluginManager.runPlugin(new ShowAllStrings());
+    }
+  }
+);
+  mntmShowMainMethods.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      PluginManager.runPlugin(new ShowMainMethods());
+    }
+  }
+);
+  setSize(new Dimension(800,400));
+  setTitle("Bytecode Viewer - http://the.bytecode.club - @Konloch");
+  getContentPane().setLayout(new BoxLayout(getContentPane(),BoxLayout.X_AXIS));
+  JScrollPane scrollPane=new JScrollPane();
+  scrollPane.setMaximumSize(new Dimension(12000,32767));
+  FileNavigationPane cn=new FileNavigationPane(this);
+  cn.setMinimumSize(new Dimension(200,50));
+  SearchingPane s=new SearchingPane(this);
+  s.setPreferredSize(new Dimension(200,50));
+  s.setMinimumSize(new Dimension(200,50));
+  s.setMaximumSize(new Dimension(200,2147483647));
+  sp1=new JSplitPane(JSplitPane.VERTICAL_SPLIT,cn,s);
+  cn.setPreferredSize(new Dimension(200,50));
+  cn.setMaximumSize(new Dimension(200,2147483647));
+  WorkPane cv=new WorkPane(this);
+  sp2=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,sp1,cv);
+  getContentPane().add(sp2);
+  sp2.setResizeWeight(0.05);
+  sp1.setResizeWeight(0.5);
+  rfComps.add(cn);
+  rfComps.add(s);
+  rfComps.add(cv);
+  this.setLocationRelativeTo(null);
+}

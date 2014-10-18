@@ -1,0 +1,3 @@
+ClassNode node
+SearchResultNotifier srn
+boolean exact

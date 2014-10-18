@@ -1,0 +1,16 @@
+{
+  final TreeNode node=(TreeNode)parent.getLastPathComponent();
+  if (node.getChildCount() >= 0) {
+    for (final Enumeration e=node.children(); e.hasMoreElements(); ) {
+      final TreeNode n=(TreeNode)e.nextElement();
+      final TreePath path=parent.pathByAddingChild(n);
+      expandAll(tree,path,expand);
+    }
+  }
+  if (expand) {
+    tree.expandPath(parent);
+  }
+ else {
+    tree.collapsePath(parent);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  this.list=m.instructions;
+  this.current=list.getFirst();
+}

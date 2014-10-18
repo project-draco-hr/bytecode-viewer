@@ -1,0 +1,13 @@
+{
+  Dimension d=getMinimumSize();
+  g.setColor(Color.white);
+  g.fillRect(0,0,d.width,d.height);
+  g.setColor(Color.black);
+  g.setFont(font);
+  for (int n=0; n < 16; n++) {
+    if (n == (cursor % 16))     cuadro(g,n * 3,0,2);
+    String s="00" + Integer.toHexString(n);
+    s=s.substring(s.length() - 2);
+    printString(g,s,n * 3,0);
+  }
+}

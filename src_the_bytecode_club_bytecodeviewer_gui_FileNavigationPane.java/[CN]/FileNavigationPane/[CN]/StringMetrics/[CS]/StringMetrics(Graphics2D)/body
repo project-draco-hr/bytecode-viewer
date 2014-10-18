@@ -1,0 +1,4 @@
+{
+  font=g2.getFont();
+  context=g2.getFontRenderContext();
+}

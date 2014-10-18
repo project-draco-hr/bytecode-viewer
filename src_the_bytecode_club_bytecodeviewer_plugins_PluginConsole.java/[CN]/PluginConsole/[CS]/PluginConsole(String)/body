@@ -1,0 +1,8 @@
+{
+  setTitle("Bytecode Viewer - Plugin Console - " + pluginName);
+  setSize(new Dimension(542,316));
+  JScrollPane scrollPane=new JScrollPane();
+  getContentPane().add(scrollPane,BorderLayout.CENTER);
+  scrollPane.setViewportView(textArea);
+  this.setLocationRelativeTo(null);
+}

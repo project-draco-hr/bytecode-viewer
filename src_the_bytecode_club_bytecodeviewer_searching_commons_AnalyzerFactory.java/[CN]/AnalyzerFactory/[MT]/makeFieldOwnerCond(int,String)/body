@@ -1,0 +1,9 @@
+{
+  return new InsnAnalyzer(){
+    @Override public boolean accept(    final AbstractInsnNode node){
+      if (node instanceof FieldInsnNode)       return node.getOpcode() == opcode && ((FieldInsnNode)node).owner.equals(owner);
+ else       return false;
+    }
+  }
+;
+}

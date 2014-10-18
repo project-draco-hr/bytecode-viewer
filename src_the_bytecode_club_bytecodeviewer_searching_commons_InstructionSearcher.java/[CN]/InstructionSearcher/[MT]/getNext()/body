@@ -1,0 +1,8 @@
+{
+  if (current == null)   return null;
+  current=current.getNext();
+  while (current != null && current.getOpcode() == -1) {
+    current=current.getNext();
+  }
+  return current;
+}

@@ -1,0 +1,36 @@
+{
+  final ClassWriter cw=new ClassWriter(0);
+  cn.accept(cw);
+  String fileStart=BytecodeViewer.tempDirectory + "temp";
+  int fileNumber=getClassNumber(fileStart,".class");
+  final File tempClass=new File(fileStart + fileNumber + ".class");
+  try {
+    final FileOutputStream fos=new FileOutputStream(tempClass);
+    fos.write(cw.toByteArray());
+    fos.close();
+  }
+ catch (  final IOException e) {
+    e.printStackTrace();
+  }
+  de.fernflower.main.decompiler.ConsoleDecompiler.main(generateMainMethod(tempClass.getAbsolutePath(),"."));
+  tempClass.delete();
+  final File outputJava=new File("temp" + fileNumber + ".java");
+  if (outputJava.exists()) {
+    final String nl=System.getProperty("line.separator");
+    final StringBuffer javaSrc=new StringBuffer();
+    try {
+      final BufferedReader br=new BufferedReader(new FileReader(outputJava));
+      String line;
+      while ((line=br.readLine()) != null) {
+        javaSrc.append(line + nl);
+      }
+      br.close();
+    }
+ catch (    final IOException e) {
+      e.printStackTrace();
+    }
+    outputJava.delete();
+    return javaSrc.toString();
+  }
+  return "FernFlower error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
+}

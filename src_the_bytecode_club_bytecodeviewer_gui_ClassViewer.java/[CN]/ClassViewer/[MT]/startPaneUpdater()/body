@@ -1,0 +1,22 @@
+{
+  t=new PaneUpdaterThread(bytecode,decomp){
+    @Override public void doShit(){
+      final BytecodeDecompiler bc_dc=new BytecodeDecompiler();
+      final FernFlowerDecompiler ff_dc=new FernFlowerDecompiler();
+      final String b=bc_dc.decompileClassNode(cn);
+      final String s=ff_dc.decompileClassNode(cn);
+      SwingUtilities.invokeLater(new Runnable(){
+        public void run(){
+          if (bytecodePane)           p1.setText(b);
+          if (sourcePane)           p2.setText(s);
+          p1.setCaretPosition(0);
+          p2.setCaretPosition(0);
+          BytecodeViewer.viewer.setIcon(false);
+        }
+      }
+);
+    }
+  }
+;
+  t.start();
+}

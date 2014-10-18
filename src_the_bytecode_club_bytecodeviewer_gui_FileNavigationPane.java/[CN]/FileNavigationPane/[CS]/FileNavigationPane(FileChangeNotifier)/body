@@ -1,0 +1,105 @@
+{
+  super("ClassNavigation");
+  setTitle("Files");
+  this.fcn=fcn;
+  getContentPane().setLayout(new BorderLayout());
+  this.tree=new MyTree(treeRoot);
+  getContentPane().add(new JScrollPane(tree),BorderLayout.CENTER);
+  this.tree.addTreeSelectionListener(new TreeSelectionListener(){
+    @Override public void valueChanged(    final TreeSelectionEvent arg0){
+      final TreePath path=arg0.getPath();
+      if (((TreeNode)path.getLastPathComponent()).getChildCount() > 0)       return;
+      final StringBuffer nameBuffer=new StringBuffer();
+      for (int i=1; i < path.getPathCount(); i++) {
+        nameBuffer.append(path.getPathComponent(i));
+        if (i < path.getPathCount() - 1) {
+          nameBuffer.append("/");
+        }
+      }
+      final ClassNode cn=BytecodeViewer.getClassNode(nameBuffer.toString());
+      if (cn != null) {
+        openClassFileToWorkSpace(nameBuffer.toString(),cn);
+      }
+    }
+  }
+);
+  final String quickSearchText="Quick class search";
+  final JTextField quickSearch=new JTextField(quickSearchText);
+  quickSearch.setForeground(Color.gray);
+  quickSearch.addKeyListener(new KeyAdapter(){
+    @Override public void keyPressed(    final KeyEvent ke){
+      if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
+        final String qt=quickSearch.getText();
+        quickSearch.setText("");
+        String[] path=null;
+        if (qt.contains(".")) {
+          path=qt.split("\\.");
+        }
+ else {
+          path=new String[]{qt};
+        }
+        MyTreeNode curNode=treeRoot;
+        pathLoop:         for (int i=0; i < path.length; i++) {
+          final String pathName=path[i];
+          final boolean isLast=i == path.length - 1;
+          for (int c=0; c < curNode.getChildCount(); c++) {
+            final MyTreeNode child=(MyTreeNode)curNode.getChildAt(c);
+            if (!exact.isSelected()) {
+              if (((String)child.getUserObject()).toLowerCase().contains(pathName.toLowerCase())) {
+                curNode=child;
+                if (isLast) {
+                  final TreePath pathn=new TreePath(curNode.getPath());
+                  tree.setSelectionPath(pathn);
+                  tree.makeVisible(pathn);
+                  tree.scrollPathToVisible(pathn);
+                  System.out.println("Found! " + curNode);
+                  break pathLoop;
+                }
+                continue pathLoop;
+              }
+            }
+ else {
+              if (((String)child.getUserObject()).equals(pathName)) {
+                curNode=child;
+                if (isLast) {
+                  final TreePath pathn=new TreePath(curNode.getPath());
+                  tree.setSelectionPath(pathn);
+                  tree.makeVisible(pathn);
+                  tree.scrollPathToVisible(pathn);
+                  System.out.println("Found! " + curNode);
+                  break pathLoop;
+                }
+                continue pathLoop;
+              }
+            }
+          }
+          System.out.println("Could not find " + pathName);
+          break;
+        }
+      }
+    }
+  }
+);
+  quickSearch.addFocusListener(new FocusListener(){
+    @Override public void focusGained(    final FocusEvent arg0){
+      if (quickSearch.getText().equals(quickSearchText)) {
+        quickSearch.setText("");
+        quickSearch.setForeground(Color.black);
+      }
+    }
+    @Override public void focusLost(    final FocusEvent arg0){
+      if (quickSearch.getText().isEmpty()) {
+        quickSearch.setText(quickSearchText);
+        quickSearch.setForeground(Color.gray);
+      }
+    }
+  }
+);
+  JPanel p2=new JPanel();
+  p2.setLayout(new BorderLayout());
+  p2.add(quickSearch,BorderLayout.NORTH);
+  p2.add(exact,BorderLayout.SOUTH);
+  getContentPane().add(p2,BorderLayout.SOUTH);
+  this.setVisible(true);
+  new FileDrop(this,this);
+}

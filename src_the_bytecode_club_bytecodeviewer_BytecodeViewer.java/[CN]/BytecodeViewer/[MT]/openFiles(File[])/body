@@ -1,0 +1,28 @@
+{
+  BytecodeViewer.viewer.setC(true);
+  BytecodeViewer.viewer.setIcon(true);
+  for (  final File f : files) {
+    final String fn=f.getName();
+    if (fn.endsWith(".jar")) {
+      try {
+        JarUtils.put(f,BytecodeViewer.loadedClasses);
+      }
+ catch (      final IOException e) {
+        e.printStackTrace();
+      }
+    }
+ else     if (fn.endsWith(".class")) {
+      try {
+        final ClassNode cn=JarUtils.getNode(JarUtils.getBytes(new FileInputStream(f)));
+        BytecodeViewer.loadedClasses.put(cn.name,cn);
+      }
+ catch (      final Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+  for (  File f : files)   BytecodeViewer.addRecentFile(f);
+  BytecodeViewer.viewer.setC(false);
+  BytecodeViewer.viewer.setIcon(false);
+  MainViewerGUI.getComponent(FileNavigationPane.class).updateTree();
+}

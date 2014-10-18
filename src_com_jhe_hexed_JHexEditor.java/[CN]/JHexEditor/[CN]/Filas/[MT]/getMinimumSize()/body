@@ -1,0 +1,8 @@
+{
+  Dimension d=new Dimension();
+  FontMetrics fn=getFontMetrics(font);
+  int h=fn.getHeight();
+  int nl=getLineas();
+  d.setSize((fn.stringWidth(" ") + 1) * (8) + (border * 2) + 1,h * nl + (border * 2) + 1);
+  return d;
+}

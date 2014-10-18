@@ -1,0 +1,14 @@
+{
+  if (supportsDnD == null) {
+    boolean support=false;
+    try {
+      final Class arbitraryDndClass=Class.forName("java.awt.dnd.DnDConstants");
+      support=true;
+    }
+ catch (    final Exception e) {
+      support=false;
+    }
+    supportsDnD=new Boolean(support);
+  }
+  return supportsDnD.booleanValue();
+}

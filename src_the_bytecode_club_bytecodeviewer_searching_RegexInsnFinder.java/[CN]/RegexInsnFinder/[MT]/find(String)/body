@@ -1,0 +1,10 @@
+{
+  try {
+    final Matcher regexMatcher=Pattern.compile(processRegex(regex),Pattern.MULTILINE).matcher(insnString);
+    if (regexMatcher.find())     return makeResult(regexMatcher.start(),regexMatcher.end());
+  }
+ catch (  final PatternSyntaxException ex) {
+    ex.printStackTrace();
+  }
+  return new AbstractInsnNode[0];
+}

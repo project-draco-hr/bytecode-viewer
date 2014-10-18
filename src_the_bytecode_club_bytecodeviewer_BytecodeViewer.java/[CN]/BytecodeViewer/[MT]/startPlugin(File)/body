@@ -1,0 +1,10 @@
+{
+  if (!plugin.exists())   return;
+  try {
+    PluginManager.runPlugin(plugin);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+  addRecentPlugin(plugin);
+}

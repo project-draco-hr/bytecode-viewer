@@ -1,0 +1,10 @@
+{
+  tempF=new File(tempDirectory);
+  try {
+    FileUtils.deleteDirectory(tempF);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  tempF.mkdir();
+}

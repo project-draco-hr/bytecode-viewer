@@ -1,0 +1,2 @@
+File jarFile
+HashMap<String,ClassNode> clazzList

@@ -1,0 +1,9 @@
+{
+  if (isNewline) {
+    for (int i=0; i < TAB_SPACES * iLevel.indentation; i++) {
+      builder.append(" ");
+    }
+  }
+  builder.append(obj);
+  isNewline=false;
+}

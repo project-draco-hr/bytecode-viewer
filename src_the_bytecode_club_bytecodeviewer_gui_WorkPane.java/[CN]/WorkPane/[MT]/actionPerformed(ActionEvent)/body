@@ -1,0 +1,11 @@
+{
+  final JButton src=(JButton)arg0.getSource();
+  if (src == refreshClass) {
+    final Component tabComp=tabs.getSelectedComponent();
+    if (tabComp != null) {
+      BytecodeViewer.viewer.setC(true);
+      ((ClassViewer)tabComp).startPaneUpdater();
+      BytecodeViewer.viewer.setC(false);
+    }
+  }
+}

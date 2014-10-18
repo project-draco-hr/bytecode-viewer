@@ -1,0 +1,4 @@
+{
+  if (loadedClasses.containsKey(name))   return loadedClasses.get(name);
+  return null;
+}

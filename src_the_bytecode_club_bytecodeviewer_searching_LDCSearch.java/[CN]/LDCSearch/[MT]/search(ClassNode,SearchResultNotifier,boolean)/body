@@ -1,0 +1,20 @@
+{
+  final Iterator<MethodNode> methods=node.methods.iterator();
+  final String srchText=searchText.getText();
+  if (srchText.isEmpty())   return;
+  while (methods.hasNext()) {
+    final MethodNode method=methods.next();
+    final InsnList insnlist=method.instructions;
+    final ListIterator<AbstractInsnNode> instructions=insnlist.iterator();
+    while (instructions.hasNext()) {
+      final AbstractInsnNode insnNode=instructions.next();
+      if (insnNode instanceof LdcInsnNode) {
+        final Object ldcObject=((LdcInsnNode)insnNode).cst;
+        final String ldcString=ldcObject.toString();
+        if ((exact && ldcString.equals(srchText)) || (!exact && ldcString.contains(srchText))) {
+          srn.notifyOfResult(node,method,insnNode);
+        }
+      }
+    }
+  }
+}

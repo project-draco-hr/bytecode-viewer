@@ -1,0 +1,3 @@
+{
+  if (he.DEBUG)   System.out.println("JHexEditorHEX ==> " + s);
+}

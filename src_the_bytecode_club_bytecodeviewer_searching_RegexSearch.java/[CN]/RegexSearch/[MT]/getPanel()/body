@@ -1,0 +1,8 @@
+{
+  if (myPanel == null) {
+    myPanel=new JPanel(new GridLayout(1,2));
+    myPanel.add(new JLabel("Search Regex: "));
+    myPanel.add(searchText);
+  }
+  return myPanel;
+}

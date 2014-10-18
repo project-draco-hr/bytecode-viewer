@@ -1,0 +1,44 @@
+{
+  String insn="";
+  if (next.getOpcode() != -1)   insn=opcodeStrings[next.getOpcode()] + " ";
+ else   if (next instanceof LabelNode) {
+    LabelNode l=(LabelNode)next;
+    insn="L" + l.hashCode();
+  }
+  if (next instanceof FieldInsnNode) {
+    final FieldInsnNode fin=(FieldInsnNode)next;
+    insn+=fin.owner + " " + fin.name+ " "+ fin.desc;
+  }
+ else   if (next instanceof MethodInsnNode) {
+    final MethodInsnNode min=(MethodInsnNode)next;
+    insn+=min.owner + " " + min.name+ " "+ min.desc;
+  }
+ else   if (next instanceof VarInsnNode) {
+    final VarInsnNode vin=(VarInsnNode)next;
+    insn+=vin.var;
+  }
+ else   if (next instanceof IntInsnNode) {
+    final IntInsnNode iin=(IntInsnNode)next;
+    insn+=iin.operand;
+  }
+ else   if (next instanceof JumpInsnNode) {
+    final JumpInsnNode jin=(JumpInsnNode)next;
+    insn+=is.computePosition(jin.label);
+  }
+ else   if (next instanceof LdcInsnNode) {
+    final LdcInsnNode lin=(LdcInsnNode)next;
+    if (lin.cst instanceof String)     insn+="\"" + ((String)lin.cst).replaceAll("\\n","\\\\n").replaceAll("\\r","\\\\r") + "\"";
+ else     insn+="\"" + lin.cst + "\"";
+  }
+ else   if (next instanceof IincInsnNode) {
+    final IincInsnNode iin=(IincInsnNode)next;
+    insn+="var " + iin.var + " by "+ iin.incr;
+  }
+ else   if (next instanceof TypeInsnNode) {
+    final TypeInsnNode tin=(TypeInsnNode)next;
+    insn+=tin.desc;
+  }
+ else {
+  }
+  return insn;
+}

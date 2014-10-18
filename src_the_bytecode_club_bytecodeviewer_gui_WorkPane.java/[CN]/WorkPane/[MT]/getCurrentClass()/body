@@ -1,0 +1,3 @@
+{
+  return (ClassViewer)tabs.getSelectedComponent();
+}

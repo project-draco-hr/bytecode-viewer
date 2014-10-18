@@ -1,0 +1,8 @@
+{
+  int n=(cursor / 16);
+  System.out.print("- " + inicio + "<"+ n+ "<"+ (lineas + inicio)+ "("+ lineas+ ")");
+  if (n < inicio)   inicio=n;
+ else   if (n >= inicio + lineas)   inicio=n - (lineas - 1);
+  System.out.println(" - " + inicio + "<"+ n+ "<"+ (lineas + inicio)+ "("+ lineas+ ")");
+  repaint();
+}

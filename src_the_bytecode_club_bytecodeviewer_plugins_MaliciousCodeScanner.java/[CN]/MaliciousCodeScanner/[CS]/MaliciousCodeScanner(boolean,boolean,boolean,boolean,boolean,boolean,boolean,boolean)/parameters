@@ -1,0 +1,8 @@
+boolean reflect
+boolean runtime
+boolean net
+boolean io
+boolean www
+boolean http
+boolean https
+boolean ip

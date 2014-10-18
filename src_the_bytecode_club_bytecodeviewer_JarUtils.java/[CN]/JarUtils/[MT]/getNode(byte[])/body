@@ -1,0 +1,7 @@
+{
+  cr=new ClassReader(bytez);
+  cn=new ClassNode();
+  cr.accept(cn,ClassReader.EXPAND_FRAMES);
+  cr=null;
+  return cn;
+}

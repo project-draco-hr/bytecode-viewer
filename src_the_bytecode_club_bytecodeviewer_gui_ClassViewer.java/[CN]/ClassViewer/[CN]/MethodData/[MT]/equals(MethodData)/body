@@ -1,0 +1,3 @@
+{
+  return this.name.equals(md.name) && this.desc.equals(md.desc);
+}

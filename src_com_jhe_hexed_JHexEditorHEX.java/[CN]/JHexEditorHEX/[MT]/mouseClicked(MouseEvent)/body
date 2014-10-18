@@ -1,0 +1,6 @@
+{
+  debug("mouseClicked(" + e + ")");
+  he.cursor=calcularPosicionRaton(e.getX(),e.getY());
+  this.requestFocus();
+  he.repaint();
+}

@@ -1,0 +1,13 @@
+{
+  final int size=17;
+  setPreferredSize(new Dimension(size,size));
+  setToolTipText("Close this tab");
+  setUI(new BasicButtonUI());
+  setContentAreaFilled(false);
+  setFocusable(false);
+  setBorder(BorderFactory.createEtchedBorder());
+  setBorderPainted(false);
+  addMouseListener(buttonMouseListener);
+  setRolloverEnabled(true);
+  addActionListener(this);
+}

@@ -1,0 +1,11 @@
+{
+  while (current != null) {
+    if (analyzer.accept(current)) {
+      final AbstractInsnNode old=current;
+      current=current.getNext();
+      return old;
+    }
+    current=current.getNext();
+  }
+  return null;
+}

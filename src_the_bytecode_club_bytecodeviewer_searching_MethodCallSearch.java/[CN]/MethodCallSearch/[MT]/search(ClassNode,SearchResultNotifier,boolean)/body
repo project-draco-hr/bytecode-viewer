@@ -1,0 +1,51 @@
+{
+  final Iterator<MethodNode> methods=node.methods.iterator();
+  String owner=mOwner.getText();
+  if (owner.isEmpty()) {
+    owner=null;
+  }
+  String name=mName.getText();
+  if (name.isEmpty()) {
+    name=null;
+  }
+  String desc=mDesc.getText();
+  if (desc.isEmpty()) {
+    desc=null;
+  }
+  while (methods.hasNext()) {
+    final MethodNode method=methods.next();
+    final InsnList insnlist=method.instructions;
+    final ListIterator<AbstractInsnNode> instructions=insnlist.iterator();
+    while (instructions.hasNext()) {
+      final AbstractInsnNode insnNode=instructions.next();
+      if (insnNode instanceof MethodInsnNode) {
+        final MethodInsnNode min=(MethodInsnNode)insnNode;
+        if (name == null && owner == null && desc == null)         continue;
+        if (exact) {
+          if (name != null && !name.equals(min.name)) {
+            continue;
+          }
+          if (owner != null && !owner.equals(min.owner)) {
+            continue;
+          }
+          if (desc != null && !desc.equals(min.desc)) {
+            continue;
+          }
+          srn.notifyOfResult(node,method,insnNode);
+        }
+ else {
+          if (name != null && !name.contains(min.name)) {
+            continue;
+          }
+          if (owner != null && !owner.contains(min.owner)) {
+            continue;
+          }
+          if (desc != null && !desc.contains(min.desc)) {
+            continue;
+          }
+          srn.notifyOfResult(node,method,insnNode);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  jis=new JarInputStream(new FileInputStream(jarFile));
+  while ((entry=jis.getNextJarEntry()) != null) {
+    final String name=entry.getName();
+    if (!name.endsWith(".class")) {
+      BytecodeViewer.loadedResources.put(name,getBytes(jis));
+      jis.closeEntry();
+      continue;
+    }
+    final ClassNode cn=getNode(getBytes(jis));
+    clazzList.put(cn.name,cn);
+    jis.closeEntry();
+  }
+  jis.close();
+}

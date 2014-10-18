@@ -1,0 +1,53 @@
+{
+  sourcePane=BytecodeViewer.viewer.sourcePane.isSelected();
+  bytecodePane=BytecodeViewer.viewer.bytecodePane.isSelected();
+  hexPane=BytecodeViewer.viewer.hexPane.isSelected();
+  boolean bytecodeSyntax=BytecodeViewer.viewer.bycSyntax.isSelected();
+  boolean sourcecodeSyntax=BytecodeViewer.viewer.srcSyntax.isSelected();
+  this.name=name;
+  this.cn=cn;
+  this.setName(name);
+  this.setLayout(new BorderLayout());
+  final JPanel dcPanel=new JPanel(new BorderLayout());
+  final JScrollPane dcScroll=new JScrollPane(decomp);
+  if (sourcePane) {
+    dcPanel.add(dcScroll,BorderLayout.CENTER);
+  }
+  final JPanel bcPanel=new JPanel(new BorderLayout());
+  if (bytecodePane) {
+    bcScroll=new JScrollPane(bytecode);
+  }
+ else {
+    bcScroll=new JScrollPane();
+  }
+  bcPanel.add(bcScroll,BorderLayout.CENTER);
+  if (bytecodePane && bytecodeSyntax)   bytecode.setContentType("text/java");
+  if (sourcePane && sourcecodeSyntax)   decomp.setContentType("text/java");
+  this.sp=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,dcPanel,bcPanel);
+  final ClassWriter cw=new ClassWriter(0);
+  cn.accept(cw);
+  JHexEditor hex=new JHexEditor(cw.toByteArray());
+  JScrollPane penis;
+  if (hexPane) {
+    penis=new JScrollPane(hex);
+  }
+ else {
+    penis=new JScrollPane();
+  }
+  penis.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
+  this.sp2=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,sp,penis);
+  this.add(sp2,BorderLayout.CENTER);
+  hex.setMaximumSize(new Dimension(0,Integer.MAX_VALUE));
+  hex.setSize(0,Integer.MAX_VALUE);
+  resetDivider();
+  BytecodeViewer.viewer.setIcon(true);
+  bytecode.setText("Decompiling, please wait..");
+  decomp.setText("Decompiling, please wait..");
+  startPaneUpdater();
+  this.addComponentListener(new ComponentAdapter(){
+    public void componentResized(    ComponentEvent e){
+      resetDivider();
+    }
+  }
+);
+}

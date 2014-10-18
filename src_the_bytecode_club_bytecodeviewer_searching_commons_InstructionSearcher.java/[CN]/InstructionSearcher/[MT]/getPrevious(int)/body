@@ -1,0 +1,3 @@
+{
+  return getPrevious(AnalyzerFactory.makeOpcodeCond(opcode));
+}

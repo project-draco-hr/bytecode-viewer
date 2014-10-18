@@ -1,0 +1,9 @@
+{
+  ArrayList<ClassNode> a=new ArrayList<ClassNode>();
+  if (loadedClasses != null)   for (  Entry<String,ClassNode> entry : loadedClasses.entrySet()) {
+    Object value=entry.getValue();
+    ClassNode cln=(ClassNode)value;
+    a.add(cln);
+  }
+  return a;
+}

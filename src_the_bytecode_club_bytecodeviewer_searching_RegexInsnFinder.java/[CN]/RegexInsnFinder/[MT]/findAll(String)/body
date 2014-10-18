@@ -1,0 +1,13 @@
+{
+  final List<AbstractInsnNode[]> results=new ArrayList<AbstractInsnNode[]>();
+  try {
+    final Matcher regexMatcher=Pattern.compile(processRegex(regex),Pattern.MULTILINE).matcher(insnString);
+    while (regexMatcher.find()) {
+      results.add(makeResult(regexMatcher.start(),regexMatcher.end()));
+    }
+  }
+ catch (  final PatternSyntaxException ex) {
+    ex.printStackTrace();
+  }
+  return results;
+}

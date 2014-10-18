@@ -1,0 +1,13 @@
+{
+  FontMetrics fn=getFontMetrics(font);
+  Rectangle rec=this.getBounds();
+  lineas=(rec.height / fn.getHeight()) - 1;
+  int n=(buff.length / 16) - 1;
+  if (lineas > n) {
+    lineas=n;
+    inicio=0;
+  }
+  sb.setValues(getInicio(),+getLineas(),0,buff.length / 16);
+  sb.setValueIsAdjusting(true);
+  super.paint(g);
+}

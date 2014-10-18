@@ -1,0 +1,5 @@
+{
+  treeRoot.removeAllChildren();
+  tree.repaint();
+  tree.updateUI();
+}

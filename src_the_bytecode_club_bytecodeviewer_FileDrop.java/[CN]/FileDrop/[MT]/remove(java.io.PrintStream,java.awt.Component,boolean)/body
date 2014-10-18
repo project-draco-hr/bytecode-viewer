@@ -1,0 +1,15 @@
+{
+  if (supportsDnD()) {
+    log(out,"FileDrop: Removing drag-and-drop hooks.");
+    c.setDropTarget(null);
+    if (recursive && (c instanceof java.awt.Container)) {
+      final java.awt.Component[] comps=((java.awt.Container)c).getComponents();
+      for (int i=0; i < comps.length; i++) {
+        remove(out,comps[i],recursive);
+      }
+      return true;
+    }
+ else     return false;
+  }
+ else   return false;
+}

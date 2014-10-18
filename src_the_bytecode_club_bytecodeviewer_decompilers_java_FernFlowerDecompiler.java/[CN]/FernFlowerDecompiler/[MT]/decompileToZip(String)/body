@@ -1,0 +1,10 @@
+{
+  File tempZip=new File(BytecodeViewer.tempDirectory + "temp.zip");
+  if (tempZip.exists())   tempZip.delete();
+  JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),tempZip.getAbsolutePath());
+  de.fernflower.main.decompiler.ConsoleDecompiler.main(new String[]{tempZip.getAbsolutePath(),BytecodeViewer.tempDirectory + "./temp/"});
+  File tempZip2=new File(BytecodeViewer.tempDirectory + "./temp/" + tempZip.getName());
+  if (tempZip2.exists())   tempZip2.renameTo(new File(zipName));
+  tempZip.delete();
+  new File(BytecodeViewer.tempDirectory + "./temp/").delete();
+}
