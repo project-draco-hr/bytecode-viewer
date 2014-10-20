@@ -1,0 +1,4 @@
+{
+  _typeLoaders=new ArrayList<ITypeLoader>();
+  _typeLoaders.add(new InputTypeLoader());
+}

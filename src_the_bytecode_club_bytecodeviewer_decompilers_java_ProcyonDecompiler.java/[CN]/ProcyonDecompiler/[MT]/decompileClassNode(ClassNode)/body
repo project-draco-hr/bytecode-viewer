@@ -13,27 +13,23 @@
  catch (    final IOException e) {
       e.printStackTrace();
     }
-    File tempJava=new File(fileStart + getClassNumber(fileStart,".java") + ".java");
-    final FileOutputStream stream=new FileOutputStream(tempJava);
-    try {
-      final OutputStreamWriter writer=new OutputStreamWriter(stream);
-      final PlainTextOutput p=new PlainTextOutput(writer);
-      try {
-        Decompiler.decompile(cn.getClass().getCanonicalName(),p,DecompilerSettings.javaDefaults());
-      }
-  finally {
-        writer.close();
-      }
+    DecompilerSettings settings=new DecompilerSettings();
+    LuytenTypeLoader typeLoader=new LuytenTypeLoader();
+    MetadataSystem metadataSystem=new MetadataSystem(typeLoader);
+    TypeReference type=metadataSystem.lookupType(tempClass.getCanonicalPath());
+    DecompilationOptions decompilationOptions=new DecompilationOptions();
+    decompilationOptions.setSettings(DecompilerSettings.javaDefaults());
+    decompilationOptions.setFullDecompilation(true);
+    TypeDefinition resolvedType=null;
+    if (type == null || ((resolvedType=type.resolve()) == null)) {
+      throw new Exception("Unable to resolve type.");
     }
-  finally {
-      stream.close();
-    }
-    String s=DiskReader.loadAsString(tempJava.getAbsolutePath());
-    tempJava.delete();
-    tempClass.delete();
-    return s;
+    StringWriter stringwriter=new StringWriter();
+    settings.getLanguage().decompileType(resolvedType,new PlainTextOutput(stringwriter),decompilationOptions);
+    String decompiledSource=stringwriter.toString();
+    return decompiledSource;
   }
- catch (  final Exception e) {
+ catch (  Exception e) {
     e.printStackTrace();
   }
   return "Procyon error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
