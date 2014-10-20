@@ -1,7 +1,7 @@
 {
   final ClassWriter cw=new ClassWriter(0);
   cn.accept(cw);
-  String fileStart=BytecodeViewer.tempDirectory + "temp";
+  String fileStart=BytecodeViewer.tempDirectory + System.getProperty("file.separator") + "temp";
   int fileNumber=getClassNumber(fileStart,".class");
   final File tempClass=new File(fileStart + fileNumber + ".class");
   try {
