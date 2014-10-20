@@ -1,0 +1,7 @@
+{
+  String parentPath=root.getParent();
+  if (parentPath == null) {
+    return file;
+  }
+  return new File(file.getAbsolutePath().substring(parentPath.length()));
+}

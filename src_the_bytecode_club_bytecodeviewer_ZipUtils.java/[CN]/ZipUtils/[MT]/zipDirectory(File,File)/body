@@ -1,0 +1,31 @@
+{
+  if (!ZIP_FILE_FILTER.accept(target)) {
+    throw new IllegalArgumentException("Target file " + target.getName() + " is not a valid Zip file name");
+  }
+  byte[] buffer=new byte[1024];
+  FileOutputStream fileOutputStream=null;
+  ZipOutputStream zipOutputStream=null;
+  try {
+    fileOutputStream=new FileOutputStream(target);
+    zipOutputStream=new ZipOutputStream(fileOutputStream);
+    FileInputStream fileInputStream=null;
+    for (    File file : ZipUtils.listFilesRecursive(root)) {
+      ZipEntry entry=new ZipEntry(ZipUtils.stripRootInclusive(file,root).getPath());
+      zipOutputStream.putNextEntry(entry);
+      try {
+        fileInputStream=new FileInputStream(file);
+        int length;
+        while ((length=fileInputStream.read(buffer)) > 0) {
+          zipOutputStream.write(buffer,0,length);
+        }
+      }
+  finally {
+        fileInputStream.close();
+      }
+      zipOutputStream.closeEntry();
+    }
+  }
+  finally {
+    zipOutputStream.close();
+  }
+}

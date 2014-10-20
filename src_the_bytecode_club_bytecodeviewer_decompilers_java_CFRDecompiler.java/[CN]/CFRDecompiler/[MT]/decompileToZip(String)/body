@@ -1,0 +1,3 @@
+{
+  BytecodeViewer.showMessage("CFRDecompiler currently doesn't decompile as zip, please wait till 1.3 of Bytecode Viewer.");
+}

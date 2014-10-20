@@ -1,21 +1,3 @@
 {
-  boolean rbr=BytecodeViewer.viewer.rbr.isSelected();
-  boolean rsy=BytecodeViewer.viewer.rsy.isSelected();
-  boolean din=BytecodeViewer.viewer.din.isSelected();
-  boolean dc4=BytecodeViewer.viewer.dc4.isSelected();
-  boolean das=BytecodeViewer.viewer.das.isSelected();
-  boolean hes=BytecodeViewer.viewer.hes.isSelected();
-  boolean hdc=BytecodeViewer.viewer.hdc.isSelected();
-  boolean dgs=BytecodeViewer.viewer.dgs.isSelected();
-  boolean ner=BytecodeViewer.viewer.ner.isSelected();
-  boolean den=BytecodeViewer.viewer.den.isSelected();
-  boolean rgn=BytecodeViewer.viewer.rgn.isSelected();
-  boolean bto=BytecodeViewer.viewer.bto.isSelected();
-  boolean nns=BytecodeViewer.viewer.nns.isSelected();
-  boolean uto=BytecodeViewer.viewer.uto.isSelected();
-  boolean udv=BytecodeViewer.viewer.udv.isSelected();
-  boolean rer=BytecodeViewer.viewer.rer.isSelected();
-  boolean fdi=BytecodeViewer.viewer.fdi.isSelected();
-  boolean asc=BytecodeViewer.viewer.asc.isSelected();
-  return new String[]{"-rbr=" + r(rbr),"-rsy=" + r(rsy),"-din=" + r(din),"-dc4=" + r(dc4),"-das=" + r(das),"-hes=" + r(hes),"-hdc=" + r(hdc),"-dgs=" + r(dgs),"-ner=" + r(ner),"-den=" + r(den),"-rgn=" + r(rgn),"-bto=" + r(bto),"-nns=" + r(nns),"-uto=" + r(uto),"-udv=" + r(udv),"-rer=" + r(rer),"-fdi=" + r(fdi),"-asc=" + r(asc),className,folder};
+  return new String[]{"-rbr=" + r(BytecodeViewer.viewer.rbr.isSelected()),"-rsy=" + r(BytecodeViewer.viewer.rsy.isSelected()),"-din=" + r(BytecodeViewer.viewer.din.isSelected()),"-dc4=" + r(BytecodeViewer.viewer.dc4.isSelected()),"-das=" + r(BytecodeViewer.viewer.das.isSelected()),"-hes=" + r(BytecodeViewer.viewer.hes.isSelected()),"-hdc=" + r(BytecodeViewer.viewer.hdc.isSelected()),"-dgs=" + r(BytecodeViewer.viewer.dgs.isSelected()),"-ner=" + r(BytecodeViewer.viewer.ner.isSelected()),"-den=" + r(BytecodeViewer.viewer.den.isSelected()),"-rgn=" + r(BytecodeViewer.viewer.rgn.isSelected()),"-bto=" + r(BytecodeViewer.viewer.bto.isSelected()),"-nns=" + r(BytecodeViewer.viewer.nns.isSelected()),"-uto=" + r(BytecodeViewer.viewer.uto.isSelected()),"-udv=" + r(BytecodeViewer.viewer.udv.isSelected()),"-rer=" + r(BytecodeViewer.viewer.rer.isSelected()),"-fdi=" + r(BytecodeViewer.viewer.fdi.isSelected()),"-asc=" + r(BytecodeViewer.viewer.asc.isSelected()),className,folder};
 }

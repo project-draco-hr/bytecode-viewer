@@ -1,0 +1,40 @@
+{
+  try {
+    final ClassWriter cw=new ClassWriter(0);
+    cn.accept(cw);
+    String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp";
+    int fileNumber=getClassNumber(fileStart,".class");
+    final File tempClass=new File(fileStart + fileNumber + ".class");
+    try {
+      final FileOutputStream fos=new FileOutputStream(tempClass);
+      fos.write(cw.toByteArray());
+      fos.close();
+    }
+ catch (    final IOException e) {
+      e.printStackTrace();
+    }
+    File tempJava=new File(fileStart + getClassNumber(fileStart,".java") + ".java");
+    final FileOutputStream stream=new FileOutputStream(tempJava);
+    try {
+      final OutputStreamWriter writer=new OutputStreamWriter(stream);
+      final PlainTextOutput p=new PlainTextOutput(writer);
+      try {
+        Decompiler.decompile(cn.getClass().getCanonicalName(),p,DecompilerSettings.javaDefaults());
+      }
+  finally {
+        writer.close();
+      }
+    }
+  finally {
+      stream.close();
+    }
+    String s=DiskReader.loadAsString(tempJava.getAbsolutePath());
+    tempJava.delete();
+    tempClass.delete();
+    return s;
+  }
+ catch (  final Exception e) {
+    e.printStackTrace();
+  }
+  return "Procyon error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
+}

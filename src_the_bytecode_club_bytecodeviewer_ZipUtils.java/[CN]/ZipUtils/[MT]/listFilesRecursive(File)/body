@@ -1,0 +1,17 @@
+{
+  List<File> packedFiles=new ArrayList<File>();
+  File[] subFiles=root.listFiles();
+  if (subFiles == null) {
+    return packedFiles;
+  }
+  for (  File file : subFiles) {
+    if (file.isFile()) {
+      File packedFile=new File(root,file.getName());
+      packedFiles.add(packedFile);
+    }
+ else     if (file.isDirectory()) {
+      packedFiles.addAll(ZipUtils.listFilesRecursive(file));
+    }
+  }
+  return packedFiles;
+}

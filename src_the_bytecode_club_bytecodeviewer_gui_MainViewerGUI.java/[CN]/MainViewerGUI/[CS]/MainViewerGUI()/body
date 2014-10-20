@@ -1,4 +1,8 @@
 {
+  decompilerGroup.add(fernflowerDec);
+  decompilerGroup.add(procyonDec);
+  decompilerGroup.add(cfrDec);
+  decompilerGroup.setSelected(procyonDec.getModel(),true);
   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   rbr.setSelected(true);
   rsy.setSelected(false);
@@ -98,8 +102,9 @@
       if (returnVal == JFileChooser.APPROVE_OPTION) {
         File file=fc.getSelectedFile();
         BytecodeViewer.viewer.setC(true);
-        FernFlowerDecompiler d=new FernFlowerDecompiler();
-        d.decompileToZip(file.getAbsolutePath());
+        if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.fernflowerDec.getModel()))         ff_dc.decompileToZip(file.getAbsolutePath());
+ else         if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.procyonDec.getModel()))         proc_dc.decompileToZip(file.getAbsolutePath());
+ else         if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.cfrDec.getModel()))         cfr_dc.decompileToZip(file.getAbsolutePath());
         BytecodeViewer.viewer.setC(false);
       }
     }
@@ -128,7 +133,11 @@
   mnView.add(separator_2);
   mnView.add(srcSyntax);
   mnView.add(bycSyntax);
-  JMenu mnDecompilerSettings=new JMenu("Java Decompiler");
+  menuBar.add(mnNewMenu_2);
+  mnNewMenu_2.add(procyonDec);
+  mnNewMenu_2.add(cfrDec);
+  mnNewMenu_2.add(fernflowerDec);
+  JMenu mnDecompilerSettings=new JMenu("FernFlower");
   menuBar.add(mnDecompilerSettings);
   mnDecompilerSettings.add(rbr);
   mnDecompilerSettings.add(rsy);

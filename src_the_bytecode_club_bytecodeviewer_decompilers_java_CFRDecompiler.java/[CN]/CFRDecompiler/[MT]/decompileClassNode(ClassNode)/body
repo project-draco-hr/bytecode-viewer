@@ -12,10 +12,10 @@
  catch (  final IOException e) {
     e.printStackTrace();
   }
-  de.fernflower.main.decompiler.ConsoleDecompiler.main(generateMainMethod(tempClass.getAbsolutePath(),"."));
+  String fuckery=fuckery(fileStart);
+  org.benf.cfr.reader.Main.main(generateMainMethod(tempClass.getAbsolutePath(),fuckery));
   tempClass.delete();
-  final File outputJava=new File("temp" + fileNumber + ".java");
-  if (outputJava.exists()) {
+  for (  File outputJava : new File(fuckery).listFiles()) {
     String s;
     try {
       s=DiskReader.loadAsString(outputJava.getAbsolutePath());
@@ -26,5 +26,5 @@
       e.printStackTrace();
     }
   }
-  return "FernFlower error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
+  return "CFR error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
 }
