@@ -1,5 +1,4 @@
 {
-  BytecodeViewer.viewer.setC(true);
   if (!className.equals("*")) {
     for (    ClassNode classNode : classNodeList) {
       if (classNode.name.equals(className))       scanClassNode(classNode);
@@ -10,6 +9,5 @@
       scanClassNode(classNode);
     }
   }
-  BytecodeViewer.viewer.setC(false);
   frame.setVisible(true);
 }

@@ -8,22 +8,7 @@
   this.cn=cn;
   this.setName(name);
   this.setLayout(new BorderLayout());
-  final JPanel dcPanel=new JPanel(new BorderLayout());
-  final JScrollPane dcScroll=new JScrollPane(decomp);
-  if (sourcePane) {
-    dcPanel.add(dcScroll,BorderLayout.CENTER);
-  }
-  final JPanel bcPanel=new JPanel(new BorderLayout());
-  if (bytecodePane) {
-    bcScroll=new JScrollPane(bytecode);
-  }
- else {
-    bcScroll=new JScrollPane();
-  }
-  bcPanel.add(bcScroll,BorderLayout.CENTER);
-  if (bytecodePane && bytecodeSyntax)   bytecode.setContentType("text/java");
-  if (sourcePane && sourcecodeSyntax)   decomp.setContentType("text/java");
-  this.sp=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,dcPanel,bcPanel);
+  this.sp=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,decompPanel,bytePanel);
   final ClassWriter cw=new ClassWriter(0);
   cn.accept(cw);
   JHexEditor hex=new JHexEditor(cw.toByteArray());
@@ -41,8 +26,6 @@
   hex.setSize(0,Integer.MAX_VALUE);
   resetDivider();
   BytecodeViewer.viewer.setIcon(true);
-  bytecode.setText("Decompiling, please wait..");
-  decomp.setText("Decompiling, please wait..");
   startPaneUpdater();
   this.addComponentListener(new ComponentAdapter(){
     public void componentResized(    ComponentEvent e){

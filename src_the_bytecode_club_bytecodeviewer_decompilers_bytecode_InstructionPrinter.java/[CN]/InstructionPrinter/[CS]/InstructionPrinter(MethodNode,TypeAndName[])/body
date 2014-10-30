@@ -1,0 +1,6 @@
+{
+  this.args=args;
+  mNode=m;
+  labels=new HashMap<LabelNode,Integer>();
+  match=false;
+}

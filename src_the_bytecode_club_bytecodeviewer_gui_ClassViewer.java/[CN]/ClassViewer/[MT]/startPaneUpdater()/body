@@ -1,17 +1,23 @@
 {
-  t=new PaneUpdaterThread(bytecode,decomp){
+  t=new PaneUpdaterThread(){
     String s="";
     @Override public void doShit(){
-      final String b=bc_dc.decompileClassNode(cn);
+      final String b=ClassNodeDecompiler.decompile(cn);
       if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.fernflowerDec.getModel()))       s=ff_dc.decompileClassNode(cn);
  else       if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.procyonDec.getModel()))       s=proc_dc.decompileClassNode(cn);
  else       if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.cfrDec.getModel()))       s=cfr_dc.decompileClassNode(cn);
       SwingUtilities.invokeLater(new Runnable(){
         public void run(){
-          if (bytecodePane)           p1.setText(b);
-          if (sourcePane)           p2.setText(s);
-          p1.setCaretPosition(0);
-          p2.setCaretPosition(0);
+          JEditorPane bytecode=new JEditorPane(), decomp=new JEditorPane();
+          JScrollPane bytecodeScroll=new JScrollPane(bytecode), decompScroll=new JScrollPane(decomp);
+          if (bytecodePane && BytecodeViewer.viewer.bycSyntax.isSelected())           bytecode.setContentType("text/java");
+          if (sourcePane && BytecodeViewer.viewer.srcSyntax.isSelected())           decomp.setContentType("text/java");
+          if (bytecodePane)           bytecode.setText(b);
+          if (sourcePane)           decomp.setText(s);
+          bytePanel.add(bytecodeScroll);
+          decompPanel.add(decompScroll);
+          bytecode.setCaretPosition(0);
+          decomp.setCaretPosition(0);
           BytecodeViewer.viewer.setIcon(false);
         }
       }

@@ -1,6 +1,5 @@
 {
   PluginConsole frame=new PluginConsole("Malicious Code Scanner");
-  BytecodeViewer.viewer.setC(true);
   for (  ClassNode classNode : classNodeList) {
     for (    Object o : classNode.methods.toArray()) {
       MethodNode m=(MethodNode)o;
@@ -23,6 +22,5 @@
       }
     }
   }
-  BytecodeViewer.viewer.setC(false);
   frame.setVisible(true);
 }

@@ -1,0 +1,10 @@
+{
+  if (labels.containsKey(label)) {
+    return labels.get(label);
+  }
+ else {
+    int newLabelIndex=labels.size() + 1;
+    labels.put(label,newLabelIndex);
+    return newLabelIndex;
+  }
+}

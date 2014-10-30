@@ -1,0 +1,3 @@
+{
+  return nameOpcode(fin.getOpcode()) + " " + fin.owner+ "."+ fin.name+ ":"+ Type.getType(fin.desc).getClassName();
+}

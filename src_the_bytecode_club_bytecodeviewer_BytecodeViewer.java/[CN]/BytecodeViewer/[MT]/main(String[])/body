@@ -6,6 +6,24 @@
     }
   }
 );
+  Thread versionChecker=new Thread(){
+    @Override public void run(){
+      try {
+        HttpURLConnection connection=(HttpURLConnection)new URL("https://raw.githubusercontent.com/Konloch/bytecode-viewer/master/VERSION").openConnection();
+        connection.setUseCaches(false);
+        connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0");
+        BufferedReader reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String version=reader.readLine();
+        reader.close();
+        if (!BytecodeViewer.version.equals(version))         showMessage("You're running an outdated version of Bytecode Viewer, current version: " + BytecodeViewer.version + ", latest version: "+ version);
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+;
+  versionChecker.start();
   try {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
   }
@@ -13,6 +31,6 @@
     e.printStackTrace();
   }
   viewer=new MainViewerGUI();
-  viewer.setVisible(true);
   resetRecentFilesMenu();
+  viewer.setVisible(true);
 }

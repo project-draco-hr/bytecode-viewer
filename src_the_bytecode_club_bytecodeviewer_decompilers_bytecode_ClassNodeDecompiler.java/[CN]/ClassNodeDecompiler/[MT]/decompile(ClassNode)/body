@@ -1,0 +1,3 @@
+{
+  return decompileClassNode(new PrefixedStringBuilder(),new ArrayList<String>(),cn).toString();
+}

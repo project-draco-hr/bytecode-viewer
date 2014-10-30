@@ -1,6 +1,5 @@
 {
   PluginConsole frame=new PluginConsole("Show All Strings");
-  BytecodeViewer.viewer.setC(true);
   for (  ClassNode classNode : classNodeList) {
     for (    Object o : classNode.fields.toArray()) {
       FieldNode f=(FieldNode)o;
@@ -29,6 +28,5 @@
       }
     }
   }
-  BytecodeViewer.viewer.setC(false);
   frame.setVisible(true);
 }

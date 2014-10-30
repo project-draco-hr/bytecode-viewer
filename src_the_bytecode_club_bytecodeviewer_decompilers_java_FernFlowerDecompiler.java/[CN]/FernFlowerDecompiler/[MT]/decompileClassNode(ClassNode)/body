@@ -12,7 +12,7 @@
  catch (  final IOException e) {
     e.printStackTrace();
   }
-  de.fernflower.main.decompiler.ConsoleDecompiler.main(generateMainMethod(tempClass.getAbsolutePath(),"."));
+  org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler.main(generateMainMethod(tempClass.getAbsolutePath(),"."));
   tempClass.delete();
   final File outputJava=new File("temp" + fileNumber + ".java");
   if (outputJava.exists()) {

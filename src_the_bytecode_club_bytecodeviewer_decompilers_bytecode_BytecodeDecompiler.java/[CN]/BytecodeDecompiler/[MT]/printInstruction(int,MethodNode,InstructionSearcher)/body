@@ -1,9 +1,0 @@
-{
-  for (int i=0; i < mn.instructions.size(); i++) {
-    AbstractInsnNode next=mn.instructions.get(i);
-    if (line == i)     if (next.getOpcode() != -1) {
-      return beatifyAbstractInsnNode(next,is);
-    }
-  }
-  return "Unable to find, please contact konloch.";
-}

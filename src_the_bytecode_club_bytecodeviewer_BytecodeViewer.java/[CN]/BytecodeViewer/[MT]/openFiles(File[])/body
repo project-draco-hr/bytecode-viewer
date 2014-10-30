@@ -7,7 +7,7 @@
       try {
         JarUtils.put(f,BytecodeViewer.loadedClasses);
       }
- catch (      final IOException e) {
+ catch (      final Exception e) {
         e.printStackTrace();
       }
     }

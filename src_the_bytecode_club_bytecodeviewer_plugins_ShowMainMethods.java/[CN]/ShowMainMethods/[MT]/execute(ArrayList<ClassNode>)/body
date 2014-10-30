@@ -1,12 +1,10 @@
 {
   PluginConsole frame=new PluginConsole("Show Main Methods");
-  BytecodeViewer.viewer.setC(true);
   for (  ClassNode classNode : classNodeList) {
     for (    Object o : classNode.methods.toArray()) {
       MethodNode m=(MethodNode)o;
       if (m.name.equals("main") && m.desc.equals("([Ljava/lang/String;)V"))       frame.appendText(classNode.name + "." + m.name+ ""+ m.desc);
     }
   }
-  BytecodeViewer.viewer.setC(false);
   frame.setVisible(true);
 }

@@ -1,0 +1,7 @@
+{
+  filters=new InstructionFilter[opcodes.length];
+  lastMatch=new AbstractInsnNode[opcodes.length];
+  for (int i=0; i < opcodes.length; i++) {
+    filters[i]=new OpcodeFilter(opcodes[i]);
+  }
+}

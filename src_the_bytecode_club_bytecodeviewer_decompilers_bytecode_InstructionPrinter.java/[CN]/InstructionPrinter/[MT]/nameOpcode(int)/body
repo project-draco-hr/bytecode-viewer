@@ -1,0 +1,3 @@
+{
+  return "    " + OpcodeInfo.OPCODES.get(opcode).toLowerCase();
+}
