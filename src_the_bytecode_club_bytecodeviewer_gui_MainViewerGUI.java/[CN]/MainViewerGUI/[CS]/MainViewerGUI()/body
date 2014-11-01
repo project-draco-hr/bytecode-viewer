@@ -63,6 +63,7 @@
   recoverytypehints.setSelected(true);
   forceturningifs.setSelected(true);
   forloopaggcapture.setSelected(true);
+  chckbxmntmAppendBrackets.setSelected(true);
   setJMenuBar(menuBar);
   JMenu mnNewMenu=new JMenu("File");
   menuBar.add(mnNewMenu);
@@ -268,6 +269,7 @@
   JMenu mnBytecodeDecompilerSettings=new JMenu("Bytecode Decompiler");
   menuBar.add(mnBytecodeDecompilerSettings);
   mnBytecodeDecompilerSettings.add(debugHelpers);
+  mnBytecodeDecompilerSettings.add(chckbxmntmAppendBrackets);
   mnBytecodeDecompilerSettings.add(chckbxmntmNewCheckItem);
   menuBar.add(mnNewMenu_1);
   mnNewMenu_1.add(mntmStartExternalPlugin);

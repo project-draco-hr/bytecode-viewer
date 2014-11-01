@@ -15,7 +15,7 @@
         BufferedReader reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String version=reader.readLine();
         reader.close();
-        if (!BytecodeViewer.version.equals(version))         showMessage("You're running an outdated version of Bytecode Viewer, current version: " + BytecodeViewer.version + ", latest version: "+ version);
+        if (!BytecodeViewer.version.equals(version))         showMessage("You're running an outdated version of Bytecode Viewer, current version: " + BytecodeViewer.version + ", latest version: "+ version+ nl+ nl+ "https://github.com/Konloch/bytecode-viewer");
       }
  catch (      Exception e) {
         e.printStackTrace();

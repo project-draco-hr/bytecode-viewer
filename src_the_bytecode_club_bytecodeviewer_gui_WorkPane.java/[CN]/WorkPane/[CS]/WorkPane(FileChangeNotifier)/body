@@ -1,17 +1,6 @@
 {
   super("WorkPanel");
   setTitle("Work Space");
-  DefaultSyntaxKit.initKit();
-  Font defFont=null;
-  try {
-    final Field defFontField=DefaultSyntaxKit.class.getDeclaredField("DEFAULT_FONT");
-    defFontField.setAccessible(true);
-    defFont=(Font)defFontField.get(null);
-  }
- catch (  final Exception e) {
-    e.printStackTrace();
-  }
-  SyntaxFontHeight=defFont.getSize();
   this.tabs=new JTabbedPane();
   this.fcn=fcn;
   getContentPane().setLayout(new BorderLayout());

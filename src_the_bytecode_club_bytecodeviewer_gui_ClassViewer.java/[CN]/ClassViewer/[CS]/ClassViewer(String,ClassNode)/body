@@ -2,8 +2,6 @@
   sourcePane=BytecodeViewer.viewer.sourcePane.isSelected();
   bytecodePane=BytecodeViewer.viewer.bytecodePane.isSelected();
   hexPane=BytecodeViewer.viewer.hexPane.isSelected();
-  boolean bytecodeSyntax=BytecodeViewer.viewer.bycSyntax.isSelected();
-  boolean sourcecodeSyntax=BytecodeViewer.viewer.srcSyntax.isSelected();
   this.name=name;
   this.cn=cn;
   this.setName(name);
