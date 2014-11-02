@@ -1,7 +1,31 @@
 {
+  JButton byteSearch=new JButton("Search");
+  bytePanelSearch.add(byteSearch,BorderLayout.WEST);
+  final JTextField byteField=new JTextField();
+  bytePanelSearch.add(byteField,BorderLayout.CENTER);
+  bytePanelSearch.add(byteCheck,BorderLayout.EAST);
+  byteSearch.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(0,byteField.getText());
+    }
+  }
+);
+  JButton decompSearch=new JButton("Search");
+  decompPanelSearch.add(decompSearch,BorderLayout.WEST);
+  final JTextField decompField=new JTextField();
+  decompPanelSearch.add(decompField,BorderLayout.CENTER);
+  decompPanelSearch.add(decompCheck,BorderLayout.EAST);
+  decompSearch.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(1,decompField.getText());
+    }
+  }
+);
   sourcePane=BytecodeViewer.viewer.sourcePane.isSelected();
   bytecodePane=BytecodeViewer.viewer.bytecodePane.isSelected();
   hexPane=BytecodeViewer.viewer.hexPane.isSelected();
+  if (bytecodePane)   bytePanel.add(bytePanelSearch,BorderLayout.NORTH);
+  if (sourcePane)   decompPanel.add(decompPanelSearch,BorderLayout.NORTH);
   this.name=name;
   this.cn=cn;
   this.setName(name);

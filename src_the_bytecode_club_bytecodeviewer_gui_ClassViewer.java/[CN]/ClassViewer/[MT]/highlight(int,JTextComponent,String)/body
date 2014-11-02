@@ -1,0 +1,24 @@
+{
+  if (pattern.isEmpty()) {
+    textComp.getHighlighter().removeAllHighlights();
+    return;
+  }
+  try {
+    Highlighter hilite=textComp.getHighlighter();
+    hilite.removeAllHighlights();
+    javax.swing.text.Document doc=textComp.getDocument();
+    String text=doc.getText(0,doc.getLength());
+    int pos=0;
+    if ((pane == 0 && !byteCheck.isSelected()) || pane == 1 && !decompCheck.isSelected()) {
+      pattern=pattern.toLowerCase();
+      text=text.toLowerCase();
+    }
+    while ((pos=text.indexOf(pattern,pos)) >= 0) {
+      hilite.addHighlight(pos,pos + pattern.length(),painter);
+      pos+=pattern.length();
+    }
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+}

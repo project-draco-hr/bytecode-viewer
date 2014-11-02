@@ -9,12 +9,19 @@
     while (instructions.hasNext()) {
       final AbstractInsnNode insnNode=instructions.next();
       if (insnNode instanceof LdcInsnNode) {
-        final Object ldcObject=((LdcInsnNode)insnNode).cst;
-        final String ldcString=ldcObject.toString();
+        final LdcInsnNode ldcObject=((LdcInsnNode)insnNode);
+        final String ldcString=ldcObject.cst.toString();
         if ((exact && ldcString.equals(srchText)) || (!exact && ldcString.contains(srchText))) {
-          srn.notifyOfResult(node,method,insnNode);
+          srn.notifyOfResult(node.name + "." + method.name+ Type.getType(method.desc).getInternalName()+ " -> \""+ ldcString+ "\" > "+ ldcObject.cst.getClass().getCanonicalName());
         }
       }
+    }
+  }
+  final Iterator<FieldNode> fields=node.fields.iterator();
+  while (methods.hasNext()) {
+    final FieldNode field=fields.next();
+    if (field.value instanceof String) {
+      srn.notifyOfResult(node.name + "." + field.name+ field.desc+ " -> \""+ field.value+ "\" > field");
     }
   }
 }

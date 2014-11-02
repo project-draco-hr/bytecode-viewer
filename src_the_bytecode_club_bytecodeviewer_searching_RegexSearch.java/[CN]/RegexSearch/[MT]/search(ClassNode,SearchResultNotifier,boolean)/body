@@ -11,7 +11,7 @@
       regexFinder.setMethod(node,method);
     }
     if (regexFinder.find(srchText).length > 0) {
-      srn.notifyOfResult(node,method,null);
+      srn.notifyOfResult(node.name + "." + method.name+ method.desc);
     }
   }
 }
