@@ -1,3 +1,11 @@
 {
-  BytecodeViewer.showMessage("ProcyonDecompiler currently doesn't decompile as zip, please wait till Beta 1.4 of Bytecode Viewer.");
+  File tempZip=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp.jar");
+  if (tempZip.exists())   tempZip.delete();
+  JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),tempZip.getAbsolutePath());
+  try {
+    doSaveJarDecompiled(tempZip,new File(zipName));
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
 }

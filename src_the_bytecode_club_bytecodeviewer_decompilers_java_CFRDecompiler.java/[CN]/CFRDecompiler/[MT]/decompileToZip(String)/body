@@ -1,3 +1,17 @@
 {
-  BytecodeViewer.showMessage("CFRDecompiler currently doesn't decompile as zip, please wait till Beta 1.4 of Bytecode Viewer.");
+  File tempZip=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp.jar");
+  if (tempZip.exists())   tempZip.delete();
+  JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),tempZip.getAbsolutePath());
+  String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp";
+  String fuckery=fuckery(fileStart);
+  org.benf.cfr.reader.Main.main(generateMainMethod(tempZip.getAbsolutePath(),fuckery));
+  tempZip.delete();
+  File fuck=new File(fuckery);
+  try {
+    zip(fuck,new File(zipName));
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  fuck.delete();
 }
