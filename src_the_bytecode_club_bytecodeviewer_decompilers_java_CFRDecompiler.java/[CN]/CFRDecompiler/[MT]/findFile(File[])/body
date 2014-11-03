@@ -1,0 +1,17 @@
+{
+  for (  File f : fA) {
+    if (f.isDirectory())     return findFile(f.listFiles());
+ else {
+      String s="";
+      try {
+        s=DiskReader.loadAsString(f.getAbsolutePath());
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+        return "CFR error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
+      }
+      return s;
+    }
+  }
+  return "CFR error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
+}

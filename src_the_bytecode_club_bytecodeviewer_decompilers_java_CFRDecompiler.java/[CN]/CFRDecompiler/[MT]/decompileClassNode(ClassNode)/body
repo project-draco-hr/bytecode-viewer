@@ -15,16 +15,5 @@
   String fuckery=fuckery(fileStart);
   org.benf.cfr.reader.Main.main(generateMainMethod(tempClass.getAbsolutePath(),fuckery));
   tempClass.delete();
-  for (  File outputJava : new File(fuckery).listFiles()) {
-    String s;
-    try {
-      s=DiskReader.loadAsString(outputJava.getAbsolutePath());
-      outputJava.delete();
-      return s;
-    }
- catch (    Exception e) {
-      e.printStackTrace();
-    }
-  }
-  return "CFR error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
+  return findFile(new File(fuckery).listFiles());
 }
