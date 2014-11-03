@@ -22,8 +22,14 @@
           sourcecodeArea.setAntiAliasingEnabled(true);
           RTextScrollPane sourcecodeSPane=new RTextScrollPane(sourcecodeArea);
           sourcecodeArea.setText(s);
-          if (BytecodeViewer.viewer.bytecodePane.isSelected())           bytePanel.add(bytecodeSPane);
-          if (BytecodeViewer.viewer.sourcePane.isSelected())           decompPanel.add(sourcecodeSPane);
+          if (BytecodeViewer.viewer.bytecodePane.isSelected()) {
+            bytePanel.removeAll();
+            bytePanel.add(bytecodeSPane);
+          }
+          if (BytecodeViewer.viewer.sourcePane.isSelected()) {
+            decompPanel.removeAll();
+            decompPanel.add(sourcecodeSPane);
+          }
           bytecodeArea.setCaretPosition(0);
           sourcecodeArea.setCaretPosition(0);
           BytecodeViewer.viewer.setIcon(false);

@@ -342,8 +342,6 @@
   setSize(new Dimension(800,400));
   setTitle("Bytecode Viewer " + BytecodeViewer.version + " - http://the.bytecode.club - @Konloch");
   getContentPane().setLayout(new BoxLayout(getContentPane(),BoxLayout.X_AXIS));
-  JScrollPane scrollPane=new JScrollPane();
-  scrollPane.setMaximumSize(new Dimension(12000,32767));
   FileNavigationPane cn=new FileNavigationPane(this);
   cn.setMinimumSize(new Dimension(200,50));
   SearchingPane s=new SearchingPane(this);
