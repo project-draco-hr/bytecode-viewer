@@ -14,8 +14,6 @@
   udv.setSelected(true);
   fdi.setSelected(true);
   asc.setSelected(false);
-  srcSyntax.setSelected(true);
-  bycSyntax.setSelected(true);
   debugHelpers.setSelected(true);
   sourcePane.setSelected(true);
   bytecodePane.setSelected(true);
@@ -64,6 +62,7 @@
   forceturningifs.setSelected(true);
   forloopaggcapture.setSelected(true);
   chckbxmntmAppendBrackets.setSelected(true);
+  chckbxmntmNewCheckItem_12.setSelected(true);
   setJMenuBar(menuBar);
   JMenu mnNewMenu=new JMenu("File");
   menuBar.add(mnNewMenu);
@@ -164,6 +163,7 @@
   }
 );
   mnNewMenu.add(mntmAbout);
+  mnNewMenu.add(chckbxmntmNewCheckItem_12);
   JMenuItem mntmExit=new JMenuItem("Exit");
   mnNewMenu.add(mntmExit);
   JMenu mnView=new JMenu("View");
@@ -171,9 +171,6 @@
   mnView.add(sourcePane);
   mnView.add(bytecodePane);
   mnView.add(hexPane);
-  mnView.add(separator_2);
-  mnView.add(srcSyntax);
-  mnView.add(bycSyntax);
   menuBar.add(mnNewMenu_2);
   mnNewMenu_2.add(procyonDec);
   mnNewMenu_2.add(cfrDec);

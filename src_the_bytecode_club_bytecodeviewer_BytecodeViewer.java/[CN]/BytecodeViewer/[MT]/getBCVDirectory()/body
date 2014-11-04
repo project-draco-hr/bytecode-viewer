@@ -1,0 +1,5 @@
+{
+  File f=new File(System.getProperty("user.home") + fs + ".Bytecode-Viewer");
+  while (!f.exists())   f.mkdirs();
+  return f.getAbsolutePath();
+}
