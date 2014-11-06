@@ -3,7 +3,7 @@
     return nameOpcode(tin.getOpcode()) + " " + Type.getType(tin.desc).getClassName();
   }
  catch (  Exception e) {
-    e.printStackTrace();
+    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
   }
   return "//error";
 }

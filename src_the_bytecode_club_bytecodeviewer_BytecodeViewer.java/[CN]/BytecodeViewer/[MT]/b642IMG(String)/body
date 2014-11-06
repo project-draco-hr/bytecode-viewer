@@ -8,7 +8,7 @@
     bis.close();
   }
  catch (  Exception e) {
-    e.printStackTrace();
+    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
   }
   return image;
 }

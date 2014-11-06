@@ -8,7 +8,7 @@
         JarUtils.put(f,BytecodeViewer.loadedClasses);
       }
  catch (      final Exception e) {
-        e.printStackTrace();
+        new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
       }
     }
  else     if (fn.endsWith(".class")) {
@@ -17,7 +17,7 @@
         BytecodeViewer.loadedClasses.put(cn.name,cn);
       }
  catch (      final Exception e) {
-        e.printStackTrace();
+        new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
       }
     }
   }

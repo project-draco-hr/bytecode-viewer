@@ -65,12 +65,12 @@
         }
  catch (        final java.io.IOException io) {
           log(out,"FileDrop: IOException - abort:");
-          io.printStackTrace(out);
+          new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(io);
           evt.rejectDrop();
         }
 catch (        final java.awt.datatransfer.UnsupportedFlavorException ufe) {
           log(out,"FileDrop: UnsupportedFlavorException - abort:");
-          ufe.printStackTrace(out);
+          new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(ufe);
           evt.rejectDrop();
         }
  finally {

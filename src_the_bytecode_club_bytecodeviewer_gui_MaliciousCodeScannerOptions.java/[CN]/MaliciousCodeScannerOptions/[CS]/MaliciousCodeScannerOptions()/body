@@ -1,4 +1,5 @@
 {
+  this.setIconImages(BytecodeViewer.iconList);
   setSize(new Dimension(250,277));
   setResizable(false);
   setTitle("Malicious Code Scanner Options");

@@ -1,4 +1,5 @@
 {
+  this.setIconImages(BytecodeViewer.iconList);
   setTitle("Bytecode Viewer - Plugin Console - " + pluginName);
   setSize(new Dimension(542,316));
   JScrollPane scrollPane=new JScrollPane();

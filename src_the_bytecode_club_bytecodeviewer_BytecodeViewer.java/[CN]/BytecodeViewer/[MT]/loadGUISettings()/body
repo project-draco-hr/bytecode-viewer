@@ -89,6 +89,5 @@
     viewer.chckbxmntmNewCheckItem_12.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,84,false)));
   }
  catch (  Exception e) {
-    e.printStackTrace();
   }
 }

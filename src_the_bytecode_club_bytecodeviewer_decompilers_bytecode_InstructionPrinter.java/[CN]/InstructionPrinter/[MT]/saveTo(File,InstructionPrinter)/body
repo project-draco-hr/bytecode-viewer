@@ -8,6 +8,6 @@
     bw.close();
   }
  catch (  IOException e) {
-    e.printStackTrace();
+    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
   }
 }

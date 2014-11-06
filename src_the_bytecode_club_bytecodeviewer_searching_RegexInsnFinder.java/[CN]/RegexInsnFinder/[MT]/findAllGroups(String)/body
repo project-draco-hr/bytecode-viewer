@@ -11,7 +11,7 @@
     }
   }
  catch (  final PatternSyntaxException ex) {
-    ex.printStackTrace();
+    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(ex);
   }
   return results;
 }

@@ -6,6 +6,6 @@
     doSaveJarDecompiled(tempZip,new File(zipName));
   }
  catch (  Exception e) {
-    e.printStackTrace();
+    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
   }
 }

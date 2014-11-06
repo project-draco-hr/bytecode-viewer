@@ -1,23 +1,47 @@
 {
-  JButton byteSearch=new JButton("Search");
-  bytePanelSearch.add(byteSearch,BorderLayout.WEST);
+  JButton byteSearchNext=new JButton();
+  JButton byteSearchPrev=new JButton();
+  JPanel byteButtonPane=new JPanel(new BorderLayout());
+  byteButtonPane.add(byteSearchNext,BorderLayout.WEST);
+  byteButtonPane.add(byteSearchPrev,BorderLayout.EAST);
+  byteSearchNext.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYqPBJSG/ZAAAASUlEQVR42mNgwAbS0oAEE4yHyWBmYAzjYDC694OJ4f9+BoY3H0BSbz6A2MxA6VciFyDqGAWQTWVkYEkCUrcOsDD8OwtkvMViMwAb8xEUHlHcFAAAAABJRU5ErkJggg==")));
+  byteSearchPrev.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYgKhxpRi1AAAATElEQVR42mNgwAZYHIAEExA7qUAYLApMDmCGEwODCojByM/A8FEAyPi/moFh9QewYjCAM1iA+D2KqYwMrIlA6tUGFoa/Z4GMt1hsBgCe1wuKber+SwAAAABJRU5ErkJggg==")));
+  bytePanelSearch.add(byteButtonPane,BorderLayout.WEST);
   final JTextField byteField=new JTextField();
   bytePanelSearch.add(byteField,BorderLayout.CENTER);
   bytePanelSearch.add(byteCheck,BorderLayout.EAST);
-  byteSearch.addActionListener(new ActionListener(){
+  byteSearchNext.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    final ActionEvent arg0){
-      search(0,byteField.getText());
+      search(0,byteField.getText(),true);
     }
   }
 );
-  JButton decompSearch=new JButton("Search");
-  decompPanelSearch.add(decompSearch,BorderLayout.WEST);
+  byteSearchPrev.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(0,byteField.getText(),false);
+    }
+  }
+);
+  JButton decompSearchNext=new JButton();
+  JButton decompSearchPrev=new JButton();
+  JPanel decompButtonPane=new JPanel(new BorderLayout());
+  decompButtonPane.add(decompSearchNext,BorderLayout.WEST);
+  decompButtonPane.add(decompSearchPrev,BorderLayout.EAST);
+  decompSearchNext.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYqPBJSG/ZAAAASUlEQVR42mNgwAbS0oAEE4yHyWBmYAzjYDC694OJ4f9+BoY3H0BSbz6A2MxA6VciFyDqGAWQTWVkYEkCUrcOsDD8OwtkvMViMwAb8xEUHlHcFAAAAABJRU5ErkJggg==")));
+  decompSearchPrev.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYgKhxpRi1AAAATElEQVR42mNgwAZYHIAEExA7qUAYLApMDmCGEwODCojByM/A8FEAyPi/moFh9QewYjCAM1iA+D2KqYwMrIlA6tUGFoa/Z4GMt1hsBgCe1wuKber+SwAAAABJRU5ErkJggg==")));
+  decompPanelSearch.add(decompButtonPane,BorderLayout.WEST);
   final JTextField decompField=new JTextField();
   decompPanelSearch.add(decompField,BorderLayout.CENTER);
   decompPanelSearch.add(decompCheck,BorderLayout.EAST);
-  decompSearch.addActionListener(new ActionListener(){
+  decompSearchNext.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    final ActionEvent arg0){
-      search(1,decompField.getText());
+      search(1,decompField.getText(),true);
+    }
+  }
+);
+  decompSearchPrev.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(1,decompField.getText(),false);
     }
   }
 );

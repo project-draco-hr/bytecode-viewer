@@ -1,16 +1,11 @@
 {
   tempF=new File(tempDirectory);
-  try {
-    FileUtils.deleteDirectory(tempF);
-  }
- catch (  Exception e) {
-  }
-  while (!tempF.exists()) {
+  while (tempF.exists()) {
     try {
-      tempF.mkdir();
-      Thread.sleep(1);
+      FileUtils.deleteDirectory(tempF);
     }
  catch (    Exception e) {
     }
   }
+  while (!tempF.exists())   tempF.mkdir();
 }

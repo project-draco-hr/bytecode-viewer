@@ -1,4 +1,5 @@
 {
+  this.setIconImages(BytecodeViewer.iconList);
   decompilerGroup.add(fernflowerDec);
   decompilerGroup.add(procyonDec);
   decompilerGroup.add(cfrDec);
@@ -87,7 +88,7 @@
         BytecodeViewer.viewer.setC(false);
       }
  catch (      Exception e1) {
-        e1.printStackTrace();
+        new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e1);
       }
     }
   }
@@ -165,6 +166,22 @@
   mnNewMenu.add(mntmAbout);
   mnNewMenu.add(chckbxmntmNewCheckItem_12);
   JMenuItem mntmExit=new JMenuItem("Exit");
+  mntmExit.addActionListener(new ActionListener(){
+    @SuppressWarnings("deprecation") public void actionPerformed(    ActionEvent arg0){
+      JOptionPane pane=new JOptionPane("Are you sure you want to exit?");
+      Object[] options=new String[]{"Yes","No"};
+      pane.setOptions(options);
+      JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Exit");
+      dialog.show();
+      Object obj=pane.getValue();
+      int result=-1;
+      for (int k=0; k < options.length; k++)       if (options[k].equals(obj))       result=k;
+      if (result == 0) {
+        System.exit(0);
+      }
+    }
+  }
+);
   mnNewMenu.add(mntmExit);
   JMenu mnView=new JMenu("View");
   menuBar.add(mnView);
@@ -279,7 +296,10 @@
   mntmReplaceStrings.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
       if (!BytecodeViewer.loadedClasses.isEmpty())       new ReplaceStringsOptions().setVisible(true);
- else       System.out.println("Plugin not ran, put some classes in first.");
+ else {
+        System.out.println("Plugin not ran, put some classes in first.");
+        BytecodeViewer.showMessage("Plugin not ran, put some classes in first.");
+      }
     }
   }
 );
@@ -300,7 +320,7 @@
         BytecodeViewer.viewer.setC(false);
       }
  catch (      Exception e1) {
-        e1.printStackTrace();
+        new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e1);
       }
     }
   }
@@ -320,7 +340,10 @@
   mntmNewMenuItem_1.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent e){
       if (!BytecodeViewer.loadedClasses.isEmpty())       new MaliciousCodeScannerOptions().setVisible(true);
- else       System.out.println("Plugin not ran, put some classes in first.");
+ else {
+        System.out.println("Plugin not ran, put some classes in first.");
+        BytecodeViewer.showMessage("Plugin not ran, put some classes in first.");
+      }
     }
   }
 );

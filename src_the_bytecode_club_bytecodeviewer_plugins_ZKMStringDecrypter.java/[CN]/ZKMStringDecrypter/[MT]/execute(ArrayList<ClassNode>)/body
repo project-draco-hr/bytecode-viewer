@@ -1,5 +1,3 @@
 {
-  for (  ClassNode classNode : classNodeList) {
-  }
   BytecodeViewer.showMessage("This is a planned feature.");
 }

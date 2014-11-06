@@ -10,7 +10,7 @@
     fos.close();
   }
  catch (  final IOException e) {
-    e.printStackTrace();
+    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
   }
   String fuckery=fuckery(fileStart);
   org.benf.cfr.reader.Main.main(generateMainMethod(tempClass.getAbsolutePath(),fuckery));

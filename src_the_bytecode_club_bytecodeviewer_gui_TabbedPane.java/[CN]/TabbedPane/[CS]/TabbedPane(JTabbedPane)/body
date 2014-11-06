@@ -16,8 +16,15 @@
   label.setBorder(BorderFactory.createEmptyBorder(0,0,0,5));
   add(button);
   setBorder(BorderFactory.createEmptyBorder(2,0,0,0));
-  pane.addMouseListener(new MouseListener(){
-    @Override public void mouseClicked(    MouseEvent arg0){
+  button.addMouseListener(new MouseListener(){
+    @Override public void mouseClicked(    MouseEvent e){
+      if (e.getModifiers() == 8) {
+        if (System.currentTimeMillis() - zero >= 500) {
+          zero=System.currentTimeMillis();
+          final int i=pane.indexOfTabComponent(TabbedPane.this);
+          if (i != -1)           pane.remove(i);
+        }
+      }
     }
     @Override public void mouseEntered(    MouseEvent arg0){
     }
@@ -26,13 +33,6 @@
     @Override public void mousePressed(    MouseEvent arg0){
     }
     @Override public void mouseReleased(    MouseEvent e){
-      if (e.getModifiers() == 8) {
-        for (        Component c : pane.getComponents()) {
-          if (c.getMousePosition() != null && c instanceof JPanel) {
-            System.out.println("gotten here...");
-          }
-        }
-      }
     }
   }
 );
