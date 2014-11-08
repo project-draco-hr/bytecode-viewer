@@ -1,8 +1,0 @@
-{
-  AbstractInsnNode in;
-  while ((in=getNext(opcode)) != null) {
-    final IntInsnNode iin=(IntInsnNode)in;
-    if (iin.operand == value)     return iin;
-  }
-  return null;
-}

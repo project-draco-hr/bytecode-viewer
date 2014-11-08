@@ -1,8 +1,0 @@
-{
-  return new InsnAnalyzer(){
-    @Override public boolean accept(    final AbstractInsnNode node){
-      return node.getOpcode() == opcode;
-    }
-  }
-;
-}

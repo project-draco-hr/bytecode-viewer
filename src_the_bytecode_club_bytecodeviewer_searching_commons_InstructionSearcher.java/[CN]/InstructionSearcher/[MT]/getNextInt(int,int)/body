@@ -1,3 +1,0 @@
-{
-  return (IntInsnNode)this.getNext(AnalyzerFactory.makeIntCond(opcode,i));
-}

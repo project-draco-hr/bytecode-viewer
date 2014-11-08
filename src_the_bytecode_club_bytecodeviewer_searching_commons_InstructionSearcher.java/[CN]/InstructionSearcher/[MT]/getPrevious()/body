@@ -1,7 +1,0 @@
-{
-  current=current.getPrevious();
-  while (current.getOpcode() == -1) {
-    current=current.getPrevious();
-  }
-  return current;
-}

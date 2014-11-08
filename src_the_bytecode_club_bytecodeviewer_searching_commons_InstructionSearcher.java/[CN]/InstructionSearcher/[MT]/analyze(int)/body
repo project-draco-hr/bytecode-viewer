@@ -1,9 +1,0 @@
-{
-  reset();
-  final List<AbstractInsnNode> list=new ArrayList<AbstractInsnNode>();
-  AbstractInsnNode in;
-  while ((in=getNext(opcode)) != null) {
-    list.add(in);
-  }
-  return list;
-}

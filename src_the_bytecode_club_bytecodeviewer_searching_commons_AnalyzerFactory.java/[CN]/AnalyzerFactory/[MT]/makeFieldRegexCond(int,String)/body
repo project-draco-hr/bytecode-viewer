@@ -1,9 +1,0 @@
-{
-  return new InsnAnalyzer(){
-    @Override public boolean accept(    final AbstractInsnNode node){
-      if (node instanceof FieldInsnNode)       return node.getOpcode() == opcode && ((FieldInsnNode)node).desc.matches(regex);
- else       return false;
-    }
-  }
-;
-}

@@ -1,9 +1,0 @@
-{
-  AbstractInsnNode poller=list.getFirst();
-  int index=0;
-  while ((poller=poller.getNext()) != null) {
-    if (poller.equals(node))     return index;
-    index++;
-  }
-  return -1;
-}
