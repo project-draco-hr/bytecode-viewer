@@ -1,9 +1,9 @@
 {
-  if (pluginInstance == null || pluginInstance.finished) {
+  if (pluginInstance == null || pluginInstance.isFinished()) {
     pluginInstance=newPluginInstance;
     pluginInstance.start();
   }
- else   if (!pluginInstance.finished) {
+ else   if (!pluginInstance.isFinished()) {
     BytecodeViewer.showMessage("There is currently another plugin running right now, please wait for that to finish executing.");
   }
 }

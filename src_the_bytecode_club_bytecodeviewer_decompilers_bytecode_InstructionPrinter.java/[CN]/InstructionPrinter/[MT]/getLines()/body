@@ -1,4 +1,0 @@
-{
-  ArrayList<String> lines=createPrint();
-  return lines.toArray(new String[lines.size()]);
-}

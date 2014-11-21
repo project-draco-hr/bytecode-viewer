@@ -4,7 +4,7 @@
     PluginManager.runPlugin(plugin);
   }
  catch (  Exception e) {
-    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
   addRecentPlugin(plugin);
 }

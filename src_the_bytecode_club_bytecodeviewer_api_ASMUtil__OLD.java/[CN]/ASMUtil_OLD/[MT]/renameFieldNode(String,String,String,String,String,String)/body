@@ -1,0 +1,17 @@
+{
+  for (  ClassNode c : BytecodeViewer.getLoadedClasses()) {
+    for (    Object o : c.methods.toArray()) {
+      MethodNode m=(MethodNode)o;
+      for (      AbstractInsnNode i : m.instructions.toArray()) {
+        if (i instanceof FieldInsnNode) {
+          FieldInsnNode field=(FieldInsnNode)i;
+          if (field.owner.equals(originalParentName) && field.name.equals(originalFieldName) && field.desc.equals(originalFieldDesc)) {
+            if (newFieldParent != null)             field.owner=newFieldParent;
+            if (newFieldName != null)             field.name=newFieldName;
+            if (newFieldDesc != null)             field.desc=newFieldDesc;
+          }
+        }
+      }
+    }
+  }
+}

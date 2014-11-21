@@ -1,0 +1,4 @@
+{
+  loader.clear();
+  loader=new ClassNodeLoader();
+}

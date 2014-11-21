@@ -11,7 +11,7 @@
       fos.close();
     }
  catch (    final IOException e) {
-      new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
     }
     DecompilerSettings settings=getDecompilerSettings();
     LuytenTypeLoader typeLoader=new LuytenTypeLoader();
@@ -30,7 +30,7 @@
     return decompiledSource;
   }
  catch (  Exception e) {
-    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
   return "Procyon error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
 }

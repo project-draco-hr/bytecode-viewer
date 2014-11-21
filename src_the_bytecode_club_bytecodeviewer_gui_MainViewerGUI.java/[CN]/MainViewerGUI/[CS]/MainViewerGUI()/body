@@ -4,6 +4,9 @@
   decompilerGroup.add(procyonDec);
   decompilerGroup.add(cfrDec);
   decompilerGroup.setSelected(procyonDec.getModel(),true);
+  obfuscatorGroup.add(strongObf);
+  obfuscatorGroup.add(lightObf);
+  obfuscatorGroup.setSelected(strongObf.getModel(),true);
   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   rbr.setSelected(true);
   rsy.setSelected(false);
@@ -88,7 +91,7 @@
         BytecodeViewer.viewer.setC(false);
       }
  catch (      Exception e1) {
-        new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e1);
+        new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e1);
       }
     }
   }
@@ -285,6 +288,50 @@
   mnBytecodeDecompilerSettings.add(debugHelpers);
   mnBytecodeDecompilerSettings.add(chckbxmntmAppendBrackets);
   mnBytecodeDecompilerSettings.add(chckbxmntmNewCheckItem);
+  mnNewMenu_5.setVisible(false);
+  menuBar.add(mnNewMenu_5);
+  mntmNewMenuItem_6.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      if (BytecodeViewer.runningObfuscation) {
+        BytecodeViewer.showMessage("You're currently running an obfuscation task, wait for this to finish.");
+        return;
+      }
+      new RenameFields().start();
+    }
+  }
+);
+  mnNewMenu_5.add(strongObf);
+  mnNewMenu_5.add(lightObf);
+  mnNewMenu_5.add(separator_2);
+  mntmNewMenuItem_8.setEnabled(false);
+  mnNewMenu_5.add(mntmNewMenuItem_8);
+  mnNewMenu_5.add(mntmNewMenuItem_6);
+  mntmNewMenuItem_7.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      if (BytecodeViewer.runningObfuscation) {
+        BytecodeViewer.showMessage("You're currently running an obfuscation task, wait for this to finish.");
+        return;
+      }
+      new RenameMethods().start();
+    }
+  }
+);
+  mnNewMenu_5.add(mntmNewMenuItem_7);
+  mntmNewMenuItem_11.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      if (BytecodeViewer.runningObfuscation) {
+        BytecodeViewer.showMessage("You're currently running an obfuscation task, wait for this to finish.");
+        return;
+      }
+      new RenameClasses().start();
+    }
+  }
+);
+  mnNewMenu_5.add(mntmNewMenuItem_11);
+  mntmNewMenuItem_9.setEnabled(false);
+  mnNewMenu_5.add(mntmNewMenuItem_9);
+  mntmNewMenuItem_10.setEnabled(false);
+  mnNewMenu_5.add(mntmNewMenuItem_10);
   menuBar.add(mnNewMenu_1);
   mnNewMenu_1.add(mntmStartExternalPlugin);
   mnNewMenu_1.add(separator_4);
@@ -306,6 +353,17 @@
   mnNewMenu_1.add(mntmReplaceStrings);
   mnNewMenu_1.add(mntmNewMenuItem_2);
   mnNewMenu_1.add(mntmStartZkmString);
+  mntmNewMenuItem_5.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      if (!BytecodeViewer.loadedClasses.isEmpty())       new EZInjectionOptions().setVisible(true);
+ else {
+        System.out.println("Plugin not ran, put some classes in first.");
+        BytecodeViewer.showMessage("Plugin not ran, put some classes in first.");
+      }
+    }
+  }
+);
+  mnNewMenu_1.add(mntmNewMenuItem_5);
   menuBar.add(mntmNewMenuItem_4);
   mntmStartExternalPlugin.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
@@ -320,7 +378,7 @@
         BytecodeViewer.viewer.setC(false);
       }
  catch (      Exception e1) {
-        new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e1);
+        new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e1);
       }
     }
   }

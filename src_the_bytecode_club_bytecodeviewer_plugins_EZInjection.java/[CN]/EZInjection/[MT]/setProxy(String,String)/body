@@ -1,0 +1,5 @@
+{
+  System.setProperty("java.net.useSystemProxies","true");
+  System.setProperty("socksProxyHost",host);
+  System.setProperty("socksProxyPort",port);
+}

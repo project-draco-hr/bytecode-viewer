@@ -11,7 +11,7 @@
     zip(fuck,new File(zipName));
   }
  catch (  IOException e) {
-    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
   fuck.delete();
 }

@@ -16,7 +16,7 @@
           throw new UnexpectedException("Unknown opcode encountered: " + ain.getOpcode());
         }
  catch (        final UnexpectedException e) {
-          new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
+          new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
         }
       }
       offsets[i]=insnString.length();

@@ -4,7 +4,7 @@
     dt.addDropTargetListener(dropListener);
   }
  catch (  final java.util.TooManyListenersException e) {
-    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(e);
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
     log(out,"FileDrop: Drop will not work due to previous error. Do you have another listener attached?");
   }
   c.addHierarchyListener(new java.awt.event.HierarchyListener(){

@@ -13,5 +13,6 @@
     MainViewerGUI.getComponent(FileNavigationPane.class).resetWorkspace();
     MainViewerGUI.getComponent(WorkPane.class).resetWorkspace();
     MainViewerGUI.getComponent(SearchingPane.class).resetWorkspace();
+    the.bytecode.club.bytecodeviewer.api.BytecodeViewer.getClassNodeLoader().clear();
   }
 }

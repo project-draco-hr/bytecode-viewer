@@ -1,0 +1,7 @@
+{
+  BytecodeViewer.viewer.setIcon(true);
+  BytecodeViewer.runningObfuscation=true;
+  obfuscate();
+  BytecodeViewer.runningObfuscation=false;
+  BytecodeViewer.viewer.setIcon(false);
+}

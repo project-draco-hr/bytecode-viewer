@@ -1,0 +1,10 @@
+{
+  int stringLength=getStringLength();
+  System.out.println("Obfuscating");
+  for (  ClassNode c : BytecodeViewer.getLoadedClasses()) {
+    String newName=generateUniqueName(stringLength);
+    ASMUtil_OLD.renameClassNode(c.name,newName);
+    c.name=newName;
+  }
+  System.out.println("Obfuscated");
+}

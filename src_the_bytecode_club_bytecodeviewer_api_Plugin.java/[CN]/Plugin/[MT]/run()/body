@@ -1,0 +1,17 @@
+{
+  BytecodeViewer.viewer.setIcon(true);
+  try {
+    if (!BytecodeViewer.getLoadedClasses().isEmpty())     execute(BytecodeViewer.getLoadedClasses());
+ else {
+      System.out.println("Plugin not ran, put some classes in first.");
+      BytecodeViewer.showMessage("Plugin not ran, put some classes in first.");
+    }
+  }
+ catch (  Exception e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+ finally {
+    finished=true;
+    BytecodeViewer.viewer.setIcon(false);
+  }
+}

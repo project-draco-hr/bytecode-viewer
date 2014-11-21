@@ -10,7 +10,7 @@
     }
   }
  catch (  final PatternSyntaxException ex) {
-    new the.bytecode.club.bytecodeviewer.gui.StackTraceUI(ex);
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(ex);
   }
   return new AbstractInsnNode[0][0];
 }

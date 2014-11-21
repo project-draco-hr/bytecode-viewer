@@ -1,0 +1,58 @@
+{
+  for (  ClassNode c : BytecodeViewer.getLoadedClasses()) {
+    for (    Object oo : c.innerClasses) {
+      InnerClassNode innerClassNode=(InnerClassNode)oo;
+      if (innerClassNode.innerName != null && innerClassNode.innerName.equals(oldName)) {
+        innerClassNode.innerName=newName;
+      }
+      if (innerClassNode.name.equals(oldName)) {
+        innerClassNode.name=newName;
+      }
+      if (innerClassNode.outerName != null && innerClassNode.outerName.equals(oldName)) {
+        innerClassNode.outerName=newName;
+      }
+    }
+    if (c.signature != null)     c.signature=c.signature.replace(oldName,newName);
+    if (c.superName.equals(oldName)) {
+      c.superName=newName;
+    }
+    for (    Object o : c.fields.toArray()) {
+      FieldNode f=(FieldNode)o;
+      f.desc=f.desc.replace(oldName,newName);
+    }
+    for (    Object o : c.interfaces.toArray()) {
+      String truxerLipton=(String)o;
+      truxerLipton=truxerLipton.replace(oldName,newName);
+    }
+    for (    Object o : c.methods.toArray()) {
+      MethodNode m=(MethodNode)o;
+      if (m.localVariables != null) {
+        for (        LocalVariableNode node : (List<LocalVariableNode>)m.localVariables) {
+          node.desc=node.desc.replace(oldName,newName);
+        }
+      }
+      if (m.signature != null)       m.signature=m.signature.replace(oldName,newName);
+      for (int i=0; i < m.exceptions.size(); i++) {
+        if (m.exceptions.get(i).equals(oldName))         m.exceptions.set(i,newName);
+      }
+      for (      AbstractInsnNode i : m.instructions.toArray()) {
+        if (i instanceof TypeInsnNode) {
+          TypeInsnNode t=(TypeInsnNode)i;
+          if (t.desc.equals(oldName)) {
+            t.desc=newName;
+          }
+        }
+        if (i instanceof MethodInsnNode) {
+          MethodInsnNode mi=(MethodInsnNode)i;
+          if (mi.owner.equals(oldName))           mi.owner=newName;
+          mi.desc=mi.desc.replace(oldName,newName);
+        }
+        if (i instanceof FieldInsnNode) {
+          FieldInsnNode fi=(FieldInsnNode)i;
+          if (fi.owner.equals(oldName))           fi.owner=newName;
+          fi.desc=fi.desc.replace(oldName,newName);
+        }
+      }
+    }
+  }
+}

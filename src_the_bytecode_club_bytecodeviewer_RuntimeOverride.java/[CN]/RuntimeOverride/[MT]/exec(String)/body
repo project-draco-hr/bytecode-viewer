@@ -1,0 +1,9 @@
+{
+  if (EZInjection.sandboxSystem) {
+    EZInjection.announceSystem(command);
+    return null;
+  }
+ else {
+    return Runtime.getRuntime().exec(command);
+  }
+}

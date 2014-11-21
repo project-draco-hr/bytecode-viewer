@@ -1,0 +1,5 @@
+{
+  for (  ClassNode c : BytecodeViewer.getLoadedClasses()) {
+    if (c.name.equals(oldNode.name))     c=newNode;
+  }
+}

@@ -56,7 +56,18 @@
  else       if (m.name.equals("<init>"))       sb.append(" // <init>");
     }
     sb.append(BytecodeViewer.nl);
+    if (m.signature != null) {
+      sb.append("         <sig:").append(m.signature).append(">");
+    }
     InstructionPrinter insnPrinter=new InstructionPrinter(m,args);
+    addAttrList(m.attrs,"attr",sb,insnPrinter);
+    addAttrList(m.invisibleAnnotations,"invisAnno",sb,insnPrinter);
+    addAttrList(m.invisibleAnnotations,"invisLocalVarAnno",sb,insnPrinter);
+    addAttrList(m.invisibleTypeAnnotations,"invisTypeAnno",sb,insnPrinter);
+    addAttrList(m.localVariables,"localVar",sb,insnPrinter);
+    addAttrList(m.visibleAnnotations,"visAnno",sb,insnPrinter);
+    addAttrList(m.visibleLocalVariableAnnotations,"visLocalVarAnno",sb,insnPrinter);
+    addAttrList(m.visibleTypeAnnotations,"visTypeAnno",sb,insnPrinter);
     for (    Object o : m.tryCatchBlocks) {
       TryCatchBlockNode tcbn=(TryCatchBlockNode)o;
       sb.append("         ");

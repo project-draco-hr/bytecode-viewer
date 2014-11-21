@@ -1,0 +1,4 @@
+List<?> list
+String name
+PrefixedStringBuilder sb
+InstructionPrinter insnPrinter

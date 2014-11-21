@@ -1,0 +1,8 @@
+{
+  if (classes.containsKey(name)) {
+    return nodeToClass(classes.get(name));
+  }
+ else {
+    return super.loadClass(name);
+  }
+}

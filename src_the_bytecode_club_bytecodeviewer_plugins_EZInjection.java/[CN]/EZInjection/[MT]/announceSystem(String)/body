@@ -1,0 +1,3 @@
+{
+  print("[SANDBOX] Tried to call on Runtime.exec(" + s + "), it's been blocked.");
+}
