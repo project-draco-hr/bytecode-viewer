@@ -47,7 +47,10 @@
     }
   }
   if (s.contains("abstract")) {
-    sb.append(" {}" + BytecodeViewer.nl);
+    sb.append(" {}");
+    sb.append(" //");
+    sb.append(m.desc);
+    sb.append(BytecodeViewer.nl);
   }
  else {
     sb.append(" {");
@@ -55,6 +58,8 @@
       if (m.name.equals("<clinit>"))       sb.append(" // <clinit>");
  else       if (m.name.equals("<init>"))       sb.append(" // <init>");
     }
+    sb.append(" //");
+    sb.append(m.desc);
     sb.append(BytecodeViewer.nl);
     if (m.signature != null) {
       sb.append("         <sig:").append(m.signature).append(">");

@@ -46,6 +46,10 @@
  else {
           canSearch=true;
           for (          String s : test) {
+            if (pane == 0 && !byteCheck.isSelected() || pane == 1 && !decompCheck.isSelected()) {
+              s=s.toLowerCase();
+              search=search.toLowerCase();
+            }
             if (s.contains(search)) {
               if (lastGoodLine != -1 && canSearch)               area.setCaretPosition(area.getDocument().getDefaultRootElement().getElement(lastGoodLine - 1).getStartOffset());
               lastGoodLine=currentLine;

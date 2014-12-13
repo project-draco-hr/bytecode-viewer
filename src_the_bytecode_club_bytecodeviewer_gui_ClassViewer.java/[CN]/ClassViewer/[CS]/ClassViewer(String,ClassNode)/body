@@ -22,6 +22,16 @@
     }
   }
 );
+  byteField.addKeyListener(new KeyListener(){
+    @Override public void keyReleased(    KeyEvent arg0){
+      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(0,byteField.getText(),true);
+    }
+    @Override public void keyPressed(    KeyEvent arg0){
+    }
+    @Override public void keyTyped(    KeyEvent arg0){
+    }
+  }
+);
   JButton decompSearchNext=new JButton();
   JButton decompSearchPrev=new JButton();
   JPanel decompButtonPane=new JPanel(new BorderLayout());
@@ -42,6 +52,16 @@
   decompSearchPrev.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    final ActionEvent arg0){
       search(1,decompField.getText(),false);
+    }
+  }
+);
+  decompField.addKeyListener(new KeyListener(){
+    @Override public void keyReleased(    KeyEvent arg0){
+      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(1,decompField.getText(),true);
+    }
+    @Override public void keyPressed(    KeyEvent arg0){
+    }
+    @Override public void keyTyped(    KeyEvent arg0){
     }
   }
 );
