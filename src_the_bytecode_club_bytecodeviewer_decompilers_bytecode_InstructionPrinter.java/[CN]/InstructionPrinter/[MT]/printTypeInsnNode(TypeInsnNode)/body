@@ -1,6 +1,8 @@
 {
   try {
-    return nameOpcode(tin.getOpcode()) + " " + Type.getType(tin.desc).getClassName();
+    String desc=Type.getType(tin.desc).getClassName();
+    if (desc == null || desc.equals("null"))     desc=tin.desc;
+    return nameOpcode(tin.getOpcode()) + " " + desc;
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

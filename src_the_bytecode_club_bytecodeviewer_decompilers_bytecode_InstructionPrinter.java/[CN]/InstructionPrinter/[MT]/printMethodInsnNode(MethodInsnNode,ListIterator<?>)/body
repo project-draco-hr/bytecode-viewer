@@ -1,11 +1,9 @@
 {
   StringBuilder sb=new StringBuilder();
   sb.append(nameOpcode(min.getOpcode()) + " " + min.owner+ " "+ min.name+ "(");
-  if (Type.getType(min.desc).getClassName() == null || Type.getType(min.desc).getClassName().equalsIgnoreCase("null")) {
-  }
- else {
-    sb.append(Type.getType(min.desc).getClassName());
-  }
+  String desc=Type.getType(min.desc).getClassName();
+  if (desc == null || desc.equals("null"))   desc=min.desc;
+  sb.append(desc);
   sb.append(");");
   return sb.toString();
 }

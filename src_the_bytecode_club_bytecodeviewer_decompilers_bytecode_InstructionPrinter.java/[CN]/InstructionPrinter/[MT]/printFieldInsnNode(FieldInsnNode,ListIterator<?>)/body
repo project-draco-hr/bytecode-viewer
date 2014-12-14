@@ -1,3 +1,5 @@
 {
-  return nameOpcode(fin.getOpcode()) + " " + fin.owner+ "."+ fin.name+ ":"+ Type.getType(fin.desc).getClassName();
+  String desc=Type.getType(fin.desc).getClassName();
+  if (desc == null || desc.equals("null"))   desc=fin.desc;
+  return nameOpcode(fin.getOpcode()) + " " + fin.owner+ "."+ fin.name+ ":"+ desc;
 }
