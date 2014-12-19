@@ -1,10 +1,4 @@
 {
-  if (BytecodeViewer.viewer.chckbxmntmNewCheckItem.isSelected()) {
-    if (ldc.cst instanceof String)     return nameOpcode(ldc.getOpcode()) + " \"" + StringEscapeUtils.escapeJava(ldc.cst.toString())+ "\" ("+ ldc.cst.getClass().getCanonicalName()+ ")";
-    return nameOpcode(ldc.getOpcode()) + " " + StringEscapeUtils.escapeJava(ldc.cst.toString())+ " ("+ ldc.cst.getClass().getCanonicalName()+ ")";
-  }
- else {
-    if (ldc.cst instanceof String)     return nameOpcode(ldc.getOpcode()) + " \"" + ((String)ldc.cst).replaceAll("\\n","\\\\n").replaceAll("\\r","\\\\r").replaceAll("\\\"","\\\\\"")+ "\" ("+ ldc.cst.getClass().getCanonicalName()+ ")";
-    return nameOpcode(ldc.getOpcode()) + " " + ldc.cst+ " ("+ ldc.cst.getClass().getCanonicalName()+ ")";
-  }
+  if (ldc.cst instanceof String)   return nameOpcode(ldc.getOpcode()) + " \"" + StringEscapeUtils.escapeJava(ldc.cst.toString())+ "\" ("+ ldc.cst.getClass().getCanonicalName()+ ")";
+  return nameOpcode(ldc.getOpcode()) + " " + StringEscapeUtils.escapeJava(ldc.cst.toString())+ " ("+ ldc.cst.getClass().getCanonicalName()+ ")";
 }

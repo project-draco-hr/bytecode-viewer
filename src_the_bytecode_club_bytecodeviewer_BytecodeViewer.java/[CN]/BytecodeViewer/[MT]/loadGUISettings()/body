@@ -77,16 +77,29 @@
     viewer.chckbxmntmNewCheckItem_10.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,75,false)));
     viewer.chckbxmntmNewCheckItem_11.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,76,false)));
     viewer.chckbxmntmAppendBrackets.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,77,false)));
-    viewer.sourcePane.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,78,false)));
-    viewer.bytecodePane.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,79,false)));
-    viewer.hexPane.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,80,false)));
+    viewer.debugHelpers.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,78,false)));
+    viewer.chckbxmntmNewCheckItem_12.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,80,false)));
     int decompiler=Integer.parseInt(DiskReader.loadString(settingsName,81,false));
-    if (decompiler == 0)     viewer.decompilerGroup.setSelected(viewer.procyonDec.getModel(),true);
- else     if (decompiler == 1)     viewer.decompilerGroup.setSelected(viewer.cfrDec.getModel(),true);
- else     if (decompiler == 2)     viewer.decompilerGroup.setSelected(viewer.fernflowerDec.getModel(),true);
-    viewer.debugHelpers.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,82,false)));
-    viewer.chckbxmntmNewCheckItem.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,83,false)));
-    viewer.chckbxmntmNewCheckItem_12.setSelected(Boolean.parseBoolean(DiskReader.loadString(settingsName,84,false)));
+    if (decompiler == 0)     viewer.decompilerGroup1.setSelected(viewer.panel1None.getModel(),true);
+ else     if (decompiler == 1)     viewer.decompilerGroup1.setSelected(viewer.panel1Proc.getModel(),true);
+ else     if (decompiler == 2)     viewer.decompilerGroup1.setSelected(viewer.panel1CFR.getModel(),true);
+ else     if (decompiler == 3)     viewer.decompilerGroup1.setSelected(viewer.panel1Fern.getModel(),true);
+ else     if (decompiler == 4)     viewer.decompilerGroup1.setSelected(viewer.panel1Bytecode.getModel(),true);
+ else     if (decompiler == 5)     viewer.decompilerGroup1.setSelected(viewer.panel1Hexcode.getModel(),true);
+    decompiler=Integer.parseInt(DiskReader.loadString(settingsName,82,false));
+    if (decompiler == 0)     viewer.decompilerGroup2.setSelected(viewer.panel2None.getModel(),true);
+ else     if (decompiler == 1)     viewer.decompilerGroup2.setSelected(viewer.panel2Proc.getModel(),true);
+ else     if (decompiler == 2)     viewer.decompilerGroup2.setSelected(viewer.panel2CFR.getModel(),true);
+ else     if (decompiler == 3)     viewer.decompilerGroup2.setSelected(viewer.panel2Fern.getModel(),true);
+ else     if (decompiler == 4)     viewer.decompilerGroup2.setSelected(viewer.panel2Bytecode.getModel(),true);
+ else     if (decompiler == 5)     viewer.decompilerGroup2.setSelected(viewer.panel2Hexcode.getModel(),true);
+    decompiler=Integer.parseInt(DiskReader.loadString(settingsName,83,false));
+    if (decompiler == 0)     viewer.decompilerGroup3.setSelected(viewer.panel3None.getModel(),true);
+ else     if (decompiler == 1)     viewer.decompilerGroup3.setSelected(viewer.panel3Proc.getModel(),true);
+ else     if (decompiler == 2)     viewer.decompilerGroup3.setSelected(viewer.panel3CFR.getModel(),true);
+ else     if (decompiler == 3)     viewer.decompilerGroup3.setSelected(viewer.panel3Fern.getModel(),true);
+ else     if (decompiler == 4)     viewer.decompilerGroup3.setSelected(viewer.panel3Bytecode.getModel(),true);
+ else     if (decompiler == 5)     viewer.decompilerGroup3.setSelected(viewer.panel3Hexcode.getModel(),true);
   }
  catch (  Exception e) {
   }

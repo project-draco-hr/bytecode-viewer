@@ -1,0 +1,5 @@
+{
+  String path=file.getAbsolutePath();
+  if (!path.endsWith(".zip"))   path=path + ".zip";
+  return path;
+}

@@ -1,9 +1,26 @@
 {
   this.setIconImages(BytecodeViewer.iconList);
-  decompilerGroup.add(fernflowerDec);
-  decompilerGroup.add(procyonDec);
-  decompilerGroup.add(cfrDec);
-  decompilerGroup.setSelected(procyonDec.getModel(),true);
+  decompilerGroup1.add(panel1None);
+  decompilerGroup1.add(panel1Fern);
+  decompilerGroup1.add(panel1Proc);
+  decompilerGroup1.add(panel1CFR);
+  decompilerGroup1.add(panel1Bytecode);
+  decompilerGroup1.add(panel1Hexcode);
+  decompilerGroup1.setSelected(panel1Proc.getModel(),true);
+  decompilerGroup2.add(panel2None);
+  decompilerGroup2.add(panel2Fern);
+  decompilerGroup2.add(panel2Proc);
+  decompilerGroup2.add(panel2CFR);
+  decompilerGroup2.add(panel2Bytecode);
+  decompilerGroup2.add(panel2Hexcode);
+  decompilerGroup2.setSelected(panel2Bytecode.getModel(),true);
+  decompilerGroup3.add(panel3None);
+  decompilerGroup3.add(panel3Fern);
+  decompilerGroup3.add(panel3Proc);
+  decompilerGroup3.add(panel3CFR);
+  decompilerGroup3.add(panel3Bytecode);
+  decompilerGroup3.add(panel3Hexcode);
+  decompilerGroup3.setSelected(panel3None.getModel(),true);
   obfuscatorGroup.add(strongObf);
   obfuscatorGroup.add(lightObf);
   obfuscatorGroup.setSelected(strongObf.getModel(),true);
@@ -19,8 +36,6 @@
   fdi.setSelected(true);
   asc.setSelected(false);
   debugHelpers.setSelected(true);
-  sourcePane.setSelected(true);
-  bytecodePane.setSelected(true);
   decodeenumswitch.setSelected(true);
   sugarenums.setSelected(true);
   decodestringswitch.setSelected(true);
@@ -143,13 +158,61 @@
       int returnVal=fc.showSaveDialog(MainViewerGUI.this);
       if (returnVal == JFileChooser.APPROVE_OPTION) {
         File file=fc.getSelectedFile();
-        BytecodeViewer.viewer.setC(true);
-        String path=file.getAbsolutePath();
-        if (!path.endsWith(".zip"))         path=path + ".zip";
-        if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.fernflowerDec.getModel()))         ff_dc.decompileToZip(path);
- else         if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.procyonDec.getModel()))         proc_dc.decompileToZip(path);
- else         if (BytecodeViewer.viewer.decompilerGroup.isSelected(BytecodeViewer.viewer.cfrDec.getModel()))         cfr_dc.decompileToZip(path);
-        BytecodeViewer.viewer.setC(false);
+        BytecodeViewer.viewer.setIcon(true);
+        final String path=appendZip(file);
+        JOptionPane pane=new JOptionPane("What decompiler will you use?");
+        Object[] options=new String[]{"Procyon","CFR","Fernflower","Cancel"};
+        pane.setOptions(options);
+        JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Select Decompiler");
+        dialog.setVisible(true);
+        Object obj=pane.getValue();
+        int result=-1;
+        for (int k=0; k < options.length; k++)         if (options[k].equals(obj))         result=k;
+        if (result == 0) {
+          Thread t=new Thread(){
+            @Override public void run(){
+              try {
+                proc_dc.decompileToZip(path);
+                BytecodeViewer.viewer.setIcon(false);
+              }
+ catch (              Exception e) {
+                new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+              }
+            }
+          }
+;
+          t.start();
+        }
+        if (result == 1) {
+          Thread t=new Thread(){
+            @Override public void run(){
+              try {
+                cfr_dc.decompileToZip(path);
+                BytecodeViewer.viewer.setIcon(false);
+              }
+ catch (              Exception e) {
+                new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+              }
+            }
+          }
+;
+          t.start();
+        }
+        if (result == 2) {
+          Thread t=new Thread(){
+            @Override public void run(){
+              try {
+                ff_dc.decompileToZip(path);
+                BytecodeViewer.viewer.setIcon(false);
+              }
+ catch (              Exception e) {
+                new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+              }
+            }
+          }
+;
+          t.start();
+        }
       }
     }
   }
@@ -186,15 +249,28 @@
   }
 );
   mnNewMenu.add(mntmExit);
-  JMenu mnView=new JMenu("View");
-  menuBar.add(mnView);
-  mnView.add(sourcePane);
-  mnView.add(bytecodePane);
-  mnView.add(hexPane);
-  menuBar.add(mnNewMenu_2);
-  mnNewMenu_2.add(procyonDec);
-  mnNewMenu_2.add(cfrDec);
-  mnNewMenu_2.add(fernflowerDec);
+  menuBar.add(mnNewMenu_6);
+  mnNewMenu_6.add(mnNewMenu_7);
+  mnNewMenu_7.add(panel1None);
+  mnNewMenu_7.add(panel1Proc);
+  mnNewMenu_7.add(panel1CFR);
+  mnNewMenu_7.add(panel1Fern);
+  mnNewMenu_7.add(panel1Bytecode);
+  mnNewMenu_7.add(panel1Hexcode);
+  mnNewMenu_6.add(mnNewMenu_8);
+  mnNewMenu_8.add(panel2None);
+  mnNewMenu_8.add(panel2Proc);
+  mnNewMenu_8.add(panel2CFR);
+  mnNewMenu_8.add(panel2Fern);
+  mnNewMenu_8.add(panel2Bytecode);
+  mnNewMenu_8.add(panel2Hexcode);
+  mnNewMenu_6.add(mnNewMenu_9);
+  mnNewMenu_9.add(panel3None);
+  mnNewMenu_9.add(panel3Proc);
+  mnNewMenu_9.add(panel3CFR);
+  mnNewMenu_9.add(panel3Fern);
+  mnNewMenu_9.add(panel3Bytecode);
+  mnNewMenu_9.add(panel3Hexcode);
   menuBar.add(mnNewMenu_4);
   mnNewMenu_4.add(chckbxmntmNewCheckItem_6);
   mnNewMenu_4.add(chckbxmntmNewCheckItem_11);
@@ -287,7 +363,6 @@
   menuBar.add(mnBytecodeDecompilerSettings);
   mnBytecodeDecompilerSettings.add(debugHelpers);
   mnBytecodeDecompilerSettings.add(chckbxmntmAppendBrackets);
-  mnBytecodeDecompilerSettings.add(chckbxmntmNewCheckItem);
   mnNewMenu_5.setVisible(false);
   menuBar.add(mnNewMenu_5);
   mntmNewMenuItem_6.addActionListener(new ActionListener(){
@@ -418,7 +493,7 @@
   }
 );
   setSize(new Dimension(800,400));
-  setTitle("Bytecode Viewer " + BytecodeViewer.version + " - http://the.bytecode.club - @Konloch");
+  setTitle("Bytecode Viewer 2.3.0 - https://the.bytecode.club - @Konloch");
   getContentPane().setLayout(new BoxLayout(getContentPane(),BoxLayout.X_AXIS));
   FileNavigationPane cn=new FileNavigationPane(this);
   cn.setMinimumSize(new Dimension(200,50));

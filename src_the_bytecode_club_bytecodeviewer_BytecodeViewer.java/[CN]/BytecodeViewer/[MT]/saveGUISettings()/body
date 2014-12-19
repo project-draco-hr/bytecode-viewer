@@ -78,15 +78,27 @@
     DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.chckbxmntmNewCheckItem_10.isSelected()),false);
     DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.chckbxmntmNewCheckItem_11.isSelected()),false);
     DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.chckbxmntmAppendBrackets.isSelected()),false);
-    DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.sourcePane.isSelected()),false);
-    DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.bytecodePane.isSelected()),false);
-    DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.hexPane.isSelected()),false);
-    if (viewer.decompilerGroup.isSelected(viewer.procyonDec.getModel()))     DiskWriter.writeNewLine(settingsName,"0",false);
- else     if (viewer.decompilerGroup.isSelected(viewer.cfrDec.getModel()))     DiskWriter.writeNewLine(settingsName,"1",false);
- else     if (viewer.decompilerGroup.isSelected(viewer.fernflowerDec.getModel()))     DiskWriter.writeNewLine(settingsName,"2",false);
     DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.debugHelpers.isSelected()),false);
-    DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.chckbxmntmNewCheckItem.isSelected()),false);
+    DiskWriter.writeNewLine(settingsName,"deprecated",false);
     DiskWriter.writeNewLine(settingsName,String.valueOf(viewer.chckbxmntmNewCheckItem_12.isSelected()),false);
+    if (BytecodeViewer.viewer.decompilerGroup1.isSelected(BytecodeViewer.viewer.panel1None.getModel()))     DiskWriter.writeNewLine(settingsName,"0",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup1.isSelected(BytecodeViewer.viewer.panel1Proc.getModel()))     DiskWriter.writeNewLine(settingsName,"1",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup1.isSelected(BytecodeViewer.viewer.panel1CFR.getModel()))     DiskWriter.writeNewLine(settingsName,"2",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup1.isSelected(BytecodeViewer.viewer.panel1Fern.getModel()))     DiskWriter.writeNewLine(settingsName,"3",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup1.isSelected(BytecodeViewer.viewer.panel1Bytecode.getModel()))     DiskWriter.writeNewLine(settingsName,"4",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup1.isSelected(BytecodeViewer.viewer.panel1Hexcode.getModel()))     DiskWriter.writeNewLine(settingsName,"5",false);
+    if (BytecodeViewer.viewer.decompilerGroup2.isSelected(BytecodeViewer.viewer.panel2None.getModel()))     DiskWriter.writeNewLine(settingsName,"0",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup2.isSelected(BytecodeViewer.viewer.panel2Proc.getModel()))     DiskWriter.writeNewLine(settingsName,"1",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup2.isSelected(BytecodeViewer.viewer.panel2CFR.getModel()))     DiskWriter.writeNewLine(settingsName,"2",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup2.isSelected(BytecodeViewer.viewer.panel2Fern.getModel()))     DiskWriter.writeNewLine(settingsName,"3",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup2.isSelected(BytecodeViewer.viewer.panel2Bytecode.getModel()))     DiskWriter.writeNewLine(settingsName,"4",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup2.isSelected(BytecodeViewer.viewer.panel2Hexcode.getModel()))     DiskWriter.writeNewLine(settingsName,"5",false);
+    if (BytecodeViewer.viewer.decompilerGroup3.isSelected(BytecodeViewer.viewer.panel3None.getModel()))     DiskWriter.writeNewLine(settingsName,"0",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup3.isSelected(BytecodeViewer.viewer.panel3Proc.getModel()))     DiskWriter.writeNewLine(settingsName,"1",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup3.isSelected(BytecodeViewer.viewer.panel3CFR.getModel()))     DiskWriter.writeNewLine(settingsName,"2",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup3.isSelected(BytecodeViewer.viewer.panel3Fern.getModel()))     DiskWriter.writeNewLine(settingsName,"3",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup3.isSelected(BytecodeViewer.viewer.panel3Bytecode.getModel()))     DiskWriter.writeNewLine(settingsName,"4",false);
+ else     if (BytecodeViewer.viewer.decompilerGroup3.isSelected(BytecodeViewer.viewer.panel3Hexcode.getModel()))     DiskWriter.writeNewLine(settingsName,"5",false);
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

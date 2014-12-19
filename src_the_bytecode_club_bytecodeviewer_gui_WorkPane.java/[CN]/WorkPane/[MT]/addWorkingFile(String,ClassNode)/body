@@ -1,8 +1,4 @@
 {
-  if (!BytecodeViewer.viewer.hexPane.isSelected() && !BytecodeViewer.viewer.sourcePane.isSelected() && !BytecodeViewer.viewer.bytecodePane.isSelected()) {
-    BytecodeViewer.showMessage("You currently have no viewing panes selected.");
-    return;
-  }
   if (!workingOn.containsKey(name)) {
     final Component tabComp=new ClassViewer(name,cn);
     tabs.add(tabComp);

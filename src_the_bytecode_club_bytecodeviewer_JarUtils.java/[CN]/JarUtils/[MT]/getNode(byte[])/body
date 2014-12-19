@@ -1,7 +1,12 @@
 {
   cr=new ClassReader(bytez);
   cn=new ClassNode();
-  cr.accept(cn,ClassReader.EXPAND_FRAMES);
+  try {
+    cr.accept(cn,ClassReader.EXPAND_FRAMES);
+  }
+ catch (  Exception e) {
+    cr.accept(cn,ClassReader.SKIP_FRAMES);
+  }
   cr=null;
   return cn;
 }

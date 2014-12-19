@@ -6,25 +6,25 @@
   byteButtonPane.add(byteSearchPrev,BorderLayout.EAST);
   byteSearchNext.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYqPBJSG/ZAAAASUlEQVR42mNgwAbS0oAEE4yHyWBmYAzjYDC694OJ4f9+BoY3H0BSbz6A2MxA6VciFyDqGAWQTWVkYEkCUrcOsDD8OwtkvMViMwAb8xEUHlHcFAAAAABJRU5ErkJggg==")));
   byteSearchPrev.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYgKhxpRi1AAAATElEQVR42mNgwAZYHIAEExA7qUAYLApMDmCGEwODCojByM/A8FEAyPi/moFh9QewYjCAM1iA+D2KqYwMrIlA6tUGFoa/Z4GMt1hsBgCe1wuKber+SwAAAABJRU5ErkJggg==")));
-  bytePanelSearch.add(byteButtonPane,BorderLayout.WEST);
-  final JTextField byteField=new JTextField();
-  bytePanelSearch.add(byteField,BorderLayout.CENTER);
-  bytePanelSearch.add(byteCheck,BorderLayout.EAST);
+  panel1Search.add(byteButtonPane,BorderLayout.WEST);
+  final JTextField field1=new JTextField();
+  panel1Search.add(field1,BorderLayout.CENTER);
+  panel1Search.add(check1,BorderLayout.EAST);
   byteSearchNext.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    final ActionEvent arg0){
-      search(0,byteField.getText(),true);
+      search(0,field1.getText(),true);
     }
   }
 );
   byteSearchPrev.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    final ActionEvent arg0){
-      search(0,byteField.getText(),false);
+      search(0,field1.getText(),false);
     }
   }
 );
-  byteField.addKeyListener(new KeyListener(){
+  field1.addKeyListener(new KeyListener(){
     @Override public void keyReleased(    KeyEvent arg0){
-      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(0,byteField.getText(),true);
+      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(0,field1.getText(),true);
     }
     @Override public void keyPressed(    KeyEvent arg0){
     }
@@ -32,32 +32,32 @@
     }
   }
 );
-  JButton decompSearchNext=new JButton();
-  JButton decompSearchPrev=new JButton();
-  JPanel decompButtonPane=new JPanel(new BorderLayout());
-  decompButtonPane.add(decompSearchNext,BorderLayout.WEST);
-  decompButtonPane.add(decompSearchPrev,BorderLayout.EAST);
-  decompSearchNext.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYqPBJSG/ZAAAASUlEQVR42mNgwAbS0oAEE4yHyWBmYAzjYDC694OJ4f9+BoY3H0BSbz6A2MxA6VciFyDqGAWQTWVkYEkCUrcOsDD8OwtkvMViMwAb8xEUHlHcFAAAAABJRU5ErkJggg==")));
-  decompSearchPrev.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYgKhxpRi1AAAATElEQVR42mNgwAZYHIAEExA7qUAYLApMDmCGEwODCojByM/A8FEAyPi/moFh9QewYjCAM1iA+D2KqYwMrIlA6tUGFoa/Z4GMt1hsBgCe1wuKber+SwAAAABJRU5ErkJggg==")));
-  decompPanelSearch.add(decompButtonPane,BorderLayout.WEST);
-  final JTextField decompField=new JTextField();
-  decompPanelSearch.add(decompField,BorderLayout.CENTER);
-  decompPanelSearch.add(decompCheck,BorderLayout.EAST);
-  decompSearchNext.addActionListener(new ActionListener(){
+  JButton searchNext2=new JButton();
+  JButton searchPrev2=new JButton();
+  JPanel buttonPane2=new JPanel(new BorderLayout());
+  buttonPane2.add(searchNext2,BorderLayout.WEST);
+  buttonPane2.add(searchPrev2,BorderLayout.EAST);
+  searchNext2.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYqPBJSG/ZAAAASUlEQVR42mNgwAbS0oAEE4yHyWBmYAzjYDC694OJ4f9+BoY3H0BSbz6A2MxA6VciFyDqGAWQTWVkYEkCUrcOsDD8OwtkvMViMwAb8xEUHlHcFAAAAABJRU5ErkJggg==")));
+  searchPrev2.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYgKhxpRi1AAAATElEQVR42mNgwAZYHIAEExA7qUAYLApMDmCGEwODCojByM/A8FEAyPi/moFh9QewYjCAM1iA+D2KqYwMrIlA6tUGFoa/Z4GMt1hsBgCe1wuKber+SwAAAABJRU5ErkJggg==")));
+  panel2Search.add(buttonPane2,BorderLayout.WEST);
+  final JTextField field2=new JTextField();
+  panel2Search.add(field2,BorderLayout.CENTER);
+  panel2Search.add(check2,BorderLayout.EAST);
+  searchNext2.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    final ActionEvent arg0){
-      search(1,decompField.getText(),true);
+      search(1,field2.getText(),true);
     }
   }
 );
-  decompSearchPrev.addActionListener(new ActionListener(){
+  searchPrev2.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    final ActionEvent arg0){
-      search(1,decompField.getText(),false);
+      search(1,field2.getText(),false);
     }
   }
 );
-  decompField.addKeyListener(new KeyListener(){
+  field2.addKeyListener(new KeyListener(){
     @Override public void keyReleased(    KeyEvent arg0){
-      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(1,decompField.getText(),true);
+      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(1,field2.getText(),true);
     }
     @Override public void keyPressed(    KeyEvent arg0){
     }
@@ -65,32 +65,51 @@
     }
   }
 );
-  sourcePane=BytecodeViewer.viewer.sourcePane.isSelected();
-  bytecodePane=BytecodeViewer.viewer.bytecodePane.isSelected();
-  hexPane=BytecodeViewer.viewer.hexPane.isSelected();
-  if (bytecodePane)   bytePanel.add(bytePanelSearch,BorderLayout.NORTH);
-  if (sourcePane)   decompPanel.add(decompPanelSearch,BorderLayout.NORTH);
+  JButton searchNext3=new JButton();
+  JButton searchPrev3=new JButton();
+  JPanel buttonPane3=new JPanel(new BorderLayout());
+  buttonPane3.add(searchNext3,BorderLayout.WEST);
+  buttonPane3.add(searchPrev3,BorderLayout.EAST);
+  searchNext3.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYqPBJSG/ZAAAASUlEQVR42mNgwAbS0oAEE4yHyWBmYAzjYDC694OJ4f9+BoY3H0BSbz6A2MxA6VciFyDqGAWQTWVkYEkCUrcOsDD8OwtkvMViMwAb8xEUHlHcFAAAAABJRU5ErkJggg==")));
+  searchPrev3.setIcon(new ImageIcon(BytecodeViewer.b642IMG("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAABnRSTlMANzlYgKhxpRi1AAAATElEQVR42mNgwAZYHIAEExA7qUAYLApMDmCGEwODCojByM/A8FEAyPi/moFh9QewYjCAM1iA+D2KqYwMrIlA6tUGFoa/Z4GMt1hsBgCe1wuKber+SwAAAABJRU5ErkJggg==")));
+  panel3Search.add(buttonPane3,BorderLayout.WEST);
+  final JTextField field3=new JTextField();
+  panel3Search.add(field3,BorderLayout.CENTER);
+  panel3Search.add(check3,BorderLayout.EAST);
+  searchNext3.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(2,field3.getText(),true);
+    }
+  }
+);
+  searchPrev3.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(2,field3.getText(),false);
+    }
+  }
+);
+  field3.addKeyListener(new KeyListener(){
+    @Override public void keyReleased(    KeyEvent arg0){
+      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(2,field3.getText(),true);
+    }
+    @Override public void keyPressed(    KeyEvent arg0){
+    }
+    @Override public void keyTyped(    KeyEvent arg0){
+    }
+  }
+);
   this.name=name;
   this.cn=cn;
   this.setName(name);
   this.setLayout(new BorderLayout());
-  this.sp=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,decompPanel,bytePanel);
+  this.sp=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,panel1,panel2);
   final ClassWriter cw=new ClassWriter(0);
   cn.accept(cw);
   JHexEditor hex=new JHexEditor(cw.toByteArray());
-  JScrollPane penis;
-  if (hexPane) {
-    penis=new JScrollPane(hex);
-  }
- else {
-    penis=new JScrollPane();
-  }
-  penis.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
-  this.sp2=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,sp,penis);
+  this.sp2=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,sp,panel3);
   this.add(sp2,BorderLayout.CENTER);
   hex.setMaximumSize(new Dimension(0,Integer.MAX_VALUE));
   hex.setSize(0,Integer.MAX_VALUE);
-  resetDivider();
   BytecodeViewer.viewer.setIcon(true);
   startPaneUpdater();
   this.addComponentListener(new ComponentAdapter(){
