@@ -1,5 +1,10 @@
 {
   File f=new File(System.getProperty("user.home") + fs + ".Bytecode-Viewer");
-  while (!f.exists())   f.mkdirs();
+  while (!f.exists()) {
+    System.out.println("it doesn't exist.");
+    f.mkdirs();
+  }
+  System.out.println("it exists now.");
+  if (!f.isHidden() && isWindows())   hideFile(f);
   return f.getAbsolutePath();
 }

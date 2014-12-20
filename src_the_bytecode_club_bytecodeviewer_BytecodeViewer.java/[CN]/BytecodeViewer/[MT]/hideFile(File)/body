@@ -1,0 +1,11 @@
+{
+  System.out.println("hiding file");
+  try {
+    Runtime.getRuntime().exec("attrib +H " + f.getAbsolutePath());
+  }
+ catch (  IOException e) {
+    System.out.println("Could not hide settings folder (~/.Bytecode-Viewer) using attrib!");
+    System.out.println(e.getMessage());
+    e.printStackTrace();
+  }
+}
