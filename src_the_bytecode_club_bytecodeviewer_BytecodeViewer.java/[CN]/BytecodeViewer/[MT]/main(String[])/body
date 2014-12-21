@@ -8,7 +8,7 @@
   cleanup();
   Runtime.getRuntime().addShutdownHook(new Thread(){
     @Override public void run(){
-      saveGUISettings();
+      Settings.saveGUI();
       cleanup();
     }
   }
@@ -20,7 +20,7 @@
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
   viewer=new MainViewerGUI();
-  loadGUISettings();
+  Settings.loadGUI();
   resetRecentFilesMenu();
   Thread versionChecker=new Thread(){
     @Override public void run(){
@@ -31,7 +31,41 @@
         BufferedReader reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String version=reader.readLine();
         reader.close();
-        if (!BytecodeViewer.version.equals(version))         showMessage("You're running an outdated version of Bytecode Viewer, current version: " + BytecodeViewer.version + ", latest version: "+ version+ nl+ nl+ "https://github.com/Konloch/bytecode-viewer");
+        if (!BytecodeViewer.version.equals(version)) {
+          connection=(HttpURLConnection)new URL("https://raw.githubusercontent.com/Konloch/bytecode-viewer/master/README.txt").openConnection();
+          connection.setUseCaches(false);
+          connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0");
+          reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
+          ArrayList<String> readme=new ArrayList<String>();
+          String s;
+          while ((s=reader.readLine()) != null)           readme.add(s);
+          reader.close();
+          String changelog="";
+          boolean trigger=false;
+          for (          String st : readme) {
+            if (st.equals("--- " + version + " ---:"))             trigger=true;
+            if (trigger == true && !st.equals("--- " + version + " ---:")) {
+              if (st.startsWith("--- "))               trigger=false;
+ else               changelog+=st + nl;
+            }
+          }
+          JOptionPane pane=new JOptionPane("Your version: " + BytecodeViewer.version + ", latest version: "+ version+ nl+ nl+ "Version "+ version+ "'s Change Log:"+ nl+ changelog+ nl+ "Would you like to automatically open the download page? (https://github.com/Konloch/bytecode-viewer/releases)");
+          Object[] options=new String[]{"Yes","No"};
+          pane.setOptions(options);
+          JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Outdated Version");
+          dialog.setVisible(true);
+          Object obj=pane.getValue();
+          int result=-1;
+          for (int k=0; k < options.length; k++)           if (options[k].equals(obj))           result=k;
+          if (result == 0) {
+            if (Desktop.isDesktopSupported()) {
+              Desktop.getDesktop().browse(new URI("https://github.com/Konloch/bytecode-viewer/releases"));
+            }
+ else {
+              showMessage("Cannot open the page, please manually type it.");
+            }
+          }
+        }
       }
  catch (      Exception e) {
         new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

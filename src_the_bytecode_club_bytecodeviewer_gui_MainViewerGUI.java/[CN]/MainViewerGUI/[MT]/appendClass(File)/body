@@ -1,0 +1,5 @@
+{
+  String path=file.getAbsolutePath();
+  if (!path.endsWith(".class"))   path=path + ".class";
+  return path;
+}

@@ -1,0 +1,4 @@
+{
+  String contents=decompileClassNode(BytecodeViewer.getClassNode(className));
+  DiskWriter.replaceFile(classNameSaved,contents,false);
+}

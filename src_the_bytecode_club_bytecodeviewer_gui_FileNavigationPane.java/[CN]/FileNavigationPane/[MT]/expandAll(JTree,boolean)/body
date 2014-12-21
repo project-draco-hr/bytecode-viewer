@@ -1,4 +1,0 @@
-{
-  final TreeNode root=(TreeNode)tree.getModel().getRoot();
-  expandAll(tree,new TreePath(root),expand);
-}

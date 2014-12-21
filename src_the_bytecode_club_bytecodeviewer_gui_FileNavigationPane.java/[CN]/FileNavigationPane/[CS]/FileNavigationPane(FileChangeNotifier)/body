@@ -2,6 +2,21 @@
   super("ClassNavigation");
   setTitle("Files");
   this.fcn=fcn;
+  open.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      final TreeNode root=(TreeNode)tree.getModel().getRoot();
+      expandAll(tree,new TreePath(root),true);
+    }
+  }
+);
+  close.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      final TreeNode root=(TreeNode)tree.getModel().getRoot();
+      expandAll(tree,new TreePath(root),false);
+      tree.expandPath(new TreePath(root));
+    }
+  }
+);
   getContentPane().setLayout(new BorderLayout());
   this.tree=new MyTree(treeRoot);
   getContentPane().add(new JScrollPane(tree),BorderLayout.CENTER);
@@ -112,7 +127,13 @@
   JPanel p2=new JPanel();
   p2.setLayout(new BorderLayout());
   p2.add(quickSearch,BorderLayout.NORTH);
-  p2.add(exact,BorderLayout.SOUTH);
+  JPanel p3=new JPanel(new BorderLayout());
+  p3.add(exact,BorderLayout.WEST);
+  JPanel p4=new JPanel(new BorderLayout());
+  p4.add(open,BorderLayout.EAST);
+  p4.add(close,BorderLayout.WEST);
+  p3.add(p4,BorderLayout.EAST);
+  p2.add(p3,BorderLayout.SOUTH);
   getContentPane().add(p2,BorderLayout.SOUTH);
   this.setVisible(true);
   new FileDrop(this,this);
