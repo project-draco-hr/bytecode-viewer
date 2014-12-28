@@ -16,6 +16,7 @@
         }
       }
     }
+    boolean prevInsn_aconst_null=false;
     for (    Object o : classNode.methods.toArray()) {
       MethodNode m=(MethodNode)o;
       InsnList iList=m.instructions;
@@ -33,6 +34,20 @@
               sb.append("Found LDC \"" + s + "\" at method "+ classNode.name+ "."+ m.name+ "("+ m.desc+ ")"+ BytecodeViewer.nl);
             }
           }
+        }
+        if ((a instanceof InsnNode) && (a.getOpcode() == Opcodes.ACONST_NULL)) {
+          prevInsn_aconst_null=true;
+        }
+ else         if ((a instanceof MethodInsnNode) && (a.getOpcode() == Opcodes.INVOKESTATIC)) {
+          final String owner=((MethodInsnNode)a).owner;
+          final String name=((MethodInsnNode)a).name;
+          if ((NSM && prevInsn_aconst_null && owner.equals("java/lang/System")&& name.equals("setSecurityManager"))) {
+            sb.append("Found Security Manager set to null at method " + classNode.name + "."+ m.name+ "("+ m.desc+ ")"+ BytecodeViewer.nl);
+            prevInsn_aconst_null=false;
+          }
+        }
+ else {
+          prevInsn_aconst_null=false;
         }
       }
     }

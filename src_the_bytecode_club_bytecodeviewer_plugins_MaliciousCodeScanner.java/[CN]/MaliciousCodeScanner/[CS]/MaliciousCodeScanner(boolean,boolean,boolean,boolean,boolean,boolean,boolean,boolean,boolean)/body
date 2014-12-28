@@ -7,4 +7,5 @@
   LHT=http;
   LHS=https;
   LIP=ip;
+  NSM=nullSecMan;
 }

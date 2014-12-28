@@ -6,3 +6,4 @@ boolean www
 boolean http
 boolean https
 boolean ip
+boolean nullSecMan
