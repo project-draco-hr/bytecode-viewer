@@ -31,7 +31,13 @@
           if (desc != null && !desc.equals(min.desc)) {
             continue;
           }
-          srn.notifyOfResult(node.name + "." + method.name+ Type.getType(method.desc)+ " > "+ OpcodeInfo.OPCODES.get(insnNode.getOpcode()).toLowerCase());
+          String desc2=method.desc;
+          try {
+            desc2=Type.getType(method.desc).toString();
+          }
+ catch (          java.lang.ArrayIndexOutOfBoundsException e) {
+          }
+          srn.notifyOfResult(node.name + "." + method.name+ desc2+ " > "+ OpcodeInfo.OPCODES.get(insnNode.getOpcode()).toLowerCase());
         }
  else {
           if (name != null && !name.contains(min.name)) {
@@ -43,7 +49,13 @@
           if (desc != null && !desc.contains(min.desc)) {
             continue;
           }
-          srn.notifyOfResult(node.name + "." + method.name+ Type.getType(method.desc)+ " > "+ OpcodeInfo.OPCODES.get(insnNode.getOpcode()).toLowerCase());
+          String desc2=method.desc;
+          try {
+            desc2=Type.getType(method.desc).toString();
+          }
+ catch (          java.lang.ArrayIndexOutOfBoundsException e) {
+          }
+          srn.notifyOfResult(node.name + "." + method.name+ desc2+ " > "+ OpcodeInfo.OPCODES.get(insnNode.getOpcode()).toLowerCase());
         }
       }
     }
