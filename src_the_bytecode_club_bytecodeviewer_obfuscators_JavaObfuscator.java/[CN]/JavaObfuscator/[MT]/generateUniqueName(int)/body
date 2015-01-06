@@ -2,7 +2,7 @@
   boolean found=false;
   String name="";
   while (!found) {
-    String nameTry=randomString(1) + randomStringNum(length - 1);
+    String nameTry=MiscUtils.randomString(1) + MiscUtils.randomStringNum(length - 1);
     if (!names.contains(nameTry)) {
       names.add(nameTry);
       name=nameTry;

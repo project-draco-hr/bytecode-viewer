@@ -1,0 +1,28 @@
+{
+  if (!ask) {
+    loadedResources.clear();
+    loadedClasses.clear();
+    MainViewerGUI.getComponent(FileNavigationPane.class).resetWorkspace();
+    MainViewerGUI.getComponent(WorkPane.class).resetWorkspace();
+    MainViewerGUI.getComponent(SearchingPane.class).resetWorkspace();
+    the.bytecode.club.bytecodeviewer.api.BytecodeViewer.getClassNodeLoader().clear();
+  }
+ else {
+    JOptionPane pane=new JOptionPane("Are you sure you want to reset the workspace?\n\rIt will also reset your file navigator and search.");
+    Object[] options=new String[]{"Yes","No"};
+    pane.setOptions(options);
+    JDialog dialog=pane.createDialog(viewer,"Bytecode Viewer - Reset Workspace");
+    dialog.show();
+    Object obj=pane.getValue();
+    int result=-1;
+    for (int k=0; k < options.length; k++)     if (options[k].equals(obj))     result=k;
+    if (result == 0) {
+      loadedResources.clear();
+      loadedClasses.clear();
+      MainViewerGUI.getComponent(FileNavigationPane.class).resetWorkspace();
+      MainViewerGUI.getComponent(WorkPane.class).resetWorkspace();
+      MainViewerGUI.getComponent(SearchingPane.class).resetWorkspace();
+      the.bytecode.club.bytecodeviewer.api.BytecodeViewer.getClassNodeLoader().clear();
+    }
+  }
+}

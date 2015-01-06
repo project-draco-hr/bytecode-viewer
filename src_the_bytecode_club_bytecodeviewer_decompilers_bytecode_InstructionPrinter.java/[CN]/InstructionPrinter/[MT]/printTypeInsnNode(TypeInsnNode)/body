@@ -1,7 +1,12 @@
 {
   try {
-    String desc=Type.getType(tin.desc).getClassName();
-    if (desc == null || desc.equals("null"))     desc=tin.desc;
+    String desc=tin.desc;
+    try {
+      if (Type.getType(tin.desc) != null)       desc=Type.getType(tin.desc).getClassName();
+      if (desc == null || desc.equals("null"))       desc=tin.desc;
+    }
+ catch (    java.lang.ArrayIndexOutOfBoundsException e) {
+    }
     return nameOpcode(tin.getOpcode()) + " " + desc;
   }
  catch (  Exception e) {

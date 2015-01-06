@@ -5,7 +5,7 @@
     m.addActionListener(new ActionListener(){
       public void actionPerformed(      ActionEvent e){
         JMenuItem m=(JMenuItem)e.getSource();
-        openFiles(new File[]{new File(m.getText())});
+        openFiles(new File[]{new File(m.getText())},true);
       }
     }
 );

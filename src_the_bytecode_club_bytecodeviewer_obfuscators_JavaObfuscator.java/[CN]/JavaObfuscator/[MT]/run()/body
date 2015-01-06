@@ -1,4 +1,5 @@
 {
+  System.out.println("mibbzz is gay");
   BytecodeViewer.viewer.setIcon(true);
   BytecodeViewer.runningObfuscation=true;
   obfuscate();

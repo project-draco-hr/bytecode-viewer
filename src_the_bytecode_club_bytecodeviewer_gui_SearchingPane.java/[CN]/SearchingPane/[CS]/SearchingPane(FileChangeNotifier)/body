@@ -81,7 +81,7 @@
   optionPanel.add(search,BorderLayout.SOUTH);
   this.tree=new JTree(treeRoot);
   getContentPane().setLayout(new BorderLayout());
-  getContentPane().add(optionPanel,BorderLayout.NORTH);
+  getContentPane().add(new JScrollPane(optionPanel),BorderLayout.NORTH);
   getContentPane().add(new JScrollPane(tree),BorderLayout.CENTER);
   this.tree.addTreeSelectionListener(new TreeSelectionListener(){
     @Override public void valueChanged(    final TreeSelectionEvent arg0){

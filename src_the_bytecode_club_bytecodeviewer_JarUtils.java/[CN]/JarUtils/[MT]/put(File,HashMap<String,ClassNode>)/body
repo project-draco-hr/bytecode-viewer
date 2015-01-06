@@ -1,6 +1,6 @@
 {
-  jis=new JarInputStream(new FileInputStream(jarFile));
-  while ((entry=jis.getNextJarEntry()) != null) {
+  jis=new ZipInputStream(new FileInputStream(jarFile));
+  while ((entry=jis.getNextEntry()) != null) {
     try {
       final String name=entry.getName();
       if (!name.endsWith(".class")) {
@@ -19,7 +19,7 @@
       }
     }
  catch (    Exception e) {
-      e.printStackTrace();
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
     }
  finally {
       jis.closeEntry();

@@ -1,94 +1,64 @@
 {
   this.setIconImages(BytecodeViewer.iconList);
-  decompilerGroup1.add(panel1None);
-  decompilerGroup1.add(panel1Fern);
-  decompilerGroup1.add(panel1Proc);
-  decompilerGroup1.add(panel1CFR);
-  decompilerGroup1.add(panel1Bytecode);
-  decompilerGroup1.add(panel1Hexcode);
-  decompilerGroup1.setSelected(panel1Proc.getModel(),true);
-  decompilerGroup2.add(panel2None);
-  decompilerGroup2.add(panel2Fern);
-  decompilerGroup2.add(panel2Proc);
-  decompilerGroup2.add(panel2CFR);
-  decompilerGroup2.add(panel2Bytecode);
-  decompilerGroup2.add(panel2Hexcode);
-  decompilerGroup2.setSelected(panel2Bytecode.getModel(),true);
-  decompilerGroup3.add(panel3None);
-  decompilerGroup3.add(panel3Fern);
-  decompilerGroup3.add(panel3Proc);
-  decompilerGroup3.add(panel3CFR);
-  decompilerGroup3.add(panel3Bytecode);
-  decompilerGroup3.add(panel3Hexcode);
-  decompilerGroup3.setSelected(panel3None.getModel(),true);
+  panelGroup1.add(panel1None);
+  panelGroup1.add(panel1Fern);
+  panelGroup1.add(panel1Proc);
+  panelGroup1.add(panel1CFR);
+  panelGroup1.add(panel1Bytecode);
+  panelGroup1.add(panel1Hexcode);
+  panelGroup1.setSelected(panel1Proc.getModel(),true);
+  panelGroup2.add(panel2None);
+  panelGroup2.add(panel2Fern);
+  panelGroup2.add(panel2Proc);
+  panelGroup2.add(panel2CFR);
+  panelGroup2.add(panel2Bytecode);
+  panelGroup2.add(panel2Hexcode);
+  panelGroup2.setSelected(panel2Bytecode.getModel(),true);
+  panelGroup3.add(panel3None);
+  panelGroup3.add(panel3Fern);
+  panelGroup3.add(panel3Proc);
+  panelGroup3.add(panel3CFR);
+  panelGroup3.add(panel3Bytecode);
+  panelGroup3.add(panel3Hexcode);
+  panelGroup3.setSelected(panel3None.getModel(),true);
+  ActionListener listener=new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent arg0){
+      if (refreshOnChange.isSelected()) {
+        if (workPane.getCurrentClass() == null)         return;
+        workPane.refreshClass.doClick();
+      }
+    }
+  }
+;
+  panel1None.addActionListener(listener);
+  panel1Fern.addActionListener(listener);
+  panel1Proc.addActionListener(listener);
+  panel1CFR.addActionListener(listener);
+  panel1Bytecode.addActionListener(listener);
+  panel1Hexcode.addActionListener(listener);
+  panel2None.addActionListener(listener);
+  panel2Fern.addActionListener(listener);
+  panel2Proc.addActionListener(listener);
+  panel2CFR.addActionListener(listener);
+  panel2Bytecode.addActionListener(listener);
+  panel2Hexcode.addActionListener(listener);
+  panel3None.addActionListener(listener);
+  panel3Fern.addActionListener(listener);
+  panel3Proc.addActionListener(listener);
+  panel3CFR.addActionListener(listener);
+  panel3Bytecode.addActionListener(listener);
+  panel3Hexcode.addActionListener(listener);
   obfuscatorGroup.add(strongObf);
   obfuscatorGroup.add(lightObf);
   obfuscatorGroup.setSelected(strongObf.getModel(),true);
   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  rbr.setSelected(true);
-  rsy.setSelected(false);
-  din.setSelected(true);
-  das.setSelected(true);
-  dgs.setSelected(false);
-  den.setSelected(true);
-  uto.setSelected(true);
-  udv.setSelected(true);
-  fdi.setSelected(true);
-  asc.setSelected(false);
-  debugHelpers.setSelected(true);
-  decodeenumswitch.setSelected(true);
-  sugarenums.setSelected(true);
-  decodestringswitch.setSelected(true);
-  arrayiter.setSelected(true);
-  collectioniter.setSelected(true);
-  innerclasses.setSelected(true);
-  removeboilerplate.setSelected(true);
-  removeinnerclasssynthetics.setSelected(true);
-  decodelambdas.setSelected(true);
-  hidebridgemethods.setSelected(true);
-  liftconstructorinit.setSelected(true);
-  removedeadmethods.setSelected(true);
-  removebadgenerics.setSelected(true);
-  sugarasserts.setSelected(true);
-  sugarboxing.setSelected(true);
-  showversion.setSelected(true);
-  decodefinally.setSelected(true);
-  tidymonitors.setSelected(true);
-  lenient.setSelected(false);
-  dumpclasspath.setSelected(false);
-  comments.setSelected(true);
-  forcetopsort.setSelected(true);
-  forcetopsortaggress.setSelected(true);
-  forceexceptionprune.setSelected(true);
-  stringbuffer.setSelected(false);
-  stringbuilder.setSelected(true);
-  silent.setSelected(true);
-  recover.setSelected(true);
-  eclipse.setSelected(true);
-  override.setSelected(true);
-  showinferrable.setSelected(true);
-  aexagg.setSelected(true);
-  forcecondpropagate.setSelected(true);
-  hideutf.setSelected(true);
-  hidelongstrings.setSelected(false);
-  commentmonitor.setSelected(false);
-  allowcorrecting.setSelected(true);
-  labelledblocks.setSelected(true);
-  j14classobj.setSelected(false);
-  hidelangimports.setSelected(true);
-  recoverytypeclash.setSelected(true);
-  recoverytypehints.setSelected(true);
-  forceturningifs.setSelected(true);
-  forloopaggcapture.setSelected(true);
-  chckbxmntmAppendBrackets.setSelected(true);
   chckbxmntmNewCheckItem_12.setSelected(true);
   setJMenuBar(menuBar);
   JMenu mnNewMenu=new JMenu("File");
   menuBar.add(mnNewMenu);
-  final JFrame This=this;
   mntmNewWorkspace.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
-      BytecodeViewer.resetWorkSpace();
+      BytecodeViewer.resetWorkSpace(true);
     }
   }
 );
@@ -96,13 +66,13 @@
   mntmLoadJar.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent e){
       JFileChooser fc=new JFileChooser();
-      fc.setFileFilter(new JarZipClassFileFilter());
+      fc.setFileFilter(new APKDEXJarZipClassFileFilter());
       fc.setFileHidingEnabled(false);
       fc.setAcceptAllFileFilterUsed(false);
       int returnVal=fc.showOpenDialog(This);
       if (returnVal == JFileChooser.APPROVE_OPTION)       try {
         BytecodeViewer.viewer.setC(true);
-        BytecodeViewer.openFiles(new File[]{fc.getSelectedFile()});
+        BytecodeViewer.openFiles(new File[]{fc.getSelectedFile()},true);
         BytecodeViewer.viewer.setC(false);
       }
  catch (      Exception e1) {
@@ -148,6 +118,49 @@
   }
 );
   mnNewMenu.add(mntmNewMenuItem_3);
+  mntmSaveAsApk.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      JFileChooser fc=new JFileChooser();
+      fc.setFileFilter(new DexFileFilter());
+      fc.setFileHidingEnabled(false);
+      fc.setAcceptAllFileFilterUsed(false);
+      int returnVal=fc.showSaveDialog(MainViewerGUI.this);
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+        final File file=fc.getSelectedFile();
+        if (file.exists()) {
+          JOptionPane pane=new JOptionPane("Are you sure you wish to overwrite this existing file?");
+          Object[] options=new String[]{"Yes","No"};
+          pane.setOptions(options);
+          JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Overwrite File");
+          dialog.setVisible(true);
+          Object obj=pane.getValue();
+          int result=-1;
+          for (int k=0; k < options.length; k++)           if (options[k].equals(obj))           result=k;
+          if (result == 0) {
+            file.delete();
+          }
+ else {
+            return;
+          }
+        }
+        Thread t=new Thread(){
+          @Override public void run(){
+            BytecodeViewer.viewer.setIcon(true);
+            String input=BytecodeViewer.tempDirectory + BytecodeViewer.fs + BytecodeViewer.getRandomizedName()+ ".jar";
+            JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),input);
+            String output=file.getAbsolutePath();
+            if (!output.endsWith(".dex"))             output=output + ".dex";
+            Dex2Jar.saveAsDex(new File(input),new File(output));
+            BytecodeViewer.viewer.setIcon(false);
+          }
+        }
+;
+        t.start();
+      }
+    }
+  }
+);
+  mnNewMenu.add(mntmSaveAsApk);
   mnNewMenu.add(mntmSave);
   mntmNewMenuItem.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
@@ -307,12 +320,12 @@
   mnNewMenu.add(chckbxmntmNewCheckItem_12);
   JMenuItem mntmExit=new JMenuItem("Exit");
   mntmExit.addActionListener(new ActionListener(){
-    @SuppressWarnings("deprecation") public void actionPerformed(    ActionEvent arg0){
+    public void actionPerformed(    ActionEvent arg0){
       JOptionPane pane=new JOptionPane("Are you sure you want to exit?");
       Object[] options=new String[]{"Yes","No"};
       pane.setOptions(options);
       JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Exit");
-      dialog.show();
+      dialog.setVisible(true);
       Object obj=pane.getValue();
       int result=-1;
       for (int k=0; k < options.length; k++)       if (options[k].equals(obj))       result=k;
@@ -345,7 +358,10 @@
   mnNewMenu_9.add(panel3Fern);
   mnNewMenu_9.add(panel3Bytecode);
   mnNewMenu_9.add(panel3Hexcode);
-  menuBar.add(mnNewMenu_4);
+  menuBar.add(mnSettings);
+  mnSettings.add(refreshOnChange);
+  mnSettings.add(separator_6);
+  mnSettings.add(mnNewMenu_4);
   mnNewMenu_4.add(chckbxmntmNewCheckItem_6);
   mnNewMenu_4.add(chckbxmntmNewCheckItem_11);
   mnNewMenu_4.add(chckbxmntmShowDebugLine);
@@ -360,7 +376,51 @@
   mnNewMenu_4.add(chckbxmntmNewCheckItem_2);
   mnNewMenu_4.add(chckbxmntmNewCheckItem_5);
   mnNewMenu_4.add(chckbxmntmNewCheckItem_1);
-  menuBar.add(mnNewMenu_3);
+  decodeenumswitch.setSelected(true);
+  sugarenums.setSelected(true);
+  decodestringswitch.setSelected(true);
+  arrayiter.setSelected(true);
+  collectioniter.setSelected(true);
+  innerclasses.setSelected(true);
+  removeboilerplate.setSelected(true);
+  removeinnerclasssynthetics.setSelected(true);
+  decodelambdas.setSelected(true);
+  hidebridgemethods.setSelected(true);
+  liftconstructorinit.setSelected(true);
+  removedeadmethods.setSelected(true);
+  removebadgenerics.setSelected(true);
+  sugarasserts.setSelected(true);
+  sugarboxing.setSelected(true);
+  showversion.setSelected(true);
+  decodefinally.setSelected(true);
+  tidymonitors.setSelected(true);
+  lenient.setSelected(false);
+  dumpclasspath.setSelected(false);
+  comments.setSelected(true);
+  forcetopsort.setSelected(true);
+  forcetopsortaggress.setSelected(true);
+  forceexceptionprune.setSelected(true);
+  stringbuffer.setSelected(false);
+  stringbuilder.setSelected(true);
+  silent.setSelected(true);
+  recover.setSelected(true);
+  eclipse.setSelected(true);
+  override.setSelected(true);
+  showinferrable.setSelected(true);
+  aexagg.setSelected(true);
+  forcecondpropagate.setSelected(true);
+  hideutf.setSelected(true);
+  hidelongstrings.setSelected(false);
+  commentmonitor.setSelected(false);
+  allowcorrecting.setSelected(true);
+  labelledblocks.setSelected(true);
+  j14classobj.setSelected(false);
+  hidelangimports.setSelected(true);
+  recoverytypeclash.setSelected(true);
+  recoverytypehints.setSelected(true);
+  forceturningifs.setSelected(true);
+  forloopaggcapture.setSelected(true);
+  mnSettings.add(mnNewMenu_3);
   mnNewMenu_3.add(decodeenumswitch);
   mnNewMenu_3.add(sugarenums);
   mnNewMenu_3.add(decodestringswitch);
@@ -405,8 +465,18 @@
   mnNewMenu_3.add(recoverytypehints);
   mnNewMenu_3.add(forceturningifs);
   mnNewMenu_3.add(forloopaggcapture);
+  rbr.setSelected(true);
+  rsy.setSelected(false);
+  din.setSelected(true);
+  das.setSelected(true);
+  dgs.setSelected(false);
+  den.setSelected(true);
+  uto.setSelected(true);
+  udv.setSelected(true);
+  fdi.setSelected(true);
+  asc.setSelected(false);
   JMenu mnDecompilerSettings=new JMenu("FernFlower");
-  menuBar.add(mnDecompilerSettings);
+  mnSettings.add(mnDecompilerSettings);
   dc4.setSelected(true);
   mnDecompilerSettings.add(dc4);
   nns.setSelected(true);
@@ -433,8 +503,10 @@
   mnDecompilerSettings.add(udv);
   mnDecompilerSettings.add(fdi);
   mnDecompilerSettings.add(asc);
+  debugHelpers.setSelected(true);
+  chckbxmntmAppendBrackets.setSelected(true);
   JMenu mnBytecodeDecompilerSettings=new JMenu("Bytecode Decompiler");
-  menuBar.add(mnBytecodeDecompilerSettings);
+  mnSettings.add(mnBytecodeDecompilerSettings);
   mnBytecodeDecompilerSettings.add(debugHelpers);
   mnBytecodeDecompilerSettings.add(chckbxmntmAppendBrackets);
   mnNewMenu_5.setVisible(false);
