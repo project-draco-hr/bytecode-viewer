@@ -1,28 +1,35 @@
 {
+  this.cn=BytecodeViewer.getClassNode(cn.name);
   if (BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1None.getModel()))   pane1=0;
  else   if (BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1Proc.getModel()))   pane1=1;
  else   if (BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1CFR.getModel()))   pane1=2;
  else   if (BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1Fern.getModel()))   pane1=3;
  else   if (BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1Bytecode.getModel()))   pane1=4;
  else   if (BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1Hexcode.getModel()))   pane1=5;
+ else   if (BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1Smali.getModel()))   pane1=6;
   if (BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2None.getModel()))   pane2=0;
  else   if (BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2Proc.getModel()))   pane2=1;
  else   if (BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2CFR.getModel()))   pane2=2;
  else   if (BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2Fern.getModel()))   pane2=3;
  else   if (BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2Bytecode.getModel()))   pane2=4;
  else   if (BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2Hexcode.getModel()))   pane2=5;
+ else   if (BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2Smali.getModel()))   pane2=6;
   if (BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3None.getModel()))   pane3=0;
  else   if (BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3Proc.getModel()))   pane3=1;
  else   if (BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3CFR.getModel()))   pane3=2;
  else   if (BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3Fern.getModel()))   pane3=3;
  else   if (BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3Bytecode.getModel()))   pane3=4;
  else   if (BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3Hexcode.getModel()))   pane3=5;
+ else   if (BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3Smali.getModel()))   pane3=6;
   t=new PaneUpdaterThread(){
     @Override public void doShit(){
       try {
         panel1.removeAll();
         panel2.removeAll();
         panel3.removeAll();
+        smali1=null;
+        smali2=null;
+        smali3=null;
         if (pane1 != 0 && pane1 != 5)         panel1.add(panel1Search,BorderLayout.NORTH);
         if (pane2 != 0 && pane2 != 5)         panel2.add(panel2Search,BorderLayout.NORTH);
         if (pane3 != 0 && pane3 != 5)         panel3.add(panel3Search,BorderLayout.NORTH);
@@ -34,6 +41,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(proc_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel1.add(scrollPane);
         }
         if (pane1 == 2) {
@@ -44,6 +52,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(cfr_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel1.add(scrollPane);
         }
         if (pane1 == 3) {
@@ -54,6 +63,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(ff_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel1.add(scrollPane);
         }
         if (pane1 == 4) {
@@ -64,6 +74,7 @@
           RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(ClassNodeDecompiler.decompile(cn));
           bytecodeArea.setCaretPosition(0);
+          bytecodeArea.setEditable(false);
           panel1.add(bytecodeSPane);
         }
         if (pane1 == 5) {
@@ -71,6 +82,17 @@
           cn.accept(cw);
           JHexEditor hex=new JHexEditor(cw.toByteArray());
           panel1.add(hex);
+        }
+        if (pane1 == 6) {
+          RSyntaxTextArea bytecodeArea=new RSyntaxTextArea();
+          bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+          bytecodeArea.setCodeFoldingEnabled(true);
+          bytecodeArea.setAntiAliasingEnabled(true);
+          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          bytecodeArea.setText(Smali.decompileClassNode(cn));
+          bytecodeArea.setCaretPosition(0);
+          smali1=bytecodeArea;
+          panel1.add(bytecodeSPane);
         }
         if (pane2 == 1) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -80,6 +102,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(proc_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel2.add(scrollPane);
         }
         if (pane2 == 2) {
@@ -90,6 +113,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(cfr_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel2.add(scrollPane);
         }
         if (pane2 == 3) {
@@ -100,6 +124,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(ff_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel2.add(scrollPane);
         }
         if (pane2 == 4) {
@@ -110,6 +135,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(paneArea);
           paneArea.setText(ClassNodeDecompiler.decompile(cn));
           paneArea.setCaretPosition(0);
+          paneArea.setEditable(false);
           panel2.add(scrollPane);
         }
         if (pane2 == 5) {
@@ -117,6 +143,17 @@
           cn.accept(cw);
           JHexEditor hex=new JHexEditor(cw.toByteArray());
           panel2.add(hex);
+        }
+        if (pane2 == 6) {
+          RSyntaxTextArea paneArea=new RSyntaxTextArea();
+          paneArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+          paneArea.setCodeFoldingEnabled(true);
+          paneArea.setAntiAliasingEnabled(true);
+          RTextScrollPane scrollPane=new RTextScrollPane(paneArea);
+          paneArea.setText(Smali.decompileClassNode(cn));
+          paneArea.setCaretPosition(0);
+          smali2=paneArea;
+          panel2.add(scrollPane);
         }
         if (pane3 == 1) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -126,6 +163,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(proc_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel3.add(scrollPane);
         }
         if (pane3 == 2) {
@@ -136,6 +174,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(cfr_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel3.add(scrollPane);
         }
         if (pane3 == 3) {
@@ -146,6 +185,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
           panelArea.setText(ff_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
+          panelArea.setEditable(false);
           panel3.add(scrollPane);
         }
         if (pane3 == 4) {
@@ -156,6 +196,7 @@
           RTextScrollPane scrollPane=new RTextScrollPane(paneArea);
           paneArea.setText(ClassNodeDecompiler.decompile(cn));
           paneArea.setCaretPosition(0);
+          paneArea.setEditable(false);
           panel3.add(scrollPane);
         }
         if (pane3 == 5) {
@@ -163,6 +204,17 @@
           cn.accept(cw);
           JHexEditor hex=new JHexEditor(cw.toByteArray());
           panel3.add(hex);
+        }
+        if (pane3 == 6) {
+          RSyntaxTextArea paneArea=new RSyntaxTextArea();
+          paneArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+          paneArea.setCodeFoldingEnabled(true);
+          paneArea.setAntiAliasingEnabled(true);
+          RTextScrollPane scrollPane=new RTextScrollPane(paneArea);
+          paneArea.setText(Smali.decompileClassNode(cn));
+          paneArea.setCaretPosition(0);
+          smali3=paneArea;
+          panel3.add(scrollPane);
         }
         resetDivider();
         BytecodeViewer.viewer.setIcon(false);

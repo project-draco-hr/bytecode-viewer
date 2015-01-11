@@ -3,7 +3,7 @@
     public void run(){
       if (busy) {
         try {
-          mntmNewMenuItem_4.setIcon(This.busy);
+          mntmNewMenuItem_4.setIcon(BytecodeViewer.viewer.busy);
         }
  catch (        NullPointerException e) {
           mntmNewMenuItem_4.setIcon(busyB64);

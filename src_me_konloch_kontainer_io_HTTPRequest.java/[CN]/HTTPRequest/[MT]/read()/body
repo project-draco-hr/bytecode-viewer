@@ -1,0 +1,18 @@
+{
+  ArrayList<String> st;
+  try {
+    setup();
+    st=new ArrayList<String>();
+    String s;
+    while ((s=reader.readLine()) != null)     st.add(s);
+    lastConnectionHeaders=connection.getHeaderFields().entrySet();
+  }
+ catch (  Exception e) {
+    cleanup();
+    throw e;
+  }
+ finally {
+    cleanup();
+  }
+  return st.toArray(new String[st.size()]);
+}

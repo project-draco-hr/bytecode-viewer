@@ -1,0 +1,35 @@
+{
+  try {
+    final ClassWriter cw=new ClassWriter(0);
+    cn.accept(cw);
+    String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp";
+    final File tempClass=new File(getUniqueName(fileStart,".class") + ".class");
+    try {
+      final FileOutputStream fos=new FileOutputStream(tempClass);
+      fos.write(cw.toByteArray());
+      fos.close();
+    }
+ catch (    final IOException e) {
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+    DecompilerSettings settings=getDecompilerSettings();
+    LuytenTypeLoader typeLoader=new LuytenTypeLoader();
+    MetadataSystem metadataSystem=new MetadataSystem(typeLoader);
+    TypeReference type=metadataSystem.lookupType(tempClass.getCanonicalPath());
+    DecompilationOptions decompilationOptions=new DecompilationOptions();
+    decompilationOptions.setSettings(DecompilerSettings.javaDefaults());
+    decompilationOptions.setFullDecompilation(true);
+    TypeDefinition resolvedType=null;
+    if (type == null || ((resolvedType=type.resolve()) == null)) {
+      throw new Exception("Unable to resolve type.");
+    }
+    StringWriter stringwriter=new StringWriter();
+    settings.getLanguage().decompileType(resolvedType,new PlainTextOutput(stringwriter),decompilationOptions);
+    String decompiledSource=stringwriter.toString();
+    return decompiledSource;
+  }
+ catch (  Exception e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+  return "Procyon error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
+}

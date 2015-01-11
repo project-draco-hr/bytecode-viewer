@@ -1,0 +1,29 @@
+{
+  final ClassWriter cw=new ClassWriter(0);
+  cn.accept(cw);
+  String start=getUniqueName("",".class");
+  final File tempClass=new File(start + ".class");
+  try {
+    final FileOutputStream fos=new FileOutputStream(tempClass);
+    fos.write(cw.toByteArray());
+    fos.close();
+  }
+ catch (  final IOException e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+  org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler.main(generateMainMethod(tempClass.getAbsolutePath(),"."));
+  tempClass.delete();
+  final File outputJava=new File(start + ".java");
+  if (outputJava.exists()) {
+    String s;
+    try {
+      s=DiskReader.loadAsString(outputJava.getAbsolutePath());
+      outputJava.delete();
+      return s;
+    }
+ catch (    Exception e) {
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+  }
+  return "FernFlower error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com";
+}

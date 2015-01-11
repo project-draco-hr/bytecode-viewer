@@ -2,9 +2,6 @@
   if (zipFile == null) {
     throw new IllegalArgumentException("Cannot unzip a null file!");
   }
- else   if (!ZIP_FILE_FILTER.accept(zipFile)) {
-    throw new IllegalArgumentException("Given archive is not a valid Zip file!");
-  }
   if (target == null) {
     throw new IllegalArgumentException("Cannot unzip to a null target!");
   }

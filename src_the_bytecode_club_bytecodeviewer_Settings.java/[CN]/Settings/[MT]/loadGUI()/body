@@ -86,6 +86,7 @@
  else     if (decompiler == 3)     BytecodeViewer.viewer.panelGroup1.setSelected(BytecodeViewer.viewer.panel1Fern.getModel(),true);
  else     if (decompiler == 4)     BytecodeViewer.viewer.panelGroup1.setSelected(BytecodeViewer.viewer.panel1Bytecode.getModel(),true);
  else     if (decompiler == 5)     BytecodeViewer.viewer.panelGroup1.setSelected(BytecodeViewer.viewer.panel1Hexcode.getModel(),true);
+ else     if (decompiler == 6)     BytecodeViewer.viewer.panelGroup1.setSelected(BytecodeViewer.viewer.panel1Smali.getModel(),true);
     decompiler=Integer.parseInt(DiskReader.loadString(BytecodeViewer.settingsName,82,false));
     if (decompiler == 0)     BytecodeViewer.viewer.panelGroup2.setSelected(BytecodeViewer.viewer.panel2None.getModel(),true);
  else     if (decompiler == 1)     BytecodeViewer.viewer.panelGroup2.setSelected(BytecodeViewer.viewer.panel2Proc.getModel(),true);
@@ -93,6 +94,7 @@
  else     if (decompiler == 3)     BytecodeViewer.viewer.panelGroup2.setSelected(BytecodeViewer.viewer.panel2Fern.getModel(),true);
  else     if (decompiler == 4)     BytecodeViewer.viewer.panelGroup2.setSelected(BytecodeViewer.viewer.panel2Bytecode.getModel(),true);
  else     if (decompiler == 5)     BytecodeViewer.viewer.panelGroup2.setSelected(BytecodeViewer.viewer.panel2Hexcode.getModel(),true);
+ else     if (decompiler == 6)     BytecodeViewer.viewer.panelGroup2.setSelected(BytecodeViewer.viewer.panel2Smali.getModel(),true);
     decompiler=Integer.parseInt(DiskReader.loadString(BytecodeViewer.settingsName,83,false));
     if (decompiler == 0)     BytecodeViewer.viewer.panelGroup3.setSelected(BytecodeViewer.viewer.panel3None.getModel(),true);
  else     if (decompiler == 1)     BytecodeViewer.viewer.panelGroup3.setSelected(BytecodeViewer.viewer.panel3Proc.getModel(),true);
@@ -100,7 +102,15 @@
  else     if (decompiler == 3)     BytecodeViewer.viewer.panelGroup3.setSelected(BytecodeViewer.viewer.panel3Fern.getModel(),true);
  else     if (decompiler == 4)     BytecodeViewer.viewer.panelGroup3.setSelected(BytecodeViewer.viewer.panel3Bytecode.getModel(),true);
  else     if (decompiler == 5)     BytecodeViewer.viewer.panelGroup3.setSelected(BytecodeViewer.viewer.panel3Hexcode.getModel(),true);
+ else     if (decompiler == 6)     BytecodeViewer.viewer.panelGroup3.setSelected(BytecodeViewer.viewer.panel3Smali.getModel(),true);
     BytecodeViewer.viewer.refreshOnChange.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,84,false)));
+    boolean bool=Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,85,false));
+    if (bool) {
+      BytecodeViewer.viewer.setExtendedState(JFrame.MAXIMIZED_BOTH);
+      BytecodeViewer.viewer.isMaximized=true;
+    }
+    BytecodeViewer.viewer.autoCompileSmali.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,86,false)));
+    BytecodeViewer.viewer.autoCompileOnRefresh.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,87,false)));
   }
  catch (  Exception e) {
   }

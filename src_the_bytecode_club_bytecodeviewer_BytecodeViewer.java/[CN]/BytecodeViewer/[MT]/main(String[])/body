@@ -26,21 +26,11 @@
   Thread versionChecker=new Thread(){
     @Override public void run(){
       try {
-        HttpURLConnection connection=(HttpURLConnection)new URL("https://raw.githubusercontent.com/Konloch/bytecode-viewer/master/VERSION").openConnection();
-        connection.setUseCaches(false);
-        connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0");
-        BufferedReader reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        final String version=reader.readLine();
-        reader.close();
+        HTTPRequest r=new HTTPRequest(new URL("https://raw.githubusercontent.com/Konloch/bytecode-viewer/master/VERSION"));
+        final String version=r.readSingle();
         if (!BytecodeViewer.version.equals(version)) {
-          connection=(HttpURLConnection)new URL("https://raw.githubusercontent.com/Konloch/bytecode-viewer/master/README.txt").openConnection();
-          connection.setUseCaches(false);
-          connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0");
-          reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
-          ArrayList<String> readme=new ArrayList<String>();
-          String s;
-          while ((s=reader.readLine()) != null)           readme.add(s);
-          reader.close();
+          r=new HTTPRequest(new URL("https://raw.githubusercontent.com/Konloch/bytecode-viewer/master/VERSION"));
+          String[] readme=r.read();
           String changelog="Unable to load change log, please try again later." + nl;
           boolean trigger=false;
           for (          String st : readme) {
@@ -48,7 +38,7 @@
               changelog="";
               trigger=true;
             }
-            if (trigger == true && !st.equals("--- " + version + " ---:")) {
+ else             if (trigger == true) {
               if (st.startsWith("--- "))               trigger=false;
  else               changelog+=st + nl;
             }

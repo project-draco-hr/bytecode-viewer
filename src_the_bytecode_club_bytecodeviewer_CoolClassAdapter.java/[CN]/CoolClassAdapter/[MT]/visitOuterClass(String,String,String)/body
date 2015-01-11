@@ -1,0 +1,6 @@
+{
+  if (owner != null)   owner=owner.replace(oldName,newName);
+  if (name != null)   name=name.replace(oldName,newName);
+  if (desc != null)   desc=desc.replace(oldName,newName);
+  cv.visitOuterClass(owner,name,desc);
+}

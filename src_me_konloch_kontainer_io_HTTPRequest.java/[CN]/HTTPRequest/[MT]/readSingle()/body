@@ -1,0 +1,16 @@
+{
+  String s;
+  try {
+    setup();
+    s=reader.readLine();
+    lastConnectionHeaders=connection.getHeaderFields().entrySet();
+  }
+ catch (  Exception e) {
+    cleanup();
+    throw e;
+  }
+ finally {
+    cleanup();
+  }
+  return s;
+}

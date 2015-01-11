@@ -1,0 +1,25 @@
+{
+  if (getLoadedClasses().isEmpty())   return false;
+  for (  java.awt.Component c : BytecodeViewer.viewer.workPane.getLoadedViewers()) {
+    if (c instanceof ClassViewer) {
+      ClassViewer cv=(ClassViewer)c;
+      Object smali[]=cv.getSmali();
+      ClassNode origNode=(ClassNode)smali[0];
+      String smaliText=(String)smali[1];
+      if (smali != null) {
+        byte[] smaliCompiled=Smali.compile(smaliText);
+        if (smaliCompiled != null) {
+          ClassNode newNode=JarUtils.getNode(smaliCompiled);
+          System.out.println(origNode.name + ":" + newNode.name);
+          BytecodeViewer.updateNode(origNode,newNode);
+        }
+ else {
+          BytecodeViewer.showMessage("There has been an error with assembling your Smali code, please check this. Class: " + origNode.name);
+          return false;
+        }
+      }
+    }
+  }
+  if (message)   BytecodeViewer.showMessage("Compiled Successfully.");
+  return true;
+}
