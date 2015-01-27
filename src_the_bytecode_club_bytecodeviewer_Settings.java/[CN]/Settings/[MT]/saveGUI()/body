@@ -106,6 +106,7 @@
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.isMaximized),false);
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.autoCompileSmali.isSelected()),false);
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.autoCompileOnRefresh.isSelected()),false);
+    DiskWriter.writeNewLine(BytecodeViewer.settingsName,BytecodeViewer.lastDirectory,false);
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

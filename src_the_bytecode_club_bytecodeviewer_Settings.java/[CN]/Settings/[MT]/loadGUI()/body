@@ -111,6 +111,7 @@
     }
     BytecodeViewer.viewer.autoCompileSmali.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,86,false)));
     BytecodeViewer.viewer.autoCompileOnRefresh.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,87,false)));
+    BytecodeViewer.lastDirectory=DiskReader.loadString(BytecodeViewer.settingsName,88,false);
   }
  catch (  Exception e) {
   }

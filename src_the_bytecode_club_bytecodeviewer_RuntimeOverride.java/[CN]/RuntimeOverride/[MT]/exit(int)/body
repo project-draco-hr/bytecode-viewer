@@ -1,8 +1,0 @@
-{
-  if (EZInjection.sandboxSystem) {
-    EZInjection.exitR(status);
-  }
- else {
-    Runtime.getRuntime().exit(status);
-  }
-}
