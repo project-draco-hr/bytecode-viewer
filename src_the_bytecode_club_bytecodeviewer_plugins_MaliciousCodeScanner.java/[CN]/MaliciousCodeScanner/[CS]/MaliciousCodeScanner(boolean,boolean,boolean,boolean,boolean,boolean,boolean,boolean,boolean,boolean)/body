@@ -8,4 +8,5 @@
   LHS=https;
   LIP=ip;
   NSM=nullSecMan;
+  ROB=robot;
 }

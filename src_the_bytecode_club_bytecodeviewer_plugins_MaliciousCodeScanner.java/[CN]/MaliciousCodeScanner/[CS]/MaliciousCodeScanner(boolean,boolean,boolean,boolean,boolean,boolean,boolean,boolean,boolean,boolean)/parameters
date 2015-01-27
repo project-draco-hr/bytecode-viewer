@@ -7,3 +7,4 @@ boolean http
 boolean https
 boolean ip
 boolean nullSecMan
+boolean robot
