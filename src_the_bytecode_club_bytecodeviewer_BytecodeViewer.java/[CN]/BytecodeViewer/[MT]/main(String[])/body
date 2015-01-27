@@ -1,4 +1,5 @@
 {
+  getBCVDirectory();
   SecurityManager sm=new SecurityManager(){
     @Override public void checkExec(    String cmd){
       throw new SecurityException("BCV is awesome.");
