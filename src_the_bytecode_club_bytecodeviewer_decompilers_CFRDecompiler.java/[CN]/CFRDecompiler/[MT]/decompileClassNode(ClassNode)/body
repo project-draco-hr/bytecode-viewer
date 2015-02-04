@@ -1,8 +1,8 @@
 {
   final ClassWriter cw=new ClassWriter(0);
   cn.accept(cw);
-  String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp";
-  final File tempClass=new File(getUniqueName(fileStart,".class") + ".class");
+  String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs;
+  final File tempClass=new File(MiscUtils.getUniqueName(fileStart,".class") + ".class");
   try {
     final FileOutputStream fos=new FileOutputStream(tempClass);
     fos.write(cw.toByteArray());

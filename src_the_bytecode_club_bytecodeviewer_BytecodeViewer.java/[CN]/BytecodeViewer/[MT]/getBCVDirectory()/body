@@ -1,6 +1,5 @@
 {
-  File f=new File(System.getProperty("user.home") + fs + ".Bytecode-Viewer");
-  while (!f.exists())   f.mkdirs();
-  if (!f.isHidden() && isWindows())   hideFile(f);
-  return f.getAbsolutePath();
+  while (!BCVDir.exists())   BCVDir.mkdirs();
+  if (!BCVDir.isHidden() && isWindows())   hideFile(BCVDir);
+  return BCVDir.getAbsolutePath();
 }

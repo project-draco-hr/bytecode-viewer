@@ -2,7 +2,7 @@
   File tempZip=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp.jar");
   if (tempZip.exists())   tempZip.delete();
   JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),tempZip.getAbsolutePath());
-  String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp";
+  String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs;
   String fuckery=fuckery(fileStart);
   org.benf.cfr.reader.Main.main(generateMainMethod(tempZip.getAbsolutePath(),fuckery));
   tempZip.delete();

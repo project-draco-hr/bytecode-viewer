@@ -12,7 +12,7 @@
     Object[] options=new String[]{"Yes","No"};
     pane.setOptions(options);
     JDialog dialog=pane.createDialog(viewer,"Bytecode Viewer - Reset Workspace");
-    dialog.show();
+    dialog.setVisible(true);
     Object obj=pane.getValue();
     int result=-1;
     for (int k=0; k < options.length; k++)     if (options[k].equals(obj))     result=k;

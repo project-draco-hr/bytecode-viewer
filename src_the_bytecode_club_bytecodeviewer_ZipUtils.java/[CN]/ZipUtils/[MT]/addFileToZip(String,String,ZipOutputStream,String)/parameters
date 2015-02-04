@@ -1,0 +1,4 @@
+String path
+String srcFile
+ZipOutputStream zip
+String ignore

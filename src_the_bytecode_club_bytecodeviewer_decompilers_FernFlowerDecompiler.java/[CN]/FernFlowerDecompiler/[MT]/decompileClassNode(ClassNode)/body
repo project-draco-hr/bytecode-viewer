@@ -1,7 +1,7 @@
 {
   final ClassWriter cw=new ClassWriter(0);
   cn.accept(cw);
-  String start=getUniqueName("",".class");
+  String start=MiscUtils.getUniqueName("",".class");
   final File tempClass=new File(start + ".class");
   String exception="";
   try {
@@ -32,5 +32,5 @@
       exception+=BytecodeViewer.nl + BytecodeViewer.nl + sw.toString();
     }
   }
-  return "FernFlower error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com" + BytecodeViewer.nl + BytecodeViewer.nl+ "Suggestest Fix: Click refresh class, if it fails again try another decompiler."+ BytecodeViewer.nl+ BytecodeViewer.nl+ exception;
+  return "FernFlower error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com" + BytecodeViewer.nl + BytecodeViewer.nl+ "Suggested Fix: Click refresh class, if it fails again try another decompiler."+ BytecodeViewer.nl+ BytecodeViewer.nl+ exception;
 }

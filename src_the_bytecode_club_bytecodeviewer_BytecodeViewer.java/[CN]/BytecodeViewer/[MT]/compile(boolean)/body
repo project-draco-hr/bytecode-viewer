@@ -1,0 +1,40 @@
+{
+  if (getLoadedClasses().isEmpty())   return false;
+  for (  java.awt.Component c : BytecodeViewer.viewer.workPane.getLoadedViewers()) {
+    if (c instanceof ClassViewer) {
+      ClassViewer cv=(ClassViewer)c;
+      Object smali[]=cv.getSmali();
+      if (smali != null) {
+        ClassNode origNode=(ClassNode)smali[0];
+        String smaliText=(String)smali[1];
+        byte[] smaliCompiled=the.bytecode.club.bytecodeviewer.compilers.SmaliAssembler.compile(smaliText);
+        if (smaliCompiled != null) {
+          ClassNode newNode=JarUtils.getNode(smaliCompiled);
+          System.out.println(origNode.name + ":" + newNode.name);
+          BytecodeViewer.updateNode(origNode,newNode);
+        }
+ else {
+          BytecodeViewer.showMessage("There has been an error with assembling your Smali code, please check this. Class: " + origNode.name);
+          return false;
+        }
+      }
+      Object krakatau[]=cv.getKrakatau();
+      if (krakatau != null) {
+        ClassNode origNodeK=(ClassNode)krakatau[0];
+        String krakatauText=(String)krakatau[1];
+        byte[] krakatauCompiled=the.bytecode.club.bytecodeviewer.compilers.KrakatauAssembler.compile(krakatauText,origNodeK.name);
+        if (krakatauCompiled != null) {
+          ClassNode newNode=JarUtils.getNode(krakatauCompiled);
+          System.out.println(origNodeK.name + ":" + newNode.name);
+          BytecodeViewer.updateNode(origNodeK,newNode);
+        }
+ else {
+          BytecodeViewer.showMessage("There has been an error with assembling your Krakatau Bytecode, please check this. Class: " + origNodeK.name);
+          return false;
+        }
+      }
+    }
+  }
+  if (message)   BytecodeViewer.showMessage("Compiled Successfully.");
+  return true;
+}

@@ -1,3 +1,0 @@
-{
-  print("[SANDBOX] Tried to call on System.exit(" + i + "), it's been blocked.");
-}

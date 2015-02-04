@@ -40,12 +40,6 @@
       }
     }
   }
-  if (sandboxRuntime) {
-    ASMUtil_OLD.renameClassNode("java/lang/Runtime","the/bytecode/club/bytecodeviewer/RuntimeOverride");
-  }
-  if (sandboxSystem) {
-    ASMUtil_OLD.renameMethodNode("java/lang/System","exit","(Ljava/lang/String;)V","the/bytecode/club/bytecodeviewer/plugins/EZInjection",null,null);
-  }
   if (useProxy) {
     try {
       String[] split=proxy.split(":");

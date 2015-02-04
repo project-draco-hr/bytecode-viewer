@@ -26,6 +26,8 @@
   panelGroup1.add(panel1Bytecode);
   panelGroup1.add(panel1Smali);
   panelGroup1.add(panel1Hexcode);
+  panelGroup1.add(panel1Krakatau);
+  panelGroup1.add(panel1KrakatauEditable);
   panelGroup1.setSelected(panel1Proc.getModel(),true);
   panelGroup2.add(panel2None);
   panelGroup2.add(panel2Fern);
@@ -34,6 +36,8 @@
   panelGroup2.add(panel2Bytecode);
   panelGroup2.add(panel2Smali);
   panelGroup2.add(panel2Hexcode);
+  panelGroup2.add(panel2Krakatau);
+  panelGroup2.add(panel2KrakatauEditable);
   panelGroup2.setSelected(panel2Bytecode.getModel(),true);
   panelGroup3.add(panel3None);
   panelGroup3.add(panel3Fern);
@@ -42,6 +46,8 @@
   panelGroup3.add(panel3Bytecode);
   panelGroup3.add(panel3Smali);
   panelGroup3.add(panel3Hexcode);
+  panelGroup3.add(panel3Krakatau);
+  panelGroup3.add(panel3KrakatauEditable);
   panelGroup3.setSelected(panel3None.getModel(),true);
   ActionListener listener=new ActionListener(){
     @Override public void actionPerformed(    ActionEvent arg0){
@@ -122,7 +128,7 @@
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
       }
-      if (autoCompileSmali.isSelected() && !BytecodeViewer.compileSmali(false))       return;
+      if (autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))       return;
       JFileChooser fc=new JFileChooser();
       fc.setFileFilter(new ZipFileFilter());
       fc.setFileHidingEnabled(false);
@@ -168,7 +174,7 @@
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
       }
-      if (autoCompileSmali.isSelected() && !BytecodeViewer.compileSmali(false))       return;
+      if (autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))       return;
       JFileChooser fc=new JFileChooser();
       fc.setFileFilter(new JarFileFilter());
       fc.setFileHidingEnabled(false);
@@ -201,7 +207,7 @@
 );
   mntmNewMenuItem_13.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
-      BytecodeViewer.compileSmali(true);
+      BytecodeViewer.compile(true);
     }
   }
 );
@@ -213,7 +219,7 @@
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
       }
-      if (autoCompileSmali.isSelected() && !BytecodeViewer.compileSmali(false))       return;
+      if (autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))       return;
       JFileChooser fc=new JFileChooser();
       fc.setFileFilter(new DexFileFilter());
       fc.setFileHidingEnabled(false);
@@ -269,7 +275,7 @@
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
       }
-      if (autoCompileSmali.isSelected() && !BytecodeViewer.compileSmali(false))       return;
+      if (autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))       return;
       JFileChooser fc=new JFileChooser();
       fc.setFileFilter(new ZipFileFilter());
       fc.setFileHidingEnabled(false);
@@ -297,7 +303,7 @@
         BytecodeViewer.viewer.setIcon(true);
         final String path=appendZip(file);
         JOptionPane pane=new JOptionPane("What decompiler will you use?");
-        Object[] options=new String[]{"Procyon","CFR","Fernflower","Cancel"};
+        Object[] options=new String[]{"Procyon","CFR","Fernflower","Krakatau","Cancel"};
         pane.setOptions(options);
         JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Select Decompiler");
         dialog.setVisible(true);
@@ -349,6 +355,24 @@
 ;
           t.start();
         }
+        if (result == 3) {
+          Thread t=new Thread(){
+            @Override public void run(){
+              try {
+                krak_dc.decompileToZip(path);
+                BytecodeViewer.viewer.setIcon(false);
+              }
+ catch (              Exception e) {
+                new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+              }
+            }
+          }
+;
+          t.start();
+        }
+        if (result == 4) {
+          BytecodeViewer.viewer.setIcon(false);
+        }
       }
     }
   }
@@ -359,7 +383,7 @@
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
       }
-      if (autoCompileSmali.isSelected() && !BytecodeViewer.compileSmali(false))       return;
+      if (autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))       return;
       final String s=workPane.getCurrentClass().name;
       JFileChooser fc=new JFileChooser();
       fc.setFileFilter(new JavaFileFilter());
@@ -387,7 +411,7 @@
           }
         }
         JOptionPane pane=new JOptionPane("What decompiler will you use?");
-        Object[] options=new String[]{"Procyon","CFR","Fernflower","Cancel"};
+        Object[] options=new String[]{"Procyon","CFR","Fernflower","Krakatau","Cancel"};
         pane.setOptions(options);
         JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Select Decompiler");
         dialog.setVisible(true);
@@ -439,6 +463,24 @@
 ;
           t.start();
         }
+        if (result == 3) {
+          Thread t=new Thread(){
+            @Override public void run(){
+              try {
+                krak_dc.decompileToClass(s,path);
+                BytecodeViewer.viewer.setIcon(false);
+              }
+ catch (              Exception e) {
+                new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+              }
+            }
+          }
+;
+          t.start();
+        }
+        if (result == 4) {
+          BytecodeViewer.viewer.setIcon(false);
+        }
       }
     }
   }
@@ -482,8 +524,10 @@
   mnNewMenu_7.add(panel1Proc);
   mnNewMenu_7.add(panel1CFR);
   mnNewMenu_7.add(panel1Fern);
+  mnNewMenu_7.add(panel1Krakatau);
   mnNewMenu_7.add(separator_8);
   mnNewMenu_7.add(panel1Bytecode);
+  mnNewMenu_7.add(panel1KrakatauEditable);
   mnNewMenu_7.add(panel1Smali);
   mnNewMenu_7.add(panel1Hexcode);
   mnNewMenu_6.add(mnNewMenu_8);
@@ -492,8 +536,10 @@
   mnNewMenu_8.add(panel2Proc);
   mnNewMenu_8.add(panel2CFR);
   mnNewMenu_8.add(panel2Fern);
+  mnNewMenu_8.add(panel2Krakatau);
   mnNewMenu_8.add(separator_10);
   mnNewMenu_8.add(panel2Bytecode);
+  mnNewMenu_8.add(panel2KrakatauEditable);
   mnNewMenu_8.add(panel2Smali);
   mnNewMenu_8.add(panel2Hexcode);
   mnNewMenu_6.add(mnNewMenu_9);
@@ -502,7 +548,9 @@
   mnNewMenu_9.add(panel3Proc);
   mnNewMenu_9.add(panel3CFR);
   mnNewMenu_9.add(panel3Fern);
+  mnNewMenu_9.add(panel3Krakatau);
   mnNewMenu_9.add(separator_12);
+  mnNewMenu_9.add(panel3KrakatauEditable);
   mnNewMenu_9.add(panel3Bytecode);
   mnNewMenu_9.add(panel3Smali);
   mnNewMenu_9.add(panel3Hexcode);
@@ -512,6 +560,21 @@
   mnSettings.add(chckbxmntmNewCheckItem_12);
   chckbxmntmNewCheckItem_12.setSelected(true);
   mnSettings.add(refreshOnChange);
+  mnSettings.add(separator_13);
+  mntmSetPythonDirectory.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      pythonC();
+    }
+  }
+);
+  mnSettings.add(mntmSetPythonDirectory);
+  mntmSetJreRt.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      rtC();
+    }
+  }
+);
+  mnSettings.add(mntmSetJreRt);
   mnSettings.add(separator_6);
   mnSettings.add(mnNewMenu_4);
   mnNewMenu_4.add(chckbxmntmNewCheckItem_6);
@@ -751,7 +814,7 @@
   mntmStartExternalPlugin.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
       JFileChooser fc=new JFileChooser();
-      fc.setFileFilter(new GroovyPythonRubyFileFilter());
+      fc.setFileFilter(new GroovyFileFilter());
       fc.setFileHidingEnabled(false);
       fc.setAcceptAllFileFilterUsed(false);
       int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);
@@ -801,7 +864,7 @@
   }
 );
   setSize(new Dimension(800,400));
-  setTitle("Bytecode Viewer " + BytecodeViewer.version + " - https://the.bytecode.club - @Konloch");
+  setTitle("Bytecode Viewer " + BytecodeViewer.version + " - https://bytecodeviewer.com | https://the.bytecode.club - @Konloch");
   getContentPane().setLayout(new BoxLayout(getContentPane(),BoxLayout.X_AXIS));
   FileNavigationPane cn=new FileNavigationPane(this);
   cn.setMinimumSize(new Dimension(200,50));

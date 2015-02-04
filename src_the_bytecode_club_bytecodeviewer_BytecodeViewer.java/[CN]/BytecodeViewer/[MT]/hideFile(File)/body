@@ -1,9 +1,10 @@
 {
-  System.out.println("hiding file");
+  sm.blocking=false;
   try {
     Runtime.getRuntime().exec("attrib +H " + f.getAbsolutePath());
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
+  sm.blocking=true;
 }

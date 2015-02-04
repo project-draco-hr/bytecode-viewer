@@ -1,0 +1,3 @@
+{
+  if (blocking)   throw new SecurityException("BCV is awesome.");
+}

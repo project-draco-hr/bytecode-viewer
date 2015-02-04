@@ -1,6 +1,6 @@
 {
   if (BytecodeViewer.viewer.autoCompileOnRefresh.isSelected())   try {
-    if (!BytecodeViewer.compileSmali(false))     return;
+    if (!BytecodeViewer.compile(false))     return;
   }
  catch (  java.lang.NullPointerException e) {
   }
