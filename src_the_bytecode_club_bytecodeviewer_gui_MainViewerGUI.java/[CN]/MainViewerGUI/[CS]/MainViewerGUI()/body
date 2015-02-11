@@ -65,6 +65,8 @@
   panel1Bytecode.addActionListener(listener);
   panel1Smali.addActionListener(listener);
   panel1Hexcode.addActionListener(listener);
+  panel1Krakatau.addActionListener(listener);
+  panel1KrakatauEditable.addActionListener(listener);
   panel2None.addActionListener(listener);
   panel2Fern.addActionListener(listener);
   panel2Proc.addActionListener(listener);
@@ -72,6 +74,8 @@
   panel2Bytecode.addActionListener(listener);
   panel2Smali.addActionListener(listener);
   panel2Hexcode.addActionListener(listener);
+  panel2Krakatau.addActionListener(listener);
+  panel2KrakatauEditable.addActionListener(listener);
   panel3None.addActionListener(listener);
   panel3Fern.addActionListener(listener);
   panel3Proc.addActionListener(listener);
@@ -79,6 +83,8 @@
   panel3Bytecode.addActionListener(listener);
   panel3Smali.addActionListener(listener);
   panel3Hexcode.addActionListener(listener);
+  panel3Krakatau.addActionListener(listener);
+  panel3KrakatauEditable.addActionListener(listener);
   obfuscatorGroup.add(strongObf);
   obfuscatorGroup.add(lightObf);
   obfuscatorGroup.setSelected(strongObf.getModel(),true);
@@ -97,7 +103,8 @@
     public void actionPerformed(    ActionEvent e){
       JFileChooser fc=new JFileChooser();
       try {
-        fc.setSelectedFile(new File(BytecodeViewer.lastDirectory));
+        File f=new File(BytecodeViewer.lastDirectory);
+        if (f.exists())         fc.setSelectedFile(f);
       }
  catch (      Exception e2) {
       }
@@ -518,6 +525,10 @@
 );
   mnNewMenu.add(mntmExit);
   menuBar.add(mnNewMenu_6);
+  mnNewMenu_6.add(chckbxmntmPaneEditable);
+  mnNewMenu_6.add(chckbxmntmPaneEditable_1);
+  mnNewMenu_6.add(chckbxmntmPaneEditable_2);
+  mnNewMenu_6.add(separator_14);
   mnNewMenu_6.add(mnNewMenu_7);
   mnNewMenu_7.add(panel1None);
   mnNewMenu_7.add(separator_7);

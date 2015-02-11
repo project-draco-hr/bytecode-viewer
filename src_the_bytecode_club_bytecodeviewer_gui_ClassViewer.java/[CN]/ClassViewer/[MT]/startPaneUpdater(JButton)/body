@@ -48,6 +48,19 @@
           panelArea.setText(proc_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field1.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel1.add(scrollPane);
         }
         if (pane1 == 2) {
@@ -59,6 +72,19 @@
           panelArea.setText(cfr_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field1.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel1.add(scrollPane);
         }
         if (pane1 == 3) {
@@ -70,6 +96,19 @@
           panelArea.setText(ff_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field1.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel1.add(scrollPane);
         }
         if (pane1 == 4) {
@@ -77,11 +116,24 @@
           bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
           bytecodeArea.setCodeFoldingEnabled(true);
           bytecodeArea.setAntiAliasingEnabled(true);
-          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          RTextScrollPane scrollPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(ClassNodeDecompiler.decompile(cn));
           bytecodeArea.setCaretPosition(0);
           bytecodeArea.setEditable(false);
-          panel1.add(bytecodeSPane);
+          bytecodeArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field1.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel1.add(scrollPane);
         }
         if (pane1 == 5) {
           final ClassWriter cw=new ClassWriter(0);
@@ -94,32 +146,71 @@
           bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
           bytecodeArea.setCodeFoldingEnabled(true);
           bytecodeArea.setAntiAliasingEnabled(true);
-          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          RTextScrollPane scrollPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(SmaliDisassembler.decompileClassNode(cn));
           bytecodeArea.setCaretPosition(0);
           smali1=bytecodeArea;
-          panel1.add(bytecodeSPane);
+          smali1.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field1.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel1.add(scrollPane);
         }
         if (pane1 == 7) {
           RSyntaxTextArea bytecodeArea=new RSyntaxTextArea();
           bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
           bytecodeArea.setCodeFoldingEnabled(true);
           bytecodeArea.setAntiAliasingEnabled(true);
-          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          RTextScrollPane scrollPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(krak_dc.decompileClassNode(cn));
           bytecodeArea.setCaretPosition(0);
-          panel1.add(bytecodeSPane);
+          bytecodeArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field1.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel1.add(scrollPane);
         }
         if (pane1 == 8) {
           RSyntaxTextArea bytecodeArea=new RSyntaxTextArea();
           bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
           bytecodeArea.setCodeFoldingEnabled(true);
           bytecodeArea.setAntiAliasingEnabled(true);
-          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          RTextScrollPane scrollPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(KrakatauDisassembler.decompileClassNode(cn));
           bytecodeArea.setCaretPosition(0);
           krakatau1=bytecodeArea;
-          panel1.add(bytecodeSPane);
+          krakatau1.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field1.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel1.add(scrollPane);
         }
         if (pane2 == 1) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -130,6 +221,19 @@
           panelArea.setText(proc_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field2.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel2.add(scrollPane);
         }
         if (pane2 == 2) {
@@ -141,6 +245,19 @@
           panelArea.setText(cfr_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field2.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel2.add(scrollPane);
         }
         if (pane2 == 3) {
@@ -152,6 +269,19 @@
           panelArea.setText(ff_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field2.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel2.add(scrollPane);
         }
         if (pane2 == 4) {
@@ -163,6 +293,19 @@
           paneArea.setText(ClassNodeDecompiler.decompile(cn));
           paneArea.setCaretPosition(0);
           paneArea.setEditable(false);
+          paneArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field2.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel2.add(scrollPane);
         }
         if (pane2 == 5) {
@@ -180,6 +323,19 @@
           paneArea.setText(SmaliDisassembler.decompileClassNode(cn));
           paneArea.setCaretPosition(0);
           smali2=paneArea;
+          paneArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field2.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel2.add(scrollPane);
         }
         if (pane2 == 7) {
@@ -187,21 +343,47 @@
           bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
           bytecodeArea.setCodeFoldingEnabled(true);
           bytecodeArea.setAntiAliasingEnabled(true);
-          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          RTextScrollPane scrollPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(krak_dc.decompileClassNode(cn));
           bytecodeArea.setCaretPosition(0);
-          panel2.add(bytecodeSPane);
+          bytecodeArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field2.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel2.add(scrollPane);
         }
         if (pane2 == 8) {
           RSyntaxTextArea bytecodeArea=new RSyntaxTextArea();
           bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
           bytecodeArea.setCodeFoldingEnabled(true);
           bytecodeArea.setAntiAliasingEnabled(true);
-          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          RTextScrollPane scrollPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(KrakatauDisassembler.decompileClassNode(cn));
           bytecodeArea.setCaretPosition(0);
           krakatau2=bytecodeArea;
-          panel2.add(bytecodeSPane);
+          krakatau2.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field2.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel2.add(scrollPane);
         }
         if (pane3 == 1) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -212,6 +394,19 @@
           panelArea.setText(proc_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field3.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel3.add(scrollPane);
         }
         if (pane3 == 2) {
@@ -223,6 +418,19 @@
           panelArea.setText(cfr_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field3.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel3.add(scrollPane);
         }
         if (pane3 == 3) {
@@ -234,6 +442,19 @@
           panelArea.setText(ff_dc.decompileClassNode(cn));
           panelArea.setCaretPosition(0);
           panelArea.setEditable(false);
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field3.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel3.add(scrollPane);
         }
         if (pane3 == 4) {
@@ -245,6 +466,19 @@
           paneArea.setText(ClassNodeDecompiler.decompile(cn));
           paneArea.setCaretPosition(0);
           paneArea.setEditable(false);
+          paneArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field3.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel3.add(scrollPane);
         }
         if (pane3 == 5) {
@@ -262,6 +496,19 @@
           paneArea.setText(SmaliDisassembler.decompileClassNode(cn));
           paneArea.setCaretPosition(0);
           smali3=paneArea;
+          smali3.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field3.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
           panel3.add(scrollPane);
         }
         if (pane3 == 7) {
@@ -269,21 +516,47 @@
           bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
           bytecodeArea.setCodeFoldingEnabled(true);
           bytecodeArea.setAntiAliasingEnabled(true);
-          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          RTextScrollPane scrollPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(krak_dc.decompileClassNode(cn));
           bytecodeArea.setCaretPosition(0);
-          panel3.add(bytecodeSPane);
+          bytecodeArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field3.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel3.add(scrollPane);
         }
         if (pane3 == 8) {
           RSyntaxTextArea bytecodeArea=new RSyntaxTextArea();
           bytecodeArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
           bytecodeArea.setCodeFoldingEnabled(true);
           bytecodeArea.setAntiAliasingEnabled(true);
-          RTextScrollPane bytecodeSPane=new RTextScrollPane(bytecodeArea);
+          RTextScrollPane scrollPane=new RTextScrollPane(bytecodeArea);
           bytecodeArea.setText(KrakatauDisassembler.decompileClassNode(cn));
           bytecodeArea.setCaretPosition(0);
           krakatau3=bytecodeArea;
-          panel3.add(bytecodeSPane);
+          krakatau3.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field3.requestFocus();
+              }
+              BytecodeViewer.viewer.checkKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel3.add(scrollPane);
         }
         resetDivider();
         BytecodeViewer.viewer.setIcon(false);
