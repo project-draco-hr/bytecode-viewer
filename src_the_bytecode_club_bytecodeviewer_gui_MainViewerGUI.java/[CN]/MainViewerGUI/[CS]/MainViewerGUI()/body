@@ -525,8 +525,12 @@
 );
   mnNewMenu.add(mntmExit);
   menuBar.add(mnNewMenu_6);
+  chckbxmntmPaneEditable.setVisible(false);
   mnNewMenu_6.add(chckbxmntmPaneEditable);
+  chckbxmntmPaneEditable_1.setVisible(false);
+  chckbxmntmPaneEditable_1.setVerticalTextPosition(SwingConstants.TOP);
   mnNewMenu_6.add(chckbxmntmPaneEditable_1);
+  chckbxmntmPaneEditable_2.setVisible(false);
   mnNewMenu_6.add(chckbxmntmPaneEditable_2);
   mnNewMenu_6.add(separator_14);
   mnNewMenu_6.add(mnNewMenu_7);
