@@ -4,7 +4,7 @@
   for (  java.awt.Component c : BytecodeViewer.viewer.workPane.getLoadedViewers()) {
     if (c instanceof ClassViewer) {
       ClassViewer cv=(ClassViewer)c;
-      if ((cv.smali1 != null && cv.smali2 != null && cv.smali3 != null) && (cv.smali1.isEditable() || cv.smali2.isEditable() || cv.smali3.isEditable())) {
+      if (cv.smali1 != null && cv.smali1.isEditable() || cv.smali2 != null && cv.smali2.isEditable() || cv.smali3 != null && cv.smali3.isEditable()) {
         actuallyTried=true;
         Object smali[]=cv.getSmali();
         if (smali != null) {
@@ -21,7 +21,7 @@
           }
         }
       }
-      if ((cv.krakatau1 != null && cv.krakatau2 != null && cv.krakatau3 != null) && (cv.krakatau1.isEditable() || cv.krakatau2.isEditable() || cv.krakatau3.isEditable())) {
+      if (cv.krakatau1 != null && cv.krakatau1.isEditable() || cv.krakatau2 != null && cv.krakatau2.isEditable() || cv.krakatau3 != null && cv.krakatau3.isEditable()) {
         actuallyTried=true;
         Object krakatau[]=cv.getKrakatau();
         if (krakatau != null) {
@@ -38,7 +38,7 @@
           }
         }
       }
-      if ((cv.java1 != null && cv.java2 != null && cv.java3 != null) && (cv.java1.isEditable() || cv.java2.isEditable() || cv.java3.isEditable())) {
+      if (cv.java1 != null && cv.java1.isEditable() || cv.java2 != null && cv.java2.isEditable() || cv.java3 != null && cv.java3.isEditable()) {
         actuallyTried=true;
         Object java[]=cv.getJava();
         if (java != null) {
