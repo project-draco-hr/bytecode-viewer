@@ -1,57 +1,68 @@
 {
   if (getLoadedClasses().isEmpty())   return false;
+  boolean actuallyTried=false;
   for (  java.awt.Component c : BytecodeViewer.viewer.workPane.getLoadedViewers()) {
     if (c instanceof ClassViewer) {
       ClassViewer cv=(ClassViewer)c;
-      Object smali[]=cv.getSmali();
-      if (smali != null) {
-        ClassNode origNode=(ClassNode)smali[0];
-        String smaliText=(String)smali[1];
-        byte[] smaliCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.smali.compile(smaliText,origNode.name);
-        if (smaliCompiled != null) {
-          ClassNode newNode=JarUtils.getNode(smaliCompiled);
-          BytecodeViewer.updateNode(origNode,newNode);
-        }
+      if ((cv.smali1 != null && cv.smali2 != null && cv.smali3 != null) && (cv.smali1.isEditable() || cv.smali2.isEditable() || cv.smali3.isEditable())) {
+        actuallyTried=true;
+        Object smali[]=cv.getSmali();
+        if (smali != null) {
+          ClassNode origNode=(ClassNode)smali[0];
+          String smaliText=(String)smali[1];
+          byte[] smaliCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.smali.compile(smaliText,origNode.name);
+          if (smaliCompiled != null) {
+            ClassNode newNode=JarUtils.getNode(smaliCompiled);
+            BytecodeViewer.updateNode(origNode,newNode);
+          }
  else {
-          BytecodeViewer.showMessage("There has been an error with assembling your Smali code, please check this. Class: " + origNode.name);
-          return false;
+            BytecodeViewer.showMessage("There has been an error with assembling your Smali code, please check this. Class: " + origNode.name);
+            return false;
+          }
         }
       }
-      Object krakatau[]=cv.getKrakatau();
-      if (krakatau != null) {
-        ClassNode origNode=(ClassNode)krakatau[0];
-        String krakatauText=(String)krakatau[1];
-        byte[] krakatauCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.krakatau.compile(krakatauText,origNode.name);
-        if (krakatauCompiled != null) {
-          ClassNode newNode=JarUtils.getNode(krakatauCompiled);
-          BytecodeViewer.updateNode(origNode,newNode);
-        }
+      if ((cv.krakatau1 != null && cv.krakatau2 != null && cv.krakatau3 != null) && (cv.krakatau1.isEditable() || cv.krakatau2.isEditable() || cv.krakatau3.isEditable())) {
+        actuallyTried=true;
+        Object krakatau[]=cv.getKrakatau();
+        if (krakatau != null) {
+          ClassNode origNode=(ClassNode)krakatau[0];
+          String krakatauText=(String)krakatau[1];
+          byte[] krakatauCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.krakatau.compile(krakatauText,origNode.name);
+          if (krakatauCompiled != null) {
+            ClassNode newNode=JarUtils.getNode(krakatauCompiled);
+            BytecodeViewer.updateNode(origNode,newNode);
+          }
  else {
-          BytecodeViewer.showMessage("There has been an error with assembling your Krakatau Bytecode, please check this. Class: " + origNode.name);
-          return false;
+            BytecodeViewer.showMessage("There has been an error with assembling your Krakatau Bytecode, please check this. Class: " + origNode.name);
+            return false;
+          }
         }
       }
-      Object java[]=cv.getJava();
-      if (java != null) {
-        ClassNode origNode=(ClassNode)java[0];
-        String javaText=(String)java[1];
-        SystemErrConsole errConsole=new SystemErrConsole("Java Compile Issues");
-        errConsole.setText("Error compiling class: " + origNode.name + nl+ "Keep in mind most decompilers cannot produce compilable classes"+ nl+ nl);
-        byte[] javaCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.java.compile(javaText,origNode.name);
-        if (javaCompiled != null) {
-          ClassNode newNode=JarUtils.getNode(javaCompiled);
-          BytecodeViewer.updateNode(origNode,newNode);
-          errConsole.finished();
-        }
+      if ((cv.java1 != null && cv.java2 != null && cv.java3 != null) && (cv.java1.isEditable() || cv.java2.isEditable() || cv.java3.isEditable())) {
+        actuallyTried=true;
+        Object java[]=cv.getJava();
+        if (java != null) {
+          ClassNode origNode=(ClassNode)java[0];
+          String javaText=(String)java[1];
+          SystemErrConsole errConsole=new SystemErrConsole("Java Compile Issues");
+          errConsole.setText("Error compiling class: " + origNode.name + nl+ "Keep in mind most decompilers cannot produce compilable classes"+ nl+ nl);
+          byte[] javaCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.java.compile(javaText,origNode.name);
+          if (javaCompiled != null) {
+            ClassNode newNode=JarUtils.getNode(javaCompiled);
+            BytecodeViewer.updateNode(origNode,newNode);
+            errConsole.finished();
+          }
  else {
-          errConsole.pretty();
-          errConsole.setVisible(true);
-          errConsole.finished();
-          return false;
+            errConsole.pretty();
+            errConsole.setVisible(true);
+            errConsole.finished();
+            return false;
+          }
         }
       }
     }
   }
-  if (message)   BytecodeViewer.showMessage("Compiled Successfully.");
+  if (message)   if (actuallyTried)   BytecodeViewer.showMessage("Compiled Successfully.");
+ else   BytecodeViewer.showMessage("You have no editable panes opened, make one editable and try again.");
   return true;
 }
