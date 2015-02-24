@@ -1,0 +1,3 @@
+{
+  this.store(locatable,localVariable.type,localVariable.getSlotIndex());
+}

@@ -1,0 +1,29 @@
+{
+  Location location=this.location();
+  this.verifyIdentifierIsConventionalMethodName(name,location);
+  final FormalParameters formalParameters=this.parseFormalParameters();
+  for (int i=this.parseBracketsOpt(); i > 0; --i)   type=new ArrayType(type);
+  ReferenceType[] thrownExceptions;
+  if (this.peekRead("throws")) {
+    thrownExceptions=this.parseReferenceTypeList();
+  }
+ else {
+    thrownExceptions=new ReferenceType[0];
+  }
+  List<BlockStatement> optionalStatements;
+  if (this.peekRead(";")) {
+    if (!Mod.isAbstract(modifiers.flags) && !Mod.isNative(modifiers.flags)) {
+      throw this.compileException("Non-abstract, non-native method must have a body");
+    }
+    optionalStatements=null;
+  }
+ else {
+    if (Mod.isAbstract(modifiers.flags) || Mod.isNative(modifiers.flags)) {
+      throw this.compileException("Abstract or native method must not have a body");
+    }
+    this.read("{");
+    optionalStatements=this.parseBlockStatements();
+    this.read("}");
+  }
+  return new MethodDeclarator(location,optionalDocComment,modifiers,type,name,formalParameters,thrownExceptions,optionalStatements);
+}

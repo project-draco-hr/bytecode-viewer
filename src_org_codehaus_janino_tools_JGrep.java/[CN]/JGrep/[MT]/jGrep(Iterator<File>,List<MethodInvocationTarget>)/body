@@ -1,0 +1,68 @@
+{
+  this.benchmark.beginReporting();
+  int sourceFileCount=0;
+  try {
+    while (sourceFilesIterator.hasNext()) {
+      File sourceFile=(File)sourceFilesIterator.next();
+      UnitCompiler uc=new UnitCompiler(this.parseCompilationUnit(sourceFile,this.optionalCharacterEncoding),this.iClassLoader);
+      this.parsedCompilationUnits.add(uc);
+      ++sourceFileCount;
+    }
+  }
+  finally {
+    this.benchmark.endReporting("Parsed " + sourceFileCount + " source file(s)");
+  }
+  this.benchmark.beginReporting();
+  try {
+    for (    final UnitCompiler unitCompiler : this.parsedCompilationUnits) {
+      CompilationUnit compilationUnit=unitCompiler.getCompilationUnit();
+      this.benchmark.beginReporting("Grepping \"" + compilationUnit.optionalFileName + "\"");
+      try {
+        new Traverser(){
+          @Override public void traverseMethodInvocation(          Java.MethodInvocation mi){
+            try {
+              this.match(mi,unitCompiler.findIMethod(mi));
+            }
+ catch (            CompileException ex) {
+              throw new UncheckedCompileException(ex);
+            }
+            super.traverseMethodInvocation(mi);
+          }
+          @Override public void traverseSuperclassMethodInvocation(          Java.SuperclassMethodInvocation scmi){
+            try {
+              this.match(scmi,unitCompiler.findIMethod(scmi));
+            }
+ catch (            CompileException ex) {
+              throw new UncheckedCompileException(ex);
+            }
+            super.traverseSuperclassMethodInvocation(scmi);
+          }
+          @Override public void traverseNewClassInstance(          Java.NewClassInstance nci){
+            super.traverseNewClassInstance(nci);
+          }
+          @Override public void traverseNewAnonymousClassInstance(          Java.NewAnonymousClassInstance naci){
+            super.traverseNewAnonymousClassInstance(naci);
+          }
+          @Override public void traverseConstructorInvocation(          Java.ConstructorInvocation ci){
+            super.traverseConstructorInvocation(ci);
+          }
+          private void match(          Java.Invocation invocation,          IClass.IMethod method) throws CompileException {
+            for (            MethodInvocationTarget mit : methodInvocationTargets) {
+              mit.apply(unitCompiler,invocation,method);
+            }
+          }
+        }
+.traverseCompilationUnit(compilationUnit);
+      }
+ catch (      UncheckedCompileException uce) {
+        throw uce.compileException;
+      }
+ finally {
+        this.benchmark.endReporting();
+      }
+    }
+  }
+  finally {
+    this.benchmark.endReporting("Traversed " + sourceFileCount + " compilation units");
+  }
+}

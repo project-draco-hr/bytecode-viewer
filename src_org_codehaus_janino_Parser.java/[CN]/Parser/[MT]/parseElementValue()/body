@@ -1,0 +1,5 @@
+{
+  if (this.peek("@"))   return this.parseAnnotation();
+  if (this.peek("{"))   return this.parseElementValueArrayInitializer();
+  return this.parseConditionalAndExpression().toRvalueOrCompileException();
+}

@@ -1,0 +1,3 @@
+{
+  return this.defineClass(className,ba,0,ba.length,(this.optionalProtectionDomainFactory == null ? null : this.optionalProtectionDomainFactory.getProtectionDomain(ClassFile.getSourceResourceName(className))));
+}

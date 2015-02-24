@@ -1,0 +1,4 @@
+{
+  this.flags=modifiers;
+  this.annotations=new Annotation[0];
+}

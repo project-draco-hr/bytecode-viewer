@@ -1,0 +1,4 @@
+{
+  this.writeOpcode(locatable,Opcode.INVOKESPECIAL);
+  this.writeConstantMethodrefInfo(iConstructor.getDeclaringIClass().getDescriptor(),"<init>",iConstructor.getDescriptor());
+}

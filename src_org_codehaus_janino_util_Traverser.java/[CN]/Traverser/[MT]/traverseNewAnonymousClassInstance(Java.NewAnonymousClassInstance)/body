@@ -1,0 +1,6 @@
+{
+  if (naci.optionalQualification != null)   naci.optionalQualification.accept((Visitor.RvalueVisitor)this.cv);
+  naci.anonymousClassDeclaration.accept(this.cv);
+  for (  Java.Rvalue argument : naci.arguments)   argument.accept((Visitor.RvalueVisitor)this.cv);
+  this.traverseRvalue(naci);
+}

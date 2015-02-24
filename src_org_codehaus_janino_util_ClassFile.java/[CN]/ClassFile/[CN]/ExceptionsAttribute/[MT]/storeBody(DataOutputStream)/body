@@ -1,0 +1,3 @@
+{
+  ClassFile.storeShortArray(dos,this.exceptionIndexes);
+}

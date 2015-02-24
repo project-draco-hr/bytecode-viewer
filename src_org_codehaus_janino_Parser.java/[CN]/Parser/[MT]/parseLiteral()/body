@@ -1,0 +1,19 @@
+{
+  Token t=this.read();
+switch (t.type) {
+case Token.INTEGER_LITERAL:
+    return new IntegerLiteral(t.getLocation(),t.value);
+case Token.FLOATING_POINT_LITERAL:
+  return new FloatingPointLiteral(t.getLocation(),t.value);
+case Token.BOOLEAN_LITERAL:
+return new BooleanLiteral(t.getLocation(),t.value);
+case Token.CHARACTER_LITERAL:
+return new CharacterLiteral(t.getLocation(),t.value);
+case Token.STRING_LITERAL:
+return new StringLiteral(t.getLocation(),t.value);
+case Token.NULL_LITERAL:
+return new NullLiteral(t.getLocation(),t.value);
+default :
+throw this.compileException("Literal expected");
+}
+}

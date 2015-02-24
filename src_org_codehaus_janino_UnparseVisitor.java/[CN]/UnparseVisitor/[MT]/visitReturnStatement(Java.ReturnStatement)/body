@@ -1,0 +1,8 @@
+{
+  this.pw.print("return");
+  if (rs.optionalReturnValue != null) {
+    this.pw.print(' ');
+    this.unparse(rs.optionalReturnValue);
+  }
+  this.pw.print(';');
+}

@@ -7,10 +7,9 @@
       if (smali != null) {
         ClassNode origNode=(ClassNode)smali[0];
         String smaliText=(String)smali[1];
-        byte[] smaliCompiled=the.bytecode.club.bytecodeviewer.compilers.SmaliAssembler.compile(smaliText);
+        byte[] smaliCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.smali.compile(smaliText,origNode.name);
         if (smaliCompiled != null) {
           ClassNode newNode=JarUtils.getNode(smaliCompiled);
-          System.out.println(origNode.name + ":" + newNode.name);
           BytecodeViewer.updateNode(origNode,newNode);
         }
  else {
@@ -20,16 +19,34 @@
       }
       Object krakatau[]=cv.getKrakatau();
       if (krakatau != null) {
-        ClassNode origNodeK=(ClassNode)krakatau[0];
+        ClassNode origNode=(ClassNode)krakatau[0];
         String krakatauText=(String)krakatau[1];
-        byte[] krakatauCompiled=the.bytecode.club.bytecodeviewer.compilers.KrakatauAssembler.compile(krakatauText,origNodeK.name);
+        byte[] krakatauCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.krakatau.compile(krakatauText,origNode.name);
         if (krakatauCompiled != null) {
           ClassNode newNode=JarUtils.getNode(krakatauCompiled);
-          System.out.println(origNodeK.name + ":" + newNode.name);
-          BytecodeViewer.updateNode(origNodeK,newNode);
+          BytecodeViewer.updateNode(origNode,newNode);
         }
  else {
-          BytecodeViewer.showMessage("There has been an error with assembling your Krakatau Bytecode, please check this. Class: " + origNodeK.name);
+          BytecodeViewer.showMessage("There has been an error with assembling your Krakatau Bytecode, please check this. Class: " + origNode.name);
+          return false;
+        }
+      }
+      Object java[]=cv.getJava();
+      if (java != null) {
+        ClassNode origNode=(ClassNode)java[0];
+        String javaText=(String)java[1];
+        SystemErrConsole errConsole=new SystemErrConsole("Java Compile Issues");
+        errConsole.setText("Error compiling class: " + origNode.name + nl+ "Keep in mind most decompilers cannot produce compilable classes"+ nl+ nl);
+        byte[] javaCompiled=the.bytecode.club.bytecodeviewer.compilers.Compiler.java.compile(javaText,origNode.name);
+        if (javaCompiled != null) {
+          ClassNode newNode=JarUtils.getNode(javaCompiled);
+          BytecodeViewer.updateNode(origNode,newNode);
+          errConsole.finished();
+        }
+ else {
+          errConsole.pretty();
+          errConsole.setVisible(true);
+          errConsole.finished();
           return false;
         }
       }

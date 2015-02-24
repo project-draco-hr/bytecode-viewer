@@ -1,0 +1,6 @@
+{
+  IClass unboxedType=this.isUnboxingConvertible(targetType);
+  IClass pt=unboxedType != null ? unboxedType : targetType;
+  if (!this.tryIdentityConversion(sourceType,pt) && !this.tryNarrowingPrimitiveConversion(locatable,sourceType,pt))   throw new JaninoRuntimeException("SNO: reverse unary numeric promotion failed");
+  if (unboxedType != null)   this.boxingConversion(locatable,unboxedType,targetType);
+}

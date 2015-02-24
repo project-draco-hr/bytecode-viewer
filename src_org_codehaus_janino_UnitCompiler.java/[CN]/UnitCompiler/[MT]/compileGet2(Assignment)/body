@@ -1,0 +1,20 @@
+{
+  if (a.operator == "=") {
+    int lhsCs=this.compileContext(a.lhs);
+    IClass rhsType=this.compileGetValue(a.rhs);
+    IClass lhsType=this.getType(a.lhs);
+    Object rhsCv=this.getConstantValue(a.rhs);
+    this.assignmentConversion(a,rhsType,lhsType,rhsCv);
+    this.dupx(a,lhsType,lhsCs);
+    this.compileSet(a.lhs);
+    return lhsType;
+  }
+  int lhsCs=this.compileContext(a.lhs);
+  this.dup(a,lhsCs);
+  IClass lhsType=this.compileGet(a.lhs);
+  IClass resultType=this.compileArithmeticBinaryOperation(a,lhsType,a.operator.substring(0,a.operator.length() - 1).intern(),a.rhs);
+  if (!this.tryIdentityConversion(resultType,lhsType) && !this.tryNarrowingPrimitiveConversion(a,resultType,lhsType))   throw new JaninoRuntimeException("SNO: \"" + a.operator + "\" reconversion failed");
+  this.dupx(a,lhsType,lhsCs);
+  this.compileSet(a.lhs);
+  return lhsType;
+}

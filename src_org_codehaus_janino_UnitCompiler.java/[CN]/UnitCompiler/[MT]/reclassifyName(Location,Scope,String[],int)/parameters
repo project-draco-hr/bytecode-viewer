@@ -1,0 +1,4 @@
+Location location
+Scope scope
+String[] identifiers
+int n

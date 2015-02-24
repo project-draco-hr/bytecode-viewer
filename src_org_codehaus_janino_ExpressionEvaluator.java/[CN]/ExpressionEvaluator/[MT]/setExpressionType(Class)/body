@@ -1,0 +1,3 @@
+{
+  this.setExpressionTypes(new Class[]{expressionType});
+}

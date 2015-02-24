@@ -1,0 +1,12 @@
+{
+  this.setClassName(className);
+  this.setExtendedClass(optionalExtendedType);
+  this.setImplementedInterfaces(implementedTypes);
+  this.setStaticMethod(staticMethod);
+  this.setExpressionType(expressionType);
+  this.setMethodName(methodName);
+  this.setParameters(parameterNames,parameterTypes);
+  this.setThrownExceptions(thrownExceptions);
+  this.setParentClassLoader(optionalParentClassLoader);
+  this.cook(scanner);
+}

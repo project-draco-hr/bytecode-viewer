@@ -1,0 +1,4 @@
+{
+  dos.writeByte(8);
+  dos.writeShort(this.stringIndex);
+}

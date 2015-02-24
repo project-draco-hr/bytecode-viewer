@@ -1,0 +1,9 @@
+{
+  this.codeContext.saveLocalVariables();
+  try {
+    return this.compileStatements(b.statements);
+  }
+  finally {
+    this.codeContext.restoreLocalVariables();
+  }
+}

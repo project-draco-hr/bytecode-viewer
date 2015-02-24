@@ -1,0 +1,6 @@
+{
+  if (this.reclassified != null) {
+    return this.reclassified.toLvalue();
+  }
+  return this;
+}

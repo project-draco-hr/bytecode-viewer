@@ -1,0 +1,8 @@
+{
+  if (this.peekIdentifier() != null && this.peekNextButOne(":")) {
+    return this.parseLabeledStatement();
+  }
+  Statement stmt=(this.peek("{") ? this.parseBlock() : this.peek("if") ? this.parseIfStatement() : this.peek("for") ? this.parseForStatement() : this.peek("while") ? this.parseWhileStatement() : this.peek("do") ? this.parseDoStatement() : this.peek("try") ? this.parseTryStatement() : this.peek("switch") ? this.parseSwitchStatement() : this.peek("synchronized") ? this.parseSynchronizedStatement() : this.peek("return") ? this.parseReturnStatement() : this.peek("throw") ? this.parseThrowStatement() : this.peek("break") ? this.parseBreakStatement() : this.peek("continue") ? this.parseContinueStatement() : this.peek("assert") ? this.parseAssertStatement() : this.peek(";") ? this.parseEmptyStatement() : this.parseExpressionStatement());
+  if (stmt == null)   throw this.compileException("'" + this.peek().value + "' NYI");
+  return stmt;
+}

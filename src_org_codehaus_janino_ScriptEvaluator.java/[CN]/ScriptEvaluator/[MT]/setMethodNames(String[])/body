@@ -1,0 +1,4 @@
+{
+  this.assertNotCooked();
+  this.optionalMethodNames=methodNames.clone();
+}

@@ -1,0 +1,6 @@
+{
+  Inserter ni=this.currentInserter.nextInserter;
+  if (ni == null)   throw new JaninoRuntimeException("Code inserter stack underflow");
+  this.currentInserter.nextInserter=null;
+  this.currentInserter=ni;
+}

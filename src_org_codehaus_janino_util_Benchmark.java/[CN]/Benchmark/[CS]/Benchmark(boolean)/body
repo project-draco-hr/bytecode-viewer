@@ -1,0 +1,9 @@
+{
+  this.reportingEnabled=reportingEnabled;
+  this.reporter=new Reporter(){
+    @Override public void report(    String message){
+      System.out.println(message);
+    }
+  }
+;
+}

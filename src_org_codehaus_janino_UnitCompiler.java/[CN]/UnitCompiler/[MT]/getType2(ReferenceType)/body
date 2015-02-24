@@ -1,0 +1,9 @@
+{
+  String[] identifiers=rt.identifiers;
+  IClass result=this.getReferenceType(rt.getLocation(),rt.getEnclosingScope(),identifiers,identifiers.length);
+  if (result == null) {
+    this.compileError("Reference type '" + rt + "' not found",rt.getLocation());
+    return this.iClassLoader.TYPE_java_lang_Object;
+  }
+  return result;
+}

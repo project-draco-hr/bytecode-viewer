@@ -1,0 +1,3 @@
+{
+  super(location,optionalDocComment,modifiers,name,optionalTypeParameters,optionalExtendedType,implementedTypes);
+}

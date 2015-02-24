@@ -1,0 +1,5 @@
+{
+  if (vd.optionalInitializer == null)   return null;
+  if (Mod.isStatic(fd.modifiers.flags) && Mod.isFinal(fd.modifiers.flags) && vd.optionalInitializer instanceof Rvalue&& this.getConstantValue((Rvalue)vd.optionalInitializer) != UnitCompiler.NOT_CONSTANT)   return null;
+  return vd.optionalInitializer;
+}

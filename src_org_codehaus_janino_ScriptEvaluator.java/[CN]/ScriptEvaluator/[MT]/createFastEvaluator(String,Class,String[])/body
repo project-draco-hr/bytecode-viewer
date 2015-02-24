@@ -1,0 +1,8 @@
+{
+  try {
+    return this.createFastEvaluator(new StringReader(script),interfaceToImplement,parameterNames);
+  }
+ catch (  IOException ex) {
+    throw new JaninoRuntimeException("IOException despite StringReader",ex);
+  }
+}

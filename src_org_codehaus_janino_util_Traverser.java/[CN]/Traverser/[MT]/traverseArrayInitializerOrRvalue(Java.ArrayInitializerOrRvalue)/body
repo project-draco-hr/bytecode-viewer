@@ -1,0 +1,12 @@
+{
+  if (aiorv instanceof Java.Rvalue) {
+    ((Java.Atom)aiorv).accept(this.cv);
+  }
+ else   if (aiorv instanceof Java.ArrayInitializer) {
+    Java.ArrayInitializerOrRvalue[] values=((Java.ArrayInitializer)aiorv).values;
+    for (    Java.ArrayInitializerOrRvalue value : values)     this.traverseArrayInitializerOrRvalue(value);
+  }
+ else {
+    throw new JaninoRuntimeException("Unexpected array initializer or rvalue class " + aiorv.getClass().getName());
+  }
+}

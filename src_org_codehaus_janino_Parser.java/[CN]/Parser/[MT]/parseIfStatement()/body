@@ -1,0 +1,13 @@
+{
+  final Location location=this.location();
+  this.read("if");
+  this.read("(");
+  final Rvalue condition=this.parseExpression().toRvalueOrCompileException();
+  this.read(")");
+  Statement thenStatement=this.parseStatement();
+  Statement optionalElseStatement=null;
+  if (this.peekRead("else")) {
+    optionalElseStatement=this.parseStatement();
+  }
+  return new IfStatement(location,condition,thenStatement,optionalElseStatement);
+}

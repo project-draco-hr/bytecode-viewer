@@ -1,0 +1,3 @@
+{
+  return (int)this.value ^ (int)(this.value >> 32);
+}

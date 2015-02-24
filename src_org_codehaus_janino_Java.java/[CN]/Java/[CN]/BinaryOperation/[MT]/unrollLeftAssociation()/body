@@ -1,0 +1,16 @@
+{
+  List<Rvalue> operands=new ArrayList();
+  BinaryOperation bo=this;
+  for (; ; ) {
+    operands.add(bo.rhs);
+    Rvalue lhs=bo.lhs;
+    if (lhs instanceof BinaryOperation && ((BinaryOperation)lhs).op == this.op) {
+      bo=(BinaryOperation)lhs;
+    }
+ else {
+      operands.add(lhs);
+      break;
+    }
+  }
+  return new ReverseListIterator(operands.listIterator(operands.size()));
+}

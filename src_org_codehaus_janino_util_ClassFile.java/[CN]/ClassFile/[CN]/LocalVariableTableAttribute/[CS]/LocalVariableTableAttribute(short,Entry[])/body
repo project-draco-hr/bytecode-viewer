@@ -1,0 +1,4 @@
+{
+  super(attributeNameIndex);
+  this.entries=entries;
+}

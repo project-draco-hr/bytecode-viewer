@@ -1,0 +1,4 @@
+{
+  this.unparseLhs(fa.lhs,".");
+  this.pw.print('.' + fa.field.getName());
+}

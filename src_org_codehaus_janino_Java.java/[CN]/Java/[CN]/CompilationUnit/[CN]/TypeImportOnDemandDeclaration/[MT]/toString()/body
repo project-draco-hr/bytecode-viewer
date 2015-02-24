@@ -1,0 +1,3 @@
+{
+  return "import " + Java.join(this.identifiers,".") + ".*;";
+}

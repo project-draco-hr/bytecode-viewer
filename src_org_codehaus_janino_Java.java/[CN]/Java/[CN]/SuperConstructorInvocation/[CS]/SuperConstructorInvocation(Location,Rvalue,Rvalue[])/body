@@ -1,0 +1,5 @@
+{
+  super(location,arguments);
+  this.optionalQualification=optionalQualification;
+  if (optionalQualification != null)   optionalQualification.setEnclosingBlockStatement(this);
+}

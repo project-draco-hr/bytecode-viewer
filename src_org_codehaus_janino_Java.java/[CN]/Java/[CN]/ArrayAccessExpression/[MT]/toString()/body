@@ -1,0 +1,3 @@
+{
+  return this.lhs.toString() + '[' + this.index+ ']';
+}

@@ -5,7 +5,12 @@
     cr.accept(cn,ClassReader.EXPAND_FRAMES);
   }
  catch (  Exception e) {
-    cr.accept(cn,ClassReader.SKIP_FRAMES | ClassReader.SKIP_DEBUG | ClassReader.SKIP_CODE);
+    try {
+      cr.accept(cn,ClassReader.SKIP_FRAMES);
+    }
+ catch (    Exception e2) {
+      e2.printStackTrace();
+    }
   }
   cr=null;
   return cn;

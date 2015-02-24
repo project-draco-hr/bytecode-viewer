@@ -1,0 +1,96 @@
+{
+  IClass switchExpressionType=this.compileGetValue(ss.condition);
+  this.assignmentConversion(ss,switchExpressionType,IClass.INT,null);
+  TreeMap<Integer,CodeContext.Offset> caseLabelMap=new TreeMap();
+  CodeContext.Offset defaultLabelOffset=null;
+  CodeContext.Offset[] sbsgOffsets=new CodeContext.Offset[ss.sbsgs.size()];
+  for (int i=0; i < ss.sbsgs.size(); ++i) {
+    SwitchStatement.SwitchBlockStatementGroup sbsg=(SwitchStatement.SwitchBlockStatementGroup)(ss.sbsgs.get(i));
+    sbsgOffsets[i]=this.codeContext.new Offset();
+    for (    Rvalue caseLabel : sbsg.caseLabels) {
+      Object cv=this.getConstantValue(caseLabel);
+      if (cv == UnitCompiler.NOT_CONSTANT) {
+        this.compileError("Value of 'case' label does not pose a constant value",caseLabel.getLocation());
+        cv=new Integer(99);
+      }
+      IClass rvType=this.getType(caseLabel);
+      this.assignmentConversion(ss,rvType,switchExpressionType,cv);
+      Integer civ;
+      if (cv instanceof Integer) {
+        civ=(Integer)cv;
+      }
+ else       if (cv instanceof Number) {
+        civ=new Integer(((Number)cv).intValue());
+      }
+ else       if (cv instanceof Character) {
+        civ=new Integer(((Character)cv).charValue());
+      }
+ else {
+        this.compileError("Value of case label must be a char, byte, short or int constant",caseLabel.getLocation());
+        civ=new Integer(99);
+      }
+      if (caseLabelMap.containsKey(civ)) {
+        this.compileError("Duplicate \"case\" switch label value",caseLabel.getLocation());
+      }
+      caseLabelMap.put(civ,sbsgOffsets[i]);
+    }
+    if (sbsg.hasDefaultLabel) {
+      if (defaultLabelOffset != null) {
+        this.compileError("Duplicate \"default\" switch label",sbsg.getLocation());
+      }
+      defaultLabelOffset=sbsgOffsets[i];
+    }
+  }
+  if (defaultLabelOffset == null)   defaultLabelOffset=this.getWhereToBreak(ss);
+  CodeContext.Offset switchOffset=this.codeContext.newOffset();
+  if (caseLabelMap.isEmpty()) {
+    ;
+  }
+ else   if ((Integer)caseLabelMap.firstKey() + caseLabelMap.size() >= (Integer)caseLabelMap.lastKey() - caseLabelMap.size()) {
+    final int low=(Integer)caseLabelMap.firstKey();
+    final int high=(Integer)caseLabelMap.lastKey();
+    this.writeOpcode(ss,Opcode.TABLESWITCH);
+    new Padder(this.codeContext).set();
+    this.writeOffset(switchOffset,defaultLabelOffset);
+    this.writeInt(low);
+    this.writeInt(high);
+    int cur=low;
+    for (    Map.Entry<Integer,CodeContext.Offset> me : caseLabelMap.entrySet()) {
+      int caseLabelValue=(Integer)me.getKey();
+      CodeContext.Offset caseLabelOffset=(CodeContext.Offset)me.getValue();
+      while (cur < caseLabelValue) {
+        this.writeOffset(switchOffset,defaultLabelOffset);
+        ++cur;
+      }
+      this.writeOffset(switchOffset,caseLabelOffset);
+      ++cur;
+    }
+  }
+ else {
+    this.writeOpcode(ss,Opcode.LOOKUPSWITCH);
+    new Padder(this.codeContext).set();
+    this.writeOffset(switchOffset,defaultLabelOffset);
+    this.writeInt(caseLabelMap.size());
+    for (    Map.Entry<Integer,CodeContext.Offset> me : caseLabelMap.entrySet()) {
+      this.writeInt((Integer)me.getKey());
+      this.writeOffset(switchOffset,(CodeContext.Offset)me.getValue());
+    }
+  }
+  boolean canCompleteNormally=true;
+  for (int i=0; i < ss.sbsgs.size(); ++i) {
+    SwitchStatement.SwitchBlockStatementGroup sbsg=((SwitchStatement.SwitchBlockStatementGroup)ss.sbsgs.get(i));
+    sbsgOffsets[i].set();
+    canCompleteNormally=true;
+    for (    BlockStatement bs : sbsg.blockStatements) {
+      if (!canCompleteNormally) {
+        this.compileError("Statement is unreachable",bs.getLocation());
+        break;
+      }
+      canCompleteNormally=this.compile(bs);
+    }
+  }
+  if (ss.whereToBreak == null)   return canCompleteNormally;
+  ss.whereToBreak.set();
+  ss.whereToBreak=null;
+  return true;
+}

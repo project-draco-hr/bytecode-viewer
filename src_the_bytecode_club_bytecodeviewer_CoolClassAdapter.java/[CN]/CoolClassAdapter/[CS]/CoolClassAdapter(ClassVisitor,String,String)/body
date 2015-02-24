@@ -1,5 +1,0 @@
-{
-  super(cv);
-  this.oldName=oldName;
-  this.newName=newName;
-}

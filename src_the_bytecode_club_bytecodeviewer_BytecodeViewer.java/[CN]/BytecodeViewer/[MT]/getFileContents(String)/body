@@ -1,0 +1,4 @@
+{
+  if (loadedResources.containsKey(name))   return loadedResources.get(name);
+  return null;
+}

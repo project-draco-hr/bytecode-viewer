@@ -1,0 +1,14 @@
+{
+  final short maxStack=dis.readShort();
+  final short maxLocals=dis.readShort();
+  final byte[] code=ClassFile.readLengthAndBytes(dis);
+  ExceptionTableEntry[] etes=new ExceptionTableEntry[dis.readShort()];
+  for (int i=0; i < etes.length; ++i) {
+    etes[i]=new ExceptionTableEntry(dis.readShort(),dis.readShort(),dis.readShort(),dis.readShort());
+  }
+  AttributeInfo[] attributes=new AttributeInfo[dis.readShort()];
+  for (int i=0; i < attributes.length; ++i) {
+    attributes[i]=classFile.loadAttribute(dis);
+  }
+  return new CodeAttribute(attributeNameIndex,maxStack,maxLocals,code,etes,attributes);
+}

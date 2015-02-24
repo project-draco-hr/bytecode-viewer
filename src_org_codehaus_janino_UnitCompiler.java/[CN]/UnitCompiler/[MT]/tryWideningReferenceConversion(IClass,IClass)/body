@@ -1,0 +1,4 @@
+{
+  if (targetType.isPrimitive() || sourceType == targetType)   return false;
+  return targetType.isAssignableFrom(sourceType);
+}

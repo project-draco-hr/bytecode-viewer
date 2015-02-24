@@ -1,0 +1,4 @@
+{
+  this.assertNotCooked();
+  this.optionalOverrideMethod=overrideMethod.clone();
+}

@@ -1,0 +1,12 @@
+File[] optionalSourcePath
+File[] classPath
+File[] optionalExtDirs
+File[] optionalBootClassPath
+File destinationDirectory
+String optionalCharacterEncoding
+boolean verbose
+boolean debugSource
+boolean debugLines
+boolean debugVars
+StringPattern[] warningHandlePatterns
+boolean rebuild

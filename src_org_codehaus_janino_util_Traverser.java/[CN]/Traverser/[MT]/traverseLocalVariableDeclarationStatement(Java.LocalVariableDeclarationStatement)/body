@@ -1,0 +1,8 @@
+{
+  lvds.type.accept((Visitor.TypeVisitor)this.cv);
+  for (  Java.VariableDeclarator vd : lvds.variableDeclarators) {
+    Java.ArrayInitializerOrRvalue optionalInitializer=vd.optionalInitializer;
+    if (optionalInitializer != null)     this.traverseArrayInitializerOrRvalue(optionalInitializer);
+  }
+  this.traverseStatement(lvds);
+}

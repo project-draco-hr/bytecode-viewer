@@ -1,0 +1,11 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (this.modifiers.flags != Mod.NONE) {
+    sb.append(Mod.shortToString(this.modifiers.flags)).append(' ');
+  }
+  sb.append(this.type).append(' ').append(this.variableDeclarators[0].toString());
+  for (int i=1; i < this.variableDeclarators.length; ++i) {
+    sb.append(", ").append(this.variableDeclarators[i].toString());
+  }
+  return sb.append(';').toString();
+}

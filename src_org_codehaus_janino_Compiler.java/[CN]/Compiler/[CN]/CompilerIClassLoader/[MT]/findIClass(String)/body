@@ -1,0 +1,40 @@
+{
+  if (Compiler.DEBUG)   System.out.println("type = " + type);
+  String className=Descriptor.toClassName(type);
+  if (Compiler.DEBUG)   System.out.println("2 className = \"" + className + "\"");
+  if (className.startsWith("java."))   return null;
+  String topLevelClassName;
+{
+    int idx=className.indexOf('$');
+    topLevelClassName=idx == -1 ? className : className.substring(0,idx);
+  }
+  for (int i=0; i < Compiler.this.parsedCompilationUnits.size(); ++i) {
+    UnitCompiler uc=(UnitCompiler)Compiler.this.parsedCompilationUnits.get(i);
+    IClass res=uc.findClass(topLevelClassName);
+    if (res != null) {
+      if (!className.equals(topLevelClassName)) {
+        res=uc.findClass(className);
+        if (res == null)         return null;
+      }
+      this.defineIClass(res);
+      return res;
+    }
+  }
+  final Resource sourceResource=this.sourceFinder.findResource(ClassFile.getSourceResourceName(className));
+  if (sourceResource == null)   return null;
+  Resource classFileResource;
+  if (Compiler.this.classFileFinder != Compiler.FIND_NEXT_TO_SOURCE_FILE) {
+    classFileResource=Compiler.this.classFileFinder.findResource(ClassFile.getClassFileResourceName(className));
+  }
+ else {
+    if (!(sourceResource instanceof FileResource))     return null;
+    File classFile=new File(((FileResource)sourceResource).getFile().getParentFile(),ClassFile.getClassFileResourceName(className.substring(className.lastIndexOf('.') + 1)));
+    classFileResource=classFile.exists() ? new FileResource(classFile) : null;
+  }
+  if (classFileResource != null && sourceResource.lastModified() <= classFileResource.lastModified()) {
+    return this.defineIClassFromClassFileResource(classFileResource);
+  }
+ else {
+    return this.defineIClassFromSourceResource(sourceResource,className);
+  }
+}

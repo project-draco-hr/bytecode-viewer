@@ -1,0 +1,3 @@
+short lineNumber
+int opcode
+Offset dst

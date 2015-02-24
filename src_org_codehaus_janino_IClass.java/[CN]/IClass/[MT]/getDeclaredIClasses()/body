@@ -1,0 +1,6 @@
+{
+  if (this.declaredIClassesCache == null) {
+    this.declaredIClassesCache=this.getDeclaredIClasses2();
+  }
+  return this.declaredIClassesCache;
+}

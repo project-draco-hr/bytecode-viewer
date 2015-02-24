@@ -1,0 +1,20 @@
+{
+  List<BlockStatement> statements=new ArrayList();
+  Rvalue value=parser.parseExpression().toRvalueOrCompileException();
+  Class et=(this.optionalExpressionTypes == null ? IExpressionEvaluator.ANY_TYPE : this.optionalExpressionTypes[idx]);
+  if (et == void.class) {
+    statements.add(new Java.ExpressionStatement(value));
+  }
+ else {
+    if (et == IExpressionEvaluator.ANY_TYPE) {
+      value=new Java.MethodInvocation(parser.location(),new Java.ReferenceType(parser.location(),new String[]{"org","codehaus","commons","compiler","PrimitiveWrapper"},null),"wrap",new Java.Rvalue[]{value});
+      PrimitiveWrapper.wrap(99);
+      this.classToType(null,PrimitiveWrapper.class);
+    }
+    statements.add(new Java.ReturnStatement(parser.location(),value));
+  }
+  if (!parser.peekEof()) {
+    throw new CompileException("Unexpected token \"" + parser.peek() + "\"",parser.location());
+  }
+  return statements;
+}

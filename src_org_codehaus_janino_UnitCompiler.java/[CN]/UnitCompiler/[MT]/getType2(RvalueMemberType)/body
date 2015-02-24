@@ -1,0 +1,8 @@
+{
+  IClass rvt=this.getType(rvmt.rvalue);
+  IClass memberType=this.findMemberType(rvt,rvmt.identifier,rvmt.getLocation());
+  if (memberType == null) {
+    this.compileError("\"" + rvt + "\" has no member type \""+ rvmt.identifier+ "\"",rvmt.getLocation());
+  }
+  return memberType;
+}

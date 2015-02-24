@@ -1,0 +1,5 @@
+{
+  super(location,optionalDocComment,modifiers,new BasicType(location,BasicType.VOID),"<init>",parameters,thrownExceptions,statements);
+  this.optionalConstructorInvocation=optionalConstructorInvocation;
+  if (optionalConstructorInvocation != null)   optionalConstructorInvocation.setEnclosingScope(this);
+}

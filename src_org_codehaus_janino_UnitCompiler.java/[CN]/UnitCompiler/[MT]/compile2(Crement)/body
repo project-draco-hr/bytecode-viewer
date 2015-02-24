@@ -1,0 +1,23 @@
+{
+  LocalVariable lv=this.isIntLv(c);
+  if (lv != null) {
+    this.compileLocalVariableCrement(c,lv);
+    return;
+  }
+  int cs=this.compileContext(c.operand);
+  this.dup(c,cs);
+  IClass type=this.compileGet(c.operand);
+  IClass promotedType=this.unaryNumericPromotion(c,type);
+  this.writeOpcode(c,UnitCompiler.ilfd(promotedType,Opcode.ICONST_1,Opcode.LCONST_1,Opcode.FCONST_1,Opcode.DCONST_1));
+  if (c.operator == "++") {
+    this.writeOpcode(c,Opcode.IADD + UnitCompiler.ilfd(promotedType));
+  }
+ else   if (c.operator == "--") {
+    this.writeOpcode(c,Opcode.ISUB + UnitCompiler.ilfd(promotedType));
+  }
+ else {
+    this.compileError("Unexpected operator \"" + c.operator + "\"",c.getLocation());
+  }
+  this.reverseUnaryNumericPromotion(c,promotedType,type);
+  this.compileSet(c.operand);
+}

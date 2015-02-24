@@ -1,0 +1,3 @@
+{
+  return (sh & Mod.SYNTHETIC) != 0;
+}

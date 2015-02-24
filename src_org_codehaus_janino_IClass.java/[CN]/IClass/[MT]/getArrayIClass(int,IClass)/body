@@ -1,0 +1,5 @@
+{
+  IClass result=this;
+  for (int i=0; i < n; ++i)   result=result.getArrayIClass(objectType);
+  return result;
+}

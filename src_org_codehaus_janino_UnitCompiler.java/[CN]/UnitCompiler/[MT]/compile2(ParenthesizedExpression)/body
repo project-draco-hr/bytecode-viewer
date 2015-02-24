@@ -1,0 +1,3 @@
+{
+  this.compile(pe.value);
+}

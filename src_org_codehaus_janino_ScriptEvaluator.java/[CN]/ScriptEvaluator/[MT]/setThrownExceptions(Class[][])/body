@@ -1,0 +1,4 @@
+{
+  this.assertNotCooked();
+  this.optionalThrownExceptions=thrownExceptions.clone();
+}

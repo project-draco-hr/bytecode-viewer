@@ -1,0 +1,46 @@
+{
+  this.codeContext.saveLocalVariables();
+  try {
+    if (fs.optionalInit != null)     this.compile(fs.optionalInit);
+    if (fs.optionalCondition == null) {
+      return this.compileUnconditionalLoop(fs,fs.body,fs.optionalUpdate);
+    }
+ else {
+      Object cvc=this.getConstantValue(fs.optionalCondition);
+      if (cvc != UnitCompiler.NOT_CONSTANT) {
+        if (Boolean.TRUE.equals(cvc)) {
+          this.warning("FSTC",("Condition of FOR statement is always TRUE; " + "the proper way of declaring an unconditional loop is \"for (;;)\""),fs.getLocation());
+          return this.compileUnconditionalLoop(fs,fs.body,fs.optionalUpdate);
+        }
+ else {
+          this.warning("FSNR","FOR statement never repeats",fs.getLocation());
+        }
+      }
+    }
+    CodeContext.Offset toCondition=this.codeContext.new Offset();
+    this.writeBranch(fs,Opcode.GOTO,toCondition);
+    fs.whereToContinue=null;
+    final CodeContext.Offset bodyOffset=this.codeContext.newOffset();
+    boolean bodyCcn=this.compile(fs.body);
+    if (fs.whereToContinue != null)     fs.whereToContinue.set();
+    if (fs.optionalUpdate != null) {
+      if (!bodyCcn && fs.whereToContinue == null) {
+        this.warning("FUUR","For update is unreachable",fs.getLocation());
+      }
+ else {
+        for (        Rvalue rv : fs.optionalUpdate)         this.compile(rv);
+      }
+    }
+    fs.whereToContinue=null;
+    toCondition.set();
+    this.compileBoolean(fs.optionalCondition,bodyOffset,UnitCompiler.JUMP_IF_TRUE);
+  }
+  finally {
+    this.codeContext.restoreLocalVariables();
+  }
+  if (fs.whereToBreak != null) {
+    fs.whereToBreak.set();
+    fs.whereToBreak=null;
+  }
+  return true;
+}

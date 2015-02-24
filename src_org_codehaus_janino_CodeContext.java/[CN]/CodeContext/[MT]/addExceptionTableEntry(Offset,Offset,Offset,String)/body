@@ -1,0 +1,3 @@
+{
+  this.exceptionTableEntries.add(new ExceptionTableEntry(startPc,endPc,handlerPc,catchTypeFd == null ? (short)0 : this.classFile.addConstantClassInfo(catchTypeFd)));
+}

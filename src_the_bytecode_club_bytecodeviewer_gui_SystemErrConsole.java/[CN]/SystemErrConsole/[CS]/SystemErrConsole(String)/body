@@ -1,0 +1,58 @@
+{
+  this.setIconImages(Resources.iconList);
+  setTitle(title);
+  setSize(new Dimension(542,316));
+  getContentPane().add(scrollPane,BorderLayout.CENTER);
+  scrollPane.setViewportView(textArea);
+  textArea.addKeyListener(new KeyListener(){
+    public void keyPressed(    KeyEvent e){
+      if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+        field.requestFocus();
+      }
+      BytecodeViewer.viewer.checkKey(e);
+    }
+    @Override public void keyReleased(    KeyEvent arg0){
+    }
+    @Override public void keyTyped(    KeyEvent arg0){
+    }
+  }
+);
+  JButton searchNext=new JButton();
+  JButton searchPrev=new JButton();
+  JPanel buttonPane=new JPanel(new BorderLayout());
+  buttonPane.add(searchNext,BorderLayout.WEST);
+  buttonPane.add(searchPrev,BorderLayout.EAST);
+  searchNext.setIcon(Resources.nextIcon);
+  searchPrev.setIcon(Resources.prevIcon);
+  panel.add(buttonPane,BorderLayout.WEST);
+  panel.add(field,BorderLayout.CENTER);
+  panel.add(check,BorderLayout.EAST);
+  searchNext.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(field.getText(),true);
+    }
+  }
+);
+  searchPrev.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(field.getText(),false);
+    }
+  }
+);
+  field.addKeyListener(new KeyListener(){
+    @Override public void keyReleased(    KeyEvent arg0){
+      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(field.getText(),true);
+    }
+    @Override public void keyPressed(    KeyEvent arg0){
+    }
+    @Override public void keyTyped(    KeyEvent arg0){
+    }
+  }
+);
+  scrollPane.setColumnHeaderView(panel);
+  this.setLocationRelativeTo(null);
+  s=new CustomOutputStream(textArea);
+  PrintStream printStream=new PrintStream(s);
+  originalOut=System.err;
+  System.setErr(printStream);
+}

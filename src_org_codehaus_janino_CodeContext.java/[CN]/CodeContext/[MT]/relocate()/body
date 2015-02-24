@@ -1,0 +1,7 @@
+{
+  boolean finished=true;
+  for (  Relocatable relocatable : this.relocatables) {
+    finished&=relocatable.relocate();
+  }
+  return finished;
+}

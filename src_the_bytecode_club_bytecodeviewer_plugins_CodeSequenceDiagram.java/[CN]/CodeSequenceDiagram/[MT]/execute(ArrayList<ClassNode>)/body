@@ -5,7 +5,7 @@
   }
   ClassNode c=BytecodeViewer.viewer.workPane.getCurrentClass().cn;
   JFrame frame=new JFrame("Code Sequence Diagram - " + c.name);
-  frame.setIconImages(BytecodeViewer.iconList);
+  frame.setIconImages(Resources.iconList);
   frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
   frame.setSize(400,320);
   mxGraph graph=new mxGraph();

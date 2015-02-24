@@ -1,0 +1,24 @@
+{
+  if (this == that)   return true;
+{
+    String ds=that.getDescriptor() + this.getDescriptor();
+    if (ds.length() == 2 && IClass.PRIMITIVE_WIDENING_CONVERSIONS.contains(ds))     return true;
+  }
+{
+    if (that.isSubclassOf(this))     return true;
+    if (that.implementsInterface(this))     return true;
+    if (that == IClass.VOID && !this.isPrimitive())     return true;
+    if (that.isInterface() && this.getDescriptor().equals(Descriptor.JAVA_LANG_OBJECT))     return true;
+    if (that.isArray()) {
+      if (this.getDescriptor().equals(Descriptor.JAVA_LANG_OBJECT))       return true;
+      if (this.getDescriptor().equals(Descriptor.JAVA_LANG_CLONEABLE))       return true;
+      if (this.getDescriptor().equals(Descriptor.JAVA_IO_SERIALIZABLE))       return true;
+      if (this.isArray()) {
+        IClass thisCt=this.getComponentType();
+        IClass thatCt=that.getComponentType();
+        if (!thisCt.isPrimitive() && thisCt.isAssignableFrom(thatCt))         return true;
+      }
+    }
+  }
+  return false;
+}

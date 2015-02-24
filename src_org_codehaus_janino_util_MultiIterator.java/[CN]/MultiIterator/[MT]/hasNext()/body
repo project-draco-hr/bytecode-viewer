@@ -1,0 +1,19 @@
+{
+  for (; ; ) {
+    if (this.inner.hasNext())     return true;
+    if (!this.outer.hasNext())     return false;
+    Object o=this.outer.next();
+    if (o instanceof Iterator) {
+      this.inner=(Iterator<T>)o;
+    }
+ else     if (o instanceof Collection) {
+      this.inner=((Collection<T>)o).iterator();
+    }
+ else     if (o instanceof Object[]) {
+      this.inner=Arrays.asList((T[])o).iterator();
+    }
+ else {
+      throw new JaninoRuntimeException("Unexpected element type \"" + o.getClass().getName() + "\"");
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return d.length() == 1 && "BDFIJSC".indexOf(d.charAt(0)) != -1;
+}

@@ -1,0 +1,3 @@
+{
+  return ((Byte)CodeContext.BRANCH_OPCODE_INVERSION.get(new Byte(branchOpcode))).byteValue();
+}

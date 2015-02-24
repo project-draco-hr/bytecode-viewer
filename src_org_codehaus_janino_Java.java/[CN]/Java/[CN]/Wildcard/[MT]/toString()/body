@@ -1,0 +1,3 @@
+{
+  return (this.bounds == Wildcard.BOUNDS_EXTENDS ? "? extends " + this.referenceType : this.bounds == Wildcard.BOUNDS_SUPER ? "? super " + this.referenceType : "?");
+}

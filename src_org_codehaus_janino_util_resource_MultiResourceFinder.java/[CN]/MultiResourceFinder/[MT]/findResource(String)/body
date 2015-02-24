@@ -1,0 +1,7 @@
+{
+  for (  ResourceFinder rf : this.resourceFinders) {
+    Resource resource=rf.findResource(resourceName);
+    if (resource != null)     return resource;
+  }
+  return null;
+}

@@ -19,6 +19,9 @@
       if (c instanceof ClassViewer) {
         workingOn.remove(((ClassViewer)c).name);
       }
+      if (c instanceof FileViewer) {
+        workingOn.remove(((FileViewer)c).name);
+      }
     }
   }
 );

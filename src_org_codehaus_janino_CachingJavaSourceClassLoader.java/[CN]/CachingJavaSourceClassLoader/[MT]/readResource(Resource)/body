@@ -1,0 +1,20 @@
+{
+  ByteArrayOutputStream baos=new ByteArrayOutputStream();
+  byte[] buffer=new byte[4096];
+  InputStream is=r.open();
+  try {
+    for (; ; ) {
+      int cnt=is.read(buffer);
+      if (cnt == -1)       break;
+      baos.write(buffer,0,cnt);
+    }
+  }
+  finally {
+    try {
+      is.close();
+    }
+ catch (    IOException ex) {
+    }
+  }
+  return baos.toByteArray();
+}

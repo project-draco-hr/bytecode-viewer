@@ -1,0 +1,3 @@
+{
+  this.beginTimes.push(new Long(System.currentTimeMillis()));
+}

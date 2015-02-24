@@ -1,0 +1,3 @@
+{
+  return (this.optionalExpression2 == null ? "assert " + this.expression1 + ';' : "assert " + this.expression1 + " : "+ this.optionalExpression2+ ';');
+}

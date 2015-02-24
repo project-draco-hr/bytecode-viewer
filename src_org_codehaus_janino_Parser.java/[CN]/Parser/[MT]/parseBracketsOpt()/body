@@ -1,0 +1,9 @@
+{
+  int res=0;
+  while (this.peek("[") && this.peekNextButOne("]")) {
+    this.read();
+    this.read();
+    ++res;
+  }
+  return res;
+}

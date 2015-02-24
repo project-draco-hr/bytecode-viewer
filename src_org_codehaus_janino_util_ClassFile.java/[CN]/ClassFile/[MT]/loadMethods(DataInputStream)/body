@@ -1,0 +1,6 @@
+{
+  short methodsCount=dis.readShort();
+  List<MethodInfo> methods=new ArrayList(methodsCount);
+  for (int i=0; i < methodsCount; ++i)   methods.add(this.loadMethodInfo(dis));
+  return methods;
+}

@@ -1,0 +1,269 @@
+{
+  final Object[] res=new Object[1];
+  RvalueVisitor rvv=new RvalueVisitor(){
+    @Override public void visitArrayLength(    ArrayLength al){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(al);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitAssignment(    Assignment a){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(a);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitUnaryOperation(    UnaryOperation uo){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(uo);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitBinaryOperation(    BinaryOperation bo){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(bo);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitCast(    Cast c){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(c);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitClassLiteral(    ClassLiteral cl){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(cl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitConditionalExpression(    ConditionalExpression ce){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(ce);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitCrement(    Crement c){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(c);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitInstanceof(    Instanceof io){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(io);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitMethodInvocation(    MethodInvocation mi){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(mi);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitSuperclassMethodInvocation(    SuperclassMethodInvocation smi){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(smi);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitIntegerLiteral(    IntegerLiteral il){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(il);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFloatingPointLiteral(    FloatingPointLiteral fpl){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(fpl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitBooleanLiteral(    BooleanLiteral bl){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(bl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitCharacterLiteral(    CharacterLiteral cl){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(cl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitStringLiteral(    StringLiteral sl){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(sl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNullLiteral(    NullLiteral nl){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(nl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitSimpleConstant(    SimpleConstant sl){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(sl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNewAnonymousClassInstance(    NewAnonymousClassInstance naci){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(naci);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNewArray(    NewArray na){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(na);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNewInitializedArray(    NewInitializedArray nia){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(nia);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNewClassInstance(    NewClassInstance nci){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(nci);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitParameterAccess(    ParameterAccess pa){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(pa);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitQualifiedThisReference(    QualifiedThisReference qtr){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(qtr);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitThisReference(    ThisReference tr){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(tr);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitAmbiguousName(    AmbiguousName an){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(an);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitArrayAccessExpression(    ArrayAccessExpression aae){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(aae);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFieldAccess(    FieldAccess fa){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(fa);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFieldAccessExpression(    FieldAccessExpression fae){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(fae);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitSuperclassFieldAccessExpression(    SuperclassFieldAccessExpression scfae){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(scfae);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitLocalVariableAccess(    LocalVariableAccess lva){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(lva);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitParenthesizedExpression(    ParenthesizedExpression pe){
+      try {
+        res[0]=UnitCompiler.this.getNegatedConstantValue2(pe);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+  }
+;
+  try {
+    rv.accept(rvv);
+    return res[0];
+  }
+ catch (  UncheckedCompileException uce) {
+    throw uce.compileException;
+  }
+}

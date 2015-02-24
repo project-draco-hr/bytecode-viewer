@@ -1,0 +1,267 @@
+{
+  RvalueVisitor rvv=new RvalueVisitor(){
+    @Override public void visitArrayLength(    ArrayLength al){
+      try {
+        UnitCompiler.this.compile2(al);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitAssignment(    Assignment a){
+      try {
+        UnitCompiler.this.compile2(a);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitUnaryOperation(    UnaryOperation uo){
+      try {
+        UnitCompiler.this.compile2(uo);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitBinaryOperation(    BinaryOperation bo){
+      try {
+        UnitCompiler.this.compile2(bo);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitCast(    Cast c){
+      try {
+        UnitCompiler.this.compile2(c);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitClassLiteral(    ClassLiteral cl){
+      try {
+        UnitCompiler.this.compile2(cl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitConditionalExpression(    ConditionalExpression ce){
+      try {
+        UnitCompiler.this.compile2(ce);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitCrement(    Crement c){
+      try {
+        UnitCompiler.this.compile2(c);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitInstanceof(    Instanceof io){
+      try {
+        UnitCompiler.this.compile2(io);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitMethodInvocation(    MethodInvocation mi){
+      try {
+        UnitCompiler.this.compile2(mi);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitSuperclassMethodInvocation(    SuperclassMethodInvocation smi){
+      try {
+        UnitCompiler.this.compile2(smi);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitIntegerLiteral(    IntegerLiteral il){
+      try {
+        UnitCompiler.this.compile2(il);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFloatingPointLiteral(    FloatingPointLiteral fpl){
+      try {
+        UnitCompiler.this.compile2(fpl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitBooleanLiteral(    BooleanLiteral bl){
+      try {
+        UnitCompiler.this.compile2(bl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitCharacterLiteral(    CharacterLiteral cl){
+      try {
+        UnitCompiler.this.compile2(cl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitStringLiteral(    StringLiteral sl){
+      try {
+        UnitCompiler.this.compile2(sl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNullLiteral(    NullLiteral nl){
+      try {
+        UnitCompiler.this.compile2(nl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitSimpleConstant(    SimpleConstant sl){
+      try {
+        UnitCompiler.this.compile2(sl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNewAnonymousClassInstance(    NewAnonymousClassInstance naci){
+      try {
+        UnitCompiler.this.compile2(naci);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNewArray(    NewArray na){
+      try {
+        UnitCompiler.this.compile2(na);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNewInitializedArray(    NewInitializedArray nia){
+      try {
+        UnitCompiler.this.compile2(nia);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitNewClassInstance(    NewClassInstance nci){
+      try {
+        UnitCompiler.this.compile2(nci);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitParameterAccess(    ParameterAccess pa){
+      try {
+        UnitCompiler.this.compile2(pa);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitQualifiedThisReference(    QualifiedThisReference qtr){
+      try {
+        UnitCompiler.this.compile2(qtr);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitThisReference(    ThisReference tr){
+      try {
+        UnitCompiler.this.compile2(tr);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitAmbiguousName(    AmbiguousName an){
+      try {
+        UnitCompiler.this.compile2(an);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitArrayAccessExpression(    ArrayAccessExpression aae){
+      try {
+        UnitCompiler.this.compile2(aae);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFieldAccess(    FieldAccess fa){
+      try {
+        UnitCompiler.this.compile2(fa);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFieldAccessExpression(    FieldAccessExpression fae){
+      try {
+        UnitCompiler.this.compile2(fae);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitSuperclassFieldAccessExpression(    SuperclassFieldAccessExpression scfae){
+      try {
+        UnitCompiler.this.compile2(scfae);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitLocalVariableAccess(    LocalVariableAccess lva){
+      try {
+        UnitCompiler.this.compile2(lva);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitParenthesizedExpression(    ParenthesizedExpression pe){
+      try {
+        UnitCompiler.this.compile2(pe);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+  }
+;
+  try {
+    rv.accept(rvv);
+  }
+ catch (  UncheckedCompileException uce) {
+    throw uce.compileException;
+  }
+}

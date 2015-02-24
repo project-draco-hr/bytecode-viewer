@@ -1,0 +1,5 @@
+{
+  IClass[] result=new IClass[cs.length];
+  for (int i=0; i < cs.length; ++i)   result[i]=this.classToIClass(cs[i]);
+  return result;
+}

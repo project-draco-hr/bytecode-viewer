@@ -1,0 +1,8 @@
+{
+  if (this.myName == null) {
+    Scope s=this.getEnclosingScope();
+    for (; !(s instanceof TypeDeclaration); s=s.getEnclosingScope())     ;
+    this.myName=((TypeDeclaration)s).createAnonymousClassName();
+  }
+  return this.myName;
+}

@@ -1,0 +1,35 @@
+{
+  String name=UnitCompiler.last(ssid.identifiers);
+  List<Object> importedObjects=(List<Object>)this.singleStaticImports.get(name);
+  if (importedObjects == null) {
+    importedObjects=new ArrayList();
+    this.singleStaticImports.put(name,importedObjects);
+  }
+{
+    IClass iClass=this.findTypeByFullyQualifiedName(ssid.getLocation(),ssid.identifiers);
+    if (iClass != null) {
+      importedObjects.add(iClass);
+      return;
+    }
+  }
+  String[] typeName=UnitCompiler.allButLast(ssid.identifiers);
+  IClass iClass=this.findTypeByFullyQualifiedName(ssid.getLocation(),typeName);
+  if (iClass == null) {
+    this.compileError("Could not load \"" + Java.join(typeName,".") + "\"",ssid.getLocation());
+    return;
+  }
+  IField iField=iClass.getDeclaredIField(name);
+  if (iField != null) {
+    if (!iField.isStatic()) {
+      this.compileError("Field \"" + name + "\" of \""+ Java.join(typeName,".")+ "\" must be static",ssid.getLocation());
+    }
+    importedObjects.add(iField);
+    return;
+  }
+  IMethod[] ms=iClass.getDeclaredIMethods(name);
+  if (ms.length > 0) {
+    importedObjects.addAll(Arrays.asList(ms));
+    return;
+  }
+  this.compileError("\"" + Java.join(typeName,".") + "\" has no static member \""+ name+ "\"",ssid.getLocation());
+}

@@ -1,0 +1,4 @@
+{
+  this.determineValue(scfae);
+  this.compileSet(this.toLvalueOrCompileException(scfae.value));
+}

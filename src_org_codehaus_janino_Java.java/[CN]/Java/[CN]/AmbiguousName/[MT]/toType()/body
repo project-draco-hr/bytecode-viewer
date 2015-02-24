@@ -1,0 +1,9 @@
+{
+  if (this.type == null) {
+    String[] is=new String[this.n];
+    System.arraycopy(this.identifiers,0,is,0,this.n);
+    this.type=new ReferenceType(this.getLocation(),is,null);
+    this.type.setEnclosingScope(this.getEnclosingBlockStatement());
+  }
+  return this.type;
+}

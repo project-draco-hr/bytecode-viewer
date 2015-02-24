@@ -1,0 +1,5 @@
+{
+  super(location);
+  this.optionalReturnValue=optionalReturnValue;
+  if (optionalReturnValue != null)   optionalReturnValue.setEnclosingBlockStatement(this);
+}

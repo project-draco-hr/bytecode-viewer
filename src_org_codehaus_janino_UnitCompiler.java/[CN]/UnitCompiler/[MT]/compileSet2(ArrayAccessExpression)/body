@@ -1,0 +1,3 @@
+{
+  this.writeOpcode(aae,Opcode.IASTORE + UnitCompiler.ilfdabcs(this.getType(aae)));
+}

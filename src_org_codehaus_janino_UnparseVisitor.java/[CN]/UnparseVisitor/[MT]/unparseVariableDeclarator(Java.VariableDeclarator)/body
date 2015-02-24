@@ -1,0 +1,8 @@
+{
+  this.pw.print(vd.name);
+  for (int i=0; i < vd.brackets; ++i)   this.pw.print("[]");
+  if (vd.optionalInitializer != null) {
+    this.pw.print(" = ");
+    this.unparseArrayInitializerOrRvalue(vd.optionalInitializer);
+  }
+}

@@ -1,0 +1,16 @@
+{
+  CodeContext.Offset end=this.codeContext.new Offset();
+  try {
+    this.compileBoolean(as.expression1,end,UnitCompiler.JUMP_IF_TRUE);
+    this.writeOpcode(as,Opcode.NEW);
+    this.writeConstantClassInfo(Descriptor.JAVA_LANG_ASSERTIONERROR);
+    this.writeOpcode(as,Opcode.DUP);
+    Rvalue[] arguments=(as.optionalExpression2 == null ? new Rvalue[0] : new Rvalue[]{as.optionalExpression2});
+    this.invokeConstructor(as,as,null,this.iClassLoader.TYPE_java_lang_AssertionError,arguments);
+    this.writeOpcode(as,Opcode.ATHROW);
+  }
+  finally {
+    end.set();
+  }
+  return true;
+}

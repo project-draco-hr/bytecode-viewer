@@ -1,0 +1,5 @@
+{
+  if (modifiers != 0) {
+    this.pw.print(Mod.shortToString(modifiers) + ' ');
+  }
+}

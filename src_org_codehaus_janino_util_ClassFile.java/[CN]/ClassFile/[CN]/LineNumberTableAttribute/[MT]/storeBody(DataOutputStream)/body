@@ -1,0 +1,7 @@
+{
+  dos.writeShort(this.entries.length);
+  for (  Entry entry : this.entries) {
+    dos.writeShort(entry.startPC);
+    dos.writeShort(entry.lineNumber);
+  }
+}

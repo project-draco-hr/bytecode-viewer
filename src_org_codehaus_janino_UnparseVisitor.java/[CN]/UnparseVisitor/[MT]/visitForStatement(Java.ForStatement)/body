@@ -1,0 +1,23 @@
+{
+  this.pw.print("for (");
+  if (fs.optionalInit != null) {
+    this.unparseBlockStatement(fs.optionalInit);
+  }
+ else {
+    this.pw.print(';');
+  }
+  if (fs.optionalCondition != null) {
+    this.pw.print(' ');
+    this.unparse(fs.optionalCondition);
+  }
+  this.pw.print(';');
+  if (fs.optionalUpdate != null) {
+    this.pw.print(' ');
+    for (int i=0; i < fs.optionalUpdate.length; ++i) {
+      if (i > 0)       this.pw.print(", ");
+      this.unparse(fs.optionalUpdate[i]);
+    }
+  }
+  this.pw.print(") ");
+  this.unparseBlockStatement(fs.body);
+}

@@ -1,0 +1,4 @@
+{
+  for (  Java.NamedTypeDeclaration mtd : atd.getMemberTypeDeclarations())   mtd.accept(this.cv);
+  for (  Java.MethodDeclarator md : atd.getMethodDeclarations())   this.traverseMethodDeclarator(md);
+}

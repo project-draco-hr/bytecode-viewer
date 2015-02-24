@@ -1,0 +1,7 @@
+{
+  if (this.isBoxingConvertible(sourceType) == targetType) {
+    this.boxingConversion(locatable,sourceType,targetType);
+    return true;
+  }
+  return false;
+}

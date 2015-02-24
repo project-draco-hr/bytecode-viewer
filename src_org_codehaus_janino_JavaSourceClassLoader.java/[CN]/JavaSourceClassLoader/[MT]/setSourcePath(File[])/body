@@ -1,0 +1,3 @@
+{
+  this.iClassLoader.setSourceFinder(new PathResourceFinder(sourcePath));
+}

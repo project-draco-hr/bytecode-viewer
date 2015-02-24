@@ -1,0 +1,7 @@
+{
+  Annotation[] methodAnnotations=fd.modifiers.annotations;
+  for (  Annotation ma : methodAnnotations) {
+    if (this.getType(ma.getType()) == methodAnnotation)     return true;
+  }
+  return false;
+}

@@ -1,0 +1,3 @@
+boolean debugSource
+boolean debugLines
+boolean debugVars

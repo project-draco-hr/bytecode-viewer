@@ -1,0 +1,12 @@
+{
+  this.read("(");
+  if (this.peekRead(")"))   return new FormalParameters();
+  List<FormalParameter> l=new ArrayList();
+  boolean[] hasEllipsis=new boolean[1];
+  do {
+    if (hasEllipsis[0])     throw this.compileException("Only the last parameter may have an ellipsis");
+    l.add(this.parseFormalParameter(hasEllipsis));
+  }
+ while (this.read(new String[]{",",")"}) == 0);
+  return new FormalParameters(this.location(),(FormalParameter[])l.toArray(new FormalParameter[l.size()]),hasEllipsis[0]);
+}

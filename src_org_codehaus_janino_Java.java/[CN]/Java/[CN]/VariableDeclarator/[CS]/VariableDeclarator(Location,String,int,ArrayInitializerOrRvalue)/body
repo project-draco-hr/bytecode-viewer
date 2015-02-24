@@ -1,0 +1,6 @@
+{
+  super(location);
+  this.name=name;
+  this.brackets=brackets;
+  this.optionalInitializer=optionalInitializer;
+}

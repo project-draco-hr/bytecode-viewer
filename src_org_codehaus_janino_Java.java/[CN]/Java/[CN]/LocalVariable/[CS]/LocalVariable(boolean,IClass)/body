@@ -1,0 +1,4 @@
+{
+  this.finaL=finaL;
+  this.type=type;
+}

@@ -1,0 +1,7 @@
+String optionalFileName
+InputStream is
+Class returnType
+String[] parameterNames
+Class[] parameterTypes
+Class[] thrownExceptions
+ClassLoader optionalParentClassLoader

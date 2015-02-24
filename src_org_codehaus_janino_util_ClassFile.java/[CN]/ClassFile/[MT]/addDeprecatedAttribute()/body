@@ -1,0 +1,3 @@
+{
+  this.attributes.add(new DeprecatedAttribute(this.addConstantUtf8Info("Deprecated")));
+}

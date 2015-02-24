@@ -1,0 +1,4 @@
+Java.Modifiers modifiers
+short nameIndex
+short descriptorIndex
+List<AttributeInfo> attributes

@@ -1,0 +1,5 @@
+{
+  byte[] data=(byte[])this.classes.get(name);
+  if (data == null)   throw new ClassNotFoundException(name);
+  return super.defineClass(name,data,0,data.length,this.getClass().getProtectionDomain());
+}

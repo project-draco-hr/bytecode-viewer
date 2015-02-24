@@ -1,0 +1,28 @@
+{
+  Compiler.this.benchmark.beginReporting("Loading class file \"" + classFileResource.getFileName() + "\"");
+  try {
+    InputStream is=null;
+    ClassFile cf;
+    try {
+      is=classFileResource.open();
+      cf=new ClassFile(new BufferedInputStream(is));
+    }
+ catch (    IOException ex) {
+      throw new ClassNotFoundException("Opening class file resource \"" + classFileResource + "\"",ex);
+    }
+ finally {
+      if (is != null)       try {
+        is.close();
+      }
+ catch (      IOException e) {
+      }
+    }
+    ClassFileIClass result=new ClassFileIClass(cf,CompilerIClassLoader.this);
+    this.defineIClass(result);
+    result.resolveAllClasses();
+    return result;
+  }
+  finally {
+    Compiler.this.benchmark.endReporting();
+  }
+}

@@ -1,0 +1,15 @@
+{
+  int c=this.in.read();
+  if (c == -1) {
+    if (this.closeWriterOnEOF) {
+      this.out.close();
+    }
+ else {
+      this.out.flush();
+    }
+  }
+ else {
+    this.out.write(c);
+  }
+  return c;
+}

@@ -1,0 +1,3 @@
+{
+  this(PathResourceFinder.parsePath(path));
+}

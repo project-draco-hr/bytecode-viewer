@@ -1,0 +1,3 @@
+{
+  return this.createFastEvaluator(new Scanner(null,reader),interfaceToImplement,parameterNames);
+}

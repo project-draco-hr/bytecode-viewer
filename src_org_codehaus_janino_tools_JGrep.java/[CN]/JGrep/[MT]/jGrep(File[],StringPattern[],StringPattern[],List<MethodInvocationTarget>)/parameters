@@ -1,0 +1,4 @@
+File[] rootDirectories
+StringPattern[] directoryNamePatterns
+StringPattern[] fileNamePatterns
+List<MethodInvocationTarget> methodInvocationTargets

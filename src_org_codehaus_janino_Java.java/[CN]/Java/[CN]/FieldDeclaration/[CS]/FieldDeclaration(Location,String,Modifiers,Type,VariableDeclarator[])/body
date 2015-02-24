@@ -1,0 +1,11 @@
+{
+  super(location);
+  this.optionalDocComment=optionalDocComment;
+  this.modifiers=modifiers;
+  this.type=type;
+  this.variableDeclarators=variableDeclarators;
+  this.type.setEnclosingScope(this);
+  for (  VariableDeclarator vd : variableDeclarators) {
+    if (vd.optionalInitializer != null)     Java.setEnclosingBlockStatement(vd.optionalInitializer,this);
+  }
+}

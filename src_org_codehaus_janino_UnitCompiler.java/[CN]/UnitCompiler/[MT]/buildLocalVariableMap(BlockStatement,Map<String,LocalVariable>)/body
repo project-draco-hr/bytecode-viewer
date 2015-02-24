@@ -1,0 +1,142 @@
+{
+  final Map<String,LocalVariable>[] resVars=new Map[]{localVars};
+  BlockStatementVisitor bsv=new BlockStatementVisitor(){
+    @Override public void visitAlternateConstructorInvocation(    AlternateConstructorInvocation aci){
+      UnitCompiler.buildLocalVariableMap(aci,localVars);
+    }
+    @Override public void visitBreakStatement(    BreakStatement bs){
+      UnitCompiler.buildLocalVariableMap(bs,localVars);
+    }
+    @Override public void visitContinueStatement(    ContinueStatement cs){
+      UnitCompiler.buildLocalVariableMap(cs,localVars);
+    }
+    @Override public void visitAssertStatement(    AssertStatement as){
+      UnitCompiler.buildLocalVariableMap(as,localVars);
+    }
+    @Override public void visitEmptyStatement(    EmptyStatement es){
+      UnitCompiler.buildLocalVariableMap(es,localVars);
+    }
+    @Override public void visitExpressionStatement(    ExpressionStatement es){
+      UnitCompiler.buildLocalVariableMap(es,localVars);
+    }
+    @Override public void visitFieldDeclaration(    FieldDeclaration fd){
+      UnitCompiler.buildLocalVariableMap(fd,localVars);
+    }
+    @Override public void visitReturnStatement(    ReturnStatement rs){
+      UnitCompiler.buildLocalVariableMap(rs,localVars);
+    }
+    @Override public void visitSuperConstructorInvocation(    SuperConstructorInvocation sci){
+      UnitCompiler.buildLocalVariableMap(sci,localVars);
+    }
+    @Override public void visitThrowStatement(    ThrowStatement ts){
+      UnitCompiler.buildLocalVariableMap(ts,localVars);
+    }
+    @Override public void visitLocalClassDeclarationStatement(    LocalClassDeclarationStatement lcds){
+      UnitCompiler.buildLocalVariableMap(lcds,localVars);
+    }
+    @Override public void visitBlock(    Block b){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(b,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitDoStatement(    DoStatement ds){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(ds,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitForStatement(    ForStatement fs){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(fs,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitForEachStatement(    ForEachStatement fes){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(fes,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitIfStatement(    IfStatement is){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(is,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitInitializer(    Initializer i){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(i,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitSwitchStatement(    SwitchStatement ss){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(ss,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitSynchronizedStatement(    SynchronizedStatement ss){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(ss,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitTryStatement(    TryStatement ts){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(ts,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitWhileStatement(    WhileStatement ws){
+      try {
+        UnitCompiler.this.buildLocalVariableMap(ws,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitLabeledStatement(    LabeledStatement ls){
+      try {
+        resVars[0]=UnitCompiler.this.buildLocalVariableMap(ls,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitLocalVariableDeclarationStatement(    LocalVariableDeclarationStatement lvds){
+      try {
+        resVars[0]=UnitCompiler.this.buildLocalVariableMap(lvds,localVars);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+  }
+;
+  try {
+    blockStatement.accept(bsv);
+  }
+ catch (  UncheckedCompileException uce) {
+    throw uce.compileException;
+  }
+  return resVars[0];
+}

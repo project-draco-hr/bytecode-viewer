@@ -1,0 +1,11 @@
+{
+  Atom a=this.parseConditionalExpression();
+  if (this.peek(new String[]{"=","+=","-=","*=","/=","&=","|=","^=","%=","<<=",">>=",">>>="}) != -1) {
+    final Lvalue lhs=a.toLvalueOrCompileException();
+    Location location=this.location();
+    String operator=this.readOperator();
+    final Rvalue rhs=this.parseAssignmentExpression().toRvalueOrCompileException();
+    return new Assignment(location,lhs,operator,rhs);
+  }
+  return a;
+}

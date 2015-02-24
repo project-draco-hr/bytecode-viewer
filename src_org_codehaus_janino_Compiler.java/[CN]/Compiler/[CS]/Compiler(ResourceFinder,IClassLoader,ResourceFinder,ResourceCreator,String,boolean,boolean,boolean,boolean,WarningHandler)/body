@@ -1,0 +1,11 @@
+{
+  this.classFileFinder=classFileFinder;
+  this.classFileCreator=classFileCreator;
+  this.optionalCharacterEncoding=optionalCharacterEncoding;
+  this.benchmark=new Benchmark(verbose);
+  this.debugSource=debugSource;
+  this.debugLines=debugLines;
+  this.debugVars=debugVars;
+  this.optionalWarningHandler=optionalWarningHandler;
+  this.iClassLoader=new CompilerIClassLoader(sourceFinder,iClassLoader);
+}

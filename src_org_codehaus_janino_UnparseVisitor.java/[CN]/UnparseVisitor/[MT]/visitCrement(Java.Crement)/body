@@ -1,0 +1,10 @@
+{
+  if (c.pre) {
+    this.pw.print(c.operator);
+    this.unparseUnaryOperation(c.operand,c.operator + "x");
+  }
+ else {
+    this.unparseUnaryOperation(c.operand,"x" + c.operator);
+    this.pw.print(c.operator);
+  }
+}

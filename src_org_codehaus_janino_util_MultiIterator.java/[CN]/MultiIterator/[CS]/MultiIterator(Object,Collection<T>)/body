@@ -1,0 +1,3 @@
+{
+  this.outer=Arrays.asList(new Object[]{new Object[]{object},collection}).iterator();
+}

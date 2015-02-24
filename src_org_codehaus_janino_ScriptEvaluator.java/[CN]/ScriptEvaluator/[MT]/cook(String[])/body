@@ -1,0 +1,3 @@
+{
+  this.cook(null,strings);
+}

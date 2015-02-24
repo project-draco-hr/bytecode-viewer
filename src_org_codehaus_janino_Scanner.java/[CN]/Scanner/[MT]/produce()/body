@@ -1,0 +1,239 @@
+{
+  if (this.docComment != null) {
+    this.warning("MDC","Misplaced doc comment",this.location());
+    this.docComment=null;
+  }
+  int state=0;
+  StringBuilder dcsb=null;
+  PROCESS_COMMENTS:   for (; ; ) {
+switch (state) {
+case 0:
+      if (this.nextChar == -1) {
+        return new Token(Token.EOF,"EOF");
+      }
+ else       if (Character.isWhitespace((char)this.nextChar)) {
+        ;
+      }
+ else       if (this.nextChar == '/') {
+        state=1;
+      }
+ else {
+        break PROCESS_COMMENTS;
+      }
+    break;
+case 1:
+  if (this.nextChar == -1) {
+    return new Token(Token.OPERATOR,"/");
+  }
+ else   if (this.nextChar == '=') {
+    this.readNextChar();
+    return new Token(Token.OPERATOR,"/=");
+  }
+ else   if (this.nextChar == '/') {
+    state=2;
+  }
+ else   if (this.nextChar == '*') {
+    state=3;
+  }
+ else {
+    return new Token(Token.OPERATOR,"/");
+  }
+break;
+case 2:
+if (this.nextChar == -1) {
+return new Token(Token.EOF,"EOF");
+}
+ else if (this.nextChar == '\r' || this.nextChar == '\n') {
+state=0;
+}
+ else {
+;
+}
+break;
+case 3:
+if (this.nextChar == -1) {
+throw new CompileException("EOF in traditional comment",this.location());
+}
+ else if (this.nextChar == '*') {
+state=4;
+}
+ else {
+state=9;
+}
+break;
+case 4:
+if (this.nextChar == -1) {
+throw new CompileException("EOF in doc comment",this.location());
+}
+ else if (this.nextChar == '/') {
+state=0;
+}
+ else {
+if (this.docComment != null) {
+this.warning("MDC","Multiple doc comments",new Location(this.optionalFileName,this.nextCharLineNumber,this.nextCharColumnNumber));
+}
+dcsb=new StringBuilder().append((char)this.nextChar);
+state=((this.nextChar == '\r' || this.nextChar == '\n') ? 6 : this.nextChar == '*' ? 8 : 5);
+}
+break;
+case 5:
+if (this.nextChar == -1) {
+throw new CompileException("EOF in doc comment",this.location());
+}
+ else if (this.nextChar == '*') {
+state=8;
+}
+ else if (this.nextChar == '\r' || this.nextChar == '\n') {
+dcsb.append((char)this.nextChar);
+state=6;
+}
+ else {
+dcsb.append((char)this.nextChar);
+}
+break;
+case 6:
+if (this.nextChar == -1) {
+throw new CompileException("EOF in doc comment",this.location());
+}
+ else if (this.nextChar == '*') {
+state=7;
+}
+ else if (this.nextChar == '\r' || this.nextChar == '\n') {
+dcsb.append((char)this.nextChar);
+}
+ else if (this.nextChar == ' ' || this.nextChar == '\t') {
+;
+}
+ else {
+dcsb.append((char)this.nextChar);
+state=5;
+}
+break;
+case 7:
+if (this.nextChar == -1) {
+throw new CompileException("EOF in doc comment",this.location());
+}
+ else if (this.nextChar == '*') {
+;
+}
+ else if (this.nextChar == '/') {
+this.docComment=dcsb.toString();
+state=0;
+}
+ else {
+dcsb.append((char)this.nextChar);
+state=5;
+}
+break;
+case 8:
+if (this.nextChar == -1) {
+throw new CompileException("EOF in doc comment",this.location());
+}
+ else if (this.nextChar == '/') {
+this.docComment=dcsb.toString();
+state=0;
+}
+ else if (this.nextChar == '*') {
+dcsb.append('*');
+}
+ else {
+dcsb.append('*');
+dcsb.append((char)this.nextChar);
+state=5;
+}
+break;
+case 9:
+if (this.nextChar == -1) {
+throw new CompileException("EOF in traditional comment",this.location());
+}
+ else if (this.nextChar == '*') {
+state=10;
+}
+ else {
+;
+}
+break;
+case 10:
+if (this.nextChar == -1) {
+throw new CompileException("EOF in traditional comment",this.location());
+}
+ else if (this.nextChar == '/') {
+state=0;
+}
+ else if (this.nextChar == '*') {
+;
+}
+ else {
+state=9;
+}
+break;
+default :
+throw new JaninoRuntimeException(Integer.toString(state));
+}
+this.readNextChar();
+}
+this.tokenLineNumber=this.nextCharLineNumber;
+this.tokenColumnNumber=this.nextCharColumnNumber;
+if (Character.isJavaIdentifierStart((char)this.nextChar)) {
+StringBuilder sb=new StringBuilder();
+sb.append((char)this.nextChar);
+for (; ; ) {
+this.readNextChar();
+if (this.nextChar == -1 || !Character.isJavaIdentifierPart((char)this.nextChar)) break;
+sb.append((char)this.nextChar);
+}
+String s=sb.toString();
+if ("true".equals(s)) return new Token(Token.BOOLEAN_LITERAL,"true");
+if ("false".equals(s)) return new Token(Token.BOOLEAN_LITERAL,"false");
+if ("null".equals(s)) return new Token(Token.NULL_LITERAL,"null");
+{
+String v=(String)Scanner.JAVA_KEYWORDS.get(s);
+if (v != null) return new Token(Token.KEYWORD,v);
+}
+return new Token(Token.IDENTIFIER,s);
+}
+if (Character.isDigit((char)this.nextChar)) {
+return this.scanNumericLiteral(false);
+}
+if (this.nextChar == '.') {
+this.readNextChar();
+if (Character.isDigit((char)this.nextChar)) {
+return this.scanNumericLiteral(true);
+}
+ else {
+return new Token(Token.OPERATOR,".");
+}
+}
+if (this.nextChar == '"') {
+StringBuilder sb=new StringBuilder("\"");
+this.readNextChar();
+while (this.nextChar != '"') {
+this.scanLiteralCharacter(sb);
+}
+this.readNextChar();
+return new Token(Token.STRING_LITERAL,sb.append('"').toString());
+}
+if (this.nextChar == '\'') {
+this.readNextChar();
+if (this.nextChar == '\'') {
+throw new CompileException("Single quote must be backslash-escaped in character literal",this.location());
+}
+StringBuilder sb=new StringBuilder("'");
+this.scanLiteralCharacter(sb);
+if (this.nextChar != '\'') throw new CompileException("Closing single quote missing",this.location());
+this.readNextChar();
+return new Token(Token.CHARACTER_LITERAL,sb.append('\'').toString());
+}
+{
+String v=(String)Scanner.JAVA_OPERATORS.get(new String(new char[]{(char)this.nextChar}));
+if (v != null) {
+for (; ; ) {
+this.readNextChar();
+String v2=(String)(this.expectGreater ? Scanner.JAVA_OPERATORS_EXPECT_GREATER : Scanner.JAVA_OPERATORS).get(v + (char)this.nextChar);
+if (v2 == null) return new Token(Token.OPERATOR,v);
+v=v2;
+}
+}
+}
+throw new CompileException("Invalid character input \"" + (char)this.nextChar + "\" (character code "+ this.nextChar+ ")",this.location());
+}

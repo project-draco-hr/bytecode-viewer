@@ -1,0 +1,23 @@
+{
+  ClassDeclaration declaringClass;
+  for (Scope s=superclassMethodInvocation.getEnclosingBlockStatement(); ; s=s.getEnclosingScope()) {
+    if (s instanceof FunctionDeclarator) {
+      FunctionDeclarator fd=(FunctionDeclarator)s;
+      if (Mod.isStatic(fd.modifiers.flags)) {
+        this.compileError("Superclass method cannot be invoked in static context",superclassMethodInvocation.getLocation());
+      }
+    }
+    if (s instanceof ClassDeclaration) {
+      declaringClass=(ClassDeclaration)s;
+      break;
+    }
+  }
+  IClass superclass=this.resolve(declaringClass).getSuperclass();
+  IMethod iMethod=this.findIMethod(superclass,superclassMethodInvocation);
+  if (iMethod == null) {
+    this.compileError("Class \"" + superclass + "\" has no method named \""+ superclassMethodInvocation.methodName+ "\"",superclassMethodInvocation.getLocation());
+    return this.fakeIMethod(superclass,superclassMethodInvocation.methodName,superclassMethodInvocation.arguments);
+  }
+  this.checkThrownExceptions(superclassMethodInvocation,iMethod);
+  return iMethod;
+}

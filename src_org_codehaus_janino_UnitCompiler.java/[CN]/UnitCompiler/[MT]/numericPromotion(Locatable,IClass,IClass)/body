@@ -1,0 +1,3 @@
+{
+  if (!this.tryIdentityConversion(sourceType,targetType) && !this.tryWideningPrimitiveConversion(locatable,sourceType,targetType))   throw new JaninoRuntimeException("SNO: Conversion failed");
+}

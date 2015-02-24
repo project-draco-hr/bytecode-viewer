@@ -1,0 +1,32 @@
+{
+  if (this.singleTypeImports == null) {
+    final List<SingleTypeImportDeclaration> stids=new ArrayList();
+    for (    ImportDeclaration id : this.compilationUnit.importDeclarations) {
+      id.accept(new ImportVisitor(){
+        @Override public void visitSingleTypeImportDeclaration(        SingleTypeImportDeclaration stid){
+          stids.add(stid);
+        }
+        @Override public void visitTypeImportOnDemandDeclaration(        TypeImportOnDemandDeclaration tiodd){
+        }
+        @Override public void visitSingleStaticImportDeclaration(        SingleStaticImportDeclaration ssid){
+        }
+        @Override public void visitStaticImportOnDemandDeclaration(        StaticImportOnDemandDeclaration siodd){
+        }
+      }
+);
+    }
+    this.singleTypeImports=new HashMap();
+    for (    SingleTypeImportDeclaration stid : stids) {
+      String[] ids=stid.identifiers;
+      String simpleName=UnitCompiler.last(ids);
+      String[] prev=(String[])this.singleTypeImports.put(simpleName,ids);
+      if (prev != null && !Arrays.equals(prev,ids)) {
+        UnitCompiler.this.compileError(("Class \"" + simpleName + "\" was previously imported as "+ "\""+ Java.join(prev,".")+ "\", now as \""+ Java.join(ids,".")+ "\""),stid.getLocation());
+      }
+      if (this.findTypeByFullyQualifiedName(location,ids) == null) {
+        UnitCompiler.this.compileError("A class '" + Java.join(ids,".") + "' could not be found",stid.getLocation());
+      }
+    }
+  }
+  return (String[])this.singleTypeImports.get(name);
+}

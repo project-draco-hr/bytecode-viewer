@@ -1,0 +1,6 @@
+{
+  ts.body.accept(this.cv);
+  for (  Java.CatchClause cc : ts.catchClauses)   cc.body.accept(this.cv);
+  if (ts.optionalFinally != null)   ts.optionalFinally.accept(this.cv);
+  this.traverseStatement(ts);
+}

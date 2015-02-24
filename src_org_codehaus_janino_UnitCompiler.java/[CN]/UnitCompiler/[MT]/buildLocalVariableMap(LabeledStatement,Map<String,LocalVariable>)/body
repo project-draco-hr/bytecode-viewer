@@ -1,0 +1,4 @@
+{
+  ls.localVariables=localVars;
+  return this.buildLocalVariableMap((BlockStatement)ls.body,localVars);
+}

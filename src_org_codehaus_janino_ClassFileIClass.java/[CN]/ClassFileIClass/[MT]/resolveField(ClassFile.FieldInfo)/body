@@ -1,0 +1,39 @@
+{
+  IField result=(IField)this.resolvedFields.get(fieldInfo);
+  if (result != null)   return result;
+  final String name=fieldInfo.getName(this.classFile);
+  final String descriptor=fieldInfo.getDescriptor(this.classFile);
+  final IClass type=this.resolveClass(descriptor);
+  ClassFile.ConstantValueAttribute cva=null;
+  for (  ClassFile.AttributeInfo ai : fieldInfo.getAttributes()) {
+    if (ai instanceof ClassFile.ConstantValueAttribute) {
+      cva=(ClassFile.ConstantValueAttribute)ai;
+      break;
+    }
+  }
+  final Object optionalConstantValue=cva == null ? IClass.NOT_CONSTANT : cva.getConstantValue(this.classFile);
+  final Access access=ClassFileIClass.accessFlags2Access(fieldInfo.getModifierFlags());
+  result=new IField(){
+    @Override public Object getConstantValue(){
+      return optionalConstantValue;
+    }
+    @Override public String getName(){
+      return name;
+    }
+    @Override public IClass getType(){
+      return type;
+    }
+    @Override public boolean isStatic(){
+      return Mod.isStatic(fieldInfo.getModifierFlags());
+    }
+    @Override public Access getAccess(){
+      return access;
+    }
+    @Override public Java.Annotation[] getAnnotations(){
+      return fieldInfo.getAnnotations();
+    }
+  }
+;
+  this.resolvedFields.put(fieldInfo,result);
+  return result;
+}

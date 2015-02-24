@@ -1,0 +1,5 @@
+{
+  super(location);
+  if (qualification == null)   throw new NullPointerException();
+  this.qualification=qualification;
+}

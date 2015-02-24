@@ -1,0 +1,38 @@
+{
+  if (!this.iClassLoader.TYPE_java_lang_Throwable.isAssignableFrom(type)) {
+    this.compileError("Thrown object of type \"" + type + "\" is not assignable to \"Throwable\"",locatable.getLocation());
+  }
+  if (this.iClassLoader.TYPE_java_lang_RuntimeException.isAssignableFrom(type) || this.iClassLoader.TYPE_java_lang_Error.isAssignableFrom(type))   return;
+  for (; ; scope=scope.getEnclosingScope()) {
+    if (scope instanceof TryStatement) {
+      TryStatement ts=(TryStatement)scope;
+      for (int i=0; i < ts.catchClauses.size(); ++i) {
+        CatchClause cc=(CatchClause)ts.catchClauses.get(i);
+        IClass caughtType=this.getType(cc.caughtException.type);
+        if (caughtType.isAssignableFrom(type)) {
+          cc.reachable=true;
+          return;
+        }
+        CATCH_SUBTYPE:         if (type.isAssignableFrom(caughtType)) {
+          for (int j=0; j < i; ++j) {
+            if (this.getType(((CatchClause)ts.catchClauses.get(j)).caughtException.type).isAssignableFrom(caughtType)) {
+              break CATCH_SUBTYPE;
+            }
+          }
+          cc.reachable=true;
+        }
+      }
+    }
+ else     if (scope instanceof FunctionDeclarator) {
+      FunctionDeclarator fd=(FunctionDeclarator)scope;
+      for (      Type thrownException : fd.thrownExceptions) {
+        if (this.getType(thrownException).isAssignableFrom(type))         return;
+      }
+      break;
+    }
+ else     if (scope instanceof TypeBodyDeclaration) {
+      break;
+    }
+  }
+  this.compileError(("Thrown exception of type \"" + type + "\" is neither caught by a \"try...catch\" block "+ "nor declared in the \"throws\" clause of the declaring function"),locatable.getLocation());
+}

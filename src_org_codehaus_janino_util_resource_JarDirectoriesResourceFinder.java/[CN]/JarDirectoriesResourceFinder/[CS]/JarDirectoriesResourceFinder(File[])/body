@@ -1,0 +1,27 @@
+{
+  super(new MultiDimensionalIterator(new TransformingIterator(Arrays.asList(directories).iterator()){
+    @Override protected Object transform(    Object o){
+      File directory=(File)o;
+      if (!directory.exists())       return Collections.EMPTY_LIST.iterator();
+      File[] jarFiles=directory.listFiles(new FilenameFilter(){
+        @Override public boolean accept(        File dir,        String name){
+          return name.endsWith(".jar");
+        }
+      }
+);
+      return new TransformingIterator(Arrays.asList(jarFiles).iterator()){
+        @Override protected Object transform(        Object o){
+          File jarFile=(File)o;
+          try {
+            return new ZipFileResourceFinder(new ZipFile(jarFile));
+          }
+ catch (          IOException e) {
+            return ResourceFinder.EMPTY_RESOURCE_FINDER;
+          }
+        }
+      }
+;
+    }
+  }
+,2));
+}

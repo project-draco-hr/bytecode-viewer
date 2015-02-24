@@ -1,0 +1,6 @@
+{
+  IClass[] thrownExceptions=iMethod.getThrownExceptions();
+  for (  IClass thrownException : thrownExceptions) {
+    this.checkThrownException(in,thrownException,in.getEnclosingBlockStatement());
+  }
+}

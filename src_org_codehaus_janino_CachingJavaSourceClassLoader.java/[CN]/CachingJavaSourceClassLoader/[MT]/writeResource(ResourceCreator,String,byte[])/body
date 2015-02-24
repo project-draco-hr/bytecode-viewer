@@ -1,0 +1,13 @@
+{
+  OutputStream os=resourceCreator.createResource(resourceName);
+  try {
+    os.write(data);
+  }
+  finally {
+    try {
+      os.close();
+    }
+ catch (    IOException ex) {
+    }
+  }
+}

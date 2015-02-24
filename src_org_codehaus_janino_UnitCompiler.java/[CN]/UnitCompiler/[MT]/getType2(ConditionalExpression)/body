@@ -1,0 +1,42 @@
+{
+  IClass mhsType=this.getType(ce.mhs);
+  IClass rhsType=this.getType(ce.rhs);
+  if (mhsType == rhsType) {
+    return mhsType;
+  }
+ else   if (this.isUnboxingConvertible(mhsType) == rhsType) {
+    return rhsType;
+  }
+ else   if (this.isUnboxingConvertible(rhsType) == mhsType) {
+    return mhsType;
+  }
+ else   if (this.getConstantValue(ce.mhs) == null && !rhsType.isPrimitive()) {
+    return rhsType;
+  }
+ else   if (!mhsType.isPrimitive() && this.getConstantValue(ce.rhs) == null) {
+    return mhsType;
+  }
+ else   if (this.isConvertibleToPrimitiveNumeric(mhsType) && this.isConvertibleToPrimitiveNumeric(rhsType)) {
+    if ((mhsType == IClass.BYTE || mhsType == this.iClassLoader.TYPE_java_lang_Byte) && (rhsType == IClass.SHORT || rhsType == this.iClassLoader.TYPE_java_lang_Short))     return IClass.SHORT;
+    if ((rhsType == IClass.BYTE || rhsType == this.iClassLoader.TYPE_java_lang_Byte) && (mhsType == IClass.SHORT || mhsType == this.iClassLoader.TYPE_java_lang_Short))     return IClass.SHORT;
+    if ((mhsType == IClass.BYTE || mhsType == IClass.SHORT || mhsType == IClass.CHAR) && ce.rhs.constantValue != null && this.assignmentConversion(ce.rhs,ce.rhs.constantValue,mhsType) != null)     return mhsType;
+    if ((rhsType == IClass.BYTE || rhsType == IClass.SHORT || rhsType == IClass.CHAR) && ce.mhs.constantValue != null && this.assignmentConversion(ce.mhs,ce.mhs.constantValue,rhsType) != null)     return rhsType;
+    return this.binaryNumericPromotionType(ce,this.getUnboxedType(mhsType),this.getUnboxedType(rhsType));
+  }
+ else   if (!mhsType.isPrimitive() && !rhsType.isPrimitive()) {
+    if (mhsType.isAssignableFrom(rhsType)) {
+      return mhsType;
+    }
+ else     if (rhsType.isAssignableFrom(mhsType)) {
+      return rhsType;
+    }
+ else {
+      this.compileError("Reference types \"" + mhsType + "\" and \""+ rhsType+ "\" don't match",ce.getLocation());
+      return this.iClassLoader.TYPE_java_lang_Object;
+    }
+  }
+ else {
+    this.compileError("Incompatible expression types \"" + mhsType + "\" and \""+ rhsType+ "\"",ce.getLocation());
+    return this.iClassLoader.TYPE_java_lang_Object;
+  }
+}

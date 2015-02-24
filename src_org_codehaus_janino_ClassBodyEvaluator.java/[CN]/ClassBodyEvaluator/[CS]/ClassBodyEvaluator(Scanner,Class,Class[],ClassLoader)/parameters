@@ -1,0 +1,4 @@
+Scanner scanner
+Class optionalExtendedType
+Class[] implementedTypes
+ClassLoader optionalParentClassLoader

@@ -1,0 +1,4 @@
+{
+  super(location,body);
+  (this.condition=condition).setEnclosingBlockStatement(this);
+}

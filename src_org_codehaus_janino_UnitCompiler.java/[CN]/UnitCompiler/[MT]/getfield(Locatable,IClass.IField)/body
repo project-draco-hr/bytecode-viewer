@@ -1,0 +1,4 @@
+{
+  this.writeOpcode(locatable,iField.isStatic() ? Opcode.GETSTATIC : Opcode.GETFIELD);
+  this.writeConstantFieldrefInfo(iField.getDeclaringIClass().getDescriptor(),iField.getName(),iField.getDescriptor());
+}

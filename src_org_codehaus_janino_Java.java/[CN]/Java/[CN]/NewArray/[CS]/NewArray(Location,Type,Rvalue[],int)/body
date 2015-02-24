@@ -1,0 +1,6 @@
+{
+  super(location);
+  this.type=type;
+  this.dimExprs=dimExprs;
+  this.dims=dims;
+}

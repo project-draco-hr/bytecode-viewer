@@ -1,0 +1,44 @@
+{
+  super(new Producer(){
+    private final List<State> stateStack=DirectoryIterator.newArrayList(new State(rootDirectory));
+    @Override public Object produce(){
+      while (!this.stateStack.isEmpty()) {
+        State state=(State)this.stateStack.get(this.stateStack.size() - 1);
+        if (state.directories.hasNext()) {
+          this.stateStack.add(new State((File)state.directories.next()));
+        }
+ else         if (state.files.hasNext()) {
+          File file=(File)state.files.next();
+          return file;
+        }
+ else {
+          this.stateStack.remove(this.stateStack.size() - 1);
+        }
+      }
+      return null;
+    }
+class State {
+      State(      File dir){
+        File[] entries=dir.listFiles();
+        if (entries == null) {
+          throw new JaninoRuntimeException("Directory \"" + dir + "\" could not be read");
+        }
+        List<File> directoryList=new ArrayList();
+        List<File> fileList=new ArrayList();
+        for (        File entry : entries) {
+          if (entry.isDirectory()) {
+            if (directoryNameFilter.accept(dir,entry.getName()))             directoryList.add(entry);
+          }
+ else           if (entry.isFile()) {
+            if (fileNameFilter.accept(dir,entry.getName()))             fileList.add(entry);
+          }
+        }
+        this.directories=directoryList.iterator();
+        this.files=fileList.iterator();
+      }
+      final Iterator<File> directories;
+      final Iterator<File> files;
+    }
+  }
+);
+}

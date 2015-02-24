@@ -3,10 +3,10 @@
     public void run(){
       if (busy) {
         try {
-          mntmNewMenuItem_4.setIcon(BytecodeViewer.viewer.busy);
+          mntmNewMenuItem_4.setIcon(Resources.busy);
         }
  catch (        NullPointerException e) {
-          mntmNewMenuItem_4.setIcon(busyB64);
+          mntmNewMenuItem_4.setIcon(Resources.busyB64);
         }
       }
  else       mntmNewMenuItem_4.setIcon(null);

@@ -1,0 +1,9 @@
+{
+  this.setExtendedClass(optionalExtendedType);
+  this.setImplementedInterfaces(implementedTypes);
+  this.setReturnType(returnType);
+  this.setParameters(parameterNames,parameterTypes);
+  this.setThrownExceptions(thrownExceptions);
+  this.setParentClassLoader(optionalParentClassLoader);
+  this.cook(scanner);
+}

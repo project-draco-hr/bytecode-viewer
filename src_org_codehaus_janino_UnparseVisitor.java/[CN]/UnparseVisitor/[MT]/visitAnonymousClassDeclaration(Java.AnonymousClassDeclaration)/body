@@ -1,0 +1,7 @@
+{
+  this.unparseType(acd.baseType);
+  this.pw.println(" {");
+  this.pw.print(AutoIndentWriter.INDENT);
+  this.unparseClassDeclarationBody(acd);
+  this.pw.print(AutoIndentWriter.UNINDENT + "}");
+}

@@ -1,0 +1,3 @@
+{
+  this.declaringType=(TypeDeclaration)enclosingScope;
+}

@@ -1,0 +1,171 @@
+{
+  StringBuilder sb=hadDecimalPoint ? new StringBuilder(".") : new StringBuilder();
+  int state=hadDecimalPoint ? 2 : 0;
+  for (; ; ) {
+switch (state) {
+case 0:
+      if (this.nextChar == '0') {
+        sb.append('0');
+        state=6;
+      }
+ else       if (Character.isDigit((char)this.nextChar)) {
+        sb.append((char)this.nextChar);
+        state=1;
+      }
+ else {
+        throw new CompileException("Numeric literal begins with invalid character '" + (char)this.nextChar + "'",this.location());
+      }
+    break;
+case 1:
+  if (Character.isDigit((char)this.nextChar)) {
+    sb.append((char)this.nextChar);
+  }
+ else   if (this.nextChar == 'l' || this.nextChar == 'L') {
+    sb.append((char)this.nextChar);
+    this.readNextChar();
+    return new Token(Token.INTEGER_LITERAL,sb.toString());
+  }
+ else   if (this.nextChar == 'f' || this.nextChar == 'F' || this.nextChar == 'd' || this.nextChar == 'D') {
+    sb.append((char)this.nextChar);
+    this.readNextChar();
+    return new Token(Token.FLOATING_POINT_LITERAL,sb.toString());
+  }
+ else   if (this.nextChar == '.') {
+    sb.append('.');
+    state=2;
+  }
+ else   if (this.nextChar == 'E' || this.nextChar == 'e') {
+    sb.append('E');
+    state=3;
+  }
+ else {
+    return new Token(Token.INTEGER_LITERAL,sb.toString());
+  }
+break;
+case 2:
+if (Character.isDigit((char)this.nextChar)) {
+sb.append((char)this.nextChar);
+}
+ else if (this.nextChar == 'e' || this.nextChar == 'E') {
+sb.append('E');
+state=3;
+}
+ else if (this.nextChar == 'f' || this.nextChar == 'F' || this.nextChar == 'd' || this.nextChar == 'D') {
+sb.append((char)this.nextChar);
+this.readNextChar();
+return new Token(Token.FLOATING_POINT_LITERAL,sb.toString());
+}
+ else {
+return new Token(Token.FLOATING_POINT_LITERAL,sb.toString());
+}
+break;
+case 3:
+if (Character.isDigit((char)this.nextChar)) {
+sb.append((char)this.nextChar);
+state=5;
+}
+ else if (this.nextChar == '-' || this.nextChar == '+') {
+sb.append((char)this.nextChar);
+state=4;
+}
+ else {
+throw new CompileException("Exponent missing after \"E\"",this.location());
+}
+break;
+case 4:
+if (Character.isDigit((char)this.nextChar)) {
+sb.append((char)this.nextChar);
+state=5;
+}
+ else {
+throw new CompileException("Exponent missing after 'E' and sign",this.location());
+}
+break;
+case 5:
+if (Character.isDigit((char)this.nextChar)) {
+sb.append((char)this.nextChar);
+}
+ else if (this.nextChar == 'f' || this.nextChar == 'F' || this.nextChar == 'd' || this.nextChar == 'D') {
+sb.append((char)this.nextChar);
+this.readNextChar();
+return new Token(Token.FLOATING_POINT_LITERAL,sb.toString());
+}
+ else {
+return new Token(Token.FLOATING_POINT_LITERAL,sb.toString());
+}
+break;
+case 6:
+if ("01234567".indexOf(this.nextChar) != -1) {
+sb.append((char)this.nextChar);
+state=7;
+}
+ else if (this.nextChar == 'l' || this.nextChar == 'L') {
+sb.append((char)this.nextChar);
+this.readNextChar();
+return new Token(Token.INTEGER_LITERAL,sb.toString());
+}
+ else if (this.nextChar == 'f' || this.nextChar == 'F' || this.nextChar == 'd' || this.nextChar == 'D') {
+sb.append((char)this.nextChar);
+this.readNextChar();
+return new Token(Token.FLOATING_POINT_LITERAL,sb.toString());
+}
+ else if (this.nextChar == '.') {
+sb.append('.');
+state=2;
+}
+ else if (this.nextChar == 'E' || this.nextChar == 'e') {
+sb.append((char)this.nextChar);
+state=3;
+}
+ else if (this.nextChar == 'x' || this.nextChar == 'X') {
+sb.append((char)this.nextChar);
+state=8;
+}
+ else {
+return new Token(Token.INTEGER_LITERAL,"0");
+}
+break;
+case 7:
+if ("01234567".indexOf(this.nextChar) != -1) {
+sb.append((char)this.nextChar);
+}
+ else if (this.nextChar == '8' || this.nextChar == '9') {
+throw new CompileException("Digit '" + (char)this.nextChar + "' not allowed in octal literal",this.location());
+}
+ else if (this.nextChar == 'l' || this.nextChar == 'L') {
+sb.append((char)this.nextChar);
+this.readNextChar();
+return new Token(Token.INTEGER_LITERAL,sb.toString());
+}
+ else {
+return new Token(Token.INTEGER_LITERAL,sb.toString());
+}
+break;
+case 8:
+if (Character.digit((char)this.nextChar,16) != -1) {
+sb.append((char)this.nextChar);
+state=9;
+}
+ else {
+throw new CompileException("Hex digit expected after \"0x\"",this.location());
+}
+break;
+case 9:
+if (Character.digit((char)this.nextChar,16) != -1) {
+sb.append((char)this.nextChar);
+}
+ else if (this.nextChar == 'l' || this.nextChar == 'L') {
+sb.append((char)this.nextChar);
+this.readNextChar();
+return new Token(Token.INTEGER_LITERAL,sb.toString());
+}
+ else {
+return new Token(Token.INTEGER_LITERAL,sb.toString());
+}
+break;
+default :
+throw new JaninoRuntimeException(Integer.toString(state));
+}
+this.readNextChar();
+}
+}

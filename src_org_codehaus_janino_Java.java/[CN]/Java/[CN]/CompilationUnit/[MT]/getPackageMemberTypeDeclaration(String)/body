@@ -1,0 +1,6 @@
+{
+  for (  PackageMemberTypeDeclaration pmtd : this.packageMemberTypeDeclarations) {
+    if (pmtd.getName().equals(name))     return pmtd;
+  }
+  return null;
+}

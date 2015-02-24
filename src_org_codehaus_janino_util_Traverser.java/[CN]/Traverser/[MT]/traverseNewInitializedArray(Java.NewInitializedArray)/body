@@ -1,0 +1,4 @@
+{
+  nia.arrayType.accept((Visitor.TypeVisitor)this.cv);
+  this.traverseArrayInitializerOrRvalue(nia.arrayInitializer);
+}

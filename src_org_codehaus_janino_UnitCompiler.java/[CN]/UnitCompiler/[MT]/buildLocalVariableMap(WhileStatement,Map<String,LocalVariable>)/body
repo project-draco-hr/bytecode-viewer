@@ -1,0 +1,4 @@
+{
+  ws.localVariables=localVars;
+  this.buildLocalVariableMap(ws.body,localVars);
+}

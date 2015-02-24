@@ -1,0 +1,3 @@
+{
+  return this.getConstantValue(this.toRvalueOrCompileException(this.reclassify(an)));
+}

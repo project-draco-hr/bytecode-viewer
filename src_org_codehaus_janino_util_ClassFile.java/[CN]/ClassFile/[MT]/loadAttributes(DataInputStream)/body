@@ -1,0 +1,6 @@
+{
+  short attributesCount=dis.readShort();
+  List<AttributeInfo> attributes=new ArrayList(attributesCount);
+  for (int i=0; i < attributesCount; ++i)   attributes.add(this.loadAttribute(dis));
+  return attributes;
+}

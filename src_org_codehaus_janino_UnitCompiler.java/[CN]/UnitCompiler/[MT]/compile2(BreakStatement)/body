@@ -1,0 +1,33 @@
+{
+  BreakableStatement brokenStatement=null;
+  if (bs.optionalLabel == null) {
+    for (Scope s=bs.getEnclosingScope(); s instanceof Statement || s instanceof CatchClause; s=s.getEnclosingScope()) {
+      if (s instanceof BreakableStatement) {
+        brokenStatement=(BreakableStatement)s;
+        break;
+      }
+    }
+    if (brokenStatement == null) {
+      this.compileError("\"break\" statement is not enclosed by a breakable statement",bs.getLocation());
+      return false;
+    }
+  }
+ else {
+    for (Scope s=bs.getEnclosingScope(); s instanceof Statement || s instanceof CatchClause; s=s.getEnclosingScope()) {
+      if (s instanceof LabeledStatement) {
+        LabeledStatement ls=(LabeledStatement)s;
+        if (ls.label.equals(bs.optionalLabel)) {
+          brokenStatement=ls;
+          break;
+        }
+      }
+    }
+    if (brokenStatement == null) {
+      this.compileError(("Statement \"break " + bs.optionalLabel + "\" is not enclosed by a breakable statement with label \""+ bs.optionalLabel+ "\""),bs.getLocation());
+      return false;
+    }
+  }
+  this.leaveStatements(bs.getEnclosingScope(),brokenStatement.getEnclosingScope(),null);
+  this.writeBranch(bs,Opcode.GOTO,this.getWhereToBreak(brokenStatement));
+  return false;
+}

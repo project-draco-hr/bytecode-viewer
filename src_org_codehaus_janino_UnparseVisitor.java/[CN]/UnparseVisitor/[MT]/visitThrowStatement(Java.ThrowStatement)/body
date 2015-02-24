@@ -1,0 +1,5 @@
+{
+  this.pw.print("throw ");
+  this.unparse(ts.expression);
+  this.pw.print(';');
+}

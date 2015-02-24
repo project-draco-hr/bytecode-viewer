@@ -1,0 +1,29 @@
+{
+  Location location=this.location();
+  String className=this.readIdentifier();
+  this.verifyIdentifierIsConventionalClassOrInterfaceName(className,location);
+  TypeParameter[] optionalTypeParameters=this.parseTypeParametersOpt();
+  ReferenceType optionalExtendedType=null;
+  if (this.peekRead("extends")) {
+    optionalExtendedType=this.parseReferenceType();
+  }
+  ReferenceType[] implementedTypes=new ReferenceType[0];
+  if (this.peekRead("implements")) {
+    implementedTypes=this.parseReferenceTypeList();
+  }
+  NamedClassDeclaration namedClassDeclaration;
+  if (context == ClassDeclarationContext.COMPILATION_UNIT) {
+    namedClassDeclaration=new PackageMemberClassDeclaration(location,optionalDocComment,modifiers,className,optionalTypeParameters,optionalExtendedType,implementedTypes);
+  }
+ else   if (context == ClassDeclarationContext.TYPE_DECLARATION) {
+    namedClassDeclaration=new MemberClassDeclaration(location,optionalDocComment,modifiers,className,optionalTypeParameters,optionalExtendedType,implementedTypes);
+  }
+ else   if (context == ClassDeclarationContext.BLOCK) {
+    namedClassDeclaration=new LocalClassDeclaration(location,optionalDocComment,modifiers,className,optionalTypeParameters,optionalExtendedType,implementedTypes);
+  }
+ else {
+    throw new JaninoRuntimeException("SNO: Class declaration in unexpected context " + context);
+  }
+  this.parseClassBody(namedClassDeclaration);
+  return namedClassDeclaration;
+}

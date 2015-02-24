@@ -1,0 +1,31 @@
+{
+  if (!this.iClassLoader.TYPE_java_lang_Object.isAssignableFrom(this.compileGetValue(ss.expression))) {
+    this.compileError("Monitor object of \"synchronized\" statement is not a subclass of \"Object\"",ss.getLocation());
+  }
+  this.codeContext.saveLocalVariables();
+  boolean canCompleteNormally=false;
+  try {
+    ss.monitorLvIndex=this.codeContext.allocateLocalVariable((short)1);
+    this.writeOpcode(ss,Opcode.DUP);
+    this.store(ss,this.iClassLoader.TYPE_java_lang_Object,ss.monitorLvIndex);
+    this.writeOpcode(ss,Opcode.MONITORENTER);
+    final CodeContext.Offset monitorExitOffset=this.codeContext.new Offset();
+    final CodeContext.Offset beginningOfBody=this.codeContext.newOffset();
+    canCompleteNormally=this.compile(ss.body);
+    if (canCompleteNormally) {
+      this.writeBranch(ss,Opcode.GOTO,monitorExitOffset);
+    }
+    CodeContext.Offset here=this.codeContext.newOffset();
+    this.codeContext.addExceptionTableEntry(beginningOfBody,here,here,null);
+    this.leave(ss,this.iClassLoader.TYPE_java_lang_Throwable);
+    this.writeOpcode(ss,Opcode.ATHROW);
+    if (canCompleteNormally) {
+      monitorExitOffset.set();
+      this.leave(ss,null);
+    }
+  }
+  finally {
+    this.codeContext.restoreLocalVariables();
+  }
+  return canCompleteNormally;
+}

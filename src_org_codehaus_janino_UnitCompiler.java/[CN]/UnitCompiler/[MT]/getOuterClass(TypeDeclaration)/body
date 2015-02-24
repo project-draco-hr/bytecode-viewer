@@ -1,0 +1,19 @@
+{
+  if (typeDeclaration instanceof PackageMemberClassDeclaration)   return null;
+  if (typeDeclaration instanceof LocalClassDeclaration) {
+    Scope s=typeDeclaration.getEnclosingScope();
+    for (; !(s instanceof FunctionDeclarator); s=s.getEnclosingScope())     ;
+    if ((s instanceof MethodDeclarator) && Mod.isStatic(((FunctionDeclarator)s).modifiers.flags))     return null;
+    for (; !(s instanceof TypeDeclaration); s=s.getEnclosingScope())     ;
+    TypeDeclaration immediatelyEnclosingTypeDeclaration=(TypeDeclaration)s;
+    return (immediatelyEnclosingTypeDeclaration instanceof ClassDeclaration) ? immediatelyEnclosingTypeDeclaration : null;
+  }
+  if (typeDeclaration instanceof MemberClassDeclaration && Mod.isStatic(((MemberClassDeclaration)typeDeclaration).getModifierFlags()))   return null;
+  Scope s=typeDeclaration;
+  for (; !(s instanceof TypeBodyDeclaration); s=s.getEnclosingScope()) {
+    if (s instanceof ConstructorInvocation)     return null;
+    if (s instanceof CompilationUnit)     return null;
+  }
+  if (((TypeBodyDeclaration)s).isStatic())   return null;
+  return (AbstractTypeDeclaration)s.getEnclosingScope();
+}

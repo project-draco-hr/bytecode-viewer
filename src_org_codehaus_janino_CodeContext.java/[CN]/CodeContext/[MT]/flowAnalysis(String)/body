@@ -1,0 +1,31 @@
+{
+  if (CodeContext.DEBUG) {
+    System.err.println("flowAnalysis(" + functionName + ")");
+  }
+  short[] stackSizes=new short[this.end.offset];
+  Arrays.fill(stackSizes,CodeContext.UNEXAMINED);
+  this.flowAnalysis(functionName,this.code,this.end.offset,0,(short)0,stackSizes);
+  int analyzedExceptionHandlers=0;
+  while (analyzedExceptionHandlers != this.exceptionTableEntries.size()) {
+    for (    ExceptionTableEntry exceptionTableEntry : this.exceptionTableEntries) {
+      if (stackSizes[exceptionTableEntry.startPC.offset] != CodeContext.UNEXAMINED) {
+        this.flowAnalysis(functionName,this.code,this.end.offset,exceptionTableEntry.handlerPC.offset,(short)(stackSizes[exceptionTableEntry.startPC.offset] + 1),stackSizes);
+        ++analyzedExceptionHandlers;
+      }
+    }
+  }
+  this.maxStack=0;
+  for (int i=0; i < stackSizes.length; ++i) {
+    short ss=stackSizes[i];
+    if (ss == CodeContext.UNEXAMINED) {
+      if (CodeContext.DEBUG) {
+        System.out.println(functionName + ": Unexamined code at offset " + i);
+        return;
+      }
+ else {
+        throw new JaninoRuntimeException(functionName + ": Unexamined code at offset " + i);
+      }
+    }
+    if (ss > this.maxStack)     this.maxStack=ss;
+  }
+}

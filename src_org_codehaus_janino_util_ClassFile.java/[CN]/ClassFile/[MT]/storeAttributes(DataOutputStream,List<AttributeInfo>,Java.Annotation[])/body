@@ -1,0 +1,4 @@
+{
+  dos.writeShort(attributeInfos.size());
+  for (  AttributeInfo attributeInfo : attributeInfos)   attributeInfo.store(dos);
+}

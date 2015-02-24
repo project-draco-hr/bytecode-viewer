@@ -1,0 +1,18 @@
+{
+  if (sourceType == targetType)   return true;
+  if (this.isWideningPrimitiveConvertible(sourceType,targetType))   return true;
+  if (this.isWideningReferenceConvertible(sourceType,targetType))   return true;
+  if (boxingPermitted) {
+    IClass boxedType=this.isBoxingConvertible(sourceType);
+    if (boxedType != null) {
+      return (this.isIdentityConvertible(boxedType,targetType) || this.isWideningReferenceConvertible(boxedType,targetType));
+    }
+  }
+  if (boxingPermitted) {
+    IClass unboxedType=this.isUnboxingConvertible(sourceType);
+    if (unboxedType != null) {
+      return (this.isIdentityConvertible(unboxedType,targetType) || this.isWideningPrimitiveConvertible(unboxedType,targetType));
+    }
+  }
+  return false;
+}

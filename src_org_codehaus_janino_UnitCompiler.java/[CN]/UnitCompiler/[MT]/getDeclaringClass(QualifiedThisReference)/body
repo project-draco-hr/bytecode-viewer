@@ -1,0 +1,6 @@
+{
+  if (qtr.declaringClass == null) {
+    this.getDeclaringTypeBodyDeclaration(qtr);
+  }
+  return qtr.declaringClass;
+}

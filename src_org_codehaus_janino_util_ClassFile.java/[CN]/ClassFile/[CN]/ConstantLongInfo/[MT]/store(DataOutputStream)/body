@@ -1,0 +1,4 @@
+{
+  dos.writeByte(5);
+  dos.writeLong(this.value);
+}

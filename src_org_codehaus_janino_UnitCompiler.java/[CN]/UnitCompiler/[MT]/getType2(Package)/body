@@ -1,0 +1,4 @@
+{
+  this.compileError("Unknown variable or type \"" + p.name + "\"",p.getLocation());
+  return this.iClassLoader.TYPE_java_lang_Object;
+}

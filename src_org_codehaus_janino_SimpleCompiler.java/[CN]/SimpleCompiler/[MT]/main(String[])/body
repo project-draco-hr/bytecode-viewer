@@ -1,0 +1,22 @@
+{
+  if (args.length >= 1 && "-help".equals(args[0])) {
+    System.out.println("Usage:");
+    System.out.println("    org.codehaus.janino.SimpleCompiler <source-file> <class-name> { <argument> }");
+    System.out.println("Reads a compilation unit from the given <source-file> and invokes method");
+    System.out.println("\"public static void main(String[])\" of class <class-name>, passing the");
+    System.out.println("given <argument>s.");
+    System.exit(1);
+  }
+  if (args.length < 2) {
+    System.err.println("Source file and/or class name missing; try \"-help\".");
+    System.exit(1);
+  }
+  String sourceFileName=args[0];
+  String className=args[1];
+  String[] arguments=new String[args.length - 2];
+  System.arraycopy(args,2,arguments,0,arguments.length);
+  ClassLoader cl=new SimpleCompiler(sourceFileName,new FileInputStream(sourceFileName)).getClassLoader();
+  Class c=cl.loadClass(className);
+  Method m=c.getMethod("main",new Class[]{String[].class});
+  m.invoke(null,new Object[]{arguments});
+}

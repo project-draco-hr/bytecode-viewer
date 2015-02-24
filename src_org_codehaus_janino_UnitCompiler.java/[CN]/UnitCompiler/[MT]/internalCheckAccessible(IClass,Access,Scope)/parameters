@@ -1,0 +1,3 @@
+IClass iClassDeclaringMember
+Access memberAccess
+Scope contextScope

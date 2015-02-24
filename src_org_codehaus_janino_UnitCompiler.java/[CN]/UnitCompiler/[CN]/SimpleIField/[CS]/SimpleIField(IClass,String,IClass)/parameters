@@ -1,0 +1,3 @@
+IClass declaringIClass
+String name
+IClass type

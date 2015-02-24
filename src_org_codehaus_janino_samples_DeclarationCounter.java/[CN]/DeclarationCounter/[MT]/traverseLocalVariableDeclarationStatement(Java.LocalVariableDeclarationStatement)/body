@@ -1,0 +1,4 @@
+{
+  this.localVariableCount+=lvds.variableDeclarators.length;
+  super.traverseLocalVariableDeclarationStatement(lvds);
+}

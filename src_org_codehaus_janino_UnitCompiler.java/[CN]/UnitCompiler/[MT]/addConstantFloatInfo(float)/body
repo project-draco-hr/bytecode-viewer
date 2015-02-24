@@ -1,0 +1,3 @@
+{
+  return this.codeContext.getClassFile().addConstantFloatInfo(value);
+}

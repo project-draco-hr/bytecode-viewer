@@ -1,0 +1,4 @@
+{
+  this.reportingEnabled=reportingEnabled;
+  this.reporter=reporter;
+}

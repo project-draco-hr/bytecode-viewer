@@ -1,0 +1,12 @@
+{
+  IClassLoader icl=this.iClassLoader;
+  if (sourceType == IClass.BOOLEAN)   return icl.TYPE_java_lang_Boolean;
+  if (sourceType == IClass.BYTE)   return icl.TYPE_java_lang_Byte;
+  if (sourceType == IClass.CHAR)   return icl.TYPE_java_lang_Character;
+  if (sourceType == IClass.SHORT)   return icl.TYPE_java_lang_Short;
+  if (sourceType == IClass.INT)   return icl.TYPE_java_lang_Integer;
+  if (sourceType == IClass.LONG)   return icl.TYPE_java_lang_Long;
+  if (sourceType == IClass.FLOAT)   return icl.TYPE_java_lang_Float;
+  if (sourceType == IClass.DOUBLE)   return icl.TYPE_java_lang_Double;
+  return null;
+}

@@ -1,0 +1,4 @@
+{
+  this.bounds=Wildcard.BOUNDS_NONE;
+  this.referenceType=null;
+}

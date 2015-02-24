@@ -1,0 +1,16 @@
+{
+  this.benchmark.report("Root dirs",rootDirectories);
+  this.benchmark.report("Directory name patterns",directoryNamePatterns);
+  this.benchmark.report("File name patterns",fileNamePatterns);
+  this.jGrep(DirectoryIterator.traverseDirectories(rootDirectories,new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return StringPattern.matches(directoryNamePatterns,name);
+    }
+  }
+,new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return StringPattern.matches(fileNamePatterns,name);
+    }
+  }
+),methodInvocationTargets);
+}

@@ -1,0 +1,5 @@
+{
+  if (ins.nextInserter != null)   throw new JaninoRuntimeException("An Inserter can only be pushed once at a time");
+  ins.nextInserter=this.currentInserter;
+  this.currentInserter=ins;
+}

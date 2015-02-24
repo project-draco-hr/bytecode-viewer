@@ -1,0 +1,3 @@
+{
+  return this.peek(new int[]{Token.INTEGER_LITERAL,Token.FLOATING_POINT_LITERAL,Token.BOOLEAN_LITERAL,Token.CHARACTER_LITERAL,Token.STRING_LITERAL,Token.NULL_LITERAL}) != -1;
+}

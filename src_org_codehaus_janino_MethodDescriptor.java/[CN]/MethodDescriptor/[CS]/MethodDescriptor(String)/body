@@ -1,0 +1,23 @@
+{
+  if (s.charAt(0) != '(')   throw new JaninoRuntimeException();
+  int from=1;
+  List<String> parameterFDs=new ArrayList();
+  while (s.charAt(from) != ')') {
+    int to=from;
+    while (s.charAt(to) == '[')     ++to;
+    if ("BCDFIJSZ".indexOf(s.charAt(to)) != -1) {
+      ++to;
+    }
+ else     if (s.charAt(to) == 'L') {
+      for (++to; s.charAt(to) != ';'; ++to)       ;
+      ++to;
+    }
+ else {
+      throw new JaninoRuntimeException();
+    }
+    parameterFDs.add(s.substring(from,to));
+    from=to;
+  }
+  this.parameterFds=(String[])parameterFDs.toArray(new String[parameterFDs.size()]);
+  this.returnFd=s.substring(++from);
+}

@@ -1,0 +1,30 @@
+{
+  if (operand instanceof Java.BinaryOperation) {
+    return (UnparseVisitor.getOperatorPrecedence(operator) - UnparseVisitor.getOperatorPrecedence(((Java.BinaryOperation)operand).op));
+  }
+ else   if (operand instanceof Java.UnaryOperation) {
+    return (UnparseVisitor.getOperatorPrecedence(operator) - UnparseVisitor.getOperatorPrecedence(((Java.UnaryOperation)operand).operator + "x"));
+  }
+ else   if (operand instanceof Java.ConditionalExpression) {
+    return UnparseVisitor.getOperatorPrecedence(operator) - UnparseVisitor.getOperatorPrecedence("?:");
+  }
+ else   if (operand instanceof Java.Instanceof) {
+    return UnparseVisitor.getOperatorPrecedence(operator) - UnparseVisitor.getOperatorPrecedence("instanceof");
+  }
+ else   if (operand instanceof Java.Cast) {
+    return UnparseVisitor.getOperatorPrecedence(operator) - UnparseVisitor.getOperatorPrecedence("cast");
+  }
+ else   if (operand instanceof Java.MethodInvocation || operand instanceof Java.FieldAccess) {
+    return UnparseVisitor.getOperatorPrecedence(operator) - UnparseVisitor.getOperatorPrecedence(".");
+  }
+ else   if (operand instanceof Java.NewArray) {
+    return UnparseVisitor.getOperatorPrecedence(operator) - UnparseVisitor.getOperatorPrecedence("new");
+  }
+ else   if (operand instanceof Java.Crement) {
+    Java.Crement c=(Java.Crement)operand;
+    return (UnparseVisitor.getOperatorPrecedence(operator) - UnparseVisitor.getOperatorPrecedence(c.pre ? c.operator + "x" : "x" + c.operator));
+  }
+ else {
+    return -1;
+  }
+}

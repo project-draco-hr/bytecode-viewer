@@ -1,0 +1,9 @@
+{
+  IClass lhsType=this.compileGetValue(aae.lhs);
+  if (!lhsType.isArray()) {
+    this.compileError("Subscript not allowed on non-array type \"" + lhsType.toString() + "\"",aae.getLocation());
+  }
+  IClass indexType=this.compileGetValue(aae.index);
+  if (!this.tryIdentityConversion(indexType,IClass.INT) && !this.tryWideningPrimitiveConversion(aae,indexType,IClass.INT))   this.compileError("Index expression of type \"" + indexType + "\" cannot be widened to \"int\"",aae.getLocation());
+  return 2;
+}

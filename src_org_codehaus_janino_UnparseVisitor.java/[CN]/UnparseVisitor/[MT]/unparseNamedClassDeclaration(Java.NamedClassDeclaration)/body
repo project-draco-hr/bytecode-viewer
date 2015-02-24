@@ -1,0 +1,15 @@
+{
+  this.unparseDocComment(ncd);
+  this.unparseAnnotations(ncd.getAnnotations());
+  this.unparseModifiers(ncd.getModifierFlags());
+  this.pw.print("class " + ncd.name);
+  if (ncd.optionalExtendedType != null) {
+    this.pw.print(" extends ");
+    this.unparseType(ncd.optionalExtendedType);
+  }
+  if (ncd.implementedTypes.length > 0)   this.pw.print(" implements " + Java.join(ncd.implementedTypes,", "));
+  this.pw.println(" {");
+  this.pw.print(AutoIndentWriter.INDENT);
+  this.unparseClassDeclarationBody(ncd);
+  this.pw.print(AutoIndentWriter.UNINDENT + "}");
+}

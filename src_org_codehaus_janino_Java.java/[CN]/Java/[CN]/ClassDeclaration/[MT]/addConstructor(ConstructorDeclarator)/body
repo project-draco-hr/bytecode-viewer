@@ -1,0 +1,4 @@
+{
+  this.constructors.add(cd);
+  cd.setDeclaringType(this);
+}

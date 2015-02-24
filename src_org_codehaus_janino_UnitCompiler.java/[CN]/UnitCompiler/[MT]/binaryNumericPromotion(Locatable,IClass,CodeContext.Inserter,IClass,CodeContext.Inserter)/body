@@ -1,0 +1,27 @@
+{
+  IClass promotedType;
+{
+    IClass c1=this.isUnboxingConvertible(type1);
+    IClass c2=this.isUnboxingConvertible(type2);
+    promotedType=this.binaryNumericPromotionType(locatable,c1 != null ? c1 : type1,c2 != null ? c2 : type2);
+  }
+  if (convertInserter1 != null) {
+    this.codeContext.pushInserter(convertInserter1);
+    try {
+      this.numericPromotion(locatable,this.convertToPrimitiveNumericType(locatable,type1),promotedType);
+    }
+  finally {
+      this.codeContext.popInserter();
+    }
+  }
+  if (convertInserter2 != null) {
+    this.codeContext.pushInserter(convertInserter2);
+    try {
+      this.numericPromotion(locatable,this.convertToPrimitiveNumericType(locatable,type2),promotedType);
+    }
+  finally {
+      this.codeContext.popInserter();
+    }
+  }
+  return promotedType;
+}

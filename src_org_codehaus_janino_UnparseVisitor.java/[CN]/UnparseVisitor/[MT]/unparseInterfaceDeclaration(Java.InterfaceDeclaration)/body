@@ -1,0 +1,16 @@
+{
+  this.unparseDocComment(id);
+  this.unparseAnnotations(id.getAnnotations());
+  this.unparseModifiers(id.getModifierFlags());
+  if (!Mod.isInterface(id.getModifierFlags()))   this.pw.print("interface ");
+  this.pw.print(id.name);
+  if (id.extendedTypes.length > 0)   this.pw.print(" extends " + Java.join(id.extendedTypes,", "));
+  this.pw.println(" {");
+  this.pw.print(AutoIndentWriter.INDENT);
+  this.unparseAbstractTypeDeclarationBody(id);
+  for (  Java.TypeBodyDeclaration cnstd : id.constantDeclarations) {
+    cnstd.accept(this);
+    this.pw.println();
+  }
+  this.pw.print(AutoIndentWriter.UNINDENT + "}");
+}

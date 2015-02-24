@@ -1,0 +1,3 @@
+{
+  return (sh & Mod.NATIVE) != 0;
+}

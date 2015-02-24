@@ -1,0 +1,24 @@
+{
+  FunctionDeclarator enclosingFunction=null;
+{
+    Scope s=rs.getEnclosingScope();
+    while (s instanceof Statement || s instanceof CatchClause)     s=s.getEnclosingScope();
+    enclosingFunction=(FunctionDeclarator)s;
+  }
+  IClass returnType=this.getReturnType(enclosingFunction);
+  if (returnType == IClass.VOID) {
+    if (rs.optionalReturnValue != null)     this.compileError("Method must not return a value",rs.getLocation());
+    this.leaveStatements(rs.getEnclosingScope(),enclosingFunction,null);
+    this.writeOpcode(rs,Opcode.RETURN);
+    return false;
+  }
+  if (rs.optionalReturnValue == null) {
+    this.compileError("Method must return a value",rs.getLocation());
+    return false;
+  }
+  IClass type=this.compileGetValue(rs.optionalReturnValue);
+  this.assignmentConversion(rs,type,returnType,this.getConstantValue(rs.optionalReturnValue));
+  this.leaveStatements(rs.getEnclosingScope(),enclosingFunction,returnType);
+  this.writeOpcode(rs,Opcode.IRETURN + UnitCompiler.ilfda(returnType));
+  return false;
+}

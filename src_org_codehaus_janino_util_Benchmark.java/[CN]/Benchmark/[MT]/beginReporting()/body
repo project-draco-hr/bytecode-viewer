@@ -1,0 +1,5 @@
+{
+  if (!this.reportingEnabled)   return;
+  this.reportIndented("Beginning...");
+  this.begin();
+}

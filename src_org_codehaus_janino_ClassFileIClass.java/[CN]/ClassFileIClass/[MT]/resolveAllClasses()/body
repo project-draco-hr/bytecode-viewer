@@ -1,0 +1,19 @@
+{
+  for (short i=0; i < this.classFile.getConstantPoolSize(); ++i) {
+    ClassFile.ConstantPoolInfo cpi=this.classFile.getConstantPoolInfo(i);
+    if (cpi instanceof ClassFile.ConstantClassInfo) {
+      this.resolveClass(i);
+    }
+ else     if (cpi instanceof ClassFile.ConstantNameAndTypeInfo) {
+      String descriptor=((ClassFile.ConstantNameAndTypeInfo)cpi).getDescriptor(this.classFile);
+      if (descriptor.charAt(0) == '(') {
+        MethodDescriptor md=new MethodDescriptor(descriptor);
+        this.resolveClass(md.returnFd);
+        for (        String parameterFd : md.parameterFds)         this.resolveClass(parameterFd);
+      }
+ else {
+        this.resolveClass(descriptor);
+      }
+    }
+  }
+}

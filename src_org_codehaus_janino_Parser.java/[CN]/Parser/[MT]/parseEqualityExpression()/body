@@ -1,0 +1,7 @@
+{
+  Atom a=this.parseRelationalExpression();
+  while (this.peek(new String[]{"==","!="}) != -1) {
+    a=new BinaryOperation(this.location(),a.toRvalueOrCompileException(),this.read().value,this.parseRelationalExpression().toRvalueOrCompileException());
+  }
+  return a;
+}

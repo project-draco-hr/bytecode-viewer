@@ -1,0 +1,3 @@
+{
+  return this.peek().type == Token.EOF;
+}

@@ -1,0 +1,20 @@
+{
+  if (s instanceof CompilationUnit)   return null;
+  for (; ; ) {
+    Scope es=s.getEnclosingScope();
+    if (es instanceof CompilationUnit)     break;
+    if (s instanceof BlockStatement && (es instanceof Block || es instanceof FunctionDeclarator)) {
+      BlockStatement bs=(BlockStatement)s;
+      List<? extends BlockStatement> statements=(es instanceof BlockStatement ? ((Block)es).statements : ((FunctionDeclarator)es).optionalStatements);
+      for (      BlockStatement bs2 : statements) {
+        if (bs2 instanceof LocalClassDeclarationStatement) {
+          LocalClassDeclarationStatement lcds=((LocalClassDeclarationStatement)bs2);
+          if (lcds.lcd.name.equals(name))           return lcds.lcd;
+        }
+        if (bs2 == bs)         break;
+      }
+    }
+    s=es;
+  }
+  return null;
+}

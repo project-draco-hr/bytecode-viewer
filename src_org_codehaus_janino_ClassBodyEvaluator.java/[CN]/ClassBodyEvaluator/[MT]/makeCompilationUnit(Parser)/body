@@ -1,0 +1,19 @@
+{
+  Java.CompilationUnit cu=(new Java.CompilationUnit(optionalParser == null ? null : optionalParser.getScanner().getFileName()));
+  if (this.optionalDefaultImports != null) {
+    for (    String defaultImport : this.optionalDefaultImports) {
+      Scanner s=new Scanner(null,new StringReader(defaultImport));
+      Parser parser2=new Parser(s);
+      cu.addImportDeclaration(parser2.parseImportDeclarationBody());
+      if (!parser2.peekEof()) {
+        throw new CompileException("Unexpected token '" + parser2.peek() + "' in default import",s.location());
+      }
+    }
+  }
+  if (optionalParser != null) {
+    while (optionalParser.peek("import")) {
+      cu.addImportDeclaration(optionalParser.parseImportDeclaration());
+    }
+  }
+  return cu;
+}

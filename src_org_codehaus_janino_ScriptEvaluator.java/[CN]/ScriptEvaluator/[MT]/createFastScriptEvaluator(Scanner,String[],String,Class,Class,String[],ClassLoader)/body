@@ -1,0 +1,8 @@
+{
+  ScriptEvaluator se=new ScriptEvaluator();
+  se.setDefaultImports(optionalDefaultImports);
+  se.setClassName(className);
+  se.setExtendedClass(optionalExtendedClass);
+  se.setParentClassLoader(optionalParentClassLoader);
+  return se.createFastEvaluator(scanner,interfaceToImplement,parameterNames);
+}

@@ -1,0 +1,7 @@
+{
+  short mods=dis.readShort();
+  short nameIndex=dis.readShort();
+  short descIndex=dis.readShort();
+  List<AttributeInfo> attributes=this.loadAttributes(dis);
+  return new MethodInfo(ClassFile.buildModsAndAnns(mods,attributes),nameIndex,descIndex,attributes);
+}

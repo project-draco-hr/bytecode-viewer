@@ -1,0 +1,3 @@
+{
+  return this.getNegatedConstantValue(pe.value);
+}

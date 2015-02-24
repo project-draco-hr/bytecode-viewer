@@ -1,0 +1,3 @@
+{
+  return this.statiC ? "static " + this.block : this.block.toString();
+}

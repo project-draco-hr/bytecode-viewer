@@ -1,0 +1,8 @@
+{
+{
+    int idx=className.lastIndexOf('.') + 1;
+    idx=className.indexOf('$',idx);
+    if (idx != -1)     className=className.substring(0,idx);
+  }
+  return className.replace('.','/') + ".java";
+}

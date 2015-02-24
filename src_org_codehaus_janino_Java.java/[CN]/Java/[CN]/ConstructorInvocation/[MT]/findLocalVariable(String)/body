@@ -1,0 +1,6 @@
+{
+  if (this.localVariables == null) {
+    return null;
+  }
+  return (LocalVariable)this.localVariables.get(name);
+}

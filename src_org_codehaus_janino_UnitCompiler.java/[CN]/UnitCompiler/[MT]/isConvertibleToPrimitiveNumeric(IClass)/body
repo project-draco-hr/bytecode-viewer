@@ -1,0 +1,5 @@
+{
+  if (sourceType.isPrimitiveNumeric())   return true;
+  IClass unboxedType=this.isUnboxingConvertible(sourceType);
+  return unboxedType != null && unboxedType.isPrimitiveNumeric();
+}

@@ -1,0 +1,7 @@
+{
+  this.read("{");
+  for (; ; ) {
+    if (this.peekRead("}"))     return;
+    this.parseClassBodyDeclaration(classDeclaration);
+  }
+}

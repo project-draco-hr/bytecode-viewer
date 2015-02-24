@@ -1,0 +1,82 @@
+{
+  if (ts.optionalFinally != null)   ts.finallyOffset=this.codeContext.new Offset();
+  final CodeContext.Offset beginningOfBody=this.codeContext.newOffset();
+  final CodeContext.Offset afterStatement=this.codeContext.new Offset();
+  this.codeContext.saveLocalVariables();
+  try {
+    final short pcLvIndex=(ts.optionalFinally != null ? this.codeContext.allocateLocalVariable((short)1) : (short)0);
+    for (    CatchClause catchClause : ts.catchClauses) {
+      IClass caughtExceptionType=this.getType(catchClause.caughtException.type);
+      catchClause.reachable=(this.iClassLoader.TYPE_java_lang_Error.isAssignableFrom(caughtExceptionType) || caughtExceptionType.isAssignableFrom(this.iClassLoader.TYPE_java_lang_Error) || this.iClassLoader.TYPE_java_lang_RuntimeException.isAssignableFrom(caughtExceptionType)|| caughtExceptionType.isAssignableFrom(this.iClassLoader.TYPE_java_lang_RuntimeException));
+    }
+    boolean canCompleteNormally=this.compile(ts.body);
+    CodeContext.Offset afterBody=this.codeContext.newOffset();
+    if (canCompleteNormally) {
+      this.writeBranch(ts,Opcode.GOTO,afterStatement);
+    }
+    if (beginningOfBody.offset != afterBody.offset) {
+      this.codeContext.saveLocalVariables();
+      try {
+        for (int i=0; i < ts.catchClauses.size(); ++i) {
+          try {
+            this.codeContext.saveLocalVariables();
+            CatchClause catchClause=(CatchClause)ts.catchClauses.get(i);
+            IClass caughtExceptionType=this.getType(catchClause.caughtException.type);
+            if (!catchClause.reachable) {
+              this.compileError("Catch clause is unreachable",catchClause.getLocation());
+            }
+            LocalVariableSlot exceptionVarSlot=this.codeContext.allocateLocalVariable((short)1,catchClause.caughtException.name,caughtExceptionType);
+            final short evi=exceptionVarSlot.getSlotIndex();
+            this.getLocalVariable(catchClause.caughtException).setSlot(exceptionVarSlot);
+            this.codeContext.addExceptionTableEntry(beginningOfBody,afterBody,this.codeContext.newOffset(),caughtExceptionType.getDescriptor());
+            this.store(catchClause,caughtExceptionType,evi);
+            if (this.compile(catchClause.body)) {
+              canCompleteNormally=true;
+              if (i < ts.catchClauses.size() - 1 || ts.optionalFinally != null)               this.writeBranch(catchClause,Opcode.GOTO,afterStatement);
+            }
+          }
+  finally {
+            this.codeContext.restoreLocalVariables();
+          }
+        }
+      }
+  finally {
+        this.codeContext.restoreLocalVariables();
+      }
+    }
+    if (ts.optionalFinally != null) {
+      CodeContext.Offset here=this.codeContext.newOffset();
+      this.codeContext.addExceptionTableEntry(beginningOfBody,here,here,null);
+      this.codeContext.saveLocalVariables();
+      try {
+        short evi=this.codeContext.allocateLocalVariable((short)1);
+        this.store(ts.optionalFinally,this.iClassLoader.TYPE_java_lang_Object,evi);
+        this.writeBranch(ts.optionalFinally,Opcode.JSR,ts.finallyOffset);
+        this.load(ts.optionalFinally,this.iClassLoader.TYPE_java_lang_Object,evi);
+        this.writeOpcode(ts.optionalFinally,Opcode.ATHROW);
+        ts.finallyOffset.set();
+        this.store(ts.optionalFinally,this.iClassLoader.TYPE_java_lang_Object,pcLvIndex);
+        if (this.compile(ts.optionalFinally)) {
+          if (pcLvIndex > 255) {
+            this.writeOpcode(ts.optionalFinally,Opcode.WIDE);
+            this.writeOpcode(ts.optionalFinally,Opcode.RET);
+            this.writeShort(pcLvIndex);
+          }
+ else {
+            this.writeOpcode(ts.optionalFinally,Opcode.RET);
+            this.writeByte(pcLvIndex);
+          }
+        }
+      }
+  finally {
+        this.codeContext.restoreLocalVariables();
+      }
+    }
+    afterStatement.set();
+    if (canCompleteNormally)     this.leave(ts,null);
+    return canCompleteNormally;
+  }
+  finally {
+    this.codeContext.restoreLocalVariables();
+  }
+}

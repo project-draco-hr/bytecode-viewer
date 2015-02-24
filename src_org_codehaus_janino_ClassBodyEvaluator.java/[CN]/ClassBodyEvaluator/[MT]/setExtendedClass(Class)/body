@@ -1,0 +1,4 @@
+{
+  this.assertNotCooked();
+  this.optionalExtendedType=optionalExtendedType;
+}

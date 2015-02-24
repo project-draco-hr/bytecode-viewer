@@ -1,0 +1,8 @@
+{
+  Type result=a.toType();
+  if (result == null) {
+    this.compileError("Expression \"" + a.toString() + "\" is not a type",a.getLocation());
+    return new SimpleType(a.getLocation(),this.iClassLoader.TYPE_java_lang_Object);
+  }
+  return result;
+}

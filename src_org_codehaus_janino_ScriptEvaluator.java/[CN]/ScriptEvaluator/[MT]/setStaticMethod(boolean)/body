@@ -1,0 +1,3 @@
+{
+  this.setStaticMethod(new boolean[]{staticMethod});
+}

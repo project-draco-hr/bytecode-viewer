@@ -1,0 +1,4 @@
+{
+  this.load(ss,this.iClassLoader.TYPE_java_lang_Object,ss.monitorLvIndex);
+  this.writeOpcode(ss,Opcode.MONITOREXIT);
+}

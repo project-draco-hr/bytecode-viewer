@@ -1,0 +1,7 @@
+{
+  final Location location=this.location();
+  this.read("return");
+  Rvalue returnValue=this.peek(";") ? null : this.parseExpression().toRvalueOrCompileException();
+  this.read(";");
+  return new ReturnStatement(location,returnValue);
+}

@@ -1,0 +1,14 @@
+{
+  int idx=resourceName.lastIndexOf('/');
+  String subdirectoryName=(idx == -1 ? null : resourceName.substring(0,idx).replace('/',File.separatorChar));
+  Set<File> files=(Set)this.subdirectoryNameToFiles.get(subdirectoryName);
+  if (files == null) {
+    File subDirectory=(subdirectoryName == null ? this.directory : new File(this.directory,subdirectoryName));
+    File[] fa=subDirectory.listFiles();
+    files=(fa == null) ? Collections.EMPTY_SET : new HashSet(Arrays.asList(fa));
+    this.subdirectoryNameToFiles.put(subdirectoryName,files);
+  }
+  File file=new File(this.directory,resourceName.replace('/',File.separatorChar));
+  if (!files.contains(file))   return null;
+  return file;
+}

@@ -1,0 +1,15 @@
+{
+  String v=il.value;
+  if (v.startsWith("0x")) {
+    return (v.endsWith("L") || v.endsWith("l") ? (Object)Long.valueOf(UnitCompiler.hex2Long(il,v.substring(2,v.length() - 1))) : Integer.valueOf(UnitCompiler.hex2Int(il,v.substring(2))));
+  }
+  if (v.startsWith("0")) {
+    return (v.endsWith("L") || v.endsWith("l") ? (Object)Long.valueOf(UnitCompiler.oct2Long(il,v.substring(0,v.length() - 1))) : Integer.valueOf(UnitCompiler.oct2Int(il,v)));
+  }
+  try {
+    return (v.endsWith("L") || v.endsWith("l") ? (Object)new Long(v.substring(0,v.length() - 1)) : new Integer(v));
+  }
+ catch (  NumberFormatException e) {
+    throw UnitCompiler.compileException(il,"Value of decimal integer literal '" + v + "' is out of range");
+  }
+}

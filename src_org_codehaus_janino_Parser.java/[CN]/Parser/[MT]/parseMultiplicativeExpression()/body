@@ -1,0 +1,7 @@
+{
+  Atom a=this.parseUnaryExpression();
+  while (this.peek(new String[]{"*","/","%"}) != -1) {
+    a=new BinaryOperation(this.location(),a.toRvalueOrCompileException(),this.read().value,this.parseUnaryExpression().toRvalueOrCompileException());
+  }
+  return a;
+}

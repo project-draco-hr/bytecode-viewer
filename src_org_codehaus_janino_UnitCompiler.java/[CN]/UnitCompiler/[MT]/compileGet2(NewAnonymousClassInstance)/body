@@ -1,0 +1,63 @@
+{
+  AnonymousClassDeclaration acd=naci.anonymousClassDeclaration;
+  IClass sc=this.resolve(acd).getSuperclass();
+  IClass.IConstructor[] iConstructors=sc.getDeclaredIConstructors();
+  if (iConstructors.length == 0)   throw new JaninoRuntimeException("SNO: Base class has no constructors");
+  IClass.IConstructor iConstructor=(IClass.IConstructor)this.findMostSpecificIInvocable(naci,iConstructors,naci.arguments,acd);
+  IClass[] pts=iConstructor.getParameterTypes();
+  FormalParameters parameters;
+  Location loc=naci.getLocation();
+{
+    List<FormalParameter> l=new ArrayList();
+    if (naci.optionalQualification != null)     l.add(new FormalParameter(loc,true,new SimpleType(loc,this.getType(naci.optionalQualification)),"this$base"));
+    for (int i=0; i < pts.length; ++i)     l.add(new FormalParameter(loc,true,new SimpleType(loc,pts[i]),"p" + i));
+    parameters=new FormalParameters(loc,(FormalParameter[])l.toArray(new FormalParameter[l.size()]),false);
+  }
+  IClass[] tes=iConstructor.getThrownExceptions();
+  Type[] tets=new Type[tes.length];
+  for (int i=0; i < tes.length; ++i)   tets[i]=new SimpleType(loc,tes[i]);
+  int j=0;
+  Rvalue optionalQualificationAccess;
+  if (naci.optionalQualification == null) {
+    optionalQualificationAccess=null;
+  }
+ else {
+    optionalQualificationAccess=new ParameterAccess(loc,parameters.parameters[j++]);
+  }
+  Rvalue[] parameterAccesses=new Rvalue[pts.length];
+  for (int i=0; i < pts.length; ++i) {
+    parameterAccesses[i]=new ParameterAccess(loc,parameters.parameters[j++]);
+  }
+  ConstructorDeclarator anonymousConstructor=new ConstructorDeclarator(loc,null,new Modifiers(Mod.PACKAGE),parameters,tets,new SuperConstructorInvocation(loc,optionalQualificationAccess,parameterAccesses),Collections.EMPTY_LIST);
+  acd.addConstructor(anonymousConstructor);
+  try {
+    this.compile(acd);
+    this.writeOpcode(naci,Opcode.NEW);
+    this.writeConstantClassInfo(this.resolve(naci.anonymousClassDeclaration).getDescriptor());
+    this.writeOpcode(naci,Opcode.DUP);
+    Rvalue[] arguments2;
+    if (naci.optionalQualification == null) {
+      arguments2=naci.arguments;
+    }
+ else {
+      arguments2=new Rvalue[naci.arguments.length + 1];
+      arguments2[0]=naci.optionalQualification;
+      System.arraycopy(naci.arguments,0,arguments2,1,naci.arguments.length);
+    }
+    Scope s;
+    for (s=naci.getEnclosingBlockStatement(); !(s instanceof TypeBodyDeclaration); s=s.getEnclosingScope())     ;
+    ThisReference oei;
+    if (((TypeBodyDeclaration)s).isStatic()) {
+      oei=null;
+    }
+ else {
+      oei=new ThisReference(loc);
+      oei.setEnclosingBlockStatement(naci.getEnclosingBlockStatement());
+    }
+    this.invokeConstructor(naci,naci.getEnclosingBlockStatement(),oei,this.resolve(naci.anonymousClassDeclaration),arguments2);
+  }
+  finally {
+    acd.constructors.remove(acd.constructors.size() - 1);
+  }
+  return this.resolve(naci.anonymousClassDeclaration);
+}

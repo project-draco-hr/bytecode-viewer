@@ -1,0 +1,8 @@
+{
+  if (nci.optionalQualification != null) {
+    this.unparseLhs(nci.optionalQualification,".");
+    this.pw.print('.');
+  }
+  this.pw.print("new " + nci.type.toString());
+  this.unparseFunctionInvocationArguments(nci.arguments);
+}

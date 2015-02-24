@@ -1,0 +1,33 @@
+{
+  MethodInvocationTarget mit=new MethodInvocationTarget();
+  Scanner scanner=new Scanner(null,new StringReader(mip));
+  Parser parser=new Parser(scanner);
+  for (; ; ) {
+    String s=JGrep.readIdentifierPattern(parser);
+    if (parser.peekRead("(")) {
+      mit.methodNamePattern=s;
+      List<String> l=new ArrayList();
+      if (!parser.peekRead(")")) {
+        for (; ; ) {
+          l.add(JGrep.readIdentifierPattern(parser));
+          if (parser.peek(")"))           break;
+          parser.read(",");
+        }
+      }
+      mit.optionalArgumentTypeNamePatterns=(String[])l.toArray(new String[l.size()]);
+      return mit;
+    }
+ else     if (parser.peekRead(".")) {
+      if (mit.optionalClassNamePattern == null) {
+        mit.optionalClassNamePattern=s;
+      }
+ else {
+        mit.optionalClassNamePattern+='.' + s;
+      }
+    }
+ else     if (parser.peekEof()) {
+      mit.methodNamePattern=s;
+      return mit;
+    }
+  }
+}

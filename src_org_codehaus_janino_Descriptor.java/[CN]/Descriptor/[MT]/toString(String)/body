@@ -1,0 +1,17 @@
+{
+  int idx=0;
+  StringBuilder sb=new StringBuilder();
+  if (d.charAt(0) == '(') {
+    ++idx;
+    sb.append("(");
+    while (idx < d.length() && d.charAt(idx) != ')') {
+      if (idx != 1)       sb.append(", ");
+      idx=Descriptor.toString(d,idx,sb);
+    }
+    if (idx >= d.length())     throw new JaninoRuntimeException("Invalid descriptor \"" + d + "\"");
+    sb.append(") => ");
+    ++idx;
+  }
+  Descriptor.toString(d,idx,sb);
+  return sb.toString();
+}

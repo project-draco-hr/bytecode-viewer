@@ -1,0 +1,6 @@
+{
+  this.unparseLhs(aae.lhs,"[ ]");
+  this.pw.print('[');
+  this.unparse(aae.index);
+  this.pw.print(']');
+}

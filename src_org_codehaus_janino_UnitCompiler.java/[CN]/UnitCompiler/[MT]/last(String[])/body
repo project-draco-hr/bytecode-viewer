@@ -1,0 +1,4 @@
+{
+  if (sa.length == 0)   throw new IllegalArgumentException("SNO: Empty string array");
+  return sa[sa.length - 1];
+}

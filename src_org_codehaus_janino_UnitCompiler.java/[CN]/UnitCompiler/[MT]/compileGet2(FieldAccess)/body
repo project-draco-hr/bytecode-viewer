@@ -1,0 +1,5 @@
+{
+  this.checkAccessible(fa.field,fa.getEnclosingBlockStatement());
+  this.getfield(fa,fa.field);
+  return fa.field.getType();
+}

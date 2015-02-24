@@ -1,0 +1,4 @@
+{
+  if (Modifier.isStatic(this.clazz.getModifiers()))   return null;
+  return this.getDeclaringIClass();
+}

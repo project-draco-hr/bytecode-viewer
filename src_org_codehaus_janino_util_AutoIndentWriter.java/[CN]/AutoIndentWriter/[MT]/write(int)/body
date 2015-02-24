@@ -1,0 +1,15 @@
+{
+  if (c == '\n') {
+    this.lineBuffer.append('\n');
+    this.line(this.lineBuffer.toString());
+    this.lineBuffer.setLength(0);
+    return;
+  }
+  if (this.lineBuffer.length() > 0 && this.lineBuffer.charAt(this.lineBuffer.length() - 1) == '\r') {
+    this.line(this.lineBuffer.toString());
+    this.lineBuffer.setCharAt(0,(char)c);
+    this.lineBuffer.setLength(1);
+    return;
+  }
+  this.lineBuffer.append((char)c);
+}

@@ -1,0 +1,3 @@
+{
+  return this.classIndex + (this.nameAndTypeIndex << 16);
+}

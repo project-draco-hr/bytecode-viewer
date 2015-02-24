@@ -1,0 +1,4 @@
+{
+  super.setDeclaringType(declaringType);
+  for (  Annotation a : this.modifiers.annotations)   a.setEnclosingScope(declaringType);
+}

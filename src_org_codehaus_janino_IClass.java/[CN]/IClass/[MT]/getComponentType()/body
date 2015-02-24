@@ -1,0 +1,7 @@
+{
+  if (!this.componentTypeIsCached) {
+    this.componentTypeCache=this.getComponentType2();
+    this.componentTypeIsCached=true;
+  }
+  return this.componentTypeCache;
+}

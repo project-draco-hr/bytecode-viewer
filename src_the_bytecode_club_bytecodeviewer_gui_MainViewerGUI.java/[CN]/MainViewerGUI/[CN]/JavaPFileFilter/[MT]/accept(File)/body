@@ -1,0 +1,6 @@
+{
+  if (f.isDirectory())   return true;
+  String extension=getExtension(f);
+  if (extension != null)   return (extension.equals("java"));
+  return false;
+}

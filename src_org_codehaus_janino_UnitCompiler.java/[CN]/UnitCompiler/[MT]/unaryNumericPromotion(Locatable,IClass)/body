@@ -1,0 +1,6 @@
+{
+  type=this.convertToPrimitiveNumericType(locatable,type);
+  IClass promotedType=this.unaryNumericPromotionType(locatable,type);
+  this.numericPromotion(locatable,type,promotedType);
+  return promotedType;
+}

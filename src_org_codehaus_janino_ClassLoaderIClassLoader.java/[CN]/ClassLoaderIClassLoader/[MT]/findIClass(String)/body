@@ -1,0 +1,18 @@
+{
+  Class clazz;
+  try {
+    clazz=Class.forName(Descriptor.toClassName(descriptor),false,this.classLoader);
+  }
+ catch (  ClassNotFoundException e) {
+    if (e.getException() == null) {
+      return null;
+    }
+ else {
+      throw e;
+    }
+  }
+  if (ClassLoaderIClassLoader.DEBUG)   System.out.println("clazz = " + clazz);
+  IClass result=new ReflectionIClass(clazz,this);
+  this.defineIClass(result);
+  return result;
+}

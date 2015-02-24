@@ -1,0 +1,3 @@
+{
+  return StringPattern.wildmatch(this.pattern,text);
+}

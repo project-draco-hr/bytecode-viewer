@@ -1,0 +1,10 @@
+{
+  String[] ss=this.getSingleTypeImport(simpleTypeName,location);
+  if (ss == null)   return null;
+  IClass iClass=this.findTypeByFullyQualifiedName(location,ss);
+  if (iClass == null) {
+    this.compileError("Imported class \"" + Java.join(ss,".") + "\" could not be loaded",location);
+    return this.iClassLoader.TYPE_java_lang_Object;
+  }
+  return iClass;
+}

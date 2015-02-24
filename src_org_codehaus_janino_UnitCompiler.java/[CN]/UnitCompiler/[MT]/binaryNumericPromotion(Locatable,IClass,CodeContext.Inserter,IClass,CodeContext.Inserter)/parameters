@@ -1,0 +1,5 @@
+Locatable locatable
+IClass type1
+CodeContext.Inserter convertInserter1
+IClass type2
+CodeContext.Inserter convertInserter2

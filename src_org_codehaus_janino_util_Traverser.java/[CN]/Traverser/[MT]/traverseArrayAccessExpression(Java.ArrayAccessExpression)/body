@@ -1,0 +1,5 @@
+{
+  aae.lhs.accept((Visitor.RvalueVisitor)this.cv);
+  ((Java.Atom)aae.index).accept(this.cv);
+  this.traverseLvalue(aae);
+}

@@ -1,0 +1,6 @@
+{
+  String[] tmp=new String[sa.length + 1];
+  System.arraycopy(sa,0,tmp,0,sa.length);
+  tmp[sa.length]=s;
+  return tmp;
+}

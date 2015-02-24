@@ -1,0 +1,10 @@
+{
+  ResourceFinder bootClassPathResourceFinder=new PathResourceFinder(optionalBootClassPath == null ? PathResourceFinder.parsePath(System.getProperty("sun.boot.class.path")) : optionalBootClassPath);
+  ResourceFinder extensionDirectoriesResourceFinder=new JarDirectoriesResourceFinder(optionalExtDirs == null ? PathResourceFinder.parsePath(System.getProperty("java.ext.dirs")) : optionalExtDirs);
+  final ResourceFinder classPathResourceFinder=new PathResourceFinder(classPath);
+  IClassLoader icl;
+  icl=new ResourceFinderIClassLoader(bootClassPathResourceFinder,null);
+  icl=new ResourceFinderIClassLoader(extensionDirectoriesResourceFinder,icl);
+  icl=new ResourceFinderIClassLoader(classPathResourceFinder,icl);
+  return icl;
+}

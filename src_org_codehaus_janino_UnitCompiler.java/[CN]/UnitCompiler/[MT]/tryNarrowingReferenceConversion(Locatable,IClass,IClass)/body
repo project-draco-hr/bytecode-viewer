@@ -1,0 +1,6 @@
+{
+  if (!this.isNarrowingReferenceConvertible(sourceType,targetType))   return false;
+  this.writeOpcode(locatable,Opcode.CHECKCAST);
+  this.writeConstantClassInfo(targetType.getDescriptor());
+  return true;
+}

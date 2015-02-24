@@ -1,0 +1,6 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (optionalLocation != null)   sb.append(optionalLocation).append(": ");
+  sb.append("Warning ").append(handle).append(": ").append(message);
+  System.err.println(sb.toString());
+}

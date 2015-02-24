@@ -1,0 +1,10 @@
+{
+  int result=0;
+  for (int i=0; i < value.length(); ++i) {
+    if ((result & 0xe0000000) != 0) {
+      throw UnitCompiler.compileException(locatable,"Value of octal integer literal '" + value + "' is out of range");
+    }
+    result=(result << 3) + Character.digit(value.charAt(i),8);
+  }
+  return result;
+}

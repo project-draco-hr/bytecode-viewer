@@ -43,7 +43,26 @@
                   update=false;
                 }
               }
- else               if (fn.endsWith(".apk") || fn.endsWith(".dex")) {
+ else               if (fn.endsWith(".apk")) {
+                try {
+                  if (viewer.decodeAPKResources.isSelected()) {
+                    File decodedResources=new File(tempDirectory + fs + MiscUtils.randomString(32)+ ".apk");
+                    APKTool.decodeResources(f,decodedResources);
+                    JarUtils.loadResources(decodedResources);
+                  }
+                  JarUtils.loadResources(f);
+                  String name=getRandomizedName() + ".jar";
+                  File output=new File(tempDirectory + fs + name);
+                  Dex2Jar.dex2Jar(f,output);
+                  BytecodeViewer.viewer.setIcon(false);
+                  openFiles(new File[]{output},false);
+                }
+ catch (                final Exception e) {
+                  new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+                }
+                return;
+              }
+ else               if (fn.endsWith(".dex")) {
                 try {
                   String name=getRandomizedName() + ".jar";
                   File output=new File(tempDirectory + fs + name);

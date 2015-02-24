@@ -1,0 +1,14 @@
+{
+  if (fa.field.isStatic()) {
+    Rvalue rv=fa.lhs.toRvalue();
+    if (rv != null) {
+      this.warning("CNSFA","Left-hand side of static field access should be a type, not an rvalue",fa.lhs.getLocation());
+      this.pop(fa.lhs,this.compileGetValue(rv));
+    }
+    return 0;
+  }
+ else {
+    this.compileGetValue(this.toRvalueOrCompileException(fa.lhs));
+    return 1;
+  }
+}

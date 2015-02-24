@@ -11,12 +11,12 @@
   final File tempDirectory=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + MiscUtils.randomString(32)+ BytecodeViewer.fs);
   tempDirectory.mkdir();
   final File tempJar=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp"+ MiscUtils.randomString(32)+ ".jar");
-  while (tempJar.exists())   tempJar.delete();
   JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),tempJar.getAbsolutePath());
   BytecodeViewer.sm.blocking=false;
   try {
     ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "decompile.py","-nauto","-path",BytecodeViewer.rt + ";" + tempJar.getAbsolutePath(),"-out",tempDirectory.getAbsolutePath(),cn.name + ".class");
     Process process=pb.start();
+    BytecodeViewer.krakatau.add(process);
     InputStream is=process.getInputStream();
     InputStreamReader isr=new InputStreamReader(is);
     BufferedReader br=new BufferedReader(isr);
@@ -25,6 +25,7 @@
     while ((line=br.readLine()) != null) {
       log+=BytecodeViewer.nl + line;
     }
+    br.close();
     log+=BytecodeViewer.nl + BytecodeViewer.nl + "Error:"+ BytecodeViewer.nl+ BytecodeViewer.nl;
     is=process.getErrorStream();
     isr=new InputStreamReader(is);
@@ -32,6 +33,7 @@
     while ((line=br.readLine()) != null) {
       log+=BytecodeViewer.nl + line;
     }
+    br.close();
     int exitValue=process.waitFor();
     log+=BytecodeViewer.nl + BytecodeViewer.nl + "Exit Value is "+ exitValue;
     s=log;

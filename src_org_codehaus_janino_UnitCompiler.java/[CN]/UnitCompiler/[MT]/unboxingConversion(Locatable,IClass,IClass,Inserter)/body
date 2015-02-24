@@ -1,0 +1,14 @@
+{
+  if (optionalInserter == null) {
+    this.unboxingConversion(locatable,sourceType,targetType);
+  }
+ else {
+    this.codeContext.pushInserter(optionalInserter);
+    try {
+      this.unboxingConversion(locatable,sourceType,targetType);
+    }
+  finally {
+      this.codeContext.popInserter();
+    }
+  }
+}

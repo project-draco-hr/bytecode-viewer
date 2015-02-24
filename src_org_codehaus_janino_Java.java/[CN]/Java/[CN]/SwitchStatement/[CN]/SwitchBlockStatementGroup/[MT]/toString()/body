@@ -1,0 +1,3 @@
+{
+  return (this.caseLabels.size() + (this.hasDefaultLabel ? " case label(s) plus DEFAULT" : " case label(s)"));
+}

@@ -1,0 +1,3 @@
+{
+  return new File(this.destinationDirectory,resourceName.replace('/',File.separatorChar));
+}

@@ -1,0 +1,21 @@
+{
+  final IClass.IMethod iMethod=this.findIMethod(scmi);
+  Scope s;
+  for (s=scmi.getEnclosingBlockStatement(); s instanceof Statement || s instanceof CatchClause; s=s.getEnclosingScope())   ;
+  FunctionDeclarator fd=s instanceof FunctionDeclarator ? (FunctionDeclarator)s : null;
+  if (fd == null) {
+    this.compileError("Cannot invoke superclass method in non-method scope",scmi.getLocation());
+    return IClass.INT;
+  }
+  if (Mod.isStatic(fd.modifiers.flags)) {
+    this.compileError("Cannot invoke superclass method in static context",scmi.getLocation());
+  }
+  this.load(scmi,this.resolve(fd.getDeclaringType()),0);
+  IClass[] parameterTypes=iMethod.getParameterTypes();
+  for (int i=0; i < scmi.arguments.length; ++i) {
+    this.assignmentConversion(scmi,this.compileGetValue(scmi.arguments[i]),parameterTypes[i],this.getConstantValue(scmi.arguments[i]));
+  }
+  this.writeOpcode(scmi,Opcode.INVOKESPECIAL);
+  this.writeConstantMethodrefInfo(iMethod.getDeclaringIClass().getDescriptor(),scmi.methodName,iMethod.getDescriptor());
+  return iMethod.getReturnType();
+}

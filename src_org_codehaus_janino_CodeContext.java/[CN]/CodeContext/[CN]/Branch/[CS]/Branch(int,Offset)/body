@@ -1,0 +1,11 @@
+{
+  this.opcode=opcode;
+  this.source=CodeContext.this.newInserter();
+  this.destination=destination;
+  if (opcode == Opcode.JSR_W || opcode == Opcode.GOTO_W) {
+    this.expanded=true;
+  }
+ else {
+    this.expanded=false;
+  }
+}

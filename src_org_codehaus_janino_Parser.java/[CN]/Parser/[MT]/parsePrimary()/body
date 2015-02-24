@@ -1,0 +1,105 @@
+{
+  if (this.peekRead("(")) {
+    if (this.peek(new String[]{"boolean","char","byte","short","int","long","float","double"}) != -1) {
+      Type type=this.parseType();
+      int brackets=this.parseBracketsOpt();
+      this.read(")");
+      for (int i=0; i < brackets; ++i)       type=new ArrayType(type);
+      return new Cast(this.location(),type,this.parseUnaryExpression().toRvalueOrCompileException());
+    }
+    Atom a=this.parseExpression();
+    this.read(")");
+    if (this.peekLiteral() || this.peekIdentifier() != null || this.peek(new String[]{"(","~","!"}) != -1 || this.peek(new String[]{"this","super","new"}) != -1) {
+      return new Cast(this.location(),a.toTypeOrCompileException(),this.parseUnaryExpression().toRvalueOrCompileException());
+    }
+    return new ParenthesizedExpression(a.getLocation(),a.toRvalueOrCompileException());
+  }
+  if (this.peekLiteral()) {
+    return this.parseLiteral();
+  }
+  if (this.peekIdentifier() != null) {
+    Location location=this.location();
+    String[] qi=this.parseQualifiedIdentifier();
+    if (this.peek("(")) {
+      return new MethodInvocation(this.location(),qi.length == 1 ? null : new AmbiguousName(location,qi,qi.length - 1),qi[qi.length - 1],this.parseArguments());
+    }
+    if (this.peek("[") && this.peekNextButOne("]")) {
+      Type res=new ReferenceType(location,qi,null);
+      int brackets=this.parseBracketsOpt();
+      for (int i=0; i < brackets; ++i)       res=new ArrayType(res);
+      if (this.peek(".") && this.peekNextButOne("class")) {
+        this.read();
+        Location location2=this.location();
+        this.read();
+        return new ClassLiteral(location2,res);
+      }
+ else {
+        return res;
+      }
+    }
+    return new AmbiguousName(location,qi);
+  }
+  if (this.peekRead("this")) {
+    Location location=this.location();
+    if (this.peek("(")) {
+      return new AlternateConstructorInvocation(location,this.parseArguments());
+    }
+ else {
+      return new ThisReference(location);
+    }
+  }
+  if (this.peekRead("super")) {
+    if (this.peek("(")) {
+      return new SuperConstructorInvocation(this.location(),(Rvalue)null,this.parseArguments());
+    }
+    this.read(".");
+    String name=this.readIdentifier();
+    if (this.peek("(")) {
+      return new SuperclassMethodInvocation(this.location(),name,this.parseArguments());
+    }
+ else {
+      return new SuperclassFieldAccessExpression(this.location(),(Type)null,name);
+    }
+  }
+  if (this.peekRead("new")) {
+    Location location=this.location();
+    Type type=this.parseType();
+    if (type instanceof ArrayType) {
+      return new NewInitializedArray(location,(ArrayType)type,this.parseArrayInitializer());
+    }
+    if (type instanceof ReferenceType && this.peek("(")) {
+      Rvalue[] arguments=this.parseArguments();
+      if (this.peek("{")) {
+        final AnonymousClassDeclaration anonymousClassDeclaration=new AnonymousClassDeclaration(this.location(),type);
+        this.parseClassBody(anonymousClassDeclaration);
+        return new NewAnonymousClassInstance(location,(Rvalue)null,anonymousClassDeclaration,arguments);
+      }
+ else {
+        return new NewClassInstance(location,(Rvalue)null,type,arguments);
+      }
+    }
+    return new NewArray(location,type,this.parseDimExprs(),this.parseBracketsOpt());
+  }
+  if (this.peek(new String[]{"boolean","char","byte","short","int","long","float","double"}) != -1) {
+    Type res=this.parseType();
+    int brackets=this.parseBracketsOpt();
+    for (int i=0; i < brackets; ++i)     res=new ArrayType(res);
+    if (this.peek(".") && this.peekNextButOne("class")) {
+      this.read();
+      Location location=this.location();
+      this.read();
+      return new ClassLiteral(location,res);
+    }
+    return res;
+  }
+  if (this.peekRead("void")) {
+    if (this.peek(".") && this.peekNextButOne("class")) {
+      this.read();
+      Location location=this.location();
+      this.read();
+      return new ClassLiteral(location,new BasicType(location,BasicType.VOID));
+    }
+    throw this.compileException("\"void\" encountered in wrong context");
+  }
+  throw this.compileException("Unexpected token \"" + this.peek().value + "\" in primary");
+}

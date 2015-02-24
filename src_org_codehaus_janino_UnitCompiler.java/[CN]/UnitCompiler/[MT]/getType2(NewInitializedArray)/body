@@ -1,0 +1,3 @@
+{
+  return nia.arrayType == null ? nia.arrayIClass : this.getType(nia.arrayType);
+}

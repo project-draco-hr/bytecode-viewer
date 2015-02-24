@@ -1,0 +1,6 @@
+Location location
+String optionalDocComment
+Modifiers modifiers
+String name
+TypeParameter[] optionalTypeParameters
+Type[] extendedTypes

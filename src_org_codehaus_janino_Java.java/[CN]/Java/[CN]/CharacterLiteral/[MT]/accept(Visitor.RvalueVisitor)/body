@@ -1,0 +1,3 @@
+{
+  visitor.visitCharacterLiteral(this);
+}

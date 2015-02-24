@@ -22,12 +22,14 @@
     while ((line=br.readLine()) != null) {
       System.out.println(line);
     }
+    br.close();
     is=process.getErrorStream();
     isr=new InputStreamReader(is);
     br=new BufferedReader(isr);
     while ((line=br.readLine()) != null) {
       System.out.println(line);
     }
+    br.close();
     int exitValue=process.waitFor();
     System.out.println("Exit Value is " + exitValue);
     File f=new File(tempDirectory.getAbsolutePath() + BytecodeViewer.fs + className+ ".java");

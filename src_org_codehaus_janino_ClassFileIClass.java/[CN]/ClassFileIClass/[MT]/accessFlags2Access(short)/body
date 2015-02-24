@@ -1,0 +1,3 @@
+{
+  return (Mod.isPublicAccess(accessFlags) ? Access.PUBLIC : Mod.isProtectedAccess(accessFlags) ? Access.PROTECTED : Mod.isPrivateAccess(accessFlags) ? Access.PRIVATE : Access.DEFAULT);
+}

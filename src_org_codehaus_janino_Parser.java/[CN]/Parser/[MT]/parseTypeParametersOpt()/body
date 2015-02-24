@@ -1,0 +1,9 @@
+{
+  if (!this.peekRead("<"))   return null;
+  List<TypeParameter> l=new ArrayList<TypeParameter>();
+  l.add(this.parseTypeParameter());
+  while (this.read(new String[]{",",">"}) == 0) {
+    l.add(this.parseTypeParameter());
+  }
+  return (TypeParameter[])l.toArray(new TypeParameter[l.size()]);
+}

@@ -1,0 +1,15 @@
+{
+switch (n) {
+case 0:
+    ;
+  break;
+case 1:
+this.writeOpcode(locatable,Opcode.DUP);
+break;
+case 2:
+this.writeOpcode(locatable,Opcode.DUP2);
+break;
+default :
+throw new JaninoRuntimeException("dup(" + n + ")");
+}
+}

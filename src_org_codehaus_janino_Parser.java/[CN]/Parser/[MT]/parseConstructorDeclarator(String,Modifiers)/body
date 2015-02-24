@@ -1,0 +1,38 @@
+{
+  this.readIdentifier();
+  final FormalParameters formalParameters=this.parseFormalParameters();
+  ReferenceType[] thrownExceptions;
+  if (this.peekRead("throws")) {
+    thrownExceptions=this.parseReferenceTypeList();
+  }
+ else {
+    thrownExceptions=new ReferenceType[0];
+  }
+  final Location location=this.location();
+  this.read("{");
+  ConstructorInvocation optionalConstructorInvocation=null;
+  List<BlockStatement> statements=new ArrayList();
+  if (this.peek(new String[]{"this","super","new","void","byte","char","short","int","long","float","double","boolean"}) != -1 || this.peekLiteral() || this.peekIdentifier() != null) {
+    Atom a=this.parseExpression();
+    if (a instanceof ConstructorInvocation) {
+      this.read(";");
+      optionalConstructorInvocation=(ConstructorInvocation)a;
+    }
+ else {
+      Statement s;
+      if (this.peekIdentifier() != null) {
+        Type variableType=a.toTypeOrCompileException();
+        s=new LocalVariableDeclarationStatement(a.getLocation(),new Java.Modifiers(Mod.NONE),variableType,this.parseVariableDeclarators());
+        this.read(";");
+      }
+ else {
+        s=new ExpressionStatement(a.toRvalueOrCompileException());
+        this.read(";");
+      }
+      statements.add(s);
+    }
+  }
+  statements.addAll(this.parseBlockStatements());
+  this.read("}");
+  return new ConstructorDeclarator(location,optionalDocComment,modifiers,formalParameters,thrownExceptions,optionalConstructorInvocation,statements);
+}

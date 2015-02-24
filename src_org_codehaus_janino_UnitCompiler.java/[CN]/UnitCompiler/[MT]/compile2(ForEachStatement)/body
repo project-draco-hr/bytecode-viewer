@@ -1,0 +1,88 @@
+{
+  IClass expressionType=this.getType(fes.expression);
+  if (expressionType.isArray()) {
+    this.codeContext.saveLocalVariables();
+    try {
+      LocalVariable elementLv=this.getLocalVariable(fes.currentElement,false);
+      elementLv.setSlot(this.codeContext.allocateLocalVariable(Descriptor.size(elementLv.type.getDescriptor()),fes.currentElement.name,elementLv.type));
+      this.compileGetValue(fes.expression);
+      short expressionLv=this.codeContext.allocateLocalVariable((short)1);
+      this.store(fes.expression,expressionType,expressionLv);
+      this.pushConstant(fes,0);
+      LocalVariable indexLv=new LocalVariable(false,IClass.INT);
+      indexLv.setSlot(this.codeContext.allocateLocalVariable((short)1,null,indexLv.type));
+      this.store(fes,indexLv);
+      CodeContext.Offset toCondition=this.codeContext.new Offset();
+      this.writeBranch(fes,Opcode.GOTO,toCondition);
+      fes.whereToContinue=null;
+      final CodeContext.Offset bodyOffset=this.codeContext.newOffset();
+      this.load(fes,expressionType,expressionLv);
+      this.load(fes,indexLv);
+      this.writeOpcode(fes,Opcode.IALOAD + UnitCompiler.ilfdabcs(expressionType.getComponentType()));
+      this.assignmentConversion(fes.currentElement,expressionType.getComponentType(),elementLv.type,null);
+      this.store(fes,elementLv);
+      boolean bodyCcn=this.compile(fes.body);
+      if (fes.whereToContinue != null)       fes.whereToContinue.set();
+      if (!bodyCcn && fes.whereToContinue == null) {
+        this.warning("FUUR","For update is unreachable",fes.getLocation());
+      }
+ else {
+        this.crement(fes,indexLv,"++");
+      }
+      fes.whereToContinue=null;
+      toCondition.set();
+      this.load(fes,indexLv);
+      this.load(fes,expressionType,expressionLv);
+      this.writeOpcode(fes,Opcode.ARRAYLENGTH);
+      this.writeBranch(fes,Opcode.IF_ICMPLT,bodyOffset);
+    }
+  finally {
+      this.codeContext.restoreLocalVariables();
+    }
+    if (fes.whereToBreak != null) {
+      fes.whereToBreak.set();
+      fes.whereToBreak=null;
+    }
+  }
+ else   if (this.iClassLoader.TYPE_java_lang_Iterable.isAssignableFrom(expressionType)) {
+    this.codeContext.saveLocalVariables();
+    try {
+      LocalVariable elementLv=this.getLocalVariable(fes.currentElement,false);
+      elementLv.setSlot(this.codeContext.allocateLocalVariable((short)1,fes.currentElement.name,elementLv.type));
+      this.compileGetValue(fes.expression);
+      this.invoke(fes.expression,this.iClassLoader.METH_java_lang_Iterable__iterator);
+      LocalVariable iteratorLv=new LocalVariable(false,this.iClassLoader.TYPE_java_util_Iterator);
+      iteratorLv.setSlot(this.codeContext.allocateLocalVariable((short)1,null,iteratorLv.type));
+      this.store(fes,iteratorLv);
+      CodeContext.Offset toCondition=this.codeContext.new Offset();
+      this.writeBranch(fes,Opcode.GOTO,toCondition);
+      fes.whereToContinue=null;
+      final CodeContext.Offset bodyOffset=this.codeContext.newOffset();
+      this.load(fes,iteratorLv);
+      this.invoke(fes.expression,this.iClassLoader.METH_java_util_Iterator__next);
+      if (!this.tryAssignmentConversion(fes.currentElement,this.iClassLoader.TYPE_java_lang_Object,elementLv.type,null) && !this.tryNarrowingReferenceConversion(fes.currentElement,this.iClassLoader.TYPE_java_lang_Object,elementLv.type))       throw new AssertionError();
+      this.store(fes,elementLv);
+      boolean bodyCcn=this.compile(fes.body);
+      if (fes.whereToContinue != null)       fes.whereToContinue.set();
+      if (!bodyCcn && fes.whereToContinue == null) {
+        this.warning("FUUR","For update is unreachable",fes.getLocation());
+      }
+      fes.whereToContinue=null;
+      toCondition.set();
+      this.load(fes,iteratorLv);
+      this.invoke(fes.expression,this.iClassLoader.METH_java_util_Iterator__hasNext);
+      this.writeBranch(fes,Opcode.IFNE,bodyOffset);
+    }
+  finally {
+      this.codeContext.restoreLocalVariables();
+    }
+    if (fes.whereToBreak != null) {
+      fes.whereToBreak.set();
+      fes.whereToBreak=null;
+    }
+  }
+ else {
+    this.compileError("Cannot iterate over '" + expressionType + "'");
+  }
+  return true;
+}

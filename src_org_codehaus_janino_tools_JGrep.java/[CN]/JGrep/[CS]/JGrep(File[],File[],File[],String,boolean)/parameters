@@ -1,0 +1,5 @@
+File[] classPath
+File[] optionalExtDirs
+File[] optionalBootClassPath
+String optionalCharacterEncoding
+boolean verbose

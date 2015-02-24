@@ -1,0 +1,11 @@
+{
+  int brackets=0;
+  Class c=this.clazz;
+  while (c.isArray()) {
+    ++brackets;
+    c=c.getComponentType();
+  }
+  String s=c.getName();
+  while (brackets-- > 0)   s+="[]";
+  return s;
+}

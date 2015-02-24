@@ -1,0 +1,6 @@
+{
+  super(location);
+  this.pre=false;
+  this.operator=operator;
+  this.operand=operand;
+}

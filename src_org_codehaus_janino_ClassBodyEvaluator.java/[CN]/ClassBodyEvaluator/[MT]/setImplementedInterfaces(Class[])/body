@@ -1,0 +1,7 @@
+{
+  if (implementedTypes == null) {
+    throw new NullPointerException("Zero implemented types must be specified as 'new Class[0]', not 'null'");
+  }
+  this.assertNotCooked();
+  this.implementedTypes=implementedTypes;
+}

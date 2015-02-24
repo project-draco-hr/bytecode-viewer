@@ -1,0 +1,8 @@
+{
+  this.read("assert");
+  Location loc=this.location();
+  Rvalue expression1=this.parseExpression().toRvalueOrCompileException();
+  Rvalue optionalExpression2=this.peekRead(":") ? this.parseExpression().toRvalueOrCompileException() : null;
+  this.read(";");
+  return new AssertStatement(loc,expression1,optionalExpression2);
+}

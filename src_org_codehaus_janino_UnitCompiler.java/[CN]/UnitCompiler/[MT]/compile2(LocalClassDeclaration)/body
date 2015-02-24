@@ -1,0 +1,3 @@
+{
+  this.compile2((InnerClassDeclaration)lcd);
+}

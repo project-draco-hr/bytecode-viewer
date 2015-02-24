@@ -1,0 +1,11 @@
+{
+  IClass[] parameterTypes=this.getParameterTypes();
+  IClass outerIClass=IClass.this.getOuterIClass();
+  if (outerIClass != null) {
+    IClass[] tmp=new IClass[parameterTypes.length + 1];
+    tmp[0]=outerIClass;
+    System.arraycopy(parameterTypes,0,tmp,1,parameterTypes.length);
+    parameterTypes=tmp;
+  }
+  return new MethodDescriptor(IClass.getDescriptors(parameterTypes),Descriptor.VOID).toString();
+}

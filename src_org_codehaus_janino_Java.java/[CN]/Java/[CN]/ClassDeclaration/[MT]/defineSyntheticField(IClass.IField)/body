@@ -1,0 +1,9 @@
+{
+  if (!(this instanceof InnerClassDeclaration))   throw new JaninoRuntimeException();
+  IClass.IField if2=(IClass.IField)this.syntheticFields.get(iField.getName());
+  if (if2 != null) {
+    if (iField.getType() != if2.getType())     throw new JaninoRuntimeException();
+    return;
+  }
+  this.syntheticFields.put(iField.getName(),iField);
+}

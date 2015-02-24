@@ -1,0 +1,8 @@
+{
+  List<Java.LocalVariableSlot> slots=((List<Java.LocalVariableSlot>)this.scopedVars.remove(this.scopedVars.size() - 1));
+  for (  Java.LocalVariableSlot slot : slots) {
+    if (slot.getName() != null) {
+      slot.setEnd(this.newOffset());
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (b.statements.isEmpty()) {
+    this.pw.print("{}");
+    return;
+  }
+  this.pw.println('{');
+  this.pw.print(AutoIndentWriter.INDENT);
+  this.unparseStatements(b.statements);
+  this.pw.print(AutoIndentWriter.UNINDENT + "}");
+}

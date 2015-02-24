@@ -1,0 +1,97 @@
+{
+  final boolean[] res=new boolean[1];
+  BlockStatementVisitor bsv=new BlockStatementVisitor(){
+    @Override public void visitInitializer(    Initializer i){
+      try {
+        res[0]=UnitCompiler.this.generatesCode2(i);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFieldDeclaration(    FieldDeclaration fd){
+      try {
+        res[0]=UnitCompiler.this.generatesCode2(fd);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitLabeledStatement(    LabeledStatement ls){
+      res[0]=UnitCompiler.this.generatesCode2(ls);
+    }
+    @Override public void visitBlock(    Block b){
+      try {
+        res[0]=UnitCompiler.this.generatesCode2(b);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitExpressionStatement(    ExpressionStatement es){
+      res[0]=UnitCompiler.this.generatesCode2(es);
+    }
+    @Override public void visitIfStatement(    IfStatement is){
+      res[0]=UnitCompiler.this.generatesCode2(is);
+    }
+    @Override public void visitForStatement(    ForStatement fs){
+      res[0]=UnitCompiler.this.generatesCode2(fs);
+    }
+    @Override public void visitForEachStatement(    ForEachStatement fes){
+      res[0]=UnitCompiler.this.generatesCode2(fes);
+    }
+    @Override public void visitWhileStatement(    WhileStatement ws){
+      res[0]=UnitCompiler.this.generatesCode2(ws);
+    }
+    @Override public void visitTryStatement(    TryStatement ts){
+      res[0]=UnitCompiler.this.generatesCode2(ts);
+    }
+    @Override public void visitSwitchStatement(    SwitchStatement ss){
+      res[0]=UnitCompiler.this.generatesCode2(ss);
+    }
+    @Override public void visitSynchronizedStatement(    SynchronizedStatement ss){
+      res[0]=UnitCompiler.this.generatesCode2(ss);
+    }
+    @Override public void visitDoStatement(    DoStatement ds){
+      res[0]=UnitCompiler.this.generatesCode2(ds);
+    }
+    @Override public void visitLocalVariableDeclarationStatement(    LocalVariableDeclarationStatement lvds){
+      res[0]=UnitCompiler.this.generatesCode2(lvds);
+    }
+    @Override public void visitReturnStatement(    ReturnStatement rs){
+      res[0]=UnitCompiler.this.generatesCode2(rs);
+    }
+    @Override public void visitThrowStatement(    ThrowStatement ts){
+      res[0]=UnitCompiler.this.generatesCode2(ts);
+    }
+    @Override public void visitBreakStatement(    BreakStatement bs){
+      res[0]=UnitCompiler.this.generatesCode2(bs);
+    }
+    @Override public void visitContinueStatement(    ContinueStatement cs){
+      res[0]=UnitCompiler.this.generatesCode2(cs);
+    }
+    @Override public void visitAssertStatement(    AssertStatement as){
+      res[0]=UnitCompiler.this.generatesCode2(as);
+    }
+    @Override public void visitEmptyStatement(    EmptyStatement es){
+      res[0]=UnitCompiler.this.generatesCode2(es);
+    }
+    @Override public void visitLocalClassDeclarationStatement(    LocalClassDeclarationStatement lcds){
+      res[0]=UnitCompiler.this.generatesCode2(lcds);
+    }
+    @Override public void visitAlternateConstructorInvocation(    AlternateConstructorInvocation aci){
+      res[0]=UnitCompiler.this.generatesCode2(aci);
+    }
+    @Override public void visitSuperConstructorInvocation(    SuperConstructorInvocation sci){
+      res[0]=UnitCompiler.this.generatesCode2(sci);
+    }
+  }
+;
+  try {
+    bs.accept(bsv);
+    return res[0];
+  }
+ catch (  UncheckedCompileException uce) {
+    throw uce.compileException;
+  }
+}

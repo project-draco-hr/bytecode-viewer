@@ -1,0 +1,6 @@
+{
+  IClass expressionType=this.compileGetValue(ts.expression);
+  this.checkThrownException(ts,expressionType,ts.getEnclosingScope());
+  this.writeOpcode(ts,Opcode.ATHROW);
+  return false;
+}

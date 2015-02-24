@@ -1,0 +1,5 @@
+{
+  for (  Java.ConstructorDeclarator ctord : cd.constructors)   ctord.accept(this.cv);
+  for (  Java.BlockStatement vdoi : cd.variableDeclaratorsAndInitializers)   vdoi.accept(this.cv);
+  this.traverseAbstractTypeDeclaration(cd);
+}

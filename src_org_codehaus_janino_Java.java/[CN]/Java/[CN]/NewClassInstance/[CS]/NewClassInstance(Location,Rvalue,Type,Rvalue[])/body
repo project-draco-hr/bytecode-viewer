@@ -1,0 +1,6 @@
+{
+  super(location);
+  this.optionalQualification=optionalQualification;
+  this.type=type;
+  this.arguments=arguments;
+}

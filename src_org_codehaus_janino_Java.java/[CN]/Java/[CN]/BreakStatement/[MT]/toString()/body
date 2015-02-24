@@ -1,0 +1,3 @@
+{
+  return this.optionalLabel == null ? "break;" : "break " + this.optionalLabel + ';';
+}

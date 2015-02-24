@@ -1,0 +1,4 @@
+{
+  if (this.slot == null)   return -1;
+  return this.slot.getSlotIndex();
+}

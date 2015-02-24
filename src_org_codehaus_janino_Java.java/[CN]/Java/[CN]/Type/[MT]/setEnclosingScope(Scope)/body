@@ -1,0 +1,6 @@
+{
+  if (this.enclosingScope != null && enclosingScope != this.enclosingScope) {
+    throw new JaninoRuntimeException("Enclosing scope already set for type \"" + this.toString() + "\" at "+ this.getLocation());
+  }
+  this.enclosingScope=enclosingScope;
+}

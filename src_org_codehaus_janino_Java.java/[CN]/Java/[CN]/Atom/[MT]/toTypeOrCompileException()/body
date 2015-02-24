@@ -1,0 +1,5 @@
+{
+  Type result=this.toType();
+  if (result == null)   this.throwCompileException("Expression \"" + this.toString() + "\" is not a type");
+  return result;
+}

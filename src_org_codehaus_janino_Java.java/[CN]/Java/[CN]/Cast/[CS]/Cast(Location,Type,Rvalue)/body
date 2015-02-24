@@ -1,0 +1,5 @@
+{
+  super(location);
+  this.targetType=targetType;
+  this.value=value;
+}

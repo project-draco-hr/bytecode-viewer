@@ -1,0 +1,14 @@
+{
+  if (lvIndex <= 3) {
+    this.writeOpcode(locatable,Opcode.ISTORE_0 + 4 * UnitCompiler.ilfda(lvType) + lvIndex);
+  }
+ else   if (lvIndex <= 255) {
+    this.writeOpcode(locatable,Opcode.ISTORE + UnitCompiler.ilfda(lvType));
+    this.writeByte(lvIndex);
+  }
+ else {
+    this.writeOpcode(locatable,Opcode.WIDE);
+    this.writeOpcode(locatable,Opcode.ISTORE + UnitCompiler.ilfda(lvType));
+    this.writeShort(lvIndex);
+  }
+}

@@ -1,0 +1,56 @@
+{
+  if (this.peekRead(".")) {
+    if (this.peek().type == Token.IDENTIFIER) {
+      String identifier=this.readIdentifier();
+      if (this.peek("(")) {
+        return new MethodInvocation(this.location(),atom.toRvalueOrCompileException(),identifier,this.parseArguments());
+      }
+      return new FieldAccessExpression(this.location(),atom.toRvalueOrCompileException(),identifier);
+    }
+    if (this.peekRead("this")) {
+      Location location=this.location();
+      return new QualifiedThisReference(location,atom.toTypeOrCompileException());
+    }
+    if (this.peekRead("super")) {
+      Location location=this.location();
+      if (this.peek("(")) {
+        return new SuperConstructorInvocation(location,atom.toRvalueOrCompileException(),this.parseArguments());
+      }
+      this.read(".");
+      String identifier=this.readIdentifier();
+      if (this.peek("(")) {
+        throw this.compileException("Qualified superclass method invocation NYI");
+      }
+ else {
+        return new SuperclassFieldAccessExpression(location,atom.toTypeOrCompileException(),identifier);
+      }
+    }
+    if (this.peekRead("new")) {
+      Rvalue lhs=atom.toRvalue();
+      Location location=this.location();
+      String identifier=this.readIdentifier();
+      Type type=new RvalueMemberType(location,lhs,identifier);
+      Rvalue[] arguments=this.parseArguments();
+      if (this.peek("{")) {
+        final AnonymousClassDeclaration anonymousClassDeclaration=new AnonymousClassDeclaration(this.location(),type);
+        this.parseClassBody(anonymousClassDeclaration);
+        return new NewAnonymousClassInstance(location,lhs,anonymousClassDeclaration,arguments);
+      }
+ else {
+        return new NewClassInstance(location,lhs,type,arguments);
+      }
+    }
+    if (this.peekRead("class")) {
+      Location location=this.location();
+      return new ClassLiteral(location,atom.toTypeOrCompileException());
+    }
+    throw this.compileException("Unexpected selector '" + this.peek().value + "' after \".\"");
+  }
+  if (this.peekRead("[")) {
+    Location location=this.location();
+    Rvalue index=this.parseExpression().toRvalueOrCompileException();
+    this.read("]");
+    return new ArrayAccessExpression(location,atom.toRvalueOrCompileException(),index);
+  }
+  throw this.compileException("Unexpected token '" + this.peek().value + "' in selector");
+}

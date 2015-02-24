@@ -1,0 +1,20 @@
+{
+  if (dimExprCount == 1 && dims == 0 && componentType.isPrimitive()) {
+    this.writeOpcode(locatable,Opcode.NEWARRAY);
+    this.writeByte((componentType == IClass.BOOLEAN ? 4 : componentType == IClass.CHAR ? 5 : componentType == IClass.FLOAT ? 6 : componentType == IClass.DOUBLE ? 7 : componentType == IClass.BYTE ? 8 : componentType == IClass.SHORT ? 9 : componentType == IClass.INT ? 10 : componentType == IClass.LONG ? 11 : -1));
+    return componentType.getArrayIClass(this.iClassLoader.TYPE_java_lang_Object);
+  }
+  if (dimExprCount == 1) {
+    IClass at=componentType.getArrayIClass(dims,this.iClassLoader.TYPE_java_lang_Object);
+    this.writeOpcode(locatable,Opcode.ANEWARRAY);
+    this.writeConstantClassInfo(at.getDescriptor());
+    return at.getArrayIClass(this.iClassLoader.TYPE_java_lang_Object);
+  }
+ else {
+    IClass at=componentType.getArrayIClass(dimExprCount + dims,this.iClassLoader.TYPE_java_lang_Object);
+    this.writeOpcode(locatable,Opcode.MULTIANEWARRAY);
+    this.writeConstantClassInfo(at.getDescriptor());
+    this.writeByte(dimExprCount);
+    return at;
+  }
+}

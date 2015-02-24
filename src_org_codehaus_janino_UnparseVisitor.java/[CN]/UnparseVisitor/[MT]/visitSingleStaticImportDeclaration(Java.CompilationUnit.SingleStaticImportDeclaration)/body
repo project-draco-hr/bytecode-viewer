@@ -1,0 +1,3 @@
+{
+  this.pw.println("import static " + Java.join(ssid.identifiers,".") + ';');
+}

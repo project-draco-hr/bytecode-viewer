@@ -1,0 +1,35 @@
+{
+  if (this.declaredIMethodCache == null) {
+    IMethod[] dims=this.getDeclaredIMethods();
+    Map<String,Object> m=new HashMap();
+    for (    IMethod dim : dims) {
+      String mn=dim.getName();
+      Object o=m.get(mn);
+      if (o == null) {
+        m.put(mn,dim);
+      }
+ else       if (o instanceof IMethod) {
+        List l=new ArrayList();
+        l.add(o);
+        l.add(dim);
+        m.put(mn,l);
+      }
+ else {
+        ((List)o).add(dim);
+      }
+    }
+    for (    Map.Entry<String,Object> me : m.entrySet()) {
+      Object v=me.getValue();
+      if (v instanceof IMethod) {
+        me.setValue(new IMethod[]{(IMethod)v});
+      }
+ else {
+        List<IMethod> l=(List)v;
+        me.setValue(l.toArray(new IMethod[l.size()]));
+      }
+    }
+    this.declaredIMethodCache=m;
+  }
+  IMethod[] methods=(IMethod[])this.declaredIMethodCache.get(methodName);
+  return methods == null ? IClass.NO_IMETHODS : methods;
+}

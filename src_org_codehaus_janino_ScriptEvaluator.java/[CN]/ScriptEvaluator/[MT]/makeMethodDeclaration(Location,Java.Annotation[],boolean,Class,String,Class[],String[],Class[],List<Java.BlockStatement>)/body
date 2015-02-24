@@ -1,0 +1,10 @@
+{
+  if (parameterNames.length != parameterTypes.length) {
+    throw new JaninoRuntimeException("Lengths of \"parameterNames\" (" + parameterNames.length + ") and \"parameterTypes\" ("+ parameterTypes.length+ ") do not match");
+  }
+  Java.FunctionDeclarator.FormalParameters fps=new Java.FunctionDeclarator.FormalParameters(location,new Java.FunctionDeclarator.FormalParameter[parameterNames.length],false);
+  for (int i=0; i < fps.parameters.length; ++i) {
+    fps.parameters[i]=new Java.FunctionDeclarator.FormalParameter(location,true,this.classToType(location,parameterTypes[i]),parameterNames[i]);
+  }
+  return new Java.MethodDeclarator(location,null,new Java.Modifiers(staticMethod ? (short)(Mod.PUBLIC | Mod.STATIC) : (short)Mod.PUBLIC,annotations),this.classToType(location,returnType),methodName,fps,this.classesToTypes(location,thrownExceptions),statements);
+}

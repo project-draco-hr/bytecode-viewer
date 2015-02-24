@@ -1,0 +1,9 @@
+{
+  InnerClassesAttribute ica=this.getInnerClassesAttribute();
+  if (ica == null) {
+    ica=new InnerClassesAttribute(this.addConstantUtf8Info("InnerClasses"));
+    this.attributes.add(ica);
+  }
+  ica.getEntries().add(e);
+  return;
+}

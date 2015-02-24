@@ -1,0 +1,3 @@
+{
+  return this.optionalDocComment != null && this.optionalDocComment.indexOf("@deprecated") != -1;
+}

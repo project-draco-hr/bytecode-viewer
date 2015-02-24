@@ -1,0 +1,5 @@
+{
+  IClass at=nia.arrayType == null ? nia.arrayIClass : this.getType(nia.arrayType);
+  this.compileGetValue(nia.arrayInitializer,at);
+  return at;
+}

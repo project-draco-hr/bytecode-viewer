@@ -1,0 +1,15 @@
+{
+  if (JGrep.DEBUG)   System.out.println("type = " + type);
+  String className=Descriptor.toClassName(type);
+  if (JGrep.DEBUG)   System.out.println("2 className = \"" + className + "\"");
+  if (className.startsWith("java."))   return null;
+  for (int i=0; i < JGrep.this.parsedCompilationUnits.size(); ++i) {
+    UnitCompiler uc=(UnitCompiler)JGrep.this.parsedCompilationUnits.get(i);
+    IClass res=uc.findClass(className);
+    if (res != null) {
+      this.defineIClass(res);
+      return res;
+    }
+  }
+  return null;
+}

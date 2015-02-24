@@ -1,0 +1,5 @@
+{
+  if (className == null)   throw new NullPointerException();
+  this.assertNotCooked();
+  this.className=className;
+}

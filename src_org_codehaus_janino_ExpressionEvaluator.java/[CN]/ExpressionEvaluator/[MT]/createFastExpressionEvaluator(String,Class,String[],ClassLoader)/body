@@ -1,0 +1,5 @@
+{
+  IExpressionEvaluator ee=new ExpressionEvaluator();
+  ee.setParentClassLoader(optionalParentClassLoader);
+  return ee.createFastEvaluator(expression,interfaceToImplement,parameterNames);
+}

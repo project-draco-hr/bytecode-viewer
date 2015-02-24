@@ -1,0 +1,137 @@
+{
+  IClass.IConstructor[] iConstructors=targetClass.getDeclaredIConstructors();
+  if (iConstructors.length == 0) {
+    throw new JaninoRuntimeException("SNO: Target class \"" + targetClass.getDescriptor() + "\" has no constructors");
+  }
+  IClass.IConstructor iConstructor=(IClass.IConstructor)this.findMostSpecificIInvocable(locatable,iConstructors,arguments,scope);
+  IClass[] thrownExceptions=iConstructor.getThrownExceptions();
+  for (  IClass te : thrownExceptions) {
+    this.checkThrownException(locatable,te,scope);
+  }
+  if (optionalEnclosingInstance != null) {
+    IClass outerIClass=targetClass.getOuterIClass();
+    if (outerIClass != null) {
+      IClass eiic=this.compileGetValue(optionalEnclosingInstance);
+      if (!outerIClass.isAssignableFrom(eiic)) {
+        this.compileError("Type of enclosing instance (\"" + eiic + "\") is not assignable to \""+ outerIClass+ "\"",locatable.getLocation());
+      }
+    }
+  }
+{
+    IClass.IField[] syntheticFields=targetClass.getSyntheticIFields();
+    TypeBodyDeclaration scopeTbd;
+    TypeDeclaration scopeTypeDeclaration;
+{
+      Scope s=scope;
+      for (; !(s instanceof TypeBodyDeclaration); s=s.getEnclosingScope())       ;
+      scopeTbd=(TypeBodyDeclaration)s;
+      scopeTypeDeclaration=scopeTbd.getDeclaringType();
+    }
+    if (!(scopeTypeDeclaration instanceof ClassDeclaration)) {
+      if (syntheticFields.length > 0) {
+        throw new JaninoRuntimeException("SNO: Target class has synthetic fields");
+      }
+      return;
+    }
+    ClassDeclaration scopeClassDeclaration=(ClassDeclaration)scopeTypeDeclaration;
+    for (    IClass.IField sf : syntheticFields) {
+      if (!sf.getName().startsWith("val$"))       continue;
+      IClass.IField eisf=(IClass.IField)scopeClassDeclaration.syntheticFields.get(sf.getName());
+      if (eisf != null) {
+        if (scopeTbd instanceof MethodDeclarator) {
+          this.load(locatable,this.resolve(scopeClassDeclaration),0);
+          this.getfield(locatable,eisf);
+        }
+ else         if (scopeTbd instanceof ConstructorDeclarator) {
+          ConstructorDeclarator constructorDeclarator=(ConstructorDeclarator)scopeTbd;
+          LocalVariable syntheticParameter=((LocalVariable)constructorDeclarator.syntheticParameters.get(sf.getName()));
+          if (syntheticParameter == null) {
+            this.compileError(("Compiler limitation: Constructor cannot access local variable \"" + sf.getName().substring(4) + "\" declared in an enclosing block because none of the methods accesses it. "+ "As a workaround, declare a dummy method that accesses the local variable."),locatable.getLocation());
+            this.writeOpcode(locatable,Opcode.ACONST_NULL);
+          }
+ else {
+            this.load(locatable,syntheticParameter);
+          }
+        }
+ else         if (scopeTbd instanceof FieldDeclaration) {
+          this.compileError(("Compiler limitation: Field initializers cannot access local variable \"" + sf.getName().substring(4) + "\" declared in an enclosing block because none of the methods accesses it. "+ "As a workaround, declare a dummy method that accesses the local variable."),locatable.getLocation());
+          this.writeOpcode(scopeTbd,Opcode.ACONST_NULL);
+        }
+ else {
+          throw new AssertionError(scopeTbd);
+        }
+      }
+ else {
+        String localVariableName=sf.getName().substring(4);
+        LocalVariable lv;
+        DETERMINE_LV: {
+          Scope s;
+          for (s=scope; s instanceof BlockStatement; s=s.getEnclosingScope()) {
+            BlockStatement bs=(BlockStatement)s;
+            Scope es=bs.getEnclosingScope();
+            List<? extends BlockStatement> statements;
+            if (es instanceof Block) {
+              statements=((Block)es).statements;
+            }
+ else             if (es instanceof FunctionDeclarator) {
+              statements=((FunctionDeclarator)es).optionalStatements;
+            }
+ else             if (es instanceof ForEachStatement) {
+              FunctionDeclarator.FormalParameter fp=((ForEachStatement)es).currentElement;
+              if (fp.name.equals(localVariableName)) {
+                lv=this.getLocalVariable(fp);
+                break DETERMINE_LV;
+              }
+              continue;
+            }
+ else {
+              continue;
+            }
+            for (            BlockStatement bs2 : statements) {
+              if (bs2 == bs)               break;
+              if (bs2 instanceof LocalVariableDeclarationStatement) {
+                LocalVariableDeclarationStatement lvds=((LocalVariableDeclarationStatement)bs2);
+                for (                VariableDeclarator vd : lvds.variableDeclarators) {
+                  if (vd.name.equals(localVariableName)) {
+                    lv=this.getLocalVariable(lvds,vd);
+                    break DETERMINE_LV;
+                  }
+                }
+              }
+            }
+          }
+          while (!(s instanceof FunctionDeclarator))           s=s.getEnclosingScope();
+          FunctionDeclarator fd=(FunctionDeclarator)s;
+          for (          FormalParameter fp : fd.formalParameters.parameters) {
+            if (fp.name.equals(localVariableName)) {
+              lv=this.getLocalVariable(fp);
+              break DETERMINE_LV;
+            }
+          }
+          throw new JaninoRuntimeException("SNO: Synthetic field \"" + sf.getName() + "\" neither maps a synthetic field of an enclosing instance nor a local variable");
+        }
+        this.load(locatable,lv);
+      }
+    }
+  }
+  Rvalue[] adjustedArgs=null;
+  IClass[] parameterTypes=iConstructor.getParameterTypes();
+  int actualSize=arguments.length;
+  if (iConstructor.isVarargs() && iConstructor.argsNeedAdjust()) {
+    adjustedArgs=new Rvalue[parameterTypes.length];
+    Rvalue[] lastArgs=new Rvalue[actualSize - parameterTypes.length + 1];
+    for (int i=0, j=parameterTypes.length - 1; i < lastArgs.length; ++i, ++j) {
+      lastArgs[i]=arguments[j];
+    }
+    for (int i=parameterTypes.length - 2; i >= 0; --i) {
+      adjustedArgs[i]=arguments[i];
+    }
+    Location loc=(lastArgs.length == 0 ? locatable : lastArgs[lastArgs.length - 1]).getLocation();
+    adjustedArgs[adjustedArgs.length - 1]=new NewInitializedArray(loc,parameterTypes[parameterTypes.length - 1],new ArrayInitializer(loc,lastArgs));
+    arguments=adjustedArgs;
+  }
+  for (int i=0; i < arguments.length; ++i) {
+    this.assignmentConversion(locatable,this.compileGetValue(arguments[i]),parameterTypes[i],this.getConstantValue(arguments[i]));
+  }
+  this.invoke(locatable,iConstructor);
+}

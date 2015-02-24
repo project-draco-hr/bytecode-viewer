@@ -1,0 +1,3 @@
+{
+  return this.peekNextButOne().value.equals(suspected);
+}

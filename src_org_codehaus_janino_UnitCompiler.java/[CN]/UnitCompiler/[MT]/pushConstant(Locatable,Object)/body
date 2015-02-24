@@ -1,0 +1,89 @@
+{
+  PUSH_INTEGER_CONSTANT: {
+    int iv;
+    if (value instanceof Character) {
+      iv=((Character)value).charValue();
+    }
+ else     if (value instanceof Byte) {
+      iv=((Byte)value).intValue();
+    }
+ else     if (value instanceof Short) {
+      iv=((Short)value).intValue();
+    }
+ else     if (value instanceof Integer) {
+      iv=((Integer)value).intValue();
+    }
+ else {
+      break PUSH_INTEGER_CONSTANT;
+    }
+    if (iv >= -1 && iv <= 5) {
+      this.writeOpcode(locatable,Opcode.ICONST_0 + iv);
+    }
+ else     if (iv >= Byte.MIN_VALUE && iv <= Byte.MAX_VALUE) {
+      this.writeOpcode(locatable,Opcode.BIPUSH);
+      this.writeByte((byte)iv);
+    }
+ else {
+      this.writeLdc(locatable,this.addConstantIntegerInfo(iv));
+    }
+    return IClass.INT;
+  }
+  if (value instanceof Long) {
+    long lv=((Long)value).longValue();
+    if (lv == 0L) {
+      this.writeOpcode(locatable,Opcode.LCONST_0);
+    }
+ else     if (lv == 1L) {
+      this.writeOpcode(locatable,Opcode.LCONST_1);
+    }
+ else {
+      this.writeOpcode(locatable,Opcode.LDC2_W);
+      this.writeConstantLongInfo(lv);
+    }
+    return IClass.LONG;
+  }
+  if (value instanceof Float) {
+    float fv=((Float)value).floatValue();
+    if (Float.floatToIntBits(fv) == Float.floatToIntBits(0.0F) || fv == 1.0F || fv == 2.0F) {
+      this.writeOpcode(locatable,Opcode.FCONST_0 + (int)fv);
+    }
+ else {
+      this.writeLdc(locatable,this.addConstantFloatInfo(fv));
+    }
+    return IClass.FLOAT;
+  }
+  if (value instanceof Double) {
+    double dv=((Double)value).doubleValue();
+    if (Double.doubleToLongBits(dv) == Double.doubleToLongBits(0.0D) || dv == 1.0D) {
+      this.writeOpcode(locatable,Opcode.DCONST_0 + (int)dv);
+    }
+ else {
+      this.writeOpcode(locatable,Opcode.LDC2_W);
+      this.writeConstantDoubleInfo(dv);
+    }
+    return IClass.DOUBLE;
+  }
+  if (value instanceof String) {
+    String s=(String)value;
+    String[] ss=UnitCompiler.makeUtf8Able(s);
+    this.writeLdc(locatable,this.addConstantStringInfo(ss[0]));
+    for (int i=1; i < ss.length; ++i) {
+      this.writeLdc(locatable,this.addConstantStringInfo(ss[i]));
+      this.invoke(locatable,this.iClassLoader.METH_java_lang_String__concat__java_lang_String);
+    }
+    return this.iClassLoader.TYPE_java_lang_String;
+  }
+  if (Boolean.TRUE.equals(value)) {
+    this.writeOpcode(locatable,Opcode.ICONST_1);
+    return IClass.BOOLEAN;
+  }
+  if (Boolean.FALSE.equals(value)) {
+    this.writeOpcode(locatable,Opcode.ICONST_0);
+    return IClass.BOOLEAN;
+  }
+  if (value == null) {
+    this.writeOpcode(locatable,Opcode.ACONST_NULL);
+    return IClass.VOID;
+  }
+  throw new JaninoRuntimeException("Unknown literal '" + value + "'");
+}

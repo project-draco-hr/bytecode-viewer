@@ -1,0 +1,8 @@
+{
+  super(attributeNameIndex);
+  this.maxStack=maxStack;
+  this.maxLocals=maxLocals;
+  this.code=code;
+  this.exceptionTableEntries=exceptionTableEntries;
+  this.attributes=attributes;
+}

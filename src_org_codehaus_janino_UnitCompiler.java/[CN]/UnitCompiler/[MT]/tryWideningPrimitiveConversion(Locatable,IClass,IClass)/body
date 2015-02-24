@@ -1,0 +1,8 @@
+{
+  byte[] opcodes=(byte[])UnitCompiler.PRIMITIVE_WIDENING_CONVERSIONS.get(sourceType.getDescriptor() + targetType.getDescriptor());
+  if (opcodes != null) {
+    this.writeOpcodes(locatable,opcodes);
+    return true;
+  }
+  return false;
+}

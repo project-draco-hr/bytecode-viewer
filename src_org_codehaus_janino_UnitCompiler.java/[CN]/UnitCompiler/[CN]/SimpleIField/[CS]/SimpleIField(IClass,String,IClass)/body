@@ -1,0 +1,5 @@
+{
+  declaringIClass.super();
+  this.name=name;
+  this.type=type;
+}

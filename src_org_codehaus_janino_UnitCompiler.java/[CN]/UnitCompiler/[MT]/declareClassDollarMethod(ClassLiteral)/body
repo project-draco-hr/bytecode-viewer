@@ -1,0 +1,42 @@
+{
+  Location loc=cl.getLocation();
+  AbstractTypeDeclaration declaringType;
+  for (Scope s=cl.getEnclosingBlockStatement(); ; s=s.getEnclosingScope()) {
+    if (s instanceof AbstractTypeDeclaration) {
+      declaringType=(AbstractTypeDeclaration)s;
+      break;
+    }
+  }
+  final MethodInvocation mi=new MethodInvocation(loc,new SimpleType(loc,this.iClassLoader.TYPE_java_lang_Class),"forName",new Rvalue[]{new AmbiguousName(loc,new String[]{"className"})});
+  IClass classNotFoundExceptionIClass;
+  try {
+    classNotFoundExceptionIClass=this.iClassLoader.loadIClass("Ljava/lang/ClassNotFoundException;");
+  }
+ catch (  ClassNotFoundException ex) {
+    throw new JaninoRuntimeException("Loading class \"ClassNotFoundException\": " + ex.getMessage(),ex);
+  }
+  if (classNotFoundExceptionIClass == null) {
+    throw new JaninoRuntimeException("SNO: Cannot load \"ClassNotFoundException\"");
+  }
+  IClass noClassDefFoundErrorIClass;
+  try {
+    noClassDefFoundErrorIClass=this.iClassLoader.loadIClass("Ljava/lang/NoClassDefFoundError;");
+  }
+ catch (  ClassNotFoundException ex) {
+    throw new JaninoRuntimeException("Loading class \"NoClassDefFoundError\": " + ex.getMessage(),ex);
+  }
+  if (noClassDefFoundErrorIClass == null) {
+    throw new JaninoRuntimeException("SNO: Cannot load \"NoClassFoundError\"");
+  }
+  Block b=new Block(loc);
+  b.addStatement(new ThrowStatement(loc,new NewClassInstance(loc,(Rvalue)null,new SimpleType(loc,noClassDefFoundErrorIClass),new Rvalue[]{new MethodInvocation(loc,new AmbiguousName(loc,new String[]{"ex"}),"getMessage",new Rvalue[0])})));
+  List<CatchClause> l=new ArrayList();
+  l.add(new CatchClause(loc,new FormalParameter(loc,true,new SimpleType(loc,classNotFoundExceptionIClass),"ex"),b));
+  TryStatement ts=new TryStatement(loc,new ReturnStatement(loc,mi),l,null);
+  List<BlockStatement> statements=new ArrayList();
+  statements.add(ts);
+  FormalParameter parameter=new FormalParameter(loc,false,new SimpleType(loc,this.iClassLoader.TYPE_java_lang_String),"className");
+  MethodDeclarator cdmd=new MethodDeclarator(loc,null,new Modifiers(Mod.STATIC),new SimpleType(loc,this.iClassLoader.TYPE_java_lang_Class),"class$",new FormalParameters(loc,new FormalParameter[]{parameter},false),new Type[0],statements);
+  declaringType.addDeclaredMethod(cdmd);
+  declaringType.invalidateMethodCaches();
+}

@@ -1,0 +1,7 @@
+{
+  this.optionalFileName=Scanner.this.optionalFileName;
+  this.lineNumber=Scanner.this.tokenLineNumber;
+  this.columnNumber=Scanner.this.tokenColumnNumber;
+  this.type=type;
+  this.value=value;
+}

@@ -1,0 +1,14 @@
+{
+  String res=(String)Descriptor.DESCRIPTOR_TO_CLASSNAME.get(d);
+  if (res != null) {
+    return res;
+  }
+  char firstChar=d.charAt(0);
+  if (firstChar == 'L' && d.endsWith(";")) {
+    return d.substring(1,d.length() - 1).replace('/','.');
+  }
+  if (firstChar == '[') {
+    return d.replace('/','.');
+  }
+  throw new JaninoRuntimeException("(Invalid field descriptor \"" + d + "\")");
+}

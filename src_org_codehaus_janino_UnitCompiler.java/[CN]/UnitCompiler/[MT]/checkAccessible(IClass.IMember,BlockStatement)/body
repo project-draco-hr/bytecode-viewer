@@ -1,0 +1,5 @@
+{
+  IClass declaringIClass=member.getDeclaringIClass();
+  this.checkAccessible(declaringIClass,contextBlockStatement);
+  this.checkAccessible(declaringIClass,member.getAccess(),contextBlockStatement);
+}

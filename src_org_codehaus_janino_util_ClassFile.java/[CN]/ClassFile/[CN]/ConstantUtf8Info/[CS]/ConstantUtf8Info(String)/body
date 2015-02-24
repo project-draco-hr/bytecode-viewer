@@ -1,0 +1,4 @@
+{
+  if (s == null)   throw new JaninoRuntimeException();
+  this.s=s;
+}

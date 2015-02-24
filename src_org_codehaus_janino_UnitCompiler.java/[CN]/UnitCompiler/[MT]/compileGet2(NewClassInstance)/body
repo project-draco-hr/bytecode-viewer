@@ -1,0 +1,42 @@
+{
+  if (nci.iClass == null)   nci.iClass=this.getType(nci.type);
+  this.writeOpcode(nci,Opcode.NEW);
+  this.writeConstantClassInfo(nci.iClass.getDescriptor());
+  this.writeOpcode(nci,Opcode.DUP);
+  if (nci.iClass.isInterface())   this.compileError("Cannot instantiate \"" + nci.iClass + "\"",nci.getLocation());
+  this.checkAccessible(nci.iClass,nci.getEnclosingBlockStatement());
+  if (nci.iClass.isAbstract()) {
+    this.compileError("Cannot instantiate abstract \"" + nci.iClass + "\"",nci.getLocation());
+  }
+  Rvalue optionalEnclosingInstance;
+  if (nci.optionalQualification != null) {
+    if (nci.iClass.getOuterIClass() == null) {
+      this.compileError("Static member class cannot be instantiated with qualified NEW");
+    }
+    optionalEnclosingInstance=nci.optionalQualification;
+  }
+ else {
+    Scope s=nci.getEnclosingBlockStatement();
+    for (; !(s instanceof TypeBodyDeclaration); s=s.getEnclosingScope())     ;
+    TypeBodyDeclaration enclosingTypeBodyDeclaration=(TypeBodyDeclaration)s;
+    TypeDeclaration enclosingTypeDeclaration=(TypeDeclaration)s.getEnclosingScope();
+    if (!(enclosingTypeDeclaration instanceof ClassDeclaration) || enclosingTypeBodyDeclaration.isStatic()) {
+      if (nci.iClass.getOuterIClass() != null) {
+        this.compileError("Instantiation of \"" + nci.type + "\" requires an enclosing instance",nci.getLocation());
+      }
+      optionalEnclosingInstance=null;
+    }
+ else {
+      IClass optionalOuterIClass=nci.iClass.getDeclaringIClass();
+      if (optionalOuterIClass == null) {
+        optionalEnclosingInstance=null;
+      }
+ else {
+        optionalEnclosingInstance=new QualifiedThisReference(nci.getLocation(),new SimpleType(nci.getLocation(),optionalOuterIClass));
+        optionalEnclosingInstance.setEnclosingBlockStatement(nci.getEnclosingBlockStatement());
+      }
+    }
+  }
+  this.invokeConstructor(nci,nci.getEnclosingBlockStatement(),optionalEnclosingInstance,nci.iClass,nci.arguments);
+  return nci.iClass;
+}

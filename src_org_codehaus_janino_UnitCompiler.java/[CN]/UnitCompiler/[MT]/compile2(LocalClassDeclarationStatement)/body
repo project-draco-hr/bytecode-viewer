@@ -1,0 +1,8 @@
+{
+  LocalClassDeclaration otherLcd=UnitCompiler.findLocalClassDeclaration(lcds,lcds.lcd.name);
+  if (otherLcd != lcds.lcd) {
+    this.compileError("Redeclaration of local class \"" + lcds.lcd.name + "\"; previously declared in "+ otherLcd.getLocation());
+  }
+  this.compile(lcds.lcd);
+  return true;
+}

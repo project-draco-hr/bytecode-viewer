@@ -1,0 +1,15 @@
+{
+  this.classFile=classFile;
+  this.functionName=functionName;
+  this.maxStack=0;
+  this.maxLocals=0;
+  this.code=new byte[CodeContext.INITIAL_SIZE];
+  this.beginning=new Offset();
+  this.end=new Inserter();
+  this.currentInserter=this.end;
+  this.exceptionTableEntries=new ArrayList();
+  this.beginning.offset=0;
+  this.end.offset=0;
+  this.beginning.next=this.end;
+  this.end.prev=this.beginning;
+}

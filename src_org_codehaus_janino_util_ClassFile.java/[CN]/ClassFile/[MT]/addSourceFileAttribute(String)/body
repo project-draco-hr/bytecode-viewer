@@ -1,0 +1,3 @@
+{
+  this.attributes.add(new SourceFileAttribute(this.addConstantUtf8Info("SourceFile"),this.addConstantUtf8Info(sourceFileName)));
+}

@@ -1,0 +1,3 @@
+{
+  return (this.optionalQualification == null ? "super." : this.optionalQualification.toString() + ".super.") + this.fieldName;
+}

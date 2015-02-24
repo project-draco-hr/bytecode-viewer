@@ -18,12 +18,11 @@
     }
   }
 );
-  this.setIconImages(BytecodeViewer.iconList);
+  this.setIconImages(Resources.iconList);
   panelGroup1.add(panel1None);
   panelGroup1.add(panel1Fern);
   panelGroup1.add(panel1Proc);
   panelGroup1.add(panel1CFR);
-  panelGroup1.add(panel1Bytecode);
   panelGroup1.add(panel1Smali);
   panelGroup1.add(panel1Hexcode);
   panelGroup1.add(panel1Krakatau);
@@ -33,17 +32,14 @@
   panelGroup2.add(panel2Fern);
   panelGroup2.add(panel2Proc);
   panelGroup2.add(panel2CFR);
-  panelGroup2.add(panel2Bytecode);
   panelGroup2.add(panel2Smali);
   panelGroup2.add(panel2Hexcode);
   panelGroup2.add(panel2Krakatau);
   panelGroup2.add(panel2KrakatauEditable);
-  panelGroup2.setSelected(panel2Bytecode.getModel(),true);
   panelGroup3.add(panel3None);
   panelGroup3.add(panel3Fern);
   panelGroup3.add(panel3Proc);
   panelGroup3.add(panel3CFR);
-  panelGroup3.add(panel3Bytecode);
   panelGroup3.add(panel3Smali);
   panelGroup3.add(panel3Hexcode);
   panelGroup3.add(panel3Krakatau);
@@ -62,7 +58,6 @@
   panel1Fern.addActionListener(listener);
   panel1Proc.addActionListener(listener);
   panel1CFR.addActionListener(listener);
-  panel1Bytecode.addActionListener(listener);
   panel1Smali.addActionListener(listener);
   panel1Hexcode.addActionListener(listener);
   panel1Krakatau.addActionListener(listener);
@@ -71,7 +66,6 @@
   panel2Fern.addActionListener(listener);
   panel2Proc.addActionListener(listener);
   panel2CFR.addActionListener(listener);
-  panel2Bytecode.addActionListener(listener);
   panel2Smali.addActionListener(listener);
   panel2Hexcode.addActionListener(listener);
   panel2Krakatau.addActionListener(listener);
@@ -80,7 +74,6 @@
   panel3Fern.addActionListener(listener);
   panel3Proc.addActionListener(listener);
   panel3CFR.addActionListener(listener);
-  panel3Bytecode.addActionListener(listener);
   panel3Smali.addActionListener(listener);
   panel3Hexcode.addActionListener(listener);
   panel3Krakatau.addActionListener(listener);
@@ -218,7 +211,19 @@
     }
   }
 );
+  mntmRun.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      if (BytecodeViewer.getLoadedClasses().isEmpty()) {
+        BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
+        return;
+      }
+      new RunOptions().setVisible(true);
+    }
+  }
+);
+  mnNewMenu.add(mntmRun);
   mnNewMenu.add(mntmNewMenuItem_13);
+  mnNewMenu.add(separator_18);
   mnNewMenu.add(mntmNewMenuItem_3);
   mntmSaveAsApk.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
@@ -525,13 +530,10 @@
 );
   mnNewMenu.add(mntmExit);
   menuBar.add(mnNewMenu_6);
-  chckbxmntmPaneEditable.setVisible(false);
-  mnNewMenu_6.add(chckbxmntmPaneEditable);
-  chckbxmntmPaneEditable_1.setVisible(false);
-  chckbxmntmPaneEditable_1.setVerticalTextPosition(SwingConstants.TOP);
-  mnNewMenu_6.add(chckbxmntmPaneEditable_1);
-  chckbxmntmPaneEditable_2.setVisible(false);
-  mnNewMenu_6.add(chckbxmntmPaneEditable_2);
+  mnNewMenu_6.add(pane1Editable);
+  pane2Editable.setVerticalTextPosition(SwingConstants.TOP);
+  mnNewMenu_6.add(pane2Editable);
+  mnNewMenu_6.add(pane3Editable);
   mnNewMenu_6.add(separator_14);
   mnNewMenu_6.add(mnNewMenu_7);
   mnNewMenu_7.add(panel1None);
@@ -541,9 +543,12 @@
   mnNewMenu_7.add(panel1Fern);
   mnNewMenu_7.add(panel1Krakatau);
   mnNewMenu_7.add(separator_8);
-  mnNewMenu_7.add(panel1Bytecode);
   mnNewMenu_7.add(panel1KrakatauEditable);
   mnNewMenu_7.add(panel1Smali);
+  panelGroup1.add(panel1Bytecode);
+  panel1Bytecode.addActionListener(listener);
+  mnNewMenu_7.add(separator_15);
+  mnNewMenu_7.add(panel1Bytecode);
   mnNewMenu_7.add(panel1Hexcode);
   mnNewMenu_6.add(mnNewMenu_8);
   mnNewMenu_8.add(panel2None);
@@ -553,9 +558,13 @@
   mnNewMenu_8.add(panel2Fern);
   mnNewMenu_8.add(panel2Krakatau);
   mnNewMenu_8.add(separator_10);
-  mnNewMenu_8.add(panel2Bytecode);
   mnNewMenu_8.add(panel2KrakatauEditable);
   mnNewMenu_8.add(panel2Smali);
+  panelGroup2.add(panel2Bytecode);
+  panelGroup2.setSelected(panel2Bytecode.getModel(),true);
+  panel2Bytecode.addActionListener(listener);
+  mnNewMenu_8.add(separator_16);
+  mnNewMenu_8.add(panel2Bytecode);
   mnNewMenu_8.add(panel2Hexcode);
   mnNewMenu_6.add(mnNewMenu_9);
   mnNewMenu_9.add(panel3None);
@@ -566,8 +575,11 @@
   mnNewMenu_9.add(panel3Krakatau);
   mnNewMenu_9.add(separator_12);
   mnNewMenu_9.add(panel3KrakatauEditable);
-  mnNewMenu_9.add(panel3Bytecode);
   mnNewMenu_9.add(panel3Smali);
+  panelGroup3.add(panel3Bytecode);
+  panel3Bytecode.addActionListener(listener);
+  mnNewMenu_9.add(separator_17);
+  mnNewMenu_9.add(panel3Bytecode);
   mnNewMenu_9.add(panel3Hexcode);
   menuBar.add(mnSettings);
   mnSettings.add(autoCompileSmali);
@@ -575,6 +587,7 @@
   mnSettings.add(chckbxmntmNewCheckItem_12);
   chckbxmntmNewCheckItem_12.setSelected(true);
   mnSettings.add(refreshOnChange);
+  mnSettings.add(decodeAPKResources);
   mnSettings.add(separator_13);
   mntmSetPythonDirectory.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
@@ -789,11 +802,11 @@
   mnNewMenu_1.add(separator_5);
   mntmCodeSequenceDiagram.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
-      if (!BytecodeViewer.loadedClasses.isEmpty())       PluginManager.runPlugin(new CodeSequenceDiagram());
- else {
-        System.out.println("Plugin not ran, put some classes in first.");
-        BytecodeViewer.showMessage("Plugin not ran, put some classes in first.");
+      if (BytecodeViewer.getLoadedClasses().isEmpty()) {
+        BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
+        return;
       }
+      PluginManager.runPlugin(new CodeSequenceDiagram());
     }
   }
 );
@@ -803,33 +816,29 @@
   mnNewMenu_1.add(mntmShowAllStrings);
   mntmReplaceStrings.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
-      if (!BytecodeViewer.loadedClasses.isEmpty())       new ReplaceStringsOptions().setVisible(true);
- else {
-        System.out.println("Plugin not ran, put some classes in first.");
-        BytecodeViewer.showMessage("Plugin not ran, put some classes in first.");
+      if (BytecodeViewer.getLoadedClasses().isEmpty()) {
+        BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
+        return;
       }
+      new ReplaceStringsOptions().setVisible(true);
     }
   }
 );
   mnNewMenu_1.add(mntmReplaceStrings);
   mnNewMenu_1.add(mntmNewMenuItem_2);
   mnNewMenu_1.add(mntmStartZkmString);
-  mntmNewMenuItem_5.addActionListener(new ActionListener(){
+  mntmZstringarrayDecrypter.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
-      if (!BytecodeViewer.loadedClasses.isEmpty())       new EZInjectionOptions().setVisible(true);
- else {
-        System.out.println("Plugin not ran, put some classes in first.");
-        BytecodeViewer.showMessage("Plugin not ran, put some classes in first.");
-      }
+      PluginManager.runPlugin(new ZStringArrayDecrypter());
     }
   }
 );
-  mnNewMenu_1.add(mntmNewMenuItem_5);
+  mnNewMenu_1.add(mntmZstringarrayDecrypter);
   menuBar.add(mntmNewMenuItem_4);
   mntmStartExternalPlugin.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
       JFileChooser fc=new JFileChooser();
-      fc.setFileFilter(new GroovyFileFilter());
+      fc.setFileFilter(new JavaPFileFilter());
       fc.setFileHidingEnabled(false);
       fc.setAcceptAllFileFilterUsed(false);
       int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);
@@ -858,11 +867,11 @@
 );
   mntmNewMenuItem_1.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent e){
-      if (!BytecodeViewer.loadedClasses.isEmpty())       new MaliciousCodeScannerOptions().setVisible(true);
- else {
-        System.out.println("Plugin not ran, put some classes in first.");
-        BytecodeViewer.showMessage("Plugin not ran, put some classes in first.");
+      if (BytecodeViewer.getLoadedClasses().isEmpty()) {
+        BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
+        return;
       }
+      new MaliciousCodeScannerOptions().setVisible(true);
     }
   }
 );

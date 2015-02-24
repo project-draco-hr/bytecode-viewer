@@ -1,0 +1,4 @@
+{
+  dos.writeShort(fieldInfos.size());
+  for (  FieldInfo fieldInfo : fieldInfos)   fieldInfo.store(dos);
+}

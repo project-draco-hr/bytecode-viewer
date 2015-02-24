@@ -1,0 +1,8 @@
+{
+  Field[] fields=this.clazz.getDeclaredFields();
+  IField[] result=new IField[fields.length];
+  for (int i=0; i < fields.length; ++i) {
+    result[i]=new ReflectionIField(fields[i]);
+  }
+  return result;
+}

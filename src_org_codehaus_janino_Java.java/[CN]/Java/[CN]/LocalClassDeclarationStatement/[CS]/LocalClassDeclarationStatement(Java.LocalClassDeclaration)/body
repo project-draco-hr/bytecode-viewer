@@ -1,0 +1,4 @@
+{
+  super(lcd.getLocation());
+  (this.lcd=lcd).setEnclosingScope(this);
+}

@@ -1,6 +1,0 @@
-{
-  if (name != null)   name=name.replace(oldName,newName);
-  if (outerName != null)   outerName=outerName.replace(oldName,newName);
-  if (innerName != null)   innerName=innerName.replace(oldName,newName);
-  cv.visitInnerClass(name,outerName,innerName,access);
-}

@@ -1,0 +1,11 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (this.optionalTarget != null)   sb.append(this.optionalTarget.toString()).append('.');
+  sb.append(this.methodName).append('(');
+  for (int i=0; i < this.arguments.length; ++i) {
+    if (i > 0)     sb.append(", ");
+    sb.append(this.arguments[i].toString());
+  }
+  sb.append(')');
+  return sb.toString();
+}

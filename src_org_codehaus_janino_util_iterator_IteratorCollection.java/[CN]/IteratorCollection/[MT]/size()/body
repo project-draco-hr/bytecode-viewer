@@ -1,0 +1,5 @@
+{
+  int size=0;
+  for (  @SuppressWarnings("unused") Object o : this)   ++size;
+  return size;
+}

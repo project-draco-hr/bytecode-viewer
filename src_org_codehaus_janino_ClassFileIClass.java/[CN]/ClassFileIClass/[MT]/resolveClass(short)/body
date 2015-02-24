@@ -1,0 +1,5 @@
+{
+  if (ClassFileIClass.DEBUG)   System.out.println("index=" + index);
+  ConstantClassInfo cci=(ConstantClassInfo)this.classFile.getConstantPoolInfo(index);
+  return this.resolveClass(Descriptor.fromInternalForm(cci.getName(this.classFile)));
+}

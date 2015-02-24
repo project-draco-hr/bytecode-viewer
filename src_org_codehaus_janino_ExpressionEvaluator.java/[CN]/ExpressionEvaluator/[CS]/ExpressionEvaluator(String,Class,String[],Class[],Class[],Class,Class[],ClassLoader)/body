@@ -1,0 +1,9 @@
+{
+  this.setExpressionType(expressionType);
+  this.setParameters(parameterNames,parameterTypes);
+  this.setThrownExceptions(thrownExceptions);
+  this.setExtendedClass(optionalExtendedType);
+  this.setImplementedInterfaces(implementedTypes);
+  this.setParentClassLoader(optionalParentClassLoader);
+  this.cook(expression);
+}

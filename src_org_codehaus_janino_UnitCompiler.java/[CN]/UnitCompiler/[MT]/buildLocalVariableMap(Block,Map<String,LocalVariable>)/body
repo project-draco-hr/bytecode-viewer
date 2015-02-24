@@ -1,0 +1,4 @@
+{
+  block.localVariables=localVars;
+  for (  BlockStatement bs : block.statements)   localVars=this.buildLocalVariableMap(bs,localVars);
+}

@@ -1,0 +1,11 @@
+Scanner scanner
+String className
+Class optionalExtendedType
+Class[] implementedTypes
+boolean staticMethod
+Class returnType
+String methodName
+String[] parameterNames
+Class[] parameterTypes
+Class[] thrownExceptions
+ClassLoader optionalParentClassLoader

@@ -1,0 +1,19 @@
+{
+  Parser parser=new Parser(scanner);
+  while (parser.peek("import"))   parser.parseImportDeclaration();
+  Rvalue rvalue=parser.parseExpression().toRvalueOrCompileException();
+  if (!parser.peekEof()) {
+    throw new CompileException("Unexpected token \"" + parser.peek() + "\"",scanner.location());
+  }
+  final Set<String> parameterNames=new HashSet();
+  rvalue.accept((RvalueVisitor)new Traverser(){
+    @Override public void traverseAmbiguousName(    AmbiguousName an){
+      for (      String identifier : an.identifiers) {
+        if (Character.isUpperCase(identifier.charAt(0)))         return;
+      }
+      parameterNames.add(an.identifiers[0]);
+    }
+  }
+.comprehensiveVisitor());
+  return (String[])parameterNames.toArray(new String[parameterNames.size()]);
+}

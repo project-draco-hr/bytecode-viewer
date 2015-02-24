@@ -1,0 +1,40 @@
+{
+  String classFileResourceName=ClassFile.getClassFileResourceName(classFile.getThisClassName());
+  ResourceCreator rc;
+  if (this.classFileCreator != Compiler.CREATE_NEXT_TO_SOURCE_FILE) {
+    rc=this.classFileCreator;
+  }
+ else {
+    rc=new FileResourceCreator(){
+      @Override protected File getFile(      String resourceName){
+        return new File(sourceFile.getParentFile(),resourceName.substring(resourceName.lastIndexOf('/') + 1));
+      }
+    }
+;
+  }
+  OutputStream os=rc.createResource(classFileResourceName);
+  try {
+    classFile.store(os);
+  }
+ catch (  IOException ioe) {
+    try {
+      os.close();
+    }
+ catch (    IOException e) {
+    }
+    os=null;
+    if (!rc.deleteResource(classFileResourceName)) {
+      IOException ioe2=new IOException("Could not delete incompletely written class file \"" + classFileResourceName + "\"");
+      ioe2.initCause(ioe);
+      throw ioe2;
+    }
+    throw ioe;
+  }
+ finally {
+    if (os != null)     try {
+      os.close();
+    }
+ catch (    IOException e) {
+    }
+  }
+}

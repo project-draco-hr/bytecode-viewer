@@ -1,0 +1,14 @@
+{
+  String optionalDocComment=this.scanner.doc();
+  Modifiers modifiers=this.parseModifiers();
+switch (this.read(new String[]{"class","interface"})) {
+case 0:
+    if (optionalDocComment == null)     this.warning("CDCM","Class doc comment missing",this.location());
+  return (PackageMemberClassDeclaration)this.parseClassDeclarationRest(optionalDocComment,modifiers,ClassDeclarationContext.COMPILATION_UNIT);
+case 1:
+if (optionalDocComment == null) this.warning("IDCM","Interface doc comment missing",this.location());
+return (PackageMemberInterfaceDeclaration)this.parseInterfaceDeclarationRest(optionalDocComment,modifiers,InterfaceDeclarationContext.COMPILATION_UNIT);
+default :
+throw new IllegalStateException();
+}
+}

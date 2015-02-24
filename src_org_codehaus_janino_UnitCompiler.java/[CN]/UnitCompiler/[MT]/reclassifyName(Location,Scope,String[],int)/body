@@ -1,0 +1,47 @@
+{
+  if (n == 1)   return this.reclassifyName(location,scope,identifiers[0]);
+  Atom lhs=this.reclassifyName(location,scope,identifiers,n - 1);
+  String rhs=identifiers[n - 1];
+  if (UnitCompiler.DEBUG)   System.out.println("lhs = " + lhs);
+  if (lhs instanceof Package) {
+    String className=((Package)lhs).name + '.' + rhs;
+    IClass result=this.findTypeByName(location,className);
+    if (result != null)     return new SimpleType(location,result);
+    return new Package(location,className);
+  }
+  if ("length".equals(rhs) && this.getType(lhs).isArray()) {
+    ArrayLength al=new ArrayLength(location,this.toRvalueOrCompileException(lhs));
+    if (!(scope instanceof BlockStatement)) {
+      this.compileError("\".length\" only allowed in expression context");
+      return al;
+    }
+    al.setEnclosingBlockStatement((BlockStatement)scope);
+    return al;
+  }
+  IClass lhsType=this.getType(lhs);
+{
+    IClass.IField field=this.findIField(lhsType,rhs,location);
+    if (field != null) {
+      FieldAccess fa=new FieldAccess(location,lhs,field);
+      fa.setEnclosingBlockStatement((BlockStatement)scope);
+      return fa;
+    }
+  }
+  IClass[] classes=lhsType.getDeclaredIClasses();
+  for (  final IClass memberType : classes) {
+    String name=Descriptor.toClassName(memberType.getDescriptor());
+    name=name.substring(name.lastIndexOf('$') + 1);
+    if (name.equals(rhs)) {
+      return new SimpleType(location,memberType);
+    }
+  }
+  this.compileError("\"" + rhs + "\" is neither a method, a field, nor a member class of \""+ lhsType+ "\"",location);
+  return new Atom(location){
+    @Override public String toString(){
+      return Java.join(identifiers,".");
+    }
+    @Override public final void accept(    AtomVisitor visitor){
+    }
+  }
+;
+}

@@ -1,0 +1,6 @@
+{
+  super(optionalParentIClassLoader);
+  this.sourceFinder=sourceFinder;
+  this.optionalCharacterEncoding=optionalCharacterEncoding;
+  super.postConstruct();
+}

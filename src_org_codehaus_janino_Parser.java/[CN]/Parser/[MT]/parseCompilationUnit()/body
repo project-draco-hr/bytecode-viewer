@@ -1,0 +1,14 @@
+{
+  CompilationUnit compilationUnit=new CompilationUnit(this.location().getFileName());
+  if (this.peek("package")) {
+    compilationUnit.setPackageDeclaration(this.parsePackageDeclaration());
+  }
+  while (this.peek("import")) {
+    compilationUnit.addImportDeclaration(this.parseImportDeclaration());
+  }
+  while (!this.peekEof()) {
+    if (this.peekRead(";"))     continue;
+    compilationUnit.addPackageMemberTypeDeclaration(this.parsePackageMemberTypeDeclaration());
+  }
+  return compilationUnit;
+}

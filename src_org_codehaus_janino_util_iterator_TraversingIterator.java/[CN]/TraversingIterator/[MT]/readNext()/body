@@ -1,0 +1,28 @@
+{
+  while (!this.nest.empty()) {
+    Iterator it=(Iterator)this.nest.peek();
+    if (!it.hasNext()) {
+      this.nest.pop();
+      continue;
+    }
+    Object o=it.next();
+    if (o instanceof Iterator) {
+      this.nest.push(o);
+    }
+ else     if (o instanceof Object[]) {
+      this.nest.push(Arrays.asList((Object[])o).iterator());
+    }
+ else     if (o instanceof Collection) {
+      this.nest.push(((Collection)o).iterator());
+    }
+ else     if (o instanceof Enumeration) {
+      this.nest.push(new EnumerationIterator((Enumeration)o));
+    }
+ else {
+      this.nextElement=o;
+      this.nextElementRead=true;
+      return true;
+    }
+  }
+  return false;
+}

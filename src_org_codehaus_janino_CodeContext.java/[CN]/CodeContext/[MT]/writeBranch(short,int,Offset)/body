@@ -1,0 +1,4 @@
+{
+  this.relocatables.add(new Branch(opcode,dst));
+  this.write(lineNumber,(byte)opcode,(byte)-1,(byte)-1);
+}

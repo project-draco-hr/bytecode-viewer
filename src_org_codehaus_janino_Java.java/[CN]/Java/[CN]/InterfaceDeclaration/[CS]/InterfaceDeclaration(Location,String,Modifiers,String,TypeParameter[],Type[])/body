@@ -1,0 +1,10 @@
+{
+  super(location,modifiers);
+  this.optionalDocComment=optionalDocComment;
+  this.name=name;
+  this.optionalTypeParameters=optionalTypeParameters;
+  this.extendedTypes=extendedTypes;
+  for (  Type extendedType : extendedTypes) {
+    extendedType.setEnclosingScope(new EnclosingScopeOfTypeDeclaration(this));
+  }
+}

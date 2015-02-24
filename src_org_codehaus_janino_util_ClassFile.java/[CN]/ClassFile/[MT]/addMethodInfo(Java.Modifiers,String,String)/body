@@ -1,0 +1,5 @@
+{
+  MethodInfo mi=new MethodInfo(modifiers,this.addConstantUtf8Info(methodName),this.addConstantUtf8Info(methodMd),new ArrayList());
+  this.methodInfos.add(mi);
+  return mi;
+}

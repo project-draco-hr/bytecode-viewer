@@ -1,0 +1,3 @@
+{
+  this(parentClassLoader,new JavaSourceIClassLoader(sourceFinder,optionalCharacterEncoding,new ClassLoaderIClassLoader(parentClassLoader)));
+}

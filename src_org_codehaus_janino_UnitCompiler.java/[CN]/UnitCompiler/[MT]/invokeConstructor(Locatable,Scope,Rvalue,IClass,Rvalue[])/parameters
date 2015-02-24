@@ -1,0 +1,5 @@
+Locatable locatable
+Scope scope
+Rvalue optionalEnclosingInstance
+IClass targetClass
+Rvalue[] arguments

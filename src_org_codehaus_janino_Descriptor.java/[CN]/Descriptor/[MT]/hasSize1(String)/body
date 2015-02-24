@@ -1,0 +1,4 @@
+{
+  if (d.length() == 1)   return "BCFISZ".indexOf(d) != -1;
+  return Descriptor.isReference(d);
+}

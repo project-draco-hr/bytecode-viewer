@@ -1,0 +1,10 @@
+{
+  Atom a=this.parseConditionalOrExpression();
+  if (!this.peekRead("?"))   return a;
+  Location location=this.location();
+  Rvalue lhs=a.toRvalueOrCompileException();
+  Rvalue mhs=this.parseExpression().toRvalueOrCompileException();
+  this.read(":");
+  Rvalue rhs=this.parseConditionalExpression().toRvalueOrCompileException();
+  return new ConditionalExpression(location,lhs,mhs,rhs);
+}

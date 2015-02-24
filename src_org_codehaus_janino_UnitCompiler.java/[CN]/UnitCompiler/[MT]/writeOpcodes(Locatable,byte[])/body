@@ -1,0 +1,3 @@
+{
+  this.codeContext.write(locatable.getLocation().getLineNumber(),opcodes);
+}

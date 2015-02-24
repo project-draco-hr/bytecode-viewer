@@ -1,0 +1,8 @@
+{
+  if (uo.operator == "!")   return IClass.BOOLEAN;
+  if (uo.operator == "+" || uo.operator == "-" || uo.operator == "~") {
+    return this.unaryNumericPromotionType(uo,this.getUnboxedType(this.getType(uo.operand)));
+  }
+  this.compileError("Unexpected operator \"" + uo.operator + "\"",uo.getLocation());
+  return IClass.BOOLEAN;
+}

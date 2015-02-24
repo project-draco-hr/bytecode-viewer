@@ -1,0 +1,4 @@
+{
+  this.determineValue(scfae);
+  return this.compileContext(scfae.value);
+}

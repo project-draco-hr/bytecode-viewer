@@ -1,0 +1,9 @@
+{
+  if (this.parameters.length == 0)   return "()";
+  StringBuilder sb=new StringBuilder("(");
+  for (int i=0; i < this.parameters.length; i++) {
+    if (i > 0)     sb.append(", ");
+    sb.append(this.parameters[i].toString(i == this.parameters.length - 1 && this.variableArity));
+  }
+  return sb.append(')').toString();
+}

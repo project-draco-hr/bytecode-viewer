@@ -1,0 +1,6 @@
+{
+  if (d.equals(Descriptor.VOID))   return 0;
+  if (Descriptor.hasSize1(d))   return 1;
+  if (Descriptor.hasSize2(d))   return 2;
+  throw new JaninoRuntimeException("No size defined for type \"" + Descriptor.toString(d) + "\"");
+}

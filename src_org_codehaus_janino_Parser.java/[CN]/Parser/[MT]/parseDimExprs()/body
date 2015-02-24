@@ -1,0 +1,8 @@
+{
+  List<Rvalue> l=new ArrayList();
+  l.add(this.parseDimExpr());
+  while (this.peek("[") && !this.peekNextButOne("]")) {
+    l.add(this.parseDimExpr());
+  }
+  return (Rvalue[])l.toArray(new Rvalue[l.size()]);
+}

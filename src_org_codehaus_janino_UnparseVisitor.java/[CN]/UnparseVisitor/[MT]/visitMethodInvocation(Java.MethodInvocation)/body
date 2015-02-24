@@ -1,0 +1,8 @@
+{
+  if (mi.optionalTarget != null) {
+    this.unparseLhs(mi.optionalTarget,".");
+    this.pw.print('.');
+  }
+  this.pw.print(mi.methodName);
+  this.unparseFunctionInvocationArguments(mi.arguments);
+}

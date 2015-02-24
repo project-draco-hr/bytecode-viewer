@@ -1,0 +1,4 @@
+{
+  super(attributeNameIndex);
+  this.exceptionIndexes=exceptionIndexes;
+}

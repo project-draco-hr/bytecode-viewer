@@ -1,0 +1,7 @@
+{
+  final Location location=this.location();
+  this.read("throw");
+  final Rvalue expression=this.parseExpression().toRvalueOrCompileException();
+  this.read(";");
+  return new ThrowStatement(location,expression);
+}

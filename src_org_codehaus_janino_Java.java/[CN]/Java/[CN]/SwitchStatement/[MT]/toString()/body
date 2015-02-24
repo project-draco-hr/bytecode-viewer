@@ -1,0 +1,3 @@
+{
+  return "switch (" + this.condition + ") { ("+ this.sbsgs.size()+ " statement groups) }";
+}

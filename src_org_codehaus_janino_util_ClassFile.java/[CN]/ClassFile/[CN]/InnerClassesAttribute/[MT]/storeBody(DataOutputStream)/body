@@ -1,0 +1,9 @@
+{
+  dos.writeShort(this.entries.size());
+  for (  InnerClassesAttribute.Entry e : this.entries) {
+    dos.writeShort(e.innerClassInfoIndex);
+    dos.writeShort(e.outerClassInfoIndex);
+    dos.writeShort(e.innerNameIndex);
+    dos.writeShort(e.innerClassAccessFlags);
+  }
+}

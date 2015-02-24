@@ -1,0 +1,8 @@
+{
+  List<ReferenceType> l=new ArrayList();
+  l.add(this.parseReferenceType());
+  while (this.peekRead(",")) {
+    l.add(this.parseReferenceType());
+  }
+  return (ReferenceType[])l.toArray(new ReferenceType[l.size()]);
+}

@@ -1,21 +1,27 @@
 {
-  jis=new ZipInputStream(new FileInputStream(jarFile));
+  ZipInputStream jis=new ZipInputStream(new FileInputStream(jarFile));
+  ZipEntry entry;
   while ((entry=jis.getNextEntry()) != null) {
     try {
       final String name=entry.getName();
       if (!name.endsWith(".class")) {
-        BytecodeViewer.loadedResources.put(name,getBytes(jis));
-        jis.closeEntry();
-        continue;
-      }
-      byte[] bytes=getBytes(jis);
-      String cafebabe=String.format("%02X",bytes[0]) + String.format("%02X",bytes[1]) + String.format("%02X",bytes[2])+ String.format("%02X",bytes[3]);
-      if (cafebabe.toLowerCase().equals("cafebabe")) {
-        final ClassNode cn=getNode(bytes);
-        clazzList.put(cn.name,cn);
+        if (!entry.isDirectory())         BytecodeViewer.loadedResources.put(name,getBytes(jis));
       }
  else {
-        System.out.println(jarFile + ">" + name+ ": Header does not start with CAFEBABE, ignoring.");
+        byte[] bytes=getBytes(jis);
+        String cafebabe=String.format("%02X",bytes[0]) + String.format("%02X",bytes[1]) + String.format("%02X",bytes[2])+ String.format("%02X",bytes[3]);
+        if (cafebabe.toLowerCase().equals("cafebabe")) {
+          try {
+            final ClassNode cn=getNode(bytes);
+            clazzList.put(cn.name,cn);
+          }
+ catch (          Exception e) {
+            e.printStackTrace();
+          }
+        }
+ else {
+          System.out.println(jarFile + ">" + name+ ": Header does not start with CAFEBABE, ignoring.");
+        }
       }
     }
  catch (    Exception e) {

@@ -1,0 +1,7 @@
+{
+  Block block=new Block(this.location());
+  this.read("{");
+  block.addStatements(this.parseBlockStatements());
+  this.read("}");
+  return block;
+}

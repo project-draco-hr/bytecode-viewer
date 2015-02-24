@@ -1,0 +1,9 @@
+{
+  this.read("{");
+  List<Java.ElementValue> evs=new ArrayList();
+  while (!this.peekRead("}")) {
+    if (this.peekRead(","))     continue;
+    evs.add(this.parseElementValue());
+  }
+  return new Java.ElementValueArrayInitializer((ElementValue[])evs.toArray(new Java.ElementValue[evs.size()]));
+}

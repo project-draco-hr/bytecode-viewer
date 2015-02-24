@@ -1,0 +1,69 @@
+{
+  IClass mhsType, rhsType;
+  CodeContext.Inserter mhsConvertInserter, rhsConvertInserter;
+  CodeContext.Offset toEnd=this.codeContext.new Offset();
+{
+    Object cv=this.getConstantValue(ce.lhs);
+    if (cv instanceof Boolean) {
+      if (((Boolean)cv).booleanValue()) {
+        mhsType=this.compileGetValue(ce.mhs);
+        mhsConvertInserter=this.codeContext.newInserter();
+        rhsType=this.getType(ce.rhs);
+        rhsConvertInserter=null;
+      }
+ else {
+        mhsType=this.getType(ce.mhs);
+        mhsConvertInserter=null;
+        rhsType=this.compileGetValue(ce.rhs);
+        rhsConvertInserter=this.codeContext.currentInserter();
+      }
+    }
+ else {
+      CodeContext.Offset toRhs=this.codeContext.new Offset();
+      this.compileBoolean(ce.lhs,toRhs,UnitCompiler.JUMP_IF_FALSE);
+      mhsType=this.compileGetValue(ce.mhs);
+      mhsConvertInserter=this.codeContext.newInserter();
+      this.writeBranch(ce,Opcode.GOTO,toEnd);
+      toRhs.set();
+      rhsType=this.compileGetValue(ce.rhs);
+      rhsConvertInserter=this.codeContext.currentInserter();
+    }
+  }
+  IClass expressionType;
+  if (mhsType == rhsType) {
+    expressionType=mhsType;
+  }
+ else   if (this.tryUnboxingConversion(ce.mhs,mhsType,rhsType,mhsConvertInserter)) {
+    expressionType=rhsType;
+  }
+ else   if (this.tryUnboxingConversion(ce.rhs,rhsType,mhsType,rhsConvertInserter)) {
+    expressionType=mhsType;
+  }
+ else   if (this.getConstantValue(ce.mhs) == null && !rhsType.isPrimitive()) {
+    expressionType=rhsType;
+  }
+ else   if (!mhsType.isPrimitive() && this.getConstantValue(ce.rhs) == null) {
+    expressionType=mhsType;
+  }
+ else   if (this.isConvertibleToPrimitiveNumeric(mhsType) && this.isConvertibleToPrimitiveNumeric(rhsType)) {
+    expressionType=this.binaryNumericPromotion(ce,mhsType,mhsConvertInserter,rhsType,rhsConvertInserter);
+  }
+ else   if (!mhsType.isPrimitive() && !rhsType.isPrimitive()) {
+    if (mhsType.isAssignableFrom(rhsType)) {
+      expressionType=mhsType;
+    }
+ else     if (rhsType.isAssignableFrom(mhsType)) {
+      expressionType=rhsType;
+    }
+ else {
+      this.compileError("Reference types \"" + mhsType + "\" and \""+ rhsType+ "\" don't match",ce.getLocation());
+      return this.iClassLoader.TYPE_java_lang_Object;
+    }
+  }
+ else {
+    this.compileError("Incompatible expression types \"" + mhsType + "\" and \""+ rhsType+ "\"",ce.getLocation());
+    return this.iClassLoader.TYPE_java_lang_Object;
+  }
+  toEnd.set();
+  return expressionType;
+}

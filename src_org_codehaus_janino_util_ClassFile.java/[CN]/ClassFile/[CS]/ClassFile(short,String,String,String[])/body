@@ -1,0 +1,17 @@
+{
+  this.majorVersion=ClassFile.MAJOR_VERSION_JDK_1_1;
+  this.minorVersion=ClassFile.MINOR_VERSION_JDK_1_1;
+  this.constantPool=new ArrayList();
+  this.constantPool.add(null);
+  this.constantPoolMap=new HashMap();
+  this.accessFlags=accessFlags;
+  this.thisClass=this.addConstantClassInfo(thisClassFd);
+  this.superclass=this.addConstantClassInfo(superclassFd);
+  this.interfaces=new short[interfaceFds.length];
+  for (int i=0; i < interfaceFds.length; ++i) {
+    this.interfaces[i]=this.addConstantClassInfo(interfaceFds[i]);
+  }
+  this.fieldInfos=new ArrayList();
+  this.methodInfos=new ArrayList();
+  this.attributes=new ArrayList();
+}

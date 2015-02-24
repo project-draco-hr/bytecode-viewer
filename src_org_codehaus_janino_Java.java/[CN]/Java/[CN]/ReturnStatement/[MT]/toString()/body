@@ -1,0 +1,3 @@
+{
+  return this.optionalReturnValue == null ? "return;" : "return " + this.optionalReturnValue + ';';
+}

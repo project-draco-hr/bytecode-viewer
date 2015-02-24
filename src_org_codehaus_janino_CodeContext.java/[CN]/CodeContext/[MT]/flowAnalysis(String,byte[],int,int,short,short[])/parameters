@@ -1,0 +1,6 @@
+String functionName
+byte[] code
+int codeSize
+int offset
+short stackSize
+short[] stackSizes

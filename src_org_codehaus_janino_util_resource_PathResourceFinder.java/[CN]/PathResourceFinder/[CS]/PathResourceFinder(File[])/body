@@ -1,0 +1,3 @@
+{
+  super(PathResourceFinder.createIterator(Arrays.asList(entries).iterator()));
+}

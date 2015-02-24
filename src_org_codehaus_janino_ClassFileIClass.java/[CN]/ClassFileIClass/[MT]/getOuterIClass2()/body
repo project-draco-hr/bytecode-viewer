@@ -1,0 +1,21 @@
+{
+  ClassFile.InnerClassesAttribute ica=this.classFile.getInnerClassesAttribute();
+  if (ica == null)   return null;
+  for (  ClassFile.InnerClassesAttribute.Entry e : ica.getEntries()) {
+    if (e.innerClassInfoIndex == this.classFile.thisClass) {
+      if (e.outerClassInfoIndex == 0) {
+        return null;
+      }
+ else {
+        if (Mod.isStatic(e.innerClassAccessFlags))         return null;
+        try {
+          return this.resolveClass(e.outerClassInfoIndex);
+        }
+ catch (        ClassNotFoundException ex) {
+          throw new CompileException(ex.getMessage(),null);
+        }
+      }
+    }
+  }
+  return null;
+}

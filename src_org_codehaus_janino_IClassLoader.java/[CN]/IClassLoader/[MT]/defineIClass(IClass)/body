@@ -1,0 +1,10 @@
+{
+  String descriptor=iClass.getDescriptor();
+  IClass loadedIClass=(IClass)this.loadedIClasses.get(descriptor);
+  if (loadedIClass != null) {
+    if (loadedIClass == iClass)     return;
+    throw new JaninoRuntimeException("Non-identical definition of IClass \"" + descriptor + "\"");
+  }
+  this.loadedIClasses.put(descriptor,iClass);
+  if (IClassLoader.DEBUG)   System.out.println(this + ": Defined type \"" + descriptor+ "\"");
+}

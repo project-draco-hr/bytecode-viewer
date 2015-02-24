@@ -1,0 +1,3 @@
+{
+  return CompilerFactory.class.getPackage().getImplementationVersion();
+}

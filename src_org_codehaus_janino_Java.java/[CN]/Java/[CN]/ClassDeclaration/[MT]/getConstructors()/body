@@ -1,0 +1,8 @@
+{
+  if (this.constructors.isEmpty()) {
+    ConstructorDeclarator defaultConstructor=new ConstructorDeclarator(this.getLocation(),null,new Java.Modifiers(Mod.PUBLIC),new FormalParameters(),new Type[0],null,Collections.EMPTY_LIST);
+    defaultConstructor.setDeclaringType(this);
+    return new ConstructorDeclarator[]{defaultConstructor};
+  }
+  return (ConstructorDeclarator[])this.constructors.toArray(new ConstructorDeclarator[this.constructors.size()]);
+}

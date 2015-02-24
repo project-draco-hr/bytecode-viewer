@@ -1,0 +1,4 @@
+{
+  if (internalForm.charAt(0) == '[')   return internalForm;
+  return 'L' + internalForm + ';';
+}

@@ -1,0 +1,9 @@
+{
+  if (!(o instanceof SimpleCompiler))   return false;
+  SimpleCompiler that=(SimpleCompiler)o;
+  if (this.getClass() != that.getClass())   return false;
+  if (this.result == null || that.result == null) {
+    throw new IllegalStateException("Equality can only be checked after cooking");
+  }
+  return this.result.equals(that.result);
+}

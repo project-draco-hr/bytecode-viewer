@@ -1,0 +1,20 @@
+{
+  UnitCompiler uc;
+  try {
+    Java.CompilationUnit cu=Compiler.this.parseCompilationUnit(sourceResource.getFileName(),new BufferedInputStream(sourceResource.open()),Compiler.this.optionalCharacterEncoding);
+    uc=new UnitCompiler(cu,Compiler.this.iClassLoader);
+  }
+ catch (  IOException ex) {
+    throw new ClassNotFoundException("Parsing compilation unit \"" + sourceResource + "\"",ex);
+  }
+catch (  CompileException ex) {
+    throw new ClassNotFoundException("Parsing compilation unit \"" + sourceResource + "\"",ex);
+  }
+  Compiler.this.parsedCompilationUnits.add(uc);
+  IClass res=uc.findClass(className);
+  if (res == null) {
+    return null;
+  }
+  this.defineIClass(res);
+  return res;
+}

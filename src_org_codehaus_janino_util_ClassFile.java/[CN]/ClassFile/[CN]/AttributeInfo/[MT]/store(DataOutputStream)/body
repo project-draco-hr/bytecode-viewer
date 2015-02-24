@@ -1,0 +1,7 @@
+{
+  ByteArrayOutputStream baos=new ByteArrayOutputStream();
+  this.storeBody(new DataOutputStream(baos));
+  dos.writeShort(this.nameIndex);
+  dos.writeInt(baos.size());
+  baos.writeTo(dos);
+}

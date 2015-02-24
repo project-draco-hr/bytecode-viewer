@@ -1,0 +1,34 @@
+{
+  if (IClassLoader.DEBUG)   System.out.println(this + ": Load type \"" + fieldDescriptor+ "\"");
+  if (Descriptor.isPrimitive(fieldDescriptor)) {
+    return (fieldDescriptor.equals(Descriptor.VOID) ? IClass.VOID : fieldDescriptor.equals(Descriptor.BYTE) ? IClass.BYTE : fieldDescriptor.equals(Descriptor.CHAR) ? IClass.CHAR : fieldDescriptor.equals(Descriptor.DOUBLE) ? IClass.DOUBLE : fieldDescriptor.equals(Descriptor.FLOAT) ? IClass.FLOAT : fieldDescriptor.equals(Descriptor.INT) ? IClass.INT : fieldDescriptor.equals(Descriptor.LONG) ? IClass.LONG : fieldDescriptor.equals(Descriptor.SHORT) ? IClass.SHORT : fieldDescriptor.equals(Descriptor.BOOLEAN) ? IClass.BOOLEAN : null);
+  }
+  if (this.optionalParentIClassLoader != null) {
+    IClass res=this.optionalParentIClassLoader.loadIClass(fieldDescriptor);
+    if (res != null)     return res;
+  }
+  IClass result;
+synchronized (this) {
+    if (this.unloadableIClasses.contains(fieldDescriptor))     return null;
+    result=(IClass)this.loadedIClasses.get(fieldDescriptor);
+    if (result != null)     return result;
+    if (Descriptor.isArrayReference(fieldDescriptor)) {
+      IClass componentIClass=this.loadIClass(Descriptor.getComponentDescriptor(fieldDescriptor));
+      if (componentIClass == null)       return null;
+      IClass arrayIClass=componentIClass.getArrayIClass(this.TYPE_java_lang_Object);
+      this.loadedIClasses.put(fieldDescriptor,arrayIClass);
+      return arrayIClass;
+    }
+    if (IClassLoader.DEBUG)     System.out.println("call IClassLoader.findIClass(\"" + fieldDescriptor + "\")");
+    result=this.findIClass(fieldDescriptor);
+    if (result == null) {
+      this.unloadableIClasses.add(fieldDescriptor);
+      return null;
+    }
+  }
+  if (!result.getDescriptor().equalsIgnoreCase(fieldDescriptor)) {
+    throw new JaninoRuntimeException("\"findIClass()\" returned \"" + result.getDescriptor() + "\" instead of \""+ fieldDescriptor+ "\"");
+  }
+  if (IClassLoader.DEBUG)   System.out.println(this + ": Loaded type \"" + fieldDescriptor+ "\" as "+ result);
+  return result;
+}

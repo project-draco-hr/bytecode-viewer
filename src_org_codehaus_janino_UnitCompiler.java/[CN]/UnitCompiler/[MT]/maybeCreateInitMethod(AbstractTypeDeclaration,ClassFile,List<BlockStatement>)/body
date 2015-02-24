@@ -1,0 +1,7 @@
+{
+  if (this.generatesCode2(statements)) {
+    MethodDeclarator md=new MethodDeclarator(decl.getLocation(),null,new Modifiers((short)(Mod.STATIC | Mod.PUBLIC)),new BasicType(decl.getLocation(),BasicType.VOID),"<clinit>",new FormalParameters(),new ReferenceType[0],statements);
+    md.setDeclaringType(decl);
+    this.compile(md,cf);
+  }
+}

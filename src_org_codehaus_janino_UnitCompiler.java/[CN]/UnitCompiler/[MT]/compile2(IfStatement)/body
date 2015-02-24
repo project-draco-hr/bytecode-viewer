@@ -1,0 +1,66 @@
+{
+  Object cv=this.getConstantValue(is.condition);
+  BlockStatement es=(is.optionalElseStatement != null ? is.optionalElseStatement : new EmptyStatement(is.thenStatement.getLocation()));
+  if (cv instanceof Boolean) {
+    this.fakeCompile(is.condition);
+    BlockStatement seeingStatement, blindStatement;
+    if (((Boolean)cv).booleanValue()) {
+      seeingStatement=is.thenStatement;
+      blindStatement=es;
+    }
+ else {
+      seeingStatement=es;
+      blindStatement=is.thenStatement;
+    }
+    final CodeContext.Inserter ins=this.codeContext.newInserter();
+    boolean ssccn=this.compile(seeingStatement);
+    boolean bsccn=this.fakeCompile(blindStatement);
+    if (ssccn)     return true;
+    if (!bsccn)     return false;
+    CodeContext.Offset off=this.codeContext.newOffset();
+    this.codeContext.pushInserter(ins);
+    try {
+      this.pushConstant(is,Boolean.FALSE);
+      this.writeBranch(is,Opcode.IFNE,off);
+    }
+  finally {
+      this.codeContext.popInserter();
+    }
+    return true;
+  }
+  if (this.generatesCode(is.thenStatement)) {
+    if (this.generatesCode(es)) {
+      CodeContext.Offset eso=this.codeContext.new Offset();
+      CodeContext.Offset end=this.codeContext.new Offset();
+      this.compileBoolean(is.condition,eso,UnitCompiler.JUMP_IF_FALSE);
+      boolean tsccn=this.compile(is.thenStatement);
+      if (tsccn)       this.writeBranch(is,Opcode.GOTO,end);
+      eso.set();
+      boolean esccn=this.compile(es);
+      end.set();
+      return tsccn || esccn;
+    }
+ else {
+      CodeContext.Offset end=this.codeContext.new Offset();
+      this.compileBoolean(is.condition,end,UnitCompiler.JUMP_IF_FALSE);
+      this.compile(is.thenStatement);
+      end.set();
+      return true;
+    }
+  }
+ else {
+    if (this.generatesCode(es)) {
+      CodeContext.Offset end=this.codeContext.new Offset();
+      this.compileBoolean(is.condition,end,UnitCompiler.JUMP_IF_TRUE);
+      this.compile(es);
+      end.set();
+      return true;
+    }
+ else {
+      IClass conditionType=this.compileGetValue(is.condition);
+      if (conditionType != IClass.BOOLEAN)       this.compileError("Not a boolean expression",is.getLocation());
+      this.pop(is,conditionType);
+      return true;
+    }
+  }
+}

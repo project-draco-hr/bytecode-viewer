@@ -1,0 +1,4 @@
+{
+  Class componentType=this.clazz.getComponentType();
+  return componentType == null ? null : this.classToIClass(componentType);
+}

@@ -1,0 +1,7 @@
+{
+  final Offset from=this.codeContext.newOffset();
+  this.compileContext(rv);
+  this.compileGet(rv);
+  Offset to=this.codeContext.newOffset();
+  this.codeContext.removeCode(from,to);
+}

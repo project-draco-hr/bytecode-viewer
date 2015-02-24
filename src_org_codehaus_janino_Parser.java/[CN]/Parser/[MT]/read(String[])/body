@@ -1,0 +1,8 @@
+{
+  String s=this.read().value;
+  int idx=Parser.indexOf(expected,s);
+  if (idx == -1) {
+    throw this.compileException("One of '" + Parser.join(expected," ") + "' expected instead of '"+ s+ "'");
+  }
+  return idx;
+}

@@ -1,0 +1,5 @@
+{
+  Token t=this.read();
+  if (t.type != Token.IDENTIFIER)   throw this.compileException("Identifier expected instead of '" + t.value + "'");
+  return t.value;
+}

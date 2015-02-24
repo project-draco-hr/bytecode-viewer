@@ -1,0 +1,4 @@
+Scanner scanner
+Class interfaceToImplement
+String[] parameterNames
+ClassLoader optionalParentClassLoader

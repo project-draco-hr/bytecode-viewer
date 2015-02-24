@@ -1,0 +1,3 @@
+{
+  return ("try ... " + this.catchClauses.size() + (this.optionalFinally == null ? " catches" : " catches ... finally"));
+}

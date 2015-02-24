@@ -1,0 +1,3 @@
+{
+  this(optionalFileName,new InputStreamReader(is),(short)1,(short)0);
+}

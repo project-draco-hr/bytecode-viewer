@@ -1,0 +1,19 @@
+{
+  if (ts.finallyOffset != null) {
+    this.codeContext.saveLocalVariables();
+    try {
+      short sv=0;
+      if (optionalStackValueType != null) {
+        sv=this.codeContext.allocateLocalVariable(Descriptor.size(optionalStackValueType.getDescriptor()));
+        this.store(ts,optionalStackValueType,sv);
+      }
+      this.writeBranch(ts,Opcode.JSR,ts.finallyOffset);
+      if (optionalStackValueType != null) {
+        this.load(ts,optionalStackValueType,sv);
+      }
+    }
+  finally {
+      this.codeContext.restoreLocalVariables();
+    }
+  }
+}

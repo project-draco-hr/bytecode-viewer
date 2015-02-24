@@ -1,0 +1,9 @@
+{
+  List<AttributeInfo> attributes=new ArrayList();
+  if (optionalConstantValue != null) {
+    attributes.add(new ConstantValueAttribute(this.addConstantUtf8Info("ConstantValue"),this.addConstantSIFLDInfo(optionalConstantValue)));
+  }
+  FieldInfo fi=new FieldInfo(modifiers,this.addConstantUtf8Info(fieldName),this.addConstantUtf8Info(fieldTypeFd),attributes);
+  this.fieldInfos.add(fi);
+  return fi;
+}

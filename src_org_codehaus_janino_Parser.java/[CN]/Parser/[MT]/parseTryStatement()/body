@@ -1,0 +1,23 @@
+{
+  Location location=this.location();
+  this.read("try");
+  final Block body=this.parseBlock();
+  List<CatchClause> ccs=new ArrayList();
+  while (this.peekRead("catch")) {
+    final Location loc=this.location();
+    this.read("(");
+    boolean[] hasEllipsis=new boolean[1];
+    final FormalParameter caughtException=this.parseFormalParameter(hasEllipsis);
+    if (hasEllipsis[0])     throw this.compileException("Catch clause parameter must not have an ellipsis");
+    this.read(")");
+    ccs.add(new CatchClause(loc,caughtException,this.parseBlock()));
+  }
+  Block optionalFinally=null;
+  if (this.peekRead("finally")) {
+    optionalFinally=this.parseBlock();
+  }
+  if (ccs.size() == 0 && optionalFinally == null) {
+    throw this.compileException("\"try\" statement must have at least one \"catch\" clause or a \"finally\" clause");
+  }
+  return new TryStatement(location,body,ccs,optionalFinally);
+}

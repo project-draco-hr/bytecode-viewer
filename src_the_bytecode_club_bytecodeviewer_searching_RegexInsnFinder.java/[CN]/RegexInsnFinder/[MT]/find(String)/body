@@ -4,7 +4,6 @@
     if (regexMatcher.find())     return makeResult(regexMatcher.start(),regexMatcher.end());
   }
  catch (  final PatternSyntaxException ex) {
-    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(ex);
   }
   return new AbstractInsnNode[0];
 }

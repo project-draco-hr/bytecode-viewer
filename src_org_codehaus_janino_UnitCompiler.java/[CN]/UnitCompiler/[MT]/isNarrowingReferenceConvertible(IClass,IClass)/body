@@ -1,0 +1,21 @@
+{
+  if (sourceType.isPrimitive())   return false;
+  if (sourceType == targetType)   return false;
+  if (sourceType.isAssignableFrom(targetType))   return true;
+  if (targetType.isInterface() && !sourceType.isFinal() && !targetType.isAssignableFrom(sourceType))   return true;
+  if (sourceType == this.iClassLoader.TYPE_java_lang_Object && targetType.isArray())   return true;
+  if (sourceType == this.iClassLoader.TYPE_java_lang_Object && targetType.isInterface())   return true;
+  if (sourceType.isInterface() && !targetType.isFinal())   return true;
+  if (sourceType.isInterface() && targetType.isFinal() && sourceType.isAssignableFrom(targetType))   return true;
+  if (sourceType.isInterface() && targetType.isInterface() && !targetType.isAssignableFrom(sourceType)) {
+    return true;
+  }
+  if (sourceType.isArray() && targetType.isArray()) {
+    IClass st=sourceType.getComponentType();
+    IClass tt=targetType.getComponentType();
+    if (this.isNarrowingPrimitiveConvertible(st,tt) || this.isNarrowingReferenceConvertible(st,tt)) {
+      return true;
+    }
+  }
+  return false;
+}

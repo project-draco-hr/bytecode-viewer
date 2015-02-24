@@ -1,7 +1,0 @@
-{
-  if (name != null)   name=name.replace(oldName,newName);
-  if (signature != null)   signature=signature.replace(oldName,newName);
-  if (superName != null)   superName=superName.replace(oldName,newName);
-  if (interfaces != null)   for (int i=0; i < interfaces.length; i++)   interfaces[i]=interfaces[i].replace(oldName,newName);
-  cv.visit(49,access,name,signature,superName,interfaces);
-}

@@ -1,0 +1,33 @@
+{
+  final IClass iClass=this.resolve(id);
+  id.interfaces=new IClass[id.extendedTypes.length];
+  String[] interfaceDescriptors=new String[id.interfaces.length];
+  for (int i=0; i < id.extendedTypes.length; ++i) {
+    id.interfaces[i]=this.getType(id.extendedTypes[i]);
+    interfaceDescriptors[i]=id.interfaces[i].getDescriptor();
+  }
+  ClassFile cf=new ClassFile((short)(id.getModifierFlags() | Mod.SUPER | Mod.INTERFACE| Mod.ABSTRACT),iClass.getDescriptor(),Descriptor.JAVA_LANG_OBJECT,interfaceDescriptors);
+  if (this.debugSource) {
+    String sourceFileName;
+{
+      String s=id.getLocation().getFileName();
+      if (s != null) {
+        sourceFileName=new File(s).getName();
+      }
+ else {
+        sourceFileName=id.getName() + ".java";
+      }
+    }
+    cf.addSourceFileAttribute(sourceFileName);
+  }
+  if (id.hasDeprecatedDocTag())   cf.addDeprecatedAttribute();
+  if (!id.constantDeclarations.isEmpty()) {
+    List<BlockStatement> statements=new ArrayList();
+    statements.addAll(id.constantDeclarations);
+    this.maybeCreateInitMethod(id,cf,statements);
+  }
+  this.compileDeclaredMethods(id,cf);
+  for (  FieldDeclaration constantDeclaration : id.constantDeclarations)   this.addFields(constantDeclaration,cf);
+  this.compileDeclaredMemberTypes(id,cf);
+  this.generatedClassFiles.add(cf);
+}

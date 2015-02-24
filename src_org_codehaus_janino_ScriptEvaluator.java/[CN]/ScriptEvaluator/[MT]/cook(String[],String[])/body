@@ -1,0 +1,10 @@
+{
+  Reader[] readers=new Reader[strings.length];
+  for (int i=0; i < strings.length; ++i)   readers[i]=new StringReader(strings[i]);
+  try {
+    this.cook(optionalFileNames,readers);
+  }
+ catch (  IOException ex) {
+    throw new JaninoRuntimeException("SNO: IOException despite StringReader",ex);
+  }
+}

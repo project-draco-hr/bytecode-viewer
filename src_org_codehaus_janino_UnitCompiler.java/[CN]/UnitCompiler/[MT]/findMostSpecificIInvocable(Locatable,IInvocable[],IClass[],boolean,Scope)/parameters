@@ -1,0 +1,5 @@
+Locatable locatable
+IInvocable[] iInvocables
+IClass[] argumentTypes
+boolean boxingPermitted
+Scope contextScope

@@ -1,0 +1,9 @@
+{
+  ++this.compileErrorCount;
+  if (this.optionalCompileErrorHandler != null) {
+    this.optionalCompileErrorHandler.handleError(message,optionalLocation);
+  }
+ else {
+    throw new CompileException(message,optionalLocation);
+  }
+}

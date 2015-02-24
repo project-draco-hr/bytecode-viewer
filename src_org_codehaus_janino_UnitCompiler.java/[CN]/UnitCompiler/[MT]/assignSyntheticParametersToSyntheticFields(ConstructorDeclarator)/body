@@ -1,0 +1,11 @@
+{
+  for (  IClass.IField sf : cd.getDeclaringClass().syntheticFields.values()) {
+    LocalVariable syntheticParameter=(LocalVariable)cd.syntheticParameters.get(sf.getName());
+    if (syntheticParameter == null) {
+      throw new JaninoRuntimeException("SNO: Synthetic parameter for synthetic field \"" + sf.getName() + "\" not found");
+    }
+    ExpressionStatement es=new ExpressionStatement(new Assignment(cd.getLocation(),new FieldAccess(cd.getLocation(),new ThisReference(cd.getLocation()),sf),"=",new LocalVariableAccess(cd.getLocation(),syntheticParameter)));
+    es.setEnclosingScope(cd);
+    this.compile(es);
+  }
+}

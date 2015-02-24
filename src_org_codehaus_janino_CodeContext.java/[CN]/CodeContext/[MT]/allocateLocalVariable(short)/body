@@ -1,0 +1,3 @@
+{
+  return this.allocateLocalVariable(size,null,null).getSlotIndex();
+}

@@ -1,0 +1,75 @@
+{
+  BlockStatementVisitor bsv=new BlockStatementVisitor(){
+    @Override public void visitInitializer(    Initializer i){
+      UnitCompiler.this.leave2(i,optionalStackValueType);
+    }
+    @Override public void visitFieldDeclaration(    FieldDeclaration fd){
+      UnitCompiler.this.leave2(fd,optionalStackValueType);
+    }
+    @Override public void visitLabeledStatement(    LabeledStatement ls){
+      UnitCompiler.this.leave2(ls,optionalStackValueType);
+    }
+    @Override public void visitBlock(    Block b){
+      UnitCompiler.this.leave2(b,optionalStackValueType);
+    }
+    @Override public void visitExpressionStatement(    ExpressionStatement es){
+      UnitCompiler.this.leave2(es,optionalStackValueType);
+    }
+    @Override public void visitIfStatement(    IfStatement is){
+      UnitCompiler.this.leave2(is,optionalStackValueType);
+    }
+    @Override public void visitForStatement(    ForStatement fs){
+      UnitCompiler.this.leave2(fs,optionalStackValueType);
+    }
+    @Override public void visitForEachStatement(    ForEachStatement fes){
+      UnitCompiler.this.leave2(fes,optionalStackValueType);
+    }
+    @Override public void visitWhileStatement(    WhileStatement ws){
+      UnitCompiler.this.leave2(ws,optionalStackValueType);
+    }
+    @Override public void visitTryStatement(    TryStatement ts){
+      UnitCompiler.this.leave2(ts,optionalStackValueType);
+    }
+    @Override public void visitSwitchStatement(    SwitchStatement ss){
+      UnitCompiler.this.leave2(ss,optionalStackValueType);
+    }
+    @Override public void visitSynchronizedStatement(    SynchronizedStatement ss){
+      UnitCompiler.this.leave2(ss,optionalStackValueType);
+    }
+    @Override public void visitDoStatement(    DoStatement ds){
+      UnitCompiler.this.leave2(ds,optionalStackValueType);
+    }
+    @Override public void visitLocalVariableDeclarationStatement(    LocalVariableDeclarationStatement lvds){
+      UnitCompiler.this.leave2(lvds,optionalStackValueType);
+    }
+    @Override public void visitReturnStatement(    ReturnStatement rs){
+      UnitCompiler.this.leave2(rs,optionalStackValueType);
+    }
+    @Override public void visitThrowStatement(    ThrowStatement ts){
+      UnitCompiler.this.leave2(ts,optionalStackValueType);
+    }
+    @Override public void visitBreakStatement(    BreakStatement bs){
+      UnitCompiler.this.leave2(bs,optionalStackValueType);
+    }
+    @Override public void visitContinueStatement(    ContinueStatement cs){
+      UnitCompiler.this.leave2(cs,optionalStackValueType);
+    }
+    @Override public void visitAssertStatement(    AssertStatement as){
+      UnitCompiler.this.leave2(as,optionalStackValueType);
+    }
+    @Override public void visitEmptyStatement(    EmptyStatement es){
+      UnitCompiler.this.leave2(es,optionalStackValueType);
+    }
+    @Override public void visitLocalClassDeclarationStatement(    LocalClassDeclarationStatement lcds){
+      UnitCompiler.this.leave2(lcds,optionalStackValueType);
+    }
+    @Override public void visitAlternateConstructorInvocation(    AlternateConstructorInvocation aci){
+      UnitCompiler.this.leave2(aci,optionalStackValueType);
+    }
+    @Override public void visitSuperConstructorInvocation(    SuperConstructorInvocation sci){
+      UnitCompiler.this.leave2(sci,optionalStackValueType);
+    }
+  }
+;
+  bs.accept(bsv);
+}

@@ -1,0 +1,8 @@
+{
+  List<Rvalue> l=new ArrayList();
+  do {
+    l.add(this.parseExpression().toRvalueOrCompileException());
+  }
+ while (this.peekRead(","));
+  return (Rvalue[])l.toArray(new Rvalue[l.size()]);
+}

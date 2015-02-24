@@ -1,0 +1,6 @@
+{
+  super(location,optionalDocComment,modifiers,name,optionalTypeParameters,extendedTypes);
+  if ((modifiers.flags & (Mod.PROTECTED | Mod.PRIVATE | Mod.STATIC)) != 0) {
+    this.throwCompileException("Modifiers \"protected\", \"private\" and \"static\" not allowed in package member interface " + "declaration");
+  }
+}

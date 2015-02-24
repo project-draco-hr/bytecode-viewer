@@ -1,0 +1,3 @@
+{
+  return this.isType(this.reclassify(an));
+}

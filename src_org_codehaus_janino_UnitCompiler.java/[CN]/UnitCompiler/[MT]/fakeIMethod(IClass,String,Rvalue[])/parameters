@@ -1,0 +1,3 @@
+IClass targetType
+String name
+Rvalue[] arguments

@@ -1,0 +1,7 @@
+{
+  Offset from=this.codeContext.newOffset();
+  boolean ccn=this.compile(bs);
+  Offset to=this.codeContext.newOffset();
+  this.codeContext.removeCode(from,to);
+  return ccn;
+}

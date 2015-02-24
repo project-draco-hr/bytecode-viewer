@@ -1,0 +1,6 @@
+{
+  if (this.declaredIConstructorsCache == null) {
+    this.declaredIConstructorsCache=this.getDeclaredIConstructors2();
+  }
+  return this.declaredIConstructorsCache;
+}

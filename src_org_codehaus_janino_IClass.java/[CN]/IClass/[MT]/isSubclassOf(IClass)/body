@@ -1,0 +1,6 @@
+{
+  for (IClass sc=this.getSuperclass(); sc != null; sc=sc.getSuperclass()) {
+    if (sc == that)     return true;
+  }
+  return false;
+}

@@ -1,0 +1,4 @@
+{
+  this.checkAccessible(fa.field,fa.getEnclosingBlockStatement());
+  this.putfield(fa,fa.field);
+}

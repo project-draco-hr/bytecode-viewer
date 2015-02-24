@@ -1,0 +1,4 @@
+{
+  ++this.interfaceDeclarationCount;
+  super.traverseInterfaceDeclaration(id);
+}

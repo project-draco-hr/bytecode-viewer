@@ -1,0 +1,4 @@
+{
+  String message=this.internalCheckAccessible(type,contextBlockStatement);
+  if (message != null)   this.compileError(message,contextBlockStatement.getLocation());
+}

@@ -1,0 +1,9 @@
+Location location
+Java.Annotation[] annotations
+boolean staticMethod
+Class returnType
+String methodName
+Class[] parameterTypes
+String[] parameterNames
+Class[] thrownExceptions
+List<Java.BlockStatement> statements

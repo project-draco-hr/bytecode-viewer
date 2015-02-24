@@ -1,0 +1,10 @@
+{
+  IClass[] res=(IClass[])this.memberTypeCache.get(optionalName);
+  if (res == null) {
+    Set<IClass> s=new HashSet();
+    this.findMemberType(optionalName,s);
+    res=s.isEmpty() ? IClass.ZERO_ICLASSES : (IClass[])s.toArray(new IClass[s.size()]);
+    this.memberTypeCache.put(optionalName,res);
+  }
+  return res;
+}

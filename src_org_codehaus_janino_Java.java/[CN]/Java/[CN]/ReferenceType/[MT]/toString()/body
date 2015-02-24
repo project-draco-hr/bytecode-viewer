@@ -1,0 +1,5 @@
+{
+  String s=Java.join(this.identifiers,".");
+  if (this.optionalTypeArguments != null)   s+='<' + Java.join(this.optionalTypeArguments,", ") + ">";
+  return s;
+}

@@ -1,5 +1,5 @@
 {
-  this.setIconImages(BytecodeViewer.iconList);
+  this.setIconImages(Resources.iconList);
   setSize(new Dimension(250,176));
   setResizable(false);
   setTitle("Replace Strings");

@@ -1,0 +1,3 @@
+{
+  this.compileToClassLoader(compilationUnit);
+}

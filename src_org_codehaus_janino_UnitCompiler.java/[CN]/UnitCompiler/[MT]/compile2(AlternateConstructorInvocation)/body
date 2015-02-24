@@ -1,0 +1,8 @@
+{
+  ConstructorDeclarator declaringConstructor=(ConstructorDeclarator)aci.getEnclosingScope();
+  IClass declaringIClass=this.resolve(declaringConstructor.getDeclaringClass());
+  this.writeOpcode(aci,Opcode.ALOAD_0);
+  if (declaringIClass.getOuterIClass() != null)   this.writeOpcode(aci,Opcode.ALOAD_1);
+  this.invokeConstructor(aci,declaringConstructor,(Rvalue)null,declaringIClass,aci.arguments);
+  return true;
+}

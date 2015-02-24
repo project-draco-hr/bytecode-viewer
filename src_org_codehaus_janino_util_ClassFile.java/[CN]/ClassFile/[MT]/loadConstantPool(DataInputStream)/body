@@ -1,0 +1,15 @@
+{
+  this.constantPool.clear();
+  this.constantPoolMap.clear();
+  short constantPoolCount=dis.readShort();
+  this.constantPool.add(null);
+  for (short i=1; i < constantPoolCount; ++i) {
+    ConstantPoolInfo cpi=ConstantPoolInfo.loadConstantPoolInfo(dis);
+    this.constantPool.add(cpi);
+    this.constantPoolMap.put(cpi,new Short(i));
+    if (cpi.isWide()) {
+      this.constantPool.add(null);
+      ++i;
+    }
+  }
+}

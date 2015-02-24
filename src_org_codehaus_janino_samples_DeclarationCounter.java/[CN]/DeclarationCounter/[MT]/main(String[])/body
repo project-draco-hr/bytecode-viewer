@@ -1,0 +1,18 @@
+{
+  DeclarationCounter dc=new DeclarationCounter();
+  for (  String fileName : args) {
+    FileReader r=new FileReader(fileName);
+    Java.CompilationUnit cu;
+    try {
+      cu=new Parser(new Scanner(fileName,r)).parseCompilationUnit();
+    }
+  finally {
+      r.close();
+    }
+    dc.traverseCompilationUnit(cu);
+  }
+  System.out.println("Class declarations:     " + dc.classDeclarationCount);
+  System.out.println("Interface declarations: " + dc.interfaceDeclarationCount);
+  System.out.println("Fields:                 " + dc.fieldCount);
+  System.out.println("Local variables:        " + dc.localVariableCount);
+}

@@ -1,5 +1,5 @@
 {
-  this.setIconImages(BytecodeViewer.iconList);
+  this.setIconImages(Resources.iconList);
   setSize(new Dimension(382,356));
   setTitle("Graphicial Reflection Kit");
   JTabbedPane tabbedPane=new JTabbedPane(JTabbedPane.TOP);

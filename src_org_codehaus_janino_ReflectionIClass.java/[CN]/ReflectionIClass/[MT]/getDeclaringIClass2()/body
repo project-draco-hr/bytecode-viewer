@@ -1,0 +1,5 @@
+{
+  Class declaringClass=this.clazz.getDeclaringClass();
+  if (declaringClass == null)   return null;
+  return this.classToIClass(declaringClass);
+}

@@ -1,0 +1,6 @@
+{
+  int idx=this.peekRead(Parser.BASIC_TYPE_NAMES);
+  Type res=(idx != -1 ? (Type)new BasicType(this.location(),Parser.BASIC_TYPE_CODES[idx]) : this.parseReferenceType());
+  for (int i=this.parseBracketsOpt(); i > 0; --i)   res=new ArrayType(res);
+  return res;
+}

@@ -1,0 +1,5 @@
+{
+  Inserter i=new Inserter();
+  i.set();
+  return i;
+}

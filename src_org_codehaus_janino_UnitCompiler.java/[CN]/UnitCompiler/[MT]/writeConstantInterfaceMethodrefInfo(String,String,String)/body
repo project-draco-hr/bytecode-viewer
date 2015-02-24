@@ -1,0 +1,4 @@
+{
+  CodeContext ca=this.codeContext;
+  ca.writeShort((short)-1,ca.getClassFile().addConstantInterfaceMethodrefInfo(classFd,methodName,methodMd));
+}

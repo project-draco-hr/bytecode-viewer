@@ -1,0 +1,59 @@
+{
+  Atom a=this.parseShiftExpression();
+  for (; ; ) {
+    if (this.peekRead("instanceof")) {
+      Location location=this.location();
+      a=new Instanceof(location,a.toRvalueOrCompileException(),this.parseType());
+    }
+ else     if (this.peek(new String[]{"<",">","<=",">="}) != -1) {
+      String op=this.read().value;
+      if ("<".equals(op) && a instanceof Java.AmbiguousName && this.peek("?")) {
+        final String[] identifiers=((Java.AmbiguousName)a).identifiers;
+        boolean orig=this.scanner.setExpectGreater(true);
+        try {
+          List<TypeArgument> typeArguments=new ArrayList();
+          typeArguments.add(this.parseTypeArgument());
+          while (this.read(new String[]{">",","}) == 1)           typeArguments.add(this.parseTypeArgument());
+          return new ReferenceType(this.location(),identifiers,(TypeArgument[])typeArguments.toArray(new TypeArgument[typeArguments.size()]));
+        }
+  finally {
+          this.scanner.setExpectGreater(orig);
+        }
+      }
+      Atom rhs=this.parseShiftExpression();
+      if ("<".equals(op) && a instanceof Java.AmbiguousName) {
+        boolean orig=this.scanner.setExpectGreater(true);
+        try {
+          if (this.peek(new String[]{"<",">",","}) != -1) {
+            final String[] identifiers=((Java.AmbiguousName)a).identifiers;
+            this.parseTypeArgumentsOpt();
+            Type t=rhs.toTypeOrCompileException();
+            TypeArgument ta;
+            if (t instanceof ArrayType) {
+              ta=(ArrayType)t;
+            }
+ else             if (t instanceof ReferenceType) {
+              ta=(ReferenceType)t;
+            }
+ else {
+              throw this.compileException("'" + t + "' is not a valid type argument");
+            }
+            List<TypeArgument> typeArguments=new ArrayList();
+            typeArguments.add(ta);
+            while (this.read(new String[]{">",","}) == 1) {
+              typeArguments.add(this.parseTypeArgument());
+            }
+            return new ReferenceType(this.location(),identifiers,(TypeArgument[])typeArguments.toArray(new TypeArgument[typeArguments.size()]));
+          }
+        }
+  finally {
+          this.scanner.setExpectGreater(orig);
+        }
+      }
+      a=new BinaryOperation(this.location(),a.toRvalueOrCompileException(),op,rhs.toRvalueOrCompileException());
+    }
+ else {
+      return a;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  if (this.iMethodCache == null) {
+    List<IMethod> iMethods=new ArrayList();
+    this.getIMethods(iMethods);
+    this.iMethodCache=(IMethod[])iMethods.toArray(new IMethod[iMethods.size()]);
+  }
+  return this.iMethodCache;
+}

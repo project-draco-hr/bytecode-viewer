@@ -1,0 +1,5 @@
+{
+  super(in);
+  this.out=out;
+  this.closeWriterOnEOF=closeWriterOnEof;
+}

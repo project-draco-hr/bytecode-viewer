@@ -1,0 +1,5 @@
+{
+  this.nest=new Iterator[dimensionCount];
+  this.nest[0]=delegate;
+  for (int i=1; i < dimensionCount; ++i)   this.nest[i]=MultiDimensionalIterator.EMPTY_ITERATOR;
+}

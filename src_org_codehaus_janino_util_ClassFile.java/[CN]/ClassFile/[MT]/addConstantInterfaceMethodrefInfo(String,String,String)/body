@@ -1,0 +1,3 @@
+{
+  return this.addToConstantPool(new ConstantInterfaceMethodrefInfo(this.addConstantClassInfo(classFd),this.addConstantNameAndTypeInfo(methodName,methodMd)));
+}

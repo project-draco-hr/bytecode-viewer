@@ -1,0 +1,11 @@
+{
+  final Location location=this.location();
+  this.read("{");
+  List<ArrayInitializerOrRvalue> l=new ArrayList();
+  while (!this.peekRead("}")) {
+    l.add(this.parseVariableInitializer());
+    if (this.peekRead("}"))     break;
+    this.read(",");
+  }
+  return new ArrayInitializer(location,(ArrayInitializerOrRvalue[])l.toArray(new ArrayInitializerOrRvalue[l.size()]));
+}

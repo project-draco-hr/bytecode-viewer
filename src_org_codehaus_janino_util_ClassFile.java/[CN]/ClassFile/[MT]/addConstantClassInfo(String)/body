@@ -1,0 +1,13 @@
+{
+  String s;
+  if (Descriptor.isClassOrInterfaceReference(typeFd)) {
+    s=Descriptor.toInternalForm(typeFd);
+  }
+ else   if (Descriptor.isArrayReference(typeFd)) {
+    s=typeFd;
+  }
+ else {
+    throw new JaninoRuntimeException("\"" + Descriptor.toString(typeFd) + "\" is neither a class nor an array");
+  }
+  return this.addToConstantPool(new ConstantClassInfo(this.addConstantUtf8Info(s)));
+}

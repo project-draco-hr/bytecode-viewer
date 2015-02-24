@@ -1,0 +1,4 @@
+{
+  acd.baseType.accept((Visitor.TypeVisitor)this.cv);
+  this.traverseClassDeclaration(acd);
+}

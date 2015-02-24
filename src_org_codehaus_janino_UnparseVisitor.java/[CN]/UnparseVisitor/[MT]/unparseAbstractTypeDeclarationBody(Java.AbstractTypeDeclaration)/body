@@ -1,0 +1,12 @@
+{
+  for (  Java.MethodDeclarator md : atd.getMethodDeclarations()) {
+    this.pw.println();
+    md.accept(this);
+    this.pw.println();
+  }
+  for (  Java.MemberTypeDeclaration mtd : atd.getMemberTypeDeclarations()) {
+    this.pw.println();
+    ((Java.TypeBodyDeclaration)mtd).accept(this);
+    this.pw.println();
+  }
+}

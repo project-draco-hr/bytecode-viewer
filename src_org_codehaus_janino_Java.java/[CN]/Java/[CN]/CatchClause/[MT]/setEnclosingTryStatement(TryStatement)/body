@@ -1,0 +1,6 @@
+{
+  if (this.enclosingTryStatement != null && enclosingTryStatement != this.enclosingTryStatement) {
+    throw new JaninoRuntimeException("Enclosing TRY statement already set for catch clause " + this.toString() + " at "+ this.getLocation());
+  }
+  this.enclosingTryStatement=enclosingTryStatement;
+}

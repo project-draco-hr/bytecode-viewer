@@ -1,0 +1,3 @@
+{
+  ((Visitor.BlockStatementVisitor)visitor).visitSuperConstructorInvocation(this);
+}

@@ -1,0 +1,3 @@
+DataOutputStream dos
+List<AttributeInfo> attributeInfos
+Java.Annotation[] annotations

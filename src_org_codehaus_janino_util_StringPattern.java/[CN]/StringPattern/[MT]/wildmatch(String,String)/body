@@ -1,0 +1,23 @@
+{
+  int i;
+  for (i=0; i < pattern.length(); ++i) {
+    char c=pattern.charAt(i);
+switch (c) {
+case '?':
+      if (i == text.length())       return false;
+    break;
+case '*':
+  if (pattern.length() == i + 1)   return true;
+pattern=pattern.substring(i + 1);
+for (; i <= text.length(); ++i) {
+if (StringPattern.wildmatch(pattern,text.substring(i))) return true;
+}
+return false;
+default :
+if (i == text.length()) return false;
+if (text.charAt(i) != c) return false;
+break;
+}
+}
+return text.length() == i;
+}

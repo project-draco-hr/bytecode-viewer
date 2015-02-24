@@ -1,0 +1,38 @@
+{
+  if (memberAccess == Access.PUBLIC)   return null;
+  IClass iClassDeclaringContext=null;
+  for (Scope s=contextScope; !(s instanceof CompilationUnit); s=s.getEnclosingScope()) {
+    if (s instanceof TypeDeclaration) {
+      iClassDeclaringContext=this.resolve((TypeDeclaration)s);
+      break;
+    }
+  }
+  if (iClassDeclaringContext == iClassDeclaringMember)   return null;
+  if (iClassDeclaringContext != null) {
+    IClass topLevelIClassEnclosingMember=iClassDeclaringMember;
+    for (IClass c=iClassDeclaringMember.getDeclaringIClass(); c != null; c=c.getDeclaringIClass()) {
+      topLevelIClassEnclosingMember=c;
+    }
+    IClass topLevelIClassEnclosingContextBlockStatement=iClassDeclaringContext;
+    for (IClass c=iClassDeclaringContext.getDeclaringIClass(); c != null; c=c.getDeclaringIClass())     topLevelIClassEnclosingContextBlockStatement=c;
+    if (topLevelIClassEnclosingMember == topLevelIClassEnclosingContextBlockStatement)     return null;
+  }
+  if (memberAccess == Access.PRIVATE) {
+    return "Private member cannot be accessed from type \"" + iClassDeclaringContext + "\".";
+  }
+  if (Descriptor.areInSamePackage(iClassDeclaringMember.getDescriptor(),iClassDeclaringContext.getDescriptor()))   return null;
+  if (memberAccess == Access.DEFAULT) {
+    return ("Member with \"" + memberAccess + "\" access cannot be accessed from type \""+ iClassDeclaringContext+ "\".");
+  }
+{
+    IClass parentClass=iClassDeclaringContext;
+    do {
+      if (iClassDeclaringMember.isAssignableFrom(parentClass)) {
+        return null;
+      }
+      parentClass=parentClass.getOuterIClass();
+    }
+ while (parentClass != null);
+  }
+  return ("Protected member cannot be accessed from type \"" + iClassDeclaringContext + "\", which is neither declared in the same package as nor is a subclass of \""+ iClassDeclaringMember+ "\".");
+}

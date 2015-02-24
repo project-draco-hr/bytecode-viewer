@@ -1,0 +1,4 @@
+{
+  this.setParentClassLoader(optionalParentClassLoader);
+  this.cook(scanner);
+}

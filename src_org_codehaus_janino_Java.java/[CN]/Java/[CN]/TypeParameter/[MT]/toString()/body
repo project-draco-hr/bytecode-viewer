@@ -1,0 +1,3 @@
+{
+  return (this.optionalBound == null ? this.name : this.name + " extends " + Java.join(this.optionalBound," & "));
+}

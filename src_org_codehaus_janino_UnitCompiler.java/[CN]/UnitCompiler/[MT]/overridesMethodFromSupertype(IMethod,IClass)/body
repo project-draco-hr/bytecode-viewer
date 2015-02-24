@@ -1,0 +1,14 @@
+{
+{
+    IClass superclass=type.getSuperclass();
+    if (superclass != null && this.overridesMethod(m,superclass))     return true;
+  }
+  IClass[] ifs=type.getInterfaces();
+  for (  IClass i : ifs) {
+    if (this.overridesMethod(m,i))     return true;
+  }
+  if (ifs.length == 0 && type.isInterface()) {
+    return this.overridesMethod(m,this.iClassLoader.TYPE_java_lang_Object);
+  }
+  return false;
+}

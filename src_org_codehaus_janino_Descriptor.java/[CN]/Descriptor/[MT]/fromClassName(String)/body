@@ -1,0 +1,8 @@
+{
+  String res=(String)Descriptor.CLASS_NAME_TO_DESCRIPTOR.get(className);
+  if (res != null) {
+    return res;
+  }
+  if (className.startsWith("["))   return className.replace('.','/');
+  return 'L' + className.replace('.','/') + ';';
+}

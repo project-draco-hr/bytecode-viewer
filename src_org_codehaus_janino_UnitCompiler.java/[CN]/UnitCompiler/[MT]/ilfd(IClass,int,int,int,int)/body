@@ -1,0 +1,9 @@
+{
+  if (t == IClass.BYTE || t == IClass.CHAR || t == IClass.INT || t == IClass.SHORT || t == IClass.BOOLEAN) {
+    return opcodeInt;
+  }
+  if (t == IClass.LONG)   return opcodeLong;
+  if (t == IClass.FLOAT)   return opcodeFloat;
+  if (t == IClass.DOUBLE)   return opcodeDouble;
+  throw new JaninoRuntimeException("Unexpected type \"" + t + "\"");
+}

@@ -1,0 +1,3 @@
+{
+  this.buildLocalVariableMap(i.block,localVars);
+}

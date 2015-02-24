@@ -1,0 +1,4 @@
+{
+  if (this.nextToken == null)   this.nextToken=this.scanner.produce();
+  return this.nextToken;
+}

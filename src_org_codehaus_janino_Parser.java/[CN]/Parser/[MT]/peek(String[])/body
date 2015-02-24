@@ -1,0 +1,3 @@
+{
+  return Parser.indexOf(suspected,this.peek().value);
+}

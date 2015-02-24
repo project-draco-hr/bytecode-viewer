@@ -1,0 +1,17 @@
+{
+  DataInputStream dis=(inputStream instanceof DataInputStream ? (DataInputStream)inputStream : new DataInputStream(inputStream));
+  int magic=dis.readInt();
+  if (magic != ClassFile.CLASS_FILE_MAGIC)   throw new ClassFormatError("Invalid magic number");
+  this.minorVersion=dis.readShort();
+  this.majorVersion=dis.readShort();
+  this.constantPool=new ArrayList();
+  this.constantPoolMap=new HashMap();
+  this.loadConstantPool(dis);
+  this.accessFlags=dis.readShort();
+  this.thisClass=dis.readShort();
+  this.superclass=dis.readShort();
+  this.interfaces=ClassFile.readShortArray(dis);
+  this.fieldInfos=Collections.unmodifiableList(this.loadFields(dis));
+  this.methodInfos=Collections.unmodifiableList(this.loadMethods(dis));
+  this.attributes=Collections.unmodifiableList(this.loadAttributes(dis));
+}

@@ -1,0 +1,5 @@
+{
+  super(location);
+  (this.caughtException=caughtException).type.setEnclosingScope(this);
+  (this.body=body).setEnclosingScope(this);
+}

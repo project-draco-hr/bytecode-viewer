@@ -1,0 +1,6 @@
+{
+  super(location);
+  this.finaL=finaL;
+  this.type=type;
+  this.name=name;
+}

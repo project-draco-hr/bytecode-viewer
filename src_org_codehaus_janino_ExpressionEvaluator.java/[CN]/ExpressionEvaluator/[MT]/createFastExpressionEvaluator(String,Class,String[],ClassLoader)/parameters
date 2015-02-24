@@ -1,0 +1,4 @@
+String expression
+Class interfaceToImplement
+String[] parameterNames
+ClassLoader optionalParentClassLoader

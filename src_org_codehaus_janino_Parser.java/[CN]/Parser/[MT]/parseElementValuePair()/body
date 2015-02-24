@@ -1,0 +1,5 @@
+{
+  String identifier=this.readIdentifier();
+  this.read("=");
+  return new Java.ElementValuePair(identifier,this.parseElementValue());
+}

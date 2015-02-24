@@ -1,0 +1,4 @@
+{
+  ConstantClassInfo cci=(ConstantClassInfo)this.getConstantPoolInfo(this.thisClass);
+  return cci.getName(this).replace('/','.');
+}

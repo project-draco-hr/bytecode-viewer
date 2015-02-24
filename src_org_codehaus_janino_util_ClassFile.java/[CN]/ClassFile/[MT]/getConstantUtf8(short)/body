@@ -1,0 +1,4 @@
+{
+  ConstantUtf8Info cui=(ConstantUtf8Info)this.getConstantPoolInfo(index);
+  return cui.s;
+}

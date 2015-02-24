@@ -1,0 +1,3 @@
+{
+  return (ClassFile.ConstantNameAndTypeInfo)classFile.getConstantPoolInfo(this.nameAndTypeIndex);
+}

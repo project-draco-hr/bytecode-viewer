@@ -1,0 +1,15 @@
+{
+  dos.writeShort(this.maxStack);
+  dos.writeShort(this.maxLocals);
+  dos.writeInt(this.code.length);
+  dos.write(this.code);
+  dos.writeShort(this.exceptionTableEntries.length);
+  for (  ExceptionTableEntry ete : this.exceptionTableEntries) {
+    dos.writeShort(ete.startPc);
+    dos.writeShort(ete.endPc);
+    dos.writeShort(ete.handlerPc);
+    dos.writeShort(ete.catchType);
+  }
+  dos.writeShort(this.attributes.length);
+  for (  AttributeInfo ai : this.attributes)   ai.store(dos);
+}

@@ -1,0 +1,7 @@
+{
+  this.setClassName(className);
+  this.setExtendedClass(optionalExtendedType);
+  this.setImplementedInterfaces(implementedTypes);
+  this.setParentClassLoader(optionalParentClassLoader);
+  this.cook(scanner);
+}

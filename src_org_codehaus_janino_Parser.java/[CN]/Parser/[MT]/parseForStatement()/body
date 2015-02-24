@@ -1,0 +1,58 @@
+{
+  this.read("for");
+  Location forLocation=this.location();
+  this.read("(");
+  BlockStatement optionalInit=null;
+  INIT:   if (!this.peek(";")) {
+    if (this.peek(new String[]{"final","@","byte","short","char","int","long","float","double","boolean"}) != -1) {
+      Modifiers modifiers=this.parseModifiers();
+      Type type=this.parseType();
+      if (this.peekIdentifier() != null && this.peekNextButOne(":")) {
+        final String name=this.readIdentifier();
+        final Location nameLocation=this.location();
+        this.read(":");
+        Rvalue expression=this.parseExpression().toRvalue();
+        this.read(")");
+        return new ForEachStatement(forLocation,new FormalParameter(nameLocation,Mod.isFinal(modifiers.flags),type,name),expression,this.parseStatement());
+      }
+      optionalInit=new LocalVariableDeclarationStatement(this.location(),modifiers,type,this.parseVariableDeclarators());
+      break INIT;
+    }
+    Atom a=this.parseExpression();
+    if (this.peekIdentifier() != null) {
+      if (this.peekNextButOne(":")) {
+        final String name=this.readIdentifier();
+        final Location nameLocation=this.location();
+        this.read(":");
+        Rvalue expression=this.parseExpression().toRvalue();
+        this.read(")");
+        return new ForEachStatement(forLocation,new FormalParameter(nameLocation,false,a.toTypeOrCompileException(),name),expression,this.parseStatement());
+      }
+      optionalInit=new LocalVariableDeclarationStatement(this.location(),new Java.Modifiers(Mod.NONE),a.toTypeOrCompileException(),this.parseVariableDeclarators());
+      break INIT;
+    }
+    if (!this.peekRead(",")) {
+      optionalInit=new ExpressionStatement(a.toRvalueOrCompileException());
+      break INIT;
+    }
+{
+      List<BlockStatement> l=new ArrayList();
+      l.add(new ExpressionStatement(a.toRvalueOrCompileException()));
+      do {
+        l.add(new ExpressionStatement(this.parseExpression().toRvalueOrCompileException()));
+      }
+ while (this.peekRead(","));
+      Block b=new Block(a.getLocation());
+      b.addStatements(l);
+      optionalInit=b;
+    }
+  }
+  this.read(";");
+  Rvalue optionalCondition=null;
+  if (!this.peek(";"))   optionalCondition=this.parseExpression().toRvalueOrCompileException();
+  this.read(";");
+  Rvalue[] optionalUpdate=null;
+  if (!this.peek(")"))   optionalUpdate=this.parseExpressionList();
+  this.read(")");
+  return new ForStatement(forLocation,optionalInit,optionalCondition,optionalUpdate,this.parseStatement());
+}

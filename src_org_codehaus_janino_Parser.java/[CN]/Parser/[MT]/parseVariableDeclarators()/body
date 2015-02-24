@@ -1,0 +1,10 @@
+{
+  List<VariableDeclarator> l=new ArrayList();
+  do {
+    VariableDeclarator vd=this.parseVariableDeclarator();
+    this.verifyIdentifierIsConventionalLocalVariableOrParameterName(vd.name,vd.getLocation());
+    l.add(vd);
+  }
+ while (this.peekRead(","));
+  return (VariableDeclarator[])l.toArray(new VariableDeclarator[l.size()]);
+}

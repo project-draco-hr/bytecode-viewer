@@ -1,0 +1,11 @@
+{
+  Short ni=(Short)this.constantPoolMap.get(new ConstantUtf8Info("InnerClasses"));
+  if (ni == null)   return null;
+  for (Iterator<AttributeInfo> it=this.attributes.iterator(); it.hasNext(); ) {
+    AttributeInfo ai=(AttributeInfo)it.next();
+    if (ai.nameIndex == ni.shortValue() && ai instanceof InnerClassesAttribute) {
+      return (InnerClassesAttribute)ai;
+    }
+  }
+  return null;
+}

@@ -1,0 +1,3 @@
+{
+  visitor.visitMemberClassDeclaration(this);
+}

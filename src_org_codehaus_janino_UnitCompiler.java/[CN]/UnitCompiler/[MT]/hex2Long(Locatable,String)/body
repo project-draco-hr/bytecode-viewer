@@ -1,0 +1,10 @@
+{
+  long result=0L;
+  for (int i=0; i < value.length(); ++i) {
+    if ((result & 0xf000000000000000L) != 0L) {
+      throw UnitCompiler.compileException(locatable,"Value of hexadecimal long literal \"" + value + "\" is out of range");
+    }
+    result=(result << 4) + Character.digit(value.charAt(i),16);
+  }
+  return result;
+}

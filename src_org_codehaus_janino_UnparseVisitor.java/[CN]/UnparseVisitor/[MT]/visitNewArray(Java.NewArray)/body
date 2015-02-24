@@ -1,0 +1,12 @@
+{
+  this.pw.print("new ");
+  this.unparseType(na.type);
+  for (  Rvalue dimExpr : na.dimExprs) {
+    this.pw.print('[');
+    this.unparse(dimExpr);
+    this.pw.print(']');
+  }
+  for (int i=0; i < na.dims; ++i) {
+    this.pw.print("[]");
+  }
+}

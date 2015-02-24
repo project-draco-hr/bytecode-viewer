@@ -1,0 +1,23 @@
+{
+  if (n == 1) {
+    return this.getReferenceType(location,identifiers[0],scope);
+  }
+{
+    String className=Java.join(identifiers,".",0,n);
+    IClass result=this.findTypeByName(location,className);
+    if (result != null)     return result;
+  }
+  if (n >= 2) {
+    IClass enclosingType=this.getReferenceType(location,scope,identifiers,n - 1);
+    if (enclosingType != null) {
+      String memberTypeName=identifiers[n - 1];
+      IClass memberType=this.findMemberType(enclosingType,memberTypeName,location);
+      if (memberType == null) {
+        this.compileError("'" + enclosingType + "' declares no member type '"+ memberTypeName+ "'",location);
+        return this.iClassLoader.TYPE_java_lang_Object;
+      }
+      return memberType;
+    }
+  }
+  return null;
+}

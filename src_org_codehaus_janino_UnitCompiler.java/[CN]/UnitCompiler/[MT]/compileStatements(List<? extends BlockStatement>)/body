@@ -1,0 +1,11 @@
+{
+  boolean previousStatementCanCompleteNormally=true;
+  for (  BlockStatement bs : statements) {
+    if (!previousStatementCanCompleteNormally && this.generatesCode(bs)) {
+      this.compileError("Statement is unreachable",bs.getLocation());
+      break;
+    }
+    previousStatementCanCompleteNormally=this.compile(bs);
+  }
+  return previousStatementCanCompleteNormally;
+}

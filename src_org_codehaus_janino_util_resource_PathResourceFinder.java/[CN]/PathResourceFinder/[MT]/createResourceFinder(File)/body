@@ -1,0 +1,14 @@
+{
+  if ((entry.getName().endsWith(".jar") || entry.getName().endsWith(".zip")) && entry.isFile()) {
+    try {
+      return new ZipFileResourceFinder(new ZipFile(entry));
+    }
+ catch (    IOException e) {
+      return ResourceFinder.EMPTY_RESOURCE_FINDER;
+    }
+  }
+  if (entry.isDirectory()) {
+    return new DirectoryResourceFinder(entry);
+  }
+  return ResourceFinder.EMPTY_RESOURCE_FINDER;
+}

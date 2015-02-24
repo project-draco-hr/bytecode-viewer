@@ -1,0 +1,5 @@
+{
+  this.variableDeclaratorsAndInitializers.add(fd);
+  fd.setDeclaringType(this);
+  if (this.resolvedType != null)   this.resolvedType.clearIFieldCaches();
+}

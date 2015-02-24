@@ -1,0 +1,15 @@
+{
+  byte[] bytecode=(byte[])this.precompiledClasses.remove(name);
+  if (bytecode == null) {
+{
+      Map<String,byte[]> bytecodes=this.generateBytecodes(name);
+      if (bytecodes == null)       throw new ClassNotFoundException(name);
+      this.precompiledClasses.putAll(bytecodes);
+    }
+    bytecode=(byte[])this.precompiledClasses.remove(name);
+    if (bytecode == null) {
+      throw new JaninoRuntimeException("SNO: Scanning, parsing and compiling class \"" + name + "\" did not create a class file!?");
+    }
+  }
+  return this.defineBytecode(name,bytecode);
+}

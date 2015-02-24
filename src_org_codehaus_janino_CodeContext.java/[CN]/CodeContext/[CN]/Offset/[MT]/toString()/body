@@ -1,0 +1,3 @@
+{
+  return CodeContext.this.classFile.getThisClassName() + ": " + this.offset;
+}

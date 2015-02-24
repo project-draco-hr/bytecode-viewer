@@ -1,0 +1,45 @@
+{
+  if (JavaSourceIClassLoader.DEBUG)   System.out.println("type = " + fieldDescriptor);
+  String className=Descriptor.toClassName(fieldDescriptor);
+  if (JavaSourceIClassLoader.DEBUG)   System.out.println("2 className = \"" + className + "\"");
+  if (className.startsWith("java."))   return null;
+  String topLevelClassName;
+{
+    int idx=className.indexOf('$');
+    topLevelClassName=idx == -1 ? className : className.substring(0,idx);
+  }
+  for (  UnitCompiler uc : this.unitCompilers) {
+    IClass res=uc.findClass(topLevelClassName);
+    if (res != null) {
+      if (!className.equals(topLevelClassName)) {
+        res=uc.findClass(className);
+        if (res == null)         return null;
+      }
+      this.defineIClass(res);
+      return res;
+    }
+  }
+  try {
+    Java.CompilationUnit cu=this.findCompilationUnit(className);
+    if (cu == null)     return null;
+    UnitCompiler uc=new UnitCompiler(cu,this);
+    uc.setCompileErrorHandler(this.optionalCompileErrorHandler);
+    uc.setWarningHandler(this.optionalWarningHandler);
+    this.unitCompilers.add(uc);
+    IClass res=uc.findClass(className);
+    if (res == null) {
+      if (className.equals(topLevelClassName)) {
+        throw new CompileException("Compilation unit '" + className + "' does not declare a class with the same name",(Location)null);
+      }
+      return null;
+    }
+    this.defineIClass(res);
+    return res;
+  }
+ catch (  IOException e) {
+    throw new ClassNotFoundException("Parsing compilation unit '" + className + "'",e);
+  }
+catch (  CompileException e) {
+    throw new ClassNotFoundException("Parsing compilation unit '" + className + "'",e);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return Descriptor.toClassName(this.getDescriptor());
+}

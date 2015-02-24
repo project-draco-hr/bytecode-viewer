@@ -1,0 +1,4 @@
+{
+  if (this.result == null)   throw new IllegalStateException("Must only be called after \"cook()\"");
+  return this.result[idx];
+}

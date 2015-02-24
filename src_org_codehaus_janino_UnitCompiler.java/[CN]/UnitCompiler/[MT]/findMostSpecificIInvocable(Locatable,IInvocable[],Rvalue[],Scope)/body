@@ -1,0 +1,82 @@
+{
+  final IClass[] argumentTypes=new IClass[arguments.length];
+  for (int i=0; i < arguments.length; ++i) {
+    argumentTypes[i]=this.getType(arguments[i]);
+  }
+  IInvocable ii=this.findMostSpecificIInvocable(locatable,iInvocables,argumentTypes,false,contextScope);
+  if (ii != null)   return ii;
+  ii=this.findMostSpecificIInvocable(locatable,iInvocables,argumentTypes,true,contextScope);
+  if (ii != null)   return ii;
+  StringBuilder sb=new StringBuilder("No applicable constructor/method found for ");
+  if (argumentTypes.length == 0) {
+    sb.append("zero actual parameters");
+  }
+ else {
+    sb.append("actual parameters \"").append(argumentTypes[0]);
+    for (int i=1; i < argumentTypes.length; ++i) {
+      sb.append(", ").append(argumentTypes[i]);
+    }
+    sb.append("\"");
+  }
+  sb.append("; candidates are: ").append('"' + iInvocables[0].toString() + '"');
+  for (int i=1; i < iInvocables.length; ++i) {
+    sb.append(", ").append('"' + iInvocables[i].toString() + '"');
+  }
+  this.compileError(sb.toString(),locatable.getLocation());
+  if (iInvocables[0] instanceof IClass.IConstructor) {
+    return iInvocables[0].getDeclaringIClass().new IConstructor(){
+      @Override public boolean isVarargs(){
+        return false;
+      }
+      @Override public IClass[] getParameterTypes2(){
+        return argumentTypes;
+      }
+      @Override public Access getAccess(){
+        return Access.PUBLIC;
+      }
+      @Override public IClass[] getThrownExceptions2(){
+        return new IClass[0];
+      }
+      @Override public Annotation[] getAnnotations(){
+        return new Annotation[0];
+      }
+    }
+;
+  }
+ else   if (iInvocables[0] instanceof IClass.IMethod) {
+    final String methodName=((IClass.IMethod)iInvocables[0]).getName();
+    return iInvocables[0].getDeclaringIClass().new IMethod(){
+      @Override public boolean isStatic(){
+        return true;
+      }
+      @Override public boolean isAbstract(){
+        return false;
+      }
+      @Override public IClass getReturnType(){
+        return IClass.INT;
+      }
+      @Override public String getName(){
+        return methodName;
+      }
+      @Override public Access getAccess(){
+        return Access.PUBLIC;
+      }
+      @Override public boolean isVarargs(){
+        return false;
+      }
+      @Override public IClass[] getParameterTypes2(){
+        return argumentTypes;
+      }
+      @Override public IClass[] getThrownExceptions2(){
+        return new IClass[0];
+      }
+      @Override public Annotation[] getAnnotations(){
+        return new Annotation[0];
+      }
+    }
+;
+  }
+ else {
+    return iInvocables[0];
+  }
+}

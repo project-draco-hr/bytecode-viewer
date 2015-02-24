@@ -1,0 +1,4 @@
+{
+  for (  BlockStatement bs : l)   if (this.generatesCode(bs))   return true;
+  return false;
+}

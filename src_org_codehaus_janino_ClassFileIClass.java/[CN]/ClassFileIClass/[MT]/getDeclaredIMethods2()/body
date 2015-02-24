@@ -1,0 +1,15 @@
+{
+  List<IMethod> iMethods=new ArrayList();
+  for (  ClassFile.MethodInfo mi : this.classFile.methodInfos) {
+    if (Mod.isSynthetic(mi.getModifierFlags()))     continue;
+    IInvocable ii;
+    try {
+      ii=this.resolveMethod(mi);
+    }
+ catch (    ClassNotFoundException ex) {
+      throw new JaninoRuntimeException(ex.getMessage(),ex);
+    }
+    if (ii instanceof IMethod)     iMethods.add((IMethod)ii);
+  }
+  return (IMethod[])iMethods.toArray(new IMethod[iMethods.size()]);
+}

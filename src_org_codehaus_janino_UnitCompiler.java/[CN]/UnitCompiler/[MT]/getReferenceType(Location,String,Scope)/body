@@ -1,0 +1,107 @@
+{
+  BlockStatement scopeBlockStatement=null;
+  TypeDeclaration scopeTypeDeclaration=null;
+  CompilationUnit scopeCompilationUnit;
+  for (Scope s=scope.getEnclosingScope(); ; s=s.getEnclosingScope()) {
+    if (s instanceof BlockStatement && scopeBlockStatement == null) {
+      scopeBlockStatement=(BlockStatement)s;
+    }
+    if (s instanceof TypeDeclaration && scopeTypeDeclaration == null) {
+      scopeTypeDeclaration=(TypeDeclaration)s;
+    }
+    if (s instanceof CompilationUnit) {
+      scopeCompilationUnit=(CompilationUnit)s;
+      break;
+    }
+  }
+  if (scopeTypeDeclaration instanceof NamedTypeDeclaration) {
+    TypeParameter[] optionalTypeParameters=((NamedTypeDeclaration)scopeTypeDeclaration).getOptionalTypeParameters();
+    if (optionalTypeParameters != null) {
+      for (      TypeParameter tp : optionalTypeParameters) {
+        if (tp.name.equals(simpleTypeName)) {
+          IClass[] boundTypes;
+          if (tp.optionalBound == null) {
+            boundTypes=new IClass[]{this.iClassLoader.TYPE_java_lang_Object};
+          }
+ else {
+            boundTypes=new IClass[tp.optionalBound.length];
+            for (int i=0; i < boundTypes.length; i++) {
+              boundTypes[i]=this.getType(tp.optionalBound[i]);
+            }
+          }
+          return boundTypes[0];
+        }
+      }
+    }
+  }
+{
+    LocalClassDeclaration lcd=UnitCompiler.findLocalClassDeclaration(scope,simpleTypeName);
+    if (lcd != null)     return this.resolve(lcd);
+  }
+  if (scopeTypeDeclaration != null) {
+    for (Scope s=scopeTypeDeclaration; !(s instanceof CompilationUnit); s=s.getEnclosingScope()) {
+      if (s instanceof TypeDeclaration) {
+        IClass mt=this.findMemberType(this.resolve((AbstractTypeDeclaration)s),simpleTypeName,location);
+        if (mt != null)         return mt;
+      }
+    }
+  }
+{
+    IClass importedClass=this.importSingleType(simpleTypeName,location);
+    if (importedClass != null)     return importedClass;
+  }
+{
+    PackageMemberTypeDeclaration pmtd=(scopeCompilationUnit.getPackageMemberTypeDeclaration(simpleTypeName));
+    if (pmtd != null)     return this.resolve(pmtd);
+  }
+{
+    String pkg=(scopeCompilationUnit.optionalPackageDeclaration == null ? null : scopeCompilationUnit.optionalPackageDeclaration.packageName);
+    String className=pkg == null ? simpleTypeName : pkg + "." + simpleTypeName;
+    IClass result=this.findTypeByName(location,className);
+    if (result != null)     return result;
+  }
+{
+    IClass importedClass=this.importTypeOnDemand(simpleTypeName,location);
+    if (importedClass != null)     return importedClass;
+  }
+{
+    List<Object> l=(List)this.singleStaticImports.get(simpleTypeName);
+    if (l != null) {
+      IClass importedMemberType=null;
+      for (Iterator<Object> it=l.iterator(); it.hasNext(); ) {
+        Object o=it.next();
+        if (o instanceof IClass) {
+          IClass mt=(IClass)o;
+          if (!this.isAccessible(mt,scopeBlockStatement))           continue;
+          if (importedMemberType != null && importedMemberType != mt) {
+            this.compileError("Ambiguous static imports: \"" + importedMemberType.toString() + "\" vs. \""+ mt.toString()+ "\"");
+          }
+          importedMemberType=mt;
+        }
+      }
+      if (importedMemberType != null)       return importedMemberType;
+    }
+  }
+{
+    IClass importedMemberType=null;
+    for (    IClass ic : this.staticImportsOnDemand) {
+      IClass[] memberTypes=ic.getDeclaredIClasses();
+      for (      IClass mt : memberTypes) {
+        if (!this.isAccessible(mt,scopeBlockStatement))         continue;
+        if (mt.getDescriptor().endsWith('$' + simpleTypeName + ';')) {
+          if (importedMemberType != null) {
+            this.compileError("Ambiguous static imports: \"" + importedMemberType.toString() + "\" vs. \""+ mt.toString()+ "\"");
+          }
+          importedMemberType=mt;
+        }
+      }
+    }
+    if (importedMemberType != null)     return importedMemberType;
+  }
+{
+    IClass result=this.findTypeByName(location,simpleTypeName);
+    if (result != null)     return result;
+  }
+  this.compileError("Cannot determine simple type name \"" + simpleTypeName + "\"",location);
+  return this.iClassLoader.TYPE_java_lang_Object;
+}

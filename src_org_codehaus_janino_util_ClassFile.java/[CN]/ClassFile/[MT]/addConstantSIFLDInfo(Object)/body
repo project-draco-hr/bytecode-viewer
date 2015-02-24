@@ -1,0 +1,26 @@
+{
+  if (cv instanceof String) {
+    return this.addConstantStringInfo((String)cv);
+  }
+ else   if (cv instanceof Byte || cv instanceof Short || cv instanceof Integer) {
+    return this.addConstantIntegerInfo(((Number)cv).intValue());
+  }
+ else   if (cv instanceof Boolean) {
+    return this.addConstantIntegerInfo(((Boolean)cv).booleanValue() ? 1 : 0);
+  }
+ else   if (cv instanceof Character) {
+    return this.addConstantIntegerInfo(((Character)cv).charValue());
+  }
+ else   if (cv instanceof Float) {
+    return this.addConstantFloatInfo(((Float)cv).floatValue());
+  }
+ else   if (cv instanceof Long) {
+    return this.addConstantLongInfo(((Long)cv).longValue());
+  }
+ else   if (cv instanceof Double) {
+    return this.addConstantDoubleInfo(((Double)cv).doubleValue());
+  }
+ else {
+    throw new JaninoRuntimeException("Unexpected constant value type \"" + cv.getClass().getName() + "\"");
+  }
+}

@@ -1,0 +1,5 @@
+{
+  String label=this.readIdentifier();
+  this.read(":");
+  return new LabeledStatement(this.location(),label,this.parseStatement());
+}

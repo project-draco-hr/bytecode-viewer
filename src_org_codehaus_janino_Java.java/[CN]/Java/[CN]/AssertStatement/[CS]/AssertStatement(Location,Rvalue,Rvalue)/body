@@ -1,0 +1,7 @@
+{
+  super(location);
+  this.expression1=expression1;
+  this.optionalExpression2=optionalExpression2;
+  this.expression1.setEnclosingBlockStatement(this);
+  if (this.optionalExpression2 != null)   this.optionalExpression2.setEnclosingBlockStatement(this);
+}

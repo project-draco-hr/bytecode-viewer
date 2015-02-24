@@ -1,0 +1,9 @@
+{
+  if (ClassFileIClass.DEBUG)   System.out.println("descriptor=" + descriptor);
+  IClass result=(IClass)this.resolvedClasses.get(descriptor);
+  if (result != null)   return result;
+  result=this.iClassLoader.loadIClass(descriptor);
+  if (result == null)   throw new ClassNotFoundException(descriptor);
+  this.resolvedClasses.put(descriptor,result);
+  return result;
+}

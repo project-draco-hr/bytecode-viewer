@@ -1,0 +1,6 @@
+{
+  this.setReturnType(returnType);
+  this.setParameters(parameterNames,parameterTypes);
+  this.setThrownExceptions(thrownExceptions);
+  this.cook(script);
+}

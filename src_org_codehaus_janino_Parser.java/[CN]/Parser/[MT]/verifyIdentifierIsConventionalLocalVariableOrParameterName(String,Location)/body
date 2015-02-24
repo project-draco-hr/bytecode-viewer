@@ -1,0 +1,13 @@
+{
+  if (!Character.isLowerCase(id.charAt(0))) {
+    this.warning("ULVN1","Local variable name \"" + id + "\" does not begin with a lower-case letter (see JLS7 6.8.6)",loc);
+    return;
+  }
+  for (int i=0; i < id.length(); ++i) {
+    char c=id.charAt(i);
+    if (!Character.isLetter(c) && !Character.isDigit(c)) {
+      this.warning("ULVN",("Local variable name \"" + id + "\" contains unconventional character \""+ c+ "\" (see JLS7 6.8.6)"),loc);
+      return;
+    }
+  }
+}

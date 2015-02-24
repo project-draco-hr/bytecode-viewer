@@ -1,0 +1,4 @@
+{
+  this.reportingEnabled=false;
+  this.reporter=null;
+}

@@ -1,0 +1,73 @@
+{
+  if (bo.op == "|" || bo.op == "^" || bo.op == "&" || bo.op == "*" || bo.op == "/" || bo.op == "%" || bo.op == "+" || bo.op == "-" || bo.op == "==" || bo.op == "!=") {
+    List<Object> cvs=new ArrayList();
+    for (Iterator<Rvalue> it=bo.unrollLeftAssociation(); it.hasNext(); ) {
+      Object cv=this.getConstantValue(((Rvalue)it.next()));
+      if (cv == UnitCompiler.NOT_CONSTANT)       return UnitCompiler.NOT_CONSTANT;
+      cvs.add(cv);
+    }
+    Iterator<Object> it=cvs.iterator();
+    Object lhs=it.next();
+    while (it.hasNext()) {
+      if (lhs == UnitCompiler.NOT_CONSTANT)       return UnitCompiler.NOT_CONSTANT;
+      Object rhs=it.next();
+      if (bo.op == "+" && (lhs instanceof String || rhs instanceof String)) {
+        StringBuilder sb=new StringBuilder(lhs.toString()).append(rhs);
+        while (it.hasNext())         sb.append(it.next().toString());
+        return sb.toString();
+      }
+      if (lhs instanceof Number && rhs instanceof Number) {
+        try {
+          if (lhs instanceof Double || rhs instanceof Double) {
+            double lhsD=((Number)lhs).doubleValue();
+            double rhsD=((Number)rhs).doubleValue();
+            lhs=(bo.op == "*" ? new Double(lhsD * rhsD) : bo.op == "/" ? new Double(lhsD / rhsD) : bo.op == "%" ? new Double(lhsD % rhsD) : bo.op == "+" ? new Double(lhsD + rhsD) : bo.op == "-" ? new Double(lhsD - rhsD) : bo.op == "==" ? Boolean.valueOf(lhsD == rhsD) : bo.op == "!=" ? Boolean.valueOf(lhsD != rhsD) : UnitCompiler.NOT_CONSTANT);
+            continue;
+          }
+          if (lhs instanceof Float || rhs instanceof Float) {
+            float lhsF=((Number)lhs).floatValue();
+            float rhsF=((Number)rhs).floatValue();
+            lhs=(bo.op == "*" ? new Float(lhsF * rhsF) : bo.op == "/" ? new Float(lhsF / rhsF) : bo.op == "%" ? new Float(lhsF % rhsF) : bo.op == "+" ? new Float(lhsF + rhsF) : bo.op == "-" ? new Float(lhsF - rhsF) : bo.op == "==" ? Boolean.valueOf(lhsF == rhsF) : bo.op == "!=" ? Boolean.valueOf(lhsF != rhsF) : UnitCompiler.NOT_CONSTANT);
+            continue;
+          }
+          if (lhs instanceof Long || rhs instanceof Long) {
+            long lhsL=((Number)lhs).longValue();
+            long rhsL=((Number)rhs).longValue();
+            lhs=(bo.op == "|" ? new Long(lhsL | rhsL) : bo.op == "^" ? new Long(lhsL ^ rhsL) : bo.op == "&" ? new Long(lhsL & rhsL) : bo.op == "*" ? new Long(lhsL * rhsL) : bo.op == "/" ? new Long(lhsL / rhsL) : bo.op == "%" ? new Long(lhsL % rhsL) : bo.op == "+" ? new Long(lhsL + rhsL) : bo.op == "-" ? new Long(lhsL - rhsL) : bo.op == "==" ? Boolean.valueOf(lhsL == rhsL) : bo.op == "!=" ? Boolean.valueOf(lhsL != rhsL) : UnitCompiler.NOT_CONSTANT);
+            continue;
+          }
+          if (lhs instanceof Integer || lhs instanceof Byte || lhs instanceof Short|| rhs instanceof Integer|| lhs instanceof Byte|| lhs instanceof Short) {
+            int lhsI=((Number)lhs).intValue();
+            int rhsI=((Number)rhs).intValue();
+            lhs=(bo.op == "|" ? new Integer(lhsI | rhsI) : bo.op == "^" ? new Integer(lhsI ^ rhsI) : bo.op == "&" ? new Integer(lhsI & rhsI) : bo.op == "*" ? new Integer(lhsI * rhsI) : bo.op == "/" ? new Integer(lhsI / rhsI) : bo.op == "%" ? new Integer(lhsI % rhsI) : bo.op == "+" ? new Integer(lhsI + rhsI) : bo.op == "-" ? new Integer(lhsI - rhsI) : bo.op == "==" ? Boolean.valueOf(lhsI == rhsI) : bo.op == "!=" ? Boolean.valueOf(lhsI != rhsI) : UnitCompiler.NOT_CONSTANT);
+            continue;
+          }
+        }
+ catch (        ArithmeticException ae) {
+          return UnitCompiler.NOT_CONSTANT;
+        }
+        throw new IllegalStateException();
+      }
+      if (lhs instanceof Character && rhs instanceof Character) {
+        char lhsC=((Character)lhs).charValue();
+        char rhsC=((Character)rhs).charValue();
+        lhs=(bo.op == "==" ? Boolean.valueOf(lhsC == rhsC) : bo.op == "!=" ? Boolean.valueOf(lhsC != rhsC) : UnitCompiler.NOT_CONSTANT);
+        continue;
+      }
+      if (lhs == null || rhs == null) {
+        lhs=(bo.op == "==" ? Boolean.valueOf(lhs == rhs) : bo.op == "!=" ? Boolean.valueOf(lhs != rhs) : UnitCompiler.NOT_CONSTANT);
+        continue;
+      }
+      return UnitCompiler.NOT_CONSTANT;
+    }
+    return lhs;
+  }
+  if (bo.op == "&&" || bo.op == "||") {
+    Object lhsValue=this.getConstantValue(bo.lhs);
+    if (lhsValue instanceof Boolean) {
+      boolean lhsBv=((Boolean)lhsValue).booleanValue();
+      return (bo.op == "&&" ? (lhsBv ? this.getConstantValue(bo.rhs) : Boolean.FALSE) : (lhsBv ? Boolean.TRUE : this.getConstantValue(bo.rhs)));
+    }
+  }
+  return UnitCompiler.NOT_CONSTANT;
+}

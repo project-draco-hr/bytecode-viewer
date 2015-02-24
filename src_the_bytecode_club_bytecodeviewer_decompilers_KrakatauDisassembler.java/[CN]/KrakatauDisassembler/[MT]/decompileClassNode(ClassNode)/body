@@ -12,6 +12,7 @@
   try {
     ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "disassemble.py","-path",tempJar.getAbsolutePath(),"-out",tempDirectory.getAbsolutePath(),cn.name + ".class");
     Process process=pb.start();
+    BytecodeViewer.krakatau.add(process);
     InputStream is=process.getInputStream();
     InputStreamReader isr=new InputStreamReader(is);
     BufferedReader br=new BufferedReader(isr);
@@ -20,6 +21,7 @@
     while ((line=br.readLine()) != null) {
       log+=BytecodeViewer.nl + line;
     }
+    br.close();
     log+=BytecodeViewer.nl + BytecodeViewer.nl + "Error:"+ BytecodeViewer.nl+ BytecodeViewer.nl;
     is=process.getErrorStream();
     isr=new InputStreamReader(is);
@@ -27,6 +29,7 @@
     while ((line=br.readLine()) != null) {
       log+=BytecodeViewer.nl + line;
     }
+    br.close();
     int exitValue=process.waitFor();
     log+=BytecodeViewer.nl + BytecodeViewer.nl + "Exit Value is "+ exitValue;
     s=log;

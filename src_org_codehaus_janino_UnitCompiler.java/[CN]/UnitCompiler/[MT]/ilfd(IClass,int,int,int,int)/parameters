@@ -1,0 +1,5 @@
+IClass t
+int opcodeInt
+int opcodeLong
+int opcodeFloat
+int opcodeDouble

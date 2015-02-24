@@ -1,0 +1,81 @@
+{
+  IClass.IMethod iMethod=this.findIMethod(mi);
+  if (mi.optionalTarget == null) {
+    TypeBodyDeclaration scopeTbd;
+    ClassDeclaration scopeClassDeclaration;
+{
+      Scope s;
+      for (s=mi.getEnclosingBlockStatement(); !(s instanceof TypeBodyDeclaration); s=s.getEnclosingScope())       ;
+      scopeTbd=(TypeBodyDeclaration)s;
+      if (!(s instanceof ClassDeclaration))       s=s.getEnclosingScope();
+      scopeClassDeclaration=(ClassDeclaration)s;
+    }
+    if (iMethod.isStatic()) {
+      this.warning("IASM","Implicit access to static method \"" + iMethod.toString() + "\"",mi.getLocation());
+      ;
+    }
+ else {
+      this.warning("IANSM","Implicit access to non-static method \"" + iMethod.toString() + "\"",mi.getLocation());
+      if (scopeTbd.isStatic()) {
+        this.compileError("Instance method \"" + iMethod.toString() + "\" cannot be invoked in static context",mi.getLocation());
+      }
+      this.referenceThis(mi,scopeClassDeclaration,scopeTbd,iMethod.getDeclaringIClass());
+    }
+  }
+ else {
+    boolean staticContext=this.isType(mi.optionalTarget);
+    if (staticContext) {
+      this.getType(this.toTypeOrCompileException(mi.optionalTarget));
+    }
+ else {
+      this.compileGetValue(this.toRvalueOrCompileException(mi.optionalTarget));
+    }
+    if (iMethod.isStatic()) {
+      if (!staticContext) {
+        this.pop(mi.optionalTarget,this.getType(mi.optionalTarget));
+      }
+    }
+ else {
+      if (staticContext) {
+        this.compileError("Instance method \"" + mi.methodName + "\" cannot be invoked in static context",mi.getLocation());
+      }
+    }
+  }
+  IClass[] parameterTypes=iMethod.getParameterTypes();
+  Rvalue[] adjustedArgs=null;
+  final int actualSize=mi.arguments.length;
+  if (iMethod.isVarargs() && iMethod.argsNeedAdjust()) {
+    adjustedArgs=new Rvalue[parameterTypes.length];
+    Rvalue[] lastArgs=new Rvalue[actualSize - parameterTypes.length + 1];
+    final Location loc=mi.getLocation();
+    if (lastArgs.length > 0) {
+      for (int i=0, j=parameterTypes.length - 1; i < lastArgs.length; ++i, ++j) {
+        lastArgs[i]=mi.arguments[j];
+      }
+    }
+    for (int i=parameterTypes.length - 2; i >= 0; --i) {
+      adjustedArgs[i]=mi.arguments[i];
+    }
+    adjustedArgs[adjustedArgs.length - 1]=new NewInitializedArray(loc,parameterTypes[parameterTypes.length - 1],new ArrayInitializer(loc,lastArgs));
+  }
+ else {
+    adjustedArgs=mi.arguments;
+  }
+  for (int i=0; i < adjustedArgs.length; ++i) {
+    this.assignmentConversion(mi,this.compileGetValue(adjustedArgs[i]),parameterTypes[i],this.getConstantValue(adjustedArgs[i]));
+  }
+  this.checkAccessible(iMethod,mi.getEnclosingBlockStatement());
+  if (iMethod.getDeclaringIClass().isInterface()) {
+    this.invoke(mi,iMethod);
+  }
+ else {
+    if (!iMethod.isStatic() && iMethod.getAccess() == Access.PRIVATE) {
+      this.writeOpcode(mi,Opcode.INVOKESTATIC);
+      this.writeConstantMethodrefInfo(iMethod.getDeclaringIClass().getDescriptor(),iMethod.getName() + '$',MethodDescriptor.prependParameter(iMethod.getDescriptor(),iMethod.getDeclaringIClass().getDescriptor()));
+    }
+ else {
+      this.invoke(mi,iMethod);
+    }
+  }
+  return iMethod.getReturnType();
+}

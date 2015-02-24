@@ -1,0 +1,5 @@
+{
+  List<TypeDeclaration> path=new ArrayList();
+  for (TypeDeclaration ic=inner; ic != null; ic=UnitCompiler.getOuterClass(ic))   path.add(ic);
+  return path;
+}

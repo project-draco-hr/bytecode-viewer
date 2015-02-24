@@ -1,0 +1,38 @@
+{
+  if (UnitCompiler.DEBUG) {
+    System.out.println("isConstantPrimitiveAssignmentConvertible(" + constantValue + ", "+ targetType+ ")");
+  }
+  int cv;
+  if (constantValue instanceof Byte) {
+    cv=((Byte)constantValue).byteValue();
+  }
+ else   if (constantValue instanceof Short) {
+    cv=((Short)constantValue).shortValue();
+  }
+ else   if (constantValue instanceof Integer) {
+    cv=((Integer)constantValue).intValue();
+  }
+ else   if (constantValue instanceof Character) {
+    cv=((Character)constantValue).charValue();
+  }
+ else {
+    return false;
+  }
+  if (targetType == IClass.BYTE)   return cv >= Byte.MIN_VALUE && cv <= Byte.MAX_VALUE;
+  if (targetType == IClass.SHORT)   return cv >= Short.MIN_VALUE && cv <= Short.MAX_VALUE;
+  if (targetType == IClass.CHAR)   return cv >= Character.MIN_VALUE && cv <= Character.MAX_VALUE;
+  IClassLoader icl=this.iClassLoader;
+  if (targetType == icl.TYPE_java_lang_Byte && cv >= Byte.MIN_VALUE && cv <= Byte.MAX_VALUE) {
+    this.boxingConversion(locatable,IClass.BYTE,targetType);
+    return true;
+  }
+  if (targetType == icl.TYPE_java_lang_Short && cv >= Short.MIN_VALUE && cv <= Short.MAX_VALUE) {
+    this.boxingConversion(locatable,IClass.SHORT,targetType);
+    return true;
+  }
+  if (targetType == icl.TYPE_java_lang_Character && cv >= Character.MIN_VALUE && cv <= Character.MAX_VALUE) {
+    this.boxingConversion(locatable,IClass.CHAR,targetType);
+    return true;
+  }
+  return false;
+}

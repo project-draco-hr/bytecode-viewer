@@ -1,0 +1,5 @@
+{
+  this.setExpressionType(expressionType);
+  this.setParameters(parameterNames,parameterTypes);
+  this.cook(expression);
+}

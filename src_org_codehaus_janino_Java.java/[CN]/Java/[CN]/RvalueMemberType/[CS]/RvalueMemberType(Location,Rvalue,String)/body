@@ -1,0 +1,5 @@
+{
+  super(location);
+  this.rvalue=rvalue;
+  this.identifier=identifier;
+}

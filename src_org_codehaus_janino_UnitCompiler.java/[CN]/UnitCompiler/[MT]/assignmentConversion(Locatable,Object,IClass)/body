@@ -1,0 +1,100 @@
+{
+  if (targetType == IClass.BOOLEAN) {
+    if (value instanceof Boolean)     return value;
+  }
+ else   if (targetType == this.iClassLoader.TYPE_java_lang_String) {
+    if (value instanceof String)     return value;
+  }
+ else   if (targetType == IClass.BYTE) {
+    if (value instanceof Byte) {
+      return value;
+    }
+ else     if (value instanceof Short || value instanceof Integer) {
+      int x=((Number)value).intValue();
+      if (x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE)       return new Byte((byte)x);
+    }
+ else     if (value instanceof Character) {
+      int x=((Character)value).charValue();
+      if (x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE)       return new Byte((byte)x);
+    }
+  }
+ else   if (targetType == IClass.SHORT) {
+    if (value instanceof Byte) {
+      return new Short(((Number)value).shortValue());
+    }
+ else     if (value instanceof Short) {
+      return value;
+    }
+ else     if (value instanceof Character) {
+      int x=((Character)value).charValue();
+      if (x >= Short.MIN_VALUE && x <= Short.MAX_VALUE)       return new Short((short)x);
+    }
+ else     if (value instanceof Integer) {
+      int x=((Integer)value).intValue();
+      if (x >= Short.MIN_VALUE && x <= Short.MAX_VALUE)       return new Short((short)x);
+    }
+  }
+ else   if (targetType == IClass.CHAR) {
+    if (value instanceof Short) {
+      return value;
+    }
+ else     if (value instanceof Byte || value instanceof Short || value instanceof Integer) {
+      int x=((Number)value).intValue();
+      if (x >= Character.MIN_VALUE && x <= Character.MAX_VALUE)       return new Character((char)x);
+    }
+  }
+ else   if (targetType == IClass.INT) {
+    if (value instanceof Integer) {
+      return value;
+    }
+ else     if (value instanceof Byte || value instanceof Short) {
+      return new Integer(((Number)value).intValue());
+    }
+ else     if (value instanceof Character) {
+      return new Integer(((Character)value).charValue());
+    }
+  }
+ else   if (targetType == IClass.LONG) {
+    if (value instanceof Long) {
+      return value;
+    }
+ else     if (value instanceof Byte || value instanceof Short || value instanceof Integer) {
+      return new Long(((Number)value).longValue());
+    }
+ else     if (value instanceof Character) {
+      return new Long(((Character)value).charValue());
+    }
+  }
+ else   if (targetType == IClass.FLOAT) {
+    if (value instanceof Float) {
+      return value;
+    }
+ else     if (value instanceof Byte || value instanceof Short || value instanceof Integer|| value instanceof Long) {
+      return new Float(((Number)value).floatValue());
+    }
+ else     if (value instanceof Character) {
+      return new Float(((Character)value).charValue());
+    }
+  }
+ else   if (targetType == IClass.DOUBLE) {
+    if (value instanceof Double) {
+      return value;
+    }
+ else     if (value instanceof Byte || value instanceof Short || value instanceof Integer|| value instanceof Long|| value instanceof Float) {
+      return new Double(((Number)value).doubleValue());
+    }
+ else     if (value instanceof Character) {
+      return new Double(((Character)value).charValue());
+    }
+  }
+ else   if (value == null && !targetType.isPrimitive()) {
+    return null;
+  }
+  if (value == null) {
+    this.compileError(("Cannot convert 'null' to type '" + targetType.toString() + "'"),locatable.getLocation());
+  }
+ else {
+    this.compileError(("Cannot convert constant of type '" + value.getClass().getName() + "' to type '"+ targetType.toString()+ "'"),locatable.getLocation());
+  }
+  return value;
+}

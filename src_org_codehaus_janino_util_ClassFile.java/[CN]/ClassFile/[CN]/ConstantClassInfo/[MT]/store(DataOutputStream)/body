@@ -1,0 +1,4 @@
+{
+  dos.writeByte(7);
+  dos.writeShort(this.nameIndex);
+}

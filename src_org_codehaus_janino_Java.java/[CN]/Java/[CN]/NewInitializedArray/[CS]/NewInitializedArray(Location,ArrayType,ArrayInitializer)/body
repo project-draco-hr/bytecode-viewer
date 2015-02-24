@@ -1,0 +1,6 @@
+{
+  super(location);
+  this.arrayType=arrayType;
+  this.arrayInitializer=arrayInitializer;
+  this.arrayIClass=null;
+}

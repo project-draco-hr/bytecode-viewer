@@ -115,6 +115,10 @@
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,BytecodeViewer.lastDirectory,false);
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,BytecodeViewer.python,false);
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,BytecodeViewer.rt,false);
+    DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.pane1Editable.isSelected()),false);
+    DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.pane2Editable.isSelected()),false);
+    DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.pane3Editable.isSelected()),false);
+    DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.decodeAPKResources.isSelected()),false);
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

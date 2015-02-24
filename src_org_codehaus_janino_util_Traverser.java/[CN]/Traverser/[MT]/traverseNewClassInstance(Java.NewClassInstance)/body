@@ -1,0 +1,6 @@
+{
+  if (nci.optionalQualification != null)   nci.optionalQualification.accept((Visitor.RvalueVisitor)this.cv);
+  if (nci.type != null)   nci.type.accept((Visitor.TypeVisitor)this.cv);
+  for (  Java.Rvalue argument : nci.arguments)   argument.accept((Visitor.RvalueVisitor)this.cv);
+  this.traverseRvalue(nci);
+}

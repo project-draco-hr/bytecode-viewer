@@ -1,0 +1,11 @@
+{
+  String cn=this.className;
+  int idx=cn.lastIndexOf('.');
+  if (idx != -1) {
+    compilationUnit.setPackageDeclaration(new Java.PackageDeclaration(location,cn.substring(0,idx)));
+    cn=cn.substring(idx + 1);
+  }
+  Java.PackageMemberClassDeclaration tlcd=new Java.PackageMemberClassDeclaration(location,null,new Java.Modifiers(Mod.PUBLIC),cn,null,this.classToType(location,this.optionalExtendedType),this.classesToTypes(location,this.implementedTypes));
+  compilationUnit.addPackageMemberTypeDeclaration(tlcd);
+  return tlcd;
+}

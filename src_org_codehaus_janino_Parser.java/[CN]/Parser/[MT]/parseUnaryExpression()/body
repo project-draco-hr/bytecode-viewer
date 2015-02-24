@@ -1,0 +1,16 @@
+{
+  if (this.peek(new String[]{"++","--"}) != -1) {
+    return new Crement(this.location(),this.read().value,this.parseUnaryExpression().toLvalueOrCompileException());
+  }
+  if (this.peek(new String[]{"+","-","~","!"}) != -1) {
+    return new UnaryOperation(this.location(),this.read().value,this.parseUnaryExpression().toRvalueOrCompileException());
+  }
+  Atom a=this.parsePrimary();
+  while (this.peek(new String[]{".","["}) != -1) {
+    a=this.parseSelector(a);
+  }
+  while (this.peek(new String[]{"++","--"}) != -1) {
+    a=new Crement(this.location(),a.toLvalueOrCompileException(),this.read().value);
+  }
+  return a;
+}

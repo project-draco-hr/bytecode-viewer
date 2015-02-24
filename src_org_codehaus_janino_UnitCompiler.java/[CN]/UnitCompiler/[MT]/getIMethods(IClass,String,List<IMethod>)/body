@@ -1,0 +1,10 @@
+{
+{
+    IClass.IMethod[] ims=type.getDeclaredIMethods(methodName);
+    for (    IMethod im : ims)     v.add(im);
+  }
+  IClass superclass=type.getSuperclass();
+  if (superclass != null)   this.getIMethods(superclass,methodName,v);
+  IClass[] interfaces=type.getInterfaces();
+  for (  IClass interfacE : interfaces)   this.getIMethods(interfacE,methodName,v);
+}

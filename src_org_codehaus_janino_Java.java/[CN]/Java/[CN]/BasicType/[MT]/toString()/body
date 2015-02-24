@@ -1,0 +1,24 @@
+{
+switch (this.index) {
+case BasicType.VOID:
+    return "void";
+case BasicType.BYTE:
+  return "byte";
+case BasicType.SHORT:
+return "short";
+case BasicType.CHAR:
+return "char";
+case BasicType.INT:
+return "int";
+case BasicType.LONG:
+return "long";
+case BasicType.FLOAT:
+return "float";
+case BasicType.DOUBLE:
+return "double";
+case BasicType.BOOLEAN:
+return "boolean";
+default :
+throw new JaninoRuntimeException("Invalid index " + this.index);
+}
+}

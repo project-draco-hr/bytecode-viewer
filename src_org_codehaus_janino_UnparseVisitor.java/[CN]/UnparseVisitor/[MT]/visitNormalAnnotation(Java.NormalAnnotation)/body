@@ -1,0 +1,8 @@
+{
+  this.pw.append('@').append(na.type.toString()).append('(');
+  for (  Java.ElementValuePair evp : na.elementValuePairs) {
+    this.pw.append(evp.identifier).append(" = ");
+    evp.elementValue.accept(this);
+  }
+  this.pw.append(") ");
+}

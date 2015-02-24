@@ -1,0 +1,10 @@
+{
+switch (this.elementValues.length) {
+case 0:
+    return "{}";
+case 1:
+  return "{ " + this.elementValues[0] + " }";
+default :
+return "{ " + this.elementValues[0] + ", ... }";
+}
+}

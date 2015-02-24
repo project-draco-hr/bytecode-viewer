@@ -1,0 +1,10 @@
+{
+  if (this.peekRead("?")) {
+    return (this.peekRead("extends") ? new Wildcard(Wildcard.BOUNDS_EXTENDS,this.parseReferenceType()) : this.peekRead("super") ? new Wildcard(Wildcard.BOUNDS_SUPER,this.parseReferenceType()) : new Wildcard());
+  }
+  Type t=this.parseType();
+  int i=this.parseBracketsOpt();
+  for (; i > 0; i--)   t=new ArrayType(t);
+  if (!(t instanceof TypeArgument))   throw this.compileException("'" + t + "' is not a valid type argument");
+  return (TypeArgument)t;
+}

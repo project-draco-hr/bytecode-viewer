@@ -1,0 +1,3 @@
+{
+  this.outer=collection.iterator();
+}

@@ -1,0 +1,20 @@
+{
+  Resource sourceResource=this.sourceFinder.findResource(ClassFile.getSourceResourceName(className));
+  if (sourceResource == null)   return null;
+  if (JavaSourceIClassLoader.DEBUG)   System.out.println("sourceResource=" + sourceResource);
+  InputStream inputStream=sourceResource.open();
+  try {
+    Scanner scanner=new Scanner(sourceResource.getFileName(),inputStream,this.optionalCharacterEncoding);
+    scanner.setWarningHandler(this.optionalWarningHandler);
+    Parser parser=new Parser(scanner);
+    parser.setWarningHandler(this.optionalWarningHandler);
+    return parser.parseCompilationUnit();
+  }
+  finally {
+    try {
+      inputStream.close();
+    }
+ catch (    IOException ex) {
+    }
+  }
+}

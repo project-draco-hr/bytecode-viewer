@@ -1,0 +1,10 @@
+{
+  this.assertNotCooked();
+  this.optionalExpressionTypes=expressionTypes;
+  Class[] returnTypes=new Class[expressionTypes.length];
+  for (int i=0; i < returnTypes.length; ++i) {
+    Class et=expressionTypes[i];
+    returnTypes[i]=et == IExpressionEvaluator.ANY_TYPE ? Object.class : et;
+  }
+  super.setReturnTypes(returnTypes);
+}

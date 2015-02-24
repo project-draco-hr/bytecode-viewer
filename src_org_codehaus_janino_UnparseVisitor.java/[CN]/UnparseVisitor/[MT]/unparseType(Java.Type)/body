@@ -1,0 +1,3 @@
+{
+  ((Java.Atom)type).accept(this);
+}

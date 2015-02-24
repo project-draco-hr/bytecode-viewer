@@ -1,0 +1,156 @@
+{
+  if (rv.constantValue != Rvalue.CONSTANT_VALUE_UNKNOWN)   return rv.constantValue;
+  final Object[] res=new Object[1];
+  RvalueVisitor rvv=new RvalueVisitor(){
+    @Override public void visitArrayLength(    ArrayLength al){
+      res[0]=UnitCompiler.this.getConstantValue2(al);
+    }
+    @Override public void visitAssignment(    Assignment a){
+      res[0]=UnitCompiler.this.getConstantValue2(a);
+    }
+    @Override public void visitUnaryOperation(    UnaryOperation uo){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(uo);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitBinaryOperation(    BinaryOperation bo){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(bo);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitCast(    Cast c){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(c);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitClassLiteral(    ClassLiteral cl){
+      res[0]=UnitCompiler.this.getConstantValue2(cl);
+    }
+    @Override public void visitConditionalExpression(    ConditionalExpression ce){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(ce);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitCrement(    Crement c){
+      res[0]=UnitCompiler.this.getConstantValue2(c);
+    }
+    @Override public void visitInstanceof(    Instanceof io){
+      res[0]=UnitCompiler.this.getConstantValue2(io);
+    }
+    @Override public void visitMethodInvocation(    MethodInvocation mi){
+      res[0]=UnitCompiler.this.getConstantValue2(mi);
+    }
+    @Override public void visitSuperclassMethodInvocation(    SuperclassMethodInvocation smi){
+      res[0]=UnitCompiler.this.getConstantValue2(smi);
+    }
+    @Override public void visitIntegerLiteral(    IntegerLiteral il){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(il);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFloatingPointLiteral(    FloatingPointLiteral fpl){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(fpl);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitBooleanLiteral(    BooleanLiteral bl){
+      res[0]=UnitCompiler.this.getConstantValue2(bl);
+    }
+    @Override public void visitCharacterLiteral(    CharacterLiteral cl){
+      res[0]=UnitCompiler.this.getConstantValue2(cl);
+    }
+    @Override public void visitStringLiteral(    StringLiteral sl){
+      res[0]=UnitCompiler.this.getConstantValue2(sl);
+    }
+    @Override public void visitNullLiteral(    NullLiteral nl){
+      res[0]=UnitCompiler.this.getConstantValue2(nl);
+    }
+    @Override public void visitSimpleConstant(    SimpleConstant sl){
+      res[0]=UnitCompiler.this.getConstantValue2(sl);
+    }
+    @Override public void visitNewAnonymousClassInstance(    NewAnonymousClassInstance naci){
+      res[0]=UnitCompiler.this.getConstantValue2(naci);
+    }
+    @Override public void visitNewArray(    NewArray na){
+      res[0]=UnitCompiler.this.getConstantValue2(na);
+    }
+    @Override public void visitNewInitializedArray(    NewInitializedArray nia){
+      res[0]=UnitCompiler.this.getConstantValue2(nia);
+    }
+    @Override public void visitNewClassInstance(    NewClassInstance nci){
+      res[0]=UnitCompiler.this.getConstantValue2(nci);
+    }
+    @Override public void visitParameterAccess(    ParameterAccess pa){
+      res[0]=UnitCompiler.this.getConstantValue2(pa);
+    }
+    @Override public void visitQualifiedThisReference(    QualifiedThisReference qtr){
+      res[0]=UnitCompiler.this.getConstantValue2(qtr);
+    }
+    @Override public void visitThisReference(    ThisReference tr){
+      res[0]=UnitCompiler.this.getConstantValue2(tr);
+    }
+    @Override public void visitAmbiguousName(    AmbiguousName an){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(an);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitArrayAccessExpression(    ArrayAccessExpression aae){
+      res[0]=UnitCompiler.this.getConstantValue2(aae);
+    }
+    @Override public void visitFieldAccess(    FieldAccess fa){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(fa);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+    @Override public void visitFieldAccessExpression(    FieldAccessExpression fae){
+      res[0]=UnitCompiler.this.getConstantValue2(fae);
+    }
+    @Override public void visitSuperclassFieldAccessExpression(    SuperclassFieldAccessExpression scfae){
+      res[0]=UnitCompiler.this.getConstantValue2(scfae);
+    }
+    @Override public void visitLocalVariableAccess(    LocalVariableAccess lva){
+      res[0]=UnitCompiler.this.getConstantValue2(lva);
+    }
+    @Override public void visitParenthesizedExpression(    ParenthesizedExpression pe){
+      try {
+        res[0]=UnitCompiler.this.getConstantValue2(pe);
+      }
+ catch (      CompileException e) {
+        throw new UncheckedCompileException(e);
+      }
+    }
+  }
+;
+  try {
+    rv.accept(rvv);
+    rv.constantValue=res[0];
+    return rv.constantValue;
+  }
+ catch (  UncheckedCompileException uce) {
+    throw uce.compileException;
+  }
+}

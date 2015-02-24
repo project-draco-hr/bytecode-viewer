@@ -1,0 +1,5 @@
+{
+  byte[] ba=new byte[dis.readInt()];
+  dis.readFully(ba);
+  return ba;
+}

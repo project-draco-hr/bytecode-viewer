@@ -1,0 +1,9 @@
+{
+  for (IClass c=this; c != null; c=c.getSuperclass()) {
+    IClass[] tis=c.getInterfaces();
+    for (    IClass ti : tis) {
+      if (ti == that || ti.implementsInterface(that))       return true;
+    }
+  }
+  return false;
+}

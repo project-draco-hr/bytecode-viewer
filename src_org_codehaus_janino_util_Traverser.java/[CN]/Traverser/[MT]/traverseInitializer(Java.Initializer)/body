@@ -1,0 +1,4 @@
+{
+  i.block.accept(this.cv);
+  this.traverseAbstractTypeBodyDeclaration(i);
+}

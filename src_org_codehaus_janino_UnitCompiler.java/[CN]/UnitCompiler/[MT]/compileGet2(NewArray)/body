@@ -1,0 +1,7 @@
+{
+  for (  Rvalue dimExpr : na.dimExprs) {
+    IClass dimType=this.compileGetValue(dimExpr);
+    if (dimType != IClass.INT && this.unaryNumericPromotion(na,dimType) != IClass.INT)     this.compileError("Invalid array size expression type",na.getLocation());
+  }
+  return this.newArray(na,na.dimExprs.length,na.dims,this.getType(na.type));
+}

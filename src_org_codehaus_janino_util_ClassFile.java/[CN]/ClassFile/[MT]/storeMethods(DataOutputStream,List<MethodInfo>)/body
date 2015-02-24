@@ -1,0 +1,4 @@
+{
+  dos.writeShort(methodInfos.size());
+  for (  MethodInfo methodInfo : methodInfos)   methodInfo.store(dos);
+}

@@ -1,0 +1,3 @@
+{
+  return this.generatesCode(i.block);
+}

@@ -54,13 +54,5 @@
         }
       }
     }
-    ClassWriter cw2=new ClassWriter(0);
-    c.accept(cw2);
-    ClassReader cr=new ClassReader(cw2.toByteArray());
-    ClassWriter cw=new ClassWriter(ClassWriter.COMPUTE_MAXS);
-    ClassAdapter ca=new CoolClassAdapter(cw,oldName,newName);
-    cr.accept(ca,0);
-    byte[] newClass=cw.toByteArray();
-    BytecodeViewer.updateNode(c,JarUtils.getNode(newClass));
   }
 }

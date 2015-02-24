@@ -1,0 +1,3 @@
+{
+  return (o instanceof ConstantNameAndTypeInfo && ((ConstantNameAndTypeInfo)o).nameIndex == this.nameIndex && ((ConstantNameAndTypeInfo)o).descriptorIndex == this.descriptorIndex);
+}

@@ -1,0 +1,7 @@
+{
+  Location loc=this.location();
+  int brackets=this.parseBracketsOpt();
+  ArrayInitializerOrRvalue initializer=null;
+  if (this.peekRead("="))   initializer=this.parseVariableInitializer();
+  return new VariableDeclarator(loc,name,brackets,initializer);
+}

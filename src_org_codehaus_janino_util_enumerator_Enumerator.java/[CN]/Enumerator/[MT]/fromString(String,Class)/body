@@ -1,0 +1,5 @@
+{
+  Enumerator value=(Enumerator)Enumerator.getInstances(enumeratorClass).get(name);
+  if (value == null)   throw new EnumeratorFormatException(name);
+  return value;
+}

@@ -1,0 +1,15 @@
+{
+  String packageName=(this.compilationUnit.optionalPackageDeclaration == null ? null : this.compilationUnit.optionalPackageDeclaration.packageName);
+  if (packageName != null) {
+    if (!className.startsWith(packageName + '.'))     return null;
+    className=className.substring(packageName.length() + 1);
+  }
+  StringTokenizer st=new StringTokenizer(className,"$");
+  TypeDeclaration td=this.compilationUnit.getPackageMemberTypeDeclaration(st.nextToken());
+  if (td == null)   return null;
+  while (st.hasMoreTokens()) {
+    td=td.getMemberTypeDeclaration(st.nextToken());
+    if (td == null)     return null;
+  }
+  return this.resolve(td);
+}

@@ -1,0 +1,14 @@
+{
+  List iConstructors=new ArrayList();
+  for (  ClassFile.MethodInfo mi : this.classFile.methodInfos) {
+    IInvocable ii;
+    try {
+      ii=this.resolveMethod(mi);
+    }
+ catch (    ClassNotFoundException ex) {
+      throw new JaninoRuntimeException(ex.getMessage(),ex);
+    }
+    if (ii instanceof IConstructor)     iConstructors.add(ii);
+  }
+  return (IConstructor[])iConstructors.toArray(new IConstructor[iConstructors.size()]);
+}

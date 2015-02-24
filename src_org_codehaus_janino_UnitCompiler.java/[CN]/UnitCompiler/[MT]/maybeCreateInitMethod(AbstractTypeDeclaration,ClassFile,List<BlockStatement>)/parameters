@@ -1,0 +1,3 @@
+AbstractTypeDeclaration decl
+ClassFile cf
+List<BlockStatement> statements

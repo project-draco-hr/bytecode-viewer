@@ -1,0 +1,5 @@
+{
+  for (  Java.TypeBodyDeclaration cd : id.constantDeclarations)   cd.accept(this.cv);
+  for (  Java.Type extendedType : id.extendedTypes)   extendedType.accept((Visitor.TypeVisitor)this.cv);
+  this.traverseAbstractTypeDeclaration(id);
+}

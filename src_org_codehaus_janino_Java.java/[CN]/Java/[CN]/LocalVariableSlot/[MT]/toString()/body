@@ -1,0 +1,10 @@
+{
+  StringBuilder buf=new StringBuilder("local var(").append(this.name).append(", ").append(this.slotIndex);
+  if (this.name != null) {
+    buf.append(", ").append(this.type);
+    buf.append(", ").append(this.start.offset);
+    buf.append(", ").append(this.end.offset);
+  }
+  buf.append(")");
+  return buf.toString();
+}

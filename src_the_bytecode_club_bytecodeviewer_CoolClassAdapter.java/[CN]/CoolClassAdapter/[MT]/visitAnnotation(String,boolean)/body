@@ -1,4 +1,0 @@
-{
-  if (desc != null)   desc=desc.replace(oldName,newName);
-  return cv.visitAnnotation(desc,visible);
-}

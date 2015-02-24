@@ -1,0 +1,7 @@
+{
+  int ico=this.currentInserter.offset;
+  this.makeSpace(lineNumber,3);
+  this.code[ico++]=b1;
+  this.code[ico++]=b2;
+  this.code[ico]=b3;
+}

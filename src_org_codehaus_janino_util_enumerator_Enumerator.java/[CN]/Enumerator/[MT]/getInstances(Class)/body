@@ -1,0 +1,7 @@
+{
+  Map<String,Enumerator> m=(Map)Enumerator.INSTANCES.get(enumeratorClass);
+  if (m != null)   return m;
+  m=new HashMap();
+  Enumerator.INSTANCES.put(enumeratorClass,m);
+  return m;
+}

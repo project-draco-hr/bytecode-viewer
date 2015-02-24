@@ -1,0 +1,5 @@
+{
+  sea.type.accept(this.cv);
+  sea.elementValue.accept(this.cv);
+  this.traverseAnnotation(sea);
+}

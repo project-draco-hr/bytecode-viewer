@@ -1,0 +1,41 @@
+{
+  List<TypeDeclaration> path=UnitCompiler.getOuterClasses(declaringClass);
+  if (declaringTypeBodyDeclaration.isStatic()) {
+    this.compileError("No current instance available in static context",locatable.getLocation());
+  }
+  int j;
+  TARGET_FOUND: {
+    for (j=0; j < path.size(); ++j) {
+      if (targetIClass.isAssignableFrom(this.resolve((TypeDeclaration)path.get(j)))) {
+        break TARGET_FOUND;
+      }
+    }
+    this.compileError("\"" + declaringClass + "\" is not enclosed by \""+ targetIClass+ "\"",locatable.getLocation());
+  }
+  int i;
+  if (declaringTypeBodyDeclaration instanceof ConstructorDeclarator) {
+    if (j == 0) {
+      this.writeOpcode(locatable,Opcode.ALOAD_0);
+      return;
+    }
+    ConstructorDeclarator constructorDeclarator=((ConstructorDeclarator)declaringTypeBodyDeclaration);
+    String spn="this$" + (path.size() - 2);
+    LocalVariable syntheticParameter=((LocalVariable)constructorDeclarator.syntheticParameters.get(spn));
+    if (syntheticParameter == null) {
+      throw new JaninoRuntimeException("SNO: Synthetic parameter \"" + spn + "\" not found");
+    }
+    this.load(locatable,syntheticParameter);
+    i=1;
+  }
+ else {
+    this.writeOpcode(locatable,Opcode.ALOAD_0);
+    i=0;
+  }
+  for (; i < j; ++i) {
+    final InnerClassDeclaration inner=(InnerClassDeclaration)path.get(i);
+    final TypeDeclaration outer=(TypeDeclaration)path.get(i + 1);
+    SimpleIField sf=new SimpleIField(this.resolve(inner),"this$" + (path.size() - i - 2),this.resolve(outer));
+    inner.defineSyntheticField(sf);
+    this.getfield(locatable,sf);
+  }
+}

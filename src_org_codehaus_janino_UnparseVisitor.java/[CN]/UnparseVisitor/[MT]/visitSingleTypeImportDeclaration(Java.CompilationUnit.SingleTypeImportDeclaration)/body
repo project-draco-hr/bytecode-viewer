@@ -1,0 +1,3 @@
+{
+  this.pw.println("import " + Java.join(stid.identifiers,".") + ';');
+}

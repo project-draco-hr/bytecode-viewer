@@ -1,0 +1,9 @@
+{
+  int res=bias + (((code[offset]) << 8) + (code[offset + 1] & 0xff));
+  if (CodeContext.DEBUG) {
+    System.out.println("extract16BitValue(bias, offset) = (" + bias + ", "+ offset+ ")");
+    System.out.println("bytes = {" + code[offset] + ", "+ code[offset + 1]+ "}");
+    System.out.println("result = " + res);
+  }
+  return res;
+}

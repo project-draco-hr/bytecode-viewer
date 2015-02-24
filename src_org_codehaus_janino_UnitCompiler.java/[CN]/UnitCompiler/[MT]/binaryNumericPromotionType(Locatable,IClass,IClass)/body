@@ -1,0 +1,6 @@
+{
+  if (!type1.isPrimitiveNumeric() || !type2.isPrimitiveNumeric()) {
+    this.compileError("Binary numeric promotion not possible on types \"" + type1 + "\" and \""+ type2+ "\"",locatable.getLocation());
+  }
+  return (type1 == IClass.DOUBLE || type2 == IClass.DOUBLE ? IClass.DOUBLE : type1 == IClass.FLOAT || type2 == IClass.FLOAT ? IClass.FLOAT : type1 == IClass.LONG || type2 == IClass.LONG ? IClass.LONG : IClass.INT);
+}

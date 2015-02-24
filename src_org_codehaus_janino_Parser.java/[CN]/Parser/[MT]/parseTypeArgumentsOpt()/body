@@ -1,0 +1,15 @@
+{
+  if (!this.peekRead("<"))   return null;
+  boolean orig=this.scanner.setExpectGreater(true);
+  try {
+    List<TypeArgument> typeArguments=new ArrayList();
+    typeArguments.add(this.parseTypeArgument());
+    while (this.read(new String[]{">",","}) == 1) {
+      typeArguments.add(this.parseTypeArgument());
+    }
+    return (TypeArgument[])typeArguments.toArray(new TypeArgument[typeArguments.size()]);
+  }
+  finally {
+    this.scanner.setExpectGreater(orig);
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (optionalUpdate != null)   return this.compileUnconditionalLoopWithUpdate(cs,body,optionalUpdate);
+  cs.whereToContinue=this.codeContext.newOffset();
+  if (this.compile(body))   this.writeBranch(cs,Opcode.GOTO,cs.whereToContinue);
+  cs.whereToContinue=null;
+  if (cs.whereToBreak == null)   return false;
+  cs.whereToBreak.set();
+  cs.whereToBreak=null;
+  return true;
+}

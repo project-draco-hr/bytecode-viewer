@@ -1,0 +1,32 @@
+{
+  dos.writeShort(this.maxStack);
+  dos.writeShort(this.maxLocals);
+  dos.writeInt(this.end.offset);
+  dos.write(this.code,0,this.end.offset);
+  dos.writeShort(this.exceptionTableEntries.size());
+  for (  ExceptionTableEntry exceptionTableEntry : this.exceptionTableEntries) {
+    dos.writeShort(exceptionTableEntry.startPC.offset);
+    dos.writeShort(exceptionTableEntry.endPC.offset);
+    dos.writeShort(exceptionTableEntry.handlerPC.offset);
+    dos.writeShort(exceptionTableEntry.catchType);
+  }
+  List<ClassFile.AttributeInfo> attributes=new ArrayList();
+  if (lineNumberTableAttributeNameIndex != 0) {
+    List<ClassFile.LineNumberTableAttribute.Entry> lnt=new ArrayList();
+    for (Offset o=this.beginning; o != null; o=o.next) {
+      if (o instanceof LineNumberOffset) {
+        lnt.add(new ClassFile.LineNumberTableAttribute.Entry(o.offset,((LineNumberOffset)o).lineNumber));
+      }
+    }
+    ClassFile.LineNumberTableAttribute.Entry[] lnte=(ClassFile.LineNumberTableAttribute.Entry[])lnt.toArray(new ClassFile.LineNumberTableAttribute.Entry[lnt.size()]);
+    attributes.add(new ClassFile.LineNumberTableAttribute(lineNumberTableAttributeNameIndex,lnte));
+  }
+  if (localVariableTableAttributeNameIndex != 0) {
+    ClassFile.AttributeInfo ai=this.storeLocalVariableTable(dos,localVariableTableAttributeNameIndex);
+    if (ai != null)     attributes.add(ai);
+  }
+  dos.writeShort(attributes.size());
+  for (  ClassFile.AttributeInfo attribute : attributes) {
+    attribute.store(dos);
+  }
+}

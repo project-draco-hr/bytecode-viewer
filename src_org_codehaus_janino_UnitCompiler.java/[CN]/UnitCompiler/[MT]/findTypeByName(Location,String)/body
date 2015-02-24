@@ -1,0 +1,11 @@
+{
+  IClass res=this.findClass(className);
+  if (res != null)   return res;
+  try {
+    return this.iClassLoader.loadIClass(Descriptor.fromClassName(className));
+  }
+ catch (  ClassNotFoundException ex) {
+    if (ex.getException() instanceof CompileException)     throw (CompileException)ex.getException();
+    throw new CompileException(className,location,ex);
+  }
+}
