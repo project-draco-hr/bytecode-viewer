@@ -1,0 +1,34 @@
+{
+  String start=MiscUtils.getUniqueName("",".class");
+  final File tempClass=new File(start + ".class");
+  String exception="";
+  try {
+    final FileOutputStream fos=new FileOutputStream(tempClass);
+    fos.write(b);
+    fos.close();
+  }
+ catch (  final IOException e) {
+    StringWriter sw=new StringWriter();
+    e.printStackTrace(new PrintWriter(sw));
+    e.printStackTrace();
+    exception="Bytecode Viewer Version: " + BytecodeViewer.version + BytecodeViewer.nl+ BytecodeViewer.nl+ sw.toString();
+  }
+  org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler.main(generateMainMethod(tempClass.getAbsolutePath(),"."));
+  tempClass.delete();
+  final File outputJava=new File(start + ".java");
+  if (outputJava.exists()) {
+    String s;
+    try {
+      s=DiskReader.loadAsString(outputJava.getAbsolutePath());
+      outputJava.delete();
+      return s;
+    }
+ catch (    Exception e) {
+      StringWriter sw=new StringWriter();
+      e.printStackTrace(new PrintWriter(sw));
+      e.printStackTrace();
+      exception+=BytecodeViewer.nl + BytecodeViewer.nl + sw.toString();
+    }
+  }
+  return "FernFlower error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com" + BytecodeViewer.nl + BytecodeViewer.nl+ "Suggested Fix: Click refresh class, if it fails again try another decompiler."+ BytecodeViewer.nl+ BytecodeViewer.nl+ exception;
+}

@@ -8,7 +8,7 @@
       if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
         field.requestFocus();
       }
-      BytecodeViewer.viewer.checkKey(e);
+      BytecodeViewer.checkHotKey(e);
     }
     @Override public void keyReleased(    KeyEvent arg0){
     }
@@ -20,9 +20,25 @@
   if (!isPureAscii(contentsS)) {
     if (name.endsWith(".png") || name.endsWith(".jpg") || name.endsWith(".jpeg")|| name.endsWith(".gif")|| name.endsWith(".tif")|| name.endsWith(".bmp")) {
       try {
-        final Image i=ImageIO.read(new ByteArrayInputStream(contents));
-        JLabel label=new JLabel("",new ImageIcon(i),JLabel.CENTER);
+        image=ImageIO.read(new ByteArrayInputStream(contents));
+        JLabel label=new JLabel("",new ImageIcon(image),JLabel.CENTER);
         panel2.add(label,BorderLayout.CENTER);
+        panel2.addMouseWheelListener(new MouseWheelListener(){
+          @Override public void mouseWheelMoved(          MouseWheelEvent e){
+            int notches=e.getWheelRotation();
+            if (notches < 0) {
+              image=Scalr.resize(image,Scalr.Method.SPEED,image.getWidth() + 10,image.getHeight() + 10);
+            }
+ else {
+              image=Scalr.resize(image,Scalr.Method.SPEED,image.getWidth() - 10,image.getHeight() - 10);
+            }
+            panel2.removeAll();
+            JLabel label=new JLabel("",new ImageIcon(image),JLabel.CENTER);
+            panel2.add(label,BorderLayout.CENTER);
+            panel2.updateUI();
+          }
+        }
+);
         return;
       }
  catch (      Exception e) {

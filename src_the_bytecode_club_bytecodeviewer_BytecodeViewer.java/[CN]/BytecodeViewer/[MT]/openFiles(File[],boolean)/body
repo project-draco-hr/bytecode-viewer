@@ -75,6 +75,10 @@
                 }
                 return;
               }
+ else {
+                byte[] bytes=JarUtils.getBytes(new FileInputStream(f));
+                BytecodeViewer.loadedResources.put(f.getName(),bytes);
+              }
             }
           }
         }

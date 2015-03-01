@@ -1,0 +1,16 @@
+{
+  String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs;
+  final File tempClass=new File(MiscUtils.getUniqueName(fileStart,".class") + ".class");
+  try {
+    final FileOutputStream fos=new FileOutputStream(tempClass);
+    fos.write(b);
+    fos.close();
+  }
+ catch (  final IOException e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+  String fuckery=fuckery(fileStart);
+  org.benf.cfr.reader.Main.main(generateMainMethod(tempClass.getAbsolutePath(),fuckery));
+  tempClass.delete();
+  return findFile(new File(fuckery).listFiles());
+}

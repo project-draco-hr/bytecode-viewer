@@ -1,4 +1,4 @@
 {
-  checkKey(e);
+  BytecodeViewer.checkHotKey(e);
   return false;
 }

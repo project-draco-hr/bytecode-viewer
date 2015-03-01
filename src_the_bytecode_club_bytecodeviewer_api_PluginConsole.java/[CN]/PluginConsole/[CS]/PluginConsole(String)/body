@@ -9,7 +9,7 @@
       if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
         field.requestFocus();
       }
-      BytecodeViewer.viewer.checkKey(e);
+      BytecodeViewer.checkHotKey(e);
     }
     @Override public void keyReleased(    KeyEvent arg0){
     }

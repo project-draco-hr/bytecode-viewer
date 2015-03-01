@@ -1,0 +1,35 @@
+{
+  if (System.currentTimeMillis() - last <= (4000))   return;
+  if ((e.getKeyCode() == KeyEvent.VK_O) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+    last=System.currentTimeMillis();
+    JFileChooser fc=new JFileChooser();
+    try {
+      fc.setSelectedFile(new File(BytecodeViewer.lastDirectory));
+    }
+ catch (    Exception e2) {
+    }
+    fc.setFileFilter(viewer.new APKDEXJarZipClassFileFilter());
+    fc.setFileHidingEnabled(false);
+    fc.setAcceptAllFileFilterUsed(false);
+    int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+      BytecodeViewer.lastDirectory=fc.getSelectedFile().getAbsolutePath();
+      try {
+        BytecodeViewer.viewer.setIcon(true);
+        BytecodeViewer.openFiles(new File[]{fc.getSelectedFile()},true);
+        BytecodeViewer.viewer.setIcon(false);
+      }
+ catch (      Exception e1) {
+        new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e1);
+      }
+    }
+  }
+ else   if ((e.getKeyCode() == KeyEvent.VK_N) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+    last=System.currentTimeMillis();
+    BytecodeViewer.resetWorkSpace(true);
+  }
+ else   if ((e.getKeyCode() == KeyEvent.VK_W) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+    last=System.currentTimeMillis();
+    if (viewer.workPane.getCurrentViewer() != null)     viewer.workPane.tabs.remove(viewer.workPane.getCurrentViewer());
+  }
+}

@@ -76,7 +76,7 @@
         }
       }
  else       if (radius == SearchRadius.Current_Class) {
-        final ClassViewer cv=MainViewerGUI.getComponent(WorkPane.class).getCurrentClass();
+        final Viewer cv=MainViewerGUI.getComponent(WorkPane.class).getCurrentViewer();
         if (cv != null) {
           searchType.details.search(cv.cn,srn,exact.isSelected());
         }

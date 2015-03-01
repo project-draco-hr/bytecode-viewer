@@ -1,5 +1,5 @@
 {
   PluginConsole gui=new PluginConsole("Skeleton");
   gui.setVisible(true);
-  gui.appendText("exceuted skeleton");
+  gui.appendText("executed skeleton");
 }

@@ -1,5 +1,4 @@
 {
-  if (getLoadedClasses().isEmpty())   return false;
   boolean actuallyTried=false;
   for (  java.awt.Component c : BytecodeViewer.viewer.workPane.getLoadedViewers()) {
     if (c instanceof ClassViewer) {

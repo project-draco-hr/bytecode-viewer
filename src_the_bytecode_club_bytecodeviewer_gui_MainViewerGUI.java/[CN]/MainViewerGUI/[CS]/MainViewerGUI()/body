@@ -1,6 +1,5 @@
 {
   KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new Test());
-  mnNewMenu_5.setVisible(true);
   this.addWindowStateListener(new WindowAdapter(){
     public void windowStateChanged(    WindowEvent evt){
       int oldState=evt.getOldState();
@@ -48,7 +47,7 @@
   ActionListener listener=new ActionListener(){
     @Override public void actionPerformed(    ActionEvent arg0){
       if (refreshOnChange.isSelected()) {
-        if (workPane.getCurrentClass() == null)         return;
+        if (workPane.getCurrentViewer() == null)         return;
         workPane.refreshClass.doClick();
       }
     }
@@ -391,12 +390,12 @@
 );
   mntmNewMenuItem_12.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
-      if (workPane.getCurrentClass() == null) {
+      if (workPane.getCurrentViewer() == null) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
       }
       if (autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))       return;
-      final String s=workPane.getCurrentClass().name;
+      final String s=workPane.getCurrentViewer().name;
       JFileChooser fc=new JFileChooser();
       fc.setFileFilter(new JavaFileFilter());
       fc.setFileHidingEnabled(false);
