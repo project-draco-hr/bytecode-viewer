@@ -2,6 +2,8 @@
   sortedClasses=new HashMap<>();
   sortedMethods=new HashMap<>();
   sortedFields=new HashMap<>();
+  mappingList=new ArrayList<>();
+  builder=new StringBuilder();
   for (  MappingData hook : hookMap.getClasses()) {
     if (hook.getObfuscatedName().contains("$"))     continue;
     String obfuscatedName=hook.getObfuscatedName();

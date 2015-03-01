@@ -1,5 +1,9 @@
 {
   String obfKey=owner + "$$$$" + name+ "$$$$"+ desc;
-  if (sortedMethods.containsKey(obfKey))   name=sortedMethods.get(obfKey).getMethodName().getRefactoredName();
+  if (sortedMethods.containsKey(obfKey)) {
+    String map=new String(owner + "." + name+ " --> "+ owner+ sortedMethods.get(obfKey).getMethodName().getRefactoredName()+ "\n");
+    if (!mappingList.contains(map))     mappingList.add(map);
+    name=sortedMethods.get(obfKey).getMethodName().getRefactoredName();
+  }
   return name;
 }

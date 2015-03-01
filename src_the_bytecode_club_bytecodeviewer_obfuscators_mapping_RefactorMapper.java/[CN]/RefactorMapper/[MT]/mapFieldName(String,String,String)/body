@@ -1,5 +1,9 @@
 {
   String obfKey=owner + "$$$$" + name+ "$$$$"+ desc;
-  if (sortedFields.containsKey(obfKey))   name=sortedFields.get(obfKey).getName().getRefactoredName();
+  if (sortedFields.containsKey(obfKey)) {
+    String map=new String(owner + "." + name+ " --> "+ owner+ sortedFields.get(obfKey).getName().getRefactoredName()+ "\n");
+    if (!mappingList.contains(map))     mappingList.add(map);
+    name=sortedFields.get(obfKey).getName().getRefactoredName();
+  }
   return name;
 }
