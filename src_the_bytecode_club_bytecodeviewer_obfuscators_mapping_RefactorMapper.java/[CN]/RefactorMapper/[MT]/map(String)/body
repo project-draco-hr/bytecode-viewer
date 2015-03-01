@@ -1,0 +1,4 @@
+{
+  if (sortedClasses.containsKey(type))   return sortedClasses.get(type).getRefactoredName();
+  return type;
+}

@@ -1,0 +1,5 @@
+{
+  String obfKey=owner + "$$$$" + name+ "$$$$"+ desc;
+  if (sortedMethods.containsKey(obfKey))   name=sortedMethods.get(obfKey).getMethodName().getRefactoredName();
+  return name;
+}

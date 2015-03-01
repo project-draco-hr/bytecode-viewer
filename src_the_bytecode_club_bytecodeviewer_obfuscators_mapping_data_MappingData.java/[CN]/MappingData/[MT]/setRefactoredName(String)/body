@@ -1,0 +1,4 @@
+{
+  this.refactoredName=refactoredName;
+  return this;
+}

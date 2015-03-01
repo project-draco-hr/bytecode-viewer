@@ -1,0 +1,15 @@
+{
+  int stringLength=getStringLength();
+  System.out.println("Obfuscating class names...");
+  classLoop:   for (  ClassNode c : BytecodeViewer.getLoadedClasses()) {
+    for (    Object o : c.methods) {
+      MethodNode m=(MethodNode)o;
+      if ((m.access & Opcodes.ACC_NATIVE) != 0)       continue classLoop;
+    }
+    String newName=generateUniqueName(stringLength);
+    BytecodeViewer.refactorer.getHooks().addClass(new MappingData(c.name,newName));
+    ASMUtil_OLD.renameClassNode(c.name,newName);
+    c.name=newName;
+  }
+  System.out.println("Obfuscated class names.");
+}
