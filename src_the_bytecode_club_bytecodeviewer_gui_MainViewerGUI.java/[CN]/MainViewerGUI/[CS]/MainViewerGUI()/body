@@ -760,6 +760,7 @@
         return;
       }
       new RenameFields().start();
+      workPane.refreshClass.doClick();
     }
   }
 );
@@ -776,6 +777,7 @@
         return;
       }
       new RenameMethods().start();
+      workPane.refreshClass.doClick();
     }
   }
 );
@@ -787,6 +789,7 @@
         return;
       }
       new RenameClasses().start();
+      workPane.refreshClass.doClick();
     }
   }
 );
