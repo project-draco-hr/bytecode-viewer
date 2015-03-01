@@ -1,6 +1,6 @@
 {
   KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new Test());
-  mnNewMenu_5.setVisible(false);
+  mnNewMenu_5.setVisible(true);
   this.addWindowStateListener(new WindowAdapter(){
     public void windowStateChanged(    WindowEvent evt){
       int oldState=evt.getOldState();
@@ -760,6 +760,8 @@
         return;
       }
       new RenameFields().start();
+      workPane.refreshClass.doClick();
+      cn.tree.updateUI();
     }
   }
 );
@@ -776,6 +778,8 @@
         return;
       }
       new RenameMethods().start();
+      workPane.refreshClass.doClick();
+      cn.tree.updateUI();
     }
   }
 );
@@ -787,6 +791,8 @@
         return;
       }
       new RenameClasses().start();
+      workPane.refreshClass.doClick();
+      cn.tree.updateUI();
     }
   }
 );
@@ -890,7 +896,6 @@
   setSize(new Dimension(800,400));
   setTitle("Bytecode Viewer " + BytecodeViewer.version + " - https://bytecodeviewer.com | https://the.bytecode.club - @Konloch");
   getContentPane().setLayout(new BoxLayout(getContentPane(),BoxLayout.X_AXIS));
-  FileNavigationPane cn=new FileNavigationPane(this);
   cn.setMinimumSize(new Dimension(200,50));
   SearchingPane s=new SearchingPane(this);
   s.setPreferredSize(new Dimension(200,50));

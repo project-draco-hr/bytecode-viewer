@@ -1,0 +1,15 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  MappingData other=(MappingData)obj;
+  if (obfuscatedName == null) {
+    if (other.obfuscatedName != null)     return false;
+  }
+ else   if (!obfuscatedName.equals(other.obfuscatedName))   return false;
+  if (refactoredName == null) {
+    if (other.refactoredName != null)     return false;
+  }
+ else   if (!refactoredName.equals(other.refactoredName))   return false;
+  return true;
+}

@@ -1,0 +1,4 @@
+{
+  this.obfuscatedName=obfuscatedName;
+  this.refactoredName=refactoredName;
+}
