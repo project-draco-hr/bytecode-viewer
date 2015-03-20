@@ -1,4 +1,5 @@
 {
+  mnNewMenu_5.setVisible(false);
   KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new Test());
   this.addWindowStateListener(new WindowAdapter(){
     public void windowStateChanged(    WindowEvent evt){
