@@ -1,0 +1,9 @@
+{
+  setPanes();
+  if (pane1 == 1 && BytecodeViewer.viewer.panel1Proc_E.isSelected())   return true;
+  if (pane1 == 2 && BytecodeViewer.viewer.panel1CFR_E.isSelected())   return true;
+  if (pane1 == 3 && BytecodeViewer.viewer.panel1Fern_E.isSelected())   return true;
+  if (pane1 == 6 && BytecodeViewer.viewer.panel1Smali_E.isSelected())   return true;
+  if ((pane1 == 7 || pane1 == 8) && BytecodeViewer.viewer.panel1Krakatau_E.isSelected())   return true;
+  return false;
+}

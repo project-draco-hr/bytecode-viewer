@@ -1,0 +1,18 @@
+{
+  ClassNode cn=BytecodeViewer.getClassNode(className);
+  final ClassWriter cw=new ClassWriter(0);
+  try {
+    cn.accept(cw);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    try {
+      Thread.sleep(200);
+      cn.accept(cw);
+    }
+ catch (    InterruptedException e1) {
+    }
+  }
+  String contents=decompileClassNode(cn,cw.toByteArray());
+  DiskWriter.replaceFile(classNameSaved,contents,false);
+}

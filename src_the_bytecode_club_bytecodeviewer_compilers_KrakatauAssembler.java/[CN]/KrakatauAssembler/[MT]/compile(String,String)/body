@@ -1,6 +1,6 @@
 {
   if (BytecodeViewer.python.equals("")) {
-    BytecodeViewer.showMessage("You need to set your Python 2.7 executable path.");
+    BytecodeViewer.showMessage("You need to set your Python (or PyPy for speed) 2.7 executable path.");
     BytecodeViewer.viewer.pythonC();
   }
   String origName=name;
@@ -18,7 +18,7 @@
   BytecodeViewer.sm.blocking=false;
   String log="";
   try {
-    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "assemble.py","-out",tempDirectory.getAbsolutePath(),tempJ.getAbsolutePath());
+    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,"-O",BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "assemble.py","-out",tempDirectory.getAbsolutePath(),tempJ.getAbsolutePath());
     Process process=pb.start();
     BytecodeViewer.krakatau.add(process);
     InputStream is=process.getInputStream();
