@@ -137,8 +137,8 @@
     BytecodeViewer.viewer.panel3Smali_E.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,105,false)));
     BytecodeViewer.viewer.decodeAPKResources.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,106,false)));
     BytecodeViewer.library=DiskReader.loadString(BytecodeViewer.settingsName,107,false);
+    BytecodeViewer.pingback=Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,108,false));
   }
  catch (  Exception e) {
-    e.printStackTrace();
   }
 }

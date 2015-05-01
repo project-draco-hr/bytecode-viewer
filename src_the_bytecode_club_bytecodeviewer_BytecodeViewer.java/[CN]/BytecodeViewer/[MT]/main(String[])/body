@@ -26,4 +26,8 @@
   if (args.length >= 1)   for (  String s : args) {
     openFiles(new File[]{new File(s)},true);
   }
+  if (!pingback) {
+    pingback=true;
+    pingback();
+  }
 }

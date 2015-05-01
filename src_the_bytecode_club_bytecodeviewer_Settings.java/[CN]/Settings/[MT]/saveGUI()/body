@@ -132,6 +132,7 @@
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.panel3Smali_E.isSelected()),false);
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.decodeAPKResources.isSelected()),false);
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,BytecodeViewer.library,false);
+    DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.pingback),false);
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

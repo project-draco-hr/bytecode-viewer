@@ -480,6 +480,13 @@
     }
   }
 );
+  mntmPingback.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      BytecodeViewer.pingback();
+    }
+  }
+);
+  mnNewMenu.add(mntmPingback);
   mnNewMenu.add(mntmExit);
   menuBar.add(mnNewMenu_6);
   mnNewMenu_6.add(mnNewMenu_7);
