@@ -1,10 +1,11 @@
 {
-  name=name.replace("/",".");
+  name=name.replace(".","/");
+  System.out.println("finding " + name);
   if (ccache.containsKey(name))   return ccache.get(name);
   LoadedNodeData data=cache.get(name);
   if (data != null) {
     byte[] bytes=data.bytes;
-    Class<?> klass=defineClass(data.node.name,bytes,0,bytes.length);
+    Class<?> klass=defineClass(data.node.name.replace("/","."),bytes,0,bytes.length);
     ccache.put(name,klass);
     return klass;
   }
