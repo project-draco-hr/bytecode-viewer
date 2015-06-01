@@ -1,0 +1,12 @@
+{
+  name=name.replace("/",".");
+  if (ccache.containsKey(name))   return ccache.get(name);
+  LoadedNodeData data=cache.get(name);
+  if (data != null) {
+    byte[] bytes=data.bytes;
+    Class<?> klass=defineClass(data.node.name,bytes,0,bytes.length);
+    ccache.put(name,klass);
+    return klass;
+  }
+  return super.findClass(name);
+}

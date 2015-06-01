@@ -1,0 +1,11 @@
+{
+  String ext=f.getName().substring(f.getName().lastIndexOf('.') + 1);
+  PluginLaunchStrategy strategy=launchStrategies.get(ext);
+  if (strategy == null) {
+    throw new RuntimeException(String.format("No launch strategy for extension %s (%s)",ext,f.getAbsolutePath()));
+  }
+  Plugin p=strategy.run(f);
+  if (p != null) {
+    runPlugin(p);
+  }
+}

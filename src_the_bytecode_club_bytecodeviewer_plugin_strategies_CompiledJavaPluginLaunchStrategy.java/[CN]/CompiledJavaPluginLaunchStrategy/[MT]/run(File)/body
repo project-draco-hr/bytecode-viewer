@@ -1,0 +1,20 @@
+{
+  Set<LoadedNodeData> set=loadData(file);
+  LoadedNodeData pdata=null;
+  for (  LoadedNodeData d : set) {
+    ClassNode cn=d.node;
+    if (cn.superName.equals(PLUGIN_CLASS_NAME)) {
+      if (pdata == null) {
+        pdata=d;
+      }
+ else {
+        throw new RuntimeException("Multiple plugin subclasses.");
+      }
+    }
+  }
+  LoadingClassLoader cl=new LoadingClassLoader(pdata,set);
+  Plugin p=cl.pluginKlass.newInstance();
+  LoadedPluginData npdata=new LoadedPluginData(pdata,cl,p);
+  loaded.add(npdata);
+  return p;
+}

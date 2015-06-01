@@ -3,7 +3,7 @@
   for (  String s : recentFiles)   if (!s.isEmpty()) {
     JMenuItem m=new JMenuItem(s);
     m.addActionListener(new ActionListener(){
-      public void actionPerformed(      ActionEvent e){
+      @Override public void actionPerformed(      ActionEvent e){
         JMenuItem m=(JMenuItem)e.getSource();
         openFiles(new File[]{new File(m.getText())},true);
       }
@@ -15,7 +15,7 @@
   for (  String s : recentPlugins)   if (!s.isEmpty()) {
     JMenuItem m=new JMenuItem(s);
     m.addActionListener(new ActionListener(){
-      public void actionPerformed(      ActionEvent e){
+      @Override public void actionPerformed(      ActionEvent e){
         JMenuItem m=(JMenuItem)e.getSource();
         startPlugin(new File(m.getText()));
       }
