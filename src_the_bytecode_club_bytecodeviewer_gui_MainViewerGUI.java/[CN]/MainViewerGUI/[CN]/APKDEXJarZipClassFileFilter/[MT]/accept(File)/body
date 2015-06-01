@@ -1,6 +1,6 @@
 {
   if (f.isDirectory())   return true;
-  String extension=getExtension(f);
+  String extension=MiscUtils.extension(f.getAbsolutePath());
   if (extension != null)   if (extension.equals("jar") || extension.equals("zip") || extension.equals("class")|| extension.equals("apk")|| extension.equals("dex"))   return true;
   return false;
 }

@@ -2,7 +2,7 @@
   mnNewMenu_5.setVisible(false);
   KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new Test());
   this.addWindowStateListener(new WindowAdapter(){
-    public void windowStateChanged(    WindowEvent evt){
+    @Override public void windowStateChanged(    WindowEvent evt){
       int oldState=evt.getOldState();
       int newState=evt.getNewState();
       if ((oldState & Frame.ICONIFIED) == 0 && (newState & Frame.ICONIFIED) != 0) {
@@ -38,14 +38,14 @@
   JMenu mnNewMenu=new JMenu("File");
   menuBar.add(mnNewMenu);
   mntmNewWorkspace.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       BytecodeViewer.resetWorkSpace(true);
     }
   }
 );
   JMenuItem mntmLoadJar=new JMenuItem("Add..");
   mntmLoadJar.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent e){
+    @Override public void actionPerformed(    ActionEvent e){
       JFileChooser fc=new JFileChooser();
       try {
         File f=new File(BytecodeViewer.lastDirectory);
@@ -75,7 +75,7 @@
   mnNewMenu.add(mntmNewWorkspace);
   JMenuItem mntmSave=new JMenuItem("Save Files As..");
   mntmSave.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (BytecodeViewer.getLoadedClasses().isEmpty()) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -121,7 +121,7 @@
 );
   mnNewMenu.add(separator_3);
   mntmNewMenuItem_3.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent e){
+    @Override public void actionPerformed(    ActionEvent e){
       if (BytecodeViewer.getLoadedClasses().isEmpty()) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -158,13 +158,13 @@
   }
 );
   mntmNewMenuItem_13.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       BytecodeViewer.compile(true);
     }
   }
 );
   mntmRun.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent e){
+    @Override public void actionPerformed(    ActionEvent e){
       if (BytecodeViewer.getLoadedClasses().isEmpty()) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -178,7 +178,7 @@
   mnNewMenu.add(separator_18);
   mnNewMenu.add(mntmNewMenuItem_3);
   mntmSaveAsApk.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (BytecodeViewer.getLoadedClasses().isEmpty()) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -234,7 +234,7 @@
   mnNewMenu.add(mntmSaveAsApk);
   mnNewMenu.add(mntmSave);
   mntmNewMenuItem.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (BytecodeViewer.getLoadedClasses().isEmpty()) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -342,7 +342,7 @@
   }
 );
   mntmNewMenuItem_12.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (workPane.getCurrentViewer() == null) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -457,7 +457,7 @@
   JSeparator separator_1=new JSeparator();
   mnNewMenu.add(separator_1);
   mntmAbout.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       aboutWindow.setVisible(true);
     }
   }
@@ -465,7 +465,7 @@
   mnNewMenu.add(mntmAbout);
   JMenuItem mntmExit=new JMenuItem("Exit");
   mntmExit.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       JOptionPane pane=new JOptionPane("Are you sure you want to exit?");
       Object[] options=new String[]{"Yes","No"};
       pane.setOptions(options);
@@ -481,7 +481,7 @@
   }
 );
   mntmPingback.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       BytecodeViewer.pingback();
     }
   }
@@ -589,21 +589,21 @@
   mnSettings.add(decodeAPKResources);
   mnSettings.add(separator_13);
   mntmSetPythonDirectory.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       pythonC();
     }
   }
 );
   mnSettings.add(mntmSetPythonDirectory);
   mntmSetJreRt.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       rtC();
     }
   }
 );
   mnSettings.add(mntmSetJreRt);
   mntmSetOpitonalLibrary.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       library();
     }
   }
@@ -760,7 +760,7 @@
   mnBytecodeDecompilerSettings.add(chckbxmntmAppendBrackets);
   menuBar.add(mnNewMenu_5);
   mntmNewMenuItem_6.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (BytecodeViewer.runningObfuscation) {
         BytecodeViewer.showMessage("You're currently running an obfuscation task, wait for this to finish.");
         return;
@@ -778,7 +778,7 @@
   mnNewMenu_5.add(mntmNewMenuItem_8);
   mnNewMenu_5.add(mntmNewMenuItem_6);
   mntmNewMenuItem_7.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (BytecodeViewer.runningObfuscation) {
         BytecodeViewer.showMessage("You're currently running an obfuscation task, wait for this to finish.");
         return;
@@ -791,7 +791,7 @@
 );
   mnNewMenu_5.add(mntmNewMenuItem_7);
   mntmNewMenuItem_11.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (BytecodeViewer.runningObfuscation) {
         BytecodeViewer.showMessage("You're currently running an obfuscation task, wait for this to finish.");
         return;
@@ -813,7 +813,7 @@
   mnNewMenu_1.add(mnRecentPlugins);
   mnNewMenu_1.add(separator_5);
   mntmCodeSequenceDiagram.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (BytecodeViewer.getLoadedClasses().isEmpty()) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -827,7 +827,7 @@
   mnNewMenu_1.add(mntmShowMainMethods);
   mnNewMenu_1.add(mntmShowAllStrings);
   mntmReplaceStrings.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       if (BytecodeViewer.getLoadedClasses().isEmpty()) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -840,7 +840,7 @@
   mnNewMenu_1.add(mntmNewMenuItem_2);
   mnNewMenu_1.add(mntmStartZkmString);
   mntmZstringarrayDecrypter.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       PluginManager.runPlugin(new ZStringArrayDecrypter());
     }
   }
@@ -848,9 +848,9 @@
   mnNewMenu_1.add(mntmZstringarrayDecrypter);
   menuBar.add(mntmNewMenuItem_4);
   mntmStartExternalPlugin.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent arg0){
+    @Override public void actionPerformed(    ActionEvent arg0){
       JFileChooser fc=new JFileChooser();
-      fc.setFileFilter(new JavaPFileFilter());
+      fc.setFileFilter(PluginManager.fileFilter());
       fc.setFileHidingEnabled(false);
       fc.setAcceptAllFileFilterUsed(false);
       int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);
@@ -866,19 +866,19 @@
   }
 );
   mntmStartZkmString.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent e){
+    @Override public void actionPerformed(    ActionEvent e){
       PluginManager.runPlugin(new ZKMStringDecrypter());
     }
   }
 );
   mntmNewMenuItem_2.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent e){
+    @Override public void actionPerformed(    ActionEvent e){
       PluginManager.runPlugin(new AllatoriStringDecrypter());
     }
   }
 );
   mntmNewMenuItem_1.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent e){
+    @Override public void actionPerformed(    ActionEvent e){
       if (BytecodeViewer.getLoadedClasses().isEmpty()) {
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
@@ -888,13 +888,13 @@
   }
 );
   mntmShowAllStrings.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent e){
+    @Override public void actionPerformed(    ActionEvent e){
       PluginManager.runPlugin(new ShowAllStrings());
     }
   }
 );
   mntmShowMainMethods.addActionListener(new ActionListener(){
-    public void actionPerformed(    ActionEvent e){
+    @Override public void actionPerformed(    ActionEvent e){
       PluginManager.runPlugin(new ShowMainMethods());
     }
   }

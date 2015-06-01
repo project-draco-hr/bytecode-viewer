@@ -1,6 +1,3 @@
 {
-  if (f.isDirectory())   return true;
-  String extension=getExtension(f);
-  if (extension != null)   return (extension.equals("zip"));
-  return false;
+  return f.isDirectory() || MiscUtils.extension(f.getAbsolutePath()).equals("zip");
 }

@@ -1,0 +1,3 @@
+{
+  launchStrategies.put(name,strat);
+}
