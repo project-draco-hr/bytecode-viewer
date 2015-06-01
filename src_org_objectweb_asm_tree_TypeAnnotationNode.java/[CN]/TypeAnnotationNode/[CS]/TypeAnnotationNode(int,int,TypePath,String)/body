@@ -1,0 +1,5 @@
+{
+  super(api,desc);
+  this.typeRef=typeRef;
+  this.typePath=typePath;
+}

@@ -1,0 +1,11 @@
+{
+  String[] s=new String[start.length];
+  String[] e=new String[end.length];
+  for (int i=0; i < s.length; ++i) {
+    s[i]=getLabel(start[i]);
+  }
+  for (int i=0; i < e.length; ++i) {
+    e[i]=getLabel(end[i]);
+  }
+  return new SAXAnnotationAdapter(sa,"localVariableAnnotation",visible ? 1 : -1,null,desc,typeRef,typePath,s,e,index);
+}

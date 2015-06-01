@@ -1,0 +1,4 @@
+AbstractInsnNode insn
+V value1
+V value2
+V value3

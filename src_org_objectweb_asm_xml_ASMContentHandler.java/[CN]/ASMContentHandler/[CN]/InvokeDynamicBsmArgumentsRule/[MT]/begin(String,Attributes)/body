@@ -1,0 +1,4 @@
+{
+  @SuppressWarnings("unchecked") ArrayList<Object> bsmArgs=(ArrayList<Object>)peek();
+  bsmArgs.add(getValue(attrs.getValue("desc"),attrs.getValue("cst")));
+}

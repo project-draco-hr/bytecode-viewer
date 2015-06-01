@@ -1,0 +1,12 @@
+{
+  if ((version & 0xFFFF) < Opcodes.V1_5) {
+    checkIdentifier(name,msg);
+  }
+ else {
+    for (int i=0; i < name.length(); ++i) {
+      if (".;[/".indexOf(name.charAt(i)) != -1) {
+        throw new IllegalArgumentException("Invalid " + msg + " (must be a valid unqualified name): "+ name);
+      }
+    }
+  }
+}

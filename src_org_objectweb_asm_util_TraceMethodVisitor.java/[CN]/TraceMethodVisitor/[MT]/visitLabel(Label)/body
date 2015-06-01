@@ -1,0 +1,4 @@
+{
+  p.visitLabel(label);
+  super.visitLabel(label);
+}

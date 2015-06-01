@@ -1,0 +1,6 @@
+{
+  this(Opcodes.ASM5,owner,access,name,desc,signature,exceptions);
+  if (getClass() != MethodNode.class) {
+    throw new IllegalStateException();
+  }
+}

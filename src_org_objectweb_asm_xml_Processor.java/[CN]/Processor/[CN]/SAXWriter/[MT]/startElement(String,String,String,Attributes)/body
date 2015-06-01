@@ -1,0 +1,20 @@
+{
+  try {
+    closeElement();
+    writeIdent();
+    w.write('<' + qName);
+    if (atts != null && atts.getLength() > 0) {
+      writeAttributes(atts);
+    }
+    if (optimizeEmptyElements) {
+      openElement=true;
+    }
+ else {
+      w.write(">\n");
+    }
+    ident+=2;
+  }
+ catch (  IOException ex) {
+    throw new SAXException(ex);
+  }
+}

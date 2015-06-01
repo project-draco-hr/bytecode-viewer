@@ -1,0 +1,47 @@
+{
+  super(api);
+  this.sa=sa;
+  this.elementName=elementName;
+  AttributesImpl att=new AttributesImpl();
+  if (name != null) {
+    att.addAttribute("","name","name","",name);
+  }
+  if (visible != 0) {
+    att.addAttribute("","visible","visible","",visible > 0 ? "true" : "false");
+  }
+  if (parameter != -1) {
+    att.addAttribute("","parameter","parameter","",Integer.toString(parameter));
+  }
+  if (desc != null) {
+    att.addAttribute("","desc","desc","",desc);
+  }
+  if (typeRef != -1) {
+    att.addAttribute("","typeRef","typeRef","",Integer.toString(typeRef));
+  }
+  if (typePath != null) {
+    att.addAttribute("","typePath","typePath","",typePath.toString());
+  }
+  if (start != null) {
+    StringBuffer value=new StringBuffer(start[0]);
+    for (int i=1; i < start.length; ++i) {
+      value.append(" ").append(start[i]);
+    }
+    att.addAttribute("","start","start","",value.toString());
+  }
+  if (end != null) {
+    StringBuffer value=new StringBuffer(end[0]);
+    for (int i=1; i < end.length; ++i) {
+      value.append(" ").append(end[i]);
+    }
+    att.addAttribute("","end","end","",value.toString());
+  }
+  if (index != null) {
+    StringBuffer value=new StringBuffer();
+    value.append(index[0]);
+    for (int i=1; i < index.length; ++i) {
+      value.append(" ").append(index[i]);
+    }
+    att.addAttribute("","index","index","",value.toString());
+  }
+  sa.addStart(elementName,att);
+}

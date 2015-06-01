@@ -1,0 +1,17 @@
+{
+  TryCatchBlockNode tcb=tryCatchBlocks.get((typeRef & 0x00FFFF00) >> 8);
+  TypeAnnotationNode an=new TypeAnnotationNode(typeRef,typePath,desc);
+  if (visible) {
+    if (tcb.visibleTypeAnnotations == null) {
+      tcb.visibleTypeAnnotations=new ArrayList<TypeAnnotationNode>(1);
+    }
+    tcb.visibleTypeAnnotations.add(an);
+  }
+ else {
+    if (tcb.invisibleTypeAnnotations == null) {
+      tcb.invisibleTypeAnnotations=new ArrayList<TypeAnnotationNode>(1);
+    }
+    tcb.invisibleTypeAnnotations.add(an);
+  }
+  return an;
+}

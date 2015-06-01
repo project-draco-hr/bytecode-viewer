@@ -1,0 +1,6 @@
+{
+  push(attrs.getValue("name"));
+  push(attrs.getValue("desc"));
+  push(decodeHandle(attrs.getValue("bsm")));
+  push(new ArrayList<Object>());
+}

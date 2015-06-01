@@ -1,0 +1,3 @@
+{
+  return ((VarInsnNode)insn()).var;
+}

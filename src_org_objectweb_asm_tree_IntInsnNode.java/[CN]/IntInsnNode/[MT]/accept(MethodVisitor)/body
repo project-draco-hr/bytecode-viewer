@@ -1,0 +1,4 @@
+{
+  mv.visitIntInsn(opcode,operand);
+  acceptAnnotations(mv);
+}

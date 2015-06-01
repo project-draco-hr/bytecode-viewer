@@ -1,0 +1,7 @@
+{
+  for (  FieldNode fn : fields) {
+    if (ignoreStatic && (fn.access & Opcodes.ACC_STATIC) == Opcodes.ACC_STATIC)     continue;
+    if ((field == null || fn.name.equals(field)) && (desc == null || desc.equals(fn.desc)))     return fn;
+  }
+  return null;
+}

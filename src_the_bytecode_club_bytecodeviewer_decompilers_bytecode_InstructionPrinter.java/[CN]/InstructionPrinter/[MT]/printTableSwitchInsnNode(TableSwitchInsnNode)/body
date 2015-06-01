@@ -1,5 +1,5 @@
 {
-  String line=nameOpcode(tin.getOpcode()) + " \n";
+  String line=nameOpcode(tin.opcode()) + " \n";
   List<?> labels=tin.labels;
   int count=0;
   for (int i=tin.min; i < tin.max; i++) {

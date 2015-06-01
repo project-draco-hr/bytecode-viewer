@@ -1,0 +1,5 @@
+{
+  LineNumberNode lin=new LineNumberNode(line,getLabelNode(start));
+  lin.method=this;
+  instructions.add(lin);
+}

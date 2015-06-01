@@ -1,0 +1,29 @@
+{
+  HashMap<?,?> typeLists=(HashMap<?,?>)pop();
+  ArrayList<?> locals=(ArrayList<?>)typeLists.get("local");
+  int nLocal=locals.size();
+  Object[] local=locals.toArray();
+  ArrayList<?> stacks=(ArrayList<?>)typeLists.get("stack");
+  int nStack=stacks.size();
+  Object[] stack=stacks.toArray();
+  String count=(String)pop();
+  String type=(String)pop();
+  if ("NEW".equals(type)) {
+    getCodeVisitor().visitFrame(F_NEW,nLocal,local,nStack,stack);
+  }
+ else   if ("FULL".equals(type)) {
+    getCodeVisitor().visitFrame(F_FULL,nLocal,local,nStack,stack);
+  }
+ else   if ("APPEND".equals(type)) {
+    getCodeVisitor().visitFrame(F_APPEND,nLocal,local,0,null);
+  }
+ else   if ("CHOP".equals(type)) {
+    getCodeVisitor().visitFrame(F_CHOP,Integer.parseInt(count),null,0,null);
+  }
+ else   if ("SAME".equals(type)) {
+    getCodeVisitor().visitFrame(F_SAME,0,null,0,null);
+  }
+ else   if ("SAME1".equals(type)) {
+    getCodeVisitor().visitFrame(F_SAME1,0,null,nStack,stack);
+  }
+}

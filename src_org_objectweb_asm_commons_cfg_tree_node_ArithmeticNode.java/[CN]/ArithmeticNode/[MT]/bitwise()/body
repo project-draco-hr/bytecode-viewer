@@ -1,0 +1,3 @@
+{
+  return negating() || remainding() || shifting()|| including()|| comparing();
+}

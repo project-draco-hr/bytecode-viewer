@@ -1,0 +1,18 @@
+{
+  if (!ClassReader.ANNOTATIONS) {
+    return null;
+  }
+  ByteVector bv=new ByteVector();
+  AnnotationWriter.putTarget(typeRef,typePath,bv);
+  bv.putShort(newUTF8(desc)).putShort(0);
+  AnnotationWriter aw=new AnnotationWriter(this,true,bv,bv,bv.length - 2);
+  if (visible) {
+    aw.next=tanns;
+    tanns=aw;
+  }
+ else {
+    aw.next=itanns;
+    itanns=aw;
+  }
+  return aw;
+}

@@ -1,0 +1,4 @@
+{
+  p.visitInsn(opcode);
+  super.visitInsn(opcode);
+}

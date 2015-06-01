@@ -1,0 +1,13 @@
+{
+  mv.visitTryCatchBlock(start.getLabel(),end.getLabel(),handler == null ? null : handler.getLabel(),type);
+  int n=visibleTypeAnnotations == null ? 0 : visibleTypeAnnotations.size();
+  for (int i=0; i < n; ++i) {
+    TypeAnnotationNode an=visibleTypeAnnotations.get(i);
+    an.accept(mv.visitTryCatchAnnotation(an.typeRef,an.typePath,an.desc,true));
+  }
+  n=invisibleTypeAnnotations == null ? 0 : invisibleTypeAnnotations.size();
+  for (int i=0; i < n; ++i) {
+    TypeAnnotationNode an=invisibleTypeAnnotations.get(i);
+    an.accept(mv.visitTryCatchAnnotation(an.typeRef,an.typePath,an.desc,false));
+  }
+}

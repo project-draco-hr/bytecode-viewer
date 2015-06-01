@@ -1,0 +1,12 @@
+{
+  int count=0;
+  for (  MethodNode mn : methods) {
+    if (ignoreStatic && (mn.access & Opcodes.ACC_STATIC) == Opcodes.ACC_STATIC) {
+      continue;
+    }
+    if (mn.desc.equals(desc)) {
+      count++;
+    }
+  }
+  return count;
+}

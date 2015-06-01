@@ -1,0 +1,22 @@
+{
+  String desc=attrs.getValue("desc");
+  boolean visible=Boolean.valueOf(attrs.getValue("visible")).booleanValue();
+  int typeRef=Integer.parseInt(attrs.getValue("typeRef"));
+  TypePath typePath=TypePath.fromString(attrs.getValue("typePath"));
+  String[] s=attrs.getValue("start").split(" ");
+  Label[] start=new Label[s.length];
+  for (int i=0; i < start.length; ++i) {
+    start[i]=getLabel(s[i]);
+  }
+  String[] e=attrs.getValue("end").split(" ");
+  Label[] end=new Label[e.length];
+  for (int i=0; i < end.length; ++i) {
+    end[i]=getLabel(e[i]);
+  }
+  String[] v=attrs.getValue("index").split(" ");
+  int[] index=new int[v.length];
+  for (int i=0; i < index.length; ++i) {
+    index[i]=Integer.parseInt(v[i]);
+  }
+  push(((MethodVisitor)peek()).visitLocalVariableAnnotation(typeRef,typePath,start,end,index,desc,visible));
+}

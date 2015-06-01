@@ -1,0 +1,14 @@
+{
+  ++size;
+  if (last == null) {
+    first=insn;
+    last=insn;
+  }
+ else {
+    last.next=insn;
+    insn.prev=last;
+  }
+  last=insn;
+  cache=null;
+  insn.index=0;
+}

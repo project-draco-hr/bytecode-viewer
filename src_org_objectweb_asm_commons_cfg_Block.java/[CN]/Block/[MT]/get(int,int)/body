@@ -1,0 +1,10 @@
+{
+  int i=0;
+  for (  AbstractInsnNode ain : instructions) {
+    if (ain.opcode() == opcode) {
+      if (i == index)       return ain;
+      i++;
+    }
+  }
+  return null;
+}

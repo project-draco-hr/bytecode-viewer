@@ -1,0 +1,52 @@
+{
+  char[] c=context.buffer;
+  int[] offsets=new int[readUnsignedShort(u)];
+  u+=2;
+  for (int i=0; i < offsets.length; ++i) {
+    offsets[i]=u;
+    int target=readInt(u);
+switch (target >>> 24) {
+case 0x00:
+case 0x01:
+case 0x16:
+      u+=2;
+    break;
+case 0x13:
+case 0x14:
+case 0x15:
+  u+=1;
+break;
+case 0x40:
+case 0x41:
+for (int j=readUnsignedShort(u + 1); j > 0; --j) {
+int start=readUnsignedShort(u + 3);
+int length=readUnsignedShort(u + 5);
+readLabel(start,context.labels);
+readLabel(start + length,context.labels);
+u+=6;
+}
+u+=3;
+break;
+case 0x47:
+case 0x48:
+case 0x49:
+case 0x4A:
+case 0x4B:
+u+=4;
+break;
+default :
+u+=3;
+break;
+}
+int pathLength=readByte(u);
+if ((target >>> 24) == 0x42) {
+TypePath path=pathLength == 0 ? null : new TypePath(b,u);
+u+=1 + 2 * pathLength;
+u=readAnnotationValues(u + 2,c,true,mv.visitTryCatchAnnotation(target,path,readUTF8(u,c),visible));
+}
+ else {
+u=readAnnotationValues(u + 3 + 2 * pathLength,c,true,null);
+}
+}
+return offsets;
+}

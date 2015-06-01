@@ -1,0 +1,10 @@
+{
+  Label doCatch=new Label();
+  if (exception == null) {
+    mv.visitTryCatchBlock(start,end,doCatch,null);
+  }
+ else {
+    mv.visitTryCatchBlock(start,end,doCatch,exception.getInternalName());
+  }
+  mark(doCatch);
+}

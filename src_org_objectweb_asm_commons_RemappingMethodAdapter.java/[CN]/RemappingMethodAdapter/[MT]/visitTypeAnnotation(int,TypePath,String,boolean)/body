@@ -1,0 +1,4 @@
+{
+  AnnotationVisitor av=super.visitTypeAnnotation(typeRef,typePath,remapper.mapDesc(desc),visible);
+  return av == null ? av : new RemappingAnnotationAdapter(av,remapper);
+}

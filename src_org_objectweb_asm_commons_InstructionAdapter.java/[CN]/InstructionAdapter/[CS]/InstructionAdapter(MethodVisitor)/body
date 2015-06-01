@@ -1,0 +1,6 @@
+{
+  this(Opcodes.ASM5,mv);
+  if (getClass() != InstructionAdapter.class) {
+    throw new IllegalStateException();
+  }
+}

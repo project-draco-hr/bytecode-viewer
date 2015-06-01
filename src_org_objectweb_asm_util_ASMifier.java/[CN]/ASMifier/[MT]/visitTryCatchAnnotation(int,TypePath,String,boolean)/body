@@ -1,0 +1,3 @@
+{
+  return visitTypeAnnotation("visitTryCatchAnnotation",typeRef,typePath,desc,visible);
+}

@@ -1,0 +1,3 @@
+{
+  av.visitEnum(name,remapper.mapDesc(desc),value);
+}

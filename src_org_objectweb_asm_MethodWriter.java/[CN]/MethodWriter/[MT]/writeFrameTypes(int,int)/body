@@ -1,0 +1,59 @@
+{
+  for (int i=start; i < end; ++i) {
+    int t=frame[i];
+    int d=t & Frame.DIM;
+    if (d == 0) {
+      int v=t & Frame.BASE_VALUE;
+switch (t & Frame.BASE_KIND) {
+case Frame.OBJECT:
+        stackMap.putByte(7).putShort(cw.newClass(cw.typeTable[v].strVal1));
+      break;
+case Frame.UNINITIALIZED:
+    stackMap.putByte(8).putShort(cw.typeTable[v].intVal);
+  break;
+default :
+stackMap.putByte(v);
+}
+}
+ else {
+StringBuilder sb=new StringBuilder();
+d>>=28;
+while (d-- > 0) {
+sb.append('[');
+}
+if ((t & Frame.BASE_KIND) == Frame.OBJECT) {
+sb.append('L');
+sb.append(cw.typeTable[t & Frame.BASE_VALUE].strVal1);
+sb.append(';');
+}
+ else {
+switch (t & 0xF) {
+case 1:
+sb.append('I');
+break;
+case 2:
+sb.append('F');
+break;
+case 3:
+sb.append('D');
+break;
+case 9:
+sb.append('Z');
+break;
+case 10:
+sb.append('B');
+break;
+case 11:
+sb.append('C');
+break;
+case 12:
+sb.append('S');
+break;
+default :
+sb.append('J');
+}
+}
+stackMap.putByte(7).putShort(cw.newClass(sb.toString()));
+}
+}
+}

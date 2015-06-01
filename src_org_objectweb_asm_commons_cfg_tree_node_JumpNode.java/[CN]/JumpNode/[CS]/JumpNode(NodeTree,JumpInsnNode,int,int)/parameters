@@ -1,0 +1,4 @@
+NodeTree tree
+JumpInsnNode insn
+int collapsed
+int producing

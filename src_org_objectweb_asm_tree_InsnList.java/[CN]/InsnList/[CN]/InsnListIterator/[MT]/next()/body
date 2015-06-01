@@ -1,0 +1,10 @@
+{
+  if (next == null) {
+    throw new NoSuchElementException();
+  }
+  AbstractInsnNode result=next;
+  prev=result;
+  next=result.next;
+  remove=result;
+  return result;
+}

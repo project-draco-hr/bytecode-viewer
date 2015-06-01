@@ -1,0 +1,8 @@
+{
+  checkStartCode();
+  checkEndCode();
+  checkUnsignedShort(var,"Invalid variable index");
+  checkSignedShort(increment,"Invalid increment");
+  super.visitIincInsn(var,increment);
+  ++insnCount;
+}

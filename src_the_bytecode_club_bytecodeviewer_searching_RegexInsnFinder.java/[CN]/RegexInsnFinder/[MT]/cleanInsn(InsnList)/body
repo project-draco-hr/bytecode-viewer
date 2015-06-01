@@ -3,7 +3,7 @@
   final Iterator<AbstractInsnNode> iIt=insnList.iterator();
   while (iIt.hasNext()) {
     final AbstractInsnNode node=iIt.next();
-    if (node.getOpcode() >= 0) {
+    if (node.opcode() >= 0) {
       il.add(node);
     }
   }

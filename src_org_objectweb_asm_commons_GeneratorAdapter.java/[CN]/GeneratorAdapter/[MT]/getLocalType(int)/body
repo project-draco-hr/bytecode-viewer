@@ -1,0 +1,3 @@
+{
+  return localTypes.get(local - firstLocal);
+}

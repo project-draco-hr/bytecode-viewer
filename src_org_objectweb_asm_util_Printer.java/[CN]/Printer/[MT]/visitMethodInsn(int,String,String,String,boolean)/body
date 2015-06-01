@@ -1,0 +1,10 @@
+{
+  if (api < Opcodes.ASM5) {
+    if (itf != (opcode == Opcodes.INVOKEINTERFACE)) {
+      throw new IllegalArgumentException("INVOKESPECIAL/STATIC on interfaces require ASM 5");
+    }
+    visitMethodInsn(opcode,owner,name,desc);
+    return;
+  }
+  throw new RuntimeException("Must be overriden");
+}

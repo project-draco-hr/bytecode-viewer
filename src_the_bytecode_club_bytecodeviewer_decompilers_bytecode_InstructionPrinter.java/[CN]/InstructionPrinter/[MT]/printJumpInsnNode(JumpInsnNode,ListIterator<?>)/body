@@ -1,4 +1,4 @@
 {
-  String line=nameOpcode(jin.getOpcode()) + " L" + resolveLabel(jin.label);
+  String line=nameOpcode(jin.opcode()) + " L" + resolveLabel(jin.label);
   return line;
 }

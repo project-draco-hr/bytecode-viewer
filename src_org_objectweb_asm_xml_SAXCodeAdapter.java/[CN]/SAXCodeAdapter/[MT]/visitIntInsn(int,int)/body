@@ -1,0 +1,5 @@
+{
+  AttributesImpl attrs=new AttributesImpl();
+  attrs.addAttribute("","value","value","",Integer.toString(operand));
+  sa.addElement(Printer.OPCODES[opcode],attrs);
+}

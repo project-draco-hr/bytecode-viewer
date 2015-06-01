@@ -1,0 +1,4 @@
+{
+  p.visitLookupSwitchInsn(dflt,keys,labels);
+  super.visitLookupSwitchInsn(dflt,keys,labels);
+}

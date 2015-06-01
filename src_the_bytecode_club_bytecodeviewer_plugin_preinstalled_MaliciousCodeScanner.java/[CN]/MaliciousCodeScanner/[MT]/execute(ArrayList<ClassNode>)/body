@@ -35,10 +35,10 @@
             }
           }
         }
-        if ((a instanceof InsnNode) && (a.getOpcode() == Opcodes.ACONST_NULL)) {
+        if ((a instanceof InsnNode) && (a.opcode() == Opcodes.ACONST_NULL)) {
           prevInsn_aconst_null=true;
         }
- else         if ((a instanceof MethodInsnNode) && (a.getOpcode() == Opcodes.INVOKESTATIC)) {
+ else         if ((a instanceof MethodInsnNode) && (a.opcode() == Opcodes.INVOKESTATIC)) {
           final String owner=((MethodInsnNode)a).owner;
           final String name=((MethodInsnNode)a).name;
           if ((NSM && prevInsn_aconst_null && owner.equals("java/lang/System")&& name.equals("setSecurityManager"))) {

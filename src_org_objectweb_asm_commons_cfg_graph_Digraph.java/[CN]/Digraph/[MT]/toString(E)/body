@@ -1,0 +1,10 @@
+{
+  String s=null;
+  if (e instanceof Block) {
+    s=((Block)e).headerString();
+  }
+ else {
+    s=e.toString();
+  }
+  return s;
+}

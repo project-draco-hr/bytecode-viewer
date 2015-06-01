@@ -1,0 +1,10 @@
+{
+  if (api < Opcodes.ASM5) {
+    if (itf) {
+      throw new IllegalArgumentException("INVOKESTATIC on interfaces require ASM 5");
+    }
+    invokestatic(owner,name,desc);
+    return;
+  }
+  mv.visitMethodInsn(Opcodes.INVOKESTATIC,owner,name,desc,itf);
+}

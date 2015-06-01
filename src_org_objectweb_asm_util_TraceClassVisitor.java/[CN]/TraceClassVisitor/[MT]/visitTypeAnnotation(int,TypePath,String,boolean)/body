@@ -1,0 +1,5 @@
+{
+  Printer p=this.p.visitClassTypeAnnotation(typeRef,typePath,desc,visible);
+  AnnotationVisitor av=cv == null ? null : cv.visitTypeAnnotation(typeRef,typePath,desc,visible);
+  return new TraceAnnotationVisitor(av,p);
+}

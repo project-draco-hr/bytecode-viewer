@@ -1,0 +1,3 @@
+{
+  return cn.references.contains(owner.name + "." + name+ desc);
+}

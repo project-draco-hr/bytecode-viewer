@@ -1,0 +1,3 @@
+MethodNode method
+Analyzer<BasicValue> a
+PrintWriter pw

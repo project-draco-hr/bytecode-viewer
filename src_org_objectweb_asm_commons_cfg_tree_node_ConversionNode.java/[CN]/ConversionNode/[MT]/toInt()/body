@@ -1,0 +1,3 @@
+{
+  return opcode() == D2I || opcode() == L2I || opcode() == F2I;
+}

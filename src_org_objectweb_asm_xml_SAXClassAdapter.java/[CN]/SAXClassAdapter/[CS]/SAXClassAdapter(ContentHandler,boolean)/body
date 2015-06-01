@@ -1,0 +1,8 @@
+{
+  super(Opcodes.ASM5);
+  this.sa=new SAXAdapter(h);
+  this.singleDocument=singleDocument;
+  if (!singleDocument) {
+    sa.addDocumentStart();
+  }
+}

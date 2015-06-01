@@ -1,0 +1,10 @@
+{
+  if (api < Opcodes.ASM5) {
+    if (itf) {
+      throw new IllegalArgumentException("INVOKESPECIAL on interfaces require ASM 5");
+    }
+    invokespecial(owner,name,desc);
+    return;
+  }
+  mv.visitMethodInsn(Opcodes.INVOKESPECIAL,owner,name,desc,itf);
+}

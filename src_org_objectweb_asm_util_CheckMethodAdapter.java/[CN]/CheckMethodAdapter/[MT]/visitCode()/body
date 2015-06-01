@@ -1,0 +1,7 @@
+{
+  if ((access & Opcodes.ACC_ABSTRACT) != 0) {
+    throw new RuntimeException("Abstract methods cannot have code");
+  }
+  startCode=true;
+  super.visitCode();
+}

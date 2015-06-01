@@ -1,0 +1,4 @@
+{
+  p.visitOuterClass(owner,name,desc);
+  super.visitOuterClass(owner,name,desc);
+}

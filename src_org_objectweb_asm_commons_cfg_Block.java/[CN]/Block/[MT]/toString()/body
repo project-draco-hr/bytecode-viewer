@@ -1,0 +1,23 @@
+{
+  StringBuilder sb=new StringBuilder(headerString()).append(String.format(" (len=%d)",size()));
+  if (PRINT_INSNS && size() > 0) {
+    sb.append(System.lineSeparator());
+    Iterator<AbstractInsnNode> it=instructions.iterator();
+    while (it.hasNext()) {
+      AbstractInsnNode ain=it.next();
+      if (!(ain instanceof LabelNode)) {
+        if (it.hasNext()) {
+          sb.append(String.format("   %s%n",Assembly.toString(ain)));
+        }
+ else {
+          sb.append(String.format("   %s",Assembly.toString(ain)));
+        }
+      }
+    }
+  }
+  sb.append(System.lineSeparator());
+  for (  Block b : preds) {
+    sb.append("   pred: ").append(b.headerString()).append(System.lineSeparator());
+  }
+  return sb.toString();
+}

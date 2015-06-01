@@ -1,0 +1,3 @@
+{
+  return opcode() == INEG || opcode() == DNEG || opcode() == LNEG || opcode() == FNEG;
+}

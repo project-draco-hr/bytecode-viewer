@@ -1,0 +1,10 @@
+{
+  if (api == Opcodes.ASM4) {
+    if (visibleTypeAnnotations != null && visibleTypeAnnotations.size() > 0) {
+      throw new RuntimeException();
+    }
+    if (invisibleTypeAnnotations != null && invisibleTypeAnnotations.size() > 0) {
+      throw new RuntimeException();
+    }
+  }
+}
