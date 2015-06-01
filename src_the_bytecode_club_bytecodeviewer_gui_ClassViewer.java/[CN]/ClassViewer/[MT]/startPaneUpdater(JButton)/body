@@ -210,6 +210,31 @@
 );
           panel1.add(scrollPane);
         }
+        if (pane1 == 9) {
+          RSyntaxTextArea panelArea=new RSyntaxTextArea();
+          panelArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+          panelArea.setCodeFoldingEnabled(true);
+          panelArea.setAntiAliasingEnabled(true);
+          RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
+          panelArea.setText(Decompiler.jdgui.decompileClassNode(cn,b));
+          panelArea.setCaretPosition(0);
+          panelArea.setEditable(isPanel1Editable());
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field1.requestFocus();
+              }
+              BytecodeViewer.checkHotKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel1.add(scrollPane);
+          java1=panelArea;
+        }
       }
  catch (      Exception e) {
         new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
@@ -405,6 +430,31 @@
 );
           panel2.add(scrollPane);
         }
+        if (pane2 == 9) {
+          RSyntaxTextArea panelArea=new RSyntaxTextArea();
+          panelArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+          panelArea.setCodeFoldingEnabled(true);
+          panelArea.setAntiAliasingEnabled(true);
+          RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
+          panelArea.setText(Decompiler.jdgui.decompileClassNode(cn,b));
+          panelArea.setCaretPosition(0);
+          panelArea.setEditable(isPanel2Editable());
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field2.requestFocus();
+              }
+              BytecodeViewer.checkHotKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel2.add(scrollPane);
+          java2=panelArea;
+        }
       }
  catch (      Exception e) {
         new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
@@ -599,6 +649,31 @@
           }
 );
           panel3.add(scrollPane);
+        }
+        if (pane3 == 9) {
+          RSyntaxTextArea panelArea=new RSyntaxTextArea();
+          panelArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+          panelArea.setCodeFoldingEnabled(true);
+          panelArea.setAntiAliasingEnabled(true);
+          RTextScrollPane scrollPane=new RTextScrollPane(panelArea);
+          panelArea.setText(Decompiler.jdgui.decompileClassNode(cn,b));
+          panelArea.setCaretPosition(0);
+          panelArea.setEditable(isPanel3Editable());
+          panelArea.addKeyListener(new KeyListener(){
+            public void keyPressed(            KeyEvent e){
+              if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                field3.requestFocus();
+              }
+              BytecodeViewer.checkHotKey(e);
+            }
+            @Override public void keyReleased(            KeyEvent arg0){
+            }
+            @Override public void keyTyped(            KeyEvent arg0){
+            }
+          }
+);
+          panel3.add(scrollPane);
+          java3=panelArea;
         }
       }
  catch (      Exception e) {
