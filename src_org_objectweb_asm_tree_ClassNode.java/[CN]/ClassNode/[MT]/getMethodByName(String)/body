@@ -1,0 +1,6 @@
+{
+  for (  MethodNode mn : methods) {
+    if (mn.name.equals(name))     return mn;
+  }
+  return null;
+}

@@ -1,0 +1,4 @@
+{
+  super((msg == null ? "Expected " : msg + ": expected ") + expected + ", but found "+ encountered);
+  this.node=node;
+}

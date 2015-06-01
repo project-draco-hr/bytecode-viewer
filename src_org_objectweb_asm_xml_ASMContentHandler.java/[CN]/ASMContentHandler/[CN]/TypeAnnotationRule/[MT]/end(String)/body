@@ -1,0 +1,6 @@
+{
+  AnnotationVisitor av=(AnnotationVisitor)pop();
+  if (av != null) {
+    av.visitEnd();
+  }
+}

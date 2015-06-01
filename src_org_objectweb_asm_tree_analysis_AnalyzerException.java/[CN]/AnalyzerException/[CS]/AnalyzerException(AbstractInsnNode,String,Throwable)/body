@@ -1,0 +1,4 @@
+{
+  super(msg,exception);
+  this.node=node;
+}

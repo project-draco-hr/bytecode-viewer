@@ -1,0 +1,7 @@
+{
+  List<String> constructors=new ArrayList<>();
+  for (  MethodNode mn : methods) {
+    if (mn.name.equals("<init>"))     constructors.add(mn.desc);
+  }
+  return constructors;
+}

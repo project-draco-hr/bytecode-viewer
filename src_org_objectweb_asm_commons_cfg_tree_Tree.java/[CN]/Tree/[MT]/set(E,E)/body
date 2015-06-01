@@ -1,0 +1,15 @@
+{
+  Iterator<E> it=parent.iterator();
+  Collection<E> es=new LinkedList<>();
+  while (it.hasNext()) {
+    E e=it.next();
+    if (e.equals(predecessor)) {
+      es.add(successor);
+    }
+ else {
+      es.add(e);
+    }
+  }
+  parent.clear();
+  parent.addAll(es);
+}

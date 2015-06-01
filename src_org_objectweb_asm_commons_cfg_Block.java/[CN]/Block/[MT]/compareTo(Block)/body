@@ -1,0 +1,3 @@
+{
+  return index > block.index ? 1 : -1;
+}

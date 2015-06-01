@@ -1,0 +1,8 @@
+{
+  HashMap<String,Object> typeLists=new HashMap<String,Object>();
+  typeLists.put("local",new ArrayList<Object>());
+  typeLists.put("stack",new ArrayList<Object>());
+  push(attrs.getValue("type"));
+  push(attrs.getValue("count") == null ? "0" : attrs.getValue("count"));
+  push(typeLists);
+}

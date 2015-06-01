@@ -1,0 +1,3 @@
+{
+  return visitTypeAnnotation("visitTypeAnnotation",typeRef,typePath,desc,visible);
+}

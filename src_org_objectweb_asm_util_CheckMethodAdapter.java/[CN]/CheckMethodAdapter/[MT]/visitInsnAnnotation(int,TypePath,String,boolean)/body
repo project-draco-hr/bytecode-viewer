@@ -1,0 +1,11 @@
+{
+  checkStartCode();
+  checkEndCode();
+  int sort=typeRef >>> 24;
+  if (sort != TypeReference.INSTANCEOF && sort != TypeReference.NEW && sort != TypeReference.CONSTRUCTOR_REFERENCE && sort != TypeReference.METHOD_REFERENCE && sort != TypeReference.CAST && sort != TypeReference.CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT && sort != TypeReference.METHOD_INVOCATION_TYPE_ARGUMENT && sort != TypeReference.CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT && sort != TypeReference.METHOD_REFERENCE_TYPE_ARGUMENT) {
+    throw new IllegalArgumentException("Invalid type reference sort 0x" + Integer.toHexString(sort));
+  }
+  CheckClassAdapter.checkTypeRefAndPath(typeRef,typePath);
+  CheckMethodAdapter.checkDesc(desc,false);
+  return new CheckAnnotationAdapter(super.visitInsnAnnotation(typeRef,typePath,desc,visible));
+}

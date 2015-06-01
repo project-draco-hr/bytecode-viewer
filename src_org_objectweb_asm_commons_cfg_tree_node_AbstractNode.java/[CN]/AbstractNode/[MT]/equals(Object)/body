@@ -1,0 +1,3 @@
+{
+  return obj instanceof AbstractNode && Assembly.instructionsEqual(((AbstractNode)obj).insn(),insn());
+}

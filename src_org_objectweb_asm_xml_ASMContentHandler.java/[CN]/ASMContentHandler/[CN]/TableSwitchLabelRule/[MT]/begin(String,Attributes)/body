@@ -1,0 +1,3 @@
+{
+  ((ArrayList<Label>)((HashMap<?,?>)peek()).get("labels")).add(getLabel(attrs.getValue("name")));
+}

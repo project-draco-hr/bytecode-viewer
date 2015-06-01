@@ -38,7 +38,7 @@
           }
  catch (          java.lang.ArrayIndexOutOfBoundsException e) {
           }
-          srn.notifyOfResult(node.name + "." + method.name+ desc2+ " > "+ OpcodeInfo.OPCODES.get(insnNode.getOpcode()).toLowerCase());
+          srn.notifyOfResult(node.name + "." + method.name+ desc2+ " > "+ OpcodeInfo.OPCODES.get(insnNode.opcode()).toLowerCase());
         }
  else {
           if (name != null && !name.contains(min.name)) {
@@ -57,7 +57,7 @@
           }
  catch (          java.lang.ArrayIndexOutOfBoundsException e) {
           }
-          srn.notifyOfResult(node.name + "." + method.name+ desc2+ " > "+ OpcodeInfo.OPCODES.get(insnNode.getOpcode()).toLowerCase());
+          srn.notifyOfResult(node.name + "." + method.name+ desc2+ " > "+ OpcodeInfo.OPCODES.get(insnNode.opcode()).toLowerCase());
         }
       }
     }

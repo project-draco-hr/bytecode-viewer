@@ -1,0 +1,5 @@
+{
+  Printer p=this.p.visitLocalVariableAnnotation(typeRef,typePath,start,end,index,desc,visible);
+  AnnotationVisitor av=mv == null ? null : mv.visitLocalVariableAnnotation(typeRef,typePath,start,end,index,desc,visible);
+  return new TraceAnnotationVisitor(av,p);
+}

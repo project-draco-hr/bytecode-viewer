@@ -1,0 +1,12 @@
+{
+  HashMap<?,?> vals=(HashMap<?,?>)pop();
+  int version=((Integer)vals.get("version")).intValue();
+  int access=getAccess((String)vals.get("access"));
+  String name=(String)vals.get("name");
+  String signature=(String)vals.get("signature");
+  String parent=(String)vals.get("parent");
+  ArrayList<?> infs=(ArrayList<?>)vals.get("interfaces");
+  String[] interfaces=infs.toArray(new String[infs.size()]);
+  cv.visit(version,access,name,signature,parent,interfaces);
+  push(cv);
+}

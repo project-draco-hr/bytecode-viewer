@@ -1,0 +1,6 @@
+{
+  this(Opcodes.ASM5,typeRef,typePath,desc);
+  if (getClass() != TypeAnnotationNode.class) {
+    throw new IllegalStateException();
+  }
+}

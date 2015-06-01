@@ -1,0 +1,4 @@
+{
+  p.visitLdcInsn(cst);
+  super.visitLdcInsn(cst);
+}

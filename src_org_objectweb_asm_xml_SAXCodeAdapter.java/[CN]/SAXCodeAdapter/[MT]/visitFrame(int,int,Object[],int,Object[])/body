@@ -1,0 +1,37 @@
+{
+  AttributesImpl attrs=new AttributesImpl();
+switch (type) {
+case Opcodes.F_NEW:
+case Opcodes.F_FULL:
+    if (type == Opcodes.F_NEW) {
+      attrs.addAttribute("","type","type","","NEW");
+    }
+ else {
+      attrs.addAttribute("","type","type","","FULL");
+    }
+  sa.addStart("frame",attrs);
+appendFrameTypes(true,nLocal,local);
+appendFrameTypes(false,nStack,stack);
+break;
+case Opcodes.F_APPEND:
+attrs.addAttribute("","type","type","","APPEND");
+sa.addStart("frame",attrs);
+appendFrameTypes(true,nLocal,local);
+break;
+case Opcodes.F_CHOP:
+attrs.addAttribute("","type","type","","CHOP");
+attrs.addAttribute("","count","count","",Integer.toString(nLocal));
+sa.addStart("frame",attrs);
+break;
+case Opcodes.F_SAME:
+attrs.addAttribute("","type","type","","SAME");
+sa.addStart("frame",attrs);
+break;
+case Opcodes.F_SAME1:
+attrs.addAttribute("","type","type","","SAME1");
+sa.addStart("frame",attrs);
+appendFrameTypes(false,1,stack);
+break;
+}
+sa.addEnd("frame");
+}

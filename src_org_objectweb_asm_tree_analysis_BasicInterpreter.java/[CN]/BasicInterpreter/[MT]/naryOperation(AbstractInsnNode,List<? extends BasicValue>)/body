@@ -1,0 +1,12 @@
+{
+  int opcode=insn.opcode();
+  if (opcode == MULTIANEWARRAY) {
+    return newValue(Type.getType(((MultiANewArrayInsnNode)insn).desc));
+  }
+ else   if (opcode == INVOKEDYNAMIC) {
+    return newValue(Type.getReturnType(((InvokeDynamicInsnNode)insn).desc));
+  }
+ else {
+    return newValue(Type.getReturnType(((MethodInsnNode)insn).desc));
+  }
+}

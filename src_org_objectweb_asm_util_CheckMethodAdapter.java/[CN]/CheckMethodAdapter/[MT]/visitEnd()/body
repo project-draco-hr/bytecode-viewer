@@ -1,0 +1,5 @@
+{
+  checkEndMethod();
+  endMethod=true;
+  super.visitEnd();
+}

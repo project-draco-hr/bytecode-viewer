@@ -1,0 +1,10 @@
+{
+  AbstractInsnNode ain=insn();
+  if (this instanceof FieldMemberNode) {
+    return ((FieldInsnNode)ain).desc;
+  }
+ else   if (this instanceof MethodMemberNode) {
+    return ((MethodInsnNode)ain).desc;
+  }
+  return null;
+}

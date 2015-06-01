@@ -1,0 +1,6 @@
+{
+  if (type == Type.VOID_TYPE) {
+    return null;
+  }
+  return new SourceValue(type == null ? 1 : type.getSize());
+}

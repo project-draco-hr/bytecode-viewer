@@ -1,0 +1,4 @@
+int stackMap
+boolean zip
+boolean unzip
+Context frame

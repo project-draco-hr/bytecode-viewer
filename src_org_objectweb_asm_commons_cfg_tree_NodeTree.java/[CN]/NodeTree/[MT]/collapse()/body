@@ -1,0 +1,5 @@
+{
+  AbstractInsnNode[] instructions=super.collapse();
+  int i=instructions.length > 1 && instructions[instructions.length - 2].type() == LABEL ? 2 : 1;
+  return Arrays.copyOf(instructions,instructions.length - i);
+}

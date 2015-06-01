@@ -1,0 +1,8 @@
+{
+  Type t=Type.getType(desc);
+  int[] newIndex=new int[index.length];
+  for (int i=0; i < newIndex.length; ++i) {
+    newIndex[i]=remap(index[i],t);
+  }
+  return mv.visitLocalVariableAnnotation(typeRef,typePath,start,end,newIndex,desc,visible);
+}

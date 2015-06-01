@@ -1,0 +1,21 @@
+{
+  List<AbstractNode> children=findChildren(opcodes[0]);
+  if (children == null)   return null;
+  if (opcodes.length == 1)   return children;
+  for (int i=1; i < opcodes.length; i++) {
+    List<AbstractNode> next=new ArrayList<>();
+    for (    AbstractNode n : children) {
+      List<AbstractNode> match=n.findChildren(opcodes[i]);
+      if (match == null)       continue;
+      next.addAll(match);
+    }
+    if (next.isEmpty()) {
+      return null;
+    }
+ else {
+      children.clear();
+      children.addAll(next);
+    }
+  }
+  return children;
+}

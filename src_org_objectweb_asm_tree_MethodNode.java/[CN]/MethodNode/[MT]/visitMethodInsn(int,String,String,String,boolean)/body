@@ -1,0 +1,10 @@
+{
+  if (api < Opcodes.ASM5) {
+    super.visitMethodInsn(opcode,owner,name,desc,itf);
+    return;
+  }
+  MethodInsnNode min=new MethodInsnNode(opcode,owner,name,desc,itf);
+  min.method=this;
+  this.owner.references.add(min.key());
+  instructions.add(min);
+}

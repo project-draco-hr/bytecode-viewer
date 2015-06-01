@@ -1,0 +1,16 @@
+{
+  TypeAnnotationNode an=new TypeAnnotationNode(typeRef,typePath,desc);
+  if (visible) {
+    if (visibleTypeAnnotations == null) {
+      visibleTypeAnnotations=new ArrayList<TypeAnnotationNode>(1);
+    }
+    visibleTypeAnnotations.add(an);
+  }
+ else {
+    if (invisibleTypeAnnotations == null) {
+      invisibleTypeAnnotations=new ArrayList<TypeAnnotationNode>(1);
+    }
+    invisibleTypeAnnotations.add(an);
+  }
+  return an;
+}

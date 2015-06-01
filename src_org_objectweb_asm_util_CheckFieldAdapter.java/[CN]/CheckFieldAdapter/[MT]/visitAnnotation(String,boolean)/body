@@ -1,0 +1,5 @@
+{
+  checkEnd();
+  CheckMethodAdapter.checkDesc(desc,false);
+  return new CheckAnnotationAdapter(super.visitAnnotation(desc,visible));
+}

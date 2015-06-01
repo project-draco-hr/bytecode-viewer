@@ -1,0 +1,9 @@
+{
+  if (e1 == null) {
+    throw new NoSuchElementException();
+  }
+  E e=e1;
+  e1=e2;
+  e2=null;
+  return e;
+}

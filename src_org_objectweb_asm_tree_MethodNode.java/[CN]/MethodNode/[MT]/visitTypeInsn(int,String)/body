@@ -1,0 +1,5 @@
+{
+  TypeInsnNode tin=new TypeInsnNode(opcode,type);
+  tin.method=this;
+  instructions.add(tin);
+}

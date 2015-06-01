@@ -1,0 +1,7 @@
+{
+  maxLocals=Math.max(maxLocals,local + 1);
+  while (local >= locals.size()) {
+    locals.add(Opcodes.TOP);
+  }
+  locals.set(local,type);
+}

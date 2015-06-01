@@ -1,5 +1,5 @@
 {
-  String line=nameOpcode(lin.getOpcode()) + ": \n";
+  String line=nameOpcode(lin.opcode()) + ": \n";
   List<?> keys=lin.keys;
   List<?> labels=lin.labels;
   for (int i=0; i < keys.size(); i++) {

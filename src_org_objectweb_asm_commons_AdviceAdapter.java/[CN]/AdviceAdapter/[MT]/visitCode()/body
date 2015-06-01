@@ -1,0 +1,11 @@
+{
+  mv.visitCode();
+  if (constructor) {
+    stackFrame=new ArrayList<Object>();
+    branches=new HashMap<Label,List<Object>>();
+  }
+ else {
+    superInitialized=true;
+    onMethodEnter();
+  }
+}

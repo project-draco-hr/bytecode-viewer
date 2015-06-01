@@ -1,0 +1,28 @@
+{
+  if (treeIndex < 0) {
+    return null;
+  }
+  AbstractNode node=nodes.get(treeIndex--);
+  if (node.collapsed == 0) {
+    return node;
+  }
+  int c=node.collapsed;
+  while (c != 0) {
+    AbstractNode n=iterate(nodes);
+    if (n == null) {
+      break;
+    }
+    int op=n.opcode();
+    if (op == MONITOREXIT && node.opcode() == ATHROW)     n.producing=1;
+    node.addFirst(n);
+    int cr=c - n.producing;
+    if (cr < 0) {
+      node.producing+=-cr;
+      n.producing=0;
+      break;
+    }
+    c-=n.producing;
+    n.producing=0;
+  }
+  return node;
+}

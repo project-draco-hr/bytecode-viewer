@@ -1,0 +1,11 @@
+{
+  checkStartCode();
+  checkEndCode();
+  int sort=typeRef >>> 24;
+  if (sort != TypeReference.EXCEPTION_PARAMETER) {
+    throw new IllegalArgumentException("Invalid type reference sort 0x" + Integer.toHexString(sort));
+  }
+  CheckClassAdapter.checkTypeRefAndPath(typeRef,typePath);
+  CheckMethodAdapter.checkDesc(desc,false);
+  return new CheckAnnotationAdapter(super.visitTryCatchAnnotation(typeRef,typePath,desc,visible));
+}

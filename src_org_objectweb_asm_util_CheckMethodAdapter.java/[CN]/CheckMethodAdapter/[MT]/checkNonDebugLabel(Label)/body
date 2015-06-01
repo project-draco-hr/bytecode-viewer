@@ -1,0 +1,13 @@
+{
+  Field f=getLabelStatusField();
+  int status=0;
+  try {
+    status=f == null ? 0 : ((Integer)f.get(label)).intValue();
+  }
+ catch (  IllegalAccessException e) {
+    throw new Error("Internal error");
+  }
+  if ((status & 0x01) != 0) {
+    throw new IllegalArgumentException("Labels used for debug info cannot be reused for control flow");
+  }
+}

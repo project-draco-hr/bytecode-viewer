@@ -1,0 +1,4 @@
+{
+  int size=stack.size();
+  return size == 0 ? null : stack.get(size - 1);
+}

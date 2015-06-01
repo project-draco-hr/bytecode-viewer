@@ -1,0 +1,6 @@
+{
+  this(Opcodes.ASM5);
+  if (getClass() != ClassNode.class) {
+    throw new IllegalStateException();
+  }
+}

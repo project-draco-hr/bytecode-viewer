@@ -1,0 +1,22 @@
+{
+  StringBuffer sb=new StringBuffer();
+  appendAccess(access,sb);
+  AttributesImpl att=new AttributesImpl();
+  att.addAttribute("","access","access","",sb.toString());
+  att.addAttribute("","name","name","",name);
+  att.addAttribute("","desc","desc","",desc);
+  if (signature != null) {
+    att.addAttribute("","signature","signature","",signature);
+  }
+  sa.addStart("method",att);
+  sa.addStart("exceptions",new AttributesImpl());
+  if (exceptions != null && exceptions.length > 0) {
+    for (int i=0; i < exceptions.length; i++) {
+      AttributesImpl att2=new AttributesImpl();
+      att2.addAttribute("","name","name","",exceptions[i]);
+      sa.addElement("exception",att2);
+    }
+  }
+  sa.addEnd("exceptions");
+  return new SAXCodeAdapter(sa,access);
+}

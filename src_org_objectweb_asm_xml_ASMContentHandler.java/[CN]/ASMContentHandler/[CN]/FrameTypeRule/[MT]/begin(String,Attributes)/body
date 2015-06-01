@@ -1,0 +1,16 @@
+{
+  @SuppressWarnings("unchecked") ArrayList<Object> types=(ArrayList<Object>)((HashMap<?,?>)peek()).get(name);
+  String type=attrs.getValue("type");
+  if ("uninitialized".equals(type)) {
+    types.add(getLabel(attrs.getValue("label")));
+  }
+ else {
+    Integer t=TYPES.get(type);
+    if (t == null) {
+      types.add(type);
+    }
+ else {
+      types.add(t);
+    }
+  }
+}

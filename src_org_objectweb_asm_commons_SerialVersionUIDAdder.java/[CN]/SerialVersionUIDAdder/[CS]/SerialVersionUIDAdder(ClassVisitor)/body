@@ -1,0 +1,6 @@
+{
+  this(Opcodes.ASM5,cv);
+  if (getClass() != SerialVersionUIDAdder.class) {
+    throw new IllegalStateException();
+  }
+}

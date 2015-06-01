@@ -1,0 +1,5 @@
+int access
+String name
+String desc
+MethodVisitor cmv
+Map<Label,Integer> labels

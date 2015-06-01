@@ -1,0 +1,3 @@
+Collection<ClassNode> classes
+FieldNode fn
+String newName

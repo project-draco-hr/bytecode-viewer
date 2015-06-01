@@ -1,0 +1,4 @@
+{
+  p.visitMaxs(maxStack,maxLocals);
+  super.visitMaxs(maxStack,maxLocals);
+}

@@ -1,0 +1,13 @@
+{
+  if (this.target != null) {
+    this.target.removeTargeter(this);
+  }
+  if (target != null) {
+    target.addTargeter(this);
+    insn().label=target.label();
+  }
+ else {
+    insn().label=null;
+  }
+  this.target=target;
+}

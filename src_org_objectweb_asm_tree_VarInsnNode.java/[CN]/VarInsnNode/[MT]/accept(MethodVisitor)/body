@@ -1,0 +1,4 @@
+{
+  mv.visitVarInsn(opcode,var);
+  acceptAnnotations(mv);
+}

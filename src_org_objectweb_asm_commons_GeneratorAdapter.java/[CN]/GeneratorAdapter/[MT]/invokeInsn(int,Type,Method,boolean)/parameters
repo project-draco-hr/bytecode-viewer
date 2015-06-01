@@ -1,0 +1,4 @@
+int opcode
+Type type
+Method method
+boolean itf

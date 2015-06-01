@@ -1,0 +1,4 @@
+{
+  List<AbstractNode> nodes=layerAll(opcodes);
+  return nodes != null ? nodes.get(0) : null;
+}

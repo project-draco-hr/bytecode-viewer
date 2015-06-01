@@ -1,0 +1,4 @@
+{
+  String s=map('.' + name + desc);
+  return s == null ? name : s;
+}

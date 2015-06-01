@@ -1,0 +1,3 @@
+{
+  return opcode() == ISUB || opcode() == DSUB || opcode() == LSUB || opcode() == FSUB;
+}

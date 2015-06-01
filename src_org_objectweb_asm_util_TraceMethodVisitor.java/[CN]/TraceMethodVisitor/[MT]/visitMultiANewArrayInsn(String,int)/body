@@ -1,0 +1,4 @@
+{
+  p.visitMultiANewArrayInsn(desc,dims);
+  super.visitMultiANewArrayInsn(desc,dims);
+}

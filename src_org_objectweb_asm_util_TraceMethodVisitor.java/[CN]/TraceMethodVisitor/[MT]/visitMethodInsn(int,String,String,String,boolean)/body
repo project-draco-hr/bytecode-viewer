@@ -1,0 +1,10 @@
+{
+  if (api < Opcodes.ASM5) {
+    super.visitMethodInsn(opcode,owner,name,desc,itf);
+    return;
+  }
+  p.visitMethodInsn(opcode,owner,name,desc,itf);
+  if (mv != null) {
+    mv.visitMethodInsn(opcode,owner,name,desc,itf);
+  }
+}

@@ -1,0 +1,5 @@
+int api
+Type currentClass
+Type currentSuperClass
+List<Type> currentClassInterfaces
+boolean isInterface
