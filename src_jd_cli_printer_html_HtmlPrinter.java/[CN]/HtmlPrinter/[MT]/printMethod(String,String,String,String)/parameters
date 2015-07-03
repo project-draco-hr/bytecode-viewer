@@ -1,0 +1,4 @@
+String internalName
+String name
+String descriptor
+String scopeInternalName

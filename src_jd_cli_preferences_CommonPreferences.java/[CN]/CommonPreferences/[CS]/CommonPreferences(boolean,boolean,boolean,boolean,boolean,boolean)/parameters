@@ -1,0 +1,6 @@
+boolean showDefaultConstructor
+boolean realignmentLineNumber
+boolean showPrefixThis
+boolean mergeEmptyLines
+boolean unicodeEscape
+boolean showLineNumbers

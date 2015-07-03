@@ -1,0 +1,4 @@
+{
+  String internalTypeName=internalPath.substring(0,internalPath.length() - 6);
+  return TypeNameUtil.InternalTypeNameToQualifiedTypeName(internalTypeName);
+}

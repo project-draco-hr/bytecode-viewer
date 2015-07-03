@@ -1,7 +1,46 @@
 {
   String exception="";
   try {
-    String decompiledSource="dicks WIP";
+    final File tempDirectory=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + MiscUtils.randomString(32)+ BytecodeViewer.fs);
+    tempDirectory.mkdir();
+    final File tempClass=new File(tempDirectory.getAbsolutePath() + BytecodeViewer.fs + cn.name+ ".class");
+    final File tempJava=new File(tempDirectory.getAbsolutePath() + BytecodeViewer.fs + cn.name+ ".java");
+    if (cn.name.contains("/")) {
+      String[] raw=cn.name.split("/");
+      String path=tempDirectory.getAbsolutePath() + BytecodeViewer.fs;
+      for (int i=0; i < raw.length - 1; i++) {
+        path+=raw[i] + BytecodeViewer.fs;
+        File f=new File(path);
+        f.mkdir();
+      }
+    }
+    try {
+      final FileOutputStream fos=new FileOutputStream(tempClass);
+      fos.write(b);
+      fos.close();
+    }
+ catch (    final IOException e) {
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+    String pathToClass=tempClass.getAbsolutePath().replace('/',File.separatorChar).replace('\\',File.separatorChar);
+    String directoryPath=ClassFileUtil.ExtractDirectoryPath(pathToClass);
+    String internalPath=ClassFileUtil.ExtractInternalPath(directoryPath,pathToClass);
+    CommonPreferences preferences=new CommonPreferences(){
+      @Override public boolean isShowLineNumbers(){
+        return false;
+      }
+      @Override public boolean isMergeEmptyLines(){
+        return true;
+      }
+    }
+;
+    DirectoryLoader loader=new DirectoryLoader(new File(directoryPath));
+    PrintStream ps=new PrintStream(tempJava.getAbsolutePath());
+    PlainTextPrinter printer=new PlainTextPrinter(preferences,ps);
+    jd.core.Decompiler decompiler=new DecompilerImpl();
+    decompiler.decompile(preferences,loader,printer,internalPath);
+    String decompiledSource="Error with decompilation.";
+    decompiledSource=DiskReader.loadAsString(tempJava.getAbsolutePath());
     return decompiledSource;
   }
  catch (  Exception e) {

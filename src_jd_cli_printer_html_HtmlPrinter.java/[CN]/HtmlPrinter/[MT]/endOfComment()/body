@@ -1,0 +1,4 @@
+{
+  this.sbCode.append("</cite>");
+  this.commentJavadocErrorDepth--;
+}

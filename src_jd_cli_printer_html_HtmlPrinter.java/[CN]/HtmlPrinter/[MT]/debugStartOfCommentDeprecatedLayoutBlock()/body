@@ -1,0 +1,5 @@
+{
+  if (DEBUG) {
+    this.sbCode.append("<span class='debugcommentdeprecatedlayoutblock' alt='comment deprecated'>");
+  }
+}

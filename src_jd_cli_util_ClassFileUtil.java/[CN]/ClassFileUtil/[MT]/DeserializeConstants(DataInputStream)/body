@@ -1,0 +1,38 @@
+{
+  int count=dis.readUnsignedShort();
+  if (count == 0)   return null;
+  Constant[] constants=new Constant[count];
+  for (int i=1; i < count; i++) {
+    byte tag=dis.readByte();
+switch (tag) {
+case ConstantConstant.CONSTANT_Class:
+      constants[i]=new ConstantClass(tag,dis.readUnsignedShort());
+    break;
+case ConstantConstant.CONSTANT_Utf8:
+  constants[i]=new ConstantUtf8(tag,dis.readUTF());
+break;
+case ConstantConstant.CONSTANT_Long:
+case ConstantConstant.CONSTANT_Double:
+dis.read();
+dis.read();
+dis.read();
+dis.read();
+i++;
+case ConstantConstant.CONSTANT_Fieldref:
+case ConstantConstant.CONSTANT_Methodref:
+case ConstantConstant.CONSTANT_InterfaceMethodref:
+case ConstantConstant.CONSTANT_NameAndType:
+case ConstantConstant.CONSTANT_Integer:
+case ConstantConstant.CONSTANT_Float:
+dis.read();
+dis.read();
+case ConstantConstant.CONSTANT_String:
+dis.read();
+dis.read();
+break;
+default :
+return constants;
+}
+}
+return constants;
+}

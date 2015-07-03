@@ -1,0 +1,3 @@
+{
+  this.printStream.append(name);
+}

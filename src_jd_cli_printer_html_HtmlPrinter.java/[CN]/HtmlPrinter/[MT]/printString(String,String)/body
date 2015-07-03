@@ -1,0 +1,12 @@
+{
+  this.sbCode.append("<u>");
+  int length=s.length();
+  if (length > 0) {
+    for (int i=0; i < length; i++) {
+      char c=s.charAt(i);
+      if (c == '<')       this.sbCode.append("&lt;");
+ else       this.sbCode.append(c);
+    }
+  }
+  this.sbCode.append("</u>");
+}

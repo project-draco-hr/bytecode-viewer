@@ -1,0 +1,12 @@
+{
+  if (this.preferences.isMergeEmptyLines() == false) {
+    while (count-- > 0) {
+      if (this.maxLineNumber > 0) {
+        this.printStream.append(this.lineNumberBeginPrefix);
+        this.printStream.append(this.unknownLineNumberPrefix);
+        this.printStream.append(this.lineNumberEndPrefix);
+      }
+      this.printStream.append(NEWLINE);
+    }
+  }
+}

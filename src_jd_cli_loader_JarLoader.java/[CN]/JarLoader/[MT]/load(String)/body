@@ -1,0 +1,12 @@
+{
+  ZipEntry zipEntry=this.zipFile.getEntry(internalPath);
+  if (zipEntry == null) {
+    throw new LoaderException("Can not read '" + internalPath + "'");
+  }
+  try {
+    return new DataInputStream(this.zipFile.getInputStream(zipEntry));
+  }
+ catch (  IOException e) {
+    throw new LoaderException("Error reading '" + internalPath + "'");
+  }
+}

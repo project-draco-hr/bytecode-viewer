@@ -1,0 +1,12 @@
+{
+  super(file);
+  if (!(file.exists() && file.isFile())) {
+    throw new LoaderException("'" + codebase + "' is not a directory");
+  }
+  try {
+    this.zipFile=new ZipFile(codebase);
+  }
+ catch (  IOException e) {
+    throw new LoaderException("Error reading from '" + codebase + "'");
+  }
+}

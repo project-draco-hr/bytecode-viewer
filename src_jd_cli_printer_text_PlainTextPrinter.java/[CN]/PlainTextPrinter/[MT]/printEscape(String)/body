@@ -1,0 +1,33 @@
+{
+  if (this.preferences.isUnicodeEscape()) {
+    int length=s.length();
+    for (int i=0; i < length; i++) {
+      char c=s.charAt(i);
+      if (c == '\t') {
+        this.printStream.append(c);
+      }
+ else       if (c < 32) {
+        this.printStream.append("\\0");
+        this.printStream.append((char)('0' + (c >> 3)));
+        this.printStream.append((char)('0' + (c & 0x7)));
+      }
+ else       if (c > 127) {
+        this.printStream.append("\\u");
+        int z=(c >> 12);
+        this.printStream.append((char)((z <= 9) ? ('0' + z) : (('A' - 10) + z)));
+        z=((c >> 8) & 0xF);
+        this.printStream.append((char)((z <= 9) ? ('0' + z) : (('A' - 10) + z)));
+        z=((c >> 4) & 0xF);
+        this.printStream.append((char)((z <= 9) ? ('0' + z) : (('A' - 10) + z)));
+        z=(c & 0xF);
+        this.printStream.append((char)((z <= 9) ? ('0' + z) : (('A' - 10) + z)));
+      }
+ else {
+        this.printStream.append(c);
+      }
+    }
+  }
+ else {
+    this.printStream.append(s);
+  }
+}

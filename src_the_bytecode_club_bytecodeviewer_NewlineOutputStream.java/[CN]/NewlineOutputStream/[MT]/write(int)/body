@@ -1,0 +1,12 @@
+{
+  if (b == '\r') {
+    out.write(newline);
+  }
+ else   if (b == '\n') {
+    if (lastb != '\r')     out.write(newline);
+  }
+ else {
+    out.write(b);
+  }
+  lastb=b;
+}
