@@ -602,6 +602,10 @@
   chckbxmntmNewCheckItem_12.setSelected(true);
   mnSettings.add(refreshOnChange);
   mnSettings.add(decodeAPKResources);
+  mnSettings.add(separator_36);
+  mnSettings.add(mnFontSize);
+  fontSpinner.setModel(new SpinnerNumberModel(new Integer(12),new Integer(1),null,new Integer(1)));
+  mnFontSize.add(fontSpinner);
   mnSettings.add(separator_13);
   mntmSetPythonDirectory.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent arg0){

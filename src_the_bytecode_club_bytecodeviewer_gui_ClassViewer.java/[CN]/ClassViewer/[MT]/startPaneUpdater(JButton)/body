@@ -53,6 +53,7 @@
           }
 );
           panel1.add(scrollPane);
+          panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
         }
         if (pane1 == 2) {
@@ -78,6 +79,7 @@
           }
 );
           panel1.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
         }
         if (pane1 == 3) {
@@ -103,6 +105,7 @@
           }
 );
           panel1.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
         }
         if (pane1 == 4) {
@@ -128,12 +131,14 @@
           }
 );
           panel1.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane1 == 5) {
           final ClassWriter cw=new ClassWriter(0);
           cn.accept(cw);
           JHexEditor hex=new JHexEditor(cw.toByteArray());
           panel1.add(hex);
+          hex.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane1 == 6) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -159,6 +164,7 @@
           }
 );
           panel1.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane1 == 7) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -183,6 +189,7 @@
           }
 );
           panel1.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
         }
         if (pane1 == 8) {
@@ -209,6 +216,7 @@
           }
 );
           panel1.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane1 == 9) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -233,6 +241,7 @@
           }
 );
           panel1.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
         }
       }
@@ -273,6 +282,7 @@
           }
 );
           panel2.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
         }
         if (pane2 == 2) {
@@ -298,6 +308,7 @@
           }
 );
           panel2.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
         }
         if (pane2 == 3) {
@@ -323,6 +334,7 @@
           }
 );
           panel2.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
         }
         if (pane2 == 4) {
@@ -348,12 +360,14 @@
           }
 );
           panel2.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane2 == 5) {
           final ClassWriter cw=new ClassWriter(0);
           cn.accept(cw);
           JHexEditor hex=new JHexEditor(cw.toByteArray());
           panel2.add(hex);
+          hex.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane2 == 6) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -379,6 +393,7 @@
           }
 );
           panel2.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane2 == 7) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -403,6 +418,7 @@
           }
 );
           panel2.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
         }
         if (pane2 == 8) {
@@ -429,6 +445,7 @@
           }
 );
           panel2.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane2 == 9) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -453,6 +470,7 @@
           }
 );
           panel2.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
         }
       }
@@ -493,6 +511,7 @@
           }
 );
           panel3.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java3=panelArea;
         }
         if (pane3 == 2) {
@@ -518,6 +537,7 @@
           }
 );
           panel3.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java3=panelArea;
         }
         if (pane3 == 3) {
@@ -543,6 +563,7 @@
           }
 );
           panel3.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java3=panelArea;
         }
         if (pane3 == 4) {
@@ -568,12 +589,14 @@
           }
 );
           panel3.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane3 == 5) {
           final ClassWriter cw=new ClassWriter(0);
           cn.accept(cw);
           JHexEditor hex=new JHexEditor(cw.toByteArray());
           panel3.add(hex);
+          hex.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane3 == 6) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -599,6 +622,7 @@
           }
 );
           panel3.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane3 == 7) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -624,6 +648,7 @@
 );
           panel3.add(scrollPane);
           java3=panelArea;
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane3 == 8) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -649,6 +674,7 @@
           }
 );
           panel3.add(scrollPane);
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
         if (pane3 == 9) {
           RSyntaxTextArea panelArea=new RSyntaxTextArea();
@@ -674,6 +700,7 @@
 );
           panel3.add(scrollPane);
           java3=panelArea;
+          panelArea.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
       }
  catch (      Exception e) {
