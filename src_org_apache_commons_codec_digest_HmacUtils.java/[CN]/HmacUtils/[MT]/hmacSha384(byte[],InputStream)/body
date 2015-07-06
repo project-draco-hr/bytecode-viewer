@@ -1,0 +1,3 @@
+{
+  return updateHmac(getHmacSha384(key),valueToDigest).doFinal();
+}

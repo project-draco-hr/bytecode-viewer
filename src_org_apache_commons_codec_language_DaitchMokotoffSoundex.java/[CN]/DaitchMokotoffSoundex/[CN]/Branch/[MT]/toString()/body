@@ -1,0 +1,6 @@
+{
+  if (cachedString == null) {
+    cachedString=builder.toString();
+  }
+  return cachedString;
+}

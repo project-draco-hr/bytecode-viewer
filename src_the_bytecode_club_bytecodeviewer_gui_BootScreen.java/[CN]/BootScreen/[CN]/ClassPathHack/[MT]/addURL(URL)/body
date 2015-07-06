@@ -1,0 +1,12 @@
+{
+  URLClassLoader sysloader=(URLClassLoader)ClassLoader.getSystemClassLoader();
+  Class<?> sysclass=URLClassLoader.class;
+  try {
+    Method method=sysclass.getDeclaredMethod("addURL",parameters);
+    method.setAccessible(true);
+    method.invoke(sysloader,u);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+}

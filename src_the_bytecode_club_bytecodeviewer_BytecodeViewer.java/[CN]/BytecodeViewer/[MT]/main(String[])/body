@@ -1,33 +1,10 @@
 {
   System.setSecurityManager(sm);
-  checkKrakatau();
-  System.out.println("https://the.bytecode.club - Created by @Konloch - Bytecode Viewer " + version);
-  cleanup();
-  Runtime.getRuntime().addShutdownHook(new Thread(){
-    @Override public void run(){
-      for (      Process krakatau : krakatau)       krakatau.destroy();
-      Settings.saveGUI();
-      cleanup();
-    }
-  }
-);
   try {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
-  viewer=new MainViewerGUI();
-  Settings.loadGUI();
-  resetRecentFilesMenu();
-  if (viewer.chckbxmntmNewCheckItem_12.isSelected())   versionChecker.start();
-  viewer.setVisible(true);
-  System.out.println("Start up took " + ((System.currentTimeMillis() - start) / 1000) + " seconds");
-  if (args.length >= 1)   for (  String s : args) {
-    openFiles(new File[]{new File(s)},true);
-  }
-  if (!pingback) {
-    pingback=true;
-    pingback();
-  }
+  new BootScreen().DO_FIRST_BOOT(args);
 }

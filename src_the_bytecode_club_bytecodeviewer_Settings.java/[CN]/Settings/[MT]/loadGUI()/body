@@ -145,6 +145,7 @@
     BytecodeViewer.viewer.panel2JDGUI_E.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,110,false)));
     BytecodeViewer.viewer.panel3JDGUI_E.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,111,false)));
     BytecodeViewer.viewer.fontSpinner.setValue(Integer.parseInt(DiskReader.loadString(BytecodeViewer.settingsName,112,false)));
+    BytecodeViewer.deleteForiegnLibraries=Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,113,false));
   }
  catch (  Exception e) {
   }

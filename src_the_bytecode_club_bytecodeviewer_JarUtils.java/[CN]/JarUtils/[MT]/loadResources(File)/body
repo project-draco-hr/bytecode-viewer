@@ -1,4 +1,5 @@
 {
+  if (!zipFile.exists())   return;
   ZipInputStream jis=new ZipInputStream(new FileInputStream(zipFile));
   ZipEntry entry;
   while ((entry=jis.getNextEntry()) != null) {

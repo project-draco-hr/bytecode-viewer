@@ -1,0 +1,4 @@
+int lineLength
+byte[] lineSeparator
+boolean useHex
+byte pad

@@ -1,0 +1,3 @@
+{
+  this(lineLength,lineSeparator,useHex,PAD_DEFAULT);
+}

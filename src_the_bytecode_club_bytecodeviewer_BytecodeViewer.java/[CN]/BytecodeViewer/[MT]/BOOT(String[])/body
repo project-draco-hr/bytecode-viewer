@@ -1,0 +1,21 @@
+{
+  checkKrakatau();
+  System.out.println("https://the.bytecode.club - Created by @Konloch - Bytecode Viewer " + version);
+  cleanup();
+  Runtime.getRuntime().addShutdownHook(new Thread(){
+    @Override public void run(){
+      for (      Process krakatau : krakatau)       krakatau.destroy();
+      Settings.saveGUI();
+      cleanup();
+    }
+  }
+);
+  viewer=new MainViewerGUI();
+  Settings.loadGUI();
+  resetRecentFilesMenu();
+  viewer.setVisible(true);
+  System.out.println("Start up took " + ((System.currentTimeMillis() - start) / 1000) + " seconds");
+  if (args.length >= 1)   for (  String s : args) {
+    openFiles(new File[]{new File(s)},true);
+  }
+}

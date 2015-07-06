@@ -1,0 +1,4 @@
+BufferedImage src
+int padding
+Color color
+BufferedImageOp ops

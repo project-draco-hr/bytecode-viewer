@@ -140,6 +140,7 @@
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.panel2JDGUI_E.isSelected()),false);
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.panel3JDGUI_E.isSelected()),false);
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.viewer.fontSpinner.getValue()),false);
+    DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.deleteForiegnLibraries),false);
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

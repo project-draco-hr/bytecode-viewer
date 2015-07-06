@@ -1,0 +1,4 @@
+BufferedImage src
+int targetWidth
+int targetHeight
+Object interpolationHintValue

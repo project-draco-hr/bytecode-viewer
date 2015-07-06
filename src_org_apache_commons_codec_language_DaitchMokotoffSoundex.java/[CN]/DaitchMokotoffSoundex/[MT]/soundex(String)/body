@@ -1,0 +1,12 @@
+{
+  final String[] branches=soundex(source,true);
+  final StringBuilder sb=new StringBuilder();
+  int index=0;
+  for (  final String branch : branches) {
+    sb.append(branch);
+    if (++index < branches.length) {
+      sb.append('|');
+    }
+  }
+  return sb.toString();
+}
