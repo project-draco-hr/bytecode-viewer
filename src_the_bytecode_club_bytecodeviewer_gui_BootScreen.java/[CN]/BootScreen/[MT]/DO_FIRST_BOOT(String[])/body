@@ -98,25 +98,27 @@
     for (    String s : libsFileList) {
       if (s.endsWith(".jar")) {
         File f=new File(s);
-        setTitle("Bytecode Viewer Boot Screen - Loading Library " + f.getName());
-        System.out.println(f.getName());
-        JarFile jarFile=new JarFile(s);
-        Enumeration<JarEntry> e=jarFile.entries();
-        ClassPathHack.addFile(f);
-        while (e.hasMoreElements()) {
-          JarEntry je=(JarEntry)e.nextElement();
-          if (je.isDirectory() || !je.getName().endsWith(".class")) {
-            continue;
+        if (f.exists()) {
+          setTitle("Bytecode Viewer Boot Screen - Loading Library " + f.getName());
+          System.out.println(f.getName());
+          JarFile jarFile=new JarFile(s);
+          Enumeration<JarEntry> e=jarFile.entries();
+          ClassPathHack.addFile(f);
+          while (e.hasMoreElements()) {
+            JarEntry je=(JarEntry)e.nextElement();
+            if (je.isDirectory() || !je.getName().endsWith(".class")) {
+              continue;
+            }
+            try {
+              String className=je.getName().substring(0,je.getName().length() - 6);
+              className=className.replace('/','.');
+              ClassLoader.getSystemClassLoader().loadClass(className);
+            }
+ catch (            java.lang.VerifyError|java.lang.ExceptionInInitializerError|java.lang.IncompatibleClassChangeError|java.lang.NoClassDefFoundError|Exception e2) {
+            }
           }
-          try {
-            String className=je.getName().substring(0,je.getName().length() - 6);
-            className=className.replace('/','.');
-            ClassLoader.getSystemClassLoader().loadClass(className);
-          }
- catch (          java.lang.VerifyError|java.lang.ExceptionInInitializerError|java.lang.IncompatibleClassChangeError|java.lang.NoClassDefFoundError|Exception e2) {
-          }
+          jarFile.close();
         }
-        jarFile.close();
       }
     }
     setTitle("Bytecode Viewer Boot Screen - Booting!");

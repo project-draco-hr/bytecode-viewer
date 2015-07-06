@@ -19,7 +19,7 @@
   getContentPane().add(scrollPane,gbc_scrollPane);
   JEditorPane editorPane=new JEditorPane();
   editorPane.setEditorKit(new HTMLEditorKit());
-  editorPane.setText("http://www.icesoft.org/java/home.jsf");
+  editorPane.setText(convertStreamToString(BytecodeViewer.class.getClassLoader().getResourceAsStream("resources/intro.html")));
   scrollPane.setViewportView(editorPane);
   GridBagConstraints gbc_progressBar=new GridBagConstraints();
   gbc_progressBar.fill=GridBagConstraints.HORIZONTAL;
