@@ -146,6 +146,9 @@
     BytecodeViewer.viewer.panel3JDGUI_E.setSelected(Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,111,false)));
     BytecodeViewer.viewer.fontSpinner.setValue(Integer.parseInt(DiskReader.loadString(BytecodeViewer.settingsName,112,false)));
     BytecodeViewer.deleteForiegnLibraries=Boolean.parseBoolean(DiskReader.loadString(BytecodeViewer.settingsName,113,false));
+    decompiler=Integer.parseInt(DiskReader.loadString(BytecodeViewer.settingsName,114,false));
+    if (decompiler == 0)     BytecodeViewer.viewer.apkConversionGroup.setSelected(BytecodeViewer.viewer.apkConversionDex.getModel(),true);
+ else     if (decompiler == 1)     BytecodeViewer.viewer.apkConversionGroup.setSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel(),true);
   }
  catch (  Exception e) {
   }

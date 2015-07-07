@@ -598,10 +598,25 @@
   mnSettings.add(autoCompileSmali);
   autoCompileOnRefresh.setSelected(true);
   mnSettings.add(autoCompileOnRefresh);
-  mnSettings.add(chckbxmntmNewCheckItem_12);
-  chckbxmntmNewCheckItem_12.setSelected(true);
   mnSettings.add(refreshOnChange);
+  mnSettings.add(separator_38);
   mnSettings.add(decodeAPKResources);
+  mnSettings.add(mnApkConversion);
+  mnApkConversion.add(apkConversionDex);
+  mnApkConversion.add(apkConversionEnjarify);
+  mnSettings.add(separator_37);
+  mnSettings.add(chckbxmntmNewCheckItem_12);
+  chckbxmntmDeleteForiegnoutdatedLibs.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      if (!chckbxmntmDeleteForiegnoutdatedLibs.isSelected()) {
+        BytecodeViewer.showMessage("WARNING: With this being toggled off outdated libraries will NOT be removed. It's also a security issue. ONLY TURN IT OFF IF YOU KNOW WHAT YOU'RE DOING.");
+      }
+      BytecodeViewer.deleteForiegnLibraries=chckbxmntmDeleteForiegnoutdatedLibs.isSelected();
+    }
+  }
+);
+  chckbxmntmDeleteForiegnoutdatedLibs.setSelected(true);
+  mnSettings.add(chckbxmntmDeleteForiegnoutdatedLibs);
   mnSettings.add(separator_36);
   mntmSetPythonDirectory.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent arg0){
@@ -932,6 +947,9 @@
   rfComps.add(cn);
   rfComps.add(s);
   rfComps.add(workPane);
+  apkConversionGroup.add(apkConversionDex);
+  apkConversionGroup.add(apkConversionEnjarify);
+  apkConversionGroup.setSelected(apkConversionDex.getModel(),true);
   panelGroup1.add(panel1None);
   panelGroup1.add(panel1Proc);
   panelGroup1.add(panel1CFR);
