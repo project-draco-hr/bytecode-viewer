@@ -53,7 +53,8 @@
                   JarUtils.loadResources(f);
                   String name=getRandomizedName() + ".jar";
                   File output=new File(tempDirectory + fs + name);
-                  Dex2Jar.dex2Jar(f,output);
+                  if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))                   Dex2Jar.dex2Jar(f,output);
+ else                   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))                   Enjarify.apk2Jar(f,output);
                   BytecodeViewer.viewer.setIcon(false);
                   openFiles(new File[]{output},false);
                 }
@@ -66,7 +67,8 @@
                 try {
                   String name=getRandomizedName() + ".jar";
                   File output=new File(tempDirectory + fs + name);
-                  Dex2Jar.dex2Jar(f,output);
+                  if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))                   Dex2Jar.dex2Jar(f,output);
+ else                   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))                   Enjarify.apk2Jar(f,output);
                   BytecodeViewer.viewer.setIcon(false);
                   openFiles(new File[]{output},false);
                 }

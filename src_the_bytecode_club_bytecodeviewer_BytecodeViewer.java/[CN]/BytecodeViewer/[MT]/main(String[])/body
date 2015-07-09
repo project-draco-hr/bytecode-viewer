@@ -2,6 +2,7 @@
   System.setSecurityManager(sm);
   try {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    if (previewCopy)     showMessage("WARNING: This is a preview/dev copy, you WON'T be alerted when 2.9.7 is actually out if you use this." + nl + "Make sure to watch the repo: https://github.com/Konloch/bytecode-viewer for 2.9.7's release");
     new BootScreen().DO_FIRST_BOOT(args);
   }
  catch (  Exception e) {

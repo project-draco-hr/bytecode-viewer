@@ -1,0 +1,13 @@
+{
+  JFileChooser fc=new JFileChooser();
+  fc.setFileFilter(new PythonC3FileFilter());
+  fc.setFileHidingEnabled(false);
+  fc.setAcceptAllFileFilterUsed(false);
+  int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);
+  if (returnVal == JFileChooser.APPROVE_OPTION)   try {
+    BytecodeViewer.python3=fc.getSelectedFile().getAbsolutePath();
+  }
+ catch (  Exception e1) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e1);
+  }
+}

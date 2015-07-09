@@ -19,7 +19,8 @@
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
-  Dex2Jar.dex2Jar(tempDex,tempJar);
+  if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))   Dex2Jar.dex2Jar(tempDex,tempJar);
+ else   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))   Enjarify.apk2Jar(tempDex,tempJar);
   try {
     ZipUtils.unzipFilesToPath(tempJar.getAbsolutePath(),tempJarFolder.getAbsolutePath());
     File outputClass=null;

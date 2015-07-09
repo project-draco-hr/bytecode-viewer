@@ -14,7 +14,8 @@
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
   ZipUtils.zipFile(tempClass,tempZip);
-  Dex2Jar.saveAsDex(tempZip,tempDex);
+  if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))   Dex2Jar.saveAsDex(tempZip,tempDex);
+ else   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))   Enjarify.saveAsAPK(tempZip,tempDex);
   try {
     org.jf.baksmali.main.main(new String[]{"-o",tempSmali.getAbsolutePath(),"-x",tempDex.getAbsolutePath()});
   }

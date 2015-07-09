@@ -149,6 +149,7 @@
     decompiler=Integer.parseInt(DiskReader.loadString(BytecodeViewer.settingsName,114,false));
     if (decompiler == 0)     BytecodeViewer.viewer.apkConversionGroup.setSelected(BytecodeViewer.viewer.apkConversionDex.getModel(),true);
  else     if (decompiler == 1)     BytecodeViewer.viewer.apkConversionGroup.setSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel(),true);
+    BytecodeViewer.python3=DiskReader.loadString(BytecodeViewer.settingsName,115,false);
   }
  catch (  Exception e) {
   }

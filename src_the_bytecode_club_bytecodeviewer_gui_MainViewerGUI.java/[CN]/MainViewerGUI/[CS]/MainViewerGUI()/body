@@ -218,7 +218,8 @@
             JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),input);
             Thread t=new Thread(){
               @Override public void run(){
-                Dex2Jar.saveAsDex(new File(input),file2);
+                if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))                 Dex2Jar.saveAsDex(new File(input),file2);
+ else                 if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))                 Enjarify.saveAsAPK(new File(input),file2);
                 BytecodeViewer.viewer.setIcon(false);
               }
             }

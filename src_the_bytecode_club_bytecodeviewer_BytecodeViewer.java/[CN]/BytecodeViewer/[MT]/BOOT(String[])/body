@@ -1,10 +1,10 @@
 {
-  checkKrakatau();
   System.out.println("https://the.bytecode.club - Created by @Konloch - Bytecode Viewer " + version);
   cleanup();
   Runtime.getRuntime().addShutdownHook(new Thread(){
     @Override public void run(){
       for (      Process krakatau : krakatau)       krakatau.destroy();
+      for (      Process enjarify : enjarify)       enjarify.destroy();
       Settings.saveGUI();
       cleanup();
     }

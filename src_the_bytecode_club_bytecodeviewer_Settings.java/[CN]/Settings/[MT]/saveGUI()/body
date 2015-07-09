@@ -143,6 +143,7 @@
     DiskWriter.writeNewLine(BytecodeViewer.settingsName,String.valueOf(BytecodeViewer.deleteForiegnLibraries),false);
     if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))     DiskWriter.writeNewLine(BytecodeViewer.settingsName,"0",false);
  else     if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))     DiskWriter.writeNewLine(BytecodeViewer.settingsName,"1",false);
+    DiskWriter.writeNewLine(BytecodeViewer.settingsName,BytecodeViewer.python3,false);
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
