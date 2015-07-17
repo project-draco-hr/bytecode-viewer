@@ -1,0 +1,236 @@
+{
+  try {
+    CommandLine cmd=parser.parse(options,args);
+    String decompiler=cmd.getOptionValue("decompiler");
+    File input=new File(cmd.getOptionValue("i"));
+    File output=new File(cmd.getOptionValue("o"));
+    String target=cmd.getOptionValue("t");
+    if (cmd.getOptionValue("decompiler") == null) {
+      System.out.println("You can define another decompiler by appending -decompiler \"name\", by default procyon has been set.");
+      decompiler="procyon";
+    }
+    if (decompiler.equalsIgnoreCase("procyon")) {
+      System.out.println("Decompiling " + input.getAbsolutePath() + " with Procyon");
+      BytecodeViewer.openFiles(new File[]{input},false);
+      Thread.sleep(5 * 1000);
+      if (target.equalsIgnoreCase("all")) {
+        Decompiler.procyon.decompileToZip(output.getAbsolutePath());
+      }
+ else {
+        try {
+          ClassNode cn=BytecodeViewer.getClassNode(target);
+          final ClassWriter cw=new ClassWriter(0);
+          try {
+            cn.accept(cw);
+          }
+ catch (          Exception e) {
+            e.printStackTrace();
+            try {
+              Thread.sleep(200);
+              cn.accept(cw);
+            }
+ catch (            InterruptedException e1) {
+            }
+          }
+          String contents=Decompiler.procyon.decompileClassNode(cn,cw.toByteArray());
+          DiskWriter.replaceFile(output.getAbsolutePath(),contents,false);
+        }
+ catch (        Exception e) {
+          new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        }
+      }
+    }
+ else     if (decompiler.equalsIgnoreCase("cfr")) {
+      System.out.println("Decompiling " + input.getAbsolutePath() + " with CFR");
+      BytecodeViewer.openFiles(new File[]{input},false);
+      Thread.sleep(5 * 1000);
+      if (target.equalsIgnoreCase("all")) {
+        Decompiler.cfr.decompileToZip(output.getAbsolutePath());
+      }
+ else {
+        try {
+          ClassNode cn=BytecodeViewer.getClassNode(target);
+          final ClassWriter cw=new ClassWriter(0);
+          try {
+            cn.accept(cw);
+          }
+ catch (          Exception e) {
+            e.printStackTrace();
+            try {
+              Thread.sleep(200);
+              cn.accept(cw);
+            }
+ catch (            InterruptedException e1) {
+            }
+          }
+          String contents=Decompiler.cfr.decompileClassNode(cn,cw.toByteArray());
+          DiskWriter.replaceFile(output.getAbsolutePath(),contents,false);
+        }
+ catch (        Exception e) {
+          new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        }
+      }
+    }
+ else     if (decompiler.equalsIgnoreCase("fernflower")) {
+      System.out.println("Decompiling " + input.getAbsolutePath() + " with FernFlower");
+      BytecodeViewer.openFiles(new File[]{input},false);
+      Thread.sleep(5 * 1000);
+      if (target.equalsIgnoreCase("all")) {
+        Decompiler.fernflower.decompileToZip(output.getAbsolutePath());
+      }
+ else {
+        try {
+          ClassNode cn=BytecodeViewer.getClassNode(target);
+          final ClassWriter cw=new ClassWriter(0);
+          try {
+            cn.accept(cw);
+          }
+ catch (          Exception e) {
+            e.printStackTrace();
+            try {
+              Thread.sleep(200);
+              cn.accept(cw);
+            }
+ catch (            InterruptedException e1) {
+            }
+          }
+          String contents=Decompiler.fernflower.decompileClassNode(cn,cw.toByteArray());
+          DiskWriter.replaceFile(output.getAbsolutePath(),contents,false);
+        }
+ catch (        Exception e) {
+          new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        }
+      }
+    }
+ else     if (decompiler.equalsIgnoreCase("krakatau")) {
+      System.out.println("Decompiling " + input.getAbsolutePath() + " with Krakatau");
+      BytecodeViewer.openFiles(new File[]{input},false);
+      Thread.sleep(5 * 1000);
+      if (target.equalsIgnoreCase("all")) {
+        Decompiler.krakatau.decompileToZip(output.getAbsolutePath());
+      }
+ else {
+        try {
+          ClassNode cn=BytecodeViewer.getClassNode(target);
+          final ClassWriter cw=new ClassWriter(0);
+          try {
+            cn.accept(cw);
+          }
+ catch (          Exception e) {
+            e.printStackTrace();
+            try {
+              Thread.sleep(200);
+              cn.accept(cw);
+            }
+ catch (            InterruptedException e1) {
+            }
+          }
+          String contents=Decompiler.krakatau.decompileClassNode(cn,cw.toByteArray());
+          DiskWriter.replaceFile(output.getAbsolutePath(),contents,false);
+        }
+ catch (        Exception e) {
+          new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        }
+      }
+    }
+ else     if (decompiler.equalsIgnoreCase("krakatau-bytecode")) {
+      System.out.println("Decompiling " + input.getAbsolutePath() + " with Krakatau-Bytecode");
+      BytecodeViewer.openFiles(new File[]{input},false);
+      Thread.sleep(5 * 1000);
+      if (target.equalsIgnoreCase("all")) {
+        System.out.println("Coming soon.");
+      }
+ else {
+        try {
+          ClassNode cn=BytecodeViewer.getClassNode(target);
+          final ClassWriter cw=new ClassWriter(0);
+          try {
+            cn.accept(cw);
+          }
+ catch (          Exception e) {
+            e.printStackTrace();
+            try {
+              Thread.sleep(200);
+              cn.accept(cw);
+            }
+ catch (            InterruptedException e1) {
+            }
+          }
+          String contents=Decompiler.krakatauDA.decompileClassNode(cn,cw.toByteArray());
+          DiskWriter.replaceFile(output.getAbsolutePath(),contents,false);
+        }
+ catch (        Exception e) {
+          new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        }
+      }
+    }
+ else     if (decompiler.equalsIgnoreCase("jd-gui")) {
+      System.out.println("Decompiling " + input.getAbsolutePath() + " with JD-GUI");
+      BytecodeViewer.openFiles(new File[]{input},false);
+      Thread.sleep(5 * 1000);
+      if (target.equalsIgnoreCase("all")) {
+        Decompiler.jdgui.decompileToZip(output.getAbsolutePath());
+      }
+ else {
+        try {
+          ClassNode cn=BytecodeViewer.getClassNode(target);
+          final ClassWriter cw=new ClassWriter(0);
+          try {
+            cn.accept(cw);
+          }
+ catch (          Exception e) {
+            e.printStackTrace();
+            try {
+              Thread.sleep(200);
+              cn.accept(cw);
+            }
+ catch (            InterruptedException e1) {
+            }
+          }
+          String contents=Decompiler.jdgui.decompileClassNode(cn,cw.toByteArray());
+          DiskWriter.replaceFile(output.getAbsolutePath(),contents,false);
+        }
+ catch (        Exception e) {
+          new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        }
+      }
+    }
+ else     if (decompiler.equalsIgnoreCase("smali")) {
+      System.out.println("Decompiling " + input.getAbsolutePath() + " with Smali");
+      BytecodeViewer.openFiles(new File[]{input},false);
+      Thread.sleep(5 * 1000);
+      if (target.equalsIgnoreCase("all")) {
+        System.out.println("Coming soon.");
+      }
+ else {
+        try {
+          ClassNode cn=BytecodeViewer.getClassNode(target);
+          final ClassWriter cw=new ClassWriter(0);
+          try {
+            cn.accept(cw);
+          }
+ catch (          Exception e) {
+            e.printStackTrace();
+            try {
+              Thread.sleep(200);
+              cn.accept(cw);
+            }
+ catch (            InterruptedException e1) {
+            }
+          }
+          String contents=Decompiler.smali.decompileClassNode(cn,cw.toByteArray());
+          DiskWriter.replaceFile(output.getAbsolutePath(),contents,false);
+        }
+ catch (        Exception e) {
+          new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        }
+      }
+    }
+    System.out.println("Finished.");
+    System.out.println("Bytecode Viewer CLI v" + BytecodeViewer.version + " by @Konloch - http://bytecodeviewer.com");
+    System.exit(0);
+  }
+ catch (  Exception e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+}

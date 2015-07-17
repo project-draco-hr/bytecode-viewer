@@ -8,7 +8,18 @@
     }
  catch (    Exception e2) {
     }
-    fc.setFileFilter(viewer.new APKDEXJarZipClassFileFilter());
+    fc.setFileFilter(new FileFilter(){
+      @Override public boolean accept(      File f){
+        if (f.isDirectory())         return true;
+        String extension=MiscUtils.extension(f.getAbsolutePath());
+        if (extension != null)         if (extension.equals("jar") || extension.equals("zip") || extension.equals("class")|| extension.equals("apk")|| extension.equals("dex"))         return true;
+        return false;
+      }
+      @Override public String getDescription(){
+        return "APKs, DEX, Class Files or Zip/Jar Archives";
+      }
+    }
+);
     fc.setFileHidingEnabled(false);
     fc.setAcceptAllFileFilterUsed(false);
     int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);
@@ -48,7 +59,15 @@
     }
     if (viewer.autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))     return;
     JFileChooser fc=new JFileChooser();
-    fc.setFileFilter(viewer.new ZipFileFilter());
+    fc.setFileFilter(new FileFilter(){
+      @Override public boolean accept(      File f){
+        return f.isDirectory() || MiscUtils.extension(f.getAbsolutePath()).equals("zip");
+      }
+      @Override public String getDescription(){
+        return "Zip Archives";
+      }
+    }
+);
     fc.setFileHidingEnabled(false);
     fc.setAcceptAllFileFilterUsed(false);
     int returnVal=fc.showSaveDialog(viewer);

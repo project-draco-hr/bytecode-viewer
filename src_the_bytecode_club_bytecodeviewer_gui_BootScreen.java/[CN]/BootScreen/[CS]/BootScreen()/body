@@ -1,7 +1,11 @@
 {
   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   this.setIconImages(Resources.iconList);
-  setSize(new Dimension(600,800));
+  int i=(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+  if (i >= 840)   setSize(new Dimension(600,800));
+ else   if (i >= 640)   setSize(new Dimension(500,600));
+ else   if (i >= 440)   setSize(new Dimension(400,400));
+ else   setSize(Toolkit.getDefaultToolkit().getScreenSize());
   setTitle("Bytecode Viewer Boot Screen - Starting Up");
   GridBagLayout gridBagLayout=new GridBagLayout();
   gridBagLayout.columnWidths=new int[]{0,0};

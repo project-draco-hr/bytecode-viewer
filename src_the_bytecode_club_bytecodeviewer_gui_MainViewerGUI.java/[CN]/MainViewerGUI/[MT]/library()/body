@@ -1,6 +1,14 @@
 {
   JFileChooser fc=new JFileChooser();
-  fc.setFileFilter(new LibraryFileFilter());
+  fc.setFileFilter(new FileFilter(){
+    @Override public boolean accept(    File f){
+      return f.isDirectory();
+    }
+    @Override public String getDescription(){
+      return "Optional Library Folder";
+    }
+  }
+);
   fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
   fc.setFileHidingEnabled(false);
   fc.setAcceptAllFileFilterUsed(false);

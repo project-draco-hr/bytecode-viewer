@@ -1,6 +1,14 @@
 {
   JFileChooser fc=new JFileChooser();
-  fc.setFileFilter(new RTCFileFilter());
+  fc.setFileFilter(new FileFilter(){
+    @Override public boolean accept(    File f){
+      return true;
+    }
+    @Override public String getDescription(){
+      return "JRE RT Library";
+    }
+  }
+);
   fc.setFileHidingEnabled(false);
   fc.setAcceptAllFileFilterUsed(false);
   int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);

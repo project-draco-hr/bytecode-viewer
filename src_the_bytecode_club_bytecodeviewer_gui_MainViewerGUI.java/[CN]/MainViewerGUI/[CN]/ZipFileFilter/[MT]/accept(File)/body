@@ -1,3 +1,0 @@
-{
-  return f.isDirectory() || MiscUtils.extension(f.getAbsolutePath()).equals("zip");
-}

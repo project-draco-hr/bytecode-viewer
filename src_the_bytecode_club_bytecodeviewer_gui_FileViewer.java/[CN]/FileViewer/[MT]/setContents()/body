@@ -19,6 +19,7 @@
   String contentsS=new String(contents);
   if (!isPureAscii(contentsS)) {
     if (name.endsWith(".png") || name.endsWith(".jpg") || name.endsWith(".jpeg")|| name.endsWith(".gif")|| name.endsWith(".tif")|| name.endsWith(".bmp")) {
+      canRefresh=true;
       try {
         image=ImageIO.read(new ByteArrayInputStream(contents));
         JLabel label=new JLabel("",new ImageIcon(image),JLabel.CENTER);

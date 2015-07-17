@@ -245,7 +245,9 @@
           java1=panelArea;
         }
       }
- catch (      Exception e) {
+ catch (      java.lang.IndexOutOfBoundsException|java.lang.NullPointerException e) {
+      }
+catch (      Exception e) {
         new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
       }
  finally {
@@ -474,7 +476,9 @@
           java2=panelArea;
         }
       }
- catch (      Exception e) {
+ catch (      java.lang.IndexOutOfBoundsException|java.lang.NullPointerException e) {
+      }
+catch (      Exception e) {
         new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
       }
  finally {
@@ -703,7 +707,9 @@
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
       }
- catch (      Exception e) {
+ catch (      java.lang.IndexOutOfBoundsException|java.lang.NullPointerException e) {
+      }
+catch (      Exception e) {
       }
  finally {
         resetDivider();

@@ -1,5 +1,0 @@
-{
-  String path=file.getAbsolutePath();
-  if (!path.endsWith(".java"))   path=path + ".java";
-  return path;
-}
