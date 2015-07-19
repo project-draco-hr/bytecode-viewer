@@ -16,7 +16,7 @@
   try {
     ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,"-O",BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "decompile.py","-skip","-nauto","-path",BytecodeViewer.rt + ";" + tempJar.getAbsolutePath()+ quick(),"-out",tempDirectory.getAbsolutePath(),cn.name + ".class");
     Process process=pb.start();
-    BytecodeViewer.krakatau.add(process);
+    BytecodeViewer.createdProcesses.add(process);
     InputStream is=process.getInputStream();
     InputStreamReader isr=new InputStreamReader(is);
     BufferedReader br=new BufferedReader(isr);

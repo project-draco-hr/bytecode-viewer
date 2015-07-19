@@ -4,10 +4,12 @@
   setType(Type.UTILITY);
   setTitle("Bytecode Viewer - About - https://bytecodeviewer.com | https://the.bytecode.club");
   getContentPane().setLayout(new CardLayout(0,0));
-  txtrBytecodeViewerIs.setDisabledTextColor(Color.BLACK);
-  txtrBytecodeViewerIs.setWrapStyleWord(true);
-  getContentPane().add(txtrBytecodeViewerIs,"name_140466526081695");
-  txtrBytecodeViewerIs.setEnabled(false);
+  JScrollPane scrollPane=new JScrollPane();
+  getContentPane().add(scrollPane,"name_322439757638784");
+  textArea.setWrapStyleWord(true);
+  textArea.setEnabled(false);
+  textArea.setDisabledTextColor(Color.BLACK);
+  scrollPane.setViewportView(textArea);
   this.setResizable(false);
   this.setLocationRelativeTo(null);
 }

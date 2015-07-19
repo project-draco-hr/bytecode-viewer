@@ -8,7 +8,7 @@
     ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python3,"-O","-m","enjarify.main",input.getAbsolutePath(),"-o",output.getAbsolutePath());
     pb.directory(new File(BytecodeViewer.enjarifyWorkingDirectory));
     Process process=pb.start();
-    BytecodeViewer.enjarify.add(process);
+    BytecodeViewer.createdProcesses.add(process);
     InputStream is=process.getInputStream();
     InputStreamReader isr=new InputStreamReader(is);
     BufferedReader br=new BufferedReader(isr);

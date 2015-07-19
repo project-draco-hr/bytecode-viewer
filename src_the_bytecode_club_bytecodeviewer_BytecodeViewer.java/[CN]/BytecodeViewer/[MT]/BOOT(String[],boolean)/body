@@ -2,8 +2,7 @@
   cleanup();
   Runtime.getRuntime().addShutdownHook(new Thread(){
     @Override public void run(){
-      for (      Process krakatau : krakatau)       krakatau.destroy();
-      for (      Process enjarify : enjarify)       enjarify.destroy();
+      for (      Process proc : createdProcesses)       proc.destroy();
       Settings.saveGUI();
       cleanup();
     }

@@ -169,7 +169,7 @@
       BytecodeViewer.openFiles(new File[]{input},false);
       Thread.sleep(5 * 1000);
       if (target.equalsIgnoreCase("all")) {
-        Decompiler.jdgui.decompileToZip(output.getAbsolutePath());
+        System.out.println("Coming soon.");
       }
  else {
         try {
