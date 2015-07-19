@@ -8,8 +8,6 @@
     }
   }
 );
-  viewer=new MainViewerGUI();
-  Settings.loadGUI();
   viewer.calledAfterLoad();
   resetRecentFilesMenu();
   if (!pingback) {
