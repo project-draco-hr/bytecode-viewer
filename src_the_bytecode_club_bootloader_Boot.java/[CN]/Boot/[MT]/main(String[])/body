@@ -1,0 +1,19 @@
+{
+  ILoader loader=findLoader();
+  screen=new InitialBootScreen();
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      screen.setVisible(true);
+    }
+  }
+);
+  create(loader,args.length > 0 ? Boolean.valueOf(args[0]) : true);
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      screen.setVisible(false);
+    }
+  }
+);
+  Class<?> klass=loader.loadClass("the.bytecode.club.bytecodeviewer.BytecodeViewer");
+  klass.getDeclaredMethod("main",new Class<?>[]{String[].class}).invoke(null,new Object[]{args});
+}

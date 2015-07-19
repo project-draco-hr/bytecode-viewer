@@ -1,0 +1,3 @@
+ClassNode node
+String name
+String desc

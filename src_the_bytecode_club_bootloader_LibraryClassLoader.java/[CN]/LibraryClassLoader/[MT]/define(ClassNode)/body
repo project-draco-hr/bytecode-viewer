@@ -1,0 +1,6 @@
+{
+  ClassWriter writer=new ResolvingClassWriter(tree);
+  cn.accept(cn);
+  byte[] bytes=writer.toByteArray();
+  return defineClass(bytes,0,bytes.length);
+}

@@ -1,0 +1,7 @@
+{
+  Map<String,JarResource> map=new HashMap<String,JarResource>();
+  for (  JarResource resource : this) {
+    map.put(resource.getName(),resource);
+  }
+  return map;
+}

@@ -1,0 +1,7 @@
+{
+  @SuppressWarnings("resource") java.util.Scanner s=new java.util.Scanner(is).useDelimiter("\\A");
+  String string=s.hasNext() ? s.next() : "";
+  is.close();
+  s.close();
+  return string;
+}

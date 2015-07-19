@@ -1,0 +1,3 @@
+Map<String,ClassNode> classes
+Collection<ClassNode> superinterfaces
+ClassNode current

@@ -1,0 +1,11 @@
+{
+  Set<MethodNode> methods=new HashSet<MethodNode>();
+  for (  ClassNode delegate : getDelegates(node)) {
+    for (    MethodNode mn : delegate.methods) {
+      if (mn.name.equals(name) && mn.desc.equals(desc)) {
+        methods.add(mn);
+      }
+    }
+  }
+  return methods;
+}

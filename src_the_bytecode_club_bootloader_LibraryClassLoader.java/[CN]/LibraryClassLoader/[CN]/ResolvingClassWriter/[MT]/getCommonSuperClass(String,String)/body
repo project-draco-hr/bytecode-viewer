@@ -1,0 +1,29 @@
+{
+  ClassNode ccn=classTree.getClass(type1);
+  ClassNode dcn=classTree.getClass(type2);
+  if (ccn == null) {
+    classTree.build(create_quick(type1));
+    return getCommonSuperClass(type1,type2);
+  }
+  if (dcn == null) {
+    classTree.build(create_quick(type2));
+    return getCommonSuperClass(type1,type2);
+  }
+  Set<ClassNode> c=classTree.getSupers(ccn);
+  Set<ClassNode> d=classTree.getSupers(dcn);
+  if (c.contains(dcn))   return type1;
+  if (d.contains(ccn))   return type2;
+  if (Modifier.isInterface(ccn.access) || Modifier.isInterface(dcn.access)) {
+    return "java/lang/Object";
+  }
+ else {
+    do {
+      ClassNode nccn=classTree.getClass(ccn.superName);
+      if (nccn == null)       break;
+      ccn=nccn;
+      c=classTree.getSupers(ccn);
+    }
+ while (!c.contains(dcn));
+    return ccn.name;
+  }
+}

@@ -1,0 +1,100 @@
+{
+  if (CLI == -1)   return;
+  if (CLI == 1)   this.setVisible(true);
+  if (FIRST_BOOT)   return;
+  FIRST_BOOT=true;
+  setTitle("Bytecode Viewer Boot Screen - Checking Libraries...");
+  System.out.println("Checking Libraries...");
+  try {
+    int completedCheck=0;
+    setTitle("Bytecode Viewer Boot Screen - Checking Krakatau...");
+    System.out.println("Checking krakatau");
+    File krakatauZip=null;
+    for (    File f : new File(BytecodeViewer.libsDirectory).listFiles()) {
+      if (f.getName().toLowerCase().startsWith("krakatau-")) {
+        BytecodeViewer.krakatauVersion=f.getName().split("-")[1].split("\\.")[0];
+        krakatauZip=f;
+      }
+    }
+    for (    File f : new File(BytecodeViewer.getBCVDirectory()).listFiles()) {
+      if (f.getName().toLowerCase().startsWith("krakatau_") && !f.getName().split("_")[1].split("\\.")[0].equals(BytecodeViewer.krakatauVersion)) {
+        setTitle("Bytecode Viewer Boot Screen - Removing Outdated " + f.getName() + "...");
+        System.out.println("Removing oudated " + f.getName());
+        try {
+          FileUtils.deleteDirectory(f);
+        }
+ catch (        IOException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+    BytecodeViewer.krakatauWorkingDirectory=BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "krakatau_"+ BytecodeViewer.krakatauVersion+ BytecodeViewer.fs+ "Krakatau-master";
+    File krakatauDirectory=new File(BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "krakatau_"+ BytecodeViewer.krakatauVersion);
+    if (!krakatauDirectory.exists()) {
+      try {
+        setTitle("Bytecode Viewer Boot Screen - Updating to " + krakatauDirectory.getName() + "...");
+        ZipUtils.unzipFilesToPath(krakatauZip.getAbsolutePath(),krakatauDirectory.getAbsolutePath());
+        System.out.println("Updated to krakatau v" + BytecodeViewer.krakatauVersion);
+      }
+ catch (      Exception e) {
+        BytecodeViewer.showMessage("ERROR: There was an issue unzipping Krakatau decompiler (possibly corrupt). Restart BCV." + BytecodeViewer.nl + "If the error persists contact @Konloch.");
+        new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        krakatauZip.delete();
+      }
+    }
+    completedCheck++;
+    progressBar.setValue(completedCheck);
+    setTitle("Bytecode Viewer Boot Screen - Checking Enjarify...");
+    System.out.println("Checking enjarify");
+    File enjarifyZip=null;
+    for (    File f : new File(BytecodeViewer.libsDirectory).listFiles()) {
+      if (f.getName().toLowerCase().startsWith("enjarify-")) {
+        BytecodeViewer.enjarifyVersion=f.getName().split("-")[1].split("\\.")[0];
+        enjarifyZip=f;
+      }
+    }
+    for (    File f : new File(BytecodeViewer.getBCVDirectory()).listFiles()) {
+      if (f.getName().toLowerCase().startsWith("enjarify_") && !f.getName().split("_")[1].split("\\.")[0].equals(BytecodeViewer.enjarifyVersion)) {
+        setTitle("Bytecode Viewer Boot Screen - Removing Outdated " + f.getName() + "...");
+        System.out.println("Removing oudated " + f.getName());
+        try {
+          FileUtils.deleteDirectory(f);
+        }
+ catch (        IOException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+    BytecodeViewer.enjarifyWorkingDirectory=BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "enjarify_"+ BytecodeViewer.enjarifyVersion+ BytecodeViewer.fs+ "enjarify-master";
+    File enjarifyDirectory=new File(BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "enjarify_"+ BytecodeViewer.enjarifyVersion);
+    if (!enjarifyDirectory.exists()) {
+      try {
+        setTitle("Bytecode Viewer Boot Screen - Updating to " + enjarifyDirectory.getName() + "...");
+        ZipUtils.unzipFilesToPath(enjarifyZip.getAbsolutePath(),enjarifyDirectory.getAbsolutePath());
+        System.out.println("Updated to enjarify v" + BytecodeViewer.enjarifyVersion);
+      }
+ catch (      Exception e) {
+        BytecodeViewer.showMessage("ERROR: There was an issue unzipping enjarify (possibly corrupt). Restart BCV." + BytecodeViewer.nl + "If the error persists contact @Konloch.");
+        new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+        enjarifyZip.delete();
+      }
+    }
+    completedCheck++;
+    progressBar.setValue(completedCheck);
+    setTitle("Bytecode Viewer Boot Screen - Booting!");
+  }
+ catch (  Exception e) {
+    Settings.saveGUI();
+    StringWriter sw=new StringWriter();
+    e.printStackTrace(new PrintWriter(sw));
+    e.printStackTrace();
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI("Bytecode Viewer ran into an error while booting, trying to force it anyways." + BytecodeViewer.nl + BytecodeViewer.nl+ "Please ensure you have an active internet connection and restart BCV. If this presists please visit http://github.com/Konloch/Bytecode-Viewer or http://bytecodeviewer.com"+ BytecodeViewer.nl+ BytecodeViewer.nl+ sw.toString());
+  }
+  setTitle("Bytecode Viewer Boot Screen - Finished");
+  if (CLI == 1)   BytecodeViewer.BOOT(args,false);
+ else {
+    BytecodeViewer.BOOT(args,true);
+    CommandLineInput.executeCommandLine(args);
+  }
+  this.setVisible(false);
+}
