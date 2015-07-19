@@ -1,0 +1,6 @@
+{
+  ClassReader cr=new ClassReader(b);
+  ClassNode cn=new ClassNode();
+  cr.accept(cn,0);
+  return cn;
+}

@@ -1,0 +1,10 @@
+{
+  for (  ClassNode super_ : getSupers(node)) {
+    for (    MethodNode mn : super_.methods) {
+      if (mn.name.equals(name) && mn.desc.equals(desc)) {
+        return mn;
+      }
+    }
+  }
+  return null;
+}

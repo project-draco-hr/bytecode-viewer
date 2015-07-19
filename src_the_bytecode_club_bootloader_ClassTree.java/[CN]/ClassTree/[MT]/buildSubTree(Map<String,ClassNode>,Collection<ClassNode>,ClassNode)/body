@@ -1,0 +1,12 @@
+{
+  superinterfaces.add(current);
+  for (  String iface : current.interfaces) {
+    ClassNode cs=classes.get(iface);
+    if (cs != null) {
+      getDelegates0(cs).add(current);
+      buildSubTree(classes,superinterfaces,cs);
+    }
+ else {
+    }
+  }
+}

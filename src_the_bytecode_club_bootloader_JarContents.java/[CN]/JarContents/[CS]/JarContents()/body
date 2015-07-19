@@ -1,0 +1,4 @@
+{
+  classContents=new ClassNodeContainer<C>();
+  resourceContents=new ResourceContainer();
+}

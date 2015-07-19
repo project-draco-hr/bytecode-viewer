@@ -1,0 +1,15 @@
+{
+  try {
+    JarContents<ClassNode> contents=resource.load();
+    if (contents != null) {
+      binded.add(contents);
+      tree.build(contents.getClassContents().namedMap());
+    }
+ else {
+      System.err.println("Null contents?");
+    }
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

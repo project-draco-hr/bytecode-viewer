@@ -1,0 +1,2 @@
+DataContainer<C> classContents
+DataContainer<JarResource> resourceContents

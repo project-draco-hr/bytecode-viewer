@@ -1,0 +1,8 @@
+{
+  V val=get(k);
+  if (val == null) {
+    val=creator.create();
+    put(k,val);
+  }
+  return val;
+}

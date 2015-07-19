@@ -1,0 +1,17 @@
+{
+  String byte_name=name.replace(".","/");
+  if (classCache.containsKey(byte_name))   return classCache.get(byte_name);
+  ClassNode cn=null;
+  for (  JarContents<ClassNode> contents : binded) {
+    cn=contents.getClassContents().namedMap().get(byte_name);
+    if (cn != null)     break;
+  }
+  if (cn != null) {
+    Class<?> klass=define(cn);
+    if (klass != null) {
+      classCache.put(byte_name,klass);
+      return klass;
+    }
+  }
+  return super.loadClass(name);
+}

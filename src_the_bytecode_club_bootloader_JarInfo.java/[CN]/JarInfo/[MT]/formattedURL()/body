@@ -1,0 +1,9 @@
+{
+  StringBuilder sb=new StringBuilder().append("jar:").append(type.prefix()).append(path);
+  if (type.equals(JarType.FILE) && !path.endsWith(".jar")) {
+    File file=new File(path);
+    if (!file.exists())     sb.append(".jar");
+  }
+  sb.append("!/");
+  return new URL(sb.toString());
+}

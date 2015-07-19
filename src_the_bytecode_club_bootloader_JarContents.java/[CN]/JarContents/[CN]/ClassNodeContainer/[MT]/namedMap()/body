@@ -1,0 +1,18 @@
+{
+  if (invalidated) {
+    invalidated=false;
+    Map<String,C> nodeMap=new HashMap<String,C>();
+    Iterator<C> it=iterator();
+    while (it.hasNext()) {
+      C cn=it.next();
+      if (nodeMap.containsKey(cn.name)) {
+        it.remove();
+      }
+ else {
+        nodeMap.put(cn.name,cn);
+      }
+    }
+    lastMap=nodeMap;
+  }
+  return lastMap;
+}

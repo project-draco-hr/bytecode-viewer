@@ -1,0 +1,4 @@
+{
+  this.classContents=classContents == null ? new ClassNodeContainer<C>() : classContents;
+  this.resourceContents=resourceContents == null ? new ResourceContainer() : resourceContents;
+}

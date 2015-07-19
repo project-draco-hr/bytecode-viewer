@@ -1,0 +1,5 @@
+{
+  binded=new HashSet<JarContents<ClassNode>>();
+  classCache=new HashMap<String,Class<?>>();
+  tree=new ClassTree();
+}

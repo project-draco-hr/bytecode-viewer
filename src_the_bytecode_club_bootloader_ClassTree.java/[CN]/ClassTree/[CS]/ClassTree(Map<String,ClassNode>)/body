@@ -1,0 +1,6 @@
+{
+  classes=copyOf(classes_);
+  supers=new NullPermeableHashMap<ClassNode,Set<ClassNode>>(SET_CREATOR);
+  delgates=new NullPermeableHashMap<ClassNode,Set<ClassNode>>(SET_CREATOR);
+  build(classes);
+}
