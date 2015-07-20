@@ -1,5 +1,6 @@
 {
-  ILoader loader=findLoader();
+  bootstrap();
+  ILoader<?> loader=findLoader();
   screen=new InitialBootScreen();
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
