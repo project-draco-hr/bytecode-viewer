@@ -1,8 +1,9 @@
 {
+  if (CLI == CommandLineInput.STOP)   return;
   bootstrap();
   ILoader<?> loader=findLoader();
   screen=new InitialBootScreen();
-  SwingUtilities.invokeLater(new Runnable(){
+  if (CLI == CommandLineInput.OPEN_FILE)   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
       screen.setVisible(true);
     }
@@ -15,6 +16,9 @@
     }
   }
 );
-  Class<?> klass=loader.loadClass("the.bytecode.club.bytecodeviewer.BytecodeViewer");
-  klass.getDeclaredMethod("main",new Class<?>[]{String[].class}).invoke(null,new Object[]{args});
+  if (CLI == CommandLineInput.OPEN_FILE)   BytecodeViewer.BOOT(args,false);
+ else {
+    BytecodeViewer.BOOT(args,true);
+    CommandLineInput.executeCommandLine(args);
+  }
 }

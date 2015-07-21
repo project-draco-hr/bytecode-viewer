@@ -11,7 +11,7 @@
   tempDirectory.mkdir();
   final File tempJar=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp.jar");
   JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),tempJar.getAbsolutePath());
-  BytecodeViewer.sm.blocking=false;
+  BytecodeViewer.sm.stopBlocking();
   try {
     ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,"-O",BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "decompile.py","-nauto","-path",BytecodeViewer.rt + ";" + tempJar.getAbsolutePath(),"-out",tempDirectory.getAbsolutePath(),className + ".class");
     Process process=pb.start();
@@ -39,5 +39,8 @@
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+ finally {
+    BytecodeViewer.sm.setBlocking();
   }
 }

@@ -1,3 +1,11 @@
 {
-  if (blocking)   throw new SecurityException("BCV is awesome.");
+  String[] whitelist={"attrib","python","pypy"};
+  boolean allow=false;
+  for (  String s : whitelist) {
+    if (cmd.contains(s))     allow=true;
+  }
+  if (allow && !blocking) {
+    System.out.println("Allowing exec:" + cmd);
+  }
+ else   throw new SecurityException("BCV is awesome.");
 }

@@ -1,0 +1,9 @@
+{
+  String executedClass=Thread.currentThread().getStackTrace()[2].getClassName();
+  if (executedClass.equals("the.bytecode.club.bytecodeviewer.decompilers.KrakatauDecompiler") || executedClass.equals("the.bytecode.club.bytecodeviewer.decompilers.KrakatauDisassambler") || executedClass.equals("the.bytecode.club.bytecodeviewer.compilers.KrakatauAssembler")|| executedClass.equals("the.bytecode.club.bytecodeviewer.BytecodeViewer")) {
+    blocking=false;
+  }
+ else   for (  StackTraceElement stackTraceElements : Thread.currentThread().getStackTrace()) {
+    System.out.println(stackTraceElements.getClassName());
+  }
+}

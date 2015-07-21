@@ -1,10 +1,10 @@
 {
-  sm.blocking=false;
+  sm.stopBlocking();
   try {
     Runtime.getRuntime().exec("attrib +H " + f.getAbsolutePath());
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
-  sm.blocking=true;
+  sm.setBlocking();
 }
