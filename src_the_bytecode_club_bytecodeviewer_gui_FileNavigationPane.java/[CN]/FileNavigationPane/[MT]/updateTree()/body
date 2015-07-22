@@ -4,6 +4,8 @@
     for (    FileContainer container : BytecodeViewer.files) {
       MyTreeNode root=new MyTreeNode(container.name);
       treeRoot.add(root);
+      ImageRenderer renderer=new ImageRenderer();
+      tree.setCellRenderer(renderer);
       if (!container.classes.isEmpty()) {
         for (        ClassNode c : container.classes) {
           String name=c.name;

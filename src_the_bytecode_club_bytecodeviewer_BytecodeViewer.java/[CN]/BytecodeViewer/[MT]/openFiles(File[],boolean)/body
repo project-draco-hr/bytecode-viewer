@@ -31,8 +31,7 @@
                   String cafebabe=String.format("%02X",bytes[0]) + String.format("%02X",bytes[1]) + String.format("%02X",bytes[2])+ String.format("%02X",bytes[3]);
                   if (cafebabe.toLowerCase().equals("cafebabe")) {
                     final ClassNode cn=JarUtils.getNode(bytes);
-                    FileContainer container=new FileContainer();
-                    container.name=fn;
+                    FileContainer container=new FileContainer(f);
                     container.classes.add(cn);
                     BytecodeViewer.files.add(container);
                   }
@@ -49,8 +48,7 @@
  else               if (fn.endsWith(".apk")) {
                 try {
                   BytecodeViewer.viewer.setIcon(true);
-                  FileContainer container=new FileContainer();
-                  container.name=fn;
+                  FileContainer container=new FileContainer(f);
                   if (viewer.decodeAPKResources.isSelected()) {
                     File decodedResources=new File(tempDirectory + fs + MiscUtils.randomString(32)+ ".apk");
                     APKTool.decodeResources(f,decodedResources);
@@ -73,8 +71,7 @@
  else               if (fn.endsWith(".dex")) {
                 try {
                   BytecodeViewer.viewer.setIcon(true);
-                  FileContainer container=new FileContainer();
-                  container.name=fn;
+                  FileContainer container=new FileContainer(f);
                   String name=getRandomizedName() + ".jar";
                   File output=new File(tempDirectory + fs + name);
                   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))                   Dex2Jar.dex2Jar(f,output);
@@ -92,8 +89,7 @@
                 HashMap<String,byte[]> files=new HashMap<String,byte[]>();
                 byte[] bytes=JarUtils.getBytes(new FileInputStream(f));
                 files.put(f.getName(),bytes);
-                FileContainer container=new FileContainer();
-                container.name=fn;
+                FileContainer container=new FileContainer(f);
                 container.files=files;
                 BytecodeViewer.files.add(container);
               }

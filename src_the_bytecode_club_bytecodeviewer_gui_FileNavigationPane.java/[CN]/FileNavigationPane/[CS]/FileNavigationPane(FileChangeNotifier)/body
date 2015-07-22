@@ -1,6 +1,8 @@
 {
   super("ClassNavigation");
   setTitle("Files");
+  tree.setRootVisible(false);
+  tree.setShowsRootHandles(true);
   this.fcn=fcn;
   open.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){

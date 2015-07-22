@@ -7,5 +7,5 @@
   if (allow && !blocking) {
     System.out.println("Allowing exec:" + cmd);
   }
- else   throw new SecurityException("BCV is awesome.");
+ else   throw new SecurityException("BCV is awesome, blocking " + cmd);
 }

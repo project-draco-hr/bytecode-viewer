@@ -1099,7 +1099,7 @@
   fontSpinner.setModel(new SpinnerNumberModel(new Integer(12),new Integer(1),null,new Integer(1)));
   mnNewMenu_6.add(mnFontSize);
   mnFontSize.add(fontSpinner);
-  panelGroup1.setSelected(panel1Proc.getModel(),true);
+  panelGroup1.setSelected(panel1JDGUI.getModel(),true);
   panelGroup2.setSelected(panel2Bytecode.getModel(),true);
   panelGroup3.setSelected(panel3None.getModel(),true);
   this.setLocationRelativeTo(null);
