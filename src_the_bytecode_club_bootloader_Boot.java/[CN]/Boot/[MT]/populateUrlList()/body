@@ -1,0 +1,7 @@
+{
+  HTTPRequest req=new HTTPRequest(new URL("https://github.com/Konloch/bytecode-viewer/tree/master/libs"));
+  req.setTimeout(30000);
+  for (  String s : req.read())   if (s.contains("href=\"/Konloch/bytecode-viewer/blob/master/libs/")) {
+    urlList.add("https://github.com" + s.split("<a href=")[1].split("\"")[1]);
+  }
+}

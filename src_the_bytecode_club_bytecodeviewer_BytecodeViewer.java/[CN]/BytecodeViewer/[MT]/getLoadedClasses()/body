@@ -1,9 +1,5 @@
 {
   ArrayList<ClassNode> a=new ArrayList<ClassNode>();
-  if (loadedClasses != null)   for (  Entry<String,ClassNode> entry : loadedClasses.entrySet()) {
-    Object value=entry.getValue();
-    ClassNode cln=(ClassNode)value;
-    a.add(cln);
-  }
+  for (  FileContainer container : files)   for (  ClassNode c : container.classes)   a.add(c);
   return a;
 }

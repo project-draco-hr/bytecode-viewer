@@ -18,14 +18,13 @@
   }
 );
   getContentPane().setLayout(new BorderLayout());
-  this.tree=new MyTree(treeRoot);
   getContentPane().add(new JScrollPane(tree),BorderLayout.CENTER);
   MouseAdapter ml=new MouseAdapter(){
     public void mousePressed(    MouseEvent e){
       TreePath path=tree.getPathForLocation(e.getX(),e.getY());
       if (path == null)       return;
       final StringBuffer nameBuffer=new StringBuffer();
-      for (int i=1; i < path.getPathCount(); i++) {
+      for (int i=2; i < path.getPathCount(); i++) {
         nameBuffer.append(path.getPathComponent(i));
         if (i < path.getPathCount() - 1) {
           nameBuffer.append("/");

@@ -1,10 +1,11 @@
 {
   setState("Bytecode Viewer Boot Screen - Checking Libraries...");
   final File libsDirectory=libsDir();
-  List<String> urlList=new ArrayList<String>();
-  HTTPRequest req=new HTTPRequest(new URL("https://github.com/Konloch/bytecode-viewer/tree/master/libs"));
-  for (  String s : req.read())   if (s.contains("href=\"/Konloch/bytecode-viewer/blob/master/libs/")) {
-    urlList.add("https://github.com" + s.split("<a href=")[1].split("\"")[1]);
+  populateUrlList();
+  if (globalstop) {
+    while (true) {
+      Thread.sleep(100);
+    }
   }
   if (urlList.isEmpty()) {
     JOptionPane.showMessageDialog(null,"Bytecode Viewer ran into an issue, for some reason github is not returning what we're expecting. Please try rebooting, if this issue persists please contact @Konloch.","Error",JOptionPane.ERROR_MESSAGE);
@@ -12,26 +13,23 @@
   }
   if (clean)   libsDirectory.delete();
   if (!libsDirectory.exists())   libsDirectory.mkdir();
-  List<String> libsList=new ArrayList<String>();
-  List<String> libsFileList=new ArrayList<String>();
-  for (  File f : libsDirectory.listFiles()) {
-    libsList.add(f.getName());
-    libsFileList.add(f.getAbsolutePath());
-  }
+  populateLibsDirectory();
   screen.getProgressBar().setMaximum(urlList.size() * 2);
   int completedCheck=0;
   for (  String s : urlList) {
     String fileName=s.substring("https://github.com/Konloch/bytecode-viewer/blob/master/libs/".length(),s.length());
-    if (!libsList.contains(fileName)) {
-      setState("Bytecode Viewer Boot Screen - Downloading " + fileName);
-      System.out.println("Downloading " + fileName);
-      boolean passed=false;
-      while (!passed) {
+    File file=new File(libsDirectory,fileName);
+    boolean passed=false;
+    while (!passed) {
+      if (!libsList.contains(fileName)) {
+        downloading=true;
+        setState("Bytecode Viewer Boot Screen - Downloading " + fileName + "...");
+        System.out.println("Downloading " + fileName);
         InputStream is=null;
         FileOutputStream fos=null;
         try {
           is=new URL("https://github.com/Konloch/bytecode-viewer/raw/master/libs/" + fileName).openConnection().getInputStream();
-          fos=new FileOutputStream(new File(libsDirectory,fileName));
+          fos=new FileOutputStream(file);
           System.out.println("Downloading from " + s);
           byte[] buffer=new byte[8192];
           int len;
@@ -48,7 +46,6 @@
             }
  else             flag=false;
           }
-          libsFileList.add(new File(libsDirectory,fileName).getAbsolutePath());
         }
   finally {
           try {
@@ -65,7 +62,39 @@
             }
           }
         }
-        System.out.println("Download finished!");
+        try {
+          setState("Bytecode Viewer Boot Screen - Verifying " + fileName + "...");
+          System.out.println("Verifying " + fileName + "...");
+          File f=new File(BytecodeViewer.tempDirectory,"temp");
+          ZipUtils.zipFile(file,f);
+          f.delete();
+          libsFileList.add(file.getAbsolutePath());
+          System.out.println("Download finished!");
+          passed=true;
+        }
+ catch (        Exception e) {
+          e.printStackTrace();
+          System.out.println("Jar or Zip" + file.getAbsolutePath() + " is corrupt, redownloading.");
+          file.delete();
+        }
+      }
+ else       if (BytecodeViewer.verify) {
+        try {
+          setState("Bytecode Viewer Boot Screen - Verifying " + fileName + "...");
+          System.out.println("Verifying " + fileName + "...");
+          File f=new File(BytecodeViewer.tempDirectory,"temp");
+          ZipUtils.zipFile(file,f);
+          f.delete();
+          passed=true;
+        }
+ catch (        Exception e) {
+          e.printStackTrace();
+          System.out.println("Jar or Zip" + file.getAbsolutePath() + " is corrupt, redownloading.");
+          libsFileList.remove(file.getAbsolutePath());
+          file.delete();
+        }
+      }
+ else {
         passed=true;
       }
     }
@@ -109,79 +138,12 @@
       screen.getProgressBar().setValue(completedCheck);
     }
   }
-  setState("Bytecode Viewer Boot Screen - Checking Krakatau...");
-  System.out.println("Checking krakatau");
-  File krakatauZip=null;
-  for (  File f : new File(BytecodeViewer.libsDirectory).listFiles()) {
-    if (f.getName().toLowerCase().startsWith("krakatau-")) {
-      BytecodeViewer.krakatauVersion=f.getName().split("-")[1].split("\\.")[0];
-      krakatauZip=f;
-    }
-  }
-  for (  File f : new File(BytecodeViewer.getBCVDirectory()).listFiles()) {
-    if (f.getName().toLowerCase().startsWith("krakatau_") && !f.getName().split("_")[1].split("\\.")[0].equals(BytecodeViewer.krakatauVersion)) {
-      setState("Bytecode Viewer Boot Screen - Removing Outdated " + f.getName() + "...");
-      System.out.println("Removing oudated " + f.getName());
-      try {
-        FileUtils.deleteDirectory(f);
-      }
- catch (      Exception e) {
-        e.printStackTrace();
-      }
-    }
-  }
-  BytecodeViewer.krakatauWorkingDirectory=BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "krakatau_"+ BytecodeViewer.krakatauVersion+ BytecodeViewer.fs+ "Krakatau-master";
-  File krakatauDirectory=new File(BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "krakatau_"+ BytecodeViewer.krakatauVersion);
-  if (!krakatauDirectory.exists()) {
-    try {
-      setState("Bytecode Viewer Boot Screen - Updating to " + krakatauDirectory.getName() + "...");
-      ZipUtils.unzipFilesToPath(krakatauZip.getAbsolutePath(),krakatauDirectory.getAbsolutePath());
-      System.out.println("Updated to krakatau v" + BytecodeViewer.krakatauVersion);
-    }
- catch (    Exception e) {
-      BytecodeViewer.showMessage("ERROR: There was an issue unzipping Krakatau decompiler (possibly corrupt). Restart BCV." + BytecodeViewer.nl + "If the error persists contact @Konloch.");
-      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
-      krakatauZip.delete();
-    }
-  }
+  checkKrakatau();
   completedCheck++;
   screen.getProgressBar().setValue(completedCheck);
-  setState("Bytecode Viewer Boot Screen - Checking Enjarify...");
-  System.out.println("Checking enjarify");
-  File enjarifyZip=null;
-  for (  File f : new File(BytecodeViewer.libsDirectory).listFiles()) {
-    if (f.getName().toLowerCase().startsWith("enjarify-")) {
-      BytecodeViewer.enjarifyVersion=f.getName().split("-")[1].split("\\.")[0];
-      enjarifyZip=f;
-    }
-  }
-  for (  File f : new File(BytecodeViewer.getBCVDirectory()).listFiles()) {
-    if (f.getName().toLowerCase().startsWith("enjarify_") && !f.getName().split("_")[1].split("\\.")[0].equals(BytecodeViewer.enjarifyVersion)) {
-      setState("Bytecode Viewer Boot Screen - Removing Outdated " + f.getName() + "...");
-      System.out.println("Removing oudated " + f.getName());
-      try {
-        FileUtils.deleteDirectory(f);
-      }
- catch (      Exception e) {
-        e.printStackTrace();
-      }
-    }
-  }
-  BytecodeViewer.enjarifyWorkingDirectory=BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "enjarify_"+ BytecodeViewer.enjarifyVersion+ BytecodeViewer.fs+ "enjarify-master";
-  File enjarifyDirectory=new File(BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "enjarify_"+ BytecodeViewer.enjarifyVersion);
-  if (!enjarifyDirectory.exists()) {
-    try {
-      setState("Bytecode Viewer Boot Screen - Updating to " + enjarifyDirectory.getName() + "...");
-      ZipUtils.unzipFilesToPath(enjarifyZip.getAbsolutePath(),enjarifyDirectory.getAbsolutePath());
-      System.out.println("Updated to enjarify v" + BytecodeViewer.enjarifyVersion);
-    }
- catch (    Exception e) {
-      BytecodeViewer.showMessage("ERROR: There was an issue unzipping enjarify (possibly corrupt). Restart BCV." + BytecodeViewer.nl + "If the error persists contact @Konloch.");
-      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
-      enjarifyZip.delete();
-    }
-  }
+  checkEnjarify();
   completedCheck++;
   screen.getProgressBar().setValue(completedCheck);
   setState("Bytecode Viewer Boot Screen - Booting!");
+  completedboot=true;
 }

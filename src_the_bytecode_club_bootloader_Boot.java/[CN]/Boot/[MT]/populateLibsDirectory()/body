@@ -1,0 +1,6 @@
+{
+  if (libsDir() != null)   for (  File f : libsDir().listFiles()) {
+    libsList.add(f.getName());
+    libsFileList.add(f.getAbsolutePath());
+  }
+}

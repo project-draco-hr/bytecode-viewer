@@ -1,7 +1,6 @@
 {
   if (!ask) {
-    loadedResources.clear();
-    loadedClasses.clear();
+    files.clear();
     MainViewerGUI.getComponent(FileNavigationPane.class).resetWorkspace();
     MainViewerGUI.getComponent(WorkPane.class).resetWorkspace();
     MainViewerGUI.getComponent(SearchingPane.class).resetWorkspace();
@@ -17,8 +16,7 @@
     int result=-1;
     for (int k=0; k < options.length; k++)     if (options[k].equals(obj))     result=k;
     if (result == 0) {
-      loadedResources.clear();
-      loadedClasses.clear();
+      files.clear();
       MainViewerGUI.getComponent(FileNavigationPane.class).resetWorkspace();
       MainViewerGUI.getComponent(WorkPane.class).resetWorkspace();
       MainViewerGUI.getComponent(SearchingPane.class).resetWorkspace();

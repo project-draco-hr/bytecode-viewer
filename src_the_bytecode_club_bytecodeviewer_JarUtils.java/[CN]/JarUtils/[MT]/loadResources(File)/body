@@ -1,12 +1,13 @@
 {
-  if (!zipFile.exists())   return;
+  if (!zipFile.exists())   return null;
+  HashMap<String,byte[]> files=new HashMap<String,byte[]>();
   ZipInputStream jis=new ZipInputStream(new FileInputStream(zipFile));
   ZipEntry entry;
   while ((entry=jis.getNextEntry()) != null) {
     try {
       final String name=entry.getName();
       if (!name.endsWith(".class") && !name.endsWith(".dex")) {
-        if (!entry.isDirectory())         BytecodeViewer.loadedResources.put(name,getBytes(jis));
+        if (!entry.isDirectory())         files.put(name,getBytes(jis));
         jis.closeEntry();
         continue;
       }
@@ -19,4 +20,5 @@
     }
   }
   jis.close();
+  return files;
 }

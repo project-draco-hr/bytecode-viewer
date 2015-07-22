@@ -80,7 +80,7 @@
     panelArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PROPERTIES_FILE);
     panelArea.setText(contentsS);
   }
- else   if (name.endsWith(".php") || name.startsWith("<?php")) {
+ else   if (name.endsWith(".php") || contentsS.startsWith("<?php")) {
     panelArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PHP);
     panelArea.setText(contentsS);
   }

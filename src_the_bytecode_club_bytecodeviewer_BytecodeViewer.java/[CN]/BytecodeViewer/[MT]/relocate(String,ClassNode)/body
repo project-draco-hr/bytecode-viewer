@@ -1,4 +1,0 @@
-{
-  if (BytecodeViewer.loadedClasses.containsKey(name))   BytecodeViewer.loadedClasses.remove(name);
-  BytecodeViewer.loadedClasses.put(node.name,node);
-}

@@ -8,7 +8,7 @@
       out.write(cw.toByteArray());
       out.closeEntry();
     }
-    for (    Entry<String,byte[]> entry : BytecodeViewer.loadedResources.entrySet()) {
+    for (    FileContainer container : BytecodeViewer.files)     for (    Entry<String,byte[]> entry : container.files.entrySet()) {
       String filename=entry.getKey();
       if (!filename.startsWith("META-INF")) {
         out.putNextEntry(new ZipEntry(filename));

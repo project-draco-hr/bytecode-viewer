@@ -1,2 +1,2 @@
 String[] args
-int CLI
+boolean CLI

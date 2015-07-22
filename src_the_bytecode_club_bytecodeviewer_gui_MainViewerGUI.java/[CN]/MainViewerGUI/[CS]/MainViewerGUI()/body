@@ -1042,7 +1042,7 @@
   }
 );
   setSize(new Dimension(800,400));
-  if (BytecodeViewer.previewCopy)   setTitle("Bytecode Viewer " + BytecodeViewer.version + " preview - https://bytecodeviewer.com | https://the.bytecode.club - @Konloch");
+  if (BytecodeViewer.previewCopy)   setTitle("Bytecode Viewer " + BytecodeViewer.version + " Preview - https://bytecodeviewer.com | https://the.bytecode.club - @Konloch");
  else   setTitle("Bytecode Viewer " + BytecodeViewer.version + " - https://bytecodeviewer.com | https://the.bytecode.club - @Konloch");
   getContentPane().setLayout(new BoxLayout(getContentPane(),BoxLayout.X_AXIS));
   cn.setMinimumSize(new Dimension(200,50));

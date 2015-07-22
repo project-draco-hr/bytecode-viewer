@@ -1,4 +1,5 @@
 {
-  BytecodeViewer.loadedClasses.remove(oldNode.name);
-  BytecodeViewer.loadedClasses.put(oldNode.name,newNode);
+  for (  FileContainer container : files) {
+    if (container.classes.remove(oldNode))     container.classes.add(newNode);
+  }
 }

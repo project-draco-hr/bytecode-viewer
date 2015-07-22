@@ -1,4 +1,7 @@
 {
-  if (loadedResources.containsKey(name))   return loadedResources.get(name);
+  for (  FileContainer container : files) {
+    HashMap<String,byte[]> files=container.files;
+    if (files.containsKey(name))     return files.get(name);
+  }
   return null;
 }

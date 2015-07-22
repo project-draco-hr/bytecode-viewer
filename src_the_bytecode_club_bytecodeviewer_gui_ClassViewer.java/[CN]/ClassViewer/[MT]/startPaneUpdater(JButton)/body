@@ -52,6 +52,7 @@
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Procyon Decompiler"));
           panel1.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
@@ -78,6 +79,7 @@
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("CFR Decompiler"));
           panel1.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
@@ -104,6 +106,7 @@
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("FernFlower Decompiler"));
           panel1.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
@@ -130,6 +133,7 @@
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Bytecode Decompiler"));
           panel1.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -163,6 +167,7 @@
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Smali Decompiler"));
           panel1.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -188,6 +193,7 @@
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Krakatau Decompiler"));
           panel1.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
@@ -215,6 +221,7 @@
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Krakatau Disassembler"));
           panel1.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -240,6 +247,7 @@
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("JD-GUI Decompiler"));
           panel1.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java1=panelArea;
@@ -283,6 +291,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Procyon Decompiler"));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
@@ -309,6 +318,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("CFR Decompiler"));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
@@ -335,6 +345,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("CFR Decompiler"));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
@@ -361,6 +372,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Bytecode Decompiler"));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -394,6 +406,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Smali Decompiler"));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -419,6 +432,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Krakatau Decompiler"));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
@@ -446,6 +460,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Krakatau Disassembler"));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -471,6 +486,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("JD-GUI Decompiler"));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
@@ -514,6 +530,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Procyon Decompiler"));
           panel3.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java3=panelArea;
@@ -540,6 +557,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("CFR Decompiler"));
           panel3.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java3=panelArea;
@@ -566,6 +584,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("CFR Decompiler"));
           panel3.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java3=panelArea;
@@ -592,6 +611,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Bytecode Decompiler"));
           panel3.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -625,6 +645,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Smali Decompiler"));
           panel3.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -650,6 +671,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Krakatau Decompiler"));
           panel3.add(scrollPane);
           java3=panelArea;
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
@@ -677,6 +699,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("Krakatau Disassembler"));
           panel3.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
         }
@@ -702,6 +725,7 @@ catch (      Exception e) {
             }
           }
 );
+          scrollPane.setColumnHeaderView(new JLabel("JD-GUI Decompiler"));
           panel3.add(scrollPane);
           java3=panelArea;
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
