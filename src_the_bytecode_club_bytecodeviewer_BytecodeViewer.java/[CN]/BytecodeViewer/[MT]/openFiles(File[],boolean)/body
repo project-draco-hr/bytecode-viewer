@@ -13,7 +13,31 @@
           }
  else {
             if (f.isDirectory()) {
-              openFiles(f.listFiles(),false);
+              FileContainer container=new FileContainer(f);
+              HashMap<String,byte[]> files=new HashMap<String,byte[]>();
+              boolean finished=false;
+              ArrayList<File> totalFiles=new ArrayList<File>();
+              totalFiles.add(f);
+              String dir=f.getAbsolutePath();
+              while (!finished) {
+                boolean added=false;
+                for (int i=0; i < totalFiles.size(); i++) {
+                  File child=totalFiles.get(i);
+                  if (child.listFiles() != null)                   for (                  File rocket : child.listFiles())                   if (!totalFiles.contains(rocket)) {
+                    totalFiles.add(rocket);
+                    added=true;
+                  }
+                }
+                if (!added) {
+                  for (                  File child : totalFiles)                   if (child.isFile()) {
+                    String fileName=child.getAbsolutePath().substring(dir.length() + 1,child.getAbsolutePath().length()).replaceAll("\\\\","\\/");
+                    files.put(fileName,Files.readAllBytes(Paths.get(child.getAbsolutePath())));
+                  }
+                  finished=true;
+                }
+              }
+              container.files=files;
+              BytecodeViewer.files.add(container);
             }
  else {
               if (fn.endsWith(".jar") || fn.endsWith(".zip")) {

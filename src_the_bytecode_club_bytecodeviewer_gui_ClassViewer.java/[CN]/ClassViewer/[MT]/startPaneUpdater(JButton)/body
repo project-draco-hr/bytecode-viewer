@@ -10,6 +10,12 @@
   java1=null;
   java2=null;
   java3=null;
+  if (this.cn == null) {
+    panel1.add(new JLabel("This file has been removed from the reload."));
+    panel2.add(new JLabel("This file has been removed from the reload."));
+    panel3.add(new JLabel("This file has been removed from the reload."));
+    return;
+  }
   if (pane1 != 0 && pane1 != 5)   panel1.add(panel1Search,BorderLayout.NORTH);
   if (pane2 != 0 && pane2 != 5)   panel2.add(panel2Search,BorderLayout.NORTH);
   if (pane3 != 0 && pane3 != 5)   panel3.add(panel3Search,BorderLayout.NORTH);

@@ -4,43 +4,46 @@
     the.bytecode.club.bytecodeviewer.gui.FileNavigationPane.MyTreeNode node=(the.bytecode.club.bytecodeviewer.gui.FileNavigationPane.MyTreeNode)value;
     String name=node.toString().toLowerCase();
     if (name.endsWith(".jar")) {
-      setIcon(Resources.jar);
+      setIcon(Resources.jarIcon);
     }
  else     if (name.endsWith(".zip")) {
-      setIcon(Resources.zip);
+      setIcon(Resources.zipIcon);
     }
  else     if (name.endsWith(".bat")) {
-      setIcon(Resources.bat);
+      setIcon(Resources.batIcon);
     }
  else     if (name.endsWith(".sh")) {
-      setIcon(Resources.sh);
+      setIcon(Resources.shIcon);
     }
  else     if (name.endsWith(".cs")) {
-      setIcon(Resources.csharp);
+      setIcon(Resources.csharpIcon);
     }
  else     if (name.endsWith(".c") || name.endsWith(".cpp") || name.endsWith(".h")) {
-      setIcon(Resources.cplusplus);
+      setIcon(Resources.cplusplusIcon);
     }
  else     if (name.endsWith(".apk") || name.endsWith(".dex")) {
-      setIcon(Resources.android);
+      setIcon(Resources.androidIcon);
     }
  else     if (name.endsWith(".png") || name.endsWith(".jpg") || name.endsWith(".jpeg")|| name.endsWith(".bmp")|| name.endsWith(".gif")) {
-      setIcon(Resources.imageFile);
+      setIcon(Resources.imageIcon);
     }
  else     if (name.endsWith(".class")) {
-      setIcon(Resources.classFile);
+      setIcon(Resources.classIcon);
+    }
+ else     if (name.endsWith(".java")) {
+      setIcon(Resources.javaIcon);
     }
  else     if (name.endsWith(".txt") || name.endsWith(".md")) {
-      setIcon(Resources.textFile);
+      setIcon(Resources.textIcon);
     }
  else     if (name.equals("decoded resources")) {
-      setIcon(Resources.decoded);
+      setIcon(Resources.decodedIcon);
     }
  else     if (name.endsWith(".properties") || name.endsWith(".xml") || name.endsWith(".mf")|| name.endsWith(".config")|| name.endsWith(".cfg")) {
-      setIcon(Resources.config);
+      setIcon(Resources.configIcon);
     }
  else     if (node.getChildCount() <= 0) {
-      setIcon(Resources.file);
+      setIcon(Resources.fileIcon);
     }
  else {
       ArrayList<TreeNode> nodes=new ArrayList<TreeNode>();
@@ -66,9 +69,9 @@
           if (isJava)           nodes.clear();
         }
       }
-      if (isJava)       setIcon(Resources.packages);
+      if (isJava)       setIcon(Resources.packagesIcon);
  else {
-        setIcon(Resources.folder);
+        setIcon(Resources.folderIcon);
       }
     }
   }

@@ -83,6 +83,7 @@
   }
 );
   mnNewMenu.add(mntmLoadJar);
+  mnNewMenu.add(separator_40);
   mnNewMenu.add(mntmNewWorkspace);
   JMenuItem mntmSave=new JMenuItem("Save As Zip..");
   mntmSave.setActionCommand("");
@@ -139,6 +140,27 @@
     }
   }
 );
+  mnNewMenu.add(separator_39);
+  mntmReloadResources.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      JOptionPane pane=new JOptionPane("Are you sure you wish to reload the resources?");
+      Object[] options=new String[]{"Yes","No"};
+      pane.setOptions(options);
+      JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Reload Resources");
+      dialog.setVisible(true);
+      Object obj=pane.getValue();
+      int result=-1;
+      for (int k=0; k < options.length; k++)       if (options[k].equals(obj))       result=k;
+      if (result == 0) {
+        ArrayList<File> reopen=new ArrayList<File>();
+        for (        FileContainer container : BytecodeViewer.files)         reopen.add(container.file);
+        BytecodeViewer.files.clear();
+        BytecodeViewer.openFiles(reopen.toArray(new File[reopen.size()]),false);
+      }
+    }
+  }
+);
+  mnNewMenu.add(mntmReloadResources);
   mnNewMenu.add(separator_3);
   mntmNewMenuItem_3.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
@@ -717,6 +739,7 @@
   mnApkConversion.add(apkConversionDex);
   mnApkConversion.add(apkConversionEnjarify);
   mnSettings.add(separator_37);
+  chckbxmntmNewCheckItem_12.setSelected(true);
   mnSettings.add(chckbxmntmNewCheckItem_12);
   chckbxmntmDeleteForiegnoutdatedLibs.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent arg0){
@@ -743,6 +766,13 @@
     }
   }
 );
+  mntmSetPythonx.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent arg0){
+      pythonC3();
+    }
+  }
+);
+  mnSettings.add(mntmSetPythonx);
   mnSettings.add(mntmSetJreRt);
   mntmSetOpitonalLibrary.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent arg0){

@@ -1,5 +1,5 @@
 {
   ArrayList<ClassNode> a=new ArrayList<ClassNode>();
-  for (  FileContainer container : files)   for (  ClassNode c : container.classes)   a.add(c);
+  for (  FileContainer container : files)   for (  ClassNode c : container.classes)   if (!a.contains(c))   a.add(c);
   return a;
 }
