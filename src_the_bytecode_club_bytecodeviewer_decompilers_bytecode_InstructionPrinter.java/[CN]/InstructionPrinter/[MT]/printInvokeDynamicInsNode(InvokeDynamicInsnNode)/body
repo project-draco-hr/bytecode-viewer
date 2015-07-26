@@ -1,0 +1,15 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(nameOpcode(idin.opcode()) + " " + idin.name+ "(");
+  String desc=idin.desc;
+  String partedDesc=idin.desc.substring(2);
+  try {
+    if (Type.getType(partedDesc) != null)     desc=Type.getType(partedDesc).getClassName();
+    if (desc == null || desc.equals("null"))     desc=idin.desc;
+  }
+ catch (  java.lang.ArrayIndexOutOfBoundsException e) {
+  }
+  sb.append(desc);
+  sb.append(");");
+  return sb.toString();
+}
