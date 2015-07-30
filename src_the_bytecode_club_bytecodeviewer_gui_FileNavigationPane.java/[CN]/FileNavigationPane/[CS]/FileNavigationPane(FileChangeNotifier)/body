@@ -28,6 +28,10 @@
 );
   this.tree.addTreeSelectionListener(new TreeSelectionListener(){
     @Override public void valueChanged(    final TreeSelectionEvent arg0){
+      if (cancel) {
+        cancel=false;
+        return;
+      }
       openPath(arg0.getPath());
     }
   }
@@ -40,10 +44,19 @@
           openPath(tree.getSelectionPath());
         }
       }
+ else {
+        cancel=true;
+      }
     }
-    @Override public void keyPressed(    KeyEvent arg0){
+    @Override public void keyTyped(    KeyEvent e){
+      quickSearch.grabFocus();
+      quickSearch.setText("" + e.getKeyChar());
+      cancel=true;
     }
-    @Override public void keyTyped(    KeyEvent arg0){
+    @Override public void keyPressed(    KeyEvent e){
+      quickSearch.grabFocus();
+      quickSearch.setText("" + e.getKeyChar());
+      cancel=true;
     }
   }
 );
