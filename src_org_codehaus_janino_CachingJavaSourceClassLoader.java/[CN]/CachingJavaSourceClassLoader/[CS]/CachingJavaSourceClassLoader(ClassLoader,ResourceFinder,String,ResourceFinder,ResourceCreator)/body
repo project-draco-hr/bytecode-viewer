@@ -1,6 +1,0 @@
-{
-  super(parentClassLoader,sourceFinder,optionalCharacterEncoding);
-  this.classFileCacheResourceFinder=classFileCacheResourceFinder;
-  this.classFileCacheResourceCreator=classFileCacheResourceCreator;
-  this.sourceFinder=sourceFinder;
-}

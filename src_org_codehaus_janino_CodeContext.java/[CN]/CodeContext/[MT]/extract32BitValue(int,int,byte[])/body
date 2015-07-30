@@ -1,9 +1,0 @@
-{
-  int res=bias + ((code[offset] << 24) + ((0xff & code[offset + 1]) << 16) + ((0xff & code[offset + 2]) << 8)+ (0xff & code[offset + 3]));
-  if (CodeContext.DEBUG) {
-    System.out.println("extract32BitValue(bias, offset) = (" + bias + ", "+ offset+ ")");
-    System.out.println("" + "bytes = {" + code[offset] + ", "+ code[offset + 1]+ ", "+ code[offset + 2]+ ", "+ code[offset + 3]+ "}");
-    System.out.println("result = " + res);
-  }
-  return res;
-}

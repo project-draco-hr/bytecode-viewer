@@ -1,4 +1,0 @@
-{
-  this.statements.add(statement);
-  statement.setEnclosingScope(this);
-}

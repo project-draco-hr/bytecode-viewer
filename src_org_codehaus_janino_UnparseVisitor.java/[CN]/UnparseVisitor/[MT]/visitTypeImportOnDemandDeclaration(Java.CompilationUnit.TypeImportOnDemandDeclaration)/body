@@ -1,3 +1,0 @@
-{
-  this.pw.println("import " + Java.join(tiodd.identifiers,".") + ".*;");
-}

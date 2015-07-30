@@ -1,3 +1,0 @@
-{
-  this.write(lineNumber,(byte)(v >> 8),(byte)v);
-}

@@ -1,4 +1,0 @@
-{
-  String message=this.internalCheckAccessible(iClassDeclaringMember,memberAccess,contextBlockStatement);
-  if (message != null)   this.compileError(message,contextBlockStatement.getLocation());
-}

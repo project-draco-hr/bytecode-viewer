@@ -1,3 +1,0 @@
-{
-  for (  Annotation a : annotations)   a.accept(this);
-}

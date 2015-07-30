@@ -1,6 +1,0 @@
-{
-  if (cd.optionalConstructorInvocation != null) {
-    cd.optionalConstructorInvocation.accept((Visitor.BlockStatementVisitor)this.cv);
-  }
-  this.traverseFunctionDeclarator(cd);
-}

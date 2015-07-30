@@ -1,6 +1,0 @@
-{
-  dos.writeShort(this.modifiers.flags);
-  dos.writeShort(this.nameIndex);
-  dos.writeShort(this.descriptorIndex);
-  ClassFile.storeAttributes(dos,this.attributes,this.modifiers.annotations);
-}

@@ -1,4 +1,0 @@
-{
-  ScriptEvaluator se=new ScriptEvaluator();
-  return se.createFastEvaluator(script,interfaceToImplement,parameterNames);
-}

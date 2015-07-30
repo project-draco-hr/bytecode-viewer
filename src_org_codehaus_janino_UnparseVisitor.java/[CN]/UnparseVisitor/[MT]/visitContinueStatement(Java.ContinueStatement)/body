@@ -1,5 +1,0 @@
-{
-  this.pw.print("continue");
-  if (cs.optionalLabel != null)   this.pw.print(' ' + cs.optionalLabel);
-  this.pw.print(';');
-}

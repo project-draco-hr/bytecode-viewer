@@ -1,4 +1,0 @@
-{
-  Collection<IField> allFields=this.getDeclaredIFieldsCache().values();
-  return (IField[])allFields.toArray(new IField[allFields.size()]);
-}

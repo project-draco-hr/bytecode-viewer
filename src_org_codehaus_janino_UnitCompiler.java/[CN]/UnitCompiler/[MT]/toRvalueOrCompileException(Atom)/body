@@ -1,8 +1,0 @@
-{
-  Rvalue result=a.toRvalue();
-  if (result == null) {
-    this.compileError("Expression \"" + a.toString() + "\" is not an rvalue",a.getLocation());
-    return new StringLiteral(a.getLocation(),"\"X\"");
-  }
-  return result;
-}

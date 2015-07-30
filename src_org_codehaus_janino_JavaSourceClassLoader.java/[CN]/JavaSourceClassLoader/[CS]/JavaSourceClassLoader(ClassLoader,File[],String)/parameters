@@ -1,3 +1,0 @@
-ClassLoader parentClassLoader
-File[] optionalSourcePath
-String optionalCharacterEncoding

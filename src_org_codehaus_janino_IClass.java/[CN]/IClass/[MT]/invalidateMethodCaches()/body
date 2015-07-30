@@ -1,4 +1,0 @@
-{
-  this.declaredIMethodsCache=null;
-  this.declaredIMethodCache=null;
-}

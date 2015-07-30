@@ -1,8 +1,0 @@
-{
-  this.read("package");
-  Location loc=this.location();
-  String packageName=Parser.join(this.parseQualifiedIdentifier(),".");
-  this.read(";");
-  this.verifyStringIsConventionalPackageName(packageName,loc);
-  return new PackageDeclaration(loc,packageName);
-}

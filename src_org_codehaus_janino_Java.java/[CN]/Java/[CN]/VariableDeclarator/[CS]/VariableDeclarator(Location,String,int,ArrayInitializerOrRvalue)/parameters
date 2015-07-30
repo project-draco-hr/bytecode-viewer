@@ -1,4 +1,0 @@
-Location location
-String name
-int brackets
-ArrayInitializerOrRvalue optionalInitializer

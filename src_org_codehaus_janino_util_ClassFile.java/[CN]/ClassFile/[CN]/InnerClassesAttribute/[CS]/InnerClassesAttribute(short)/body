@@ -1,4 +1,0 @@
-{
-  super(attributeNameIndex);
-  this.entries=new ArrayList();
-}

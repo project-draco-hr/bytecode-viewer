@@ -1,6 +1,0 @@
-{
-  if (this.location == null) {
-    this.location=new Location(this.optionalFileName,this.lineNumber,this.columnNumber);
-  }
-  return this.location;
-}

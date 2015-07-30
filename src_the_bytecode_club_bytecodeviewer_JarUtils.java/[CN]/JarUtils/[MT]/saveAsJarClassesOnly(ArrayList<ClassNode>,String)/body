@@ -1,6 +1,5 @@
 {
   try {
-    System.out.println("zipping");
     JarOutputStream out=new JarOutputStream(new FileOutputStream(path));
     ArrayList<String> noDupe=new ArrayList<String>();
     for (    ClassNode cn : nodeList) {

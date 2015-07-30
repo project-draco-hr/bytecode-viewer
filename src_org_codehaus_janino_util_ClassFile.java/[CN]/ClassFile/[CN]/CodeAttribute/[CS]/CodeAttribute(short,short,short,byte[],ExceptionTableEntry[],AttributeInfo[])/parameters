@@ -1,6 +1,0 @@
-short attributeNameIndex
-short maxStack
-short maxLocals
-byte[] code
-ExceptionTableEntry[] exceptionTableEntries
-AttributeInfo[] attributes

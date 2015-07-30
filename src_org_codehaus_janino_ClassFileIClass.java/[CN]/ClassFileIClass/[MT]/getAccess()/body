@@ -1,3 +1,0 @@
-{
-  return ClassFileIClass.accessFlags2Access(this.accessFlags);
-}

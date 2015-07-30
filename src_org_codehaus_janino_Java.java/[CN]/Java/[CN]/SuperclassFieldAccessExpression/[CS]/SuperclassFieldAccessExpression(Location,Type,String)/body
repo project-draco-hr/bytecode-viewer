@@ -1,5 +1,0 @@
-{
-  super(location);
-  this.optionalQualification=optionalQualification;
-  this.fieldName=fieldName;
-}

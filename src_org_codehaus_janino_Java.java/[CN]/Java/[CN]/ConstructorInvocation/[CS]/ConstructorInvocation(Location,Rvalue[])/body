@@ -1,5 +1,0 @@
-{
-  super(location);
-  this.arguments=arguments;
-  for (  Rvalue a : arguments)   a.setEnclosingBlockStatement(this);
-}

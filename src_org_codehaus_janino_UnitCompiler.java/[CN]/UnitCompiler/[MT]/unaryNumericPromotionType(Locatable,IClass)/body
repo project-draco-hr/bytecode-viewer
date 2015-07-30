@@ -1,6 +1,0 @@
-{
-  if (!type.isPrimitiveNumeric()) {
-    this.compileError("Unary numeric promotion not possible on non-numeric-primitive type \"" + type + "\"",locatable.getLocation());
-  }
-  return (type == IClass.DOUBLE ? IClass.DOUBLE : type == IClass.FLOAT ? IClass.FLOAT : type == IClass.LONG ? IClass.LONG : IClass.INT);
-}

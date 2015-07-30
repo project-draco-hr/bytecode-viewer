@@ -1,9 +1,0 @@
-{
-  ss.condition.accept((Visitor.RvalueVisitor)this.cv);
-  for (  Java.SwitchStatement.SwitchBlockStatementGroup sbsg : ss.sbsgs) {
-    for (    Java.Rvalue cl : sbsg.caseLabels)     cl.accept((Visitor.RvalueVisitor)this.cv);
-    for (    Java.BlockStatement bs : sbsg.blockStatements)     bs.accept(this.cv);
-    this.traverseLocated(sbsg);
-  }
-  this.traverseBreakableStatement(ss);
-}

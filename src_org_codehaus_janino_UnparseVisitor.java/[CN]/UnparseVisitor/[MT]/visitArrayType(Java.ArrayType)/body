@@ -1,4 +1,0 @@
-{
-  this.unparseType(at.componentType);
-  this.pw.print("[]");
-}

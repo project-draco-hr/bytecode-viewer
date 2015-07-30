@@ -1,5 +1,0 @@
-{
-  ArrayList result=new ArrayList();
-  result.add(initialElement);
-  return result;
-}

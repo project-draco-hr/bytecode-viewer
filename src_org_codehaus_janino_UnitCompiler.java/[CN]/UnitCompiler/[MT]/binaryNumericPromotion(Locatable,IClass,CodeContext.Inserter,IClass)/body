@@ -1,3 +1,0 @@
-{
-  return this.binaryNumericPromotion(locatable,type1,convertInserter1,type2,this.codeContext.currentInserter());
-}

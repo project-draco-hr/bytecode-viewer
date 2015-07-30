@@ -1,9 +1,0 @@
-{
-  if (this.source.offset == Offset.UNSET || this.destination.offset == Offset.UNSET) {
-    throw new JaninoRuntimeException("Cannot relocate offset branch to unset destination offset");
-  }
-  int offset=this.destination.offset - this.source.offset;
-  byte[] ba=new byte[]{(byte)(offset >> 24),(byte)(offset >> 16),(byte)(offset >> 8),(byte)offset};
-  System.arraycopy(ba,0,CodeContext.this.code,this.where.offset,4);
-  return true;
-}

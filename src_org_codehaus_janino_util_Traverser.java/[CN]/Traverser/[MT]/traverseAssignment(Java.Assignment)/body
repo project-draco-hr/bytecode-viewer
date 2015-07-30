@@ -1,5 +1,0 @@
-{
-  a.lhs.accept((Visitor.LvalueVisitor)this.cv);
-  a.rhs.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseRvalue(a);
-}

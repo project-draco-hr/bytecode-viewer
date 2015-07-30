@@ -1,4 +1,0 @@
-{
-  dos.writeByte(3);
-  dos.writeInt(this.value);
-}

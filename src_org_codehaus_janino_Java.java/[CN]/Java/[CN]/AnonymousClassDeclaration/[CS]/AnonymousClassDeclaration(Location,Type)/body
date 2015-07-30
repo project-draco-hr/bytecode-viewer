@@ -1,4 +1,0 @@
-{
-  super(location,new Modifiers((short)(Mod.PRIVATE | Mod.FINAL)));
-  (this.baseType=baseType).setEnclosingScope(new EnclosingScopeOfTypeDeclaration(this));
-}

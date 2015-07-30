@@ -1,3 +1,0 @@
-{
-  return this.resolveClasses(this.classFile.interfaces);
-}

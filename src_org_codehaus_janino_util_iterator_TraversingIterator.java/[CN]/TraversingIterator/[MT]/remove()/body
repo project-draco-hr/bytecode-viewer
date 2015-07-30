@@ -1,3 +1,0 @@
-{
-  ((Iterator)this.nest.peek()).remove();
-}

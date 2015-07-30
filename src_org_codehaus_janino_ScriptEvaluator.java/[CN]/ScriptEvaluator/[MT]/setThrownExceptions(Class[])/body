@@ -1,3 +1,0 @@
-{
-  this.setThrownExceptions(new Class[][]{thrownExceptions});
-}

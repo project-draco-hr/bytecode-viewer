@@ -1,8 +1,0 @@
-Location location
-String optionalDocComment
-Java.Modifiers modifiers
-Type type
-String name
-FormalParameters parameters
-Type[] thrownExceptions
-List<? extends BlockStatement> optionalStatements

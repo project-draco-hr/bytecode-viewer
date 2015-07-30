@@ -1,9 +1,0 @@
-{
-  IClass[] types=iClass.findMemberType(name);
-  if (types.length == 0)   return null;
-  if (types.length == 1)   return types[0];
-  StringBuilder sb=new StringBuilder("Type \"").append(name).append("\" is ambiguous: ").append(types[0]);
-  for (int i=1; i < types.length; ++i)   sb.append(" vs. ").append(types[i].toString());
-  this.compileError(sb.toString(),location);
-  return types[0];
-}

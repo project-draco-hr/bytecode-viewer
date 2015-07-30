@@ -1,5 +1,0 @@
-{
-  String packageName1=Descriptor.getPackageName(d1);
-  String packageName2=Descriptor.getPackageName(d2);
-  return packageName1 == null ? packageName2 == null : packageName1.equals(packageName2);
-}

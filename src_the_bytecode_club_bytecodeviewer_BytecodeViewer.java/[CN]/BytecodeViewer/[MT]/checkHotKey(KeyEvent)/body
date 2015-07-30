@@ -41,7 +41,13 @@
   }
  else   if ((e.getKeyCode() == KeyEvent.VK_T) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
     last=System.currentTimeMillis();
-    BytecodeViewer.compile(true);
+    Thread t=new Thread(){
+      public void run(){
+        BytecodeViewer.compile(true);
+      }
+    }
+;
+    t.start();
   }
  else   if ((e.getKeyCode() == KeyEvent.VK_R) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
     last=System.currentTimeMillis();
@@ -57,50 +63,56 @@
       BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
       return;
     }
-    if (viewer.autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))     return;
-    JFileChooser fc=new JFileChooser();
-    fc.setFileFilter(new FileFilter(){
-      @Override public boolean accept(      File f){
-        return f.isDirectory() || MiscUtils.extension(f.getAbsolutePath()).equals("zip");
-      }
-      @Override public String getDescription(){
-        return "Zip Archives";
-      }
-    }
+    Thread t=new Thread(){
+      public void run(){
+        if (viewer.autoCompileSmali.isSelected() && !BytecodeViewer.compile(false))         return;
+        JFileChooser fc=new JFileChooser();
+        fc.setFileFilter(new FileFilter(){
+          @Override public boolean accept(          File f){
+            return f.isDirectory() || MiscUtils.extension(f.getAbsolutePath()).equals("zip");
+          }
+          @Override public String getDescription(){
+            return "Zip Archives";
+          }
+        }
 );
-    fc.setFileHidingEnabled(false);
-    fc.setAcceptAllFileFilterUsed(false);
-    int returnVal=fc.showSaveDialog(viewer);
-    if (returnVal == JFileChooser.APPROVE_OPTION) {
-      File file=fc.getSelectedFile();
-      if (!file.getAbsolutePath().endsWith(".zip"))       file=new File(file.getAbsolutePath() + ".zip");
-      if (file.exists()) {
-        JOptionPane pane=new JOptionPane("Are you sure you wish to overwrite this existing file?");
-        Object[] options=new String[]{"Yes","No"};
-        pane.setOptions(options);
-        JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Overwrite File");
-        dialog.setVisible(true);
-        Object obj=pane.getValue();
-        int result=-1;
-        for (int k=0; k < options.length; k++)         if (options[k].equals(obj))         result=k;
-        if (result == 0) {
-          file.delete();
-        }
+        fc.setFileHidingEnabled(false);
+        fc.setAcceptAllFileFilterUsed(false);
+        int returnVal=fc.showSaveDialog(viewer);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+          File file=fc.getSelectedFile();
+          if (!file.getAbsolutePath().endsWith(".zip"))           file=new File(file.getAbsolutePath() + ".zip");
+          if (file.exists()) {
+            JOptionPane pane=new JOptionPane("Are you sure you wish to overwrite this existing file?");
+            Object[] options=new String[]{"Yes","No"};
+            pane.setOptions(options);
+            JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Overwrite File");
+            dialog.setVisible(true);
+            Object obj=pane.getValue();
+            int result=-1;
+            for (int k=0; k < options.length; k++)             if (options[k].equals(obj))             result=k;
+            if (result == 0) {
+              file.delete();
+            }
  else {
-          return;
-        }
-      }
-      final File file2=file;
-      BytecodeViewer.viewer.setIcon(true);
-      Thread t=new Thread(){
-        @Override public void run(){
-          JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),file2.getAbsolutePath());
-          BytecodeViewer.viewer.setIcon(false);
-        }
-      }
+              return;
+            }
+          }
+          final File file2=file;
+          BytecodeViewer.viewer.setIcon(true);
+          Thread t=new Thread(){
+            @Override public void run(){
+              JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),file2.getAbsolutePath());
+              BytecodeViewer.viewer.setIcon(false);
+            }
+          }
 ;
-      t.start();
+          t.start();
+        }
+      }
     }
+;
+    t.start();
   }
  else   if ((e.getKeyCode() == KeyEvent.VK_W) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
     last=System.currentTimeMillis();

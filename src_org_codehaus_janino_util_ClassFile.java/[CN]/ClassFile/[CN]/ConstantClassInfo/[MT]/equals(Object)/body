@@ -1,3 +1,0 @@
-{
-  return o instanceof ConstantClassInfo && ((ConstantClassInfo)o).nameIndex == this.nameIndex;
-}

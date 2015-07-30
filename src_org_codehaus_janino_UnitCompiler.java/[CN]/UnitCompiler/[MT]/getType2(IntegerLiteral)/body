@@ -1,5 +1,0 @@
-{
-  String v=il.value;
-  char lastChar=v.charAt(v.length() - 1);
-  return lastChar == 'l' || lastChar == 'L' ? IClass.LONG : IClass.INT;
-}

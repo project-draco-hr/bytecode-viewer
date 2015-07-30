@@ -1,3 +1,0 @@
-{
-  return this.addToConstantPool(new ConstantNameAndTypeInfo(this.addConstantUtf8Info(name),this.addConstantUtf8Info(descriptor)));
-}

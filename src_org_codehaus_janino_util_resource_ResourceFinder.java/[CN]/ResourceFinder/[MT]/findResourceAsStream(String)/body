@@ -1,5 +1,0 @@
-{
-  Resource resource=this.findResource(resourceName);
-  if (resource == null)   return null;
-  return resource.open();
-}

@@ -1,4 +1,0 @@
-{
-  this.declaredMethods.add(method);
-  method.setDeclaringType(this);
-}

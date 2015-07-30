@@ -1,8 +1,0 @@
-{
-  Constructor[] constructors=this.clazz.getDeclaredConstructors();
-  IConstructor[] result=new IConstructor[constructors.length];
-  for (int i=0; i < constructors.length; ++i) {
-    result[i]=new ReflectionIConstructor(constructors[i]);
-  }
-  return result;
-}

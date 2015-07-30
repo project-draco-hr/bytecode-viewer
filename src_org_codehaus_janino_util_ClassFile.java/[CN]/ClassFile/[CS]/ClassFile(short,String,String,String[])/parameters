@@ -1,4 +1,0 @@
-short accessFlags
-String thisClassFd
-String superclassFd
-String[] interfaceFds

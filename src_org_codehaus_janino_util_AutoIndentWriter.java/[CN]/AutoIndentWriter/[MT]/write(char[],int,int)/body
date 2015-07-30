@@ -1,3 +1,0 @@
-{
-  for (; len > 0; --len)   this.write(cbuf[off++]);
-}

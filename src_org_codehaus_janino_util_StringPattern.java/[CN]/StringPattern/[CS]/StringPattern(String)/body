@@ -1,4 +1,0 @@
-{
-  this.mode=StringPattern.INCLUDE;
-  this.pattern=pattern;
-}

@@ -1,5 +1,5 @@
 {
-  String[] whitelist={"attrib","python","pypy"};
+  String[] whitelist={"attrib","python","pypy","java"};
   boolean allow=false;
   for (  String s : whitelist) {
     if (cmd.contains(s))     allow=true;

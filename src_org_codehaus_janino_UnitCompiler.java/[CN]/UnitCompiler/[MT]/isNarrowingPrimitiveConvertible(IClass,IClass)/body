@@ -1,3 +1,0 @@
-{
-  return UnitCompiler.PRIMITIVE_NARROWING_CONVERSIONS.containsKey(sourceType.getDescriptor() + targetType.getDescriptor());
-}

@@ -1,6 +1,0 @@
-Scanner scanner
-Class returnType
-String[] parameterNames
-Class[] parameterTypes
-Class[] thrownExceptions
-ClassLoader optionalParentClassLoader

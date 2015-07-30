@@ -1,9 +1,0 @@
-{
-  super(location,body);
-  this.optionalInit=optionalInit;
-  if (optionalInit != null)   optionalInit.setEnclosingScope(this);
-  this.optionalCondition=optionalCondition;
-  if (optionalCondition != null)   optionalCondition.setEnclosingBlockStatement(this);
-  this.optionalUpdate=optionalUpdate;
-  if (optionalUpdate != null)   for (  Rvalue rv : optionalUpdate)   rv.setEnclosingBlockStatement(this);
-}

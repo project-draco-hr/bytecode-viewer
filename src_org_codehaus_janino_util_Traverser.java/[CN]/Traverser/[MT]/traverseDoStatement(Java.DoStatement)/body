@@ -1,5 +1,0 @@
-{
-  ds.body.accept(this.cv);
-  ds.condition.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseContinuableStatement(ds);
-}

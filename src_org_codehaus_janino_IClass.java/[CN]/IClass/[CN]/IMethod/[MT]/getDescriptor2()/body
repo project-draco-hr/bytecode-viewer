@@ -1,3 +1,0 @@
-{
-  return new MethodDescriptor(IClass.getDescriptors(this.getParameterTypes()),this.getReturnType().getDescriptor()).toString();
-}

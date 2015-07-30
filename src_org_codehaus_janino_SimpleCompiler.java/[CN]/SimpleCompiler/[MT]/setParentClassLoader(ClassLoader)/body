@@ -1,4 +1,0 @@
-{
-  this.assertNotCooked();
-  this.parentClassLoader=(optionalParentClassLoader != null ? optionalParentClassLoader : Thread.currentThread().getContextClassLoader());
-}

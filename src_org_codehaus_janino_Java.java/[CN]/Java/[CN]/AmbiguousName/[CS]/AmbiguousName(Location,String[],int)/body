@@ -1,5 +1,0 @@
-{
-  super(location);
-  this.identifiers=identifiers;
-  this.n=n;
-}

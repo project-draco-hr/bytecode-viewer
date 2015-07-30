@@ -1,8 +1,0 @@
-{
-  final Location location=this.location();
-  this.read("break");
-  String optionalLabel=null;
-  if (this.peekIdentifier() != null)   optionalLabel=this.readIdentifier();
-  this.read(";");
-  return new BreakStatement(location,optionalLabel);
-}

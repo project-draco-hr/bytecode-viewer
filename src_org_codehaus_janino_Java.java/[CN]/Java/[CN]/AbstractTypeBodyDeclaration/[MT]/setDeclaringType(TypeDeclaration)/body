@@ -1,6 +1,0 @@
-{
-  if (this.declaringType != null && declaringType != null) {
-    throw new JaninoRuntimeException("Declaring type for type body declaration \"" + this.toString() + "\"at "+ this.getLocation()+ " is already set");
-  }
-  this.declaringType=declaringType;
-}

@@ -1,3 +1,0 @@
-{
-  return o instanceof ConstantFloatInfo && ((ConstantFloatInfo)o).value == this.value;
-}

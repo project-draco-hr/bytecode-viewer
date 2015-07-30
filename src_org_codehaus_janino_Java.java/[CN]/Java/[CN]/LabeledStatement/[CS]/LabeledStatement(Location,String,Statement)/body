@@ -1,5 +1,0 @@
-{
-  super(location);
-  this.label=label;
-  (this.body=body).setEnclosingScope(this);
-}

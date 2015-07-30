@@ -1,5 +1,0 @@
-{
-  this.where=where;
-  this.source=source;
-  this.destination=destination;
-}

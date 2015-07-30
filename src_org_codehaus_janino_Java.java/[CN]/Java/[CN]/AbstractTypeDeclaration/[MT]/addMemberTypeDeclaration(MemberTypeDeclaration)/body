@@ -1,4 +1,0 @@
-{
-  this.declaredClassesAndInterfaces.add(mcoid);
-  mcoid.setDeclaringType(this);
-}

@@ -1,5 +1,0 @@
-{
-  boolean tmp=this.expectGreater;
-  this.expectGreater=value;
-  return tmp;
-}

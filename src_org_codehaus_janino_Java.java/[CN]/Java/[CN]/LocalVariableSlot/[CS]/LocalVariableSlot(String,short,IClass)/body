@@ -1,5 +1,0 @@
-{
-  this.name=name;
-  this.slotIndex=slotNumber;
-  this.type=type;
-}

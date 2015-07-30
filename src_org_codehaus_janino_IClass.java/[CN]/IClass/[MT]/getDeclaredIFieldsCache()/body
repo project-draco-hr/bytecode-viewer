@@ -1,9 +1,0 @@
-{
-  if (this.declaredIFieldsCache == null) {
-    IField[] fields=this.getDeclaredIFields2();
-    Map<String,IField> m=new HashMap();
-    for (    IField f : fields)     m.put(f.getName(),f);
-    this.declaredIFieldsCache=m;
-  }
-  return this.declaredIFieldsCache;
-}

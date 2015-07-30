@@ -1,4 +1,0 @@
-{
-  String s=this.read().value;
-  if (!s.equals(expected))   throw this.compileException("'" + expected + "' expected instead of '"+ s+ "'");
-}

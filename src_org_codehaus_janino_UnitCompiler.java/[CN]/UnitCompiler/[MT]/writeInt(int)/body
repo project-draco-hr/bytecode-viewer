@@ -1,3 +1,0 @@
-{
-  this.codeContext.write((short)-1,(byte)(v >> 24),(byte)(v >> 16),(byte)(v >> 8),(byte)v);
-}

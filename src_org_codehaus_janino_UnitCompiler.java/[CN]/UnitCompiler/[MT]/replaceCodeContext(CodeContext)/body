@@ -1,5 +1,0 @@
-{
-  CodeContext oldCodeContext=this.codeContext;
-  this.codeContext=newCodeContext;
-  return oldCodeContext;
-}

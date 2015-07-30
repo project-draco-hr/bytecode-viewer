@@ -1,7 +1,0 @@
-{
-  Map<String,LocalVariable> vars=new HashMap();
-  vars.putAll(localVars);
-  LocalVariable lv=this.getLocalVariable(catchClause.caughtException);
-  vars.put(catchClause.caughtException.name,lv);
-  this.buildLocalVariableMap(catchClause.body,vars);
-}

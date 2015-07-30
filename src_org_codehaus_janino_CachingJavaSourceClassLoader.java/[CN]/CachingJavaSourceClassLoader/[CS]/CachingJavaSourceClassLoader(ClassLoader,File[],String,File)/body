@@ -1,3 +1,0 @@
-{
-  this(parentClassLoader,(optionalSourcePath == null ? (ResourceFinder)new DirectoryResourceFinder(new File(".")) : (ResourceFinder)new PathResourceFinder(optionalSourcePath)),optionalCharacterEncoding,new DirectoryResourceFinder(cacheDirectory),new DirectoryResourceCreator(cacheDirectory));
-}

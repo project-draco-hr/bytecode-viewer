@@ -1,5 +1,0 @@
-{
-  Lvalue result=this.toLvalue();
-  if (result == null)   this.throwCompileException("Expression \"" + this.toString() + "\" is not an lvalue");
-  return result;
-}

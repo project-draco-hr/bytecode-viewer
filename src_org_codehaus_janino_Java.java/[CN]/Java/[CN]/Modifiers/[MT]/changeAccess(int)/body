@@ -1,3 +1,0 @@
-{
-  return new Modifiers((short)(this.flags & ~Mod.PPP | newAccess),this.annotations);
-}

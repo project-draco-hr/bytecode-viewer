@@ -1,6 +1,0 @@
-{
-  if (this.reclassified != null) {
-    return this.reclassified.toRvalue();
-  }
-  return this;
-}

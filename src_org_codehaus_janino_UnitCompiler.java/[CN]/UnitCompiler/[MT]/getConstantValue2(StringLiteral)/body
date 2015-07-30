@@ -1,7 +1,0 @@
-{
-  if (sl == null || sl.value == null) {
-    return "";
-  }
-  String v=sl.value;
-  return UnitCompiler.unescape(v.substring(1,v.length() - 1));
-}

@@ -1,3 +1,0 @@
-{
-  visitor.visitSimpleType(this);
-}

@@ -1,3 +1,0 @@
-{
-  return Java.join(this.identifiers,".",0,this.n);
-}

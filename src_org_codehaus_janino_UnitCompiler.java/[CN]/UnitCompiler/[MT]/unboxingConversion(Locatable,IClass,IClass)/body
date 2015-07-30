@@ -1,4 +1,0 @@
-{
-  this.writeOpcode(locatable,Opcode.INVOKEVIRTUAL);
-  this.writeConstantMethodrefInfo(sourceType.getDescriptor(),targetType.toString() + "Value","()" + targetType.getDescriptor());
-}

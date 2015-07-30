@@ -1,4 +1,0 @@
-{
-  ++this.classDeclarationCount;
-  super.traverseClassDeclaration(cd);
-}

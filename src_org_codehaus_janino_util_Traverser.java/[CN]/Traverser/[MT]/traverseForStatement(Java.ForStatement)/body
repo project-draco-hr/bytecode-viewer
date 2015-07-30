@@ -1,9 +1,0 @@
-{
-  if (fs.optionalInit != null)   fs.optionalInit.accept(this.cv);
-  if (fs.optionalCondition != null)   fs.optionalCondition.accept((Visitor.RvalueVisitor)this.cv);
-  if (fs.optionalUpdate != null) {
-    for (    Java.Rvalue rv : fs.optionalUpdate)     rv.accept((Visitor.RvalueVisitor)this.cv);
-  }
-  fs.body.accept(this.cv);
-  this.traverseContinuableStatement(fs);
-}

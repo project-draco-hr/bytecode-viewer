@@ -1,5 +1,0 @@
-{
-  if (!natural)   this.pw.print("((( ");
-  this.unparse(operand);
-  if (!natural)   this.pw.print(" )))");
-}

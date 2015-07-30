@@ -1,3 +1,0 @@
-{
-  return o instanceof ConstantUtf8Info && ((ConstantUtf8Info)o).s.equals(this.s);
-}

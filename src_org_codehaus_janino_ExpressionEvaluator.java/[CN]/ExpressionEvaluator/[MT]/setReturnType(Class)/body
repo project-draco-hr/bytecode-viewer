@@ -1,3 +1,0 @@
-{
-  throw new AssertionError("Must not be used on an ExpressionEvaluator; use 'setExpressionType()' instead");
-}

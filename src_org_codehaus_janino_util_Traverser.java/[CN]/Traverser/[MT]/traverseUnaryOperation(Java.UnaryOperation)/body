@@ -1,4 +1,0 @@
-{
-  uo.operand.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseBooleanRvalue(uo);
-}

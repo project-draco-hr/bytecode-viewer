@@ -1,8 +1,0 @@
-{
-  Map<String,LocalVariable> inner=localVars;
-  if (fs.optionalInit != null) {
-    inner=this.buildLocalVariableMap(fs.optionalInit,localVars);
-  }
-  fs.localVariables=inner;
-  this.buildLocalVariableMap(fs.body,inner);
-}

@@ -1,3 +1,0 @@
-{
-  return (ConstantValuePoolInfo)classFile.getConstantPoolInfo(this.constantValueIndex);
-}

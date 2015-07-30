@@ -1,5 +1,0 @@
-{
-  Rvalue result=this.toRvalue();
-  if (result == null)   this.throwCompileException("Expression \"" + this.toString() + "\" is not an rvalue");
-  return result;
-}

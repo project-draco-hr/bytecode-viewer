@@ -1,6 +1,0 @@
-{
-  if (an.reclassified == null) {
-    an.reclassified=this.reclassifyName(an.getLocation(),an.getEnclosingBlockStatement(),an.identifiers,an.n);
-  }
-  return an.reclassified;
-}

@@ -1,4 +1,0 @@
-{
-  NamedTypeDeclaration declaringType=(NamedTypeDeclaration)this.getEnclosingScope();
-  return (declaringType.getClassName() + '$' + this.getName());
-}

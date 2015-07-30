@@ -1,6 +1,0 @@
-{
-  this.pw.print("new ");
-  this.unparseType(nai.arrayType);
-  this.pw.print(" ");
-  this.unparseArrayInitializerOrRvalue(nai.arrayInitializer);
-}

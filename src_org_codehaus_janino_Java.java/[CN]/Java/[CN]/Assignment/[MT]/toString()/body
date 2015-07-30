@@ -1,3 +1,0 @@
-{
-  return this.lhs.toString() + ' ' + this.operator+ ' '+ this.rhs.toString();
-}

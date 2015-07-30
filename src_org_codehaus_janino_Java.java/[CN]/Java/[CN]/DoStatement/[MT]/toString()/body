@@ -1,3 +1,0 @@
-{
-  return "do " + this.body + " while("+ this.condition+ ");";
-}

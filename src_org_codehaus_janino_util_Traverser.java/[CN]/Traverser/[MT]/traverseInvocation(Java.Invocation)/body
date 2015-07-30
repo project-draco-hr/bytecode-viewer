@@ -1,4 +1,0 @@
-{
-  for (  Java.Rvalue argument : i.arguments)   argument.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseRvalue(i);
-}

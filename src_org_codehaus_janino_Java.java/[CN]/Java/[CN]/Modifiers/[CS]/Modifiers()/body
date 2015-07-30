@@ -1,4 +1,0 @@
-{
-  this.flags=Mod.NONE;
-  this.annotations=new Annotation[0];
-}

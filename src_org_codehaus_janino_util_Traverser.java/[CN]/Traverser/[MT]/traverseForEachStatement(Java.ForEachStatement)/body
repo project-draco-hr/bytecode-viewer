@@ -1,6 +1,0 @@
-{
-  this.traverseFormalParameter(fes.currentElement);
-  fes.expression.accept((Visitor.RvalueVisitor)this.cv);
-  fes.body.accept(this.cv);
-  this.traverseContinuableStatement(fes);
-}

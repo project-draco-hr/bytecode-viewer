@@ -1,3 +1,0 @@
-{
-  return ClassBodyEvaluator.createFastClassBodyEvaluator(scanner,IClassBodyEvaluator.DEFAULT_CLASS_NAME,(optionalBaseType != null && !optionalBaseType.isInterface() ? optionalBaseType : null),(optionalBaseType != null && optionalBaseType.isInterface() ? new Class[]{optionalBaseType} : new Class[0]),optionalParentClassLoader);
-}

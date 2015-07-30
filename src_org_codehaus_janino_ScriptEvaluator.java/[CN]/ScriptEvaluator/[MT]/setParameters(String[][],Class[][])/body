@@ -1,5 +1,0 @@
-{
-  this.assertNotCooked();
-  this.optionalParameterNames=parameterNames.clone();
-  this.optionalParameterTypes=parameterTypes.clone();
-}

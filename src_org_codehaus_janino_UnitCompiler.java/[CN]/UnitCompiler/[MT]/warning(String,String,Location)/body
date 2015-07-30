@@ -1,5 +1,0 @@
-{
-  if (this.optionalWarningHandler != null) {
-    this.optionalWarningHandler.handleWarning(handle,message,optionalLocation);
-  }
-}

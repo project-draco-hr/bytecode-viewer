@@ -1,3 +1,0 @@
-{
-  return this.iClassLoader.TYPE_java_lang_String;
-}

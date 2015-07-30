@@ -1,3 +1,0 @@
-{
-  super(location,methodName,arguments);
-}

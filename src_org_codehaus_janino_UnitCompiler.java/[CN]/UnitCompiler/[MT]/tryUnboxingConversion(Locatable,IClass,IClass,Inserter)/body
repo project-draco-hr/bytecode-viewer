@@ -1,7 +1,0 @@
-{
-  if (this.isUnboxingConvertible(sourceType) == targetType) {
-    this.unboxingConversion(locatable,sourceType,targetType,optionalInserter);
-    return true;
-  }
-  return false;
-}

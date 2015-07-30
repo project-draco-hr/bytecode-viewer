@@ -1,5 +1,0 @@
-{
-  na.type.accept((Visitor.TypeVisitor)this.cv);
-  for (  Rvalue dimExpr : na.dimExprs)   dimExpr.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseRvalue(na);
-}

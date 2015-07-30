@@ -1,6 +1,0 @@
-{
-  this.pw.print("while (");
-  this.unparse(ws.condition);
-  this.pw.print(") ");
-  this.unparseBlockStatement(ws.body);
-}

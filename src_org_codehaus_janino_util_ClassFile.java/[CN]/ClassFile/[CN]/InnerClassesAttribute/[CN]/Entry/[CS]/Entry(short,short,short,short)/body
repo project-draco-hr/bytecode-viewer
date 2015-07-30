@@ -1,6 +1,0 @@
-{
-  this.innerClassInfoIndex=innerClassInfoIndex;
-  this.outerClassInfoIndex=outerClassInfoIndex;
-  this.innerNameIndex=innerNameIndex;
-  this.innerClassAccessFlags=innerClassAccessFlags;
-}

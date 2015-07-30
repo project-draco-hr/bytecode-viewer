@@ -1,4 +1,0 @@
-{
-  this.packageMemberTypeDeclarations.add(pmtd);
-  pmtd.setDeclaringCompilationUnit(this);
-}

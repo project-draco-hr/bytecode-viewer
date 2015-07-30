@@ -1,3 +1,0 @@
-{
-  this.compileSet(this.toLvalueOrCompileException(pe.value));
-}

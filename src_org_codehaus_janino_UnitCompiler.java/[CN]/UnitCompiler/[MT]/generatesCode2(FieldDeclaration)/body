@@ -1,6 +1,0 @@
-{
-  for (  VariableDeclarator vd : fd.variableDeclarators) {
-    if (this.getNonConstantFinalInitializer(fd,vd) != null)     return true;
-  }
-  return false;
-}

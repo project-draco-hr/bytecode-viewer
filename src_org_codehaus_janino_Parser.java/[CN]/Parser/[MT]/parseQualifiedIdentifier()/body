@@ -1,9 +1,0 @@
-{
-  List<String> l=new ArrayList();
-  l.add(this.readIdentifier());
-  while (this.peek(".") && this.peekNextButOne().type == Token.IDENTIFIER) {
-    this.read();
-    l.add(this.readIdentifier());
-  }
-  return (String[])l.toArray(new String[l.size()]);
-}

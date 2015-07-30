@@ -1,5 +1,0 @@
-{
-  String v=fpl.value;
-  char lastChar=v.charAt(v.length() - 1);
-  return lastChar == 'f' || lastChar == 'F' ? IClass.FLOAT : IClass.DOUBLE;
-}

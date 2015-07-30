@@ -1,5 +1,0 @@
-{
-  LocalVariable lv=this.getLocalVariable(pa.formalParameter);
-  this.load(pa,lv);
-  return lv.type;
-}

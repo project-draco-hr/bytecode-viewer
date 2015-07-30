@@ -1,6 +1,0 @@
-{
-  if (d.charAt(0) != 'L') {
-    throw new JaninoRuntimeException("Attempt to convert non-class descriptor \"" + d + "\" into internal form");
-  }
-  return d.substring(1,d.length() - 1);
-}

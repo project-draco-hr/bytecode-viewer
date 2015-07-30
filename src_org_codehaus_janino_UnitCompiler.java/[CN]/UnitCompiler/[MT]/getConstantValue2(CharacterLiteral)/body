@@ -1,4 +1,0 @@
-{
-  String v=cl.value;
-  return Character.valueOf(UnitCompiler.unescape(v.substring(1,v.length() - 1)).charAt(0));
-}

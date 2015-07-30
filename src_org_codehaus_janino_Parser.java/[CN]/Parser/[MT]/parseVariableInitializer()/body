@@ -1,8 +1,0 @@
-{
-  if (this.peek("{")) {
-    return this.parseArrayInitializer();
-  }
- else {
-    return this.parseExpression().toRvalueOrCompileException();
-  }
-}

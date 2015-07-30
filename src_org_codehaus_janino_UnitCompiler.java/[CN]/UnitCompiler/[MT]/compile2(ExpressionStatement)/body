@@ -1,4 +1,0 @@
-{
-  this.compile(ee.rvalue);
-  return true;
-}

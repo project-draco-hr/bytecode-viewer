@@ -1,3 +1,0 @@
-{
-  return Mod.isStatic(this.modifiers.flags);
-}

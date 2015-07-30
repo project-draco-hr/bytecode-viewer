@@ -1,4 +1,0 @@
-{
-  if (sci.optionalQualification != null)   sci.optionalQualification.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseConstructorInvocation(sci);
-}

@@ -1,4 +1,0 @@
-{
-  IClass res=this.getType(na.type);
-  return res.getArrayIClass(na.dimExprs.length + na.dims,this.iClassLoader.TYPE_java_lang_Object);
-}

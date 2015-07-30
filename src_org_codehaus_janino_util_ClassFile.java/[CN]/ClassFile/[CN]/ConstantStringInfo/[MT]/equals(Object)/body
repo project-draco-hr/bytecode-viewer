@@ -1,3 +1,0 @@
-{
-  return o instanceof ConstantStringInfo && ((ConstantStringInfo)o).stringIndex == this.stringIndex;
-}

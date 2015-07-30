@@ -1,3 +1,0 @@
-{
-  this.compileError(message,null);
-}

@@ -1,6 +1,0 @@
-{
-  this.startPC=startPc;
-  this.endPC=endPc;
-  this.handlerPC=handlerPc;
-  this.catchType=catchType;
-}

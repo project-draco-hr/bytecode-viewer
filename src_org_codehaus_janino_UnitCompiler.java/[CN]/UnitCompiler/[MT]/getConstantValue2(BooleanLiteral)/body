@@ -1,5 +1,0 @@
-{
-  if (bl.value == "true")   return Boolean.TRUE;
-  if (bl.value == "false")   return Boolean.FALSE;
-  throw new JaninoRuntimeException(bl.value);
-}

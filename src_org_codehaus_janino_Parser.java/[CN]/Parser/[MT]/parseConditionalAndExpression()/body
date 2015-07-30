@@ -1,8 +1,0 @@
-{
-  Atom a=this.parseInclusiveOrExpression();
-  while (this.peekRead("&&")) {
-    Location location=this.location();
-    a=new BinaryOperation(location,a.toRvalueOrCompileException(),"&&",this.parseInclusiveOrExpression().toRvalueOrCompileException());
-  }
-  return a;
-}

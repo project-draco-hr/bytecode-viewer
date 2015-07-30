@@ -1,8 +1,0 @@
-{
-  final Location location=this.location();
-  this.read("while");
-  this.read("(");
-  Rvalue condition=this.parseExpression().toRvalueOrCompileException();
-  this.read(")");
-  return new WhileStatement(location,condition,this.parseStatement());
-}

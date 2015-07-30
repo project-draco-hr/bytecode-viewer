@@ -1,9 +1,0 @@
-{
-  dos.writeByte(1);
-  try {
-    dos.writeUTF(this.s);
-  }
- catch (  UTFDataFormatException e) {
-    throw new ClassFormatError("String constant too long to store in class file");
-  }
-}

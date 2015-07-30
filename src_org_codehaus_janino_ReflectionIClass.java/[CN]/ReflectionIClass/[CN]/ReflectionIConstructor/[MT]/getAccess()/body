@@ -1,4 +1,0 @@
-{
-  int mod=this.constructor.getModifiers();
-  return ReflectionIClass.modifiers2Access(mod);
-}

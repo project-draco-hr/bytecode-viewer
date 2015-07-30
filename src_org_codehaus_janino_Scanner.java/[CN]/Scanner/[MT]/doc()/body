@@ -1,5 +1,0 @@
-{
-  String s=this.docComment;
-  this.docComment=null;
-  return s;
-}

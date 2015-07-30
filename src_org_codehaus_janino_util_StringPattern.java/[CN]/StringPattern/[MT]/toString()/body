@@ -1,3 +1,0 @@
-{
-  return (this.mode == StringPattern.INCLUDE ? '+' : this.mode == StringPattern.EXCLUDE ? '-' : '?') + this.pattern;
-}

@@ -1,4 +1,0 @@
-{
-  Token t=this.peek();
-  return t.type == Token.IDENTIFIER ? t.value : null;
-}

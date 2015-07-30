@@ -1,3 +1,0 @@
-{
-  return !t.isPrimitive() ? 4 : UnitCompiler.ilfd(t);
-}

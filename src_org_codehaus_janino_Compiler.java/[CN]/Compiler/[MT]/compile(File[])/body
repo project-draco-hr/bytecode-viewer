@@ -1,7 +1,0 @@
-{
-  this.benchmark.report("Source files",sourceFiles);
-  Resource[] sourceFileResources=new Resource[sourceFiles.length];
-  for (int i=0; i < sourceFiles.length; ++i)   sourceFileResources[i]=new FileResource(sourceFiles[i]);
-  this.compile(sourceFileResources);
-  return true;
-}

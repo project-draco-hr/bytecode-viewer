@@ -1,3 +1,0 @@
-{
-  return (ConstantPoolInfo)this.constantPool.get(0xffff & index);
-}

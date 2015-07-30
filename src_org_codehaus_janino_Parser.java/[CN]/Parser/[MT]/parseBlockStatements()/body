@@ -1,5 +1,0 @@
-{
-  List<BlockStatement> l=new ArrayList();
-  while (!this.peek("}") && !this.peek("case") && !this.peek("default"))   l.add(this.parseBlockStatement());
-  return l;
-}

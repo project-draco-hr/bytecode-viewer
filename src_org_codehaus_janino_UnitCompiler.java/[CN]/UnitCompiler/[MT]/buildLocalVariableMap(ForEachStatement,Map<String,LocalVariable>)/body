@@ -1,8 +1,0 @@
-{
-  Map<String,LocalVariable> vars=new HashMap();
-  vars.putAll(localVars);
-  LocalVariable elementLv=this.getLocalVariable(fes.currentElement,false);
-  vars.put(fes.currentElement.name,elementLv);
-  fes.localVariables=vars;
-  this.buildLocalVariableMap(fes.body,vars);
-}

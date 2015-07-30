@@ -1,4 +1,0 @@
-{
-  super(componentType.getLocation());
-  this.componentType=componentType;
-}

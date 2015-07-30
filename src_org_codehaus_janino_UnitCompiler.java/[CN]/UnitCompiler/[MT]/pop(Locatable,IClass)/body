@@ -1,4 +1,0 @@
-{
-  if (type == IClass.VOID)   return;
-  this.writeOpcode(locatable,type == IClass.LONG || type == IClass.DOUBLE ? Opcode.POP2 : Opcode.POP);
-}

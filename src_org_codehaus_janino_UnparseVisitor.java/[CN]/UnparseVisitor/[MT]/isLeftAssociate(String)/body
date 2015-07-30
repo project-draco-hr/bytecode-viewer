@@ -1,3 +1,0 @@
-{
-  return UnparseVisitor.LEFT_ASSOCIATIVE_OPERATORS.contains(op);
-}

@@ -1,4 +1,0 @@
-{
-  this.pw.print(uo.operator);
-  this.unparseUnaryOperation(uo.operand,uo.operator + "x");
-}

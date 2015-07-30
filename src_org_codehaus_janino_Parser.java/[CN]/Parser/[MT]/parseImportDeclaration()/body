@@ -1,6 +1,0 @@
-{
-  this.read("import");
-  CompilationUnit.ImportDeclaration importDeclaration=this.parseImportDeclarationBody();
-  this.read(";");
-  return importDeclaration;
-}

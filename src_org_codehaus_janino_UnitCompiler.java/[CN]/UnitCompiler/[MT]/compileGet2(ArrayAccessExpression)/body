@@ -1,5 +1,0 @@
-{
-  IClass lhsComponentType=this.getType(aae);
-  this.writeOpcode(aae,Opcode.IALOAD + UnitCompiler.ilfdabcs(lhsComponentType));
-  return lhsComponentType;
-}

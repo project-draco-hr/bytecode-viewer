@@ -1,4 +1,0 @@
-{
-  if (i.statiC)   this.pw.print("static ");
-  this.unparseBlockStatement(i.block);
-}

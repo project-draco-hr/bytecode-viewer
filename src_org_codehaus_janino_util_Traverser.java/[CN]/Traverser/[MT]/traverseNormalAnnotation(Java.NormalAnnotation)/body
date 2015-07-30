@@ -1,7 +1,0 @@
-{
-  na.type.accept(this.cv);
-  for (  Java.ElementValuePair elementValuePair : na.elementValuePairs) {
-    elementValuePair.elementValue.accept(this.cv);
-  }
-  this.traverseAnnotation(na);
-}

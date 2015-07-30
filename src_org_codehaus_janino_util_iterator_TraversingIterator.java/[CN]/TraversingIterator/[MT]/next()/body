@@ -1,5 +1,0 @@
-{
-  if (!this.nextElementRead && !this.readNext())   throw new NoSuchElementException();
-  this.nextElementRead=false;
-  return this.nextElement;
-}

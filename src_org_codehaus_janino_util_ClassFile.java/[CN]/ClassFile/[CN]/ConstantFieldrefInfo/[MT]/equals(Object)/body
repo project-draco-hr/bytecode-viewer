@@ -1,3 +1,0 @@
-{
-  return (o instanceof ConstantFieldrefInfo && ((ConstantFieldrefInfo)o).classIndex == this.classIndex && ((ConstantFieldrefInfo)o).nameAndTypeIndex == this.nameAndTypeIndex);
-}

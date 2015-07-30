@@ -1,3 +1,0 @@
-{
-  return ReflectionIClass.modifiers2Access(this.field.getModifiers());
-}

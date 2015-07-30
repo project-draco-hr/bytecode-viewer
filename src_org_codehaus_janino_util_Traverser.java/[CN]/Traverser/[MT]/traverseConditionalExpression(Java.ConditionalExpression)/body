@@ -1,6 +1,0 @@
-{
-  ce.lhs.accept((Visitor.RvalueVisitor)this.cv);
-  ce.mhs.accept((Visitor.RvalueVisitor)this.cv);
-  ce.rhs.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseRvalue(ce);
-}

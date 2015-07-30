@@ -1,8 +1,0 @@
-{
-  dos.writeShort(constantPool.size());
-  for (int i=1; i < constantPool.size(); ++i) {
-    ConstantPoolInfo cpi=(ConstantPoolInfo)constantPool.get(i);
-    if (cpi == null)     continue;
-    cpi.store(dos);
-  }
-}

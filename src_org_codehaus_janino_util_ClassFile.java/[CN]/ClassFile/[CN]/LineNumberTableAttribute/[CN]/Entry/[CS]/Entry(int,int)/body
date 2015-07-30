@@ -1,4 +1,0 @@
-{
-  this.startPC=startPc;
-  this.lineNumber=lineNumber;
-}

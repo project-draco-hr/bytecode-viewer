@@ -1,8 +1,0 @@
-{
-  IClass iClass=this.findTypeByFullyQualifiedName(siodd.getLocation(),siodd.identifiers);
-  if (iClass == null) {
-    this.compileError("Could not load \"" + Java.join(siodd.identifiers,".") + "\"",siodd.getLocation());
-    return;
-  }
-  this.staticImportsOnDemand.add(iClass);
-}

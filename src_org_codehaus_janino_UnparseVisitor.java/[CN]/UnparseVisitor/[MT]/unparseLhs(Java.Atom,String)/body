@@ -1,4 +1,0 @@
-{
-  int cmp=UnparseVisitor.comparePrecedence(binaryOperator,lhs);
-  this.unparse(lhs,cmp < 0 || (cmp == 0 && UnparseVisitor.isLeftAssociate(binaryOperator)));
-}

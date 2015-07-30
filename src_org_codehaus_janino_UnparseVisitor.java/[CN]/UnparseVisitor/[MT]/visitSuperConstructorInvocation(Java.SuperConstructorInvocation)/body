@@ -1,8 +1,0 @@
-{
-  if (sci.optionalQualification != null) {
-    this.unparseLhs(sci.optionalQualification,".");
-    this.pw.print('.');
-  }
-  this.pw.print("super");
-  this.unparseFunctionInvocationArguments(sci.arguments);
-}

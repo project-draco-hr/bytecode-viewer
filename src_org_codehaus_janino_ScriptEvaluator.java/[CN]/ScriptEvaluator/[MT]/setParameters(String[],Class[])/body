@@ -1,3 +1,0 @@
-{
-  this.setParameters(new String[][]{parameterNames},new Class[][]{parameterTypes});
-}

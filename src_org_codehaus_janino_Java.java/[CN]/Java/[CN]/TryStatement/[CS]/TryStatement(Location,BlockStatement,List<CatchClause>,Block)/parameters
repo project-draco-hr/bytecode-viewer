@@ -1,4 +1,0 @@
-Location location
-BlockStatement body
-List<CatchClause> catchClauses
-Block optionalFinally

@@ -1,9 +1,0 @@
-{
-  if (this.classFile.superclass == 0)   return null;
-  try {
-    return this.resolveClass(this.classFile.superclass);
-  }
- catch (  ClassNotFoundException e) {
-    throw new CompileException(e.getMessage(),null);
-  }
-}

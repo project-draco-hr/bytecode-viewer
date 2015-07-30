@@ -1,5 +1,0 @@
-{
-  this.pw.append('@').append(sea.type.toString()).append('(');
-  sea.elementValue.accept(this);
-  this.pw.append(") ");
-}

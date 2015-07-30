@@ -1,5 +1,0 @@
-{
-  this.unparseLhs(a.lhs,a.operator);
-  this.pw.print(' ' + a.operator + ' ');
-  this.unparseRhs(a.rhs,a.operator);
-}

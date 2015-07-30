@@ -1,3 +1,0 @@
-{
-  return new SourceFileAttribute(attributeNameIndex,dis.readShort());
-}

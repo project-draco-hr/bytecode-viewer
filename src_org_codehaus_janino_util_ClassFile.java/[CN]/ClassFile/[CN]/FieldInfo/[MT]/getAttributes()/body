@@ -1,3 +1,0 @@
-{
-  return (AttributeInfo[])this.attributes.toArray(new AttributeInfo[this.attributes.size()]);
-}

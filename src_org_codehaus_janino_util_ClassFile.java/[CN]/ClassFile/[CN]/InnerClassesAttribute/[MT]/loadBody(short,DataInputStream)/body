@@ -1,7 +1,0 @@
-{
-  Entry[] ics=new Entry[dis.readShort()];
-  for (short i=0; i < ics.length; ++i) {
-    ics[i]=new InnerClassesAttribute.Entry(dis.readShort(),dis.readShort(),dis.readShort(),dis.readShort());
-  }
-  return new InnerClassesAttribute(attributeNameIndex,ics);
-}

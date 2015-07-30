@@ -1,6 +1,0 @@
-{
-  if (v > Byte.MAX_VALUE - Byte.MIN_VALUE) {
-    throw new JaninoRuntimeException("Byte value out of legal range");
-  }
-  this.codeContext.write((short)-1,(byte)v);
-}

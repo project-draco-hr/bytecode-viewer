@@ -1,6 +1,0 @@
-{
-  super(location);
-  this.caseLabels=caseLabels;
-  this.hasDefaultLabel=hasDefaultLabel;
-  this.blockStatements=blockStatements;
-}

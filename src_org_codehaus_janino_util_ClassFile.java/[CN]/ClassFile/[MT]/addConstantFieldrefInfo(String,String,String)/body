@@ -1,3 +1,0 @@
-{
-  return this.addToConstantPool(new ConstantFieldrefInfo(this.addConstantClassInfo(classFd),this.addConstantNameAndTypeInfo(fieldName,fieldFd)));
-}

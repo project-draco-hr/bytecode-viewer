@@ -1,5 +1,0 @@
-{
-  dos.writeByte(11);
-  dos.writeShort(this.classIndex);
-  dos.writeShort(this.nameAndTypeIndex);
-}

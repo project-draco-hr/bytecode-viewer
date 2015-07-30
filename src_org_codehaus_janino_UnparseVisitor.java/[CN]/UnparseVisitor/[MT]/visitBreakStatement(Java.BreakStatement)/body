@@ -1,5 +1,0 @@
-{
-  this.pw.print("break");
-  if (bs.optionalLabel != null)   this.pw.print(' ' + bs.optionalLabel);
-  this.pw.print(';');
-}

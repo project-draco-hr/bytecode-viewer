@@ -1,3 +1,0 @@
-{
-  return d.length() == 1 && "VBCDFIJSZ".indexOf(d.charAt(0)) != -1;
-}

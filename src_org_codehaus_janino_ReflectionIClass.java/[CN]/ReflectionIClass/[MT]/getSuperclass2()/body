@@ -1,4 +1,0 @@
-{
-  Class superclass=this.clazz.getSuperclass();
-  return superclass == null ? null : this.classToIClass(superclass);
-}

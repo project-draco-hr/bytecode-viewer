@@ -1,5 +1,0 @@
-Scanner scanner
-String className
-Class optionalExtendedClass
-Class[] implementedInterfaces
-ClassLoader optionalParentClassLoader

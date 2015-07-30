@@ -1,3 +1,0 @@
-{
-  this.pop(rv,this.compileGetValue(rv));
-}

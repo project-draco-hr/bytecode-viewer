@@ -1,3 +1,0 @@
-{
-  return Mod.isFinal(this.accessFlags);
-}

@@ -1,9 +1,0 @@
-{
-  if (optionalDestinationDirectory != null) {
-    return new File(optionalDestinationDirectory,ClassFile.getClassFileResourceName(className));
-  }
- else {
-    int idx=className.lastIndexOf('.');
-    return new File(sourceFile.getParentFile(),ClassFile.getClassFileResourceName(className.substring(idx + 1)));
-  }
-}

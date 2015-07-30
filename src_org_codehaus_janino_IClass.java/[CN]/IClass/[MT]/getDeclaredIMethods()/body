@@ -1,6 +1,0 @@
-{
-  if (this.declaredIMethodsCache == null) {
-    this.declaredIMethodsCache=this.getDeclaredIMethods2();
-  }
-  return this.declaredIMethodsCache;
-}

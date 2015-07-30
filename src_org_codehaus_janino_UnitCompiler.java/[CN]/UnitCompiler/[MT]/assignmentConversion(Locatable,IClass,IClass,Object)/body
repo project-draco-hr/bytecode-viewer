@@ -1,5 +1,0 @@
-{
-  if (!this.tryAssignmentConversion(locatable,sourceType,targetType,optionalConstantValue)) {
-    this.compileError("Assignment conversion not possible from type \"" + sourceType + "\" to type \""+ targetType+ "\"",locatable.getLocation());
-  }
-}

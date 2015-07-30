@@ -1,3 +1,0 @@
-{
-  return o instanceof ConstantIntegerInfo && ((ConstantIntegerInfo)o).value == this.value;
-}

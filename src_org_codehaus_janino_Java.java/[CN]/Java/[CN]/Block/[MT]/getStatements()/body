@@ -1,3 +1,0 @@
-{
-  return (BlockStatement[])this.statements.toArray(new BlockStatement[this.statements.size()]);
-}

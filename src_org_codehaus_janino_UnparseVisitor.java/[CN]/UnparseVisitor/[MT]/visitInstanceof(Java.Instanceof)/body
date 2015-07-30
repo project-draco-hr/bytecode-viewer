@@ -1,5 +1,0 @@
-{
-  this.unparseLhs(io.lhs,"instanceof");
-  this.pw.print(" instanceof ");
-  this.unparseType(io.rhs);
-}

@@ -1,4 +1,0 @@
-{
-  IClass c=this.isUnboxingConvertible(type);
-  return c != null ? c : type;
-}

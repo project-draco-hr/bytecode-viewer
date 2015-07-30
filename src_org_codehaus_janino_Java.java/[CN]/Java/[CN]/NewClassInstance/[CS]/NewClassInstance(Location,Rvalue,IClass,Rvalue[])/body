@@ -1,7 +1,0 @@
-{
-  super(location);
-  this.optionalQualification=optionalQualification;
-  this.type=null;
-  this.arguments=arguments;
-  this.iClass=iClass;
-}

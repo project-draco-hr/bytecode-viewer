@@ -1,7 +1,0 @@
-{
-  Java.Type[] types=new Java.Type[classes.length];
-  for (int i=0; i < classes.length; ++i) {
-    types[i]=this.classToType(location,classes[i]);
-  }
-  return types;
-}

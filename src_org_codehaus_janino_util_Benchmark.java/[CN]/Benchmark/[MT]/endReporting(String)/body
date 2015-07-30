@@ -1,4 +1,0 @@
-{
-  if (!this.reportingEnabled)   return;
-  this.reportIndented("... took " + this.end() + " ms: "+ message);
-}

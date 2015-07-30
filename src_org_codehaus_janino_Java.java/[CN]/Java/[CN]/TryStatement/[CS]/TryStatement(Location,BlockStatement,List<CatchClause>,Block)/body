@@ -1,7 +1,0 @@
-{
-  super(location);
-  (this.body=body).setEnclosingScope(this);
-  for (  CatchClause cc : (this.catchClauses=catchClauses))   cc.setEnclosingTryStatement(this);
-  this.optionalFinally=optionalFinally;
-  if (optionalFinally != null)   optionalFinally.setEnclosingScope(this);
-}

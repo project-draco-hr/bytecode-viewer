@@ -1,5 +1,0 @@
-{
-  if (StringPattern.matches(this.handlePatterns,handle)) {
-    this.delegate.handleWarning(handle,message,optionalLocation);
-  }
-}

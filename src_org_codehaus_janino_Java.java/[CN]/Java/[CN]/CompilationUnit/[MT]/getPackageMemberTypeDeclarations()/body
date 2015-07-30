@@ -1,3 +1,0 @@
-{
-  return (PackageMemberTypeDeclaration[])this.packageMemberTypeDeclarations.toArray(new PackageMemberTypeDeclaration[this.packageMemberTypeDeclarations.size()]);
-}

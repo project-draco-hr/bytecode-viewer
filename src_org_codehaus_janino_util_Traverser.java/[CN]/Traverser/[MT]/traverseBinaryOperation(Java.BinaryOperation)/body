@@ -1,5 +1,0 @@
-{
-  bo.lhs.accept((Visitor.RvalueVisitor)this.cv);
-  bo.rhs.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseBooleanRvalue(bo);
-}

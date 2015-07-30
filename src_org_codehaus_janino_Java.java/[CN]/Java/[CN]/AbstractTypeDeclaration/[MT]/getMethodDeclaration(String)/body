@@ -1,6 +1,0 @@
-{
-  for (  MethodDeclarator md : this.declaredMethods) {
-    if (md.name.equals(name))     return md;
-  }
-  return null;
-}

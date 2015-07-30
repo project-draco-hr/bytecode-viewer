@@ -1,5 +1,0 @@
-{
-  String[] descriptors=new String[iClasses.length];
-  for (int i=0; i < iClasses.length; ++i)   descriptors[i]=iClasses[i].getDescriptor();
-  return descriptors;
-}

@@ -1,7 +1,0 @@
-{
-  boolean canCompleteNormally=this.compile(ls.body);
-  if (ls.whereToBreak == null)   return canCompleteNormally;
-  ls.whereToBreak.set();
-  ls.whereToBreak=null;
-  return true;
-}

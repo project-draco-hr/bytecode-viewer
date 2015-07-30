@@ -1,4 +1,0 @@
-{
-  this.fieldCount+=fd.variableDeclarators.length;
-  super.traverseFieldDeclaration(fd);
-}

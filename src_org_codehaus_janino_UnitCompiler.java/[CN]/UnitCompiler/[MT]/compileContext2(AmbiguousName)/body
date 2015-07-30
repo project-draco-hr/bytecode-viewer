@@ -1,3 +1,0 @@
-{
-  return this.compileContext(this.toRvalueOrCompileException(this.reclassify(an)));
-}

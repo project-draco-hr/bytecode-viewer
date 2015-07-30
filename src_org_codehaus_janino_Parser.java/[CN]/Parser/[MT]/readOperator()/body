@@ -1,5 +1,0 @@
-{
-  Token t=this.read();
-  if (t.type != Token.OPERATOR)   throw this.compileException("Operator expected instead of '" + t.value + "'");
-  return t.value;
-}

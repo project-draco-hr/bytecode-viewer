@@ -1,3 +1,0 @@
-{
-  typeDeclaration.accept(this);
-}

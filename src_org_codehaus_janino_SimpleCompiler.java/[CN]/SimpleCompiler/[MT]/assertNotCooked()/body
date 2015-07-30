@@ -1,3 +1,0 @@
-{
-  if (this.classLoaderIClassLoader != null)   throw new IllegalStateException("Already cooked");
-}

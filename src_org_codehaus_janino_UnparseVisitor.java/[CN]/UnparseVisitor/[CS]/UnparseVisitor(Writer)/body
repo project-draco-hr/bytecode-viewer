@@ -1,3 +1,0 @@
-{
-  this.pw=new PrintWriter(new AutoIndentWriter(w),true);
-}

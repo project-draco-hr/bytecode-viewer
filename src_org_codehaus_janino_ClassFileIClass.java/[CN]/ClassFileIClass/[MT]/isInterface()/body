@@ -1,3 +1,0 @@
-{
-  return Mod.isInterface(this.accessFlags);
-}

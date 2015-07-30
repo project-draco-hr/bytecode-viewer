@@ -1,8 +1,0 @@
-{
-  if (this.tabulatorBuffer != null)   this.flushTabulatorBuffer();
-  if (this.lineBuffer.length() > 0) {
-    this.line(this.lineBuffer.toString());
-    this.lineBuffer.setLength(0);
-  }
-  this.out.flush();
-}

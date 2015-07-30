@@ -1,3 +1,0 @@
-{
-  return Java.join(a,separator,0,a.length);
-}

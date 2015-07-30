@@ -1,4 +1,0 @@
-{
-  this.writeOpcode(al,Opcode.ARRAYLENGTH);
-  return IClass.INT;
-}

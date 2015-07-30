@@ -1,5 +1,0 @@
-{
-  if (this.resolvedType != null) {
-    this.resolvedType.invalidateMethodCaches();
-  }
-}

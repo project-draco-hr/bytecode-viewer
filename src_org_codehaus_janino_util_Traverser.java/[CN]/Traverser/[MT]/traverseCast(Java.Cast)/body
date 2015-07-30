@@ -1,5 +1,0 @@
-{
-  c.targetType.accept((Visitor.TypeVisitor)this.cv);
-  c.value.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseRvalue(c);
-}

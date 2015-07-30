@@ -1,4 +1,0 @@
-{
-  this.handlePatterns=handlePatterns;
-  this.delegate=delegate;
-}

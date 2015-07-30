@@ -1,3 +1,0 @@
-{
-  return Modifier.isTransient(this.method.getModifiers());
-}

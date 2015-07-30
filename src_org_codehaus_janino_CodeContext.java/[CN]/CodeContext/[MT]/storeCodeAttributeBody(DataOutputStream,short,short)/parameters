@@ -1,3 +1,0 @@
-DataOutputStream dos
-short lineNumberTableAttributeNameIndex
-short localVariableTableAttributeNameIndex

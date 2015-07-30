@@ -1,3 +1,0 @@
-{
-  return this.pre ? this.operator + this.operand : this.operand + this.operator;
-}

@@ -1,7 +1,0 @@
-{
-  for (Scope s=this.getEnclosingScope(); ; s=s.getEnclosingScope()) {
-    if (s instanceof Java.TypeDeclaration) {
-      return ((Java.TypeDeclaration)s).getClassName() + '$' + this.name;
-    }
-  }
-}

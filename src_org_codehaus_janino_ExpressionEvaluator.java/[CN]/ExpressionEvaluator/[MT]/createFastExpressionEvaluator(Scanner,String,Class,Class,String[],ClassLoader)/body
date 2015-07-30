@@ -1,7 +1,0 @@
-{
-  ExpressionEvaluator ee=new ExpressionEvaluator();
-  ee.setClassName(className);
-  ee.setExtendedClass(optionalExtendedType);
-  ee.setParentClassLoader(optionalParentClassLoader);
-  return ee.createFastEvaluator(scanner,interfaceToImplement,parameterNames);
-}

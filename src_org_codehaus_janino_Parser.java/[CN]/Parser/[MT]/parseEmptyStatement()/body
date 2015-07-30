@@ -1,5 +1,0 @@
-{
-  Location location=this.location();
-  this.read(";");
-  return new EmptyStatement(location);
-}

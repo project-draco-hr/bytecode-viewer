@@ -1,6 +1,0 @@
-{
-  StringBuilder sb=new StringBuilder();
-  if (this.optionalQualification != null)   sb.append(this.optionalQualification.toString()).append('.');
-  sb.append("new ").append(this.anonymousClassDeclaration.baseType.toString()).append("() { ... }");
-  return sb.toString();
-}

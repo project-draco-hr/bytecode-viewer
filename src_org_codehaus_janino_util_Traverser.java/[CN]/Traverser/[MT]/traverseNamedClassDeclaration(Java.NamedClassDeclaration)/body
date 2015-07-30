@@ -1,5 +1,0 @@
-{
-  for (  Java.Type implementedType : ncd.implementedTypes)   implementedType.accept((Visitor.TypeVisitor)this.cv);
-  if (ncd.optionalExtendedType != null)   ncd.optionalExtendedType.accept((Visitor.TypeVisitor)this.cv);
-  this.traverseClassDeclaration(ncd);
-}

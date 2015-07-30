@@ -1,3 +1,0 @@
-{
-  this.compileDeclaredMethods(typeDeclaration,cf,0);
-}

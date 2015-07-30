@@ -1,5 +1,0 @@
-{
-  this.classFile=classFile;
-  this.iClassLoader=iClassLoader;
-  this.accessFlags=classFile.accessFlags;
-}

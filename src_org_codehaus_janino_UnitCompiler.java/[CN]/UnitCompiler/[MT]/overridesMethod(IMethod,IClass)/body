@@ -1,7 +1,0 @@
-{
-  IMethod[] ms=type.getDeclaredIMethods(method.getName());
-  for (  IMethod m : ms) {
-    if (Arrays.equals(method.getParameterTypes(),m.getParameterTypes()))     return true;
-  }
-  return this.overridesMethodFromSupertype(method,type);
-}

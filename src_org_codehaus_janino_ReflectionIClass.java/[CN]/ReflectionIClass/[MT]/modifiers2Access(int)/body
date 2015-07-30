@@ -1,3 +1,0 @@
-{
-  return (Modifier.isPrivate(modifiers) ? Access.PRIVATE : Modifier.isProtected(modifiers) ? Access.PROTECTED : Modifier.isPublic(modifiers) ? Access.PUBLIC : Access.DEFAULT);
-}

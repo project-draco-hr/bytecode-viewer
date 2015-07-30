@@ -1,5 +1,0 @@
-{
-  for (Offset o=this.beginning; o != this.end; o=o.next) {
-    if (o instanceof FixUp)     ((FixUp)o).fixUp();
-  }
-}

@@ -1,4 +1,0 @@
-{
-  this.assertNotCooked();
-  this.optionalReturnTypes=returnTypes.clone();
-}

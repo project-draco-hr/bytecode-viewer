@@ -1,4 +1,0 @@
-{
-  this.unparseLhs(fae.lhs,".");
-  this.pw.print('.' + fae.fieldName);
-}

@@ -1,4 +1,0 @@
-{
-  ss.localVariables=localVars;
-  this.buildLocalVariableMap(ss.body,localVars);
-}

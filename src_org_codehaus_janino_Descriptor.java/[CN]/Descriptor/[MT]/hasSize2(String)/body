@@ -1,3 +1,0 @@
-{
-  return d.equals(Descriptor.LONG) || d.equals(Descriptor.DOUBLE);
-}

@@ -1,8 +1,0 @@
-{
-  super(location);
-  (this.condition=condition).setEnclosingBlockStatement(this);
-  for (  SwitchBlockStatementGroup sbsg : (this.sbsgs=sbsgs)) {
-    for (    Rvalue cl : sbsg.caseLabels)     cl.setEnclosingBlockStatement(this);
-    for (    BlockStatement bs : sbsg.blockStatements)     bs.setEnclosingScope(this);
-  }
-}

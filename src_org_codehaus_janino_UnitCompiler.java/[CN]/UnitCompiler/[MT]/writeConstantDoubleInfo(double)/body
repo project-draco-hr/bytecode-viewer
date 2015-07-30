@@ -1,4 +1,0 @@
-{
-  CodeContext ca=this.codeContext;
-  ca.writeShort((short)-1,ca.getClassFile().addConstantDoubleInfo(value));
-}

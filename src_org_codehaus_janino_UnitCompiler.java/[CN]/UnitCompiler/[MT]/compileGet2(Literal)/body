@@ -1,3 +1,0 @@
-{
-  return this.pushConstant(l,this.getConstantValue(l));
-}

@@ -1,3 +1,0 @@
-{
-  this.writeOpcode(locatable,Opcode.ALOAD_0);
-}

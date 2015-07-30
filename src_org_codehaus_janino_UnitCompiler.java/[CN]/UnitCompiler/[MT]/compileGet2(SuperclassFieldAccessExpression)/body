@@ -1,4 +1,0 @@
-{
-  this.determineValue(scfae);
-  return this.compileGet(scfae.value);
-}

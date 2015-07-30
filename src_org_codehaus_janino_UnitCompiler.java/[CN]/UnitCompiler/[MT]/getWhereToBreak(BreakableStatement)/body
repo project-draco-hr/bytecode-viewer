@@ -1,6 +1,0 @@
-{
-  if (bs.whereToBreak == null) {
-    bs.whereToBreak=this.codeContext.new Offset();
-  }
-  return bs.whereToBreak;
-}

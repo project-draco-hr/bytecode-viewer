@@ -1,8 +1,0 @@
-{
-  Atom a=this.parseConditionalAndExpression();
-  while (this.peekRead("||")) {
-    Location location=this.location();
-    a=new BinaryOperation(location,a.toRvalueOrCompileException(),"||",this.parseConditionalAndExpression().toRvalueOrCompileException());
-  }
-  return a;
-}

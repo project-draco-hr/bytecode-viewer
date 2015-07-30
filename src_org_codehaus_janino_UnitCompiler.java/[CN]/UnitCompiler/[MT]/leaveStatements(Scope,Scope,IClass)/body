@@ -1,7 +1,0 @@
-{
-  for (Scope s=from; s != to; s=s.getEnclosingScope()) {
-    if (s instanceof BlockStatement) {
-      this.leave((BlockStatement)s,optionalStackValueType);
-    }
-  }
-}

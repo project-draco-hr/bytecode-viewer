@@ -1,6 +1,0 @@
-{
-  if (bo.op == "||" || bo.op == "&&" || bo.op == "==" || bo.op == "!=" || bo.op == "<" || bo.op == ">" || bo.op == "<=" || bo.op == ">=") {
-    return this.compileGet2((BooleanRvalue)bo);
-  }
-  return this.compileArithmeticOperation(bo,null,bo.unrollLeftAssociation(),bo.op);
-}

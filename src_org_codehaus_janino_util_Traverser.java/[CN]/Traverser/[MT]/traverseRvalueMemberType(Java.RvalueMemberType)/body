@@ -1,4 +1,0 @@
-{
-  rmt.rvalue.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseType(rmt);
-}

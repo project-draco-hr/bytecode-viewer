@@ -1,3 +1,0 @@
-{
-  return '(' + parameterFd + md.substring(1);
-}

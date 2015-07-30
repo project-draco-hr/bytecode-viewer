@@ -1,8 +1,0 @@
-{
-  if (this.offset != Offset.UNSET)   throw new JaninoRuntimeException("Cannot \"set()\" Offset more than once");
-  this.offset=CodeContext.this.currentInserter.offset;
-  this.prev=CodeContext.this.currentInserter.prev;
-  this.next=CodeContext.this.currentInserter;
-  this.prev.next=this;
-  this.next.prev=this;
-}

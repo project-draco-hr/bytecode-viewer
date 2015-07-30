@@ -1,7 +1,0 @@
-{
-  List<Java.BlockStatement> statements=new ArrayList();
-  while (!parser.peekEof()) {
-    statements.add(parser.parseBlockStatement());
-  }
-  return statements;
-}

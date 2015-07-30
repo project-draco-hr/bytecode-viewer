@@ -1,7 +1,0 @@
-{
-  if (!this.outerIClassIsCached) {
-    this.outerIClassCache=this.getOuterIClass2();
-    this.outerIClassIsCached=true;
-  }
-  return this.outerIClassCache;
-}

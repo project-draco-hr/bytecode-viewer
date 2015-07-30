@@ -1,5 +1,0 @@
-{
-  for (  Java.FunctionDeclarator.FormalParameter formalParameter : formalParameters.parameters) {
-    this.traverseFormalParameter(formalParameter);
-  }
-}

@@ -1,6 +1,0 @@
-{
-  if (!this.compileGetValue(al.lhs).isArray()) {
-    this.compileError("Cannot determine length of non-array type",al.getLocation());
-  }
-  return 1;
-}

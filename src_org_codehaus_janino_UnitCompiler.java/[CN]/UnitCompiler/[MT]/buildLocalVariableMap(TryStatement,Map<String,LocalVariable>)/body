@@ -1,8 +1,0 @@
-{
-  ts.localVariables=localVars;
-  this.buildLocalVariableMap(ts.body,localVars);
-  for (  CatchClause cc : ts.catchClauses)   this.buildLocalVariableMap(cc,localVars);
-  if (ts.optionalFinally != null) {
-    this.buildLocalVariableMap(ts.optionalFinally,localVars);
-  }
-}

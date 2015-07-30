@@ -1,4 +1,0 @@
-{
-  this.flags=modifiers;
-  this.annotations=annotations;
-}

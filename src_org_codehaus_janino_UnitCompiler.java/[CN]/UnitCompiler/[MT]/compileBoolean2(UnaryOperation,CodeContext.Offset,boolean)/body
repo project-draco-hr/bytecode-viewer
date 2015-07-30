@@ -1,7 +1,0 @@
-{
-  if (ue.operator == "!") {
-    this.compileBoolean(ue.operand,dst,!orientation);
-    return;
-  }
-  this.compileError("Boolean expression expected",ue.getLocation());
-}

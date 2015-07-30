@@ -1,4 +1,0 @@
-{
-  if (scfae.optionalQualification != null)   scfae.optionalQualification.accept((Visitor.TypeVisitor)this.cv);
-  this.traverseLvalue(scfae);
-}

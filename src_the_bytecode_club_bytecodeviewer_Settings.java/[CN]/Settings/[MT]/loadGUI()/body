@@ -150,6 +150,8 @@
     if (decompiler == 0)     BytecodeViewer.viewer.apkConversionGroup.setSelected(BytecodeViewer.viewer.apkConversionDex.getModel(),true);
  else     if (decompiler == 1)     BytecodeViewer.viewer.apkConversionGroup.setSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel(),true);
     BytecodeViewer.python3=DiskReader.loadString(BytecodeViewer.settingsName,115,false);
+    BytecodeViewer.javac=DiskReader.loadString(BytecodeViewer.settingsName,116,false);
+    BytecodeViewer.java=DiskReader.loadString(BytecodeViewer.settingsName,117,false);
   }
  catch (  Exception e) {
   }

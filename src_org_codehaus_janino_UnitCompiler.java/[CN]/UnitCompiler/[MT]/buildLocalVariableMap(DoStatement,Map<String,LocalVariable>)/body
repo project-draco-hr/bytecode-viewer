@@ -1,4 +1,0 @@
-{
-  ds.localVariables=localVars;
-  this.buildLocalVariableMap(ds.body,localVars);
-}

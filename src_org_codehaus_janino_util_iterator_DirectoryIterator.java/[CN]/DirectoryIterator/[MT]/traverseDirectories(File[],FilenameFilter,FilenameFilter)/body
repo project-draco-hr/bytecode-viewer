@@ -1,7 +1,0 @@
-{
-  List<Iterator<File>> result=new ArrayList();
-  for (  File rootDirectory : rootDirectories) {
-    result.add(new DirectoryIterator(rootDirectory,directoryNameFilter,fileNameFilter));
-  }
-  return new MultiDimensionalIterator(result.iterator(),2);
-}

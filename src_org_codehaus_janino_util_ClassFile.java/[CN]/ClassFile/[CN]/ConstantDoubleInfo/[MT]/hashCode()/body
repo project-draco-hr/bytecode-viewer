@@ -1,4 +1,0 @@
-{
-  long bits=Double.doubleToLongBits(this.value);
-  return (int)bits ^ (int)(bits >> 32);
-}

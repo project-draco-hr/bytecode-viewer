@@ -1,7 +1,0 @@
-{
-  if (this.nextToken == null)   return this.scanner.produce();
-  final Token result=this.nextToken;
-  this.nextToken=this.nextButOneToken;
-  this.nextButOneToken=null;
-  return result;
-}

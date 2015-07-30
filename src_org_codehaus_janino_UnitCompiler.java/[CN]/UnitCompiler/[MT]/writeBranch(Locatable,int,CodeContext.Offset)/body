@@ -1,3 +1,0 @@
-{
-  this.codeContext.writeBranch(locatable.getLocation().getLineNumber(),opcode,dst);
-}

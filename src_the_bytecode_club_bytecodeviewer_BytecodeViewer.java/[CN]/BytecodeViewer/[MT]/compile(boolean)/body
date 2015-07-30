@@ -1,4 +1,5 @@
 {
+  BytecodeViewer.viewer.setIcon(true);
   boolean actuallyTried=false;
   for (  java.awt.Component c : BytecodeViewer.viewer.workPane.getLoadedViewers()) {
     if (c instanceof ClassViewer) {
@@ -16,6 +17,7 @@
           }
  else {
             BytecodeViewer.showMessage("There has been an error with assembling your Smali code, please check this. Class: " + origNode.name);
+            BytecodeViewer.viewer.setIcon(false);
             return false;
           }
         }
@@ -33,6 +35,7 @@
           }
  else {
             BytecodeViewer.showMessage("There has been an error with assembling your Krakatau Bytecode, please check this. Class: " + origNode.name);
+            BytecodeViewer.viewer.setIcon(false);
             return false;
           }
         }
@@ -55,6 +58,7 @@
             errConsole.pretty();
             errConsole.setVisible(true);
             errConsole.finished();
+            BytecodeViewer.viewer.setIcon(false);
             return false;
           }
         }
@@ -63,5 +67,6 @@
   }
   if (message)   if (actuallyTried)   BytecodeViewer.showMessage("Compiled Successfully.");
  else   BytecodeViewer.showMessage("You have no editable panes opened, make one editable and try again.");
+  BytecodeViewer.viewer.setIcon(false);
   return true;
 }

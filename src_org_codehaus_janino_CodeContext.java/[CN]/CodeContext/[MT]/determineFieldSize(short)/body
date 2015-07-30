@@ -1,4 +1,0 @@
-{
-  ClassFile.ConstantFieldrefInfo cfi=((ClassFile.ConstantFieldrefInfo)this.classFile.getConstantPoolInfo(idx));
-  return Descriptor.size(cfi.getNameAndType(this.classFile).getDescriptor(this.classFile));
-}

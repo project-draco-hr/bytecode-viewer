@@ -1,3 +1,0 @@
-{
-  return (IField)this.getDeclaredIFieldsCache().get(name);
-}

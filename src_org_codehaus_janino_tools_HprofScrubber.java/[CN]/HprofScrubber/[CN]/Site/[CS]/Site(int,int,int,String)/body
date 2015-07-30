@@ -1,6 +1,0 @@
-{
-  this.allocatedBytes=allocatedBytes;
-  this.allocatedObjects=allocatedObjects;
-  this.traceNumber=traceNumber;
-  this.className=className;
-}

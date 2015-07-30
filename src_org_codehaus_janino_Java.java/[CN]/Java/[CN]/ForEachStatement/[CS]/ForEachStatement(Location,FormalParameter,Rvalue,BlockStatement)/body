@@ -1,5 +1,0 @@
-{
-  super(location,body);
-  (this.currentElement=currentElement).type.setEnclosingScope(this);
-  (this.expression=expression).setEnclosingBlockStatement(this);
-}

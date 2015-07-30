@@ -1,6 +1,0 @@
-{
-  if (n < 30)   return "                              ".substring(0,n);
-  char[] data=new char[n];
-  Arrays.fill(data,' ');
-  return String.valueOf(data);
-}

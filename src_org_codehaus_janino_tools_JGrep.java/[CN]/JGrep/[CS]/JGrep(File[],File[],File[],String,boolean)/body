@@ -1,9 +1,0 @@
-{
-  this(org.codehaus.janino.IClassLoader.createJavacLikePathIClassLoader(optionalBootClassPath,optionalExtDirs,classPath),optionalCharacterEncoding,verbose);
-  this.benchmark.report("*** JGrep - search Java(TM) source files for specific language constructs");
-  this.benchmark.report("*** For more information visit http://janino.codehaus.org");
-  this.benchmark.report("Class path",classPath);
-  this.benchmark.report("Ext dirs",optionalExtDirs);
-  this.benchmark.report("Boot class path",optionalBootClassPath);
-  this.benchmark.report("Character encoding",optionalCharacterEncoding);
-}

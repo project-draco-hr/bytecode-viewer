@@ -1,4 +1,0 @@
-short startPc
-short endPc
-short handlerPc
-short catchType

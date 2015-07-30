@@ -1,5 +1,0 @@
-{
-  super(location);
-  this.lhs=lhs;
-  this.index=index;
-}

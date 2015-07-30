@@ -1,3 +1,0 @@
-{
-  this.setReturnTypes(new Class[]{returnType});
-}

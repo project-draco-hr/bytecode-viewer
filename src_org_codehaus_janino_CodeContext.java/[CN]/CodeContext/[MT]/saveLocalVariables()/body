@@ -1,5 +1,0 @@
-{
-  List<Java.LocalVariableSlot> l=new ArrayList();
-  this.scopedVars.add(l);
-  return l;
-}

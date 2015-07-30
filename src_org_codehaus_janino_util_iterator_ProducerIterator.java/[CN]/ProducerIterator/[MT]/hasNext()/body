@@ -1,4 +1,0 @@
-{
-  if (this.nextElement == ProducerIterator.UNKNOWN)   this.nextElement=this.producer.produce();
-  return this.nextElement != ProducerIterator.AT_END;
-}

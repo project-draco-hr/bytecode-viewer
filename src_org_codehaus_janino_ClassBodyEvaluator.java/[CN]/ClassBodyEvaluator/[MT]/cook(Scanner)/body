@@ -1,9 +1,0 @@
-{
-  Parser parser=new Parser(scanner);
-  Java.CompilationUnit compilationUnit=this.makeCompilationUnit(parser);
-  Java.ClassDeclaration cd=this.addPackageMemberClassDeclaration(scanner.location(),compilationUnit);
-  while (!parser.peekEof()) {
-    parser.parseClassBodyDeclaration(cd);
-  }
-  this.result=this.compileToClass(compilationUnit);
-}

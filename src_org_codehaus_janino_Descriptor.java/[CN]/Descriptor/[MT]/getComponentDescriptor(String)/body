@@ -1,6 +1,0 @@
-{
-  if (d.charAt(0) != '[') {
-    throw new JaninoRuntimeException("Cannot determine component descriptor from non-array descriptor \"" + d + "\"");
-  }
-  return d.substring(1);
-}

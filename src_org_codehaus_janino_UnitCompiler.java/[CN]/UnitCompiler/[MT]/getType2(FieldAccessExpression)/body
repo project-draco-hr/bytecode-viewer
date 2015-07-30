@@ -1,4 +1,0 @@
-{
-  this.determineValue(fae);
-  return this.getType(fae.value);
-}

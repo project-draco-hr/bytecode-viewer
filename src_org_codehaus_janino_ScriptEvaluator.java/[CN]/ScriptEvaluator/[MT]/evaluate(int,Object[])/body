@@ -1,9 +1,0 @@
-{
-  if (this.result == null)   throw new IllegalStateException("Must only be called after \"cook()\"");
-  try {
-    return this.result[idx].invoke(null,arguments);
-  }
- catch (  IllegalAccessException ex) {
-    throw new JaninoRuntimeException(ex.toString(),ex);
-  }
-}

@@ -1,3 +1,0 @@
-{
-  return UnitCompiler.PRIMITIVE_WIDENING_CONVERSIONS.get(sourceType.getDescriptor() + targetType.getDescriptor()) != null;
-}

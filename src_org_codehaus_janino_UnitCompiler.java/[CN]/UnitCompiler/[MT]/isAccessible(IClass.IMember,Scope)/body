@@ -1,6 +1,0 @@
-{
-  IClass declaringIClass=member.getDeclaringIClass();
-  boolean acc=this.isAccessible(declaringIClass,contextScope);
-  acc=acc && this.isAccessible(declaringIClass,member.getAccess(),contextScope);
-  return acc;
-}

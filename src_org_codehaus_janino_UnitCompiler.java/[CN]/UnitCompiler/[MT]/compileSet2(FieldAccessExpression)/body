@@ -1,4 +1,0 @@
-{
-  this.determineValue(fae);
-  this.compileSet(this.toLvalueOrCompileException(fae.value));
-}

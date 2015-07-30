@@ -1,3 +1,0 @@
-{
-  return this.addToConstantPool(new ConstantStringInfo(this.addConstantUtf8Info(string)));
-}

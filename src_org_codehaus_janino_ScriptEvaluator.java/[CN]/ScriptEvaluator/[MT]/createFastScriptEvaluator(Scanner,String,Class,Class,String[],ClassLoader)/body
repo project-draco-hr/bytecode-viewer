@@ -1,7 +1,0 @@
-{
-  ScriptEvaluator se=new ScriptEvaluator();
-  se.setClassName(className);
-  se.setExtendedClass(optionalExtendedType);
-  se.setParentClassLoader(optionalParentClassLoader);
-  return se.createFastEvaluator(scanner,interfaceToImplement,parameterNames);
-}

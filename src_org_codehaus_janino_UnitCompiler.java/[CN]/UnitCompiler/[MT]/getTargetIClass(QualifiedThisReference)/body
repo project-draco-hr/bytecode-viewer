@@ -1,6 +1,0 @@
-{
-  if (qtr.targetIClass == null) {
-    qtr.targetIClass=this.getType(qtr.qualification);
-  }
-  return qtr.targetIClass;
-}

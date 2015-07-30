@@ -1,4 +1,0 @@
-{
-  for (  Java.CompilationUnit.ImportDeclaration id : cu.importDeclarations)   id.accept(this.cv);
-  for (  Java.PackageMemberTypeDeclaration pmtd : cu.packageMemberTypeDeclarations)   pmtd.accept(this.cv);
-}

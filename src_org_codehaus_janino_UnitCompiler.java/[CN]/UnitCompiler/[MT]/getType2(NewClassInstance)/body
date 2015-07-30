@@ -1,4 +1,0 @@
-{
-  if (nci.iClass == null)   nci.iClass=this.getType(nci.type);
-  return nci.iClass;
-}

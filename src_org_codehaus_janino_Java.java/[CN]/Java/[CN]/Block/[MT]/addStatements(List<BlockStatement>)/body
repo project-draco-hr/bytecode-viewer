@@ -1,4 +1,0 @@
-{
-  this.statements.addAll(statements);
-  for (  BlockStatement bs : statements)   bs.setEnclosingScope(this);
-}

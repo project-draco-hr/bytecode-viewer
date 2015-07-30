@@ -1,6 +1,0 @@
-{
-  if (this.thrownExceptionsCache == null) {
-    this.thrownExceptionsCache=this.getThrownExceptions2();
-  }
-  return this.thrownExceptionsCache;
-}

@@ -1,5 +1,0 @@
-{
-  File file=this.findResourceAsFile(resourceName);
-  if (file == null)   return null;
-  return new FileResource(file);
-}

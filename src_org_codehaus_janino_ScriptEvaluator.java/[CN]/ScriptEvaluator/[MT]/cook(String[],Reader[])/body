@@ -1,7 +1,0 @@
-{
-  Scanner[] scanners=new Scanner[readers.length];
-  for (int i=0; i < readers.length; ++i) {
-    scanners[i]=new Scanner(optionalFileNames == null ? null : optionalFileNames[i],readers[i]);
-  }
-  this.cook(scanners);
-}

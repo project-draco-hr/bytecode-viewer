@@ -1,3 +1,0 @@
-{
-  return this.pushConstant(sl,sl.value);
-}

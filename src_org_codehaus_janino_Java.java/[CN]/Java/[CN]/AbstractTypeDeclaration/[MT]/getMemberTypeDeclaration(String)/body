@@ -1,6 +1,0 @@
-{
-  for (  MemberTypeDeclaration mtd : this.declaredClassesAndInterfaces) {
-    if (mtd.getName().equals(name))     return mtd;
-  }
-  return null;
-}

@@ -1,3 +1,0 @@
-{
-  super(location,optionalDocComment,modifiers,type,name,parameters,thrownExceptions,optionalStatements);
-}

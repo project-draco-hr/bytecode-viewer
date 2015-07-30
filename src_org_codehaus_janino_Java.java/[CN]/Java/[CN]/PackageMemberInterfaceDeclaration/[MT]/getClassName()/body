@@ -1,8 +1,0 @@
-{
-  String className=this.getName();
-  CompilationUnit compilationUnit=(CompilationUnit)this.getEnclosingScope();
-  if (compilationUnit.optionalPackageDeclaration != null) {
-    className=compilationUnit.optionalPackageDeclaration.packageName + '.' + className;
-  }
-  return className;
-}

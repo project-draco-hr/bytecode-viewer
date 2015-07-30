@@ -1,7 +1,0 @@
-{
-  if (d.charAt(0) != 'L') {
-    throw new JaninoRuntimeException("Attempt to get package name of non-class descriptor \"" + d + "\"");
-  }
-  int idx=d.lastIndexOf('/');
-  return idx == -1 ? null : d.substring(1,idx).replace('/','.');
-}

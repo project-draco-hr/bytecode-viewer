@@ -1,4 +1,0 @@
-{
-  this.referenceThis(tr);
-  return this.getIClass(tr);
-}

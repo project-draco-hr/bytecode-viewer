@@ -1,3 +1,0 @@
-{
-  return d.charAt(0) == 'L';
-}

@@ -1,4 +1,0 @@
-Location location
-List<Rvalue> caseLabels
-boolean hasDefaultLabel
-List<BlockStatement> blockStatements

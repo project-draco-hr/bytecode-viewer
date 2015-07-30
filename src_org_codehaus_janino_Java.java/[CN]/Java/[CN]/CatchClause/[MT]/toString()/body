@@ -1,3 +1,0 @@
-{
-  return "catch (" + this.caughtException + ") "+ this.body;
-}

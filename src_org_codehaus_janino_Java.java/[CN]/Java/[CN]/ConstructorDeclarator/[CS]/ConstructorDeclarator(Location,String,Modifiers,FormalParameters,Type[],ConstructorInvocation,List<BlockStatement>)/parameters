@@ -1,7 +1,0 @@
-Location location
-String optionalDocComment
-Modifiers modifiers
-FormalParameters parameters
-Type[] thrownExceptions
-ConstructorInvocation optionalConstructorInvocation
-List<BlockStatement> statements

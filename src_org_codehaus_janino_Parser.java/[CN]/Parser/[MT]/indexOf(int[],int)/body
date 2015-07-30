@@ -1,6 +1,0 @@
-{
-  for (int i=0; i < values.length; ++i) {
-    if (values[i] == subject)     return i;
-  }
-  return -1;
-}

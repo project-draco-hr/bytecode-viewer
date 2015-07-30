@@ -1,3 +1,0 @@
-{
-  return (TypeDeclaration)this.getEnclosingScope();
-}

@@ -1,4 +1,0 @@
-{
-  dos.writeShort(sa.length);
-  for (  short s : sa)   dos.writeShort(s);
-}

@@ -1,3 +1,0 @@
-{
-  return this.nameIndex + (this.descriptorIndex << 16);
-}

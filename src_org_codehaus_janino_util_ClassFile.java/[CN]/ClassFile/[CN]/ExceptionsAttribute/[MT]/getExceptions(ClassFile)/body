@@ -1,7 +1,0 @@
-{
-  ConstantClassInfo[] es=new ConstantClassInfo[this.exceptionIndexes.length];
-  for (int i=0; i < es.length; i++) {
-    es[i]=(ConstantClassInfo)classFile.getConstantPoolInfo(this.exceptionIndexes[i]);
-  }
-  return es;
-}

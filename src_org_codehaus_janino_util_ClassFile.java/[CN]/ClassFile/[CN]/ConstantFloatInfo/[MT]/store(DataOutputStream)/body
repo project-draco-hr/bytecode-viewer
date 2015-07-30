@@ -1,4 +1,0 @@
-{
-  dos.writeByte(4);
-  dos.writeFloat(this.value);
-}

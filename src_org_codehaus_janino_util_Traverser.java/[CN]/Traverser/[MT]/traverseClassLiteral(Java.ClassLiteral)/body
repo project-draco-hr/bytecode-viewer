@@ -1,4 +1,0 @@
-{
-  cl.type.accept((Visitor.TypeVisitor)this.cv);
-  this.traverseRvalue(cl);
-}

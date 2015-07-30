@@ -1,3 +1,0 @@
-{
-  return new Location(this.optionalFileName,this.nextCharLineNumber,this.nextCharColumnNumber);
-}

@@ -1,6 +1,0 @@
-{
-  this.read("[");
-  Rvalue res=this.parseExpression().toRvalueOrCompileException();
-  this.read("]");
-  return res;
-}

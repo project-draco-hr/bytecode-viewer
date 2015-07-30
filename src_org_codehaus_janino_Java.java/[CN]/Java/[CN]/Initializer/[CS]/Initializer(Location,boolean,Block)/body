@@ -1,4 +1,0 @@
-{
-  super(location,statiC);
-  (this.block=block).setEnclosingScope(this);
-}

@@ -1,5 +1,0 @@
-{
-  dos.writeByte(12);
-  dos.writeShort(this.nameIndex);
-  dos.writeShort(this.descriptorIndex);
-}

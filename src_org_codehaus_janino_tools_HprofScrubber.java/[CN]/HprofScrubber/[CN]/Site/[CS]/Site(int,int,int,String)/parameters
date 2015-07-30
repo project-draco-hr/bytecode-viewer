@@ -1,4 +1,0 @@
-int allocatedBytes
-int allocatedObjects
-int traceNumber
-String className

@@ -1,9 +1,0 @@
-{
-  this.pw.print("assert ");
-  this.unparse(as.expression1);
-  if (as.optionalExpression2 != null) {
-    this.pw.print(" : ");
-    this.unparse(as.optionalExpression2);
-  }
-  this.pw.print(';');
-}

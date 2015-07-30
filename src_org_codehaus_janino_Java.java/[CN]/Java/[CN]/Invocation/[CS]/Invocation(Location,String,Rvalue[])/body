@@ -1,5 +1,0 @@
-{
-  super(location);
-  this.methodName=methodName;
-  this.arguments=arguments;
-}

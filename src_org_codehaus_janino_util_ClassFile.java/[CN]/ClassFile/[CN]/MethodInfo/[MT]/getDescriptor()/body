@@ -1,3 +1,0 @@
-{
-  return ClassFile.this.getConstantUtf8(this.descriptorIndex);
-}

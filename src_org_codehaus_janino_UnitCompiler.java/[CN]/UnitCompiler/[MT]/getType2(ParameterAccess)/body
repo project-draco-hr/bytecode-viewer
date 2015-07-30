@@ -1,3 +1,0 @@
-{
-  return this.getLocalVariable(pa.formalParameter).type;
-}

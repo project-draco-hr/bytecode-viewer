@@ -1,4 +1,0 @@
-{
-  this.referenceThis(qtr,this.getDeclaringClass(qtr),this.getDeclaringTypeBodyDeclaration(qtr),this.getTargetIClass(qtr));
-  return this.getTargetIClass(qtr);
-}

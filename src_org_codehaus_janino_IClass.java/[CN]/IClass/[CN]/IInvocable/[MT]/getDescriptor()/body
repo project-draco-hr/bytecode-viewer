@@ -1,6 +1,0 @@
-{
-  if (this.descriptorCache == null) {
-    this.descriptorCache=this.getDescriptor2();
-  }
-  return this.descriptorCache;
-}

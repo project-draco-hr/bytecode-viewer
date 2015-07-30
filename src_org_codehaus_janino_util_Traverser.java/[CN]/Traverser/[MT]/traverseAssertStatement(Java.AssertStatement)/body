@@ -1,5 +1,0 @@
-{
-  as.expression1.accept((Visitor.RvalueVisitor)this.cv);
-  if (as.optionalExpression2 != null)   as.optionalExpression2.accept((Visitor.RvalueVisitor)this.cv);
-  this.traverseStatement(as);
-}

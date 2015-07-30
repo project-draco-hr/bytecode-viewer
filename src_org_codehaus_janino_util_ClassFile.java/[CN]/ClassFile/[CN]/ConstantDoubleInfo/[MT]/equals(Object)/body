@@ -1,3 +1,0 @@
-{
-  return o instanceof ConstantDoubleInfo && ((ConstantDoubleInfo)o).value == this.value;
-}

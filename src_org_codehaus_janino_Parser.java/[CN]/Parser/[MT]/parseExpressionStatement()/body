@@ -1,5 +1,0 @@
-{
-  Rvalue rv=this.parseExpression().toRvalueOrCompileException();
-  this.read(";");
-  return new ExpressionStatement(rv);
-}

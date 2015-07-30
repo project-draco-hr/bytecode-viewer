@@ -1,4 +1,0 @@
-{
-  super.setEnclosingScope(enclosingScope);
-  this.componentType.setEnclosingScope(enclosingScope);
-}

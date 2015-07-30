@@ -1,6 +1,0 @@
-{
-  this.traverseFormalParameters(fd.formalParameters);
-  if (fd.optionalStatements != null) {
-    for (    Java.BlockStatement bs : fd.optionalStatements)     bs.accept(this.cv);
-  }
-}

@@ -1,8 +1,0 @@
-{
-  File file=this.getFile(resourceName);
-  File dir=file.getParentFile();
-  if (dir != null && !dir.isDirectory()) {
-    if (!dir.mkdirs())     throw new IOException("Cannot create directory for class file \"" + file + "\"");
-  }
-  return new FileOutputStream(file);
-}

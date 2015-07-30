@@ -1,7 +1,0 @@
-{
-  if (!this.declaringIClassIsCached) {
-    this.declaringIClassCache=this.getDeclaringIClass2();
-    this.declaringIClassIsCached=true;
-  }
-  return this.declaringIClassCache;
-}

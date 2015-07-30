@@ -1,8 +1,0 @@
-{
-  return new TransformingIterator(entries){
-    @Override protected Object transform(    Object o){
-      return PathResourceFinder.createResourceFinder((File)o);
-    }
-  }
-;
-}

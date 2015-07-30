@@ -1,3 +1,0 @@
-ResourceFinder sourceFinder
-String optionalCharacterEncoding
-IClassLoader optionalParentIClassLoader

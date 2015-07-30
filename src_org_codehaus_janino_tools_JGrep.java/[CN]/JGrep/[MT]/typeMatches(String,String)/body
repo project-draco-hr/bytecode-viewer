@@ -1,3 +1,0 @@
-{
-  return new StringPattern(pattern).matches(pattern.indexOf('.') == -1 ? typeName.substring(typeName.lastIndexOf('.') + 1) : typeName);
-}

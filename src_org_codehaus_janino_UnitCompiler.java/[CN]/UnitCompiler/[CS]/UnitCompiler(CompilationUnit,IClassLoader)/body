@@ -1,4 +1,0 @@
-{
-  this.compilationUnit=compilationUnit;
-  this.iClassLoader=iClassLoader;
-}

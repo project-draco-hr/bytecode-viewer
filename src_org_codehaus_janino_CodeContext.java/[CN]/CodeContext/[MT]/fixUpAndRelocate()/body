@@ -1,6 +1,0 @@
-{
-  do {
-    this.fixUp();
-  }
- while (!this.relocate());
-}

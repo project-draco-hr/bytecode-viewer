@@ -1,3 +1,0 @@
-{
-  this.outer=Arrays.asList(array).iterator();
-}

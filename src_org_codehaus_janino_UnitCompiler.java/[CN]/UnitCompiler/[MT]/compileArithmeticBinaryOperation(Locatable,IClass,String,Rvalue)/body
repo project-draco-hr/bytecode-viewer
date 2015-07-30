@@ -1,3 +1,0 @@
-{
-  return this.compileArithmeticOperation(locatable,lhsType,Arrays.asList(new Rvalue[]{rhs}).iterator(),operator);
-}

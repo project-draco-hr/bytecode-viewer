@@ -1,8 +1,0 @@
-{
-  short localVariableTableLength=dis.readShort();
-  Entry[] lvtes=new Entry[localVariableTableLength];
-  for (short i=0; i < localVariableTableLength; ++i) {
-    lvtes[i]=new LocalVariableTableAttribute.Entry(dis.readShort(),dis.readShort(),dis.readShort(),dis.readShort(),dis.readShort());
-  }
-  return new LocalVariableTableAttribute(attributeNameIndex,lvtes);
-}

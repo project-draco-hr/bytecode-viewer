@@ -1,8 +1,0 @@
-{
-  return (AbstractJavaSourceClassLoader)AccessController.doPrivileged(new PrivilegedAction(){
-    @Override public Object run(){
-      return new JavaSourceClassLoader(parentClassLoader);
-    }
-  }
-);
-}

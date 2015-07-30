@@ -1,6 +1,0 @@
-{
-  if (sa.length == 0)   throw new IllegalArgumentException("SNO: Empty string array");
-  String[] tmp=new String[sa.length - 1];
-  System.arraycopy(sa,0,tmp,0,tmp.length);
-  return tmp;
-}

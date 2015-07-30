@@ -1,6 +1,0 @@
-{
-  if (mi.iMethod == null) {
-    mi.iMethod=this.findIMethod(mi);
-  }
-  return mi.iMethod.getReturnType();
-}

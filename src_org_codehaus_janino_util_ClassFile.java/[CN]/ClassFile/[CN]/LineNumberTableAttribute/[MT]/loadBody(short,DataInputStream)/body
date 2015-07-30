@@ -1,7 +1,0 @@
-{
-  Entry[] lntes=new Entry[dis.readShort()];
-  for (short i=0; i < lntes.length; ++i) {
-    lntes[i]=new LineNumberTableAttribute.Entry(dis.readShort(),dis.readShort());
-  }
-  return new LineNumberTableAttribute(attributeNameIndex,lntes);
-}

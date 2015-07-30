@@ -1,6 +1,0 @@
-{
-  if (this.arrayIClass == null) {
-    this.arrayIClass=this.getArrayIClass2(objectType);
-  }
-  return this.arrayIClass;
-}

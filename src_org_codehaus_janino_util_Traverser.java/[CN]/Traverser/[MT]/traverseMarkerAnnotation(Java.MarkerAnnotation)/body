@@ -1,4 +1,0 @@
-{
-  ma.type.accept(this.cv);
-  this.traverseAnnotation(ma);
-}

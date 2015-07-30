@@ -1,4 +1,0 @@
-{
-  this.load(locatable,localVariable.type,localVariable.getSlotIndex());
-  return localVariable.type;
-}

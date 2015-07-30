@@ -1,6 +1,0 @@
-{
-  is.condition.accept((Visitor.RvalueVisitor)this.cv);
-  is.thenStatement.accept(this.cv);
-  if (is.optionalElseStatement != null)   is.optionalElseStatement.accept(this.cv);
-  this.traverseStatement(is);
-}

@@ -1,6 +1,0 @@
-{
-  if (fd.returnType == null) {
-    fd.returnType=this.getType(fd.type);
-  }
-  return fd.returnType;
-}

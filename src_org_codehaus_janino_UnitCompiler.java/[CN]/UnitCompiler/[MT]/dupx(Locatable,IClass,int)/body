@@ -1,6 +1,0 @@
-{
-  if (x < 0 || x > 2)   throw new JaninoRuntimeException("SNO: x has value " + x);
-  int dup=Opcode.DUP + x;
-  int dup2=Opcode.DUP2 + x;
-  this.writeOpcode(locatable,type == IClass.LONG || type == IClass.DOUBLE ? dup2 : dup);
-}

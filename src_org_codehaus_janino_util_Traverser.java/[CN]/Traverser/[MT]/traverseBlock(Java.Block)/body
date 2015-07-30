@@ -1,4 +1,0 @@
-{
-  for (  Java.BlockStatement bs : b.statements)   bs.accept(this.cv);
-  this.traverseStatement(b);
-}

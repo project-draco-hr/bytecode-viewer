@@ -1,3 +1,0 @@
-{
-  this.compileToClassLoader(new Parser(scanner).parseCompilationUnit());
-}

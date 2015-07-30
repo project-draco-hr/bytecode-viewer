@@ -1,7 +1,0 @@
-{
-  Object lhsValue=this.getConstantValue(ce.lhs);
-  if (lhsValue instanceof Boolean) {
-    return (((Boolean)lhsValue).booleanValue() ? this.getConstantValue(ce.mhs) : this.getConstantValue(ce.rhs));
-  }
-  return UnitCompiler.NOT_CONSTANT;
-}

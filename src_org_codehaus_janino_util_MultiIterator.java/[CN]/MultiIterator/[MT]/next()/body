@@ -1,4 +1,0 @@
-{
-  if (this.hasNext())   return this.inner.next();
-  throw new NoSuchElementException();
-}

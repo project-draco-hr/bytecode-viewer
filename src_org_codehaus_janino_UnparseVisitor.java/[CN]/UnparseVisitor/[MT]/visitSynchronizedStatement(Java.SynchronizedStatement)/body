@@ -1,6 +1,0 @@
-{
-  this.pw.print("synchronized (");
-  this.unparse(ss.expression);
-  this.pw.print(") ");
-  this.unparseBlockStatement(ss.body);
-}

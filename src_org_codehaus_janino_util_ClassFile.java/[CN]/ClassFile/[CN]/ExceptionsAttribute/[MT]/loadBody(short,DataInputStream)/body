@@ -1,3 +1,0 @@
-{
-  return new ExceptionsAttribute(attributeNameIndex,ClassFile.readShortArray(dis));
-}

@@ -1,9 +1,0 @@
-{
-  super(rvalue.getLocation());
-  if (!(rvalue instanceof Java.Assignment || rvalue instanceof Java.Crement || rvalue instanceof Java.MethodInvocation|| rvalue instanceof Java.SuperclassMethodInvocation|| rvalue instanceof Java.NewClassInstance|| rvalue instanceof Java.NewAnonymousClassInstance)) {
-    String expressionType=rvalue.getClass().getName();
-    expressionType=expressionType.substring(expressionType.lastIndexOf('.') + 1);
-    this.throwCompileException(expressionType + " is not allowed as an expression statement. " + "Expressions statements must be one of assignments, method invocations, or object allocations.");
-  }
-  (this.rvalue=rvalue).setEnclosingBlockStatement(this);
-}

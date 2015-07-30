@@ -1,7 +1,0 @@
-{
-  ss.localVariables=localVars;
-  Map<String,LocalVariable> vars=localVars;
-  for (  SwitchStatement.SwitchBlockStatementGroup sbsg : ss.sbsgs) {
-    for (    BlockStatement bs : sbsg.blockStatements)     vars=this.buildLocalVariableMap(bs,vars);
-  }
-}

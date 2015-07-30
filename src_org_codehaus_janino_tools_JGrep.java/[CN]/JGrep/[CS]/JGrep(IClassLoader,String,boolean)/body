@@ -1,5 +1,0 @@
-{
-  this.iClassLoader=new JGrepIClassLoader(iClassLoader);
-  this.optionalCharacterEncoding=optionalCharacterEncoding;
-  this.benchmark=new Benchmark(verbose);
-}

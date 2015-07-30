@@ -1,9 +1,0 @@
-{
-  if (uo.operator.equals("+"))   return this.getConstantValue(uo.operand);
-  if (uo.operator.equals("-"))   return this.getNegatedConstantValue(uo.operand);
-  if (uo.operator.equals("!")) {
-    Object cv=this.getConstantValue(uo.operand);
-    return (cv == Boolean.TRUE ? Boolean.FALSE : cv == Boolean.FALSE ? Boolean.TRUE : UnitCompiler.NOT_CONSTANT);
-  }
-  return UnitCompiler.NOT_CONSTANT;
-}

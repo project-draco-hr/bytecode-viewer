@@ -1,7 +1,0 @@
-{
-  super(location);
-  (this.condition=condition).setEnclosingBlockStatement(this);
-  (this.thenStatement=thenStatement).setEnclosingScope(this);
-  this.optionalElseStatement=optionalElseStatement;
-  if (optionalElseStatement != null)   optionalElseStatement.setEnclosingScope(this);
-}

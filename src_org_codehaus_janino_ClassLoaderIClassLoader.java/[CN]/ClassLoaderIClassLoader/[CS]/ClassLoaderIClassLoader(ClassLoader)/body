@@ -1,6 +1,0 @@
-{
-  super(null);
-  if (classLoader == null)   throw new NullPointerException();
-  this.classLoader=classLoader;
-  super.postConstruct();
-}

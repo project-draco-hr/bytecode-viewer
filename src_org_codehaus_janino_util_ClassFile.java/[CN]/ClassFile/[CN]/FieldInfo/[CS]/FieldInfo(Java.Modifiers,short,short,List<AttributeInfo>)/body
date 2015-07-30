@@ -1,6 +1,0 @@
-{
-  this.modifiers=modifiers;
-  this.nameIndex=nameIndex;
-  this.descriptorIndex=descriptorIndex;
-  this.attributes=attributes;
-}

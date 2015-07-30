@@ -1,7 +1,0 @@
-{
-  IConstructor[] ics=this.getDeclaredIConstructors();
-  for (  IConstructor ic : ics) {
-    if (Arrays.equals(ic.getParameterTypes(),parameterTypes))     return ic;
-  }
-  return null;
-}

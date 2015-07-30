@@ -1,3 +1,0 @@
-{
-  return (o instanceof ConstantInterfaceMethodrefInfo && ((ConstantInterfaceMethodrefInfo)o).classIndex == this.classIndex && ((ConstantInterfaceMethodrefInfo)o).nameAndTypeIndex == this.nameAndTypeIndex);
-}

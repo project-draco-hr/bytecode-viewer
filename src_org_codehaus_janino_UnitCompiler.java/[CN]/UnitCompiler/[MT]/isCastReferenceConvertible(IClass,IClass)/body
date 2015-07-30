@@ -1,3 +1,0 @@
-{
-  return (this.isIdentityConvertible(sourceType,targetType) || this.isWideningReferenceConvertible(sourceType,targetType) || this.isNarrowingReferenceConvertible(sourceType,targetType));
-}

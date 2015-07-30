@@ -1,8 +1,0 @@
-{
-  final Location location=this.location();
-  this.read("synchronized");
-  this.read("(");
-  Rvalue expression=this.parseExpression().toRvalueOrCompileException();
-  this.read(")");
-  return new SynchronizedStatement(location,expression,this.parseBlock());
-}

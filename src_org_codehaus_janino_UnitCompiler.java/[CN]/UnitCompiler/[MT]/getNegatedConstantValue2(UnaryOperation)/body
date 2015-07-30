@@ -1,3 +1,0 @@
-{
-  return (uo.operator.equals("+") ? this.getNegatedConstantValue(uo.operand) : uo.operator.equals("-") ? this.getConstantValue(uo.operand) : UnitCompiler.NOT_CONSTANT);
-}
