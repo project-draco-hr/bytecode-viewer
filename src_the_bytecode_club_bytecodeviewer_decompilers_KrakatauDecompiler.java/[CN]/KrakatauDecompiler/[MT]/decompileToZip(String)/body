@@ -14,7 +14,7 @@
   JarUtils.saveAsJarClassesOnly(BytecodeViewer.getLoadedClasses(),tempJar.getAbsolutePath());
   BytecodeViewer.sm.stopBlocking();
   try {
-    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,"-O",BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "decompile.py","-nauto","-path",BytecodeViewer.rt + ";" + tempJar.getAbsolutePath(),"-out",tempDirectory.getAbsolutePath(),tempJar.getAbsolutePath());
+    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,"-O",BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "decompile.py","-skip","-nauto","-path",BytecodeViewer.rt + ";" + tempJar.getAbsolutePath(),"-out",tempDirectory.getAbsolutePath(),tempJar.getAbsolutePath());
     Process process=pb.start();
     BytecodeViewer.createdProcesses.add(process);
     process.waitFor();
