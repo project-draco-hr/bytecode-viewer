@@ -9,7 +9,7 @@
   for (int k=0; k < options.length; k++)   if (options[k].equals(obj))   result=k;
   if (result == 0) {
     try {
-      PingBack.start();
+      if (!PingBack.isAlive())       PingBack.start();
     }
  catch (    Exception e) {
       new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

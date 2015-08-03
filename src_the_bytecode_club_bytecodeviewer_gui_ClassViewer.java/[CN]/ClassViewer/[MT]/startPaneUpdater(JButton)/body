@@ -351,7 +351,7 @@ catch (      Exception e) {
             }
           }
 );
-          scrollPane.setColumnHeaderView(new JLabel("CFR Decompiler - Editable: " + panelArea.isEditable()));
+          scrollPane.setColumnHeaderView(new JLabel("FernFlower Decompiler - Editable: " + panelArea.isEditable()));
           panel2.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java2=panelArea;
@@ -590,7 +590,7 @@ catch (      Exception e) {
             }
           }
 );
-          scrollPane.setColumnHeaderView(new JLabel("CFR Decompiler - Editable: " + panelArea.isEditable()));
+          scrollPane.setColumnHeaderView(new JLabel("FernFlower Decompiler - Editable: " + panelArea.isEditable()));
           panel3.add(scrollPane);
           panelArea.setFont(new Font(Font.MONOSPACED,Font.PLAIN,(int)BytecodeViewer.viewer.fontSpinner.getValue()));
           java3=panelArea;
