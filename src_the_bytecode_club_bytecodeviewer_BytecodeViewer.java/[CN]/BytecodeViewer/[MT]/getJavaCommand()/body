@@ -10,9 +10,9 @@
     sm.setBlocking();
     boolean empty=java.isEmpty();
     while (empty) {
-      showMessage("You need to set your Java path, this requires the JRE to be downloaded." + BytecodeViewer.nl + "(C:/programfiles/Java/JRE_xx/bin/javac.exe)");
+      showMessage("You need to set your Java path, this requires the JRE to be downloaded." + BytecodeViewer.nl + "(C:/programfiles/Java/JRE_xx/bin/java.exe)");
       viewer.java();
-      if (!java.isEmpty())       empty=false;
+      empty=java.isEmpty();
     }
   }
   return java;

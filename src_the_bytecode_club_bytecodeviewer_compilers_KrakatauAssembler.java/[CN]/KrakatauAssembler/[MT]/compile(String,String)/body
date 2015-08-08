@@ -41,6 +41,7 @@
     br.close();
     int exitValue=process.waitFor();
     log+=BytecodeViewer.nl + BytecodeViewer.nl + "Exit Value is "+ exitValue;
+    System.out.println(log);
     byte[] b=org.apache.commons.io.FileUtils.readFileToByteArray(new File(tempDirectory.getAbsolutePath() + BytecodeViewer.fs + origName+ ".class"));
     tempDirectory.delete();
     tempJar.delete();

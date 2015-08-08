@@ -18,6 +18,7 @@
     Process process=pb.start();
     BytecodeViewer.createdProcesses.add(process);
     process.waitFor();
+    MiscUtils.printProcess(process);
     ZipUtils.zipFolder(tempDirectory.getAbsolutePath(),zipName,ran);
     tempJar.delete();
   }

@@ -13,7 +13,7 @@
   fc.setAcceptAllFileFilterUsed(false);
   int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);
   if (returnVal == JFileChooser.APPROVE_OPTION)   try {
-    BytecodeViewer.javac=fc.getSelectedFile().getAbsolutePath();
+    BytecodeViewer.java=fc.getSelectedFile().getAbsolutePath();
   }
  catch (  Exception e1) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e1);

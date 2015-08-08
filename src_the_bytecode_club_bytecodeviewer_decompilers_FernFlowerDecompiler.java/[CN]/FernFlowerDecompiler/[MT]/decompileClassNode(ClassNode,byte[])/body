@@ -13,7 +13,22 @@
     e.printStackTrace();
     exception="Bytecode Viewer Version: " + BytecodeViewer.version + BytecodeViewer.nl+ BytecodeViewer.nl+ sw.toString();
   }
-  org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler.main(generateMainMethod(tempClass.getAbsolutePath(),"."));
+  if (!BytecodeViewer.fatJar) {
+    try {
+      ProcessBuilder pb=new ProcessBuilder(ArrayUtils.addAll(new String[]{BytecodeViewer.getJavaCommand(),"-jar",Resources.findLibrary("fernflower")},generateMainMethod(tempClass.getAbsolutePath(),".")));
+      BytecodeViewer.sm.stopBlocking();
+      Process p=pb.start();
+      BytecodeViewer.createdProcesses.add(p);
+      p.waitFor();
+    }
+ catch (    Exception e) {
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+ finally {
+      BytecodeViewer.sm.setBlocking();
+    }
+  }
+ else   org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler.main(generateMainMethod(tempClass.getAbsolutePath(),"."));
   tempClass.delete();
   final File outputJava=new File(start + ".java");
   if (outputJava.exists()) {

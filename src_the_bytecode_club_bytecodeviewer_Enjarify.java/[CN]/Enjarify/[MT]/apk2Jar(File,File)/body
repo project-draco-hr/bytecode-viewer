@@ -9,11 +9,12 @@
   }
   BytecodeViewer.sm.stopBlocking();
   try {
-    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python3,"-O","-m","enjarify.main",input.getAbsolutePath(),"-o",output.getAbsolutePath());
+    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python3,"-O","-m","enjarify.main",input.getAbsolutePath(),"-o",output.getAbsolutePath(),"-f");
     pb.directory(new File(BytecodeViewer.enjarifyWorkingDirectory));
     Process process=pb.start();
     BytecodeViewer.createdProcesses.add(process);
     process.waitFor();
+    MiscUtils.printProcess(process);
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

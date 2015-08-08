@@ -10,7 +10,24 @@
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
   }
   String fuckery=fuckery(fileStart);
-  org.benf.cfr.reader.Main.main(generateMainMethod(tempClass.getAbsolutePath(),fuckery));
+  if (!BytecodeViewer.fatJar) {
+    try {
+      ProcessBuilder pb=new ProcessBuilder(ArrayUtils.addAll(new String[]{BytecodeViewer.getJavaCommand(),"-jar",Resources.findLibrary("cfr")},generateMainMethod(tempClass.getAbsolutePath(),fuckery)));
+      BytecodeViewer.sm.stopBlocking();
+      Process p=pb.start();
+      BytecodeViewer.createdProcesses.add(p);
+      p.waitFor();
+    }
+ catch (    Exception e) {
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+ finally {
+      BytecodeViewer.sm.setBlocking();
+    }
+  }
+ else {
+    org.benf.cfr.reader.Main.main(generateMainMethod(tempClass.getAbsolutePath(),fuckery));
+  }
   tempClass.delete();
   return findFile(new File(fuckery).listFiles());
 }
