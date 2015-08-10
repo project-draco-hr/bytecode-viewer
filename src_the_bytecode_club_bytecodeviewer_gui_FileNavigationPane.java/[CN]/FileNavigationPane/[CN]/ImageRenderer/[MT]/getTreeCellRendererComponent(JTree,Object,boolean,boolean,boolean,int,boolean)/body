@@ -2,7 +2,7 @@
   Component ret=super.getTreeCellRendererComponent(tree,value,selected,expanded,leaf,row,hasFocus);
   if (value != null && value instanceof the.bytecode.club.bytecodeviewer.gui.FileNavigationPane.MyTreeNode) {
     the.bytecode.club.bytecodeviewer.gui.FileNavigationPane.MyTreeNode node=(the.bytecode.club.bytecodeviewer.gui.FileNavigationPane.MyTreeNode)value;
-    String name=node.toString().toLowerCase();
+    String name=node.toString();
     if (name.endsWith(".jar")) {
       setIcon(Resources.jarIcon);
     }
