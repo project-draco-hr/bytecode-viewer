@@ -1,0 +1,17 @@
+{
+  File f=new File(the.bytecode.club.bytecodeviewer.BytecodeViewer.tempDirectory + the.bytecode.club.bytecodeviewer.BytecodeViewer.fs + "loaded_temp.jar");
+  JarUtils.saveAsJarClassesOnly(nodeList,f.getAbsolutePath());
+  JarFile jarFile=new JarFile("" + f.getAbsolutePath());
+  Enumeration<JarEntry> e=jarFile.entries();
+  cl=URLClassLoader.newInstance(new URL[]{f.toURL()});
+  List<Class<?>> ret=new ArrayList<Class<?>>();
+  while (e.hasMoreElements()) {
+    JarEntry je=(JarEntry)e.nextElement();
+    if (je.isDirectory() || !je.getName().endsWith(".class"))     continue;
+    String className=je.getName().replace("/",".").replace(".class","");
+    className=className.replace('/','.');
+    ret.add(cl.loadClass(className));
+  }
+  jarFile.close();
+  return ret;
+}
