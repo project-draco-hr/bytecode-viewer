@@ -1,0 +1,11 @@
+{
+  try {
+    Method decryptermethod=decrypterclass.getDeclaredMethod(name,String.class);
+    decryptermethod.setAccessible(true);
+    return (String)decryptermethod.invoke(null,arg);
+  }
+ catch (  Exception e) {
+    log("Could not invoke decrypter method: " + name + " of class "+ decrypterclass.getName());
+    throw e;
+  }
+}

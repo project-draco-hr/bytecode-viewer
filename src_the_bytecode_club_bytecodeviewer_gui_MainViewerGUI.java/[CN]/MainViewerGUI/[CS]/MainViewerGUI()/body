@@ -1087,8 +1087,12 @@
   }
 );
   mntmNewMenuItem_2.addActionListener(new ActionListener(){
-    @Override public void actionPerformed(    ActionEvent e){
-      PluginManager.runPlugin(new AllatoriStringDecrypter());
+    @Override public void actionPerformed(    ActionEvent arg0){
+      if (BytecodeViewer.getLoadedClasses().isEmpty()) {
+        BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
+        return;
+      }
+      new AllatoriStringDecrypterOptions().setVisible(true);
     }
   }
 );
