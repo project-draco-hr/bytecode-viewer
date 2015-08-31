@@ -3,6 +3,6 @@
     return nodeToClass(classes.get(name));
   }
  else {
-    return super.loadClass(name);
+    return super.findClass(name);
   }
 }

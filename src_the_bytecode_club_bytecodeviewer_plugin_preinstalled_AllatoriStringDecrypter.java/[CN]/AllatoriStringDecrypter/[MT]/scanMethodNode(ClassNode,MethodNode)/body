@@ -1,0 +1,59 @@
+{
+  InsnList iList=methodNode.instructions;
+  log("Scanning method " + methodNode.name + " of "+ classNode.name);
+  LdcInsnNode laststringldconstack=null;
+  for (  AbstractInsnNode i : iList.toArray()) {
+    if (i instanceof LdcInsnNode) {
+      LdcInsnNode ldci=(LdcInsnNode)i;
+      if (ldci.cst instanceof String) {
+        laststringldconstack=ldci;
+      }
+      continue;
+    }
+ else     if (i instanceof MethodInsnNode) {
+      MethodInsnNode methodi=(MethodInsnNode)i;
+      if (laststringldconstack != null && methodi.opcode() == 0xb8) {
+        String decrypterclassname=methodi.owner;
+        String decryptermethodname=methodi.name;
+        if (decrypterclassname.contains("$")) {
+          byte[] decrypterFileContents=BytecodeViewer.getFileContents(decrypterclassname + ".class");
+          ClassNode decrypterclassnode=JarUtils.getNode(decrypterFileContents);
+          if (decrypterclassnode != null) {
+            MethodNode decryptermethodnode=decrypterclassnode.getMethodByName(decryptermethodname);
+            if (decryptermethodnode != null) {
+              String keyString=(getConstantPoolSize(classNode.name) + classNode.name + methodNode.name+ getConstantPoolSize(classNode.name));
+              int newHashCode=keyString.hashCode();
+              scanDecrypter(decryptermethodnode,newHashCode);
+              try {
+                System.out.println("loading " + decrypterclassname);
+                List<Class<?>> decrypterclasslist=the.bytecode.club.bytecodeviewer.api.BytecodeViewer.loadClassesIntoClassLoader(new ArrayList<ClassNode>(Arrays.asList(new ClassNode[]{decrypterclassnode})));
+                String decrypted=invokeDecrypter(decrypterclasslist.get(0),decryptermethodname,(String)laststringldconstack.cst);
+                if (decrypted != null) {
+                  log("Succesfully invoked decrypter method: " + decrypted);
+                  laststringldconstack.cst=decrypted;
+                  iList.remove(methodi);
+                }
+              }
+ catch (              IndexOutOfBoundsException|ClassNotFoundException|IOException e) {
+                e.printStackTrace();
+                log("Could not load decrypter class: " + decrypterclassname);
+              }
+            }
+ else {
+              log("Could not find decrypter method (" + decryptermethodname + ") of class "+ decrypterclassname);
+            }
+          }
+ else {
+            log("Could not find decrypter ClassNode of class " + decrypterclassname);
+          }
+        }
+      }
+    }
+ else     if (i instanceof InvokeDynamicInsnNode) {
+      InvokeDynamicInsnNode methodi=(InvokeDynamicInsnNode)i;
+      if (methodi.opcode() == 0xba) {
+      }
+    }
+    laststringldconstack=null;
+  }
+}

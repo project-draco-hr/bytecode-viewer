@@ -1,0 +1,30 @@
+{
+  InsnList iList=decryptermethodnode.instructions;
+  AbstractInsnNode insn=null, removeInsn=null;
+  for (  AbstractInsnNode i : iList.toArray()) {
+    if (i instanceof MethodInsnNode) {
+      MethodInsnNode methodi=((MethodInsnNode)i);
+      if ("currentThread".equals(methodi.name)) {
+        insn=i;
+        break;
+      }
+    }
+  }
+  if (insn == null) {
+    return false;
+  }
+  while (insn != null) {
+    if (insn instanceof MethodInsnNode) {
+      MethodInsnNode methodi=((MethodInsnNode)insn);
+      if ("hashCode".equals(methodi.name)) {
+        break;
+      }
+    }
+    removeInsn=insn;
+    insn=insn.getNext();
+    iList.remove(removeInsn);
+  }
+  if (insn == null)   return false;
+  iList.set(insn,new LdcInsnNode(newHashCode));
+  return true;
+}
