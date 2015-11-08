@@ -14,15 +14,17 @@
 );
   this.close.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
+      doNothing=true;
       final TreeNode root=(TreeNode)tree.getModel().getRoot();
       expandAll(tree,new TreePath(root),false);
       tree.expandPath(new TreePath(root));
+      doNothing=false;
     }
   }
 );
   this.tree.addMouseListener(new MouseAdapter(){
     @Override public void mousePressed(    MouseEvent e){
-      openPath(tree.getPathForLocation(e.getX(),e.getY()));
+      if (!doNothing)       openPath(tree.getPathForLocation(e.getX(),e.getY()));
     }
   }
 );
@@ -32,7 +34,7 @@
         cancel=false;
         return;
       }
-      openPath(arg0.getPath());
+      if (!doNothing)       openPath(arg0.getPath());
     }
   }
 );

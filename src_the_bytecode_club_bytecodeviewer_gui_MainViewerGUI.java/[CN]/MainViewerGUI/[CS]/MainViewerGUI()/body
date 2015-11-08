@@ -1092,7 +1092,7 @@
         BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
         return;
       }
-      new AllatoriStringDecrypterOptions().setVisible(true);
+      new AllatoriStringDecryptionOptions().setVisible(true);
     }
   }
 );
