@@ -1,0 +1,5 @@
+{
+  reset();
+  AbstractInsnNode[] match=lastMatch;
+  lastMatch=new AbstractInsnNode[match.length];
+}

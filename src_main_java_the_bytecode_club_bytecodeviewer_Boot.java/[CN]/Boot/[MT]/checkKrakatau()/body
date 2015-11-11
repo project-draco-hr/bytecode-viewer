@@ -1,0 +1,30 @@
+{
+  setState(BootSequence.CHECKING_KRAKATAU);
+  for (  File f : new File(BytecodeViewer.getBCVDirectory()).listFiles()) {
+    if (f.getName().toLowerCase().startsWith("krakatau_") && !f.getName().split("_")[1].split("\\.")[0].equals(BytecodeViewer.krakatauVersion)) {
+      setState(BootSequence.CLEANING_KRAKATAU);
+      try {
+        FileUtils.deleteDirectory(f);
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+  File krakatauDirectory=new File(BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "krakatau_"+ BytecodeViewer.krakatauVersion);
+  if (!krakatauDirectory.exists()) {
+    try {
+      setState(BootSequence.MOVING_KRAKATAU);
+      Path temporaryKrakatauZip=Files.createTempFile("krakatau",".zip");
+      Files.delete(temporaryKrakatauZip);
+      InputStream inputStream=Boot.class.getResourceAsStream("/Krakatau-8.zip");
+      Files.copy(inputStream,temporaryKrakatauZip);
+      ZipUtils.unzipFilesToPath(temporaryKrakatauZip.normalize().toString(),krakatauDirectory.getAbsolutePath());
+      Files.delete(temporaryKrakatauZip);
+    }
+ catch (    Exception e) {
+      BytecodeViewer.showMessage("ERROR: There was an issue unzipping Krakatau decompiler (possibly corrupt). Restart BCV." + BytecodeViewer.nl + "If the error persists contact @Konloch.");
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+  }
+}

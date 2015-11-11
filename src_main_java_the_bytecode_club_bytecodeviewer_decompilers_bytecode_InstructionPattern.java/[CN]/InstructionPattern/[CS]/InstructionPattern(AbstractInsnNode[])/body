@@ -1,0 +1,4 @@
+{
+  filters=translate(insns);
+  lastMatch=new AbstractInsnNode[insns.length];
+}

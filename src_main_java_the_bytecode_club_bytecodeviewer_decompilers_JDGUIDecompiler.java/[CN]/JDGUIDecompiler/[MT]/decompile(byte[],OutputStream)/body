@@ -1,0 +1,21 @@
+{
+  CommonPreferences preferences=new CommonPreferences(){
+    @Override public boolean isShowLineNumbers(){
+      return true;
+    }
+    @Override public boolean isMergeEmptyLines(){
+      return true;
+    }
+  }
+;
+  Loader customLoader=new Loader(){
+    @Override public DataInputStream load(    String s) throws LoaderException {
+      return new DataInputStream(new ByteArrayInputStream(data));
+    }
+    @Override public boolean canLoad(    String s){
+      return true;
+    }
+  }
+;
+  new DecompilerImpl().decompile(preferences,customLoader,new PlainTextPrinter(preferences,new PrintStream(to,false,"UTF-8")),"BytecodeViewer.class");
+}

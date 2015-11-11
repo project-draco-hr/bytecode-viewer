@@ -1,0 +1,4 @@
+{
+  File file=new File(this.codebase,internalPath);
+  return file.exists() && file.isFile();
+}

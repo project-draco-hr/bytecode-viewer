@@ -1,0 +1,43 @@
+{
+  int count=dis.readUnsignedShort();
+  if (count == 0)   return null;
+  Constant[] constants=new Constant[count];
+  for (int i=1; i < count; i++) {
+    byte tag=dis.readByte();
+switch (tag) {
+case ConstantConstant.CONSTANT_Class:
+      constants[i]=new ConstantClass(tag,dis.readUnsignedShort());
+    break;
+case ConstantConstant.CONSTANT_Utf8:
+  constants[i]=new ConstantUtf8(tag,dis.readUTF());
+break;
+case ConstantConstant.CONSTANT_Long:
+case ConstantConstant.CONSTANT_Double:
+dis.readInt();
+dis.readInt();
+i++;
+break;
+case ConstantConstant.CONSTANT_Fieldref:
+case ConstantConstant.CONSTANT_Methodref:
+case ConstantConstant.CONSTANT_InterfaceMethodref:
+case ConstantConstant.CONSTANT_NameAndType:
+dis.readUnsignedShort();
+dis.readUnsignedShort();
+break;
+case ConstantConstant.CONSTANT_Integer:
+case ConstantConstant.CONSTANT_Float:
+dis.readInt();
+break;
+case ConstantConstant.CONSTANT_String:
+dis.readUnsignedShort();
+break;
+case 15:
+case 16:
+case 18:
+throw new IllegalArgumentException("JD-GUI does not support Java 8 as of yet");
+default :
+throw new ClassFormatException("Invalid constant pool entry");
+}
+}
+return constants;
+}

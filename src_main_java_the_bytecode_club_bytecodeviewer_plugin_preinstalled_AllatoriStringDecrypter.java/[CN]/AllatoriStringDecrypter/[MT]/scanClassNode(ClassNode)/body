@@ -1,0 +1,5 @@
+{
+  for (  Object method : classNode.methods) {
+    scanMethodNode(classNode,(MethodNode)method);
+  }
+}

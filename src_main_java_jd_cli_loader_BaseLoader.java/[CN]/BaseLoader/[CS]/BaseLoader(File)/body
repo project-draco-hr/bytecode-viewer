@@ -1,0 +1,5 @@
+{
+  this.codebase=file.getAbsolutePath();
+  this.lastModified=file.lastModified();
+  this.isFile=file.isFile();
+}

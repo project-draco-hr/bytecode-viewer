@@ -1,0 +1,3 @@
+{
+  this.sbCode.append(String.valueOf(b));
+}

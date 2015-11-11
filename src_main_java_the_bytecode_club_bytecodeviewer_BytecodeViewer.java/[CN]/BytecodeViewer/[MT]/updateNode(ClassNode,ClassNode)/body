@@ -1,0 +1,5 @@
+{
+  for (  FileContainer container : files) {
+    if (container.remove(oldNode))     container.add(newNode);
+  }
+}

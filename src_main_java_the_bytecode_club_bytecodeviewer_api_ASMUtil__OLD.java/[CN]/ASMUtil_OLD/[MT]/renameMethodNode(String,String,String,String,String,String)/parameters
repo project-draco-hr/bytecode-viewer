@@ -1,0 +1,6 @@
+String originalParentName
+String originalMethodName
+String originalMethodDesc
+String newParent
+String newName
+String newDesc

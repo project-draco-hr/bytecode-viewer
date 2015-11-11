@@ -1,0 +1,10 @@
+{
+  boolean b=true;
+  int i=0;
+  while (b) {
+    File tempF=new File(start + i + ext);
+    if (!tempF.exists())     b=false;
+ else     i++;
+  }
+  return i;
+}

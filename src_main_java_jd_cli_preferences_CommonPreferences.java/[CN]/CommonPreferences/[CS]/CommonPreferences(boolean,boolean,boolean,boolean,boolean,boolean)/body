@@ -1,0 +1,7 @@
+{
+  super(showDefaultConstructor,realignmentLineNumber);
+  this.showPrefixThis=showPrefixThis;
+  this.mergeEmptyLines=mergeEmptyLines;
+  this.unicodeEscape=unicodeEscape;
+  this.showLineNumbers=showLineNumbers;
+}

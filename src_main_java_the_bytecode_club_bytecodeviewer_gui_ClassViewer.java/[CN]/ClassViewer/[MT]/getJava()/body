@@ -1,0 +1,6 @@
+{
+  if (java1 != null)   return new Object[]{cn,java1.getText()};
+  if (java2 != null)   return new Object[]{cn,java2.getText()};
+  if (java3 != null)   return new Object[]{cn,java3.getText()};
+  return null;
+}

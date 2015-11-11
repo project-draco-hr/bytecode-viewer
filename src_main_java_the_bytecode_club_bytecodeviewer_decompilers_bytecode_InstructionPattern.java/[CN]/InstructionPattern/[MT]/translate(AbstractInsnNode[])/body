@@ -1,0 +1,7 @@
+{
+  InstructionFilter[] filters=new InstructionFilter[ains.length];
+  for (int i=0; i < ains.length; i++) {
+    filters[i]=translate(ains[i]);
+  }
+  return filters;
+}

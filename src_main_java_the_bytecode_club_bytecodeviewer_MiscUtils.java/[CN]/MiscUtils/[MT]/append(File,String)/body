@@ -1,0 +1,5 @@
+{
+  String path=file.getAbsolutePath();
+  if (!path.endsWith(extension))   path=path + extension;
+  return path;
+}

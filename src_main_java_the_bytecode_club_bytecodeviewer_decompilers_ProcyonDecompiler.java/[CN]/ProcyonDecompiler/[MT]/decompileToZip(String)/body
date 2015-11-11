@@ -1,0 +1,11 @@
+{
+  File tempZip=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp.jar");
+  if (tempZip.exists())   tempZip.delete();
+  JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),tempZip.getAbsolutePath());
+  try {
+    doSaveJarDecompiled(tempZip,new File(zipName));
+  }
+ catch (  Exception e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+}

@@ -1,0 +1,37 @@
+{
+  Options options=dcCommonState.getOptions();
+  Dumper d=new ToStringDumper();
+  BaseByteData data=new BaseByteData(content1);
+  ClassFile var24=new ClassFile(data,"",dcCommonState);
+  dcCommonState.configureWith(var24);
+  try {
+    var24=dcCommonState.getClassFile(var24.getClassType());
+  }
+ catch (  CannotLoadClassException var18) {
+  }
+  if (options.getOption(OptionsImpl.DECOMPILE_INNER_CLASSES)) {
+    var24.loadInnerClasses(dcCommonState);
+  }
+  if (options.getOption(OptionsImpl.RENAME_MEMBERS)) {
+    MemberNameResolver.resolveNames(dcCommonState,ListFactory.newList(dcCommonState.getClassCache().getLoadedTypes()));
+  }
+  var24.analyseTop(dcCommonState);
+  TypeUsageCollector var25=new TypeUsageCollector(var24);
+  var24.collectTypeUsages(var25);
+  String var26=options.getOption(OptionsImpl.METHODNAME);
+  if (var26 == null) {
+    var24.dump(d);
+  }
+ else {
+    try {
+      for (      Method method : var24.getMethodByName(var26)) {
+        method.dump(d,true);
+      }
+    }
+ catch (    NoSuchMethodException var19) {
+      throw new IllegalArgumentException("No such method \'" + var26 + "\'.");
+    }
+  }
+  d.print("");
+  return d.toString();
+}

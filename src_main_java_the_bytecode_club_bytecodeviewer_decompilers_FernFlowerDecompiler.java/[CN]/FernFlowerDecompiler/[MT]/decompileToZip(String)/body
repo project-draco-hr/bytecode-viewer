@@ -1,0 +1,17 @@
+{
+  try {
+    Path outputDir=Files.createTempDirectory("fernflower_output");
+    Path tempJar=Files.createTempFile("fernflower_input",".jar");
+    File output=new File(zipName);
+    JarUtils.saveAsJar(BytecodeViewer.getLoadedBytes(),tempJar.toAbsolutePath().toString());
+    ConsoleDecompiler decompiler=new ConsoleDecompiler(outputDir.toFile(),main(generateMainMethod()));
+    decompiler.addSpace(tempJar.toFile(),true);
+    decompiler.decompileContext();
+    Files.move(outputDir.toFile().listFiles()[0].toPath(),output.toPath());
+    Files.delete(tempJar);
+    FileUtils.deleteDirectory(outputDir.toFile());
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+}

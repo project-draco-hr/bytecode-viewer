@@ -1,0 +1,4 @@
+java.io.PrintStream out
+java.awt.Component c
+javax.swing.border.Border dragBorder
+Listener listener

@@ -1,0 +1,21 @@
+{
+  HashMap mapOptions=new HashMap();
+  boolean isOption=true;
+  for (int destination=0; destination < args.length - 1; ++destination) {
+    String logger=args[destination];
+    if (isOption && logger.length() > 5 && logger.charAt(0) == 45 && logger.charAt(4) == 61) {
+      String decompiler=logger.substring(5);
+      if ("true".equalsIgnoreCase(decompiler)) {
+        decompiler="1";
+      }
+ else       if ("false".equalsIgnoreCase(decompiler)) {
+        decompiler="0";
+      }
+      mapOptions.put(logger.substring(1,4),decompiler);
+    }
+ else {
+      isOption=false;
+    }
+  }
+  return mapOptions;
+}

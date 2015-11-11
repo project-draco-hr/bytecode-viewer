@@ -1,0 +1,20 @@
+{
+  this.realLineNumber++;
+  if (this.maxLineNumber > 0) {
+    if (lineNumber == UNKNOWN_LINE_NUMBER) {
+      this.sbLineNumber.append(String.format(this.unknownLineNumberPrefix,this.realLineNumber));
+    }
+ else {
+      this.sbLineNumber.append(String.format(this.realLineNumberFormatPrefix,this.realLineNumber));
+      if (this.realLineNumber == lineNumber) {
+        this.sbLineNumber.append(String.format(this.lineNumberFormatPrefix,lineNumber));
+      }
+ else {
+        this.sbLineNumber.append("<span>");
+        this.sbLineNumber.append(String.format(this.lineNumberFormatPrefix,lineNumber));
+        this.sbLineNumber.append("</span>");
+      }
+    }
+  }
+  for (int i=0; i < indentationCount; i++)   this.sbCode.append("  ");
+}

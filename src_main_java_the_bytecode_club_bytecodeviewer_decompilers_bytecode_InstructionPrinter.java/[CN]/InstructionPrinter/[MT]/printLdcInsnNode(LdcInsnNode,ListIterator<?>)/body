@@ -1,0 +1,4 @@
+{
+  if (ldc.cst instanceof String)   return nameOpcode(ldc.getOpcode()) + " \"" + StringEscapeUtils.escapeJava(ldc.cst.toString())+ "\" ("+ ldc.cst.getClass().getCanonicalName()+ ")";
+  return nameOpcode(ldc.getOpcode()) + " " + StringEscapeUtils.escapeJava(ldc.cst.toString())+ " ("+ ldc.cst.getClass().getCanonicalName()+ ")";
+}

@@ -1,0 +1,14 @@
+{
+  BufferedImage image=null;
+  byte[] imageByte;
+  try {
+    imageByte=Base64.decodeBase64(imageString);
+    ByteArrayInputStream bis=new ByteArrayInputStream(imageByte);
+    image=ImageIO.read(bis);
+    bis.close();
+  }
+ catch (  Exception e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+  return image;
+}

@@ -1,0 +1,5 @@
+{
+  sb.append(s);
+  if (s.contains("\n") && (prefix != null) && (prefix.length() > 0))   sb.append(prefix);
+  return this;
+}

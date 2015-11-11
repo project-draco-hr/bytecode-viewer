@@ -1,0 +1,3 @@
+PrefixedStringBuilder sb
+ArrayList<String> decompiledClasses
+ClassNode cn

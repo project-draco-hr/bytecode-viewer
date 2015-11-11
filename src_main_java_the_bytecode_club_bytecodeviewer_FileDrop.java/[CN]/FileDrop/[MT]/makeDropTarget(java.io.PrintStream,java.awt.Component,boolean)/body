@@ -1,0 +1,35 @@
+{
+  final java.awt.dnd.DropTarget dt=new java.awt.dnd.DropTarget();
+  try {
+    dt.addDropTargetListener(dropListener);
+  }
+ catch (  final java.util.TooManyListenersException e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    log(out,"FileDrop: Drop will not work due to previous error. Do you have another listener attached?");
+  }
+  c.addHierarchyListener(new java.awt.event.HierarchyListener(){
+    public void hierarchyChanged(    final java.awt.event.HierarchyEvent evt){
+      log(out,"FileDrop: Hierarchy changed.");
+      final java.awt.Component parent=c.getParent();
+      if (parent == null) {
+        c.setDropTarget(null);
+        log(out,"FileDrop: Drop target cleared from component.");
+      }
+ else {
+        new java.awt.dnd.DropTarget(c,dropListener);
+        log(out,"FileDrop: Drop target added to component.");
+      }
+    }
+  }
+);
+  if (c.getParent() != null) {
+    new java.awt.dnd.DropTarget(c,dropListener);
+  }
+  if (recursive && (c instanceof java.awt.Container)) {
+    final java.awt.Container cont=(java.awt.Container)c;
+    final java.awt.Component[] comps=cont.getComponents();
+    for (int i=0; i < comps.length; i++) {
+      makeDropTarget(out,comps[i],recursive);
+    }
+  }
+}

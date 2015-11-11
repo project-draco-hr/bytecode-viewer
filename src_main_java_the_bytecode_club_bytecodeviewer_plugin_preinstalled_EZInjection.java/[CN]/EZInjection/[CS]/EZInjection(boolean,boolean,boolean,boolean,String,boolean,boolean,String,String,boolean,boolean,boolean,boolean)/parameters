@@ -1,0 +1,13 @@
+boolean accessModifiers
+boolean injectHooks
+boolean debugHooks
+boolean invokeMethod
+String invokeMethodInformation
+boolean sandboxRuntime
+boolean sandboxSystem
+String debugClasses
+String proxy
+boolean useProxy
+boolean launchKit
+boolean console
+boolean printCmdL

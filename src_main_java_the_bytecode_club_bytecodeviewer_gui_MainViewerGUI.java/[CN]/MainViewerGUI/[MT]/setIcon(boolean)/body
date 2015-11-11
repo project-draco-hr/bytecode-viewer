@@ -1,0 +1,17 @@
+{
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      if (busy) {
+        try {
+          mntmNewMenuItem_4.setIcon(Resources.busyIcon);
+        }
+ catch (        NullPointerException e) {
+          mntmNewMenuItem_4.setIcon(Resources.busyB64Icon);
+        }
+      }
+ else       mntmNewMenuItem_4.setIcon(null);
+      mntmNewMenuItem_4.updateUI();
+    }
+  }
+);
+}

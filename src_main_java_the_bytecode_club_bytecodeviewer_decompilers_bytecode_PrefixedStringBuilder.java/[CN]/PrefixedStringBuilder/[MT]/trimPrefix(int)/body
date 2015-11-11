@@ -1,0 +1,5 @@
+{
+  if (prefix == null)   return;
+  if (prefix.length() < amount)   return;
+  prefix=prefix.substring(0,prefix.length() - amount);
+}

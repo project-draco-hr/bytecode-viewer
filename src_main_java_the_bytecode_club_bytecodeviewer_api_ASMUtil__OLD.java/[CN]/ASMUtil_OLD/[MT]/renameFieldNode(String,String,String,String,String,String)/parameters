@@ -1,0 +1,6 @@
+String originalParentName
+String originalFieldName
+String originalFieldDesc
+String newFieldParent
+String newFieldName
+String newFieldDesc

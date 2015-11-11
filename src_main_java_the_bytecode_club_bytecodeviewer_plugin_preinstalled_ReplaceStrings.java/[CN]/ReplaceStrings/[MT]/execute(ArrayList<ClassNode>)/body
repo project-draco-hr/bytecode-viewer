@@ -1,0 +1,13 @@
+{
+  if (!className.equals("*")) {
+    for (    ClassNode classNode : classNodeList) {
+      if (classNode.name.equals(className))       scanClassNode(classNode);
+    }
+  }
+ else {
+    for (    ClassNode classNode : classNodeList) {
+      scanClassNode(classNode);
+    }
+  }
+  frame.setVisible(true);
+}

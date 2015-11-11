@@ -1,0 +1,26 @@
+{
+  if (BytecodeViewer.python.equals("")) {
+    BytecodeViewer.showMessage("You need to set your Python (or PyPy for speed) 2.7 executable path.");
+    BytecodeViewer.viewer.pythonC();
+  }
+  String ran=MiscUtils.randomString(32);
+  final File tempDirectory=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + ran+ BytecodeViewer.fs);
+  tempDirectory.mkdir();
+  final File tempJar=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp.jar");
+  JarUtils.saveAsJarClassesOnly(BytecodeViewer.getLoadedClasses(),tempJar.getAbsolutePath());
+  BytecodeViewer.sm.stopBlocking();
+  try {
+    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,"-O",BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "disassemble.py","-path",BytecodeViewer.rt + ";" + tempJar.getAbsolutePath(),"-out",tempDirectory.getAbsolutePath(),tempJar.getAbsolutePath());
+    Process process=pb.start();
+    BytecodeViewer.createdProcesses.add(process);
+    process.waitFor();
+    ZipUtils.zipFolder(tempDirectory.getAbsolutePath(),zipName,ran);
+    tempJar.delete();
+  }
+ catch (  Exception e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+ finally {
+    BytecodeViewer.sm.setBlocking();
+  }
+}

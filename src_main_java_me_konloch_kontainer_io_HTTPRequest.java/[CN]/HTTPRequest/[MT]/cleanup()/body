@@ -1,0 +1,20 @@
+{
+  try {
+    reader.close();
+  }
+ catch (  Exception e) {
+  }
+  try {
+    writer.close();
+  }
+ catch (  Exception e) {
+  }
+  try {
+    connection.disconnect();
+  }
+ catch (  Exception e) {
+  }
+  reader=null;
+  writer=null;
+  connection=null;
+}

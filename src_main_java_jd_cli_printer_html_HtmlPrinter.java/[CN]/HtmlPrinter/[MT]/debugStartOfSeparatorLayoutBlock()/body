@@ -1,0 +1,5 @@
+{
+  if (DEBUG) {
+    this.sbCode.append("<span class='debugseparatorlayoutblock' alr='separator'>");
+  }
+}

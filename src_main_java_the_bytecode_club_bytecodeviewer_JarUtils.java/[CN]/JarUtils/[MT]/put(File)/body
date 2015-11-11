@@ -1,0 +1,29 @@
+{
+  FileContainer container=new FileContainer(jarFile);
+  HashMap<String,byte[]> files=new HashMap<String,byte[]>();
+  ZipInputStream jis=new ZipInputStream(new FileInputStream(jarFile));
+  ZipEntry entry;
+  while ((entry=jis.getNextEntry()) != null) {
+    try {
+      final String name=entry.getName();
+      final byte[] bytes=getBytes(jis);
+      if (!files.containsKey(name)) {
+        if (!name.endsWith(".class")) {
+          if (!entry.isDirectory())           files.put(name,bytes);
+        }
+ else {
+          files.put(name,bytes);
+        }
+      }
+    }
+ catch (    Exception e) {
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+ finally {
+      jis.closeEntry();
+    }
+  }
+  jis.close();
+  container.files=files;
+  BytecodeViewer.files.add(container);
+}

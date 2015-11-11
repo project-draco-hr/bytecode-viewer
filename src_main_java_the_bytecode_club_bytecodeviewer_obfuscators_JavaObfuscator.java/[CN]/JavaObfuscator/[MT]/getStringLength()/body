@@ -1,0 +1,8 @@
+{
+  if (BytecodeViewer.viewer.obfuscatorGroup.isSelected(BytecodeViewer.viewer.strongObf.getModel())) {
+    return MAX_STRING_LENGTH;
+  }
+ else {
+    return MIN_STRING_LENGTH;
+  }
+}

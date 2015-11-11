@@ -1,0 +1,7 @@
+{
+  Map<String,byte[]> data=new HashMap<>();
+  for (  FileContainer container : files) {
+    data.putAll(container.getData());
+  }
+  return data;
+}

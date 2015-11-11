@@ -1,0 +1,9 @@
+{
+  System.out.println("mibbzz is gay");
+  BytecodeViewer.viewer.setIcon(true);
+  BytecodeViewer.runningObfuscation=true;
+  obfuscate();
+  BytecodeViewer.refactorer.run();
+  BytecodeViewer.runningObfuscation=false;
+  BytecodeViewer.viewer.setIcon(false);
+}

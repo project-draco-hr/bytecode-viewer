@@ -1,0 +1,6 @@
+{
+  this.he=he;
+  addMouseListener(this);
+  addKeyListener(this);
+  addFocusListener(he);
+}

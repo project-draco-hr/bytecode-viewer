@@ -1,0 +1,9 @@
+{
+  for (  final ITypeLoader typeLoader : _typeLoaders) {
+    if (typeLoader.tryLoadType(internalName,buffer)) {
+      return true;
+    }
+    buffer.reset();
+  }
+  return false;
+}

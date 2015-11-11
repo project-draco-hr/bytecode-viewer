@@ -1,0 +1,31 @@
+{
+  try {
+    File output=new File(zipName);
+    ZipOutputStream zipOutputStream=new ZipOutputStream(new FileOutputStream(output));
+    for (    Map.Entry<String,byte[]> entry : BytecodeViewer.getLoadedBytes().entrySet()) {
+      String name=entry.getKey();
+      if (name.endsWith(".class")) {
+        ByteArrayOutputStream out=new ByteArrayOutputStream();
+        try {
+          decompile(entry.getValue(),out);
+          zipOutputStream.putNextEntry(new ZipEntry(name.substring(0,name.length() - 6) + ".java"));
+          zipOutputStream.write(out.toByteArray());
+        }
+ catch (        Exception e) {
+          e.printStackTrace();
+          zipOutputStream.putNextEntry(new ZipEntry(name));
+          zipOutputStream.write(entry.getValue());
+        }
+      }
+ else {
+        zipOutputStream.putNextEntry(new ZipEntry(name));
+        zipOutputStream.write(entry.getValue());
+      }
+      zipOutputStream.closeEntry();
+    }
+    zipOutputStream.close();
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+}

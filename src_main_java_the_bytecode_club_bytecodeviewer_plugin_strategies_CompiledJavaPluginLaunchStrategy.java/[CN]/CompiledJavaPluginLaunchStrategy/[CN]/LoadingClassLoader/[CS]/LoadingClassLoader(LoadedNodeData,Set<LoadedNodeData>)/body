@@ -1,0 +1,11 @@
+{
+  this.data=data;
+  cache=new HashMap<String,LoadedNodeData>();
+  ccache=new HashMap<String,Class<?>>();
+  for (  LoadedNodeData d : set) {
+    cache.put(d.node.name,d);
+  }
+  @SuppressWarnings("unchecked") Class<? extends Plugin> pluginKlass=(Class<? extends Plugin>)loadClass(data.node.name.replace("/","."));
+  if (pluginKlass == null)   throw new RuntimeException();
+  this.pluginKlass=pluginKlass;
+}

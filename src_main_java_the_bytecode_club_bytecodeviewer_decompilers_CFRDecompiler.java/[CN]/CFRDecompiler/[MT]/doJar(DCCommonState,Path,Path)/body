@@ -1,0 +1,48 @@
+{
+  SummaryDumper summaryDumper=new NopSummaryDumper();
+  Dumper d=new ToStringDumper();
+  Options options=dcCommonState.getOptions();
+  IllegalIdentifierDump illegalIdentifierDump=IllegalIdentifierDump.Factory.get(options);
+  final Predicate e=org.benf.cfr.reader.util.MiscUtils.mkRegexFilter(options.getOption(OptionsImpl.JAR_FILTER),true);
+  List<JavaTypeInstance> err1=dcCommonState.explicitlyLoadJar(input.toAbsolutePath().toString());
+  err1=Functional.filter(err1,new Predicate<JavaTypeInstance>(){
+    public boolean test(    JavaTypeInstance in){
+      return e.test(in.getRawName());
+    }
+  }
+);
+  if (options.getOption(OptionsImpl.RENAME_MEMBERS)) {
+    MemberNameResolver.resolveNames(dcCommonState,err1);
+  }
+  for (  JavaTypeInstance type : err1) {
+    try {
+      ClassFile e1=dcCommonState.getClassFile(type);
+      if (e1.isInnerClass()) {
+        d=null;
+      }
+ else {
+        if (options.getOption(OptionsImpl.DECOMPILE_INNER_CLASSES).booleanValue()) {
+          e1.loadInnerClasses(dcCommonState);
+        }
+        e1.analyseTop(dcCommonState);
+        TypeUsageCollector collectingDumper=new TypeUsageCollector(e1);
+        e1.collectTypeUsages(collectingDumper);
+        d=new FileDumper(output.toAbsolutePath().toString(),e1.getClassType(),summaryDumper,collectingDumper.getTypeUsageInformation(),options,illegalIdentifierDump);
+        e1.dump(d);
+        d.print("\n");
+        d.print("\n");
+      }
+    }
+ catch (    Dumper.CannotCreate var25) {
+      throw var25;
+    }
+catch (    RuntimeException var26) {
+      d.print(var26.toString()).print("\n").print("\n").print("\n");
+    }
+ finally {
+      if (d != null) {
+        d.close();
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  JOptionPane pane=new JOptionPane("Would you like to 'pingback' to https://bytecodeviewer.com to be counted in the global users for BCV?");
+  Object[] options=new String[]{"Yes","No"};
+  pane.setOptions(options);
+  JDialog dialog=pane.createDialog(BytecodeViewer.viewer,"Bytecode Viewer - Optional Pingback");
+  dialog.setVisible(true);
+  Object obj=pane.getValue();
+  int result=-1;
+  for (int k=0; k < options.length; k++)   if (options[k].equals(obj))   result=k;
+  if (result == 0) {
+    try {
+      if (!PingBack.isAlive())       PingBack.start();
+    }
+ catch (    Exception e) {
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+  }
+}

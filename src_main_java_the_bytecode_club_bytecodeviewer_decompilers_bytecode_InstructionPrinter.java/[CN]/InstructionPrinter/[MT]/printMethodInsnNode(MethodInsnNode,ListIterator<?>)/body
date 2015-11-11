@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(nameOpcode(min.getOpcode()) + " " + min.owner+ " "+ min.name+ "(");
+  String desc=min.desc;
+  try {
+    if (Type.getType(min.desc) != null)     desc=Type.getType(min.desc).getClassName();
+    if (desc == null || desc.equals("null"))     desc=min.desc;
+  }
+ catch (  java.lang.ArrayIndexOutOfBoundsException e) {
+  }
+  sb.append(desc);
+  sb.append(");");
+  return sb.toString();
+}

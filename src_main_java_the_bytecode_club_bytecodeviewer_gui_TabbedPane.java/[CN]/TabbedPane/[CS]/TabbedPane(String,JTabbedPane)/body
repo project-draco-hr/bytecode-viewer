@@ -1,0 +1,75 @@
+{
+  super(new FlowLayout(FlowLayout.LEFT,0,0));
+  if (pane == null)   throw new NullPointerException("TabbedPane is null");
+  this.pane=pane;
+  setOpaque(false);
+  final JLabel label=new JLabel(){
+    private static final long serialVersionUID=-5511025206527893360L;
+    @Override public String getText(){
+      final int i=pane.indexOfTabComponent(TabbedPane.this);
+      if (i != -1)       return pane.getTitleAt(i);
+      return null;
+    }
+    @Override public Dimension getPreferredSize(){
+      Dimension realDimension=super.getPreferredSize();
+      if (realDimension.getWidth() >= 400)       return new Dimension(400,20);
+ else       return realDimension;
+    }
+  }
+;
+  this.add(label);
+  label.setBorder(BorderFactory.createEmptyBorder(0,0,0,5));
+  this.add(button);
+  setBorder(BorderFactory.createEmptyBorder(2,0,0,0));
+  JPopupMenu pop_up=new JPopupMenu();
+  JMenuItem closealltab=new JMenuItem("Close All But This: " + name);
+  JMenuItem closetab=new JMenuItem("Close Tab: " + name);
+  closetab.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      String name=e.getActionCommand().split(": ")[1];
+      final int i=pane.indexOfTab(name);
+      if (i != -1)       pane.remove(i);
+    }
+  }
+);
+  closealltab.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      String name=e.getActionCommand().split(": ")[1];
+      System.out.println(name);
+      boolean removedAll=false;
+      while (!removedAll) {
+        int thisID=pane.indexOfTab(name);
+        if (pane.getTabCount() <= 1) {
+          removedAll=true;
+          return;
+        }
+        if (thisID != 0)         pane.remove(0);
+ else         pane.remove(1);
+      }
+    }
+  }
+);
+  pop_up.add(closealltab);
+  pop_up.add(closetab);
+  button.setComponentPopupMenu(pop_up);
+  button.addMouseListener(new MouseListener(){
+    @Override public void mouseClicked(    MouseEvent e){
+      if (e.getModifiers() == 8) {
+        if (System.currentTimeMillis() - zero >= 100) {
+          zero=System.currentTimeMillis();
+          final int i=pane.indexOfTabComponent(TabbedPane.this);
+          if (i != -1)           pane.remove(i);
+        }
+      }
+    }
+    @Override public void mouseEntered(    MouseEvent arg0){
+    }
+    @Override public void mouseExited(    MouseEvent arg0){
+    }
+    @Override public void mousePressed(    MouseEvent arg0){
+    }
+    @Override public void mouseReleased(    MouseEvent e){
+    }
+  }
+);
+}

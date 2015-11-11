@@ -1,0 +1,3 @@
+{
+  fcn.openFile(name,contents);
+}

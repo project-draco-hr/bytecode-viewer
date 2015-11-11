@@ -1,0 +1,35 @@
+{
+  super("WorkPanel");
+  setTitle("Work Space");
+  this.tabs=new JTabbedPane();
+  this.fcn=fcn;
+  getContentPane().setLayout(new BorderLayout());
+  getContentPane().add(tabs,BorderLayout.CENTER);
+  buttonPanel=new JPanel(new FlowLayout());
+  refreshClass=new JButton("Refresh");
+  refreshClass.addActionListener(this);
+  buttonPanel.add(refreshClass);
+  buttonPanel.setVisible(false);
+  getContentPane().add(buttonPanel,BorderLayout.SOUTH);
+  tabs.addContainerListener(new ContainerListener(){
+    @Override public void componentAdded(    final ContainerEvent e){
+    }
+    @Override public void componentRemoved(    final ContainerEvent e){
+      final Component c=e.getChild();
+      if (c instanceof ClassViewer) {
+        workingOn.remove(((ClassViewer)c).name);
+      }
+      if (c instanceof FileViewer) {
+        workingOn.remove(((FileViewer)c).name);
+      }
+    }
+  }
+);
+  tabs.addChangeListener(new ChangeListener(){
+    @Override public void stateChanged(    final ChangeEvent arg0){
+      buttonPanel.setVisible(tabs.getSelectedIndex() != -1);
+    }
+  }
+);
+  this.setVisible(true);
+}

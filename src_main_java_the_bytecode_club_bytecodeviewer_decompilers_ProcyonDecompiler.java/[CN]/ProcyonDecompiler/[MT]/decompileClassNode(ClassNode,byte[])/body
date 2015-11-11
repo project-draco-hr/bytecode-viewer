@@ -1,0 +1,36 @@
+{
+  String exception="";
+  try {
+    String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp";
+    final File tempClass=new File(MiscUtils.getUniqueName(fileStart,".class") + ".class");
+    try {
+      final FileOutputStream fos=new FileOutputStream(tempClass);
+      fos.write(b);
+      fos.close();
+    }
+ catch (    final IOException e) {
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+    DecompilerSettings settings=getDecompilerSettings();
+    MetadataSystem metadataSystem=new MetadataSystem(new InputTypeLoader());
+    TypeReference type=metadataSystem.lookupType(tempClass.getCanonicalPath());
+    DecompilationOptions decompilationOptions=new DecompilationOptions();
+    decompilationOptions.setSettings(DecompilerSettings.javaDefaults());
+    decompilationOptions.setFullDecompilation(true);
+    TypeDefinition resolvedType=null;
+    if (type == null || ((resolvedType=type.resolve()) == null)) {
+      throw new Exception("Unable to resolve type.");
+    }
+    StringWriter stringwriter=new StringWriter();
+    settings.getLanguage().decompileType(resolvedType,new PlainTextOutput(stringwriter),decompilationOptions);
+    String decompiledSource=stringwriter.toString();
+    return decompiledSource;
+  }
+ catch (  Exception e) {
+    StringWriter sw=new StringWriter();
+    e.printStackTrace(new PrintWriter(sw));
+    e.printStackTrace();
+    exception="Bytecode Viewer Version: " + BytecodeViewer.version + BytecodeViewer.nl+ BytecodeViewer.nl+ sw.toString();
+  }
+  return "Procyon error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com" + BytecodeViewer.nl + BytecodeViewer.nl+ "Suggested Fix: Click refresh class, if it fails again try another decompiler."+ BytecodeViewer.nl+ BytecodeViewer.nl+ exception;
+}

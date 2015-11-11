@@ -1,0 +1,3 @@
+{
+  return buildRegexItems(items,true,true);
+}

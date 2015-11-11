@@ -1,0 +1,21 @@
+{
+  JFileChooser fc=new JFileChooser();
+  fc.setFileFilter(new FileFilter(){
+    @Override public boolean accept(    File f){
+      return true;
+    }
+    @Override public String getDescription(){
+      return "Python (Or PyPy for speed) 2.7 Executable";
+    }
+  }
+);
+  fc.setFileHidingEnabled(false);
+  fc.setAcceptAllFileFilterUsed(false);
+  int returnVal=fc.showOpenDialog(BytecodeViewer.viewer);
+  if (returnVal == JFileChooser.APPROVE_OPTION)   try {
+    BytecodeViewer.python=fc.getSelectedFile().getAbsolutePath();
+  }
+ catch (  Exception e1) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e1);
+  }
+}

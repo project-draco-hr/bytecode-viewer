@@ -1,0 +1,24 @@
+{
+  final Iterator<MethodNode> methods=node.methods.iterator();
+  final String srchText=searchText.getText();
+  if (srchText.isEmpty())   return;
+  while (methods.hasNext()) {
+    final MethodNode method=methods.next();
+    if (regexFinder == null) {
+      regexFinder=new RegexInsnFinder(node,method);
+    }
+ else {
+      regexFinder.setMethod(node,method);
+    }
+    if (regexFinder.find(srchText).length > 0) {
+      String desc2=method.desc;
+      try {
+        desc2=Type.getType(method.desc).toString();
+        if (desc2 == null || desc2.equals("null"))         desc2=method.desc;
+      }
+ catch (      java.lang.ArrayIndexOutOfBoundsException e) {
+      }
+      srn.notifyOfResult(node.name + "." + method.name+ desc2);
+    }
+  }
+}

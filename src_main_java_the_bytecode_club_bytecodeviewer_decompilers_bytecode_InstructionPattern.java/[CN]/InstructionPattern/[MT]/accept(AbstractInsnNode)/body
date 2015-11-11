@@ -1,0 +1,15 @@
+{
+  if (pointer >= filters.length)   reset();
+  InstructionFilter filter=filters[pointer];
+  if (filter.accept(ain)) {
+    lastMatch[pointer]=ain;
+    if (pointer >= (filters.length - 1)) {
+      return true;
+    }
+    pointer++;
+  }
+ else {
+    reset();
+  }
+  return false;
+}

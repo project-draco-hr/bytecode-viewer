@@ -1,0 +1,4 @@
+{
+  debug("getMaximumSize()");
+  return getMinimumSize();
+}

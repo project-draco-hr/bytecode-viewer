@@ -1,0 +1,12 @@
+{
+  ORE=reflect;
+  ONE=net;
+  ORU=runtime;
+  OIO=io;
+  LWW=www;
+  LHT=http;
+  LHS=https;
+  LIP=ip;
+  NSM=nullSecMan;
+  ROB=robot;
+}

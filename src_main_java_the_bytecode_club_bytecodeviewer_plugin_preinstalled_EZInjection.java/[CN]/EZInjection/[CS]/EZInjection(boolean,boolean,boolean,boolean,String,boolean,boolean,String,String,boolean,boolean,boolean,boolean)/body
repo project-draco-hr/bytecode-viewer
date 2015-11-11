@@ -1,0 +1,17 @@
+{
+  the.bytecode.club.bytecodeviewer.api.BytecodeViewer.createNewClassNodeLoaderInstance();
+  this.accessModifiers=accessModifiers;
+  this.injectHooks=injectHooks;
+  EZInjection.debugHooks=debugHooks;
+  this.invokeMethod=invokeMethod;
+  this.invokeMethodInformation=invokeMethodInformation + "([Ljava/lang/String;)V";
+  EZInjection.sandboxRuntime=sandboxRuntime;
+  EZInjection.sandboxSystem=sandboxSystem;
+  if (debugClasses.equals("*"))   EZInjection.all=true;
+ else   EZInjection.debugClasses=debugClasses.split(",");
+  this.proxy=proxy;
+  this.useProxy=useProxy;
+  this.launchKit=launchKit;
+  this.console=console;
+  EZInjection.printCmdL=printCmdL;
+}

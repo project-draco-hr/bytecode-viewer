@@ -1,0 +1,4 @@
+{
+  if (printCmdL)   System.out.println(message);
+  if (gui.isVisible())   gui.appendText(message);
+}

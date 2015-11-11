@@ -1,0 +1,6 @@
+{
+  final int i=pane.indexOfTabComponent(TabbedPane.this);
+  if (i != -1) {
+    pane.remove(i);
+  }
+}

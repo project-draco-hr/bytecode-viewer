@@ -1,0 +1,8 @@
+{
+  this.preferences=preferences;
+  this.printStream=printStream;
+  this.maxLineNumber=0;
+  this.majorVersion=0;
+  this.minorVersion=0;
+  this.indentationCount=0;
+}

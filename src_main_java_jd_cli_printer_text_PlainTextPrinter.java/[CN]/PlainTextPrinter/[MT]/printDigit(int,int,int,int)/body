@@ -1,0 +1,13 @@
+{
+  if (this.digitCount >= dcv) {
+    if (lineNumber < divisor) {
+      this.printStream.append(' ');
+    }
+ else {
+      int e=(lineNumber - left) / divisor;
+      this.printStream.append((char)('0' + e));
+      left+=e * divisor;
+    }
+  }
+  return left;
+}

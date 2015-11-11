@@ -1,0 +1,8 @@
+{
+  for (  FileContainer container : files) {
+    if (container.getClassNode(name) != null) {
+      return container.getClassNode(name);
+    }
+  }
+  return null;
+}

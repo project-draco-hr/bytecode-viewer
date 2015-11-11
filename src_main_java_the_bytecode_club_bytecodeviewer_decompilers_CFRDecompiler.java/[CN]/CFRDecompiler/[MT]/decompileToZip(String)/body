@@ -1,0 +1,18 @@
+{
+  try {
+    Path outputDir=Files.createTempDirectory("cfr_output");
+    Path tempJar=Files.createTempFile("cfr_input",".jar");
+    File output=new File(zipName);
+    JarUtils.saveAsJar(BytecodeViewer.getLoadedBytes(),tempJar.toAbsolutePath().toString());
+    Options options=new GetOptParser().parse(generateMainMethod(),OptionsImpl.getFactory());
+    ClassFileSourceImpl classFileSource=new ClassFileSourceImpl(options);
+    DCCommonState dcCommonState=new DCCommonState(options,classFileSource);
+    doJar(dcCommonState,tempJar.toAbsolutePath(),outputDir.toAbsolutePath());
+    ZipUtil.pack(outputDir.toFile(),output);
+    FileUtils.deleteDirectory(outputDir.toFile());
+    Files.delete(tempJar);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+}

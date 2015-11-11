@@ -1,0 +1,5 @@
+{
+  screen.setTitle("Initialzing Bytecode Viewer - " + s.getMessage());
+  screen.getProgressBar().setValue(s.ordinal());
+  System.out.println(s.getMessage());
+}

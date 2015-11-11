@@ -1,0 +1,30 @@
+{
+  setState(BootSequence.CHECKING_ENJARIFY);
+  for (  File f : new File(BytecodeViewer.getBCVDirectory()).listFiles()) {
+    if (f.getName().toLowerCase().startsWith("enjarify_") && !f.getName().split("_")[1].split("\\.")[0].equals(BytecodeViewer.enjarifyVersion)) {
+      setState(BootSequence.CLEANING_ENJARIFY);
+      try {
+        FileUtils.deleteDirectory(f);
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+  File enjarifyDirectory=new File(BytecodeViewer.getBCVDirectory() + BytecodeViewer.fs + "enjarify_"+ BytecodeViewer.enjarifyVersion);
+  if (!enjarifyDirectory.exists()) {
+    try {
+      setState(BootSequence.MOVING_ENJARIFY);
+      Path temporaryEnjarifyZip=Files.createTempFile("enjarify",".zip");
+      Files.delete(temporaryEnjarifyZip);
+      InputStream inputStream=Boot.class.getResourceAsStream("/enjarify-2.zip");
+      Files.copy(inputStream,temporaryEnjarifyZip);
+      ZipUtils.unzipFilesToPath(temporaryEnjarifyZip.normalize().toString(),enjarifyDirectory.getAbsolutePath());
+      Files.delete(temporaryEnjarifyZip);
+    }
+ catch (    Exception e) {
+      BytecodeViewer.showMessage("ERROR: There was an issue unzipping enjarify (possibly corrupt). Restart BCV." + BytecodeViewer.nl + "If the error persists contact @Konloch.");
+      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+    }
+  }
+}

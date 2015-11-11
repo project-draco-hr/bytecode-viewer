@@ -1,0 +1,6 @@
+{
+  for (  File f : new File(BytecodeViewer.libsDirectory).listFiles()) {
+    if (f.getName().contains(nameContains))     return f.getAbsolutePath();
+  }
+  return null;
+}

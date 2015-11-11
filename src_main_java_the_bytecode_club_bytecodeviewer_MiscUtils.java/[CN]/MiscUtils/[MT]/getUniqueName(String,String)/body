@@ -1,0 +1,15 @@
+{
+  String s=null;
+  boolean b=true;
+  File f=null;
+  String m=null;
+  while (b) {
+    m=MiscUtils.randomString(32);
+    f=new File(start + m + ext);
+    if (!f.exists()) {
+      s=start + m;
+      b=false;
+    }
+  }
+  return s;
+}

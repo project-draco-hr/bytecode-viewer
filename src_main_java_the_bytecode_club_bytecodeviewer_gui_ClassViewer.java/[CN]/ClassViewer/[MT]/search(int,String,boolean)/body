@@ -1,0 +1,72 @@
+{
+  try {
+    Component[] com=null;
+    if (pane == 0)     com=panel1.getComponents();
+ else     if (pane == 1)     com=panel2.getComponents();
+ else     if (pane == 2)     com=panel3.getComponents();
+    if (com == null)     return;
+    for (    Component c : com) {
+      if (c instanceof RTextScrollPane) {
+        RSyntaxTextArea area=(RSyntaxTextArea)((RTextScrollPane)c).getViewport().getComponent(0);
+        if (search.isEmpty()) {
+          highlight(pane,area,"");
+          return;
+        }
+        int startLine=area.getDocument().getDefaultRootElement().getElementIndex(area.getCaretPosition()) + 1;
+        int currentLine=1;
+        boolean canSearch=false;
+        String[] test=null;
+        if (area.getText().split("\n").length >= 2)         test=area.getText().split("\n");
+ else         test=area.getText().split("\r");
+        int lastGoodLine=-1;
+        int firstPos=-1;
+        boolean found=false;
+        if (next) {
+          for (          String s : test) {
+            if (pane == 0 && !check1.isSelected() || pane == 1 && !check2.isSelected()) {
+              s=s.toLowerCase();
+              search=search.toLowerCase();
+            }
+            if (currentLine == startLine) {
+              canSearch=true;
+            }
+ else             if (s.contains(search)) {
+              if (canSearch) {
+                area.setCaretPosition(area.getDocument().getDefaultRootElement().getElement(currentLine - 1).getStartOffset());
+                canSearch=false;
+                found=true;
+              }
+              if (firstPos == -1)               firstPos=currentLine;
+            }
+            currentLine++;
+          }
+          if (!found && firstPos != -1) {
+            area.setCaretPosition(area.getDocument().getDefaultRootElement().getElement(firstPos - 1).getStartOffset());
+          }
+        }
+ else {
+          canSearch=true;
+          for (          String s : test) {
+            if (pane == 0 && !check1.isSelected() || pane == 1 && !check2.isSelected() || pane == 2 && !check3.isSelected()) {
+              s=s.toLowerCase();
+              search=search.toLowerCase();
+            }
+            if (s.contains(search)) {
+              if (lastGoodLine != -1 && canSearch)               area.setCaretPosition(area.getDocument().getDefaultRootElement().getElement(lastGoodLine - 1).getStartOffset());
+              lastGoodLine=currentLine;
+              if (currentLine >= startLine)               canSearch=false;
+            }
+            currentLine++;
+          }
+          if (lastGoodLine != -1 && area.getDocument().getDefaultRootElement().getElementIndex(area.getCaretPosition()) + 1 == startLine) {
+            area.setCaretPosition(area.getDocument().getDefaultRootElement().getElement(lastGoodLine - 1).getStartOffset());
+          }
+        }
+        highlight(pane,area,search);
+      }
+    }
+  }
+ catch (  Exception e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+}

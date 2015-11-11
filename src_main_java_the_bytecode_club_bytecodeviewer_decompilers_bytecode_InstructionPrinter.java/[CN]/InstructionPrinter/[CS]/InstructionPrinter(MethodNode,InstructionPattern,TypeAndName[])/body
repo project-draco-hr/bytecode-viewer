@@ -1,0 +1,14 @@
+{
+  this.args=args;
+  mNode=m;
+  labels=new HashMap<LabelNode,Integer>();
+  searcher=new InstructionSearcher(m.instructions,pattern);
+  match=searcher.search();
+  if (match) {
+    for (    AbstractInsnNode[] ains : searcher.getMatches()) {
+      for (      AbstractInsnNode ain : ains) {
+        matchedInsns.add(ain);
+      }
+    }
+  }
+}

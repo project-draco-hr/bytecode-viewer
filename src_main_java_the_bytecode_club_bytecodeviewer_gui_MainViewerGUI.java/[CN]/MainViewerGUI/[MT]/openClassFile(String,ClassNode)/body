@@ -1,0 +1,5 @@
+{
+  for (  final VisibleComponent vc : rfComps) {
+    vc.openClassFile(name,cn);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  compiler.cook(DiskReader.loadAsString(file.getAbsolutePath()));
+  System.out.println(file.getName().substring(0,(int)(file.getName().length() - (".java".length()))));
+  Class<?> clazz=(Class<?>)Class.forName(file.getName().substring(0,(int)file.getName().length() - ".java".length()),true,compiler.getClassLoader());
+  return (Plugin)clazz.newInstance();
+}

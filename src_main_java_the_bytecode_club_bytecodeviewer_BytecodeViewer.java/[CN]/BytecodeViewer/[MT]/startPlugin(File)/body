@@ -1,0 +1,10 @@
+{
+  if (!file.exists())   return;
+  try {
+    PluginManager.runPlugin(file);
+  }
+ catch (  Throwable e) {
+    new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
+  }
+  addRecentPlugin(file);
+}
