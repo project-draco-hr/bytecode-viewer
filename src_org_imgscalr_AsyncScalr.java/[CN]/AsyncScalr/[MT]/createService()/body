@@ -1,3 +1,0 @@
-{
-  return createService(new DefaultThreadFactory());
-}

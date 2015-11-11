@@ -1,5 +1,0 @@
-{
-  OptionBuilder.numberOfArgs=numArgs;
-  OptionBuilder.optionalArg=true;
-  return INSTANCE;
-}

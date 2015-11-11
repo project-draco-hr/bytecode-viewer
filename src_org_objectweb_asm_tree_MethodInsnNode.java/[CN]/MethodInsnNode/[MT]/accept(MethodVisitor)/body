@@ -1,4 +1,0 @@
-{
-  mv.visitMethodInsn(opcode,owner,name,desc,itf);
-  acceptAnnotations(mv);
-}

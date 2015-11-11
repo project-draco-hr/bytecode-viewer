@@ -1,5 +1,0 @@
-{
-  String desc=Type.getType(fin.desc).getClassName();
-  if (desc == null || desc.equals("null"))   desc=fin.desc;
-  return nameOpcode(fin.opcode()) + " " + fin.owner+ "."+ fin.name+ ":"+ desc;
-}

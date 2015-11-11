@@ -1,7 +1,0 @@
-{
-  if (api >= Opcodes.ASM5) {
-    invokestatic(owner,name,desc,false);
-    return;
-  }
-  mv.visitMethodInsn(Opcodes.INVOKESTATIC,owner,name,desc,false);
-}

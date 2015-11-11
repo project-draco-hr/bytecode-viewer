@@ -1,3 +1,0 @@
-{
-  OPCODES.put(operStr,new Opcode(oper,group));
-}

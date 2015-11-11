@@ -1,7 +1,0 @@
-{
-  if (api >= Opcodes.ASM5) {
-    invokespecial(owner,name,desc,false);
-    return;
-  }
-  mv.visitMethodInsn(Opcodes.INVOKESPECIAL,owner,name,desc,false);
-}

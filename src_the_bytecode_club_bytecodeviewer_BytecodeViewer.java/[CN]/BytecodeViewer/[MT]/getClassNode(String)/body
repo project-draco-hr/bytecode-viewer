@@ -1,4 +1,0 @@
-{
-  for (  FileContainer container : files)   for (  ClassNode c : container.classes)   if (c.name.equals(name))   return c;
-  return null;
-}

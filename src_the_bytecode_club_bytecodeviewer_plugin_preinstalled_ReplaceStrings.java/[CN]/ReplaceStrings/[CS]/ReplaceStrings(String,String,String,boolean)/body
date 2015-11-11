@@ -1,6 +1,0 @@
-{
-  this.originalLDC=originalLDC;
-  this.newLDC=newLDC;
-  this.className=className;
-  this.contains=contains;
-}

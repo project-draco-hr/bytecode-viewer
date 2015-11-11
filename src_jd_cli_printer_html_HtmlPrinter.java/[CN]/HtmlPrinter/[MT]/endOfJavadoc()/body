@@ -1,4 +1,0 @@
-{
-  this.sbCode.append("</dfn>");
-  this.commentJavadocErrorDepth--;
-}

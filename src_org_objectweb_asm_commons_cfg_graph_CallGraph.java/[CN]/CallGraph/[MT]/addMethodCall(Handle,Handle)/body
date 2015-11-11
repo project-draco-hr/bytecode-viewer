@@ -1,4 +1,0 @@
-{
-  addVertex(target);
-  addEdge(source,target);
-}

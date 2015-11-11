@@ -1,4 +1,0 @@
-{
-  mv.visitInvokeDynamicInsn(name,desc,bsm,bsmArgs);
-  acceptAnnotations(mv);
-}

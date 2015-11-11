@@ -1,3 +1,0 @@
-{
-  return graph.keySet().iterator();
-}

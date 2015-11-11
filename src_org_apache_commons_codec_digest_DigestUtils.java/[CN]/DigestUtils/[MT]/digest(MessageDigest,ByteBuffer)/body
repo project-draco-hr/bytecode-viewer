@@ -1,4 +1,0 @@
-{
-  messageDigest.update(data);
-  return messageDigest.digest();
-}

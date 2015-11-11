@@ -1,3 +1,0 @@
-{
-  return decodeHex(new String(buffer.array(),getCharset()).toCharArray());
-}

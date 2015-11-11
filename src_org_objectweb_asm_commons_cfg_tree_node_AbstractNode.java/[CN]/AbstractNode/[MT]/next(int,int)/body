@@ -1,8 +1,0 @@
-{
-  int i=0;
-  AbstractNode next=this;
-  while ((next=next.next()) != null && i++ < max) {
-    if (next.opcode() == opcode)     return next;
-  }
-  return null;
-}

@@ -1,9 +1,0 @@
-{
-  debug("getMinimumSize()");
-  Dimension d=new Dimension();
-  FontMetrics fn=getFontMetrics(JHexEditor.font);
-  int h=fn.getHeight();
-  int nl=he.getLineas();
-  d.setSize((fn.stringWidth(" ") + 1) * (16) + (he.border * 2) + 1,h * nl + (he.border * 2) + 1);
-  return d;
-}

@@ -1,6 +1,0 @@
-{
-  this.tree=tree;
-  this.insn=insn;
-  this.collapsed=collapsed;
-  this.producing=(produceCount=producing);
-}

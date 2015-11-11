@@ -1,3 +1,0 @@
-AbstractInsnNode node
-String msg
-Throwable exception

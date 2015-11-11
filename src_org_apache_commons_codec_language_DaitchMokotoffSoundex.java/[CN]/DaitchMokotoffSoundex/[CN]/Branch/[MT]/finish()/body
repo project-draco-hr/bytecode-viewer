@@ -1,6 +1,0 @@
-{
-  while (builder.length() < MAX_LENGTH) {
-    builder.append('0');
-    cachedString=null;
-  }
-}

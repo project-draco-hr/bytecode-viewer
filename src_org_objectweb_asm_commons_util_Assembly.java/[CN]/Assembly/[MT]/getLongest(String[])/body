@@ -1,7 +1,0 @@
-{
-  String longest="";
-  for (  String s : strings) {
-    if (s.length() > longest.length())     longest=s;
-  }
-  return longest.length();
-}

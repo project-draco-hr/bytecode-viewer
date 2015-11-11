@@ -1,6 +1,0 @@
-BufferedImage src
-int x
-int y
-int width
-int height
-BufferedImageOp ops

@@ -1,6 +1,0 @@
-{
-  for (  AbstractNode n : this) {
-    if (n.getClass().equals(clazz))     return (T)n;
-  }
-  return null;
-}

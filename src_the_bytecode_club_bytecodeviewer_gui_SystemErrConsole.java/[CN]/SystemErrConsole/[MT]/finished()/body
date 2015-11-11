@@ -1,3 +1,0 @@
-{
-  if (originalOut != null)   System.setErr(originalOut);
-}

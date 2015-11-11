@@ -1,5 +1,0 @@
-{
-  super(api,cv);
-  this.labels=new HashMap<Label,Integer>();
-  this.checkDataFlow=checkDataFlow;
-}

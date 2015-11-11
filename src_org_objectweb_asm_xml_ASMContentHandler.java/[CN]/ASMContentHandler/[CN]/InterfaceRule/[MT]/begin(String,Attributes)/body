@@ -1,3 +1,0 @@
-{
-  ((ArrayList<String>)((HashMap<?,?>)peek()).get("interfaces")).add(attrs.getValue("name"));
-}

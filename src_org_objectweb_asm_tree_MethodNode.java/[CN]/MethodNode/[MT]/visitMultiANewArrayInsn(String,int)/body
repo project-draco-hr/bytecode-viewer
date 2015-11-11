@@ -1,5 +1,0 @@
-{
-  MultiANewArrayInsnNode in=new MultiANewArrayInsnNode(desc,dims);
-  in.method=this;
-  instructions.add(in);
-}

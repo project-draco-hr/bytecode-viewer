@@ -1,5 +1,0 @@
-{
-  Map<T,K> dst=new HashMap<T,K>();
-  copy(src,dst);
-  return dst;
-}

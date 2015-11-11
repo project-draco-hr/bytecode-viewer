@@ -1,3 +1,0 @@
-{
-  return AbstractLoaderFactory.find().spawnLoader();
-}

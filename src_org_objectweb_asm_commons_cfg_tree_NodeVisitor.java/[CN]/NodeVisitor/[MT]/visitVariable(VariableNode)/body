@@ -1,5 +1,0 @@
-{
-  if (nv != null) {
-    nv.visitVariable(vn);
-  }
-}

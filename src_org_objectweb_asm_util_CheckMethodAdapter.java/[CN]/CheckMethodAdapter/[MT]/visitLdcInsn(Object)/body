@@ -1,7 +1,0 @@
-{
-  checkStartCode();
-  checkEndCode();
-  checkLDCConstant(cst);
-  super.visitLdcInsn(cst);
-  ++insnCount;
-}

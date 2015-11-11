@@ -1,3 +1,0 @@
-{
-  return mn.owner.name.equals(first.name) && isInherited(mn.owner,mn.name,mn.desc);
-}

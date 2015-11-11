@@ -1,4 +1,0 @@
-{
-  classContents.addAll(contents.classContents);
-  resourceContents.addAll(contents.resourceContents);
-}

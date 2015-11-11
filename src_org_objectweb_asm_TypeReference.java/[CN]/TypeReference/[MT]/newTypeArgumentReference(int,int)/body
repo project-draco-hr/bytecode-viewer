@@ -1,3 +1,0 @@
-{
-  return new TypeReference((sort << 24) | argIndex);
-}

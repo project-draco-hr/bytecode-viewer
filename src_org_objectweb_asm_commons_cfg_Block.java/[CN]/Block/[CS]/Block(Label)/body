@@ -1,4 +1,0 @@
-{
-  this.label=label;
-  this.instructions.add(new LabelNode(label));
-}

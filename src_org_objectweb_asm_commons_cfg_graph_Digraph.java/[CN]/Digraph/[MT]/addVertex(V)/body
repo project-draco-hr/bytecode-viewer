@@ -1,5 +1,0 @@
-{
-  if (graph.containsKey(vertex))   return false;
-  graph.put(vertex,new HashSet<E>());
-  return true;
-}

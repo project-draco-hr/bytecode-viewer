@@ -1,3 +1,0 @@
-{
-  return createOptimalImage(src,src.getWidth(),src.getHeight());
-}

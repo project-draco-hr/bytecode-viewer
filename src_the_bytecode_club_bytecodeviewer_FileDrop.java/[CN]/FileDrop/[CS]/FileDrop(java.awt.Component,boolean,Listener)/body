@@ -1,3 +1,0 @@
-{
-  this(null,c,javax.swing.BorderFactory.createMatteBorder(2,2,2,2,defaultBorderColor),recursive,listener);
-}

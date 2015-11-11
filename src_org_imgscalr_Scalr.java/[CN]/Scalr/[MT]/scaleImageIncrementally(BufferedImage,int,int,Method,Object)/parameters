@@ -1,5 +1,0 @@
-BufferedImage src
-int targetWidth
-int targetHeight
-Method scalingMethod
-Object interpolationHintValue

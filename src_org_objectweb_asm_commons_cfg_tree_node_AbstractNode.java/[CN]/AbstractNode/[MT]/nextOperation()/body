@@ -1,3 +1,0 @@
-{
-  return next(ArithmeticNode.class,3);
-}

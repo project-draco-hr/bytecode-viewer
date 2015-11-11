@@ -1,6 +1,0 @@
-{
-  if (krakatau1 != null)   return new Object[]{cn,krakatau1.getText()};
-  if (krakatau2 != null)   return new Object[]{cn,krakatau2.getText()};
-  if (krakatau3 != null)   return new Object[]{cn,krakatau3.getText()};
-  return null;
-}

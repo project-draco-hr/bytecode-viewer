@@ -1,7 +1,0 @@
-{
-  FontMetrics fn=getFontMetrics(JHexEditor.font);
-  x=x / ((fn.stringWidth(" ") + 1) * 3);
-  y=y / fn.getHeight();
-  debug("x=" + x + " ,y="+ y);
-  return x + ((y + he.getInicio()) * 16);
-}

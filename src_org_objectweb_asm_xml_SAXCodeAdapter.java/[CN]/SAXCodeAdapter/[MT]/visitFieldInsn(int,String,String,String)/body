@@ -1,7 +1,0 @@
-{
-  AttributesImpl attrs=new AttributesImpl();
-  attrs.addAttribute("","owner","owner","",owner);
-  attrs.addAttribute("","name","name","",name);
-  attrs.addAttribute("","desc","desc","",desc);
-  sa.addElement(Printer.OPCODES[opcode],attrs);
-}

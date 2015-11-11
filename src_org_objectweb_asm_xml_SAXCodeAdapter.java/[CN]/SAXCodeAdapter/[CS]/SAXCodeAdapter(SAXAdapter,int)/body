@@ -1,6 +1,0 @@
-{
-  super(Opcodes.ASM5);
-  this.sa=sa;
-  this.access=access;
-  this.labelNames=new HashMap<Label,String>();
-}

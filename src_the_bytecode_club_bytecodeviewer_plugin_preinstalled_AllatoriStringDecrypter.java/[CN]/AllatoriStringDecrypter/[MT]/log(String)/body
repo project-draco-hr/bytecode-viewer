@@ -1,4 +1,0 @@
-{
-  out.append(msg);
-  out.append(BytecodeViewer.nl);
-}

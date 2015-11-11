@@ -1,3 +1,0 @@
-{
-  return nextJump(1);
-}

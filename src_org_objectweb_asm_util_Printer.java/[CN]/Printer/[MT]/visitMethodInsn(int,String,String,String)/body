@@ -1,8 +1,0 @@
-{
-  if (api >= Opcodes.ASM5) {
-    boolean itf=opcode == Opcodes.INVOKEINTERFACE;
-    visitMethodInsn(opcode,owner,name,desc,itf);
-    return;
-  }
-  throw new RuntimeException("Must be overriden");
-}

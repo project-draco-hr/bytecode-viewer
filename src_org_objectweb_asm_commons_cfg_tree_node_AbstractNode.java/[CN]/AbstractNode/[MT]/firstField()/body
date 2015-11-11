@@ -1,8 +1,0 @@
-{
-  for (  AbstractNode n : this) {
-    if (n instanceof ReferenceNode) {
-      if (n.insn() instanceof FieldInsnNode)       return (FieldMemberNode)n;
-    }
-  }
-  return null;
-}

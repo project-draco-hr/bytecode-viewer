@@ -1,3 +1,0 @@
-{
-  return opcode() == LADD || opcode() == LSUB || opcode() == LMUL || opcode() == LDIV;
-}

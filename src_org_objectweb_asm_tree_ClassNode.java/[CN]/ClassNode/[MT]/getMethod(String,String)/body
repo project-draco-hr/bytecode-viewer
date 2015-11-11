@@ -1,6 +1,0 @@
-{
-  for (  MethodNode mn : methods) {
-    if (mn.name.equals(method) && (desc == null || desc.equals(mn.desc)))     return mn;
-  }
-  return null;
-}

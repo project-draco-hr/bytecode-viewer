@@ -1,4 +1,0 @@
-{
-  FontMetrics fn=getFontMetrics(font);
-  g.drawString(s,((fn.stringWidth(" ") + 1) * x) + border,((fn.getHeight() * (y + 1)) - fn.getMaxDescent()) + border);
-}

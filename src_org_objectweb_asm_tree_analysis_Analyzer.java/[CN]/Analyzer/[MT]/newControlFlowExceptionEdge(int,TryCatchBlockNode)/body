@@ -1,3 +1,0 @@
-{
-  return newControlFlowExceptionEdge(insn,insns.indexOf(tcb.handler));
-}

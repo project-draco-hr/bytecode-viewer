@@ -1,4 +1,0 @@
-{
-  valuesep=sep;
-  return this;
-}

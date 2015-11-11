@@ -1,5 +1,0 @@
-{
-  StringBuffer sb=new StringBuffer(text.length());
-  renderWrappedTextBlock(sb,width,nextLineTabStop,text);
-  pw.println(sb.toString());
-}

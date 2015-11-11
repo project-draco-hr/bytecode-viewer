@@ -1,8 +1,0 @@
-{
-  int count=0;
-  for (  FieldNode fn : fields) {
-    if (ignoreStatic && (fn.access & Opcodes.ACC_STATIC) == Opcodes.ACC_STATIC)     continue;
-    if (fn.desc.contains("L") && fn.desc.endsWith(";") && !fn.desc.contains("java"))     count++;
-  }
-  return count;
-}

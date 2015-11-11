@@ -1,3 +1,0 @@
-{
-  return Scalr.resize(image,Scalr.Method.ULTRA_QUALITY,width,height);
-}

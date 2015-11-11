@@ -1,3 +1,0 @@
-{
-  sb.append(String.valueOf((char)b));
-}

@@ -1,3 +1,0 @@
-{
-  return "Target@" + Integer.toHexString(label().hashCode());
-}

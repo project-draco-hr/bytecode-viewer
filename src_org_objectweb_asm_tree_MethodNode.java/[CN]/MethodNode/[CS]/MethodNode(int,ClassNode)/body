@@ -1,6 +1,0 @@
-{
-  super(api);
-  this.owner=owner;
-  this.instructions=new InsnList();
-  if (this.owner != null)   this.handle=new Handle(0,owner.name,name,desc);
-}

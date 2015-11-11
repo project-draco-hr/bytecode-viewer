@@ -1,4 +1,0 @@
-{
-  OptionBuilder.type=newType;
-  return INSTANCE;
-}

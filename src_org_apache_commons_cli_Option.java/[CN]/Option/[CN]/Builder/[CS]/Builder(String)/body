@@ -1,4 +1,0 @@
-{
-  OptionValidator.validateOption(opt);
-  this.opt=opt;
-}

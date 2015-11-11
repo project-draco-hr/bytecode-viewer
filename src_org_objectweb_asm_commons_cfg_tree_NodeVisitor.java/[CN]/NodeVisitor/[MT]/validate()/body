@@ -1,3 +1,0 @@
-{
-  return bv == null || bv.validate();
-}

@@ -1,7 +1,0 @@
-{
-  HashMap<String,Object> vals=new HashMap<String,Object>();
-  vals.put("dflt",attrs.getValue("dflt"));
-  vals.put("labels",new ArrayList<Label>());
-  vals.put("keys",new ArrayList<String>());
-  push(vals);
-}

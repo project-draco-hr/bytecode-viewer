@@ -1,5 +1,0 @@
-{
-  AttributesImpl attrs=new AttributesImpl();
-  attrs.addAttribute("","label","label","",getLabel(label));
-  sa.addElement(Printer.OPCODES[opcode],attrs);
-}

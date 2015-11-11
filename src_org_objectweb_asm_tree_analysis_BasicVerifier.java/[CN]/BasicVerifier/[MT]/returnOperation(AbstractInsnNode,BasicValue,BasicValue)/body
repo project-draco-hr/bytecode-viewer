@@ -1,5 +1,0 @@
-{
-  if (!isSubTypeOf(value,expected)) {
-    throw new AnalyzerException(insn,"Incompatible return type",expected,value);
-  }
-}

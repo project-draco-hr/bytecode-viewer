@@ -1,5 +1,0 @@
-{
-  if (flavor.equals(DATA_FLAVOR))   return true;
-  if (flavor.equals(java.awt.datatransfer.DataFlavor.stringFlavor))   return true;
-  return false;
-}

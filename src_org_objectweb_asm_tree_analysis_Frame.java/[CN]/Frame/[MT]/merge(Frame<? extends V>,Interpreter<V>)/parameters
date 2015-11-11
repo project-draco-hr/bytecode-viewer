@@ -1,2 +1,0 @@
-Frame<? extends V> frame
-Interpreter<V> interpreter

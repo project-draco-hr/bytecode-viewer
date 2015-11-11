@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5,mv,access,name,desc);
-  if (getClass() != GeneratorAdapter.class) {
-    throw new IllegalStateException();
-  }
-}

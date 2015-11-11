@@ -1,6 +1,0 @@
-{
-  super(api,mv);
-  this.labels=labels;
-  this.usedLabels=new HashSet<Label>();
-  this.handlers=new ArrayList<Label>();
-}

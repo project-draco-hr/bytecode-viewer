@@ -1,3 +1,0 @@
-{
-  return opcode() == IREM || opcode() == DREM || opcode() == LREM || opcode() == FREM;
-}

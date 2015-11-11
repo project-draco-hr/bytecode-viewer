@@ -1,7 +1,0 @@
-{
-  checkStartCode();
-  checkEndCode();
-  checkOpcode(opcode,0);
-  super.visitInsn(opcode);
-  ++insnCount;
-}

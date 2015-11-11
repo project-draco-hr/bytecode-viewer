@@ -1,5 +1,0 @@
-{
-  this.insns=insns;
-  this.pattern=pattern;
-  matches=new ArrayList<AbstractInsnNode[]>();
-}

@@ -1,3 +1,0 @@
-{
-  return opcode() == IADD || opcode() == ISUB || opcode() == IMUL || opcode() == IDIV;
-}

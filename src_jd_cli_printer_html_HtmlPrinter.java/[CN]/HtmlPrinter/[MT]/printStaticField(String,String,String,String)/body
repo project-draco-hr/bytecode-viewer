@@ -1,3 +1,0 @@
-{
-  printStaticFieldDeclaration(internalName,name,descriptor);
-}

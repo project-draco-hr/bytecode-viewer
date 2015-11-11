@@ -1,5 +1,0 @@
-{
-  if (flavor.equals(DATA_FLAVOR))   return fetcher == null ? data : fetcher.getObject();
-  if (flavor.equals(java.awt.datatransfer.DataFlavor.stringFlavor))   return fetcher == null ? data.toString() : fetcher.getObject().toString();
-  throw new java.awt.datatransfer.UnsupportedFlavorException(flavor);
-}

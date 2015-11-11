@@ -1,9 +1,0 @@
-{
-  AbstractInsnNode[] ains=new AbstractInsnNode[]{new LdcInsnNode("ldc"),new VarInsnNode(ASTORE,0),new LdcInsnNode("ldc")};
-  InstructionPattern pattern=new InstructionPattern(new AbstractInsnNode[]{new LdcInsnNode("ldc"),new VarInsnNode(-1,-1)});
-  for (  AbstractInsnNode ain : ains) {
-    if (pattern.accept(ain)) {
-      System.out.println(Arrays.toString(pattern.getLastMatch()));
-    }
-  }
-}

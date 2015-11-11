@@ -1,4 +1,0 @@
-{
-  this("Missing argument for option: " + option.getKey());
-  this.option=option;
-}

@@ -1,8 +1,0 @@
-{
-  try {
-    return getHmacSha256(key).doFinal(valueToDigest);
-  }
- catch (  final IllegalStateException e) {
-    throw new IllegalArgumentException(e);
-  }
-}

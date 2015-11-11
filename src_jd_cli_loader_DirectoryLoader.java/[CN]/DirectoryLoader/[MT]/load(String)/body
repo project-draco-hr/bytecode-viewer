@@ -1,9 +1,0 @@
-{
-  File file=new File(this.codebase,internalPath);
-  try {
-    return new DataInputStream(new BufferedInputStream(new FileInputStream(file)));
-  }
- catch (  FileNotFoundException e) {
-    throw new LoaderException("'" + file.getAbsolutePath() + "'  not found.");
-  }
-}

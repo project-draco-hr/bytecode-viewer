@@ -1,3 +1,0 @@
-{
-  this(insns,new InstructionPattern(ains));
-}

@@ -1,4 +1,0 @@
-{
-  super(ClassWriter.COMPUTE_FRAMES);
-  this.classTree=classTree;
-}

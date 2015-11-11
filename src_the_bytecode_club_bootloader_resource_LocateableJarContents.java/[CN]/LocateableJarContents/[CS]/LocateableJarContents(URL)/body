@@ -1,4 +1,0 @@
-{
-  super();
-  this.jarUrls=jarUrls;
-}

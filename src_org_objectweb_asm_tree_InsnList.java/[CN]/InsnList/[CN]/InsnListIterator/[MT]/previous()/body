@@ -1,7 +1,0 @@
-{
-  AbstractInsnNode result=prev;
-  next=result;
-  prev=result.prev;
-  remove=result;
-  return result;
-}

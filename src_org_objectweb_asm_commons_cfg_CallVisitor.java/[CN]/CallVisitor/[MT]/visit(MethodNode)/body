@@ -1,4 +1,0 @@
-{
-  this.mn=mn;
-  mn.accept(this);
-}

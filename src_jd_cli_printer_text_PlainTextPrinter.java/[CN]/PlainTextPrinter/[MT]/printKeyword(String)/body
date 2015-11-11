@@ -1,3 +1,0 @@
-{
-  if (this.display)   this.printStream.append(s);
-}

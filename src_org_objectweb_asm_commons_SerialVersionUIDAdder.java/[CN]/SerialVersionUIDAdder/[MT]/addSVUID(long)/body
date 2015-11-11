@@ -1,6 +1,0 @@
-{
-  FieldVisitor fv=super.visitField(Opcodes.ACC_FINAL + Opcodes.ACC_STATIC,"serialVersionUID","J",null,svuid);
-  if (fv != null) {
-    fv.visitEnd();
-  }
-}

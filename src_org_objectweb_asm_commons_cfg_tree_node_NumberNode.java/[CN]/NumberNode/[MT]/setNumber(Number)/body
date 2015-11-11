@@ -1,9 +1,0 @@
-{
-  AbstractInsnNode ain=insn();
-  if (!(ain instanceof LdcInsnNode)) {
-    setInstruction(new LdcInsnNode(num));
-  }
- else {
-    ((LdcInsnNode)ain).cst=num;
-  }
-}

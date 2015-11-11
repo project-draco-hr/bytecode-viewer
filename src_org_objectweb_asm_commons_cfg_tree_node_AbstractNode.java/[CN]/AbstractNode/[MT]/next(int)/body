@@ -1,3 +1,0 @@
-{
-  return next(opcode,5);
-}

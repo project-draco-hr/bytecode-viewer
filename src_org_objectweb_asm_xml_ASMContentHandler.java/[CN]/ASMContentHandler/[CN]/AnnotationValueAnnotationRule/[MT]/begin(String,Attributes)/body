@@ -1,4 +1,0 @@
-{
-  AnnotationVisitor av=(AnnotationVisitor)peek();
-  push(av == null ? null : av.visitAnnotation(attrs.getValue("name"),attrs.getValue("desc")));
-}

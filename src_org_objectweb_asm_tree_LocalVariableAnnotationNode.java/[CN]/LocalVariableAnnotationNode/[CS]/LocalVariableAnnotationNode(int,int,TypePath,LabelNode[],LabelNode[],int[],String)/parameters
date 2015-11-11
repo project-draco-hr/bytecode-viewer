@@ -1,7 +1,0 @@
-int api
-int typeRef
-TypePath typePath
-LabelNode[] start
-LabelNode[] end
-int[] index
-String desc

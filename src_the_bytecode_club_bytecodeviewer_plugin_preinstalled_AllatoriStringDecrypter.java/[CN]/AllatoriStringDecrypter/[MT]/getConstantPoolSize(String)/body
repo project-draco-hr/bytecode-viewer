@@ -1,4 +1,0 @@
-{
-  byte[] fileContents=BytecodeViewer.getFileContents(className + ".class");
-  return readUnsignedShort(fileContents,8);
-}

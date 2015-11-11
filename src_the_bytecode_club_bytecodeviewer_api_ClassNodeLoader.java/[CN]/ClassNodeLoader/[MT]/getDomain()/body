@@ -1,4 +1,0 @@
-{
-  CodeSource code=new CodeSource(null,(Certificate[])null);
-  return new ProtectionDomain(code,getPermissions());
-}

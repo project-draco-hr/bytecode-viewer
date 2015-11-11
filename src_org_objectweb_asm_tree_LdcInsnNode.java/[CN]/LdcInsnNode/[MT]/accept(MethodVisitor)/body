@@ -1,4 +1,0 @@
-{
-  mv.visitLdcInsn(cst);
-  acceptAnnotations(mv);
-}

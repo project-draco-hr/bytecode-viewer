@@ -1,3 +1,0 @@
-{
-  return opcode() == FADD || opcode() == FSUB || opcode() == FMUL || opcode() == FDIV;
-}

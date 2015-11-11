@@ -1,4 +1,0 @@
-{
-  super(file);
-  if (!(file.exists() && file.isDirectory()))   throw new LoaderException("'" + codebase + "' is not a directory");
-}

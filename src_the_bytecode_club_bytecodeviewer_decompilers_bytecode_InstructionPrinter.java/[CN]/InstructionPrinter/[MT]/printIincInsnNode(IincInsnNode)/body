@@ -1,3 +1,0 @@
-{
-  return nameOpcode(iin.opcode()) + " " + iin.var+ " "+ iin.incr;
-}

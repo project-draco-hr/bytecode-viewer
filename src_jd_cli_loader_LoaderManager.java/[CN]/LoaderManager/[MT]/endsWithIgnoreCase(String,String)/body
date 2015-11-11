@@ -1,5 +1,0 @@
-{
-  int suffixLength=suffix.length();
-  int index=s.length() - suffixLength;
-  return (s.regionMatches(true,index,suffix,0,suffixLength));
-}

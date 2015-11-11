@@ -1,3 +1,0 @@
-{
-  this(Opcodes.ASM5,access,desc,mv,remapper);
-}

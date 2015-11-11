@@ -1,3 +1,0 @@
-{
-  if (nv != null)   nv.visitLine(n);
-}

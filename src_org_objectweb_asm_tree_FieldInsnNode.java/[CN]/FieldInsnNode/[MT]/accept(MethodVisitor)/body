@@ -1,4 +1,0 @@
-{
-  mv.visitFieldInsn(opcode,owner,name,desc);
-  acceptAnnotations(mv);
-}

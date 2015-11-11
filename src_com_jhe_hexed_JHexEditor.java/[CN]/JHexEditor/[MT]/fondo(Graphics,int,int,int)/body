@@ -1,4 +1,0 @@
-{
-  FontMetrics fn=getFontMetrics(font);
-  g.fillRect(((fn.stringWidth(" ") + 1) * x) + border,(fn.getHeight() * y) + border,((fn.stringWidth(" ") + 1) * s),fn.getHeight() + 1);
-}

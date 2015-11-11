@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5,mv,access,name,desc,signature,exceptions);
-  if (getClass() != JSRInlinerAdapter.class) {
-    throw new IllegalStateException();
-  }
-}

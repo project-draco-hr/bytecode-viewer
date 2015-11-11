@@ -1,4 +1,0 @@
-{
-  AnnotationVisitor av=super.visitAnnotationDefault();
-  return av == null ? av : new RemappingAnnotationAdapter(av,remapper);
-}

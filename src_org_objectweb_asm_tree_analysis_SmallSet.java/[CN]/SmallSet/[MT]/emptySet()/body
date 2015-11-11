@@ -1,3 +1,0 @@
-{
-  return new SmallSet<T>(null,null);
-}

@@ -1,7 +1,0 @@
-{
-  List<AbstractNode> children=new ArrayList<>();
-  for (  AbstractNode n : this) {
-    if (n.opcode() == opcode)     children.add(n);
-  }
-  return !children.isEmpty() ? children : null;
-}

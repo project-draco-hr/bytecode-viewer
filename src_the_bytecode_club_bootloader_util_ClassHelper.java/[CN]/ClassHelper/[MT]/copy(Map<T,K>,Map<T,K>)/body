@@ -1,5 +1,0 @@
-{
-  for (  Entry<T,K> e : src.entrySet()) {
-    dst.put(e.getKey(),e.getValue());
-  }
-}

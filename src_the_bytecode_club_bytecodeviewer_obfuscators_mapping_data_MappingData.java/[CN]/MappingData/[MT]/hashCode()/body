@@ -1,7 +1,0 @@
-{
-  final int prime=31;
-  int result=1;
-  result=(prime * result) + ((obfuscatedName == null) ? 0 : obfuscatedName.hashCode());
-  result=(prime * result) + ((refactoredName == null) ? 0 : refactoredName.hashCode());
-  return result;
-}

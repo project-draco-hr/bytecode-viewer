@@ -1,9 +1,0 @@
-{
-  if (labelStatusField == null) {
-    labelStatusField=getLabelField("a");
-    if (labelStatusField == null) {
-      labelStatusField=getLabelField("status");
-    }
-  }
-  return labelStatusField;
-}

@@ -1,3 +1,0 @@
-{
-  return decompile(new PrefixedStringBuilder(),new ArrayList<String>(),cn).toString();
-}

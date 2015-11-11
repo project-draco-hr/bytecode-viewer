@@ -1,5 +1,0 @@
-{
-  if (!getRequiredOptions().isEmpty()) {
-    throw new MissingOptionException(getRequiredOptions());
-  }
-}

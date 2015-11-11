@@ -1,4 +1,0 @@
-{
-  mv.visitInsn(opcode);
-  acceptAnnotations(mv);
-}

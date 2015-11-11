@@ -1,4 +1,0 @@
-BufferedImage src
-int targetWidth
-int targetHeight
-BufferedImageOp ops

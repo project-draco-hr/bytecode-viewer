@@ -1,4 +1,0 @@
-{
-  this.filters=filters;
-  lastMatch=new AbstractInsnNode[filters.length];
-}

@@ -1,7 +1,0 @@
-{
-  ArrayList<?> bsmArgs=(ArrayList<?>)pop();
-  Handle bsm=(Handle)pop();
-  String desc=(String)pop();
-  String name=(String)pop();
-  getCodeVisitor().visitInvokeDynamicInsn(name,desc,bsm,bsmArgs.toArray());
-}

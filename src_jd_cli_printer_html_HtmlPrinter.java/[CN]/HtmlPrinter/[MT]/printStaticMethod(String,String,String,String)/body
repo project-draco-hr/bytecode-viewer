@@ -1,3 +1,0 @@
-{
-  printStaticMethodDeclaration(internalName,name,descriptor);
-}

@@ -1,3 +1,0 @@
-{
-  return delgates.getNonNull(cn);
-}

@@ -1,6 +1,0 @@
-{
-  ClassWriter cw=new ClassWriter(0);
-  cn.accept(cw);
-  byte[] b=cw.toByteArray();
-  return b;
-}

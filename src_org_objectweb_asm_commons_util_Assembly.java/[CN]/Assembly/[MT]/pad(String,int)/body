@@ -1,9 +1,0 @@
-{
-  if (s.length() >= size)   return s;
-  StringBuilder sb=new StringBuilder(s);
-  int diff=size - s.length();
-  for (int i=0; i < diff; i++) {
-    sb.append(" ");
-  }
-  return sb.toString();
-}

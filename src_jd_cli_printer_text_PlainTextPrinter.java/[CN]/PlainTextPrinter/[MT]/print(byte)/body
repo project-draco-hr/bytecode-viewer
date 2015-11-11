@@ -1,3 +1,0 @@
-{
-  this.printStream.append(String.valueOf(b));
-}

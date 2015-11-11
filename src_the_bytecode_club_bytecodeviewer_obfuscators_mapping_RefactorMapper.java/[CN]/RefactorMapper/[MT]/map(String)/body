@@ -1,8 +1,0 @@
-{
-  if (sortedClasses.containsKey(type)) {
-    String map=new String(type + " --> " + sortedClasses.get(type).getRefactoredName()+ "\n");
-    if (!mappingList.contains(map))     mappingList.add(map);
-    return sortedClasses.get(type).getRefactoredName();
-  }
-  return type;
-}

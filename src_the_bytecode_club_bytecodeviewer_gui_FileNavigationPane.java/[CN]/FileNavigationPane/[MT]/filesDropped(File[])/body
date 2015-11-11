@@ -1,4 +1,0 @@
-{
-  if (files.length < 1)   return;
-  BytecodeViewer.openFiles(files,true);
-}

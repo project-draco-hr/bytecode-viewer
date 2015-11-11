@@ -1,3 +1,0 @@
-{
-  return b[offset + 2 * index + 2];
-}

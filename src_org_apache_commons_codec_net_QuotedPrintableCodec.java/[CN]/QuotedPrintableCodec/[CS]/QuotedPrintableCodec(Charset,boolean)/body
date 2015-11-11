@@ -1,4 +1,0 @@
-{
-  this.charset=charset;
-  this.strict=strict;
-}

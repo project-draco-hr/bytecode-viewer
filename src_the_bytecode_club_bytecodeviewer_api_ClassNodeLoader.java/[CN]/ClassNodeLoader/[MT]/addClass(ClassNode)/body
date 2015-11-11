@@ -1,3 +1,0 @@
-{
-  classes.put(cn.name.replace("/","."),cn);
-}

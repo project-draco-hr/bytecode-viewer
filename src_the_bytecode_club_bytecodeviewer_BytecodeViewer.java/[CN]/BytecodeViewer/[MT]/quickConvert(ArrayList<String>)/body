@@ -1,5 +1,0 @@
-{
-  String s="";
-  for (  String r : a)   s+=r + nl;
-  return s;
-}

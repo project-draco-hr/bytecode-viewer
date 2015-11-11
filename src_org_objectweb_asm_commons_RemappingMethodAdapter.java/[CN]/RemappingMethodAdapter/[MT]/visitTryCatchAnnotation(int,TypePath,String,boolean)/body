@@ -1,4 +1,0 @@
-{
-  AnnotationVisitor av=super.visitTryCatchAnnotation(typeRef,typePath,remapper.mapDesc(desc),visible);
-  return av == null ? av : new RemappingAnnotationAdapter(av,remapper);
-}

@@ -1,3 +1,0 @@
-{
-  EZInjection.hookArray.add(hook);
-}

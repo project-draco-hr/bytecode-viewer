@@ -1,4 +1,0 @@
-{
-  textArea.setText((textArea.getText().isEmpty() ? "" : textArea.getText() + "\r\n") + t);
-  textArea.setCaretPosition(0);
-}

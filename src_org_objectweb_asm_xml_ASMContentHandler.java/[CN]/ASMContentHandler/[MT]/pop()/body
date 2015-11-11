@@ -1,4 +1,0 @@
-{
-  int size=stack.size();
-  return size == 0 ? null : stack.remove(size - 1);
-}

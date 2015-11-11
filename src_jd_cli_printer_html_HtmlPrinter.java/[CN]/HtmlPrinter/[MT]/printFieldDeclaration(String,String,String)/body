@@ -1,5 +1,0 @@
-{
-  this.sbCode.append("<var>");
-  this.sbCode.append(name);
-  this.sbCode.append("</var>");
-}

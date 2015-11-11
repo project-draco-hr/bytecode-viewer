@@ -1,3 +1,0 @@
-{
-  return hmacSha384(StringUtils.getBytesUtf8(key),StringUtils.getBytesUtf8(valueToDigest));
-}

@@ -1,9 +1,0 @@
-{
-  if (this == other) {
-    return true;
-  }
-  if (!(other instanceof Branch)) {
-    return false;
-  }
-  return toString().equals(((Branch)other).toString());
-}

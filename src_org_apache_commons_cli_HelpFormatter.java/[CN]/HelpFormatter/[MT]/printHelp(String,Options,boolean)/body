@@ -1,3 +1,0 @@
-{
-  printHelp(getWidth(),cmdLineSyntax,null,options,null,autoUsage);
-}

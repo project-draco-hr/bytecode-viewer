@@ -1,4 +1,0 @@
-{
-  the.bytecode.club.bytecodeviewer.BytecodeViewer.loader.clear();
-  the.bytecode.club.bytecodeviewer.BytecodeViewer.loader=new ClassNodeLoader();
-}

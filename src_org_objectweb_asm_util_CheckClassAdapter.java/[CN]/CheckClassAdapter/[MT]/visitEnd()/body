@@ -1,5 +1,0 @@
-{
-  checkState();
-  end=true;
-  super.visitEnd();
-}

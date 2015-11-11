@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5,owner,access,name,desc,signature,value);
-  if (getClass() != FieldNode.class) {
-    throw new IllegalStateException();
-  }
-}

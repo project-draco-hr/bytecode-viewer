@@ -1,6 +1,0 @@
-{
-  AttributesImpl attrs=new AttributesImpl();
-  attrs.addAttribute("","desc","desc","",desc);
-  attrs.addAttribute("","dims","dims","",Integer.toString(dims));
-  sa.addElement(Printer.OPCODES[Opcodes.MULTIANEWARRAY],attrs);
-}

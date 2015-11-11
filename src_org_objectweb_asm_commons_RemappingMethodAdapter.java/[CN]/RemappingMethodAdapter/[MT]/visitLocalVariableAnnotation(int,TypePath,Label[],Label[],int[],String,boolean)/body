@@ -1,4 +1,0 @@
-{
-  AnnotationVisitor av=super.visitLocalVariableAnnotation(typeRef,typePath,start,end,index,remapper.mapDesc(desc),visible);
-  return av == null ? av : new RemappingAnnotationAdapter(av,remapper);
-}

@@ -1,4 +1,0 @@
-{
-  text.add("\n");
-  return visitTypeAnnotation(typeRef,typePath,desc,visible);
-}

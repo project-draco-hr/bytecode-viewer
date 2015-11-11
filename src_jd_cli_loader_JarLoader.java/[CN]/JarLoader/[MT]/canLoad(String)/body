@@ -1,3 +1,0 @@
-{
-  return this.zipFile.getEntry(internalPath) != null;
-}

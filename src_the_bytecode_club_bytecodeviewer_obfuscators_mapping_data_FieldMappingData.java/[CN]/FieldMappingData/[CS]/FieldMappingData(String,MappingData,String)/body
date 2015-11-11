@@ -1,5 +1,0 @@
-{
-  this.fieldOwner=fieldOwner;
-  this.name=name;
-  this.desc=desc;
-}

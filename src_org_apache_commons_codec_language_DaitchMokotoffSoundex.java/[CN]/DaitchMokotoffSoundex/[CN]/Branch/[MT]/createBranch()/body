@@ -1,6 +1,0 @@
-{
-  final Branch branch=new Branch();
-  branch.builder.append(toString());
-  branch.lastReplacement=this.lastReplacement;
-  return branch;
-}

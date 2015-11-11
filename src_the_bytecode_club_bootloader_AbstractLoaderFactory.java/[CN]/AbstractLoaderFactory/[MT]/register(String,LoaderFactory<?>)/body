@@ -1,9 +1,0 @@
-{
-  if (key == null || factory == null) {
-    throw new IllegalArgumentException("null key or factory");
-  }
-  if (FACTORYCACHE.containsKey(key)) {
-    throw new IllegalArgumentException("factory already registered with key: " + key);
-  }
-  FACTORYCACHE.put(key,factory);
-}

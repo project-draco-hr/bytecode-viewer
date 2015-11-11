@@ -1,3 +1,0 @@
-{
-  return getMethodsFromSuper(m.owner,m.name,m.desc);
-}

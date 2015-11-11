@@ -1,8 +1,0 @@
-{
-  buf.setLength(0);
-  buf.append(name).append(".visitParameter(");
-  appendString(buf,parameterName);
-  buf.append(", ");
-  appendAccess(access);
-  text.add(buf.append(");\n").toString());
-}

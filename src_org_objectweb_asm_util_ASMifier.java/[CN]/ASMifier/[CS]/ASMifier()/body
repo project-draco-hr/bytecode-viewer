@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5,"cw",0);
-  if (getClass() != ASMifier.class) {
-    throw new IllegalStateException();
-  }
-}

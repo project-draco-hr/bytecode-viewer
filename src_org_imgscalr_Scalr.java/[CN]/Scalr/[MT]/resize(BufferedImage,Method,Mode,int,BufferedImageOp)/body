@@ -1,3 +1,0 @@
-{
-  return resize(src,scalingMethod,resizeMode,targetSize,targetSize,ops);
-}

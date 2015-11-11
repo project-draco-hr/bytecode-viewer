@@ -1,5 +1,0 @@
-{
-  if (DEBUG) {
-    this.sbCode.append("<span class='debugstatementblocklayoutblock' alt='statement'>");
-  }
-}

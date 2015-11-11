@@ -1,5 +1,0 @@
-{
-  if ((directoryPath == null) || (pathToClass == null) || !pathToClass.startsWith(directoryPath))   return null;
-  String s=pathToClass.substring(directoryPath.length());
-  return s.replace(File.separatorChar,StringConstants.INTERNAL_PACKAGE_SEPARATOR);
-}

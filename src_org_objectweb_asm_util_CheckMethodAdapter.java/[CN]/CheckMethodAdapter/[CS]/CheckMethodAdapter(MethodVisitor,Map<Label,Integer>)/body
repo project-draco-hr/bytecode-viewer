@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5,mv,labels);
-  if (getClass() != CheckMethodAdapter.class) {
-    throw new IllegalStateException();
-  }
-}

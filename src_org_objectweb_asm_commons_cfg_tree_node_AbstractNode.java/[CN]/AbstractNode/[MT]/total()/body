@@ -1,7 +1,0 @@
-{
-  int size=1;
-  for (  AbstractNode n : this) {
-    size+=n.total();
-  }
-  return size;
-}

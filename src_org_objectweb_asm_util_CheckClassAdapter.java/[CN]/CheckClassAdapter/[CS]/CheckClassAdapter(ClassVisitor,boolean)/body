@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5,cv,checkDataFlow);
-  if (getClass() != CheckClassAdapter.class) {
-    throw new IllegalStateException();
-  }
-}

@@ -1,4 +1,0 @@
-{
-  textArea.setText(t);
-  textArea.setCaretPosition(0);
-}

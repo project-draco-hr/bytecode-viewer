@@ -1,8 +1,0 @@
-{
-  if (token.indexOf('=') == -1) {
-    handleLongOptionWithoutEqual(token);
-  }
- else {
-    handleLongOptionWithEqual(token);
-  }
-}

@@ -1,5 +1,0 @@
-{
-  this.sbCode.append("<u>");
-  this.sbCode.append(s);
-  this.sbCode.append("</u>");
-}

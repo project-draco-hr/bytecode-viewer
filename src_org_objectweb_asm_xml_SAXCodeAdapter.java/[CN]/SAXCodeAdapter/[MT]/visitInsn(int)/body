@@ -1,3 +1,0 @@
-{
-  sa.addElement(Printer.OPCODES[opcode],new AttributesImpl());
-}

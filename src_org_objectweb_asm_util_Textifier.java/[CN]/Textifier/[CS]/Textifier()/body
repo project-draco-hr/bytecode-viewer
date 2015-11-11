@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5);
-  if (getClass() != Textifier.class) {
-    throw new IllegalStateException();
-  }
-}

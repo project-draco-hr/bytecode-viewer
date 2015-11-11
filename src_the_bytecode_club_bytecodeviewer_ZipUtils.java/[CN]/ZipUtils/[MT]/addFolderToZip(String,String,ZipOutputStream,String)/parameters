@@ -1,4 +1,0 @@
-String path
-String srcFolder
-ZipOutputStream zip
-String ignore

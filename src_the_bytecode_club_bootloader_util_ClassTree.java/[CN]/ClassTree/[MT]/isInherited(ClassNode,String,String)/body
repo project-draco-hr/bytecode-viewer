@@ -1,3 +1,0 @@
-{
-  return getFirstMethodFromSuper(cn,name,desc) != null;
-}

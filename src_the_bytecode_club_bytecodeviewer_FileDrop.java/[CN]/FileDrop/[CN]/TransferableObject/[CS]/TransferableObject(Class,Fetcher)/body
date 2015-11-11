@@ -1,4 +1,0 @@
-{
-  this.fetcher=fetcher;
-  this.customFlavor=new java.awt.datatransfer.DataFlavor(dataClass,MIME_TYPE);
-}

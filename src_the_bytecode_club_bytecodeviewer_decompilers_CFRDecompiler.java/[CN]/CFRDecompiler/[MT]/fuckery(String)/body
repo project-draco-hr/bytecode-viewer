@@ -1,8 +1,0 @@
-{
-  boolean b=false;
-  while (!b) {
-    f=new File(start + r.nextInt(Integer.MAX_VALUE));
-    if (!f.exists())     return f.toString();
-  }
-  return null;
-}

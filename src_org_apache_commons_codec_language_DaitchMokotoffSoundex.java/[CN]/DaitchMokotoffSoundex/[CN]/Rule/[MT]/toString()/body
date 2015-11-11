@@ -1,3 +1,0 @@
-{
-  return String.format("%s=(%s,%s,%s)",pattern,Arrays.asList(replacementAtStart),Arrays.asList(replacementBeforeVowel),Arrays.asList(replacementDefault));
-}

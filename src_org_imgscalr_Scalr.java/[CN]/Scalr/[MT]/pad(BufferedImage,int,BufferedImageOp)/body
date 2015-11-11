@@ -1,3 +1,0 @@
-{
-  return pad(src,padding,Color.BLACK);
-}

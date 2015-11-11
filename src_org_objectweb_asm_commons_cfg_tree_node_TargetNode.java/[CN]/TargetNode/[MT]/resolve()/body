@@ -1,7 +1,0 @@
-{
-  AbstractNode n=this;
-  while (n != null && n.opcode() == -1) {
-    n=n.next();
-  }
-  return n == null ? parent() : n;
-}

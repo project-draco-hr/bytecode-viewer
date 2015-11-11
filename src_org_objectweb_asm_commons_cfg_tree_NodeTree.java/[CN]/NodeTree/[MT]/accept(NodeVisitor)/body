@@ -1,6 +1,0 @@
-{
-  if (!nv.validate())   return;
-  nv.visitCode();
-  for (  AbstractNode node : this)   accept(nv,node);
-  nv.visitEnd();
-}

@@ -1,6 +1,0 @@
-{
-  this.pattern=pattern;
-  this.replacementAtStart=replacementAtStart.split("\\|");
-  this.replacementBeforeVowel=replacementBeforeVowel.split("\\|");
-  this.replacementDefault=replacementDefault.split("\\|");
-}

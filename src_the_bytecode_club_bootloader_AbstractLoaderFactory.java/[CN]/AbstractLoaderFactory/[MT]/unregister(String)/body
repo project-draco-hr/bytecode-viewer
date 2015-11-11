@@ -1,9 +1,0 @@
-{
-  if (key == null) {
-    throw new IllegalArgumentException("null key");
-  }
-  if (!FACTORYCACHE.containsKey(key)) {
-    throw new IllegalArgumentException("factory doesn't key for key: " + key);
-  }
-  FACTORYCACHE.remove(key);
-}

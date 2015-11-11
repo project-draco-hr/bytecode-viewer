@@ -1,4 +1,0 @@
-{
-  super(classContents,resourceContents);
-  this.jarUrls=jarUrls;
-}

@@ -1,4 +1,0 @@
-{
-  if (tree != null)   return tree;
-  return (tree=new TreeBuilder().build(this));
-}

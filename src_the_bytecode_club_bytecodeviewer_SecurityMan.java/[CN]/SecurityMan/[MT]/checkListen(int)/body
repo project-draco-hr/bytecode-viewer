@@ -1,3 +1,0 @@
-{
-  throw new SecurityException("BCV is awesome, blocking port " + port + " from listening");
-}

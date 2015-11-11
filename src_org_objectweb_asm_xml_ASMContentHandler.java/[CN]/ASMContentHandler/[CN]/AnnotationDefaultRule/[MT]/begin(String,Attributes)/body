@@ -1,4 +1,0 @@
-{
-  MethodVisitor av=(MethodVisitor)peek();
-  push(av == null ? null : av.visitAnnotationDefault());
-}

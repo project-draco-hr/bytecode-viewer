@@ -1,4 +1,0 @@
-{
-  super(api,null,access,name,desc,signature,exceptions);
-  this.mv=mv;
-}

@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5,desc);
-  if (getClass() != AnnotationNode.class) {
-    throw new IllegalStateException();
-  }
-}

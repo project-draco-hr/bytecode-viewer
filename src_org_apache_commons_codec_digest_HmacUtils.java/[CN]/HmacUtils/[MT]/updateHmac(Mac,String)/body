@@ -1,5 +1,0 @@
-{
-  mac.reset();
-  mac.update(StringUtils.getBytesUtf8(valueToDigest));
-  return mac;
-}

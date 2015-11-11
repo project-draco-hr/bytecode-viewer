@@ -1,4 +1,0 @@
-{
-  OptionBuilder.argName=name;
-  return INSTANCE;
-}

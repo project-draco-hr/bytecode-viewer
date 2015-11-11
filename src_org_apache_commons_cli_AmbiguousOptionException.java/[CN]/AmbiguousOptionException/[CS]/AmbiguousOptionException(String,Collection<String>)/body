@@ -1,4 +1,0 @@
-{
-  super(createMessage(option,matchingOptions),option);
-  this.matchingOptions=matchingOptions;
-}

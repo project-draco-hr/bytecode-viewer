@@ -1,4 +1,0 @@
-{
-  invalidated=true;
-  return super.addAll(c);
-}

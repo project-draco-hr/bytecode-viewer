@@ -1,9 +1,0 @@
-{
-  if (items.length == 0)   return "()";
-  String result=(stdRepl ? "\\b" : "") + "(" + (capture ? "" : "?:")+ items[0];
-  for (int i=1; i < items.length; i++) {
-    result+="|" + items[i];
-  }
-  result+=")";
-  return result;
-}

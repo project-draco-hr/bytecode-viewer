@@ -1,3 +1,0 @@
-{
-  return next(NumberNode.class,3);
-}

@@ -1,3 +1,0 @@
-{
-  return opcode() == I2D || opcode() == L2D || opcode() == F2D;
-}

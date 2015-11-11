@@ -1,4 +1,0 @@
-{
-  OptionBuilder.numberOfArgs=Option.UNLIMITED_VALUES;
-  return INSTANCE;
-}

@@ -1,3 +1,0 @@
-{
-  chckbxmntmDeleteForiegnoutdatedLibs.setSelected(BytecodeViewer.deleteForiegnLibraries);
-}

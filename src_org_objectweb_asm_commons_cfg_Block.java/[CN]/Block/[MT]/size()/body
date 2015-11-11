@@ -1,3 +1,0 @@
-{
-  return instructions.size() - 1;
-}

@@ -1,3 +1,0 @@
-{
-  return asciiEncoder.canEncode(v);
-}

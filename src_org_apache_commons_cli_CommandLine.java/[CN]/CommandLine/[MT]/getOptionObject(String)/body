@@ -1,9 +1,0 @@
-{
-  try {
-    return getParsedOptionValue(opt);
-  }
- catch (  ParseException pe) {
-    System.err.println("Exception found converting " + opt + " to desired type: "+ pe.getMessage());
-    return null;
-  }
-}

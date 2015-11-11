@@ -1,6 +1,0 @@
-{
-  if (api != Opcodes.ASM4 && api != Opcodes.ASM5) {
-    throw new IllegalArgumentException();
-  }
-  this.api=api;
-}

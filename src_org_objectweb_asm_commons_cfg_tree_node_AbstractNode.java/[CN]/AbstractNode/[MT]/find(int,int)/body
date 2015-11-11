@@ -1,9 +1,0 @@
-{
-  int i=0;
-  for (  AbstractNode n : this) {
-    if (n.opcode() == opcode) {
-      if (i++ == index)       return n;
-    }
-  }
-  return null;
-}

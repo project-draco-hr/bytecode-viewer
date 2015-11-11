@@ -1,3 +1,0 @@
-{
-  return nextConstant(1);
-}

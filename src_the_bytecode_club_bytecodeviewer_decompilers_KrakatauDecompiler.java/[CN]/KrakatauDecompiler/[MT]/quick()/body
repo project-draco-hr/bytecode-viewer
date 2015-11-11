@@ -1,4 +1,0 @@
-{
-  if (BytecodeViewer.library.isEmpty())   return "";
- else   return ";" + BytecodeViewer.library;
-}

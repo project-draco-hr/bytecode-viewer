@@ -1,5 +1,0 @@
-{
-  FieldInsnNode fin=new FieldInsnNode(opcode,owner,name,desc);
-  fin.method=this;
-  instructions.add(fin);
-}

@@ -1,3 +1,0 @@
-{
-  return opcode() == I2B || opcode() == I2C || opcode() == I2S || opcode() == I2L || opcode() == I2D;
-}

@@ -1,3 +1,0 @@
-{
-  return graph.containsKey(vertex) && graph.get(vertex).contains(edge);
-}

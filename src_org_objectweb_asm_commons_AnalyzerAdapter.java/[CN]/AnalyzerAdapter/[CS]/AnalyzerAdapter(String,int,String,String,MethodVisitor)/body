@@ -1,6 +1,0 @@
-{
-  this(Opcodes.ASM5,owner,access,name,desc,mv);
-  if (getClass() != AnalyzerAdapter.class) {
-    throw new IllegalStateException();
-  }
-}

@@ -1,3 +1,0 @@
-{
-  return new ASMifier(Opcodes.ASM5,name,id);
-}

@@ -1,4 +1,0 @@
-{
-  if (prefix == null)   prefix="";
-  prefix+=s;
-}

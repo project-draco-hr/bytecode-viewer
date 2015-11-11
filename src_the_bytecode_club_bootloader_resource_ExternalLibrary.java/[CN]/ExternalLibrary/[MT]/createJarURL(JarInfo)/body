@@ -1,9 +1,0 @@
-{
-  try {
-    return jar.formattedURL();
-  }
- catch (  MalformedURLException e) {
-    e.printStackTrace();
-    return null;
-  }
-}

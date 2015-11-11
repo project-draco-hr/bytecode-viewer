@@ -1,6 +1,0 @@
-{
-  BytecodeViewer.viewer.setIcon(true);
-  doSearch();
-  finished=true;
-  BytecodeViewer.viewer.setIcon(false);
-}

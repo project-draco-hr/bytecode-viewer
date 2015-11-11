@@ -1,5 +1,0 @@
-{
-  AttributesImpl attrs=new AttributesImpl();
-  attrs.addAttribute("","desc","desc","",type);
-  sa.addElement(Printer.OPCODES[opcode],attrs);
-}

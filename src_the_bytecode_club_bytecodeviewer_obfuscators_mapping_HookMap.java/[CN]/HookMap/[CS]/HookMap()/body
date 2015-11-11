@@ -1,5 +1,0 @@
-{
-  classes=new ArrayList<MappingData>();
-  fields=new ArrayList<FieldMappingData>();
-  methods=new ArrayList<MethodMappingData>();
-}

@@ -1,4 +1,0 @@
-{
-  this(opcode);
-  this.number=number;
-}

@@ -1,3 +1,0 @@
-{
-  return insn != null ? insn.opcode() : -1;
-}

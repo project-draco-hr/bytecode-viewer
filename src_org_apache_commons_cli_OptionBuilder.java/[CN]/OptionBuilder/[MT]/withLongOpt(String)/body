@@ -1,4 +1,0 @@
-{
-  OptionBuilder.longopt=newLongopt;
-  return INSTANCE;
-}

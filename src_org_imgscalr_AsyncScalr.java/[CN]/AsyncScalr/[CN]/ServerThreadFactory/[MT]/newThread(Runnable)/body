@@ -1,6 +1,0 @@
-{
-  Thread thread=super.newThread(r);
-  thread.setDaemon(true);
-  thread.setPriority(Thread.MIN_PRIORITY);
-  return thread;
-}

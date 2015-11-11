@@ -1,8 +1,0 @@
-{
-  AbstractNode node=this;
-  for (  int opcode : opcodes) {
-    node=node.parent();
-    if (node == null || node.opcode() != opcode)     return null;
-  }
-  return node;
-}

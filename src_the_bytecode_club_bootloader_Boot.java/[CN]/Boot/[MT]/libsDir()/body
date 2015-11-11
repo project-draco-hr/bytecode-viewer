@@ -1,5 +1,0 @@
-{
-  File dir=new File(System.getProperty("user.home"),".Bytecode-Viewer");
-  while (!dir.exists())   dir.mkdirs();
-  return new File(dir,"libs");
-}

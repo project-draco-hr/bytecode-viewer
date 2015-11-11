@@ -1,4 +1,0 @@
-{
-  mv.visitJumpInsn(opcode,label.getLabel());
-  acceptAnnotations(mv);
-}

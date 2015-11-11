@@ -1,3 +1,0 @@
-{
-  return new Phoneme(this.phonemeText.toString(),this.languages.merge(lang));
-}

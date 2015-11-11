@@ -1,3 +1,0 @@
-{
-  return getMethodsFromDelegates(m.owner,m.name,m.desc);
-}

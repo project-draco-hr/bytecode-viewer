@@ -1,7 +1,0 @@
-{
-  if (longopt == null) {
-    OptionBuilder.reset();
-    throw new IllegalArgumentException("must specify longopt");
-  }
-  return create(null);
-}

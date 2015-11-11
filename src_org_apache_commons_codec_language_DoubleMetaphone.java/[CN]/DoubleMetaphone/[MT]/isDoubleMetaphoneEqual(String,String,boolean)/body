@@ -1,3 +1,0 @@
-{
-  return StringUtils.equals(doubleMetaphone(value1,alternate),doubleMetaphone(value2,alternate));
-}

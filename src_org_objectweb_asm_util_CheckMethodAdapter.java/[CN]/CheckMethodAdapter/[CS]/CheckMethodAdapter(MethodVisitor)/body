@@ -1,3 +1,0 @@
-{
-  this(mv,new HashMap<Label,Integer>());
-}

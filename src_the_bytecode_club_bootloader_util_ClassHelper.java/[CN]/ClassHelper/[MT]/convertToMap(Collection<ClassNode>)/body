@@ -1,7 +1,0 @@
-{
-  Map<String,ClassNode> map=new HashMap<String,ClassNode>();
-  for (  ClassNode cn : classes) {
-    map.put(cn.name,cn);
-  }
-  return map;
-}

@@ -1,6 +1,0 @@
-{
-  this.showPrefixThis=true;
-  this.mergeEmptyLines=false;
-  this.unicodeEscape=false;
-  this.showLineNumbers=true;
-}

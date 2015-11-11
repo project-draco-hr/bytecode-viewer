@@ -1,4 +1,0 @@
-NodeTree tree
-AbstractInsnNode insn
-int collapsed
-int producing

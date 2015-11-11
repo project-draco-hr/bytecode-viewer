@@ -1,5 +1,0 @@
-{
-  String name=attrs.getValue("name");
-  int access=getAccess(attrs.getValue("access"));
-  getCodeVisitor().visitParameter(name,access);
-}

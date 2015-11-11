@@ -1,4 +1,0 @@
-{
-  this.fieldOwner=fieldOwner;
-  return this;
-}

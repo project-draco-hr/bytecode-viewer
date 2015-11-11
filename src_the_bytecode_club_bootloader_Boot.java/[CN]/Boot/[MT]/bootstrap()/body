@@ -1,8 +1,0 @@
-{
-  AbstractLoaderFactory.register(new LoaderFactory<Object>(){
-    @Override public ILoader<Object> spawnLoader(){
-      return new ClassPathLoader();
-    }
-  }
-);
-}

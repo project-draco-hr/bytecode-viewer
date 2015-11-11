@@ -1,4 +1,0 @@
-ClassReader cr
-ClassLoader loader
-boolean dump
-PrintWriter pw

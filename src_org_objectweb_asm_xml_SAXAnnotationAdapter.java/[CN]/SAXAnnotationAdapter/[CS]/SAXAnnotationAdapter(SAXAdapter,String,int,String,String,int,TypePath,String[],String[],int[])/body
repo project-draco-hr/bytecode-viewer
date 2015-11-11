@@ -1,3 +1,0 @@
-{
-  this(Opcodes.ASM5,sa,elementName,visible,desc,name,-1,typeRef,typePath,start,end,index);
-}

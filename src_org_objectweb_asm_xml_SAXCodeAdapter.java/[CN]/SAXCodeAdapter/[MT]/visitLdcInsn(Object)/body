@@ -1,3 +1,0 @@
-{
-  sa.addElement(Printer.OPCODES[Opcodes.LDC],getConstantAttribute(cst));
-}

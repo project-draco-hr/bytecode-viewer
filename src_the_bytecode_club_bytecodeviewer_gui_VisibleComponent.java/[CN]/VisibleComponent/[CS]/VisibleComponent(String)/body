@@ -1,4 +1,0 @@
-{
-  super(title,false,false,false,false);
-  this.setFrameIcon(null);
-}

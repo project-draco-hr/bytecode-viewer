@@ -1,6 +1,0 @@
-{
-  sa.addEnd("class");
-  if (!singleDocument) {
-    sa.addDocumentEnd();
-  }
-}

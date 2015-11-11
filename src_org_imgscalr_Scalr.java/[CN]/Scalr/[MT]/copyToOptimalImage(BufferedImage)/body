@@ -1,9 +1,0 @@
-{
-  if (src == null)   throw new IllegalArgumentException("src cannot be null");
-  int type=(src.getTransparency() == Transparency.OPAQUE ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB);
-  BufferedImage result=new BufferedImage(src.getWidth(),src.getHeight(),type);
-  Graphics g=result.getGraphics();
-  g.drawImage(src,0,0,null);
-  g.dispose();
-  return result;
-}

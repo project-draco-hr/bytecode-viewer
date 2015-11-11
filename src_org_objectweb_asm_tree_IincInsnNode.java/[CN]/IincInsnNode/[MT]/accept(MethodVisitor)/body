@@ -1,4 +1,0 @@
-{
-  mv.visitIincInsn(var,incr);
-  acceptAnnotations(mv);
-}

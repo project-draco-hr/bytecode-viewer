@@ -1,5 +1,0 @@
-{
-  super(Opcodes.ASM5);
-  this.sa=sa;
-  sa.addStart("field",att);
-}

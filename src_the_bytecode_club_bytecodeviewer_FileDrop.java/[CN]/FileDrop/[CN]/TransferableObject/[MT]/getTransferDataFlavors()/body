@@ -1,4 +1,0 @@
-{
-  if (customFlavor != null)   return new java.awt.datatransfer.DataFlavor[]{customFlavor,DATA_FLAVOR,java.awt.datatransfer.DataFlavor.stringFlavor};
- else   return new java.awt.datatransfer.DataFlavor[]{DATA_FLAVOR,java.awt.datatransfer.DataFlavor.stringFlavor};
-}

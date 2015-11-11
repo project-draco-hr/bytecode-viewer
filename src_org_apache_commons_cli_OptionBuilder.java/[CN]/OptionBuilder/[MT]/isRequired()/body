@@ -1,4 +1,0 @@
-{
-  OptionBuilder.required=true;
-  return INSTANCE;
-}

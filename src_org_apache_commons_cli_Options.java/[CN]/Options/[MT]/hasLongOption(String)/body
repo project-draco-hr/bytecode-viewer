@@ -1,4 +1,0 @@
-{
-  opt=Util.stripLeadingHyphens(opt);
-  return longOpts.containsKey(opt);
-}

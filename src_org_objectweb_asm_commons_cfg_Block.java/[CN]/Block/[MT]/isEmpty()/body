@@ -1,3 +1,0 @@
-{
-  return preds.isEmpty() && instructions.size() <= 1;
-}

@@ -1,3 +1,0 @@
-{
-  return next(MethodMemberNode.class,max);
-}

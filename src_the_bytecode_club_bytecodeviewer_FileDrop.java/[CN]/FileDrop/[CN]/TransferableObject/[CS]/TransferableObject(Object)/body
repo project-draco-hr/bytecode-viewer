@@ -1,4 +1,0 @@
-{
-  this.data=data;
-  this.customFlavor=new java.awt.datatransfer.DataFlavor(data.getClass(),MIME_TYPE);
-}

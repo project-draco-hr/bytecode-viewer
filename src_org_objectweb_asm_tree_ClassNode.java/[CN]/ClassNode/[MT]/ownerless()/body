@@ -1,3 +1,0 @@
-{
-  return superName.equals("java/lang/Object");
-}

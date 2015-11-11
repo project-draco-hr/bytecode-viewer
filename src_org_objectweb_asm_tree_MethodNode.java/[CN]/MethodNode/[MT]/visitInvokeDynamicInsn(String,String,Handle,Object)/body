@@ -1,5 +1,0 @@
-{
-  InvokeDynamicInsnNode d=new InvokeDynamicInsnNode(name,desc,bsm,bsmArgs);
-  d.method=this;
-  instructions.add(d);
-}

@@ -1,4 +1,0 @@
-{
-  debug("keyPressed(" + e + ")");
-  he.keyPressed(e);
-}
