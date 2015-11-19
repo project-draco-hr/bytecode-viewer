@@ -75,13 +75,13 @@
                   BytecodeViewer.viewer.setIcon(true);
                   FileContainer container=new FileContainer(f);
                   if (viewer.decodeAPKResources.isSelected()) {
-                    File decodedResources=new File(tempDirectory + fs + MiscUtils.randomString(32)+ ".apk");
+                    File decodedResources=new File(tempDir,MiscUtils.randomString(32) + ".apk");
                     APKTool.decodeResources(f,decodedResources);
                     container.files=JarUtils.loadResources(decodedResources);
                   }
                   container.files.putAll(JarUtils.loadResources(f));
                   String name=getRandomizedName() + ".jar";
-                  File output=new File(tempDirectory + fs + name);
+                  File output=new File(tempDir,name);
                   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))                   Dex2Jar.dex2Jar(f,output);
  else                   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))                   Enjarify.apk2Jar(f,output);
                   for (                  ClassNode classNode : JarUtils.loadClasses(output)) {
@@ -100,7 +100,7 @@
                   BytecodeViewer.viewer.setIcon(true);
                   FileContainer container=new FileContainer(f);
                   String name=getRandomizedName() + ".jar";
-                  File output=new File(tempDirectory + fs + name);
+                  File output=new File(tempDir,name);
                   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))                   Dex2Jar.dex2Jar(f,output);
  else                   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))                   Enjarify.apk2Jar(f,output);
                   for (                  ClassNode classNode : JarUtils.loadClasses(output)) {

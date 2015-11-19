@@ -53,7 +53,7 @@
   }
  else {
     sb.append(" {");
-    if (BytecodeViewer.viewer.debugHelpers.isSelected()) {
+    if (Decompiler.BYTECODE.getSettings().isSelected(ClassNodeDecompiler.Settings.DEBUG_HELPERS)) {
       if (m.name.equals("<clinit>"))       sb.append(" // <clinit>");
  else       if (m.name.equals("<init>"))       sb.append(" // <init>");
     }

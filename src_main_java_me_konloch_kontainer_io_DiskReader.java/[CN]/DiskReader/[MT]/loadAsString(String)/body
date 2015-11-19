@@ -1,5 +1,0 @@
-{
-  ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
-  Files.copy(new File(fileName).toPath(),outputStream);
-  return outputStream.toString("UTF-8");
-}

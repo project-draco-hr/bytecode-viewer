@@ -1,0 +1,12 @@
+{
+  ArrayList<ClassNode> a=new ArrayList<ClassNode>();
+  for (  FileContainer container : files) {
+    for (    String s : container.files.keySet()) {
+      ClassNode loaded=container.getClassNode(s.substring(0,s.length() - 6));
+      if (loaded != null) {
+        a.add(loaded);
+      }
+    }
+  }
+  return a;
+}

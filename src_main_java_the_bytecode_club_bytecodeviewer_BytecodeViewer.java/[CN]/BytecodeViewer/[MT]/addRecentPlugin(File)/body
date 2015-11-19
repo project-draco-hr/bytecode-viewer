@@ -10,6 +10,5 @@
   if (recentPlugins.contains(f.getAbsolutePath()))   recentPlugins.remove(f.getAbsolutePath());
   if (recentPlugins.size() >= maxRecentFiles)   recentPlugins.remove(maxRecentFiles - 1);
   recentPlugins.add(0,f.getAbsolutePath());
-  DiskWriter.replaceFile(pluginsName,quickConvert(recentPlugins),false);
   resetRecentFilesMenu();
 }

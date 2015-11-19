@@ -30,9 +30,9 @@
       line=printLineNumberNode((LineNumberNode)ain,it);
     }
  else     if (ain instanceof LabelNode) {
-      if (firstLabel && BytecodeViewer.viewer.chckbxmntmAppendBrackets.isSelected())       info.add("}");
+      if (firstLabel && Decompiler.BYTECODE.getSettings().isSelected(ClassNodeDecompiler.Settings.APPEND_BRACKETS_TO_LABELS))       info.add("}");
       line=printLabelnode((LabelNode)ain);
-      if (BytecodeViewer.viewer.chckbxmntmAppendBrackets.isSelected()) {
+      if (Decompiler.BYTECODE.getSettings().isSelected(ClassNodeDecompiler.Settings.APPEND_BRACKETS_TO_LABELS)) {
         if (!firstLabel)         firstLabel=true;
         line+=" {";
       }
@@ -63,6 +63,6 @@
       info.add(line);
     }
   }
-  if (firstLabel && BytecodeViewer.viewer.chckbxmntmAppendBrackets.isSelected())   info.add("}");
+  if (firstLabel && Decompiler.BYTECODE.getSettings().isSelected(ClassNodeDecompiler.Settings.APPEND_BRACKETS_TO_LABELS))   info.add("}");
   return info;
 }

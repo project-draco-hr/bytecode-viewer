@@ -102,7 +102,7 @@
           BytecodeViewer.viewer.setIcon(true);
           Thread t=new Thread(){
             @Override public void run(){
-              JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),file2.getAbsolutePath());
+              JarUtils.saveAsJar(BytecodeViewer.getLoadedBytes(),file2.getAbsolutePath());
               BytecodeViewer.viewer.setIcon(false);
             }
           }

@@ -1,6 +1,6 @@
 {
   for (  final VisibleComponent vc : rfComps) {
-    if (vc.getClass() == clazz)     return (T)vc;
+    if (vc.getClass() == clazz)     return clazz.cast(vc);
   }
   return null;
 }

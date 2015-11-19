@@ -1,0 +1,8 @@
+{
+  for (  FileContainer container : files) {
+    if (container.getData().containsKey(name)) {
+      return container.getData().get(name);
+    }
+  }
+  return null;
+}

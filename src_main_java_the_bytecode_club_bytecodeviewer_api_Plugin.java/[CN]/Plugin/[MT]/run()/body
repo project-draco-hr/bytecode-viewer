@@ -1,11 +1,11 @@
 {
   BytecodeViewer.viewer.setIcon(true);
   try {
-    if (BytecodeViewer.getLoadedClasses().isEmpty()) {
+    if (BytecodeViewer.getLoadedBytes().isEmpty()) {
       BytecodeViewer.showMessage("First open a class, jar, zip, apk or dex file.");
       return;
     }
-    execute(BytecodeViewer.getLoadedClasses());
+    execute(BytecodeViewer.loadAllClasses());
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

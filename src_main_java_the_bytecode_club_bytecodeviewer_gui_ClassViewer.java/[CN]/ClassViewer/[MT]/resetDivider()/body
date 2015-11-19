@@ -1,17 +1,17 @@
 {
   sp.setResizeWeight(0.5);
-  if (pane2 != 0 && pane1 != 0)   sp=setDividerLocation(sp,0.5);
- else   if (pane1 != 0)   sp=setDividerLocation(sp,1);
- else   if (pane2 != 0) {
+  if (decompilers.get(1) != null && decompilers.get(0) != null)   sp=setDividerLocation(sp,0.5);
+ else   if (decompilers.get(0) != null)   sp=setDividerLocation(sp,1);
+ else   if (decompilers.get(1) != null) {
     sp.setResizeWeight(1);
     sp=setDividerLocation(sp,0);
   }
  else   sp=setDividerLocation(sp,0);
-  if (pane3 != 0) {
+  if (decompilers.get(2) != null) {
     sp2.setResizeWeight(0.7);
     sp2=setDividerLocation(sp2,0.7);
-    if ((pane2 == 0 && pane1 != 0) || (pane1 == 0 && pane2 != 0))     sp2=setDividerLocation(sp2,0.5);
- else     if (pane1 == 0 && pane2 == 0)     sp2=setDividerLocation(sp2,0);
+    if ((decompilers.get(1) == null && decompilers.get(0) != null) || (decompilers.get(0) == null && decompilers.get(1) != null))     sp2=setDividerLocation(sp2,0.5);
+ else     if (decompilers.get(0) == null && decompilers.get(1) == null)     sp2=setDividerLocation(sp2,0);
   }
  else {
     sp.setResizeWeight(1);

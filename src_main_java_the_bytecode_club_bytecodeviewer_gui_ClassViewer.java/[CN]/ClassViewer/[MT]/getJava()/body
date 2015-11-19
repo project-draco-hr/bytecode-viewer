@@ -1,6 +1,9 @@
 {
-  if (java1 != null)   return new Object[]{cn,java1.getText()};
-  if (java2 != null)   return new Object[]{cn,java2.getText()};
-  if (java3 != null)   return new Object[]{cn,java3.getText()};
+  for (int i=0; i < javas.size(); i++) {
+    RSyntaxTextArea text=javas.get(i);
+    if (text != null) {
+      return new Object[]{cn,text.getText()};
+    }
+  }
   return null;
 }

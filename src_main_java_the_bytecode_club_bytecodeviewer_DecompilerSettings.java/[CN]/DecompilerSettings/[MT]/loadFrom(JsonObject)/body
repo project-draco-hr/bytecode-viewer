@@ -1,0 +1,13 @@
+{
+  if (rootSettings.get("decompilers") != null) {
+    JsonObject decompilerSection=rootSettings.get("decompilers").asObject();
+    if (decompilerSection.get(decompiler.getName()) != null) {
+      JsonObject thisDecompiler=decompilerSection.get(decompiler.getName()).asObject();
+      for (      Map.Entry<Setting,JCheckBoxMenuItem> entry : menuItems.entrySet()) {
+        if (thisDecompiler.get(entry.getKey().getParam()) != null) {
+          entry.getValue().setSelected(thisDecompiler.get(entry.getKey().getParam()).asBoolean());
+        }
+      }
+    }
+  }
+}

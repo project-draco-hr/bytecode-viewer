@@ -1,0 +1,7 @@
+{
+  this.decompiler=decompiler;
+  this.paneId=paneId;
+  this.target=target;
+  this.viewer=viewer;
+  this.button=button;
+}

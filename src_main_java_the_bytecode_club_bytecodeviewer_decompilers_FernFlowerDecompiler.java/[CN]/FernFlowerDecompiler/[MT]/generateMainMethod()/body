@@ -1,3 +1,8 @@
 {
-  return new String[]{"-rbr=" + r(BytecodeViewer.viewer.rbr.isSelected()),"-rsy=" + r(BytecodeViewer.viewer.rsy.isSelected()),"-din=" + r(BytecodeViewer.viewer.din.isSelected()),"-dc4=" + r(BytecodeViewer.viewer.dc4.isSelected()),"-das=" + r(BytecodeViewer.viewer.das.isSelected()),"-hes=" + r(BytecodeViewer.viewer.hes.isSelected()),"-hdc=" + r(BytecodeViewer.viewer.hdc.isSelected()),"-dgs=" + r(BytecodeViewer.viewer.dgs.isSelected()),"-ner=" + r(BytecodeViewer.viewer.ner.isSelected()),"-den=" + r(BytecodeViewer.viewer.den.isSelected()),"-rgn=" + r(BytecodeViewer.viewer.rgn.isSelected()),"-bto=" + r(BytecodeViewer.viewer.bto.isSelected()),"-nns=" + r(BytecodeViewer.viewer.nns.isSelected()),"-uto=" + r(BytecodeViewer.viewer.uto.isSelected()),"-udv=" + r(BytecodeViewer.viewer.udv.isSelected()),"-rer=" + r(BytecodeViewer.viewer.rer.isSelected()),"-fdi=" + r(BytecodeViewer.viewer.fdi.isSelected()),"-asc=" + r(BytecodeViewer.viewer.asc.isSelected())};
+  String[] result=new String[getSettings().size()];
+  int index=0;
+  for (  Settings setting : Settings.values()) {
+    result[index++]=String.format("-%s=%s",setting.getParam(),getSettings().isSelected(setting) ? "1" : "0");
+  }
+  return result;
 }

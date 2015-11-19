@@ -9,7 +9,7 @@
     javax.swing.text.Document doc=textComp.getDocument();
     String text=doc.getText(0,doc.getLength());
     int pos=0;
-    if ((pane == 0 && !check1.isSelected()) || pane == 1 && !check2.isSelected() || pane == 2 && !check3.isSelected()) {
+    if ((pane == 0 && !exacts.get(0).isSelected()) || pane == 1 && !exacts.get(1).isSelected() || pane == 2 && !exacts.get(2).isSelected()) {
       pattern=pattern.toLowerCase();
       text=text.toLowerCase();
     }

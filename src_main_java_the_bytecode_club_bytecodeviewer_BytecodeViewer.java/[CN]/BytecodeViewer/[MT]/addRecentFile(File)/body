@@ -10,6 +10,5 @@
   if (recentFiles.contains(f.getAbsolutePath()))   recentFiles.remove(f.getAbsolutePath());
   if (recentFiles.size() >= maxRecentFiles)   recentFiles.remove(maxRecentFiles - 1);
   recentFiles.add(0,f.getAbsolutePath());
-  DiskWriter.replaceFile(filesName,quickConvert(recentFiles),false);
   resetRecentFilesMenu();
 }

@@ -1,0 +1,30 @@
+{
+  cleanup();
+  Runtime.getRuntime().addShutdownHook(new Thread(){
+    @Override public void run(){
+      for (      Process proc : createdProcesses)       proc.destroy();
+      try {
+        FileUtils.writeLines(filesFile,recentFiles);
+        FileUtils.writeLines(pluginsFile,recentPlugins);
+      }
+ catch (      IOException e) {
+        new ExceptionUI(e);
+      }
+      Settings.saveGUI();
+      cleanup();
+    }
+  }
+);
+  viewer.calledAfterLoad();
+  resetRecentFilesMenu();
+  if (!pingback) {
+    PingBack.start();
+    pingback=true;
+  }
+  if (viewer.chckbxmntmNewCheckItem_12.isSelected())   versionChecker.start();
+  if (!cli)   viewer.setVisible(true);
+  System.out.println("Start up took " + ((System.currentTimeMillis() - start) / 1000) + " seconds");
+  if (!cli)   if (args.length >= 1)   for (  String s : args) {
+    openFiles(new File[]{new File(s)},true);
+  }
+}

@@ -1,4 +1,4 @@
 {
-  if (BytecodeViewer.library.isEmpty())   return "";
- else   return ";" + BytecodeViewer.library;
+  if (Settings.PATH.isEmpty())   return "";
+ else   return ";" + Settings.PATH.get();
 }

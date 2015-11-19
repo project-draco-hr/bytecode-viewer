@@ -19,7 +19,7 @@
       Files.delete(temporaryKrakatauZip);
       InputStream inputStream=Boot.class.getResourceAsStream("/Krakatau-8.zip");
       Files.copy(inputStream,temporaryKrakatauZip);
-      ZipUtils.unzipFilesToPath(temporaryKrakatauZip.normalize().toString(),krakatauDirectory.getAbsolutePath());
+      ZipUtil.unpack(temporaryKrakatauZip.toFile(),krakatauDirectory);
       Files.delete(temporaryKrakatauZip);
     }
  catch (    Exception e) {

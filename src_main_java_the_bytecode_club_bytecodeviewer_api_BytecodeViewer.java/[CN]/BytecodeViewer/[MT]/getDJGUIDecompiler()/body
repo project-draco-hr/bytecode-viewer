@@ -1,3 +1,3 @@
 {
-  return the.bytecode.club.bytecodeviewer.decompilers.Decompiler.jdgui;
+  return the.bytecode.club.bytecodeviewer.decompilers.Decompiler.JDGUI;
 }

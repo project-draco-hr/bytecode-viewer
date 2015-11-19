@@ -8,7 +8,7 @@
  catch (    final Exception e) {
       support=false;
     }
-    supportsDnD=new Boolean(support);
+    supportsDnD=support;
   }
   return supportsDnD.booleanValue();
 }

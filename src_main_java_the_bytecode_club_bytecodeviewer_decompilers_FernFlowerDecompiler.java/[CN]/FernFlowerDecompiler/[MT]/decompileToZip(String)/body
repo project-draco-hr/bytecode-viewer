@@ -12,6 +12,6 @@
     FileUtils.deleteDirectory(outputDir.toFile());
   }
  catch (  Exception e) {
-    e.printStackTrace();
+    handleException(e);
   }
 }

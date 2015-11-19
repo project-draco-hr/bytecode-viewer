@@ -1,0 +1,8 @@
+{
+  ClassReader reader=new ClassReader(in);
+  ClassNode node=new ClassNode();
+  reader.accept(node,ClassReader.EXPAND_FRAMES);
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  node.accept(writer);
+  return writer.toByteArray();
+}

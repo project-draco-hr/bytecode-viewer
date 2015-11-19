@@ -1,5 +1,5 @@
 {
-  File f=new File(the.bytecode.club.bytecodeviewer.BytecodeViewer.tempDirectory + the.bytecode.club.bytecodeviewer.BytecodeViewer.fs + "loaded_temp.jar");
+  File f=new File(the.bytecode.club.bytecodeviewer.BytecodeViewer.tempDir,"loaded_temp.jar");
   JarUtils.saveAsJarClassesOnly(nodeList,f.getAbsolutePath());
   JarFile jarFile=new JarFile("" + f.getAbsolutePath());
   Enumeration<JarEntry> e=jarFile.entries();

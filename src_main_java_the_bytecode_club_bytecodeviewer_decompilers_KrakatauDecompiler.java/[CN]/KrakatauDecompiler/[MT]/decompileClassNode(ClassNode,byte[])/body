@@ -1,28 +1,27 @@
 {
-  if (BytecodeViewer.python.equals("")) {
+  if (Settings.PYTHON2_LOCATION.isEmpty()) {
     BytecodeViewer.showMessage("You need to set your Python (or PyPy for speed) 2.7 executable path.");
     BytecodeViewer.viewer.pythonC();
   }
-  if (BytecodeViewer.rt.equals("")) {
+  if (Settings.RT_LOCATION.isEmpty()) {
     BytecodeViewer.showMessage("You need to set your JRE RT Library.\r\n(C:\\Program Files (x86)\\Java\\jre7\\lib\\rt.jar)");
     BytecodeViewer.viewer.rtC();
   }
-  if (BytecodeViewer.python.equals("")) {
+  if (Settings.PYTHON2_LOCATION.isEmpty()) {
     BytecodeViewer.showMessage("You need to set Python!");
     return "Set your paths";
   }
-  if (BytecodeViewer.rt.equals("")) {
+  if (Settings.RT_LOCATION.isEmpty()) {
     BytecodeViewer.showMessage("You need to set RT.jar!");
     return "Set your paths";
   }
   String s="Bytecode Viewer Version: " + BytecodeViewer.version + BytecodeViewer.nl+ BytecodeViewer.nl+ "Please send this to konloch@gmail.com. "+ BytecodeViewer.nl+ BytecodeViewer.nl;
-  final File tempDirectory=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + MiscUtils.randomString(32)+ BytecodeViewer.fs);
-  tempDirectory.mkdir();
-  final File tempJar=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp"+ MiscUtils.randomString(32)+ ".jar");
-  JarUtils.saveAsJarClassesOnly(BytecodeViewer.getLoadedBytes(),tempJar.getAbsolutePath());
-  BytecodeViewer.sm.stopBlocking();
   try {
-    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,"-O",BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "decompile.py","-skip","-nauto","-path",BytecodeViewer.rt + ";" + tempJar.getAbsolutePath()+ quick(),"-out",tempDirectory.getAbsolutePath(),cn.name + ".class");
+    final Path outputJar=Files.createTempFile("kdeout",".zip");
+    final Path inputJar=Files.createTempFile("kdein",".jar");
+    JarUtils.saveAsJarClassesOnly(BytecodeViewer.getLoadedBytes(),inputJar.toAbsolutePath().toString());
+    BytecodeViewer.sm.stopBlocking();
+    ProcessBuilder pb=new ProcessBuilder(Settings.PYTHON2_LOCATION.get(),"-O",BytecodeViewer.krakatauDirectory.getAbsolutePath() + BytecodeViewer.fs + "decompile.py","-skip","-nauto","-path",Settings.RT_LOCATION.get() + ";" + inputJar.toAbsolutePath().toString()+ quick(),"-out",outputJar.toAbsolutePath().toString(),cn.name + ".class");
     Process process=pb.start();
     BytecodeViewer.createdProcesses.add(process);
     InputStream is=process.getInputStream();
@@ -45,9 +44,19 @@
     int exitValue=process.waitFor();
     log+=BytecodeViewer.nl + BytecodeViewer.nl + "Exit Value is "+ exitValue;
     s=log;
-    s=DiskReader.loadAsString(tempDirectory.getAbsolutePath() + BytecodeViewer.fs + cn.name+ ".java");
-    tempDirectory.delete();
-    tempJar.delete();
+    ZipFile zipFile=new ZipFile(outputJar.toFile());
+    Enumeration<? extends ZipEntry> entries=zipFile.entries();
+    byte[] data=null;
+    while (entries.hasMoreElements()) {
+      ZipEntry next=entries.nextElement();
+      if (next.getName().equals(cn.name + ".java")) {
+        data=IOUtils.toByteArray(zipFile.getInputStream(next));
+      }
+    }
+    zipFile.close();
+    Files.delete(inputJar);
+    Files.delete(outputJar);
+    return new String(data,"UTF-8");
   }
  catch (  Exception e) {
     StringWriter sw=new StringWriter();

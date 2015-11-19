@@ -1,19 +1,34 @@
 {
+  CommandLineOptions options=new CommandLineOptions();
+  JCommander jCommander=new JCommander(options);
+  String[] args=new String[Settings.values().length * 2];
+  int index=0;
+  for (  the.bytecode.club.bytecodeviewer.DecompilerSettings.Setting setting : Settings.values()) {
+    args[index++]="--" + setting.getParam();
+    args[index++]=String.valueOf(getSettings().isSelected(setting));
+  }
+  jCommander.parse(args);
   DecompilerSettings settings=new DecompilerSettings();
-  settings.setAlwaysGenerateExceptionVariableForCatchBlocks(BytecodeViewer.viewer.chckbxmntmNewCheckItem_6.isSelected());
-  settings.setExcludeNestedTypes(BytecodeViewer.viewer.chckbxmntmNewCheckItem_11.isSelected());
-  settings.setShowDebugLineNumbers(BytecodeViewer.viewer.chckbxmntmShowDebugLine.isSelected());
-  settings.setIncludeLineNumbersInBytecode(BytecodeViewer.viewer.chckbxmntmNewCheckItem_3.isSelected());
-  settings.setIncludeErrorDiagnostics(BytecodeViewer.viewer.chckbxmntmNewCheckItem_4.isSelected());
-  settings.setShowSyntheticMembers(BytecodeViewer.viewer.chckbxmntmNewCheckItem_7.isSelected());
-  settings.setSimplifyMemberReferences(BytecodeViewer.viewer.chckbxmntmSimplifyMemberReferences.isSelected());
-  settings.setMergeVariables(BytecodeViewer.viewer.mnMergeVariables.isSelected());
-  settings.setForceExplicitTypeArguments(BytecodeViewer.viewer.chckbxmntmNewCheckItem_8.isSelected());
-  settings.setForceExplicitImports(BytecodeViewer.viewer.chckbxmntmNewCheckItem_9.isSelected());
-  settings.setFlattenSwitchBlocks(BytecodeViewer.viewer.chckbxmntmNewCheckItem_10.isSelected());
-  settings.setRetainPointlessSwitches(BytecodeViewer.viewer.chckbxmntmNewCheckItem_2.isSelected());
-  settings.setRetainRedundantCasts(BytecodeViewer.viewer.chckbxmntmNewCheckItem_5.isSelected());
-  settings.setUnicodeOutputEnabled(BytecodeViewer.viewer.chckbxmntmNewCheckItem_1.isSelected());
-  settings.setFormattingOptions(JavaFormattingOptions.createDefault());
+  settings.setFlattenSwitchBlocks(options.getFlattenSwitchBlocks());
+  settings.setForceExplicitImports(!options.getCollapseImports());
+  settings.setForceExplicitTypeArguments(options.getForceExplicitTypeArguments());
+  settings.setRetainRedundantCasts(options.getRetainRedundantCasts());
+  settings.setShowSyntheticMembers(options.getShowSyntheticMembers());
+  settings.setExcludeNestedTypes(options.getExcludeNestedTypes());
+  settings.setOutputDirectory(options.getOutputDirectory());
+  settings.setIncludeLineNumbersInBytecode(options.getIncludeLineNumbers());
+  settings.setRetainPointlessSwitches(options.getRetainPointlessSwitches());
+  settings.setUnicodeOutputEnabled(options.isUnicodeOutputEnabled());
+  settings.setMergeVariables(options.getMergeVariables());
+  settings.setShowDebugLineNumbers(options.getShowDebugLineNumbers());
+  settings.setSimplifyMemberReferences(options.getSimplifyMemberReferences());
+  settings.setDisableForEachTransforms(options.getDisableForEachTransforms());
+  settings.setTypeLoader(new InputTypeLoader());
+  if (options.isRawBytecode()) {
+    settings.setLanguage(Languages.bytecode());
+  }
+ else   if (options.isBytecodeAst()) {
+    settings.setLanguage(options.isUnoptimized() ? Languages.bytecodeAstUnoptimized() : Languages.bytecodeAst());
+  }
   return settings;
 }

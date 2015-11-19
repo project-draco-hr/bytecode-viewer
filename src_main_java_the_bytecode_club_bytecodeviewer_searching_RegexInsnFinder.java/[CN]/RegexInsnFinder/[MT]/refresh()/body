@@ -54,6 +54,8 @@ case AbstractInsnNode.MULTIANEWARRAY_INSN:
 final MultiANewArrayInsnNode manain=(MultiANewArrayInsnNode)ain;
 insnString+="{" + manain.dims + ","+ manain.desc+ "}";
 break;
+default :
+throw new IllegalArgumentException(String.valueOf(ain.getType()));
 }
 insnString+=" ";
 }

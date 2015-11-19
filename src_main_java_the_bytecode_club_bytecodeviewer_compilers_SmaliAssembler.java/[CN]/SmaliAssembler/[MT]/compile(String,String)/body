@@ -1,5 +1,5 @@
 {
-  String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp";
+  String fileStart=BytecodeViewer.tempDir.getAbsoluteFile() + BytecodeViewer.fs + "temp";
   int fileNumber=MiscUtils.getClassNumber(fileStart,".dex");
   final File tempSmaliFolder=new File(fileStart + fileNumber + "-smalifolder"+ BytecodeViewer.fs);
   tempSmaliFolder.mkdir();
@@ -8,7 +8,7 @@
   File tempJar=new File(fileStart + fileNumber + ".jar");
   File tempJarFolder=new File(fileStart + fileNumber + "-jar"+ BytecodeViewer.fs);
   try {
-    DiskWriter.replaceFile(tempSmali.getAbsolutePath(),contents,false);
+    FileUtils.write(tempSmali,contents,"UTF-8",false);
   }
  catch (  final Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
@@ -22,7 +22,7 @@
   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionDex.getModel()))   Dex2Jar.dex2Jar(tempDex,tempJar);
  else   if (BytecodeViewer.viewer.apkConversionGroup.isSelected(BytecodeViewer.viewer.apkConversionEnjarify.getModel()))   Enjarify.apk2Jar(tempDex,tempJar);
   try {
-    ZipUtils.unzipFilesToPath(tempJar.getAbsolutePath(),tempJarFolder.getAbsolutePath());
+    ZipUtil.unpack(tempJar,tempJarFolder);
     File outputClass=null;
     boolean found=false;
     File current=tempJarFolder;

@@ -1,6 +1,6 @@
 {
   for (  FileContainer container : files) {
-    if (container.getClassNode(name) != null) {
+    if (container.getData().containsKey(name + ".class")) {
       return container.getClassNode(name);
     }
   }

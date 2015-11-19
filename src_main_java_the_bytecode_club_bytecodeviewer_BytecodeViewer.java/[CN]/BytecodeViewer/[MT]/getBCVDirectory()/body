@@ -1,5 +1,5 @@
 {
-  while (!BCVDir.exists())   BCVDir.mkdirs();
-  if (!BCVDir.isHidden() && isWindows())   hideFile(BCVDir);
-  return BCVDir.getAbsolutePath();
+  while (!dataDir.exists())   dataDir.mkdirs();
+  if (!dataDir.isHidden() && isWindows())   hideFile(dataDir);
+  return dataDir.getAbsolutePath();
 }

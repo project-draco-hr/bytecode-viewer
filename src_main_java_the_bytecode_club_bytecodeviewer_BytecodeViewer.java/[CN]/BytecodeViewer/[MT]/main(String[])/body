@@ -1,19 +1,34 @@
 {
-  System.setSecurityManager(sm);
-  BytecodeViewer.args=args;
-  System.out.println("https://the.bytecode.club - Created by @Konloch - Bytecode Viewer " + version);
   try {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    if (previewCopy && !CommandLineInput.containsCommand(args))     showMessage("WARNING: This is a preview/dev copy, you WON'T be alerted when " + version + " is actually out if you use this."+ nl+ "Make sure to watch the repo: https://github.com/Konloch/bytecode-viewer for "+ version+ "'s release");
-    viewer=new MainViewerGUI();
-    Settings.loadGUI();
-    int CLI=CommandLineInput.parseCommandLine(args);
+  }
+ catch (  Exception e) {
+    new ExceptionUI(e);
+  }
+  try {
+    System.setSecurityManager(sm);
+    System.out.println("https://the.bytecode.club - Created by @Konloch and @samczsun - Bytecode Viewer " + version);
+    CommandLineInput input=new CommandLineInput(args);
+    if (previewCopy && !input.containsCommand())     showMessage("WARNING: This is a preview/dev copy, you WON'T be alerted when " + version + " is actually out if you use this."+ nl+ "Make sure to watch the repo: https://github.com/Konloch/bytecode-viewer for "+ version+ "'s release");
+    if (!filesFile.exists() && !filesFile.createNewFile()) {
+      throw new RuntimeException("Could not create recent files file");
+    }
+    if (!pluginsFile.exists() && !pluginsFile.createNewFile()) {
+      throw new RuntimeException("Could not create recent plugins file");
+    }
+    recentFiles.addAll(FileUtils.readLines(filesFile,"UTF-8"));
+    recentPlugins.addAll(FileUtils.readLines(pluginsFile,"UTF-8"));
+    int CLI=input.parseCommandLine();
     if (CLI == CommandLineInput.STOP)     return;
-    Boot.boot();
-    if (CLI == CommandLineInput.OPEN_FILE)     BytecodeViewer.BOOT(false);
+    if (CLI == CommandLineInput.OPEN_FILE) {
+      viewer=new MainViewerGUI();
+      Settings.loadGUI();
+      Boot.boot();
+      BytecodeViewer.BOOT(args,false);
+    }
  else {
-      BytecodeViewer.BOOT(true);
-      CommandLineInput.executeCommandLine(args);
+      BytecodeViewer.BOOT(args,true);
+      input.executeCommandLine();
     }
   }
  catch (  Exception e) {

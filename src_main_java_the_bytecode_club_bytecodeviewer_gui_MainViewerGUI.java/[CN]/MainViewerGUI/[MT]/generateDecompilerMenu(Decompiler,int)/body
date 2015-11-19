@@ -1,0 +1,23 @@
+{
+  ButtonGroup group=allPanes.get(panelId);
+  JMenu menu=new JMenu(decompiler.getName());
+  JRadioButtonMenuItem java=new JRadioButtonMenuItem(decompiler == Decompiler.SMALI ? "Smali" : "Java");
+  java.addActionListener(listener);
+  JRadioButtonMenuItem bytecode=new JRadioButtonMenuItem("Bytecode");
+  JCheckBoxMenuItem editable=new JCheckBoxMenuItem("Editable");
+  JSeparator separator=new JSeparator();
+  menu.add(java);
+  group.add(java);
+  allDecompilers.get(group).put(java,decompiler);
+  allDecompilersRev.get(group).put(decompiler,java);
+  if (decompiler == Decompiler.KRAKATAU) {
+    menu.add(bytecode);
+    group.add(bytecode);
+    bytecode.addActionListener(listener);
+    allDecompilers.get(group).put(bytecode,Decompiler.KRAKATAU_DA);
+  }
+  menu.add(separator);
+  menu.add(editable);
+  editButtons.get(group).put(decompiler,editable);
+  return menu;
+}

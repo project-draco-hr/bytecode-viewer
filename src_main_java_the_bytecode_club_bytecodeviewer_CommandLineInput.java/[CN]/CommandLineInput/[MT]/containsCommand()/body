@@ -1,0 +1,6 @@
+{
+  if (parsed.hasOption("help") || parsed.hasOption("list") || parsed.hasOption("decompiler")|| parsed.hasOption("i")|| parsed.hasOption("o")|| parsed.hasOption("t")|| parsed.hasOption("nowait")) {
+    return true;
+  }
+  return false;
+}

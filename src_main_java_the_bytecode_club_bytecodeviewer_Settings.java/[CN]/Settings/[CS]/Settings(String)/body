@@ -1,0 +1,4 @@
+{
+  this.key=key;
+  ALL_SETTINGS.put(this.key,this);
+}

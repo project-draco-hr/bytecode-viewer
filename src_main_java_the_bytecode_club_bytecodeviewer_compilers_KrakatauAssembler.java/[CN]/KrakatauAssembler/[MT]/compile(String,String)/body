@@ -1,26 +1,31 @@
 {
-  if (BytecodeViewer.python.equals("")) {
+  if (Settings.PYTHON2_LOCATION.isEmpty()) {
     BytecodeViewer.showMessage("You need to set your Python (or PyPy for speed) 2.7 executable path.");
     BytecodeViewer.viewer.pythonC();
   }
-  if (BytecodeViewer.python.equals("")) {
+  if (Settings.PYTHON2_LOCATION.isEmpty()) {
     BytecodeViewer.showMessage("You need to set Python!");
     return null;
   }
   String origName=name;
   name=MiscUtils.randomString(20);
-  File tempD=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + MiscUtils.randomString(32)+ BytecodeViewer.fs);
+  File tempD=new File(BytecodeViewer.tempDir,BytecodeViewer.fs + MiscUtils.randomString(32) + BytecodeViewer.fs);
   tempD.mkdir();
   File tempJ=new File(tempD.getAbsolutePath() + BytecodeViewer.fs + name+ ".j");
-  DiskWriter.replaceFile(tempJ.getAbsolutePath(),contents,true);
-  final File tempDirectory=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + MiscUtils.randomString(32)+ BytecodeViewer.fs);
+  try {
+    FileUtils.write(tempJ,contents,"UTF-8",false);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  final File tempDirectory=new File(BytecodeViewer.tempDir,BytecodeViewer.fs + MiscUtils.randomString(32) + BytecodeViewer.fs);
   tempDirectory.mkdir();
-  final File tempJar=new File(BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp"+ MiscUtils.randomString(32)+ ".jar");
-  JarUtils.saveAsJar(BytecodeViewer.getLoadedClasses(),tempJar.getAbsolutePath());
+  final File tempJar=new File(BytecodeViewer.tempDir,BytecodeViewer.fs + "temp" + MiscUtils.randomString(32)+ ".jar");
+  JarUtils.saveAsJar(BytecodeViewer.getLoadedBytes(),tempJar.getAbsolutePath());
   BytecodeViewer.sm.stopBlocking();
   String log="";
   try {
-    ProcessBuilder pb=new ProcessBuilder(BytecodeViewer.python,"-O",BytecodeViewer.krakatauWorkingDirectory + BytecodeViewer.fs + "assemble.py","-out",tempDirectory.getAbsolutePath(),tempJ.getAbsolutePath());
+    ProcessBuilder pb=new ProcessBuilder(Settings.PYTHON2_LOCATION.get(),"-O",BytecodeViewer.krakatauDirectory.getAbsolutePath() + BytecodeViewer.fs + "assemble.py","-out",tempDirectory.getAbsolutePath(),tempJ.getAbsolutePath());
     Process process=pb.start();
     BytecodeViewer.createdProcesses.add(process);
     InputStream is=process.getInputStream();

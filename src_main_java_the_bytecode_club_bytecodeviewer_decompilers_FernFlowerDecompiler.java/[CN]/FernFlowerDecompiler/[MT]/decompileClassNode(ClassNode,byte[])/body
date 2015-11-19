@@ -1,45 +1,49 @@
 {
-  Map<String,Object> options=main(generateMainMethod());
-  final AtomicReference<String> result=new AtomicReference<String>();
-  result.set(null);
-  BaseDecompiler baseDecompiler=new BaseDecompiler(new IBytecodeProvider(){
-    @Override public byte[] getBytecode(    String s,    String s1) throws IOException {
-      byte[] clone=new byte[b.length];
-      System.arraycopy(b,0,clone,0,b.length);
-      return clone;
-    }
-  }
-,new IResultSaver(){
-    @Override public void saveFolder(    String s){
-    }
-    @Override public void copyFile(    String s,    String s1,    String s2){
-    }
-    @Override public void saveClassFile(    String s,    String s1,    String s2,    String s3,    int[] ints){
-      result.set(s3);
-    }
-    @Override public void createArchive(    String s,    String s1,    Manifest manifest){
-    }
-    @Override public void saveDirEntry(    String s,    String s1,    String s2){
-    }
-    @Override public void copyEntry(    String s,    String s1,    String s2,    String s3){
-    }
-    @Override public void saveClassEntry(    String s,    String s1,    String s2,    String s3,    String s4){
-    }
-    @Override public void closeArchive(    String s,    String s1){
-    }
-  }
-,options,new PrintStreamLogger(System.out));
   try {
-    baseDecompiler.addSpace(new File("fernflower.class"),true);
-    baseDecompiler.decompileContext();
-  }
- catch (  IOException e) {
-    e.printStackTrace();
-  }
-  while (true) {
-    if (result.get() != null) {
-      break;
+    if (cn.version < 49) {
+      b=fixBytes(b);
     }
+    final byte[] bytesToUse=b;
+    Map<String,Object> options=main(generateMainMethod());
+    final AtomicReference<String> result=new AtomicReference<String>();
+    result.set(null);
+    BaseDecompiler baseDecompiler=new BaseDecompiler(new IBytecodeProvider(){
+      @Override public byte[] getBytecode(      String s,      String s1) throws IOException {
+        byte[] clone=new byte[bytesToUse.length];
+        System.arraycopy(bytesToUse,0,clone,0,bytesToUse.length);
+        return clone;
+      }
+    }
+,new IResultSaver(){
+      @Override public void saveFolder(      String s){
+      }
+      @Override public void copyFile(      String s,      String s1,      String s2){
+      }
+      @Override public void saveClassFile(      String s,      String s1,      String s2,      String s3,      int[] ints){
+        result.set(s3);
+      }
+      @Override public void createArchive(      String s,      String s1,      Manifest manifest){
+      }
+      @Override public void saveDirEntry(      String s,      String s1,      String s2){
+      }
+      @Override public void copyEntry(      String s,      String s1,      String s2,      String s3){
+      }
+      @Override public void saveClassEntry(      String s,      String s1,      String s2,      String s3,      String s4){
+      }
+      @Override public void closeArchive(      String s,      String s1){
+      }
+    }
+,options,new PrintStreamLogger(System.out));
+    baseDecompiler.addSpace(new File(cn.name + ".class"),true);
+    baseDecompiler.decompileContext();
+    while (true) {
+      if (result.get() != null) {
+        break;
+      }
+    }
+    return result.get();
   }
-  return result.get();
+ catch (  Exception e) {
+    return parseException(e);
+  }
 }

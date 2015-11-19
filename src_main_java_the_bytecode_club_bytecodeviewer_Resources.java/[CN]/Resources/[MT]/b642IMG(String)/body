@@ -2,7 +2,7 @@
   BufferedImage image=null;
   byte[] imageByte;
   try {
-    imageByte=Base64.decodeBase64(imageString);
+    imageByte=DatatypeConverter.parseBase64Binary(imageString);
     ByteArrayInputStream bis=new ByteArrayInputStream(imageByte);
     image=ImageIO.read(bis);
     bis.close();

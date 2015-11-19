@@ -1,0 +1,39 @@
+{
+  try {
+    File input=new File(parsed.getOptionValue("i"));
+    File output=new File(parsed.getOptionValue("o"));
+    String target=parsed.getOptionValue("t");
+    Decompiler use=null;
+    if (parsed.getOptionValue("decompiler") == null) {
+      System.out.println("You can define another decompiler by appending -decompiler \"name\", by default procyon has been set.");
+      use=Decompiler.PROCYON;
+    }
+ else     if ((use=Decompiler.getByName(parsed.getOptionValue("decompiler"))) == null) {
+      System.out.println("Decompiler not found. By default Procyon has been set.");
+      use=Decompiler.PROCYON;
+    }
+    System.out.println("Decompiling " + input.getAbsolutePath() + " with "+ use.getName());
+    BytecodeViewer.openFiles(new File[]{input},false);
+    Thread.sleep(5 * 1000);
+    if (target.equalsIgnoreCase("all")) {
+      use.decompileToZip(output.getAbsolutePath());
+    }
+ else {
+      try {
+        ClassNode cn=BytecodeViewer.getClassNode(target);
+        byte[] bytes=BytecodeViewer.getClassBytes(target);
+        String contents=use.decompileClassNode(cn,bytes);
+        FileUtils.write(output,contents,"UTF-8",false);
+      }
+ catch (      Exception e) {
+        new ExceptionUI(e);
+      }
+    }
+    System.out.println("Finished.");
+    System.out.println("Bytecode Viewer CLI v" + BytecodeViewer.version + " by @Konloch - http://bytecodeviewer.com");
+    System.exit(0);
+  }
+ catch (  Exception e) {
+    new ExceptionUI(e);
+  }
+}

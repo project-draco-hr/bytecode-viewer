@@ -1,0 +1,9 @@
+{
+  setPanes();
+  ButtonGroup buttonGroup=BytecodeViewer.viewer.allPanes.get(pane);
+  Decompiler selected=decompilers.get(pane);
+  if (buttonGroup != null && BytecodeViewer.viewer.editButtons.get(buttonGroup) != null && BytecodeViewer.viewer.editButtons.get(buttonGroup).get(selected) != null && BytecodeViewer.viewer.editButtons.get(buttonGroup).get(selected).isSelected()) {
+    return true;
+  }
+  return false;
+}

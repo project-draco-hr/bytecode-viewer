@@ -1,0 +1,29 @@
+{
+  JMenu menu=new JMenu("Pane " + (id + 1));
+  JRadioButtonMenuItem none=new JRadioButtonMenuItem("None");
+  JRadioButtonMenuItem bytecode=new JRadioButtonMenuItem("Bytecode");
+  JRadioButtonMenuItem hexcode=new JRadioButtonMenuItem("Hexcode");
+  ButtonGroup group=allPanes.get(id);
+  group.add(none);
+  group.add(bytecode);
+  group.add(hexcode);
+  allDecompilers.get(group).put(none,null);
+  allDecompilersRev.get(group).put(null,none);
+  allDecompilers.get(group).put(bytecode,Decompiler.BYTECODE);
+  allDecompilersRev.get(group).put(Decompiler.BYTECODE,bytecode);
+  allDecompilers.get(group).put(hexcode,Decompiler.HEXCODE);
+  allDecompilersRev.get(group).put(Decompiler.HEXCODE,hexcode);
+  menu.add(none);
+  menu.add(new JSeparator());
+  menu.add(generateDecompilerMenu(Decompiler.PROCYON,id));
+  menu.add(generateDecompilerMenu(Decompiler.CFR,id));
+  menu.add(generateDecompilerMenu(Decompiler.JDGUI,id));
+  menu.add(generateDecompilerMenu(Decompiler.FERNFLOWER,id));
+  menu.add(generateDecompilerMenu(Decompiler.KRAKATAU,id));
+  menu.add(new JSeparator());
+  menu.add(generateDecompilerMenu(Decompiler.SMALI,id));
+  menu.add(new JSeparator());
+  menu.add(bytecode);
+  menu.add(hexcode);
+  return menu;
+}

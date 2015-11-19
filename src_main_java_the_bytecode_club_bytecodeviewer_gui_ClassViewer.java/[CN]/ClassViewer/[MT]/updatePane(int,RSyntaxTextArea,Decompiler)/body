@@ -1,0 +1,11 @@
+{
+  if (decompiler == Decompiler.KRAKATAU_DA) {
+    krakataus.set(pane,text);
+  }
+ else   if (decompiler == Decompiler.SMALI) {
+    smalis.set(pane,text);
+  }
+ else {
+    javas.set(pane,text);
+  }
+}

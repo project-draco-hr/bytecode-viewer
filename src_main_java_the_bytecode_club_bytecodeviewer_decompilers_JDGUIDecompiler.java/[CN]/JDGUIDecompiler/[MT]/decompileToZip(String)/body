@@ -26,6 +26,6 @@
     zipOutputStream.close();
   }
  catch (  Exception e) {
-    e.printStackTrace();
+    handleException(e);
   }
 }

@@ -1,0 +1,10 @@
+{
+  if (!menuItems.containsKey(setting)) {
+    registrationOrder.add(setting);
+    JCheckBoxMenuItem item=new JCheckBoxMenuItem(setting.getText());
+    if (setting.isDefaultOn()) {
+      item.setSelected(true);
+    }
+    menuItems.put(setting,item);
+  }
+}

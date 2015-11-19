@@ -1,6 +1,9 @@
 {
-  if (smali1 != null)   return new Object[]{cn,smali1.getText()};
-  if (smali2 != null)   return new Object[]{cn,smali2.getText()};
-  if (smali3 != null)   return new Object[]{cn,smali3.getText()};
+  for (int i=0; i < smalis.size(); i++) {
+    RSyntaxTextArea text=smalis.get(i);
+    if (text != null) {
+      return new Object[]{cn,text.getText()};
+    }
+  }
   return null;
 }

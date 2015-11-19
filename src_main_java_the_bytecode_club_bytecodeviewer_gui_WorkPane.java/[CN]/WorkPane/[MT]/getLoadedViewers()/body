@@ -1,3 +1,3 @@
 {
-  return (java.awt.Component[])tabs.getComponents();
+  return tabs.getComponents();
 }

@@ -1,0 +1,5 @@
+ClassViewer viewer
+Decompiler decompiler
+int paneId
+JPanel target
+JButton button

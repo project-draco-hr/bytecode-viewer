@@ -1,4 +1,7 @@
 {
+  for (  Component component : tabs.getComponents()) {
+    ((ClassViewer)component).reset();
+  }
   tabs.removeAll();
   tabs.updateUI();
 }

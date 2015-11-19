@@ -1,6 +1,9 @@
 {
-  if (krakatau1 != null)   return new Object[]{cn,krakatau1.getText()};
-  if (krakatau2 != null)   return new Object[]{cn,krakatau2.getText()};
-  if (krakatau3 != null)   return new Object[]{cn,krakatau3.getText()};
+  for (int i=0; i < krakataus.size(); i++) {
+    RSyntaxTextArea text=krakataus.get(i);
+    if (text != null) {
+      return new Object[]{cn,text.getText()};
+    }
+  }
   return null;
 }

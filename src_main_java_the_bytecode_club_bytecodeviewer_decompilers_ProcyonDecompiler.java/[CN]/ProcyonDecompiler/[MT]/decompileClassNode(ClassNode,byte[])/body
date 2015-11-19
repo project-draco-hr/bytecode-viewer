@@ -1,19 +1,34 @@
 {
-  String exception="";
   try {
-    String fileStart=BytecodeViewer.tempDirectory + BytecodeViewer.fs + "temp";
-    final File tempClass=new File(MiscUtils.getUniqueName(fileStart,".class") + ".class");
-    try {
-      final FileOutputStream fos=new FileOutputStream(tempClass);
-      fos.write(b);
-      fos.close();
+    if (cn.version < 49) {
+      b=fixBytes(b);
     }
- catch (    final IOException e) {
-      new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
-    }
+    final byte[] bytesToUse=b;
+    final Map<String,byte[]> loadedClasses=BytecodeViewer.getLoadedBytes();
     DecompilerSettings settings=getDecompilerSettings();
-    MetadataSystem metadataSystem=new MetadataSystem(new InputTypeLoader());
-    TypeReference type=metadataSystem.lookupType(tempClass.getCanonicalPath());
+    MetadataSystem metadataSystem=new MetadataSystem(new ITypeLoader(){
+      private InputTypeLoader backLoader=new InputTypeLoader();
+      @Override public boolean tryLoadType(      String s,      Buffer buffer){
+        if (s.equals(cn.name)) {
+          buffer.putByteArray(bytesToUse,0,bytesToUse.length);
+          buffer.position(0);
+          return true;
+        }
+ else {
+          byte[] toUse=loadedClasses.get(s + ".class");
+          if (toUse != null) {
+            buffer.putByteArray(toUse,0,toUse.length);
+            buffer.position(0);
+            return true;
+          }
+ else {
+            return backLoader.tryLoadType(s,buffer);
+          }
+        }
+      }
+    }
+);
+    TypeReference type=metadataSystem.lookupType(cn.name);
     DecompilationOptions decompilationOptions=new DecompilationOptions();
     decompilationOptions.setSettings(DecompilerSettings.javaDefaults());
     decompilationOptions.setFullDecompilation(true);
@@ -26,11 +41,7 @@
     String decompiledSource=stringwriter.toString();
     return decompiledSource;
   }
- catch (  Exception e) {
-    StringWriter sw=new StringWriter();
-    e.printStackTrace(new PrintWriter(sw));
-    e.printStackTrace();
-    exception="Bytecode Viewer Version: " + BytecodeViewer.version + BytecodeViewer.nl+ BytecodeViewer.nl+ sw.toString();
+ catch (  Throwable e) {
+    return parseException(e);
   }
-  return "Procyon error! Send the stacktrace to Konloch at http://the.bytecode.club or konloch@gmail.com" + BytecodeViewer.nl + BytecodeViewer.nl+ "Suggested Fix: Click refresh class, if it fails again try another decompiler."+ BytecodeViewer.nl+ BytecodeViewer.nl+ exception;
 }

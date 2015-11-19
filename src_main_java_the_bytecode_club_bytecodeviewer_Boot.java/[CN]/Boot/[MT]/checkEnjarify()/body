@@ -19,7 +19,7 @@
       Files.delete(temporaryEnjarifyZip);
       InputStream inputStream=Boot.class.getResourceAsStream("/enjarify-2.zip");
       Files.copy(inputStream,temporaryEnjarifyZip);
-      ZipUtils.unzipFilesToPath(temporaryEnjarifyZip.normalize().toString(),enjarifyDirectory.getAbsolutePath());
+      ZipUtil.unpack(temporaryEnjarifyZip.toFile(),enjarifyDirectory);
       Files.delete(temporaryEnjarifyZip);
     }
  catch (    Exception e) {

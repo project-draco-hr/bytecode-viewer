@@ -1,0 +1,5 @@
+{
+  for (  Settings setting : Settings.values()) {
+    settings.registerSetting(setting);
+  }
+}
