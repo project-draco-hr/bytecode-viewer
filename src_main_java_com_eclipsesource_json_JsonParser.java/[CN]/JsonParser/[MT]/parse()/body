@@ -1,0 +1,10 @@
+{
+  read();
+  skipWhiteSpace();
+  JsonValue result=readValue();
+  skipWhiteSpace();
+  if (!isEndOfText()) {
+    throw error("Unexpected character");
+  }
+  return result;
+}

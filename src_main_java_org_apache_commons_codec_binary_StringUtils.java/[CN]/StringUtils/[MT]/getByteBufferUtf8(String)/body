@@ -1,0 +1,3 @@
+{
+  return getByteBuffer(string,Charsets.UTF_8);
+}

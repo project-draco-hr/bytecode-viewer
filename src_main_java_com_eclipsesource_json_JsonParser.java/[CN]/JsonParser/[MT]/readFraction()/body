@@ -1,0 +1,11 @@
+{
+  if (!readChar('.')) {
+    return false;
+  }
+  if (!readDigit()) {
+    throw expected("digit");
+  }
+  while (readDigit()) {
+  }
+  return true;
+}

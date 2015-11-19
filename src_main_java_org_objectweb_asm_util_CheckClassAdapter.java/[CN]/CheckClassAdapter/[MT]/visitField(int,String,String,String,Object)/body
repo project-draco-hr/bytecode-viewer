@@ -1,0 +1,14 @@
+{
+  checkState();
+  checkAccess(access,Opcodes.ACC_PUBLIC + Opcodes.ACC_PRIVATE + Opcodes.ACC_PROTECTED+ Opcodes.ACC_STATIC+ Opcodes.ACC_FINAL+ Opcodes.ACC_VOLATILE+ Opcodes.ACC_TRANSIENT+ Opcodes.ACC_SYNTHETIC+ Opcodes.ACC_ENUM+ Opcodes.ACC_DEPRECATED+ 0x40000);
+  CheckMethodAdapter.checkUnqualifiedName(version,name,"field name");
+  CheckMethodAdapter.checkDesc(desc,false);
+  if (signature != null) {
+    checkFieldSignature(signature);
+  }
+  if (value != null) {
+    CheckMethodAdapter.checkConstant(value);
+  }
+  FieldVisitor av=super.visitField(access,name,desc,signature,value);
+  return new CheckFieldAdapter(av);
+}

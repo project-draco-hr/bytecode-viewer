@@ -1,0 +1,4 @@
+{
+  itfIndex&=0xFFFF;
+  return new TypeReference((CLASS_EXTENDS << 24) | (itfIndex << 8));
+}

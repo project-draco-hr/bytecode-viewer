@@ -1,0 +1,11 @@
+{
+  if (string == null) {
+    throw new NullPointerException("string is null");
+  }
+  try {
+    return new JsonParser(string).parse();
+  }
+ catch (  IOException exception) {
+    throw new RuntimeException(exception);
+  }
+}

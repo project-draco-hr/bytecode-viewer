@@ -1,0 +1,6 @@
+{
+  this(Opcodes.ASM5,access,desc,mv);
+  if (getClass() != LocalVariablesSorter.class) {
+    throw new IllegalStateException();
+  }
+}

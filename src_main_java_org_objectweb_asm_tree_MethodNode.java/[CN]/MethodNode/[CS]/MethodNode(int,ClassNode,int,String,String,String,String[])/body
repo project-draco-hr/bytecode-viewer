@@ -1,0 +1,19 @@
+{
+  super(api);
+  this.owner=owner;
+  this.access=access;
+  this.name=name;
+  this.desc=desc;
+  this.signature=signature;
+  this.exceptions=new ArrayList<String>(exceptions == null ? 0 : exceptions.length);
+  boolean isAbstract=(access & Opcodes.ACC_ABSTRACT) != 0;
+  if (!isAbstract) {
+    this.localVariables=new ArrayList<LocalVariableNode>(5);
+  }
+  this.tryCatchBlocks=new ArrayList<TryCatchBlockNode>();
+  if (exceptions != null) {
+    this.exceptions.addAll(Arrays.asList(exceptions));
+  }
+  this.instructions=new InsnList();
+  if (this.owner != null)   this.handle=new Handle(0,owner.name,name,desc);
+}

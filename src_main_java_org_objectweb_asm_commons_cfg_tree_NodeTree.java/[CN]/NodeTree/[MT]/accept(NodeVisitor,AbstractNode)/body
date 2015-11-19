@@ -1,0 +1,5 @@
+{
+  if (!nv.validate())   return;
+  n.accept(nv);
+  for (  AbstractNode node : n)   accept(nv,node);
+}

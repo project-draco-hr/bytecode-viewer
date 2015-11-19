@@ -1,0 +1,6 @@
+{
+  this.reader=reader;
+  buffer=new char[buffersize];
+  line=1;
+  captureStart=-1;
+}

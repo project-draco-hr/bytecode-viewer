@@ -1,0 +1,3 @@
+{
+  return Hex.encodeHexString(hmacSha256(key,valueToDigest));
+}

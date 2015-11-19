@@ -1,0 +1,43 @@
+{
+  long t=-1;
+  if (DEBUG)   t=System.currentTimeMillis();
+  if (src == null)   throw new IllegalArgumentException("src cannot be null");
+  if (rotation == null)   throw new IllegalArgumentException("rotation cannot be null");
+  if (DEBUG)   log(0,"Rotating Image [%s]...",rotation);
+  int newWidth=src.getWidth();
+  int newHeight=src.getHeight();
+  AffineTransform tx=new AffineTransform();
+switch (rotation) {
+case CW_90:
+    newWidth=src.getHeight();
+  newHeight=src.getWidth();
+tx.translate(newWidth,0);
+tx.rotate(Math.toRadians(90));
+break;
+case CW_270:
+newWidth=src.getHeight();
+newHeight=src.getWidth();
+tx.translate(0,newHeight);
+tx.rotate(Math.toRadians(-90));
+break;
+case CW_180:
+tx.translate(newWidth,newHeight);
+tx.rotate(Math.toRadians(180));
+break;
+case FLIP_HORZ:
+tx.translate(newWidth,0);
+tx.scale(-1.0,1.0);
+break;
+case FLIP_VERT:
+tx.translate(0,newHeight);
+tx.scale(1.0,-1.0);
+break;
+}
+BufferedImage result=createOptimalImage(src,newWidth,newHeight);
+Graphics2D g2d=(Graphics2D)result.createGraphics();
+g2d.drawImage(src,tx,null);
+g2d.dispose();
+if (DEBUG) log(0,"Rotation Applied in %d ms, result [width=%d, height=%d]",System.currentTimeMillis() - t,result.getWidth(),result.getHeight());
+if (ops != null && ops.length > 0) result=apply(result,ops);
+return result;
+}

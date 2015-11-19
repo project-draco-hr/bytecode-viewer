@@ -1,0 +1,11 @@
+{
+  if (fill > buffer.length - len) {
+    flush();
+    if (len > buffer.length) {
+      writer.write(str,off,len);
+      return;
+    }
+  }
+  str.getChars(off,off + len,buffer,fill);
+  fill+=len;
+}

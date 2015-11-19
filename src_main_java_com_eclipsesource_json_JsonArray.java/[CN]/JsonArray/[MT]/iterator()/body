@@ -1,0 +1,15 @@
+{
+  final Iterator<JsonValue> iterator=values.iterator();
+  return new Iterator<JsonValue>(){
+    public boolean hasNext(){
+      return iterator.hasNext();
+    }
+    public JsonValue next(){
+      return iterator.next();
+    }
+    public void remove(){
+      throw new UnsupportedOperationException();
+    }
+  }
+;
+}

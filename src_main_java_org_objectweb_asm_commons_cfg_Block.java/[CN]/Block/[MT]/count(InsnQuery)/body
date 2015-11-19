@@ -1,0 +1,7 @@
+{
+  int count=0;
+  for (  AbstractInsnNode ain : instructions) {
+    if (query.matches(ain))     count++;
+  }
+  return count;
+}

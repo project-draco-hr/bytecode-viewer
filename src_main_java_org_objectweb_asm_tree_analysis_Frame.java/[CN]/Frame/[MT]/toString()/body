@@ -1,0 +1,11 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (int i=0; i < getLocals(); ++i) {
+    sb.append(getLocal(i));
+  }
+  sb.append(' ');
+  for (int i=0; i < getStackSize(); ++i) {
+    sb.append(getStack(i).toString());
+  }
+  return sb.toString();
+}

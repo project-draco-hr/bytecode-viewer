@@ -1,0 +1,10 @@
+{
+  Collection<E> list=new ArrayList<>();
+  for (  E element : this) {
+    list.add(element);
+  }
+  clear();
+  e.parent=this;
+  add(e);
+  addAll(list);
+}

@@ -1,0 +1,41 @@
+{
+  if (api == Opcodes.ASM4) {
+    if (visibleTypeAnnotations != null && visibleTypeAnnotations.size() > 0) {
+      throw new RuntimeException();
+    }
+    if (invisibleTypeAnnotations != null && invisibleTypeAnnotations.size() > 0) {
+      throw new RuntimeException();
+    }
+    int n=tryCatchBlocks == null ? 0 : tryCatchBlocks.size();
+    for (int i=0; i < n; ++i) {
+      TryCatchBlockNode tcb=tryCatchBlocks.get(i);
+      if (tcb.visibleTypeAnnotations != null && tcb.visibleTypeAnnotations.size() > 0) {
+        throw new RuntimeException();
+      }
+      if (tcb.invisibleTypeAnnotations != null && tcb.invisibleTypeAnnotations.size() > 0) {
+        throw new RuntimeException();
+      }
+    }
+    for (int i=0; i < instructions.size(); ++i) {
+      AbstractInsnNode insn=instructions.get(i);
+      if (insn.visibleTypeAnnotations != null && insn.visibleTypeAnnotations.size() > 0) {
+        throw new RuntimeException();
+      }
+      if (insn.invisibleTypeAnnotations != null && insn.invisibleTypeAnnotations.size() > 0) {
+        throw new RuntimeException();
+      }
+      if (insn instanceof MethodInsnNode) {
+        boolean itf=((MethodInsnNode)insn).itf;
+        if (itf != (insn.opcode == Opcodes.INVOKEINTERFACE)) {
+          throw new RuntimeException();
+        }
+      }
+    }
+    if (visibleLocalVariableAnnotations != null && visibleLocalVariableAnnotations.size() > 0) {
+      throw new RuntimeException();
+    }
+    if (invisibleLocalVariableAnnotations != null && invisibleLocalVariableAnnotations.size() > 0) {
+      throw new RuntimeException();
+    }
+  }
+}

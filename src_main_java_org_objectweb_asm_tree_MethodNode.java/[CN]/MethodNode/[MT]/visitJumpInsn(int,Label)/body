@@ -1,0 +1,5 @@
+{
+  JumpInsnNode jin=new JumpInsnNode(opcode,getLabelNode(label));
+  jin.method=this;
+  instructions.add(jin);
+}

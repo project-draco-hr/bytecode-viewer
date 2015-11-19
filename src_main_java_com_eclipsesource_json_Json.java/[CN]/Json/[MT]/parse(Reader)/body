@@ -1,0 +1,6 @@
+{
+  if (reader == null) {
+    throw new NullPointerException("reader is null");
+  }
+  return new JsonParser(reader).parse();
+}

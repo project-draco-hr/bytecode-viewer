@@ -1,0 +1,16 @@
+{
+  if (innerClasses == null) {
+    innerClasses=new ByteVector();
+  }
+  Item nameItem=newClassItem(name);
+  if (nameItem.intVal == 0) {
+    ++innerClassesCount;
+    innerClasses.putShort(nameItem.index);
+    innerClasses.putShort(outerName == null ? 0 : newClass(outerName));
+    innerClasses.putShort(innerName == null ? 0 : newUTF8(innerName));
+    innerClasses.putShort(access);
+    nameItem.intVal=innerClassesCount;
+  }
+ else {
+  }
+}

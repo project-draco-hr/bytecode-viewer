@@ -1,0 +1,3 @@
+{
+  this(unencodedBlockSize,encodedBlockSize,lineLength,chunkSeparatorLength,PAD_DEFAULT);
+}

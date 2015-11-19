@@ -1,0 +1,12 @@
+{
+  if (name == null) {
+    throw new NullPointerException("name is null");
+  }
+  if (value == null) {
+    throw new NullPointerException("value is null");
+  }
+  table.add(name,names.size());
+  names.add(name);
+  values.add(value);
+  return this;
+}

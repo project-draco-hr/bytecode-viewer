@@ -1,0 +1,4 @@
+{
+  values.add(Json.value(value));
+  return this;
+}

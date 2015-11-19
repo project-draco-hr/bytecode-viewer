@@ -1,0 +1,3 @@
+{
+  return new TypeReference((METHOD_FORMAL_PARAMETER << 24) | (paramIndex << 16));
+}

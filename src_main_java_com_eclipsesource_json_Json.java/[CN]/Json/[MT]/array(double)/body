@@ -1,0 +1,10 @@
+{
+  if (values == null) {
+    throw new NullPointerException("values is null");
+  }
+  JsonArray array=new JsonArray();
+  for (  double value : values) {
+    array.add(value);
+  }
+  return array;
+}

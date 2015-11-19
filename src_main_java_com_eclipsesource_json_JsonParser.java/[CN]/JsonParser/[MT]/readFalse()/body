@@ -1,0 +1,8 @@
+{
+  read();
+  readRequiredChar('a');
+  readRequiredChar('l');
+  readRequiredChar('s');
+  readRequiredChar('e');
+  return Json.FALSE;
+}

@@ -7,7 +7,7 @@
     }
  catch (    java.lang.ArrayIndexOutOfBoundsException e) {
     }
-    return nameOpcode(tin.getOpcode()) + " " + desc;
+    return nameOpcode(tin.opcode()) + " " + desc;
   }
  catch (  Exception e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

@@ -1,0 +1,10 @@
+{
+  if (api < Opcodes.ASM5) {
+    if (itf) {
+      throw new IllegalArgumentException("INVOKEVIRTUAL on interfaces require ASM 5");
+    }
+    invokevirtual(owner,name,desc);
+    return;
+  }
+  mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL,owner,name,desc,itf);
+}

@@ -1,0 +1,4 @@
+{
+  mv.visitMultiANewArrayInsn(desc,dims);
+  acceptAnnotations(mv);
+}

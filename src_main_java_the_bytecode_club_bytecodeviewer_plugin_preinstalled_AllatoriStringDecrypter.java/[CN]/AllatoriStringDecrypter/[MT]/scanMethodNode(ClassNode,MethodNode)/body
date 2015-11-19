@@ -12,7 +12,7 @@
     }
  else     if (i instanceof MethodInsnNode) {
       MethodInsnNode methodi=(MethodInsnNode)i;
-      if (laststringldconstack != null && methodi.getOpcode() == 0xb8) {
+      if (laststringldconstack != null && methodi.opcode() == 0xb8) {
         String decrypterclassname=methodi.owner;
         String decryptermethodname=methodi.name;
         if (decrypterclassname.contains("$")) {
@@ -56,7 +56,7 @@
     }
  else     if (i instanceof InvokeDynamicInsnNode) {
       InvokeDynamicInsnNode methodi=(InvokeDynamicInsnNode)i;
-      if (methodi.getOpcode() == 0xba) {
+      if (methodi.opcode() == 0xba) {
       }
     }
     laststringldconstack=null;

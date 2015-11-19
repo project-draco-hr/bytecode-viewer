@@ -1,0 +1,6 @@
+{
+  writer.write(',');
+  if (!writeNewLine()) {
+    writer.write(' ');
+  }
+}

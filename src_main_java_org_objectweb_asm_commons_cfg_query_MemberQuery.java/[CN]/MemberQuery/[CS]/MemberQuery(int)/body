@@ -1,0 +1,3 @@
+{
+  this(opcode,null,null,null);
+}

@@ -1,0 +1,7 @@
+{
+  if (methodParameters == null) {
+    methodParameters=new ByteVector();
+  }
+  ++methodParametersCount;
+  methodParameters.putShort((name == null) ? 0 : cw.newUTF8(name)).putShort(access);
+}

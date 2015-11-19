@@ -1,0 +1,13 @@
+{
+  for (  ClassNode node : classes) {
+    for (    MethodNode mn : node.methods) {
+      for (      AbstractInsnNode ain : mn.instructions.toArray()) {
+        if (ain instanceof FieldInsnNode) {
+          FieldInsnNode fin=(FieldInsnNode)ain;
+          if (fin.owner.equals(fn.owner.name) && fin.name.equals(fn.name))           fin.name=newName;
+        }
+      }
+    }
+  }
+  fn.name=newName;
+}

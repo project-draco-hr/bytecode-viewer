@@ -1,0 +1,3 @@
+{
+  return isNull ? super.asBoolean() : isTrue;
+}

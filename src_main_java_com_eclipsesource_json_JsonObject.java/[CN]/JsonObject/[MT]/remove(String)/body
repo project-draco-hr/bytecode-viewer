@@ -1,0 +1,12 @@
+{
+  if (name == null) {
+    throw new NullPointerException("name is null");
+  }
+  int index=indexOf(name);
+  if (index != -1) {
+    table.remove(index);
+    names.remove(index);
+    values.remove(index);
+  }
+  return this;
+}

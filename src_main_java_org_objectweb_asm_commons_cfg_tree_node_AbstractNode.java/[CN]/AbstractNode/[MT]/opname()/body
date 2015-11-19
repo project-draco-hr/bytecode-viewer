@@ -1,0 +1,13 @@
+{
+  try {
+    return Assembly.OPCODES[opcode()];
+  }
+ catch (  IndexOutOfBoundsException e) {
+    try {
+      return insn().getClass().getSimpleName();
+    }
+ catch (    Exception err) {
+      return insn().toString();
+    }
+  }
+}

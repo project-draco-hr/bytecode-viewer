@@ -1,0 +1,4 @@
+String message
+int offset
+int line
+int column

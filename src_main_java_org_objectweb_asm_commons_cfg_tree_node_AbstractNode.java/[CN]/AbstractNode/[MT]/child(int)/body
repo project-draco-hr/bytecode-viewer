@@ -1,0 +1,8 @@
+{
+  int i=0;
+  for (  AbstractNode n : this) {
+    if (i == idx)     return n;
+    i++;
+  }
+  return null;
+}

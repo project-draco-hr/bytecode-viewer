@@ -1,0 +1,5 @@
+{
+  LdcInsnNode ldc=new LdcInsnNode(cst);
+  ldc.method=this;
+  instructions.add(ldc);
+}

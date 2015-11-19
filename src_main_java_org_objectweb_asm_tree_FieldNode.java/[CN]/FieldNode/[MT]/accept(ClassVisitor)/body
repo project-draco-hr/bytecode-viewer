@@ -1,0 +1,32 @@
+{
+  FieldVisitor fv=cv.visitField(access,name,desc,signature,value);
+  if (fv == null) {
+    return;
+  }
+  int i, n;
+  n=visibleAnnotations == null ? 0 : visibleAnnotations.size();
+  for (i=0; i < n; ++i) {
+    AnnotationNode an=visibleAnnotations.get(i);
+    an.accept(fv.visitAnnotation(an.desc,true));
+  }
+  n=invisibleAnnotations == null ? 0 : invisibleAnnotations.size();
+  for (i=0; i < n; ++i) {
+    AnnotationNode an=invisibleAnnotations.get(i);
+    an.accept(fv.visitAnnotation(an.desc,false));
+  }
+  n=visibleTypeAnnotations == null ? 0 : visibleTypeAnnotations.size();
+  for (i=0; i < n; ++i) {
+    TypeAnnotationNode an=visibleTypeAnnotations.get(i);
+    an.accept(fv.visitTypeAnnotation(an.typeRef,an.typePath,an.desc,true));
+  }
+  n=invisibleTypeAnnotations == null ? 0 : invisibleTypeAnnotations.size();
+  for (i=0; i < n; ++i) {
+    TypeAnnotationNode an=invisibleTypeAnnotations.get(i);
+    an.accept(fv.visitTypeAnnotation(an.typeRef,an.typePath,an.desc,false));
+  }
+  n=attrs == null ? 0 : attrs.size();
+  for (i=0; i < n; ++i) {
+    fv.visitAttribute(attrs.get(i));
+  }
+  fv.visitEnd();
+}

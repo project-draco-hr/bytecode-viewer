@@ -1,0 +1,4 @@
+{
+  values.set(index,Json.value(value));
+  return this;
+}

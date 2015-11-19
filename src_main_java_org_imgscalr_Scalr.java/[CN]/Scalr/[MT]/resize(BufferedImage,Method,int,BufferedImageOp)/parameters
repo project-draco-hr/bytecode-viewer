@@ -1,0 +1,4 @@
+BufferedImage src
+Method scalingMethod
+int targetSize
+BufferedImageOp ops

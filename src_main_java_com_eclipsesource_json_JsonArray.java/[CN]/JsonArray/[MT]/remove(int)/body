@@ -1,0 +1,4 @@
+{
+  values.remove(index);
+  return this;
+}

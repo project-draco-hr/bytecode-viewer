@@ -1,0 +1,5 @@
+{
+  IincInsnNode in=new IincInsnNode(var,increment);
+  in.method=this;
+  instructions.add(in);
+}

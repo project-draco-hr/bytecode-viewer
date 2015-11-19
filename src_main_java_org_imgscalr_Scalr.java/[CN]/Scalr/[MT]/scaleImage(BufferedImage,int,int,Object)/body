@@ -1,0 +1,8 @@
+{
+  BufferedImage result=createOptimalImage(src,targetWidth,targetHeight);
+  Graphics2D resultGraphics=result.createGraphics();
+  resultGraphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION,interpolationHintValue);
+  resultGraphics.drawImage(src,0,0,targetWidth,targetHeight,null);
+  resultGraphics.dispose();
+  return result;
+}

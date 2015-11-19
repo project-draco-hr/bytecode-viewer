@@ -1,0 +1,5 @@
+{
+  SecurityManager manager=System.getSecurityManager();
+  group=(manager == null ? Thread.currentThread().getThreadGroup() : manager.getThreadGroup());
+  namePrefix="pool-" + poolNumber.getAndIncrement() + "-thread-";
+}

@@ -1,0 +1,10 @@
+{
+  AbstractInsnNode ain=insn();
+  if (ain instanceof FieldInsnNode) {
+    return ((FieldInsnNode)ain).name;
+  }
+ else   if (ain instanceof MethodInsnNode) {
+    return ((MethodInsnNode)ain).name;
+  }
+  return null;
+}

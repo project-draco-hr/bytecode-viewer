@@ -1,0 +1,15 @@
+{
+  if (object == null) {
+    throw new NullPointerException("object is null");
+  }
+  if (unmodifiable) {
+    names=Collections.unmodifiableList(object.names);
+    values=Collections.unmodifiableList(object.values);
+  }
+ else {
+    names=new ArrayList<String>(object.names);
+    values=new ArrayList<JsonValue>(object.values);
+  }
+  table=new HashIndexTable();
+  updateHashIndex();
+}

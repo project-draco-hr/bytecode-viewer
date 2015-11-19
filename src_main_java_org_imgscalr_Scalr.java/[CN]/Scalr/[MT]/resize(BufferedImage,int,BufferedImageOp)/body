@@ -1,0 +1,3 @@
+{
+  return resize(src,Method.AUTOMATIC,Mode.AUTOMATIC,targetSize,targetSize,ops);
+}

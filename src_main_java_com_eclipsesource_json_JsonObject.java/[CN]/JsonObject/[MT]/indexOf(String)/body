@@ -1,0 +1,7 @@
+{
+  int index=table.get(name);
+  if (index != -1 && name.equals(names.get(index))) {
+    return index;
+  }
+  return names.lastIndexOf(name);
+}

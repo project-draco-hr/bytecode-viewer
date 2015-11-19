@@ -1,0 +1,5 @@
+BufferedImage src
+Mode resizeMode
+int targetWidth
+int targetHeight
+BufferedImageOp ops

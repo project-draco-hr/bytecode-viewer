@@ -1,0 +1,10 @@
+{
+  AttributesImpl attrs=new AttributesImpl();
+  attrs.addAttribute("","start","start","",getLabel(start));
+  attrs.addAttribute("","end","end","",getLabel(end));
+  attrs.addAttribute("","handler","handler","",getLabel(handler));
+  if (type != null) {
+    attrs.addAttribute("","type","type","",type);
+  }
+  sa.addElement("TryCatch",attrs);
+}

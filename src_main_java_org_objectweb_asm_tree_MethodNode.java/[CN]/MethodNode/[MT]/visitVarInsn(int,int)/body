@@ -1,0 +1,5 @@
+{
+  VarInsnNode vin=new VarInsnNode(opcode,var);
+  vin.method=this;
+  instructions.add(vin);
+}

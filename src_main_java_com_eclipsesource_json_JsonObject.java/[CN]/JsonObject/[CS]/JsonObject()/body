@@ -1,0 +1,5 @@
+{
+  names=new ArrayList<String>();
+  values=new ArrayList<JsonValue>();
+  table=new HashIndexTable();
+}

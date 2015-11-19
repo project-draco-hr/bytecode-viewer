@@ -1,0 +1,6 @@
+{
+  if (string == null) {
+    throw new NullPointerException("string is null");
+  }
+  this.string=string;
+}

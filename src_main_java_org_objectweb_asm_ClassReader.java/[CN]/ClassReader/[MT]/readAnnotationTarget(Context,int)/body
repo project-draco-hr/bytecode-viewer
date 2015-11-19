@@ -1,0 +1,52 @@
+{
+  int target=readInt(u);
+switch (target >>> 24) {
+case 0x00:
+case 0x01:
+case 0x16:
+    target&=0xFFFF0000;
+  u+=2;
+break;
+case 0x13:
+case 0x14:
+case 0x15:
+target&=0xFF000000;
+u+=1;
+break;
+case 0x40:
+case 0x41:
+{
+target&=0xFF000000;
+int n=readUnsignedShort(u + 1);
+context.start=new Label[n];
+context.end=new Label[n];
+context.index=new int[n];
+u+=3;
+for (int i=0; i < n; ++i) {
+int start=readUnsignedShort(u);
+int length=readUnsignedShort(u + 2);
+context.start[i]=readLabel(start,context.labels);
+context.end[i]=readLabel(start + length,context.labels);
+context.index[i]=readUnsignedShort(u + 4);
+u+=6;
+}
+break;
+}
+case 0x47:
+case 0x48:
+case 0x49:
+case 0x4A:
+case 0x4B:
+target&=0xFF0000FF;
+u+=4;
+break;
+default :
+target&=(target >>> 24) < 0x43 ? 0xFFFFFF00 : 0xFF000000;
+u+=3;
+break;
+}
+int pathLength=readByte(u);
+context.typeRef=target;
+context.typePath=pathLength == 0 ? null : new TypePath(b,u);
+return u + 1 + 2 * pathLength;
+}

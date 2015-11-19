@@ -1,0 +1,6 @@
+{
+  if (Float.isInfinite(value) || Float.isNaN(value)) {
+    throw new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
+  }
+  return new JsonNumber(cutOffPointZero(Float.toString(value)));
+}

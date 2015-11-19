@@ -1,0 +1,49 @@
+{
+  if (insn == null) {
+    return "null";
+  }
+  int op=insn.opcode();
+  if (op == -1) {
+    return insn.toString();
+  }
+  StringBuilder sb=new StringBuilder();
+  sb.append(pad(OPCODES[op].toLowerCase(),LONGEST_OPCODE_NAME));
+switch (insn.type()) {
+case INT_INSN:
+    sb.append(((IntInsnNode)insn).operand);
+  break;
+case VAR_INSN:
+sb.append('#').append(((VarInsnNode)insn).var);
+break;
+case TYPE_INSN:
+sb.append(((TypeInsnNode)insn).desc);
+break;
+case FIELD_INSN:
+FieldInsnNode fin=(FieldInsnNode)insn;
+sb.append(fin.owner).append('.').append(fin.name).append(' ').append(fin.desc);
+break;
+case METHOD_INSN:
+MethodInsnNode min=(MethodInsnNode)insn;
+sb.append(min.owner).append('.').append(min.name).append(' ').append(min.desc);
+break;
+case JUMP_INSN:
+break;
+case LDC_INSN:
+Object cst=((LdcInsnNode)insn).cst;
+sb.append(cst).append("(").append(cst.getClass().getName()).append(")");
+break;
+case IINC_INSN:
+IincInsnNode iin=(IincInsnNode)insn;
+sb.append('#').append(iin.var).append(' ').append(iin.incr);
+break;
+case TABLESWITCH_INSN:
+break;
+case LOOKUPSWITCH_INSN:
+break;
+case MULTIANEWARRAY_INSN:
+MultiANewArrayInsnNode m=(MultiANewArrayInsnNode)insn;
+sb.append(m.desc).append(' ').append(m.dims);
+break;
+}
+return sb.toString();
+}

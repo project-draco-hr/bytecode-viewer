@@ -1,0 +1,8 @@
+{
+  try {
+    return getHmacMd5(key).doFinal(valueToDigest);
+  }
+ catch (  final IllegalStateException e) {
+    throw new IllegalArgumentException(e);
+  }
+}

@@ -1,0 +1,47 @@
+{
+  int opcode=ain.opcode();
+  if (ain instanceof IntInsnNode) {
+    return new NumberNode(tree,ain,size.collapsing,size.producing);
+  }
+ else   if (ain instanceof VarInsnNode) {
+    return new VariableNode(tree,ain,size.collapsing,size.producing);
+  }
+ else   if (ain instanceof JumpInsnNode) {
+    return new JumpNode(tree,(JumpInsnNode)ain,size.collapsing,size.producing);
+  }
+ else   if (ain instanceof FieldInsnNode) {
+    return new FieldMemberNode(tree,ain,size.collapsing,size.producing);
+  }
+ else   if (ain instanceof MethodInsnNode) {
+    return new MethodMemberNode(tree,ain,size.collapsing,size.producing);
+  }
+ else   if (ain instanceof LdcInsnNode) {
+    Object cst=((LdcInsnNode)ain).cst;
+    if (cst instanceof Number) {
+      return new NumberNode(tree,ain,size.collapsing,size.producing);
+    }
+ else {
+      return new ConstantNode(tree,ain,size.collapsing,size.producing);
+    }
+  }
+ else   if (ain instanceof IincInsnNode) {
+    return new IincNode(tree,ain,size.collapsing,size.producing);
+  }
+ else   if (ain instanceof TypeInsnNode) {
+    return new TypeNode(tree,ain,size.collapsing,size.producing);
+  }
+ else {
+    if (opcode >= ICONST_M1 && opcode <= DCONST_1) {
+      return new NumberNode(tree,ain,size.collapsing,size.producing);
+    }
+ else     if (opcode >= I2L && opcode <= I2S) {
+      return new ConversionNode(tree,ain,size.collapsing,size.producing);
+    }
+ else     if (opcode >= IADD && opcode <= LXOR) {
+      return new ArithmeticNode(tree,ain,size.collapsing,size.producing);
+    }
+ else {
+      return new AbstractNode(tree,ain,size.collapsing,size.producing);
+    }
+  }
+}

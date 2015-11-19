@@ -1,0 +1,9 @@
+{
+  if (object == null) {
+    throw new NullPointerException("object is null");
+  }
+  for (  Member member : object) {
+    this.set(member.name,member.value);
+  }
+  return this;
+}

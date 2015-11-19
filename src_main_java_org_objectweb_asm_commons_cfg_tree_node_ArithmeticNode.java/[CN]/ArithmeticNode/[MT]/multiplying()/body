@@ -1,0 +1,3 @@
+{
+  return opcode() == IMUL || opcode() == DMUL || opcode() == LMUL || opcode() == FMUL;
+}

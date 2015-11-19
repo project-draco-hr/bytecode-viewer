@@ -1,0 +1,5 @@
+{
+  IntInsnNode iin=new IntInsnNode(opcode,operand);
+  iin.method=this;
+  instructions.add(iin);
+}

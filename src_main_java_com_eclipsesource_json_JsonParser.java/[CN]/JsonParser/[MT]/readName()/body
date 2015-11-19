@@ -1,0 +1,6 @@
+{
+  if (current != '"') {
+    throw expected("name");
+  }
+  return readStringInternal();
+}

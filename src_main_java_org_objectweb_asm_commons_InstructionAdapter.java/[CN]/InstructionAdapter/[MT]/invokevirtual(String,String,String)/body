@@ -1,0 +1,7 @@
+{
+  if (api >= Opcodes.ASM5) {
+    invokevirtual(owner,name,desc,false);
+    return;
+  }
+  mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL,owner,name,desc);
+}

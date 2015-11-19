@@ -1,0 +1,3 @@
+{
+  this(ASM5,currentClass,currentSuperClass,currentClassInterfaces,isInterface);
+}

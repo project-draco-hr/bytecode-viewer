@@ -1,0 +1,3 @@
+{
+  graph.addMethodCall(mn.handle,new Handle(0,owner,name,desc));
+}

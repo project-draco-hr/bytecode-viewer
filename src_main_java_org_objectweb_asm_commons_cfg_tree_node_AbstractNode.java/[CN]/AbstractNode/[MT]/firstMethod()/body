@@ -1,0 +1,8 @@
+{
+  for (  AbstractNode n : this) {
+    if (n instanceof ReferenceNode) {
+      if (n.insn() instanceof MethodInsnNode)       return (MethodMemberNode)n;
+    }
+  }
+  return null;
+}

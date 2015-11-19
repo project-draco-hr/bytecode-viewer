@@ -1,0 +1,3 @@
+{
+  return getInitializedMac(HmacAlgorithms.HMAC_SHA_512,key);
+}

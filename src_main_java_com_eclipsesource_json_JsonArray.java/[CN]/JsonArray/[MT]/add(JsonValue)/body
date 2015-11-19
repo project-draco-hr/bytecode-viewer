@@ -1,0 +1,7 @@
+{
+  if (value == null) {
+    throw new NullPointerException("value is null");
+  }
+  values.add(value);
+  return this;
+}

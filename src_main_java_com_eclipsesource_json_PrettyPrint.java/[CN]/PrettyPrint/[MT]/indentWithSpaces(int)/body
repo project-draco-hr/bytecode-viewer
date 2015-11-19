@@ -1,0 +1,8 @@
+{
+  if (number < 0) {
+    throw new IllegalArgumentException("number is negative");
+  }
+  char[] chars=new char[number];
+  Arrays.fill(chars,' ');
+  return new PrettyPrint(chars);
+}

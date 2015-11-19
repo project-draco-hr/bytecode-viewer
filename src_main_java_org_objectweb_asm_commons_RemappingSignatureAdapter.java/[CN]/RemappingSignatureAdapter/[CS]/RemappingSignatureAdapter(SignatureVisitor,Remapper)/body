@@ -1,0 +1,3 @@
+{
+  this(Opcodes.ASM5,v,remapper);
+}

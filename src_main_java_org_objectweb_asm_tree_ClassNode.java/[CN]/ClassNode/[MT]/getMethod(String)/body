@@ -1,0 +1,6 @@
+{
+  for (  MethodNode mn : methods) {
+    if (desc.endsWith(mn.desc))     return mn;
+  }
+  return null;
+}

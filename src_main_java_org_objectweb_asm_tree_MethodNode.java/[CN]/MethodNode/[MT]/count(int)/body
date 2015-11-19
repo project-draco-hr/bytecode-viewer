@@ -1,0 +1,7 @@
+{
+  int count=0;
+  for (  AbstractInsnNode ain : instructions.toArray()) {
+    if (ain.opcode() == opcode)     count++;
+  }
+  return count;
+}

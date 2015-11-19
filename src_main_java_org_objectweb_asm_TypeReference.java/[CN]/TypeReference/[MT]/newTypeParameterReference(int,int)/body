@@ -1,0 +1,3 @@
+{
+  return new TypeReference((sort << 24) | (paramIndex << 16));
+}

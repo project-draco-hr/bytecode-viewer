@@ -1,0 +1,6 @@
+{
+  AnnotationVisitor av=(AnnotationVisitor)peek();
+  if (av != null) {
+    av.visitEnum(attrs.getValue("name"),attrs.getValue("desc"),attrs.getValue("value"));
+  }
+}

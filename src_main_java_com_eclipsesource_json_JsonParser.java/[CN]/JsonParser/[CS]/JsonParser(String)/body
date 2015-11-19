@@ -1,0 +1,3 @@
+{
+  this(new StringReader(string),Math.max(MIN_BUFFER_SIZE,Math.min(DEFAULT_BUFFER_SIZE,string.length())));
+}

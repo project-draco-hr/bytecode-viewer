@@ -1,0 +1,7 @@
+{
+  super(api);
+  this.currentClass=currentClass;
+  this.currentSuperClass=currentSuperClass;
+  this.currentClassInterfaces=currentClassInterfaces;
+  this.isInterface=isInterface;
+}

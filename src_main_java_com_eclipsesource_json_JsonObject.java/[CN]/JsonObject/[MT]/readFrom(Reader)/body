@@ -1,0 +1,3 @@
+{
+  return JsonValue.readFrom(reader).asObject();
+}

@@ -1,0 +1,9 @@
+{
+  if (api < Opcodes.ASM5) {
+    throw new RuntimeException();
+  }
+  if (cv != null) {
+    return cv.visitTypeAnnotation(typeRef,typePath,desc,visible);
+  }
+  return null;
+}

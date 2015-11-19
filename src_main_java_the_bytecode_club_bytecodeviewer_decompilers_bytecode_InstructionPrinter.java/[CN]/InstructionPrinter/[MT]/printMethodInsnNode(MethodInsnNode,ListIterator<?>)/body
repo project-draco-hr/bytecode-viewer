@@ -1,6 +1,6 @@
 {
   StringBuilder sb=new StringBuilder();
-  sb.append(nameOpcode(min.getOpcode()) + " " + min.owner+ " "+ min.name+ "(");
+  sb.append(nameOpcode(min.opcode()) + " " + min.owner+ " "+ min.name+ "(");
   String desc=min.desc;
   try {
     if (Type.getType(min.desc) != null)     desc=Type.getType(min.desc).getClassName();

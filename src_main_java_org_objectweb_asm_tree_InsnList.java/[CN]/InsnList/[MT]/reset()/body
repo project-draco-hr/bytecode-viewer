@@ -1,0 +1,5 @@
+{
+  for (  AbstractInsnNode ain : toArray()) {
+    ain.method=null;
+  }
+}

@@ -1,0 +1,3 @@
+int depth
+String message
+Object params

@@ -56,7 +56,7 @@
       line=printInvokeDynamicInsNode((InvokeDynamicInsnNode)ain);
     }
  else {
-      line+="UNADDED OPCODE: " + nameOpcode(ain.getOpcode()) + " "+ ain.toString();
+      line+="UNADDED OPCODE: " + nameOpcode(ain.opcode()) + " "+ ain.toString();
     }
     if (!line.equals("")) {
       if (match)       if (matchedInsns.contains(ain))       line="   -> " + line;

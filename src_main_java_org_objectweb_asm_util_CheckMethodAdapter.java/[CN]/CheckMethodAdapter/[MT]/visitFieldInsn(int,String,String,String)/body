@@ -1,0 +1,10 @@
+{
+  checkStartCode();
+  checkEndCode();
+  checkOpcode(opcode,4);
+  checkInternalName(owner,"owner");
+  checkUnqualifiedName(version,name,"name");
+  checkDesc(desc,false);
+  super.visitFieldInsn(opcode,owner,name,desc);
+  ++insnCount;
+}

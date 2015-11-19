@@ -1,0 +1,19 @@
+{
+  checkStartCode();
+  checkEndCode();
+  checkLabel(start,false,"start label");
+  checkLabel(end,false,"end label");
+  checkLabel(handler,false,"handler label");
+  checkNonDebugLabel(start);
+  checkNonDebugLabel(end);
+  checkNonDebugLabel(handler);
+  if (labels.get(start) != null || labels.get(end) != null || labels.get(handler) != null) {
+    throw new IllegalStateException("Try catch blocks must be visited before their labels");
+  }
+  if (type != null) {
+    checkInternalName(type,"type");
+  }
+  super.visitTryCatchBlock(start,end,handler,type);
+  handlers.add(start);
+  handlers.add(end);
+}

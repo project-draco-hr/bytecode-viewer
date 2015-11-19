@@ -1,0 +1,5 @@
+{
+  inputStream.defaultReadObject();
+  table=new HashIndexTable();
+  updateHashIndex();
+}

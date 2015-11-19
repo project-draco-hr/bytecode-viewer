@@ -1,0 +1,10 @@
+{
+  StringWriter writer=new StringWriter();
+  try {
+    writeTo(writer,config);
+  }
+ catch (  IOException exception) {
+    throw new RuntimeException(exception);
+  }
+  return writer.toString();
+}

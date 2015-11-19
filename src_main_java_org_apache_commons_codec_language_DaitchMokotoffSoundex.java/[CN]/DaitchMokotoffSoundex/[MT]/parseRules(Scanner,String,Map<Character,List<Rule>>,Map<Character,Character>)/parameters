@@ -1,0 +1,4 @@
+Scanner scanner
+String location
+Map<Character,List<Rule>> ruleMapping
+Map<Character,Character> asciiFoldings

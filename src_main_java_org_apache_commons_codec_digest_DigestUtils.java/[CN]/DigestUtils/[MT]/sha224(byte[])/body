@@ -1,0 +1,3 @@
+{
+  return getSha224Digest().digest(data);
+}

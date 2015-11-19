@@ -1,0 +1,7 @@
+{
+  if (api >= Opcodes.ASM5) {
+    super.visitMethodInsn(opcode,owner,name,desc);
+    return;
+  }
+  doVisitMethodInsn(opcode,owner,name,desc,opcode == Opcodes.INVOKEINTERFACE);
+}

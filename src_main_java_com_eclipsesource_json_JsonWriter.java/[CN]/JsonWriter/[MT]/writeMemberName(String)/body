@@ -1,0 +1,5 @@
+{
+  writer.write('"');
+  writeJsonString(name);
+  writer.write('"');
+}

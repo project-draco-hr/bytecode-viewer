@@ -1,0 +1,3 @@
+{
+  return opcode() == DADD || opcode() == DSUB || opcode() == DMUL || opcode() == DDIV;
+}

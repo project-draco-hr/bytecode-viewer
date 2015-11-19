@@ -1,0 +1,3 @@
+{
+  writeTo(writer,WriterConfig.MINIMAL);
+}

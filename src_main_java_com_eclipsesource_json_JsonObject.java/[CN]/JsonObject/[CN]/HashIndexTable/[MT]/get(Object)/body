@@ -1,0 +1,4 @@
+{
+  int slot=hashSlotFor(name);
+  return (hashTable[slot] & 0xff) - 1;
+}

@@ -1,0 +1,6 @@
+{
+  if (fill > buffer.length - 1) {
+    flush();
+  }
+  buffer[fill++]=(char)c;
+}

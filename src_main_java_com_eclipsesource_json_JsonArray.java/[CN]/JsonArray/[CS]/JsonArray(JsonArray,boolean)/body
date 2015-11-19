@@ -1,0 +1,11 @@
+{
+  if (array == null) {
+    throw new NullPointerException("array is null");
+  }
+  if (unmodifiable) {
+    values=Collections.unmodifiableList(array.values);
+  }
+ else {
+    values=new ArrayList<JsonValue>(array.values);
+  }
+}

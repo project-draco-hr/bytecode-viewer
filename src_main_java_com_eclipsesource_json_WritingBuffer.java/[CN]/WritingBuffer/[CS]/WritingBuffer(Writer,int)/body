@@ -1,0 +1,4 @@
+{
+  this.writer=writer;
+  buffer=new char[bufferSize];
+}

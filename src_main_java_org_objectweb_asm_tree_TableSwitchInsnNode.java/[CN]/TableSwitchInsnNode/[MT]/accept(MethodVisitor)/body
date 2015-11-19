@@ -1,0 +1,8 @@
+{
+  Label[] labels=new Label[this.labels.size()];
+  for (int i=0; i < labels.length; ++i) {
+    labels[i]=this.labels.get(i).getLabel();
+  }
+  mv.visitTableSwitchInsn(min,max,dflt.getLabel(),labels);
+  acceptAnnotations(mv);
+}

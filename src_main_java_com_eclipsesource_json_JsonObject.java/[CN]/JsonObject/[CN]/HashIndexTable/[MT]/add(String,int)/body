@@ -1,0 +1,9 @@
+{
+  int slot=hashSlotFor(name);
+  if (index < 0xff) {
+    hashTable[slot]=(byte)(index + 1);
+  }
+ else {
+    hashTable[slot]=0;
+  }
+}

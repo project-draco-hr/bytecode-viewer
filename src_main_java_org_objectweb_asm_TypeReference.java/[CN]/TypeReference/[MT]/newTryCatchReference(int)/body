@@ -1,0 +1,3 @@
+{
+  return new TypeReference((EXCEPTION_PARAMETER << 24) | (tryCatchBlockIndex << 8));
+}

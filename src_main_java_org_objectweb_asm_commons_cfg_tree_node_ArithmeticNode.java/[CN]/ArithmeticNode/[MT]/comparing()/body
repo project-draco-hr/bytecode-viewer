@@ -1,0 +1,3 @@
+{
+  return opcode() == IXOR || opcode() == LXOR || opcode() == IOR || opcode() == LOR;
+}

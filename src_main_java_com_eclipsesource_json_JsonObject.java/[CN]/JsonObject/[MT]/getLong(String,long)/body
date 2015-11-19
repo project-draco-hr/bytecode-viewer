@@ -1,0 +1,4 @@
+{
+  JsonValue value=get(name);
+  return value != null ? value.asLong() : defaultValue;
+}

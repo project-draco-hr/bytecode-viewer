@@ -1,0 +1,5 @@
+{
+  builder=new StringBuilder();
+  lastReplacement=null;
+  cachedString=null;
+}

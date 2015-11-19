@@ -1,0 +1,18 @@
+{
+  if (name == null) {
+    throw new NullPointerException("name is null");
+  }
+  if (value == null) {
+    throw new NullPointerException("value is null");
+  }
+  int index=indexOf(name);
+  if (index != -1) {
+    values.set(index,value);
+  }
+ else {
+    table.add(name,names.size());
+    names.add(name);
+    values.add(value);
+  }
+  return this;
+}

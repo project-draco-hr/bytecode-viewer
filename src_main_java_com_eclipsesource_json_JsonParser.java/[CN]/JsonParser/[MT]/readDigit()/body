@@ -1,0 +1,7 @@
+{
+  if (!isDigit()) {
+    return false;
+  }
+  read();
+  return true;
+}

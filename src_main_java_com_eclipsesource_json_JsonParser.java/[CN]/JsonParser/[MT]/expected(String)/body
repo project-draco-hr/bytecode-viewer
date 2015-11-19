@@ -1,0 +1,6 @@
+{
+  if (isEndOfText()) {
+    return error("Unexpected end of input");
+  }
+  return error("Expected " + expected);
+}

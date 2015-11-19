@@ -1,0 +1,3 @@
+{
+  return opcode() == IDIV || opcode() == DDIV || opcode() == LDIV || opcode() == FDIV;
+}

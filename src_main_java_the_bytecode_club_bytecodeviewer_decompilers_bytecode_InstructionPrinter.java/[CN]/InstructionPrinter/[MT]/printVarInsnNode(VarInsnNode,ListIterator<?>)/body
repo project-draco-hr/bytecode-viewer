@@ -1,6 +1,6 @@
 {
   StringBuilder sb=new StringBuilder();
-  sb.append(nameOpcode(vin.getOpcode()));
+  sb.append(nameOpcode(vin.opcode()));
   sb.append(vin.var);
   if (Decompiler.BYTECODE.getSettings().isSelected(ClassNodeDecompiler.Settings.DEBUG_HELPERS)) {
     if (vin.var == 0 && !Modifier.isStatic(mNode.access)) {

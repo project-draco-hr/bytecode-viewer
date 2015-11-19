@@ -1,0 +1,3 @@
+{
+  this(opcode,owner,name,desc,opcode == Opcodes.INVOKEINTERFACE);
+}

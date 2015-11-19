@@ -1,0 +1,11 @@
+{
+  AbstractInsnNode ain=insn();
+  if (ain instanceof IntInsnNode) {
+    ((IntInsnNode)insn()).operand=number;
+    ((IntInsnNode)ain).operand=number;
+  }
+ else   if (ain instanceof LdcInsnNode) {
+    ((LdcInsnNode)insn()).cst=number;
+    ((LdcInsnNode)ain).cst=number;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  buf.setLength(0);
+  buf.append("{\n").append("av0 = ").append(name).append(".visitLocalVariableAnnotation(");
+  buf.append(typeRef);
+  buf.append(", TypePath.fromString(\"").append(typePath).append("\"), ");
+  buf.append("new Label[] {");
+  for (int i=0; i < start.length; ++i) {
+    buf.append(i == 0 ? " " : ", ");
+    appendLabel(start[i]);
+  }
+  buf.append(" }, new Label[] {");
+  for (int i=0; i < end.length; ++i) {
+    buf.append(i == 0 ? " " : ", ");
+    appendLabel(end[i]);
+  }
+  buf.append(" }, new int[] {");
+  for (int i=0; i < index.length; ++i) {
+    buf.append(i == 0 ? " " : ", ").append(index[i]);
+  }
+  buf.append(" }, ");
+  appendConstant(desc);
+  buf.append(", ").append(visible).append(");\n");
+  text.add(buf.toString());
+  ASMifier a=createASMifier("av",0);
+  text.add(a.getText());
+  text.add("}\n");
+  return a;
+}

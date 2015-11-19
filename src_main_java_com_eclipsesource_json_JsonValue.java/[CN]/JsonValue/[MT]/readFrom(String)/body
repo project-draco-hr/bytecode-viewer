@@ -1,0 +1,8 @@
+{
+  try {
+    return new JsonParser(text).parse();
+  }
+ catch (  IOException exception) {
+    throw new RuntimeException(exception);
+  }
+}

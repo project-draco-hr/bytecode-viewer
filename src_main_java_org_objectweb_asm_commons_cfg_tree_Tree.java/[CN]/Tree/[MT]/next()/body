@@ -1,0 +1,14 @@
+{
+  Tree<E> p=parent;
+  if (p == null) {
+    return null;
+  }
+  Iterator<E> it=parent.iterator();
+  while (it.hasNext()) {
+    E e=it.next();
+    if (e.equals(this)) {
+      return it.hasNext() ? it.next() : null;
+    }
+  }
+  return null;
+}

@@ -1,0 +1,15 @@
+{
+  try (JarOutputStream output=(manifest != null ? new JarOutputStream(new FileOutputStream(target),manifest) : new JarOutputStream(new FileOutputStream(target)))){
+    for (    Map.Entry<String,ClassNode> entry : build().entrySet()) {
+      output.putNextEntry(new JarEntry(entry.getKey().replaceAll("\\.","/") + ".class"));
+      ClassWriter writer=new ClassWriter(0);
+      entry.getValue().accept(writer);
+      output.write(writer.toByteArray());
+      output.closeEntry();
+    }
+    output.flush();
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

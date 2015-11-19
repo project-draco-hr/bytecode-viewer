@@ -1,0 +1,9 @@
+{
+  checkService();
+  return service.submit(new Callable<BufferedImage>(){
+    public BufferedImage call() throws Exception {
+      return Scalr.resize(src,scalingMethod,resizeMode,targetSize,ops);
+    }
+  }
+);
+}

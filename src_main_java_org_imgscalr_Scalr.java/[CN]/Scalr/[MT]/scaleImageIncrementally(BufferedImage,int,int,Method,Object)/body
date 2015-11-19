@@ -1,0 +1,29 @@
+{
+  boolean hasReassignedSrc=false;
+  int incrementCount=0;
+  int currentWidth=src.getWidth();
+  int currentHeight=src.getHeight();
+  int fraction=(scalingMethod == Method.ULTRA_QUALITY ? 7 : 2);
+  do {
+    int prevCurrentWidth=currentWidth;
+    int prevCurrentHeight=currentHeight;
+    if (currentWidth > targetWidth) {
+      currentWidth-=(currentWidth / fraction);
+      if (currentWidth < targetWidth)       currentWidth=targetWidth;
+    }
+    if (currentHeight > targetHeight) {
+      currentHeight-=(currentHeight / fraction);
+      if (currentHeight < targetHeight)       currentHeight=targetHeight;
+    }
+    if (prevCurrentWidth == currentWidth && prevCurrentHeight == currentHeight)     break;
+    if (DEBUG)     log(2,"Scaling from [%d x %d] to [%d x %d]",prevCurrentWidth,prevCurrentHeight,currentWidth,currentHeight);
+    BufferedImage incrementalImage=scaleImage(src,currentWidth,currentHeight,interpolationHintValue);
+    if (hasReassignedSrc)     src.flush();
+    src=incrementalImage;
+    hasReassignedSrc=true;
+    incrementCount++;
+  }
+ while (currentWidth != targetWidth || currentHeight != targetHeight);
+  if (DEBUG)   log(2,"Incrementally Scaled Image in %d steps.",incrementCount);
+  return src;
+}

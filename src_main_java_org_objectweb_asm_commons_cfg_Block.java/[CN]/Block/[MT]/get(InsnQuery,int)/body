@@ -1,0 +1,10 @@
+{
+  int i=0;
+  for (  AbstractInsnNode ain : instructions) {
+    if (query.matches(ain)) {
+      if (i == index)       return ain;
+      i++;
+    }
+  }
+  return null;
+}

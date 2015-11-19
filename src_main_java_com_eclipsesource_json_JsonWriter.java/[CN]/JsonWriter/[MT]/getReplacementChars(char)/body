@@ -1,0 +1,30 @@
+{
+  if (ch > '\\') {
+    if (ch < '\u2028' || ch > '\u2029') {
+      return null;
+    }
+    return ch == '\u2028' ? UNICODE_2028_CHARS : UNICODE_2029_CHARS;
+  }
+  if (ch == '\\') {
+    return BS_CHARS;
+  }
+  if (ch > '"') {
+    return null;
+  }
+  if (ch == '"') {
+    return QUOT_CHARS;
+  }
+  if (ch > CONTROL_CHARACTERS_END) {
+    return null;
+  }
+  if (ch == '\n') {
+    return LF_CHARS;
+  }
+  if (ch == '\r') {
+    return CR_CHARS;
+  }
+  if (ch == '\t') {
+    return TAB_CHARS;
+  }
+  return new char[]{'\\','u','0','0',HEX_DIGITS[ch >> 4 & 0x000f],HEX_DIGITS[ch & 0x000f]};
+}

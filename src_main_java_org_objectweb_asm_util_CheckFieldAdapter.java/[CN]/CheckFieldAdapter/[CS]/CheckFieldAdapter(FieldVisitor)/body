@@ -1,0 +1,6 @@
+{
+  this(Opcodes.ASM5,fv);
+  if (getClass() != CheckFieldAdapter.class) {
+    throw new IllegalStateException();
+  }
+}

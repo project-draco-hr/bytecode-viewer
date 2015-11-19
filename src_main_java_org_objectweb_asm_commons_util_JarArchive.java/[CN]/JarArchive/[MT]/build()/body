@@ -1,0 +1,30 @@
+{
+  if (!nodes.isEmpty())   return nodes;
+  JarFile jar=null;
+  try {
+    jar=new JarFile(file);
+    manifest=jar.getManifest();
+    Enumeration<JarEntry> entries=jar.entries();
+    while (entries.hasMoreElements()) {
+      JarEntry entry=entries.nextElement();
+      String name=entry.getName();
+      if (name.endsWith(".class")) {
+        ClassNode cn=new ClassNode();
+        ClassReader reader=new ClassReader(jar.getInputStream(entry));
+        reader.accept(cn,ClassReader.SKIP_FRAMES | ClassReader.SKIP_DEBUG);
+        nodes.put(name.replace(".class",""),cn);
+      }
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Error building classes (" + file.getName() + "): ",e.getCause());
+  }
+ finally {
+    try {
+      if (jar != null)       jar.close();
+    }
+ catch (    IOException e) {
+    }
+  }
+  return nodes;
+}

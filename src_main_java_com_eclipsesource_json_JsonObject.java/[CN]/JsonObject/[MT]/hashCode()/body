@@ -1,0 +1,6 @@
+{
+  int result=1;
+  result=31 * result + names.hashCode();
+  result=31 * result + values.hashCode();
+  return result;
+}

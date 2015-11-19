@@ -1,0 +1,9 @@
+{
+  if (api < Opcodes.ASM5) {
+    throw new RuntimeException();
+  }
+  if (mv != null) {
+    return mv.visitLocalVariableAnnotation(typeRef,typePath,start,end,index,desc,visible);
+  }
+  return null;
+}

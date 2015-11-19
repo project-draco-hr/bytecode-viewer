@@ -1,0 +1,27 @@
+{
+  long t=-1;
+  if (DEBUG)   t=System.currentTimeMillis();
+  if (src == null)   throw new IllegalArgumentException("src cannot be null");
+  if (ops == null || ops.length == 0)   throw new IllegalArgumentException("ops cannot be null or empty");
+  int type=src.getType();
+  if (!(type == BufferedImage.TYPE_INT_RGB || type == BufferedImage.TYPE_INT_ARGB))   src=copyToOptimalImage(src);
+  if (DEBUG)   log(0,"Applying %d BufferedImageOps...",ops.length);
+  boolean hasReassignedSrc=false;
+  for (int i=0; i < ops.length; i++) {
+    long subT=-1;
+    if (DEBUG)     subT=System.currentTimeMillis();
+    BufferedImageOp op=ops[i];
+    if (op == null)     continue;
+    if (DEBUG)     log(1,"Applying BufferedImageOp [class=%s, toString=%s]...",op.getClass(),op.toString());
+    Rectangle2D resultBounds=op.getBounds2D(src);
+    if (resultBounds == null)     throw new ImagingOpException("BufferedImageOp [" + op.toString() + "] getBounds2D(src) returned null bounds for the target image; this should not happen and indicates a problem with application of this type of op.");
+    BufferedImage dest=createOptimalImage(src,(int)Math.round(resultBounds.getWidth()),(int)Math.round(resultBounds.getHeight()));
+    BufferedImage result=op.filter(src,dest);
+    if (hasReassignedSrc)     src.flush();
+    src=result;
+    hasReassignedSrc=true;
+    if (DEBUG)     log(1,"Applied BufferedImageOp in %d ms, result [width=%d, height=%d]",System.currentTimeMillis() - subT,result.getWidth(),result.getHeight());
+  }
+  if (DEBUG)   log(0,"All %d BufferedImageOps applied in %d ms",ops.length,System.currentTimeMillis() - t);
+  return src;
+}
