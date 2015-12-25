@@ -1,0 +1,41 @@
+{
+  this.name=name;
+  this.container=container;
+  this.contents=contents;
+  this.setName(name);
+  this.setLayout(new BorderLayout());
+  this.add(panel2,BorderLayout.CENTER);
+  JButton searchNext=new JButton();
+  JButton searchPrev=new JButton();
+  JPanel buttonPane=new JPanel(new BorderLayout());
+  buttonPane.add(searchNext,BorderLayout.WEST);
+  buttonPane.add(searchPrev,BorderLayout.EAST);
+  searchNext.setIcon(Resources.nextIcon);
+  searchPrev.setIcon(Resources.prevIcon);
+  panel.add(buttonPane,BorderLayout.WEST);
+  panel.add(field,BorderLayout.CENTER);
+  panel.add(check,BorderLayout.EAST);
+  searchNext.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(field.getText(),true);
+    }
+  }
+);
+  searchPrev.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent arg0){
+      search(field.getText(),false);
+    }
+  }
+);
+  field.addKeyListener(new KeyListener(){
+    @Override public void keyReleased(    KeyEvent arg0){
+      if (arg0.getKeyCode() == KeyEvent.VK_ENTER)       search(field.getText(),true);
+    }
+    @Override public void keyPressed(    KeyEvent arg0){
+    }
+    @Override public void keyTyped(    KeyEvent arg0){
+    }
+  }
+);
+  setContents();
+}
