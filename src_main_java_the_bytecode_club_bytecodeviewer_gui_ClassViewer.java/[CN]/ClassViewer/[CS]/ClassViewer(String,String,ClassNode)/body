@@ -39,7 +39,7 @@
   this.name=name;
   this.container=container;
   this.cn=cn;
-  this.setName(name + "(" + container+ ")");
+  updateName();
   this.setLayout(new BorderLayout());
   this.sp=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,panels.get(0),panels.get(1));
   JHexEditor hex=new JHexEditor(BytecodeViewer.getClassBytes(container,cn.name + ".class"));

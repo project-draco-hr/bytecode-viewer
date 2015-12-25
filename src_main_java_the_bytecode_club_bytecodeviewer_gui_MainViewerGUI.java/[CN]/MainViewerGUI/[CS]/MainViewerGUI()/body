@@ -890,6 +890,23 @@
   fontSpinner.setModel(new SpinnerNumberModel(12,1,null,1));
   viewMenu.add(mnFontSize);
   mnFontSize.add(fontSpinner);
+  viewMenu.add(mnShowContainer);
+  mnShowContainer.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      JTabbedPane tabs=workPane.tabs;
+      Component[] components=tabs.getComponents();
+      for (int i=0; i < components.length; i++) {
+        Component c=components[i];
+        if (c instanceof Viewer) {
+          ((Viewer)c).updateName();
+          int idx=tabs.indexOfComponent(c);
+          tabs.setTabComponentAt(idx,new TabbedPane(c.getName(),tabs));
+          workPane.tabs.setTitleAt(idx,c.getName());
+        }
+      }
+    }
+  }
+);
   panelGroup1.setSelected(allDecompilersRev.get(panelGroup1).get(Decompiler.JDGUI).getModel(),true);
   panelGroup2.setSelected(allDecompilersRev.get(panelGroup2).get(Decompiler.BYTECODE).getModel(),true);
   panelGroup3.setSelected(allDecompilersRev.get(panelGroup3).get(null).getModel(),true);

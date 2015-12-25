@@ -2,7 +2,7 @@
   this.name=name;
   this.container=container;
   this.contents=contents;
-  this.setName(name);
+  updateName();
   this.setLayout(new BorderLayout());
   this.add(panel2,BorderLayout.CENTER);
   JButton searchNext=new JButton();
