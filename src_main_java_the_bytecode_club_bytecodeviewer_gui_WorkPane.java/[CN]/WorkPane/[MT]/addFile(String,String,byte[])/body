@@ -1,0 +1,15 @@
+{
+  if (contents == null)   return;
+  String key=container + "$" + name;
+  if (!workingOn.containsKey(key)) {
+    final Component tabComp=new FileViewer(name,container,contents);
+    tabs.add(tabComp);
+    final int tabCount=tabs.indexOfComponent(tabComp);
+    workingOn.put(key,tabCount);
+    tabs.setTabComponentAt(tabCount,new TabbedPane(name,tabs));
+    tabs.setSelectedIndex(tabCount);
+  }
+ else {
+    tabs.setSelectedIndex(workingOn.get(key));
+  }
+}

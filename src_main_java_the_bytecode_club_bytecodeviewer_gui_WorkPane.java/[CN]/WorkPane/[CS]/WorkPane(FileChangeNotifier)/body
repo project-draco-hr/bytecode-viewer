@@ -17,10 +17,12 @@
     @Override public void componentRemoved(    final ContainerEvent e){
       final Component c=e.getChild();
       if (c instanceof ClassViewer) {
-        workingOn.remove(((ClassViewer)c).name);
+        ClassViewer cv=(ClassViewer)c;
+        workingOn.remove(cv.container + "$" + cv.name);
       }
       if (c instanceof FileViewer) {
-        workingOn.remove(((FileViewer)c).name);
+        FileViewer fv=(FileViewer)c;
+        workingOn.remove(fv.container + "$" + fv.name);
       }
     }
   }

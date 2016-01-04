@@ -506,12 +506,13 @@
             Object obj=pane.getValue();
             int result=-1;
             for (int k=0; k < options.length; k++)             if (options[k].equals(obj))             result=k;
+            String containerName=BytecodeViewer.files.get(0).name;
             if (result == 0) {
               Thread t=new Thread(){
                 @Override public void run(){
                   try {
-                    ClassNode cn=BytecodeViewer.getClassNode(s);
-                    byte[] bytes=BytecodeViewer.getClassBytes(s);
+                    ClassNode cn=BytecodeViewer.getClassNode(containerName,s);
+                    byte[] bytes=BytecodeViewer.getClassBytes(containerName,s);
                     String contents=Decompiler.PROCYON.decompileClassNode(cn,bytes);
                     FileUtils.write(new File(path),contents,"UTF-8",false);
                     BytecodeViewer.viewer.setIcon(false);
@@ -528,8 +529,8 @@
               Thread t=new Thread(){
                 @Override public void run(){
                   try {
-                    ClassNode cn=BytecodeViewer.getClassNode(s);
-                    byte[] bytes=BytecodeViewer.getClassBytes(s);
+                    ClassNode cn=BytecodeViewer.getClassNode(containerName,s);
+                    byte[] bytes=BytecodeViewer.getClassBytes(containerName,s);
                     String contents=Decompiler.CFR.decompileClassNode(cn,bytes);
                     FileUtils.write(new File(path),contents,"UTF-8",false);
                     BytecodeViewer.viewer.setIcon(false);
@@ -546,8 +547,8 @@
               Thread t=new Thread(){
                 @Override public void run(){
                   try {
-                    ClassNode cn=BytecodeViewer.getClassNode(s);
-                    byte[] bytes=BytecodeViewer.getClassBytes(s);
+                    ClassNode cn=BytecodeViewer.getClassNode(containerName,s);
+                    byte[] bytes=BytecodeViewer.getClassBytes(containerName,s);
                     String contents=Decompiler.FERNFLOWER.decompileClassNode(cn,bytes);
                     FileUtils.write(new File(path),contents,"UTF-8",false);
                     BytecodeViewer.viewer.setIcon(false);
@@ -564,8 +565,8 @@
               Thread t=new Thread(){
                 @Override public void run(){
                   try {
-                    ClassNode cn=BytecodeViewer.getClassNode(s);
-                    byte[] bytes=BytecodeViewer.getClassBytes(s);
+                    ClassNode cn=BytecodeViewer.getClassNode(containerName,s);
+                    byte[] bytes=BytecodeViewer.getClassBytes(containerName,s);
                     String contents=Decompiler.KRAKATAU.decompileClassNode(cn,bytes);
                     FileUtils.write(new File(path),contents,"UTF-8",false);
                     BytecodeViewer.viewer.setIcon(false);
@@ -889,6 +890,23 @@
   fontSpinner.setModel(new SpinnerNumberModel(12,1,null,1));
   viewMenu.add(mnFontSize);
   mnFontSize.add(fontSpinner);
+  viewMenu.add(mnShowContainer);
+  mnShowContainer.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      JTabbedPane tabs=workPane.tabs;
+      Component[] components=tabs.getComponents();
+      for (int i=0; i < components.length; i++) {
+        Component c=components[i];
+        if (c instanceof Viewer) {
+          ((Viewer)c).updateName();
+          int idx=tabs.indexOfComponent(c);
+          tabs.setTabComponentAt(idx,new TabbedPane(c.getName(),tabs));
+          workPane.tabs.setTitleAt(idx,c.getName());
+        }
+      }
+    }
+  }
+);
   panelGroup1.setSelected(allDecompilersRev.get(panelGroup1).get(Decompiler.JDGUI).getModel(),true);
   panelGroup2.setSelected(allDecompilersRev.get(panelGroup2).get(Decompiler.BYTECODE).getModel(),true);
   panelGroup3.setSelected(allDecompilersRev.get(panelGroup3).get(null).getModel(),true);

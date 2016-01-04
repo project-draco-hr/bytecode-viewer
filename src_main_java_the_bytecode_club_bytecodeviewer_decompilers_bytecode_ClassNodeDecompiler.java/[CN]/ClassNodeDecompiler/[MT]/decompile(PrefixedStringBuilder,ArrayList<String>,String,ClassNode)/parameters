@@ -1,0 +1,4 @@
+PrefixedStringBuilder sb
+ArrayList<String> decompiledClasses
+String containerName
+ClassNode cn

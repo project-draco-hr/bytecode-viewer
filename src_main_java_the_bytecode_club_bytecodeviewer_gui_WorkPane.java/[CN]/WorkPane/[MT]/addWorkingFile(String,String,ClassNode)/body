@@ -1,0 +1,14 @@
+{
+  String key=container + "$" + name;
+  if (!workingOn.containsKey(key)) {
+    final JPanel tabComp=new ClassViewer(name,container,cn);
+    tabs.add(tabComp);
+    final int tabCount=tabs.indexOfComponent(tabComp);
+    workingOn.put(key,tabCount);
+    tabs.setTabComponentAt(tabCount,new TabbedPane(name,tabs));
+    tabs.setSelectedIndex(tabCount);
+  }
+ else {
+    tabs.setSelectedIndex(workingOn.get(key));
+  }
+}

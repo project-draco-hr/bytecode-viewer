@@ -8,13 +8,14 @@
     }
   }
   String name=nameBuffer.toString();
+  String containerName=path.getPathComponent(1).toString();
   if (name.endsWith(".class")) {
-    final ClassNode cn=BytecodeViewer.getClassNode(name.substring(0,name.length() - ".class".length()));
+    final ClassNode cn=BytecodeViewer.getClassNode(containerName,name.substring(0,name.length() - ".class".length()));
     if (cn != null) {
-      openClassFileToWorkSpace(nameBuffer.toString(),cn);
+      openClassFileToWorkSpace(nameBuffer.toString(),containerName,cn);
     }
   }
  else {
-    openFileToWorkSpace(nameBuffer.toString(),BytecodeViewer.getFileContents(nameBuffer.toString()));
+    openFileToWorkSpace(nameBuffer.toString(),containerName,BytecodeViewer.getFileContents(nameBuffer.toString()));
   }
 }

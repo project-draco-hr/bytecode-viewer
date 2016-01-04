@@ -1,5 +1,5 @@
 {
-  this.cn=BytecodeViewer.getClassNode(cn.name);
+  this.cn=BytecodeViewer.getClassNode(container,cn.name);
   setPanes();
   for (  JPanel jpanel : panels) {
     jpanel.removeAll();
