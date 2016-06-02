@@ -1,6 +1,5 @@
 {
-  try {
-    JarOutputStream out=new JarOutputStream(new FileOutputStream(path));
+  try (JarOutputStream out=new JarOutputStream(new FileOutputStream(path))){
     for (    ClassNode cn : nodeList) {
       ClassWriter cw=new ClassWriter(0);
       cn.accept(cw);
@@ -19,7 +18,6 @@
         out.closeEntry();
       }
     }
-    out.close();
   }
  catch (  IOException e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);

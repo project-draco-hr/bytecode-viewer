@@ -1,6 +1,5 @@
 {
-  try {
-    JarOutputStream out=new JarOutputStream(new FileOutputStream(path));
+  try (JarOutputStream out=new JarOutputStream(new FileOutputStream(path))){
     ArrayList<String> noDupe=new ArrayList<String>();
     for (    Entry<String,byte[]> entry : nodeList.entrySet()) {
       String name=entry.getKey();
@@ -23,7 +22,6 @@
       }
     }
     noDupe.clear();
-    out.close();
   }
  catch (  IOException e) {
     new the.bytecode.club.bytecodeviewer.api.ExceptionUI(e);
